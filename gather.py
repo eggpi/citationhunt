@@ -15,6 +15,20 @@ WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 MARKER = '7b94863f3091b449e6ab04d44cb372a0' # unlikely to be in any article
 CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
 
+# Monkey-patch mwparserfromhell so it strips some templates and tags the way
+# we want.
+def template_strip(self, normalize, collapse):
+    if self.name == 'convert':
+        return ' '.join(map(unicode, self.params[:2]))
+mwparserfromhell.nodes.Template.__strip__ = template_strip
+
+def tag_strip(self, normalize, collapse):
+    if self.tag == 'ref':
+        return None
+    return self._original_strip(normalize, collapse)
+mwparserfromhell.nodes.Tag._original_strip = mwparserfromhell.nodes.Tag.__strip__
+mwparserfromhell.nodes.Tag.__strip__ = tag_strip
+
 def init_db():
     db = sqlite3.connect('citationhunt.sqlite3')
     cursor = db.cursor()
