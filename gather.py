@@ -7,6 +7,7 @@ import mwparserfromhell
 
 import sys
 import urlparse
+import hashlib
 
 WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
@@ -58,12 +59,14 @@ def reload_snippets(db):
 
                     url = WIKIPEDIA_WIKI_URL + urlparse.unquote(page.urltitle)
                     url = unicode(url, 'utf-8')
+                    id = unicode(hashlib.sha1(snippet.encode('utf-8')).hexdigest())
+                    id = id[:2*8]
 
-                    row = (snippet, url, page.title)
+                    row = (id, snippet, url, page.title)
                     assert all(type(x) == unicode for x in row)
                     try:
                         cursor.execute('''
-                            INSERT INTO cn VALUES (?, ?, ?) ''', row)
+                            INSERT INTO cn VALUES (?, ?, ?, ?) ''', row)
                         db.commit()
                     except:
                         print >>sys.stderr, 'failed to insert %s in the db' % repr(row)

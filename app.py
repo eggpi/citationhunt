@@ -10,17 +10,29 @@ def get_db():
         db = flask.g._db = chdb.init_db()
     return db
 
-def select_random_snippet():
+def select_snippet_by_id(id):
+    cursor = get_db().cursor()
+    # FIXME LIMIT 1 because we have duplicates
+    cursor.execute('''
+        SELECT snippet, url, title FROM cn WHERE id = ? LIMIT 1;''', (id,))
+    return cursor.fetchone()
+
+def select_random_id():
     cursor = get_db().cursor()
     cursor.execute('''
-        SELECT snippet, url, title FROM cn ORDER BY RANDOM() LIMIT 1;''')
-    return cursor.fetchone()
+        SELECT id FROM cn ORDER BY RANDOM() LIMIT 1;''')
+    return cursor.fetchone()[0]
 
 app = flask.Flask(__name__)
 
 @app.route('/')
 def citation_hunt():
-    s, u, t = select_random_snippet()
+    id = flask.request.args.get('id')
+    if id is None:
+        id = select_random_id()
+        return flask.redirect(flask.url_for('citation_hunt', id = id))
+
+    s, u, t = select_snippet_by_id(id)
     return flask.render_template('index.html', snippet = s, url = u, title = t)
 
 @app.teardown_appcontext

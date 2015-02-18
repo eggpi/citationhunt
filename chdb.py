@@ -5,7 +5,7 @@ def init_db():
     cursor = db.cursor()
 
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS cn (snippet text, url text, title text)
+        CREATE TABLE IF NOT EXISTS cn (id text, snippet text, url text, title text)
     ''')
 
     return db
