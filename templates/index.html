@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+  <head>
+    <title>Citation Hunt</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Fondamento' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <h1>Citation Hunt</h1>
+    <p id=intro>Help find citations for Wikipedia articles!</h1>
+    <p id="preamble">In page <a href={{ url }}>{{ title }}</a>:</p>
+    <blockquote id="snippet"><div id="quotation">"</div>{{ snippet | safe }}</blockquote>
+    <div id="buttons">
+      <a id="button-wikilink" class="button" href={{ url }} target=_blank>I got this, take me there!</a>
+      <a id="button-next" class="button" href="/">Sorry, no idea. Next!</a>
+    </div>
+  </body>
+</html>

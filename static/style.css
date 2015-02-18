@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Helvetica, sans-serif;
+    font-size: medium;
+    background-color: #FAFAFA;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: xx-large;
+}
+
+#preamble {
+    margin: 40px 0 0 20px;
+}
+
+#snippet {
+    position: relative;
+    margin: 30px auto 70px auto;
+    line-height: 20px;
+    text-align: justify;
+    width: 90%;
+}
+
+#quotation {
+    position: absolute;
+    top: 15px;
+    left: -30px;
+    font-size: 100px;
+    opacity: 0.1;
+    font-family: Fondamento, cursive;
+}
+
+a {
+    color: #0645AD; 
+}
+
+.citation-needed {
+    font-size: small;
+    position: relative;
+    top: -5px;
+    color: #0645AD;
+}
+
+#buttons {
+    width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.button {
+    margin: 0 5px;
+    padding: 15px;
+    border: 2px solid black;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+#button-wikilink {
+    background-color: #5BC5A7;
+}
+
+#button-next {
+    background-color: #E75A42;
+}

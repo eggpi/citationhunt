@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import flask
 import wikitools
 import mwparserfromhell
 
@@ -22,43 +23,70 @@ def init_db():
         CREATE TABLE IF NOT EXISTS cn (snippet text, url text, title text)
     ''')
 
-    return db, cursor
+    return db
+
+def get_db():
+    db = getattr(flask.g, '_db', None)
+    if db is None:
+        db = flask.g._db = init_db()
+    return db
 
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
 
-db, cursor = init_db()
-wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
-category = wikitools.Category(wikipedia, 'All_articles_with_unsourced_statements')
-for page in category.getAllMembersGen():
-    wikitext = page.getWikiText()
+def reload_snippets(db):
+    cursor = db.cursor()
+    wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
+    category = wikitools.Category(wikipedia, 'All_articles_with_unsourced_statements')
+    for page in category.getAllMembersGen():
+        wikitext = page.getWikiText()
 
-    for paragraph in wikitext.splitlines():
-        wikicode = mwparserfromhell.parse(paragraph)
+        for paragraph in wikitext.splitlines():
+            wikicode = mwparserfromhell.parse(paragraph)
 
-        for t in wikicode.filter_templates():
-            if is_citation_needed(t):
-                stripped_len = len(wikicode.strip_code())
-                if stripped_len > 420 or stripped_len < 50:
-                    # TL;DR or too short
-                    continue
+            for t in wikicode.filter_templates():
+                if is_citation_needed(t):
+                    stripped_len = len(wikicode.strip_code())
+                    if stripped_len > 420 or stripped_len < 140:
+                        # TL;DR or too short
+                        continue
 
-                # add the marker so we know where the Citation-needed template
-                # was, and remove all markup (including the template)
-                wikicode.insert_before(t, MARKER)
-                snippet = wikicode.strip_code()
-                snippet = snippet.replace(MARKER, CITATION_NEEDED_HTML)
+                    # add the marker so we know where the Citation-needed template
+                    # was, and remove all markup (including the template)
+                    wikicode.insert_before(t, MARKER)
+                    snippet = wikicode.strip_code()
+                    snippet = snippet.replace(MARKER, CITATION_NEEDED_HTML)
 
-                url = WIKIPEDIA_WIKI_URL + urlparse.unquote(page.urltitle)
-                url = unicode(url, 'utf-8')
+                    url = WIKIPEDIA_WIKI_URL + urlparse.unquote(page.urltitle)
+                    url = unicode(url, 'utf-8')
 
-                row = (snippet, url, page.title)
-                assert all(type(x) == unicode for x in row)
-                try:
-                    cursor.execute('''
-                        INSERT INTO cn VALUES (?, ?, ?) ''', row)
-                    db.commit()
-                except:
-                    print >>sys.stderr, 'failed to insert %s in the db' % repr(row)
+                    row = (snippet, url, page.title)
+                    assert all(type(x) == unicode for x in row)
+                    try:
+                        cursor.execute('''
+                            INSERT INTO cn VALUES (?, ?, ?) ''', row)
+                        db.commit()
+                    except:
+                        print >>sys.stderr, 'failed to insert %s in the db' % repr(row)
 
-db.close()
+def select_random_snippet():
+    cursor = get_db().cursor()
+    cursor.execute('''
+        SELECT snippet, url, title FROM cn ORDER BY RANDOM() LIMIT 1;''')
+    return cursor.fetchone()
+
+app = flask.Flask(__name__)
+
+@app.route('/')
+def citation_hunt():
+    s, u, t = select_random_snippet()
+    return flask.render_template('index.html', snippet = s, url = u, title = t)
+
+@app.teardown_appcontext
+def close_db(exception):
+    db = getattr(flask.g, '_db', None)
+    if db is not None:
+        db.close()
+
+if __name__ == '__main__':
+    app.run(debug = True)
