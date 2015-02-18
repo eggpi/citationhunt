@@ -23,7 +23,8 @@ mwparserfromhell.nodes.Tag._original_strip = mwparserfromhell.nodes.Tag.__strip_
 mwparserfromhell.nodes.Tag.__strip__ = tag_strip
 
 wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
-for page in [wikitools.Page(wikipedia, title = 'Animal_sexual_behaviour')]:
+for page in [wikitools.Page(wikipedia, title = 'Watchmen')]:
+    print page.getCategories()
     wikitext = page.getWikiText()
 
     for paragraph in wikitext.splitlines():

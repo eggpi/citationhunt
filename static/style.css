@@ -33,7 +33,7 @@ h1 {
 }
 
 a {
-    color: #0645AD; 
+    color: #0645AD;
 }
 
 .citation-needed {
@@ -44,8 +44,6 @@ a {
 }
 
 #buttons {
-    width: 600px;
-    margin: auto;
     text-align: center;
 }
 
