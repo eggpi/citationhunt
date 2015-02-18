@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-import flask
+import chdb
+
 import wikitools
 import mwparserfromhell
 
 import sys
-import sqlite3
 import urlparse
 
 WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
@@ -28,22 +28,6 @@ def tag_strip(self, normalize, collapse):
     return self._original_strip(normalize, collapse)
 mwparserfromhell.nodes.Tag._original_strip = mwparserfromhell.nodes.Tag.__strip__
 mwparserfromhell.nodes.Tag.__strip__ = tag_strip
-
-def init_db():
-    db = sqlite3.connect('citationhunt.sqlite3')
-    cursor = db.cursor()
-
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS cn (snippet text, url text, title text)
-    ''')
-
-    return db
-
-def get_db():
-    db = getattr(flask.g, '_db', None)
-    if db is None:
-        db = flask.g._db = init_db()
-    return db
 
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
@@ -84,24 +68,7 @@ def reload_snippets(db):
                     except:
                         print >>sys.stderr, 'failed to insert %s in the db' % repr(row)
 
-def select_random_snippet():
-    cursor = get_db().cursor()
-    cursor.execute('''
-        SELECT snippet, url, title FROM cn ORDER BY RANDOM() LIMIT 1;''')
-    return cursor.fetchone()
-
-app = flask.Flask(__name__)
-
-@app.route('/')
-def citation_hunt():
-    s, u, t = select_random_snippet()
-    return flask.render_template('index.html', snippet = s, url = u, title = t)
-
-@app.teardown_appcontext
-def close_db(exception):
-    db = getattr(flask.g, '_db', None)
-    if db is not None:
-        db.close()
-
 if __name__ == '__main__':
-    app.run(debug = True)
+    db = chdb.init_db()
+    reload_snippets(db)
+    db.close()
