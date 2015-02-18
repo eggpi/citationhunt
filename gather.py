@@ -41,6 +41,7 @@ def reload_snippets(db):
     for page in category.getAllMembersGen():
         wikitext = page.getWikiText()
 
+        # FIXME we should only add each paragraph once
         for paragraph in wikitext.splitlines():
             wikicode = mwparserfromhell.parse(paragraph)
 
