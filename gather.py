@@ -31,21 +31,22 @@ for page in category.getAllMembersGen():
 
         for t in wikicode.filter_templates():
             if t.name.matches('cn') or t.name.matches('Citation needed'):
-                wikicode.insert_before(t, marker)
-                snippet = wikicode.strip_code()
-                if len(snippet) > 420: # 3 tweets
-                    # TL;DR
+                stripped_len = len(wikicode.strip_code())
+                if stripped_len > 420 or stripped_len < 50:
+                    # TL;DR or too short
                     continue
 
+                # add the marker so we know where the Citation-needed template
+                # was, and remove all markup (including the template)
+                wikicode.insert_before(t, marker)
+                snippet = wikicode.strip_code()
                 snippet = snippet.replace(marker, citation_needed_html)
-                assert type(snippet) == unicode
 
                 url = WIKIPEDIA_WIKI_URL + urlparse.unquote(page.urltitle)
                 url = unicode(url, 'utf-8')
-                assert type(url) == unicode
-                assert type(page.title) == unicode
 
                 row = (snippet, url, page.title)
+                assert all(type(x) == unicode for x in row)
                 try:
                     cursor.execute('''
                         INSERT INTO cn VALUES (?, ?, ?) ''', row)
