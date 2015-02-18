@@ -9,7 +9,7 @@
   <body>
     <h1>Citation Hunt</h1>
     <p id=intro>Help find citations for Wikipedia articles!</h1>
-    <p id="preamble">In page <a href={{ url }}>{{ title }}</a>:</p>
+    <p id="preamble">In page <a href={{ url }} target=_blank>{{ title }}</a>:</p>
     <blockquote id="snippet"><div id="quotation">"</div>{{ snippet | safe }}</blockquote>
     <div id="buttons">
       <a id="button-wikilink" class="button" href={{ url }} target=_blank>I got this, take me there!</a>
