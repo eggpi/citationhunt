@@ -1,0 +1,2 @@
+wikitools==1.2
+mwparserfromhell==0.3.3
