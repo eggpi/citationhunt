@@ -1,3 +1,4 @@
+flask==0.10.1
 wikitools==1.2
 mwparserfromhell==0.3.3
 pyramid==1.5.2
