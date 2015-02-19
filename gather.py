@@ -37,7 +37,7 @@ def reload_snippets(db):
     cursor = db.cursor()
     wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     category = wikitools.Category(wikipedia, 'All_articles_with_unsourced_statements')
-    for page in category.getAllMembersGen():
+    for n, page in enumerate(category.getAllMembersGen()):
         wikitext = page.getWikiText()
 
         # FIXME we should only add each paragraph once
@@ -70,6 +70,9 @@ def reload_snippets(db):
                         db.commit()
                     except:
                         print >>sys.stderr, 'failed to insert %s in the db' % repr(row)
+
+        if n % 100 == 0:
+            print '\rprocessed %d pages' % n,
 
 if __name__ == '__main__':
     db = chdb.init_db()
