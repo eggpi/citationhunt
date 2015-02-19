@@ -30,6 +30,8 @@ def tag_strip(self, normalize, collapse):
 mwparserfromhell.nodes.Tag._original_strip = mwparserfromhell.nodes.Tag.__strip__
 mwparserfromhell.nodes.Tag.__strip__ = tag_strip
 
+mwparserfromhell.nodes.Heading.__strip__ = mwparserfromhell.nodes.Node.__strip__
+
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
 
@@ -41,7 +43,7 @@ def reload_snippets(db):
         wikitext = page.getWikiText()
 
         # FIXME we should only add each paragraph once
-        for paragraph in wikitext.splitlines():
+        for paragraph in wikitext.splitlines('\n\n'):
             wikicode = mwparserfromhell.parse(paragraph)
 
             for t in wikicode.filter_templates():

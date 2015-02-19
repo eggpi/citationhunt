@@ -7,6 +7,9 @@ WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 MARKER = '7b94863f3091b449e6ab04d44cb372a0' # unlikely to be in any article
 
+PAGE_TITLE = '12_Miles_of_Bad_Road'
+CACHE_FILE = 'parsetest.cache'
+
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
 
@@ -22,23 +25,32 @@ def tag_strip(self, normalize, collapse):
 mwparserfromhell.nodes.Tag._original_strip = mwparserfromhell.nodes.Tag.__strip__
 mwparserfromhell.nodes.Tag.__strip__ = tag_strip
 
-wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
-for page in [wikitools.Page(wikipedia, title = 'Watchmen')]:
-    print page.getCategories()
+mwparserfromhell.nodes.Heading.__strip__ = mwparserfromhell.nodes.Node.__strip__
+
+try:
+    with open(CACHE_FILE) as cache:
+        wikitext = cache.read()
+except:
+    wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
+    page = wikitools.Page(wikipedia, title = PAGE_TITLE)
     wikitext = page.getWikiText()
 
-    for paragraph in wikitext.splitlines():
-        wikicode = mwparserfromhell.parse(paragraph)
+    with open(CACHE_FILE, 'w') as cache:
+        cache.write(wikitext)
 
-        for t in wikicode.filter_templates():
-            if is_citation_needed(t):
-                stripped_len = len(wikicode.strip_code())
-                if stripped_len > 420 or stripped_len < 140:
-                    # TL;DR or too short
-                    continue
+for paragraph in wikitext.split('\n\n'):
+    wikicode = mwparserfromhell.parse(paragraph)
 
-                # add the marker so we know where the Citation-needed template
-                # was, and remove all markup (including the template)
-                wikicode.insert_before(t, MARKER)
-                snippet = wikicode.strip_code()
-                print snippet
+    for t in wikicode.filter_templates():
+        if is_citation_needed(t):
+            stripped_len = len(wikicode.strip_code())
+            if stripped_len > 420 or stripped_len < 140:
+                # TL;DR or too short
+                continue
+
+            # add the marker so we know where the Citation-needed template
+            # was, and remove all markup (including the template)
+            wikicode.insert_before(t, MARKER)
+            snippet = wikicode.strip_code()
+            print snippet
+            print '----'
