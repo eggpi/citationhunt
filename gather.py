@@ -19,7 +19,7 @@ CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
 # Monkey-patch mwparserfromhell so it strips some templates and tags the way
 # we want.
 def template_strip(self, normalize, collapse):
-    if self.name == 'convert':
+    if self.name.matches('convert'):
         return ' '.join(map(unicode, self.params[:2]))
 mwparserfromhell.nodes.Template.__strip__ = template_strip
 
@@ -35,7 +35,7 @@ mwparserfromhell.nodes.Heading.__strip__ = mwparserfromhell.nodes.Node.__strip__
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
 
-def extract_snippets(wikitext):
+def extract_snippets(wikitext, minlen = 140, maxlen = 420):
     snippets = []
 
     # FIXME we should only add each paragraph once
@@ -45,16 +45,16 @@ def extract_snippets(wikitext):
         for t in wikicode.filter_templates():
             if is_citation_needed(t):
                 stripped_len = len(wikicode.strip_code())
-                if stripped_len > 420 or stripped_len < 140:
+                if stripped_len > maxlen or stripped_len < minlen:
                     # TL;DR or too short
                     continue
 
-                # add the marker so we know where the Citation-needed template
-                # was, and remove all markup (including the template)
+                # add the marker so we know where the Citation-needed template was
                 wikicode.insert_before(t, MARKER)
-                snippet = wikicode.strip_code()
-                snippet = snippet.replace(MARKER, CITATION_NEEDED_HTML)
-                snippets.append(snippet)
+
+        if MARKER in wikicode:
+            snippet = wikicode.strip_code()
+            snippets.append(snippet)
 
     return snippets
 
@@ -67,6 +67,8 @@ def reload_snippets(db):
         snippets = extract_snippets(wikitext)
 
         for s in snippets:
+            s = s.replace(MARKER, CITATION_NEEDED_HTML)
+
             url = WIKIPEDIA_WIKI_URL + urlparse.unquote(page.urltitle)
             url = unicode(url, 'utf-8')
             id = unicode(hashlib.sha1(s.encode('utf-8')).hexdigest()[:2*8])
