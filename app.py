@@ -1,6 +1,7 @@
 import chdb
 
 import flask
+import flask_sslify
 
 import os
 
@@ -26,6 +27,8 @@ def select_random_id():
     return cursor.fetchone()[0]
 
 app = flask.Flask(__name__)
+if 'DYNO' in os.environ:
+    flask_sslify.SSLify(app)
 
 @app.route('/')
 def citation_hunt():
