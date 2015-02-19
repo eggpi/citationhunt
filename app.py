@@ -12,9 +12,8 @@ def get_db():
 
 def select_snippet_by_id(id):
     cursor = get_db().cursor()
-    # FIXME LIMIT 1 because we have duplicates
     cursor.execute('''
-        SELECT snippet, url, title FROM cn WHERE id = ? LIMIT 1;''', (id,))
+        SELECT snippet, url, title FROM cn WHERE id = ?;''', (id,))
     ret = cursor.fetchone()
     if ret is None:
         ret = (None, None, None)
