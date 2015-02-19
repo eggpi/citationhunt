@@ -15,7 +15,10 @@ def select_snippet_by_id(id):
     # FIXME LIMIT 1 because we have duplicates
     cursor.execute('''
         SELECT snippet, url, title FROM cn WHERE id = ? LIMIT 1;''', (id,))
-    return cursor.fetchone()
+    ret = cursor.fetchone()
+    if ret is None:
+        ret = (None, None, None)
+    return ret
 
 def select_random_id():
     cursor = get_db().cursor()
@@ -33,6 +36,8 @@ def citation_hunt():
         return flask.redirect(flask.url_for('citation_hunt', id = id))
 
     s, u, t = select_snippet_by_id(id)
+    if (s, u, t) == (None, None, None):
+        flask.abort(404)
     return flask.render_template('index.html', snippet = s, url = u, title = t)
 
 @app.teardown_appcontext
