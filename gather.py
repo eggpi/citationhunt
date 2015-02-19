@@ -35,43 +35,50 @@ mwparserfromhell.nodes.Heading.__strip__ = mwparserfromhell.nodes.Node.__strip__
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
 
+def extract_snippets(wikitext):
+    snippets = []
+
+    # FIXME we should only add each paragraph once
+    for paragraph in wikitext.split('\n\n'):
+        wikicode = mwparserfromhell.parse(paragraph)
+
+        for t in wikicode.filter_templates():
+            if is_citation_needed(t):
+                stripped_len = len(wikicode.strip_code())
+                if stripped_len > 420 or stripped_len < 140:
+                    # TL;DR or too short
+                    continue
+
+                # add the marker so we know where the Citation-needed template
+                # was, and remove all markup (including the template)
+                wikicode.insert_before(t, MARKER)
+                snippet = wikicode.strip_code()
+                snippet = snippet.replace(MARKER, CITATION_NEEDED_HTML)
+                snippets.append(snippet)
+
+    return snippets
+
 def reload_snippets(db):
     cursor = db.cursor()
     wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     category = wikitools.Category(wikipedia, 'All_articles_with_unsourced_statements')
     for n, page in enumerate(category.getAllMembersGen()):
         wikitext = page.getWikiText()
+        snippets = extract_snippets(wikitext)
 
-        # FIXME we should only add each paragraph once
-        for paragraph in wikitext.splitlines('\n\n'):
-            wikicode = mwparserfromhell.parse(paragraph)
+        for s in snippets:
+            url = WIKIPEDIA_WIKI_URL + urlparse.unquote(page.urltitle)
+            url = unicode(url, 'utf-8')
+            id = unicode(hashlib.sha1(s.encode('utf-8')).hexdigest()[:2*8])
 
-            for t in wikicode.filter_templates():
-                if is_citation_needed(t):
-                    stripped_len = len(wikicode.strip_code())
-                    if stripped_len > 420 or stripped_len < 140:
-                        # TL;DR or too short
-                        continue
-
-                    # add the marker so we know where the Citation-needed template
-                    # was, and remove all markup (including the template)
-                    wikicode.insert_before(t, MARKER)
-                    snippet = wikicode.strip_code()
-                    snippet = snippet.replace(MARKER, CITATION_NEEDED_HTML)
-
-                    url = WIKIPEDIA_WIKI_URL + urlparse.unquote(page.urltitle)
-                    url = unicode(url, 'utf-8')
-                    id = unicode(hashlib.sha1(snippet.encode('utf-8')).hexdigest())
-                    id = id[:2*8]
-
-                    row = (id, snippet, url, page.title)
-                    assert all(type(x) == unicode for x in row)
-                    try:
-                        cursor.execute('''
-                            INSERT INTO cn VALUES (?, ?, ?, ?) ''', row)
-                        db.commit()
-                    except:
-                        print >>sys.stderr, 'failed to insert %s in the db' % repr(row)
+            row = (id, s, url, page.title)
+            assert all(type(x) == unicode for x in row)
+            try:
+                cursor.execute('''
+                    INSERT INTO cn VALUES (?, ?, ?, ?) ''', row)
+                db.commit()
+            except:
+                print >>sys.stderr, 'failed to insert %s in the db' % repr(row)
 
         if n % 100 == 0:
             print '\rprocessed %d pages' % n,
