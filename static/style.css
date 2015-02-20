@@ -17,7 +17,7 @@ h1 {
 
 #snippet {
     position: relative;
-    margin: 30px auto 70px auto;
+    margin: 30px auto 50px auto;
     line-height: 20px;
     text-align: justify;
     width: 90%;
@@ -34,6 +34,18 @@ h1 {
 
 a {
     color: #0645AD;
+}
+
+a:focus {
+    outline: none;
+}
+
+button {
+    font-size: inherit;
+}
+
+button:focus {
+    outline: none;
 }
 
 .citation-needed {
@@ -63,4 +75,17 @@ a {
 
 #button-next {
     background-color: #E75A42;
+}
+
+#form-category {
+    display: inline;
+}
+
+#form-category select {
+    width: 400px;
+}
+
+#js-disabled-category-warning {
+    color: crimson;
+    margin-left: 5px;
 }

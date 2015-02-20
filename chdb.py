@@ -5,7 +5,14 @@ def init_db():
     cursor = db.cursor()
 
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS cn (id text primary key, snippet text, url text, title text)
+        CREATE TABLE IF NOT EXISTS cn (id TEXT PRIMARY KEY, snippet TEXT, url TEXT, title TEXT)
     ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS cat (name TEXT, id TEXT PRIMARY KEY);
+    ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS cn_cat (snippet_id TEXT, cat_id TEXT,
+        FOREIGN KEY(snippet_id) REFERENCES cn(id), FOREIGN KEY(cat_id)
+        REFERENCES cat(id))''')
 
     return db
