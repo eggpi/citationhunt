@@ -12,9 +12,20 @@
     <p id="preamble">In page <a href={{ url }} target=_blank>{{ title }}</a>:</p>
     <blockquote id="snippet"><div id="quotation">"</div>{{ snippet | safe }}</blockquote>
     <div id="buttons">
-      <a id="button-wikilink" class="button" href={{ url }} target=_blank>I got this, take me there!</a>
-      <a id="button-next" class="button" href="/">Sorry, no idea. Next!</a>
+      <a href={{ url }} target=_blank><button class="button" id="button-wikilink">I got this, take me there!</button></a>
+      <button form="form-category" type="submit" id="button-next" class="button">Sorry, no idea. Next!</button>
     </div>
+    <form method="GET" action="/" id="form-category">
+      <select name="cat" onchange="this.form.submit()">
+        <option value="all">Filter by category</option>
+      {% for category in categories %}
+        <option value={{ category.id }}{% if category.id == current_category %} selected{% endif %}>{{ category.name }}</option>
+      {% endfor %}
+      </select>
+    </form>
+    <noscript>
+      <span id="js-disabled-category-warning">sorry, filtering requires Javascript!</span>
+    </noscript>
     <p>Don't know how to add citations? See <a href=https://en.wikipedia.org/wiki/Help:Referencing_for_beginners target=_blank>Referencing for beginners.</a></p>
   </body>
 </html>
