@@ -16,6 +16,8 @@ WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 MARKER = '7b94863f3091b449e6ab04d44cb372a0' # unlikely to be in any article
 CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
 
+TEST_WIKITEXT_CACHE_FILENAME = '.test-wikitext.cache'
+
 # Monkey-patch mwparserfromhell so it strips some templates and tags the way
 # we want.
 def template_strip(self, normalize, collapse):
@@ -96,6 +98,29 @@ def reload_snippets(db):
             print '\rprocessed %d pages' % n,
 
 if __name__ == '__main__':
-    db = chdb.init_db()
-    reload_snippets(db)
-    db.close()
+    import pprint
+
+    if sys.argv[1] == 'reload':
+        db = chdb.init_db()
+        reload_snippets(db)
+        db.close()
+    elif sys.argv[1] == 'test-page':
+        title = sys.argv[2]
+        wikitext = None
+        try:
+            with open(TEST_WIKITEXT_CACHE_FILENAME, 'r') as cache:
+                if cache.readline()[:-1] == title:
+                    wikitext = cache.read()
+        except:
+            pass
+        finally:
+            if wikitext is None:
+                wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
+                page = wikitools.Page(wikipedia, title)
+                wikitext = page.getWikiText()
+
+        with open(TEST_WIKITEXT_CACHE_FILENAME, 'w') as cache:
+            print >>cache, title
+            cache.write(wikitext)
+
+        pprint.pprint(extract_snippets(wikitext))
