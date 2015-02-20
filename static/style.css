@@ -11,6 +11,10 @@ h1 {
     font-size: xx-large;
 }
 
+p {
+    margin: 10px 0;
+}
+
 #preamble {
     margin: 40px 0 0 20px;
 }
@@ -83,6 +87,12 @@ button:focus {
 
 #form-category select {
     width: 400px;
+    font-family: inherit;
+    font-size: small;
+}
+
+option {
+    padding: 2px 0;
 }
 
 #js-disabled-category-warning {
