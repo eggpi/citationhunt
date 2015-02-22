@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+from __future__ import unicode_literals
+
+import chdb
 import snippet_parser
 
 import mwparserfromhell
@@ -16,6 +19,9 @@ import sqlite3
 import hashlib
 import itertools
 import multiprocessing
+
+WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
+WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 
 def e(s):
     if type(s) == str:
@@ -119,11 +125,12 @@ class RowParser(Worker):
     def work(self, info):
         rows = []
         pageid, title, wikitext = info
+        url = WIKIPEDIA_WIKI_URL + title
 
         snippets = snippet_parser.extract_snippets(wikitext)
         for s in snippets:
             id = hashlib.sha1(e(title + s)).hexdigest()[:2*8]
-            row = (id, s, title)
+            row = (id, s, url, title)
             rows.append(row)
         return rows
 
@@ -137,21 +144,14 @@ class DatabaseWriter(Receiver):
         self.db = None
 
     def setup(self):
-        self.db = sqlite3.connect('snippets.sqlite3')
-        with self.db:
-            self.db.execute('''
-                DROP TABLE IF EXISTS cn
-            ''')
-            self.db.execute('''
-                CREATE TABLE IF NOT EXISTS cn (id TEXT PRIMARY KEY, snippet TEXT, title TEXT)
-            ''')
+        self.db = chdb.init_db()
 
     def receive(self, rows):
         for row in rows:
             with self.db:
                 try:
                     self.db.execute('''
-                        INSERT INTO cn VALUES(?, ?, ?)''', row)
+                        INSERT INTO cn VALUES(?, ?, ?, ?)''', row)
                 except sqlite3.IntegrityError as err:
                     print err
                     print row
