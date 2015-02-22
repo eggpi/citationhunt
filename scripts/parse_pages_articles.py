@@ -1,19 +1,18 @@
 #!/usr/bin/env python
 
-from __future__ import unicode_literals
-
 '''
 Parser for the pages+articles XML dump for CitationHunt.
 
+Given a file with open pageid per line, this script will find unsourced
+snippets in the pages in the pageid file and store them to a
+'citationhunt.sqlite3' database. It will also discover the names and page ids
+of all category pages and store them in the database.
+
 Usage:
     parse_pages_articles.py <pages-articles-xml> <pageid-file>
-
-Where pageid-file is a file of pageids, one per line.
-
-This script will find unsourced snippets in the pages in the pageid file and
-store them to a 'citationhunt.sqlite3' database file. It will also discover the
-names and page ids of all category pages and store them in the database.
 '''
+
+from __future__ import unicode_literals
 
 import chdb
 import snippet_parser
@@ -49,7 +48,7 @@ def d(s):
         return s
     return unicode(s, 'utf-8')
 
-class RowParser(Worker):
+class RowParser(workerpool.Worker):
     def setup(self):
         pass
 
@@ -75,7 +74,7 @@ class RowParser(Worker):
 
 # sqlite3 sucks at multiprocessing, so we confine all database access to a
 # single process
-class DatabaseWriter(Receiver):
+class DatabaseWriter(workerpool.Receiver):
     def __init__(self):
         self.db = None
 
@@ -147,7 +146,7 @@ def parse_xml_dump(pages_articles_xml, pageids):
 
     parser = RowParser()
     writer = DatabaseWriter()
-    wp = WorkerPool(parser, writer)
+    wp = workerpool.WorkerPool(parser, writer)
     iterparser = ET.iterparse(pages_articles_xml)
     for _, element in iterparser:
         element.tag = element.tag[element.tag.rfind('}')+1:]
