@@ -22,7 +22,6 @@ import docopt
 import networkx
 
 import sys
-import pickle
 import sqlite3
 import itertools
 import collections
@@ -120,13 +119,12 @@ class GraphBuilderReceiver(workerpool.Receiver):
                 # and categories that have no id in pages-articles. we could
                 # actually use them by using catname as the identifier, but
                 # let's ignore them for now.
-                return
+                continue
 
             self.g.add_edge(pageid, catid)
 
     def done(self):
-        with open('catgraph.nx.pkl', 'wb') as gf:
-            pickle.dump(self.g, gf)
+        networkx.write_gpickle(self.g, 'catgraph.nx.pkl')
 
 def build_category_graph(sqlfilename, dbfilename):
     parse_sql_catlinks(sqlfilename, GraphBuilderReceiver(dbfilename))
