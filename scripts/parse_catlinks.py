@@ -16,6 +16,8 @@ pickle'd networkx DiGraph of categories. Each node contains a pageid and has
 edges to its parent category.
 '''
 
+import workerpool
+
 import docopt
 import networkx
 
@@ -30,28 +32,35 @@ UNSOURCED_STMTS_CAT_ID = '9329647' # not really needed
 UNSOURCED_STMTS_CAT_NAME = 'All articles with unsourced statements'
 UNSOURCED_STMTS_CAT_NAME_ = UNSOURCED_STMTS_CAT_NAME.replace(' ', '_')
 
-def sql_val_parser(values):
-    ret = collections.deque()
-    tupstart = 0
-    finished = False
-    while not finished:
-        assert values[tupstart] == '('
+class TupleParser(workerpool.Worker):
+    def setup(self):
+        pass
 
-        tupend = values.find('),(', tupstart + 1)
-        if tupend == -1:
-            tupend = values.find(');', tupstart + 1)
-            assert tupend == len(values) - len(');')
-            finished = True
+    def work(self, values):
+        ret = collections.deque()
+        tupstart = 0
+        finished = False
+        while not finished:
+            assert values[tupstart] == '('
 
-        pageid, rest = values[tupstart+1:tupend].split(',', 1)
-        catname = rest[:rest.find("','")+1]
-        assert catname[0] == catname[-1] == "'"
-        catname = catname[1:-1]
-        ret.append((pageid, catname))
-        tupstart = tupend + len('),(') - 1
-    return ret
+            tupend = values.find('),(', tupstart + 1)
+            if tupend == -1:
+                tupend = values.find(');', tupstart + 1)
+                assert tupend == len(values) - len(');')
+                finished = True
 
-def parse_sql_catlinks(sqlfilename, callback):
+            pageid, rest = values[tupstart+1:tupend].split(',', 1)
+            catname = rest[:rest.find("','")+1]
+            assert catname[0] == catname[-1] == "'"
+            catname = catname[1:-1]
+            ret.append((pageid, catname))
+            tupstart = tupend + len('),(') - 1
+        return ret
+
+    def done(self):
+        pass
+
+def parse_sql_catlinks(sqlfilename, receiver):
     def gen_value_strings(filename):
         INSERT_STMT_BEGIN = 'INSERT INTO `categorylinks` VALUES'
         with open(sqlfilename) as catlinks:
@@ -66,55 +75,62 @@ def parse_sql_catlinks(sqlfilename, callback):
                 values = line[len(INSERT_STMT_BEGIN):].strip()
                 yield values
 
-    nprocs = multiprocessing.cpu_count()
-    workers = multiprocessing.Pool(nprocs)
-    values_gen = gen_value_strings(sqlfilename)
+    worker = TupleParser()
+    wp = workerpool.WorkerPool(worker, receiver)
+    for valstr in gen_value_strings(sqlfilename):
+        wp.post(valstr)
+    wp.done()
 
-    all_results = collections.deque()
-    while True:
-        ichunk = itertools.islice(values_gen, 200 * nprocs)
-        results = workers.map(sql_val_parser, ichunk)
-        if not results:
-            break
+class PrintUnsourcedReceiver(workerpool.Receiver):
+    def setup(self):
+        pass
 
-        for result in results:
-            for pageid, catname in result:
-                callback(pageid, catname)
+    def receive(self, tups):
+        for pageid, catname in tups:
+            if catname == UNSOURCED_STMTS_CAT_NAME_:
+                print pageid
+                pass
+
+    def done(self):
+        pass
 
 def print_unsourced_pageids(sqlfilename):
-    def row_callback(pageid, catname):
-        if catname == UNSOURCED_STMTS_CAT_NAME_:
-            print pageid
-    parse_sql_catlinks(sqlfilename, row_callback)
+    parse_sql_catlinks(sqlfilename, PrintUnsourcedReceiver())
 
-def build_category_graph(sqlfilename, dbfilename):
-    db = sqlite3.connect(dbfilename)
-    catnames_to_ids = {}
-    for catid, catname in db.execute('''SELECT id, name FROM cat'''):
-        # normalize cname to the format used in catlinks
-        assert catname.startswith('Category:')
-        catname = catname[len('Category:'):].replace(' ', '_')
-        catnames_to_ids[catname] = catid
+class GraphBuilderReceiver(workerpool.Receiver):
+    def setup(self):
+        self.catnames_to_ids = {}
+        db = sqlite3.connect(dbfilename)
+        for catid, catname in db.execute('''SELECT id, name FROM cat'''):
+            # normalize cname to the format used in catlinks
+            assert catname.startswith('Category:')
+            catname = catname[len('Category:'):].replace(' ', '_')
+            catnames_to_ids[catname] = catid
 
-    g = networkx.DiGraph() # page -> its category
-    def row_callback(pageid, catname):
-        catid = catnames_to_ids.get(catname, None)
+        self.g = networkx.DiGraph() # page -> category
+
+    def receive(self, tups):
+        catid = self.catnames_to_ids.get(catname, None)
         if catid is None:
             # sadly, looks like catlinks contains empty categories and
             # categories that have no id in pages-articles. we could actually
             # use them by using catname as its identifier, but let's ignore them
             # for now.
             return
-        g.add_edge(pageid, catid)
 
-    parse_sql_catlinks(sqlfilename, row_callback)
-    with open('catgraph.nx.pkl', 'wb') as gf:
-        pickle.dump(g, gf)
+        self.g.add_edge(pageid, catid)
+
+    def done(self):
+        with open('catgraph.nx.pkl', 'wb') as gf:
+            pickle.dump(self.g, gf)
+
+def build_category_graph(sqlfilename, dbfilename):
+    parse_sql_catlinks(sqlfilename, GraphBuilderReceiver())
 
 if __name__ == '__main__':
     args = docopt.docopt(__doc__)
     if args['print-unsourced-pageids']:
-        parse_sql_catlinks(args['<catlinks.sql>'], print_category_pageid)
+        print_unsourced_pageids(args['<catlinks.sql>'])
     elif args['build-category-graph']:
         build_category_graph(args['<catlinks.sql>'],
             args['<citationhunt.sqlite3>'])
