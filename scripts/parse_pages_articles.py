@@ -255,7 +255,7 @@ def parse_xml_dump(pages_articles_xml, pageids):
         print >>sys.stderr, '%d pageids were not found' % len(stats['pageids'])
     print >>sys.stderr, '%d pages were redirects' % len(stats['redirect'])
     print >>sys.stderr, '%d pages were empty' % len(stats['empty'])
-    with open('stats.pickle', 'wb') as statsf:
+    with open('stats.pkl', 'wb') as statsf:
         pickle.dump(stats, statsf)
 
 if __name__ == '__main__':
