@@ -2,9 +2,23 @@
 
 from __future__ import unicode_literals
 
+'''
+Parser for the pages+articles XML dump for CitationHunt.
+
+Usage:
+    parse_pages_articles.py <pages-articles-xml> <pageid-file>
+
+Where pageid-file is a file of pageids, one per line.
+
+This script will find unsourced snippets in the pages in the pageid file and
+store them to a 'citationhunt.sqlite3' database file. It will also discover the
+names and page ids of all category pages and store them in the database.
+'''
+
 import chdb
 import snippet_parser
 
+import docopt
 import mwparserfromhell
 
 try:
@@ -245,12 +259,9 @@ def parse_xml_dump(pages_articles_xml, pageids):
         pickle.dump(stats, statsf)
 
 if __name__ == '__main__':
-    if len(sys.argv) < 3:
-        print >>sys.stderr, \
-            'usage: %s <pages-articles.xml> <pageid file>' % sys.argv[0]
-        sys.exit(1)
-    xml_dump_filename = sys.argv[1]
-    pageids_file = sys.argv[2]
+    arguments = docopt.docopt(__doc__)
+    xml_dump_filename = arguments['<pages-articles-xml>']
+    pageids_file = arguments['<pageid-file>']
     with open(pageids_file) as pf:
         pageids = set(itertools.imap(str.strip, pf))
     parse_xml_dump(xml_dump_filename, pageids)
