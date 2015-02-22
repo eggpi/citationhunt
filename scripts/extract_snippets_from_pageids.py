@@ -23,6 +23,9 @@ import multiprocessing
 WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 
+NAMESPACE_ARTICLE = '0'
+NAMESPACE_CATEGORY = '14'
+
 def e(s):
     if type(s) == str:
         return str
@@ -122,8 +125,13 @@ class RowParser(Worker):
     def setup(self):
         pass
 
-    def work(self, info):
+    def work(self, task):
         rows = []
+        kind, info = task
+        if kind == 'category':
+            # nothing to parse, and info is a single row
+            return (kind, [info])
+
         pageid, title, wikitext = info
         url = WIKIPEDIA_WIKI_URL + title
 
@@ -132,7 +140,7 @@ class RowParser(Worker):
             id = hashlib.sha1(e(title + s)).hexdigest()[:2*8]
             row = (id, s, url, title)
             rows.append(row)
-        return rows
+        return (kind, rows)
 
     def done(self):
         pass
@@ -146,7 +154,14 @@ class DatabaseWriter(Receiver):
     def setup(self):
         self.db = chdb.init_db()
 
-    def receive(self, rows):
+    def receive(self, task):
+        kind, rows = task
+        if kind == 'category':
+            self.write_category_rows(rows)
+        else:
+            self.write_article_rows(rows)
+
+    def write_article_rows(self, rows):
         for row in rows:
             with self.db:
                 try:
@@ -156,35 +171,50 @@ class DatabaseWriter(Receiver):
                     print err
                     print row
 
+    def write_category_rows(self, rows):
+        for row in rows:
+            with self.db:
+                self.db.execute('''
+                    INSERT INTO cat VALUES(?, ?)''', row)
+
     def done(self):
         self.db.close()
 
-def handle_page(wp, element, pageids, stats):
+def handle_category(wp, element):
+    id = d(element.find('id').text)
+    if element.find('redirect') is not None:
+        return
+
+    title = d(element.find('title').text)
+    wp.post(('category', (id, title)))
+    return
+
+def handle_article(wp, element, pageids, stats):
     # elements are not pickelable, so we can't pass them to workers. extract
     # all the relevant information here and offload only the wikicode
     # parsing.
+
     id = d(element.find('id').text)
     if id not in pageids:
-        return False
+        return
     pageids.remove(id)
 
     if element.find('redirect') is not None:
         stats['redirect'].append(id)
-        return True
+        return
 
     title = d(element.find('title').text)
     text = element.find('revision/text').text
     if text is None:
         stats['empty'].append(id)
-        return True
+        return
     text = d(text)
 
-    wp.post((id, title, text))
-    return True
+    wp.post(('article', (id, title, text)))
+    return
 
 def parse_xml_dump(pages_articles_xml, pageids):
     count = 0
-    total = len(pageids)
     stats = {'redirect': [], 'empty': [], 'pageids': None}
 
     parser = RowParser()
@@ -195,19 +225,19 @@ def parse_xml_dump(pages_articles_xml, pageids):
         element.tag = element.tag[element.tag.rfind('}')+1:]
         if element.tag == 'page':
             ns = element.find('ns').text
-            if ns == '0':
-                count += handle_page(wp, element, pageids, stats)
-                if count % 10 == 0:
-                    print >>sys.stderr, '\rprocessed about %d pages' % count,
-                if count == total:
-                    break
+            if ns == NAMESPACE_ARTICLE:
+                handle_article(wp, element, pageids, stats)
+            elif ns == NAMESPACE_CATEGORY:
+                handle_category(wp, element)
+            count += 1
+            if count % 10 == 0:
+                print >>sys.stderr, '\rprocessed about %d pages' % count,
             element.clear()
     wp.done()
     stats['pageids'] = pageids
     print >>sys.stderr
 
     if len(pageids) > 0:
-        assert len(pageids) == (total - count), (len(pageids), (total - count))
         print >>sys.stderr, '%d pageids were not found' % len(stats['pageids'])
     print >>sys.stderr, '%d pages were redirects' % len(stats['redirect'])
     print >>sys.stderr, '%d pages were empty' % len(stats['empty'])
