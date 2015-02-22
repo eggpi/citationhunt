@@ -162,8 +162,8 @@ class DatabaseWriter(Receiver):
             self.write_article_rows(rows)
 
     def write_article_rows(self, rows):
-        for row in rows:
-            with self.db:
+        with self.db:
+            for row in rows:
                 try:
                     self.db.execute('''
                         INSERT INTO cn VALUES(?, ?, ?, ?)''', row)
@@ -172,8 +172,8 @@ class DatabaseWriter(Receiver):
                     print row
 
     def write_category_rows(self, rows):
-        for row in rows:
-            with self.db:
+        with self.db:
+            for row in rows:
                 self.db.execute('''
                     INSERT INTO cat VALUES(?, ?)''', row)
 
