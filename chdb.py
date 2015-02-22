@@ -18,7 +18,7 @@ def init_db():
             title TEXT)
         ''')
         db.execute('''
-            CREATE TABLE cat (name TEXT, id TEXT PRIMARY KEY);
+            CREATE TABLE cat (id TEXT PRIMARY KEY, name TEXT);
         ''')
         db.execute('''
             CREATE TABLE IF NOT EXISTS cn_cat (snippet_id TEXT, cat_id TEXT,
