@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import chdb
-
 import wikitools
 import mwparserfromhell
 
@@ -100,27 +98,22 @@ def reload_snippets(db):
 if __name__ == '__main__':
     import pprint
 
-    if sys.argv[1] == 'reload':
-        db = chdb.init_db()
-        reload_snippets(db)
-        db.close()
-    elif sys.argv[1] == 'test-page':
-        title = sys.argv[2]
-        wikitext = None
-        try:
-            with open(TEST_WIKITEXT_CACHE_FILENAME, 'r') as cache:
-                if cache.readline()[:-1] == title:
-                    wikitext = cache.read()
-        except:
-            pass
-        finally:
-            if wikitext is None:
-                wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
-                page = wikitools.Page(wikipedia, title)
-                wikitext = page.getWikiText()
+    title = sys.argv[1]
+    wikitext = None
+    try:
+        with open(TEST_WIKITEXT_CACHE_FILENAME, 'r') as cache:
+            if cache.readline()[:-1] == title:
+                wikitext = cache.read()
+    except:
+        pass
+    finally:
+        if wikitext is None:
+            wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
+            page = wikitools.Page(wikipedia, title)
+            wikitext = page.getWikiText()
 
-        with open(TEST_WIKITEXT_CACHE_FILENAME, 'w') as cache:
-            print >>cache, title
-            cache.write(wikitext)
+    with open(TEST_WIKITEXT_CACHE_FILENAME, 'w') as cache:
+        print >>cache, title
+        cache.write(wikitext)
 
-        pprint.pprint(extract_snippets(wikitext))
+    pprint.pprint(extract_snippets(wikitext))
