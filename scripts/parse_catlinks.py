@@ -47,9 +47,7 @@ def sql_val_parser(values):
         catname = rest[:rest.find("','")+1]
         assert catname[0] == catname[-1] == "'"
         catname = catname[1:-1]
-
-        if catname == UNSOURCED_STMTS_CAT_NAME_:
-            ret.append((pageid, catname))
+        ret.append((pageid, catname))
         tupstart = tupend + len('),(') - 1
     return ret
 
@@ -85,7 +83,8 @@ def parse_sql_catlinks(sqlfilename, callback):
 
 def print_unsourced_pageids(sqlfilename):
     def row_callback(pageid, catname):
-        print pageid
+        if catname == UNSOURCED_STMTS_CAT_NAME_:
+            print pageid
     parse_sql_catlinks(sqlfilename, row_callback)
 
 def build_category_graph(sqlfilename, dbfilename):
@@ -99,7 +98,13 @@ def build_category_graph(sqlfilename, dbfilename):
 
     g = networkx.DiGraph() # page -> its category
     def row_callback(pageid, catname):
-        catid = catnames_to_ids[catname]
+        catid = catnames_to_ids.get(catname, None)
+        if catid is None:
+            # sadly, looks like catlinks contains empty categories and
+            # categories that have no id in pages-articles. we could actually
+            # use them by using catname as its identifier, but let's ignore them
+            # for now.
+            return
         g.add_edge(pageid, catid)
 
     parse_sql_catlinks(sqlfilename, row_callback)
