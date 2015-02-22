@@ -98,34 +98,38 @@ def print_unsourced_pageids(sqlfilename):
     parse_sql_catlinks(sqlfilename, PrintUnsourcedReceiver())
 
 class GraphBuilderReceiver(workerpool.Receiver):
+    def __init__(self, dbfilename):
+        self.dbfilename = dbfilename
+
     def setup(self):
         self.catnames_to_ids = {}
-        db = sqlite3.connect(dbfilename)
+        db = sqlite3.connect(self.dbfilename)
         for catid, catname in db.execute('''SELECT id, name FROM cat'''):
             # normalize cname to the format used in catlinks
             assert catname.startswith('Category:')
             catname = catname[len('Category:'):].replace(' ', '_')
-            catnames_to_ids[catname] = catid
+            self.catnames_to_ids[catname] = catid
 
         self.g = networkx.DiGraph() # page -> category
 
     def receive(self, tups):
-        catid = self.catnames_to_ids.get(catname, None)
-        if catid is None:
-            # sadly, looks like catlinks contains empty categories and
-            # categories that have no id in pages-articles. we could actually
-            # use them by using catname as its identifier, but let's ignore them
-            # for now.
-            return
+        for pageid, catname in tups:
+            catid = self.catnames_to_ids.get(catname, None)
+            if catid is None:
+                # sadly, looks like catlinks contains empty categories
+                # and categories that have no id in pages-articles. we could
+                # actually use them by using catname as the identifier, but
+                # let's ignore them for now.
+                return
 
-        self.g.add_edge(pageid, catid)
+            self.g.add_edge(pageid, catid)
 
     def done(self):
         with open('catgraph.nx.pkl', 'wb') as gf:
             pickle.dump(self.g, gf)
 
 def build_category_graph(sqlfilename, dbfilename):
-    parse_sql_catlinks(sqlfilename, GraphBuilderReceiver())
+    parse_sql_catlinks(sqlfilename, GraphBuilderReceiver(dbfilename))
 
 if __name__ == '__main__':
     args = docopt.docopt(__doc__)
