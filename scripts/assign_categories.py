@@ -1,0 +1,177 @@
+#!/usr/bin/env python
+
+'''
+Assign categories to the pages in the CitationHunt database.
+
+Usage:
+    assign_categories.py
+'''
+
+from __future__ import unicode_literals
+
+import re
+import sys
+import pickle
+import sqlite3
+import pymysql
+import collections
+
+def e(s):
+    if type(s) == str:
+        return str
+    return s.encode('utf-8')
+
+def d(s):
+    if type(s) == unicode:
+        return s
+    return unicode(s, 'utf-8')
+
+class CategoryName(unicode):
+    '''
+    The canonical format for categories, which is the one we'll use
+    in the CitationHunt database: no Category: prefix and spaces instead
+    of underscores.
+    '''
+    def __init__(self, ustr):
+        assert isinstance(ustr, unicode)
+        assert not ustr.startswith('Category:'), ustr
+        assert '_' not in ustr, ustr
+        unicode.__init__(self, ustr)
+
+    @staticmethod
+    def from_wp_categories(ustr):
+        ustr = d(ustr)
+        assert ustr.startswith('Category:')
+        return CategoryName(ustr[len('Category:')])
+
+    def to_wp_categories(self):
+        return 'Category:' + self
+
+    @staticmethod
+    def from_wp_categorylinks(ustr):
+        ustr = d(ustr)
+        assert not ustr.startswith('Category:')
+        return CategoryName(ustr.replace('_', ' '))
+
+def category_ids_to_names(wpcursor, category_ids):
+    category_names = set()
+    for pageid in category_ids:
+        wpcursor.execute('''SELECT title FROM categories WHERE page_id = %s''',
+            (pageid,))
+        category_names.update(
+            CategoryName.from_wp_categories(row[0])
+            for row in wpcursor)
+    return category_names
+
+def category_name_to_id(wpcursor, catname):
+    wpcursor.execute('''SELECT page_id FROM categories WHERE title = %s''',
+        catname.to_wp_categories())
+    row = wpcursor.fetchone()
+    if row is None:
+        print >>sys.stderr, catname + 'has no id!'
+    return row[0]
+
+def load_unsourced_pageids(chdb):
+    return set(r[0] for r in chdb.execute('''SELECT page_id FROM articles'''))
+
+def load_hidden_categories(wpcursor):
+    wpcursor.execute('''
+        SELECT cl_from FROM categorylinks WHERE
+        cl_to = "Hidden_categories"''')
+    hidden_page_ids = [row[0] for row in wpcursor]
+    return category_ids_to_names(wpcursor, hidden_page_ids)
+
+def load_categories_for_page(wpcursor, pageid):
+    wpcursor.execute('''
+        SELECT cl_to FROM categorylinks WHERE cl_from = %s''', (pageid,))
+    return set(CategoryName.from_wp_categorylinks(row[0]) for row in wpcursor)
+
+NUMBER_PATTERN = re.compile('.*[0-9]+.*')
+def category_is_usable(catname, hidden_categories):
+    assert isinstance(catname, CategoryName)
+    return catname not in hidden_categories \
+        and not re.match(NUMBER_PATTERN, catname)
+
+def choose_categories(categories_to_ids, unsourced_pageids):
+    categories = set()
+    category_sets = categories_to_ids.items()
+    total = float(len(unsourced_pageids))
+
+    desired_pages_per_category = 20
+    category_costs = {
+        catname: abs(len(pageids) - desired_pages_per_category) + 1.0
+        for catname, pageids in category_sets
+    }
+
+    def key_fn(cs):
+        catname, pageids = cs
+        return len(pageids & unsourced_pageids) / category_costs[catname]
+
+    while unsourced_pageids:
+        category_sets.sort(key = key_fn)
+        catname, covered_pageids = category_sets.pop()
+        categories.add((catname, frozenset(covered_pageids)))
+        unsourced_pageids -= covered_pageids
+
+        rem = len(unsourced_pageids)
+        print >>sys.stderr, \
+            '\r%d uncategorized pages (%d %%)' % (rem, (rem / total) * 100),
+    print >>sys.stderr
+    print >>sys.stderr, 'finished with %d categories' % len(categories)
+    return categories
+
+def assign_categories():
+    wpdb = pymysql.Connect(
+        user = 'root', database = 'wikipedia', charset = 'utf8')
+    wpcursor = wpdb.cursor()
+
+    chdb = sqlite3.connect('citationhunt.sqlite3')
+    unsourced_pageids = load_unsourced_pageids(chdb)
+
+    hidden_categories = load_hidden_categories(wpcursor)
+
+    categories_to_ids = collections.defaultdict(set)
+    for n, pageid in enumerate(list(unsourced_pageids)):
+        page_has_at_least_one_category = False
+        for catname in load_categories_for_page(wpcursor, pageid):
+            if category_is_usable(catname, hidden_categories):
+                page_has_at_least_one_category = True
+                categories_to_ids[catname].add(pageid)
+        if not page_has_at_least_one_category:
+            print >>sys.stderr, 'no usable categories for id %s' % pageid
+            unsourced_pageids.remove(pageid)
+        print >>sys.stderr, '\rloaded categories for %d pageids' % n,
+
+    print >>sys.stderr
+    print >>sys.stderr, 'found %d usable categories (%s, %s...)' % \
+        (len(categories_to_ids), categories_to_ids.keys()[0],
+        categories_to_ids.keys()[1])
+
+    categories = choose_categories(categories_to_ids, unsourced_pageids)
+
+    # FIXME remove this once everything works
+    with open('categories.pkl', 'wb') as cf:
+        pickle.dump(categories, cf)
+
+    for catname, pageids in categories:
+        category_page_id = category_name_to_id(wpcursor, catname)
+        with chdb:
+            chdb.execute('''
+                INSERT INTO categories VALUES(?, ?)
+            ''', (category_page_id, catname))
+
+            for page_id in pageids:
+                chdb.execute('''
+                    UPDATE articles SET category_id = ? WHERE page_id = ?
+                ''', (category_page_id, page_id))
+
+    with chdb:
+        chdb.execute('''
+            DELETE FROM categories WHERE page_id = "unassigned"
+        ''')
+
+    wpdb.close()
+    chdb.close()
+
+if __name__ == '__main__':
+    assign_categories()

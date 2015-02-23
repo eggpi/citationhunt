@@ -5,24 +5,29 @@ def init_db():
 
     with db:
         db.execute('''
-            DROP TABLE IF EXISTS cn
+            DROP TABLE IF EXISTS categories
         ''')
         db.execute('''
-            DROP TABLE IF EXISTS cat
+            DROP TABLE IF EXISTS articles
         ''')
         db.execute('''
-            DROP TABLE IF EXISTS cn_cat
+            DROP TABLE IF EXISTS snippets
         ''')
         db.execute('''
-            CREATE TABLE cn (id TEXT PRIMARY KEY, snippet TEXT, url TEXT,
-            title TEXT)
+            CREATE TABLE categories (page_id TEXT PRIMARY KEY, title TEXT)
         ''')
         db.execute('''
-            CREATE TABLE cat (id TEXT PRIMARY KEY, name TEXT);
+            INSERT INTO categories VALUES ("unassigned", "unassigned")
         ''')
         db.execute('''
-            CREATE TABLE IF NOT EXISTS cn_cat (snippet_id TEXT, cat_id TEXT,
-            FOREIGN KEY(snippet_id) REFERENCES cn(id), FOREIGN KEY(cat_id)
-            REFERENCES cat(id))''')
+            CREATE TABLE articles (page_id TEXT PRIMARY KEY, url TEXT,
+            title TEXT, category_id TEXT,
+            FOREIGN KEY(category_id) REFERENCES categories(page_id))
+        ''')
+        db.execute('''
+            CREATE TABLE snippets (id TEXT PRIMARY KEY, snippet TEXT,
+            article_id TEXT, FOREIGN KEY(article_id)
+            REFERENCES articles(page_id))
+        ''')
 
     return db

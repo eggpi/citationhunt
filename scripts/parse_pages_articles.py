@@ -3,10 +3,14 @@
 '''
 Parser for the pages+articles XML dump for CitationHunt.
 
-Given a file with open pageid per line, this script will find unsourced
-snippets in the pages in the pageid file and store them to a
-'citationhunt.sqlite3' database. It will also discover the names and page ids
-of all category pages and store them in the database.
+Given a file with one pageid per line, this script will find unsourced
+snippets in the pages in the pageid file. It will store the pages containing
+valid snippets in the `articles` database table, and the snippets in the
+`snippets` table.
+
+This script will also fill a `categories` table in the Wikipedia database
+linking category pageids to titles. This is a subset of the `pages` table in the
+Wikipedia dump.
 
 Usage:
     parse_pages_articles.py <pages-articles-xml> <pageid-file>
@@ -29,6 +33,7 @@ except ImportError:
 import sys
 import pickle
 import sqlite3
+import pymysql
 import hashlib
 import itertools
 
@@ -53,7 +58,6 @@ class RowParser(workerpool.Worker):
         pass
 
     def work(self, task):
-        rows = []
         kind, info = task
         if kind == 'category':
             # nothing to parse, and info is a single row
@@ -62,12 +66,17 @@ class RowParser(workerpool.Worker):
         pageid, title, wikitext = info
         url = WIKIPEDIA_WIKI_URL + title
 
+        snippets_rows = []
         snippets = snippet_parser.extract_snippets(wikitext)
         for s in snippets:
             id = hashlib.sha1(e(title + s)).hexdigest()[:2*8]
-            row = (id, s, url, title)
-            rows.append(row)
-        return (kind, rows)
+            row = (id, s, pageid)
+            snippets_rows.append(row)
+
+        if snippets_rows:
+            article_row = (pageid, url, title, "undefined")
+            return (kind, {'article': article_row, 'snippets': snippets_rows})
+        return (kind, {})
 
     def done(self):
         pass
@@ -76,10 +85,19 @@ class RowParser(workerpool.Worker):
 # single process
 class DatabaseWriter(workerpool.Receiver):
     def __init__(self):
-        self.db = None
+        self.chdb = None
+        self.wpdb = None
 
     def setup(self):
-        self.db = chdb.init_db()
+        self.chdb = chdb.init_db()
+
+        self.wpdb = pymysql.connect(
+            user = 'root', database = 'wikipedia', charset = 'utf8')
+        self.wpcursor = self.wpdb.cursor()
+        self.wpcursor.execute('''DROP TABLE IF EXISTS categories''')
+        self.wpcursor.execute('''
+            CREATE TABLE categories (page_id INT PRIMARY KEY, title VARCHAR(255))
+        ''')
 
     def receive(self, task):
         kind, rows = task
@@ -89,23 +107,24 @@ class DatabaseWriter(workerpool.Receiver):
             self.write_article_rows(rows)
 
     def write_article_rows(self, rows):
-        with self.db:
-            for row in rows:
-                try:
-                    self.db.execute('''
-                        INSERT INTO cn VALUES(?, ?, ?, ?)''', row)
-                except sqlite3.IntegrityError as err:
-                    print err
-                    print row
+        if not rows:
+            return
+
+        with self.chdb:
+            self.chdb.execute('''
+                INSERT INTO articles VALUES(?, ?, ?, ?)''', rows['article'])
+            self.chdb.executemany('''
+                INSERT OR IGNORE INTO snippets VALUES(?, ?, ?)''',
+                rows['snippets'])
 
     def write_category_rows(self, rows):
-        with self.db:
-            for row in rows:
-                self.db.execute('''
-                    INSERT INTO cat VALUES(?, ?)''', row)
+        with self.wpdb:
+            self.wpcursor.executemany('''
+                INSERT INTO categories VALUES(%s, %s)''', rows)
 
     def done(self):
-        self.db.close()
+        self.chdb.close()
+        self.wpdb.close()
 
 def handle_category(wp, element):
     id = d(element.find('id').text)
