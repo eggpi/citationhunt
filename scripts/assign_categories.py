@@ -12,12 +12,13 @@ Options:
 
 from __future__ import unicode_literals
 
+import chdb
+
 import docopt
 
 import re
 import sys
 import pickle
-import sqlite3
 import pymysql
 import hashlib
 import collections
@@ -150,7 +151,7 @@ def assign_categories(max_categories):
         user = 'root', database = 'wikipedia', charset = 'utf8')
     wpcursor = wpdb.cursor()
 
-    chdb = sqlite3.connect('citationhunt.sqlite3')
+    chdb = chdb.init_db()
     chdb.execute('PRAGMA foreign_keys = ON')
     unsourced_pageids = load_unsourced_pageids(chdb)
 
