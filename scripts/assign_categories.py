@@ -4,10 +4,15 @@
 Assign categories to the pages in the CitationHunt database.
 
 Usage:
-    assign_categories.py
+    assign_categories.py [--max-categories=<n>]
+
+Options:
+    --max-categories=<n>  Maximum number of categories to use [default: inf].
 '''
 
 from __future__ import unicode_literals
+
+import docopt
 
 import re
 import sys
@@ -90,7 +95,7 @@ def category_is_usable(catname, hidden_categories):
         and not catname.startswith('Pages ') \
         and not catname.startswith('Articles ')
 
-def choose_categories(categories_to_ids, unsourced_pageids):
+def choose_categories(categories_to_ids, unsourced_pageids, max_categories):
     categories = set()
     category_sets = categories_to_ids.items()
     total = float(len(unsourced_pageids))
@@ -105,7 +110,7 @@ def choose_categories(categories_to_ids, unsourced_pageids):
         catname, pageids = cs
         return len(pageids & unsourced_pageids) / category_costs[catname]
 
-    while unsourced_pageids:
+    while unsourced_pageids and len(categories) < max_categories:
         category_sets.sort(key = key_fn)
         catname, covered_pageids = category_sets.pop()
         categories.add((catname, frozenset(covered_pageids)))
@@ -131,7 +136,7 @@ def update_citationhunt_db(chdb, wpcursor, categories):
                     UPDATE articles SET category_id = ? WHERE page_id = ?
                 ''', (category_page_id, page_id))
 
-        print >>sys.stderr, '\rsaved %d categories' % n,
+        print >>sys.stderr, '\rsaved %d categories' % (n + 1),
     print >>sys.stderr
 
     print >>sys.stderr, 'deleting unassigned pages and snippets'
@@ -140,7 +145,7 @@ def update_citationhunt_db(chdb, wpcursor, categories):
             DELETE FROM categories WHERE id = "unassigned"
         ''')
 
-def assign_categories():
+def assign_categories(max_categories):
     wpdb = pymysql.Connect(
         user = 'root', database = 'wikipedia', charset = 'utf8')
     wpcursor = wpdb.cursor()
@@ -173,7 +178,8 @@ def assign_categories():
         (len(categories_to_ids), categories_to_ids.keys()[0],
         categories_to_ids.keys()[1])
 
-    categories = choose_categories(categories_to_ids, unsourced_pageids)
+    categories = choose_categories(categories_to_ids, unsourced_pageids,
+        max_categories)
 
     # FIXME remove this once everything works
     with open('categories.pkl', 'wb') as cf:
@@ -185,4 +191,6 @@ def assign_categories():
     chdb.close()
 
 if __name__ == '__main__':
-    assign_categories()
+    args = docopt.docopt(__doc__)
+    max_categories = float(args['--max-categories'])
+    assign_categories(max_categories)
