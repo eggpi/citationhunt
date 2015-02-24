@@ -86,7 +86,9 @@ NUMBER_PATTERN = re.compile('.*[0-9]+.*')
 def category_is_usable(catname, hidden_categories):
     assert isinstance(catname, CategoryName)
     return catname not in hidden_categories \
-        and not re.match(NUMBER_PATTERN, catname)
+        and not re.match(NUMBER_PATTERN, catname) \
+        and not catname.startswith('Pages ') \
+        and not catname.startswith('Articles ')
 
 def choose_categories(categories_to_ids, unsourced_pageids):
     categories = set()
