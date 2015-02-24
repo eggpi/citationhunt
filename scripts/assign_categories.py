@@ -42,7 +42,7 @@ class CategoryName(unicode):
     def from_wp_categories(ustr):
         ustr = d(ustr)
         assert ustr.startswith('Category:')
-        return CategoryName(ustr[len('Category:')])
+        return CategoryName(ustr[len('Category:'):])
 
     def to_wp_categories(self):
         return 'Category:' + self
@@ -68,7 +68,8 @@ def category_name_to_id(wpcursor, catname):
         catname.to_wp_categories())
     row = wpcursor.fetchone()
     if row is None:
-        print >>sys.stderr, catname + 'has no id!'
+        print >>sys.stderr, repr(catname) + ' has no id!'
+        return None
     return row[0]
 
 def load_unsourced_pageids(chdb):
@@ -120,6 +121,27 @@ def choose_categories(categories_to_ids, unsourced_pageids):
     print >>sys.stderr, 'finished with %d categories' % len(categories)
     return categories
 
+def update_citationhunt_db(chdb, wpcursor, categories):
+    for n, (catname, pageids) in enumerate(categories):
+        category_page_id = category_name_to_id(wpcursor, catname)
+        with chdb:
+            chdb.execute('''
+                INSERT INTO categories VALUES(?, ?)
+            ''', (category_page_id, catname))
+
+            for page_id in pageids:
+                chdb.execute('''
+                    UPDATE articles SET category_id = ? WHERE page_id = ?
+                ''', (category_page_id, page_id))
+
+        print >>sys.stderr, '\rsaved %d categories' % n,
+    print >>sys.stderr
+
+    with chdb:
+        chdb.execute('''
+            DELETE FROM categories WHERE page_id = "unassigned"
+        ''')
+
 def assign_categories():
     wpdb = pymysql.Connect(
         user = 'root', database = 'wikipedia', charset = 'utf8')
@@ -138,7 +160,7 @@ def assign_categories():
                 page_has_at_least_one_category = True
                 categories_to_ids[catname].add(pageid)
         if not page_has_at_least_one_category:
-            print >>sys.stderr, 'no usable categories for id %s' % pageid
+            print >>sys.stderr, '\nno usable categories for id %s' % pageid
             unsourced_pageids.remove(pageid)
         print >>sys.stderr, '\rloaded categories for %d pageids' % n,
 
@@ -153,22 +175,7 @@ def assign_categories():
     with open('categories.pkl', 'wb') as cf:
         pickle.dump(categories, cf)
 
-    for catname, pageids in categories:
-        category_page_id = category_name_to_id(wpcursor, catname)
-        with chdb:
-            chdb.execute('''
-                INSERT INTO categories VALUES(?, ?)
-            ''', (category_page_id, catname))
-
-            for page_id in pageids:
-                chdb.execute('''
-                    UPDATE articles SET category_id = ? WHERE page_id = ?
-                ''', (category_page_id, page_id))
-
-    with chdb:
-        chdb.execute('''
-            DELETE FROM categories WHERE page_id = "unassigned"
-        ''')
+    update_citationhunt_db(chdb, wpcursor, categories)
 
     wpdb.close()
     chdb.close()
