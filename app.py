@@ -18,7 +18,8 @@ def get_categories():
     if categories is None:
         cursor = get_db().cursor()
         cursor.execute('''
-            SELECT id, title FROM categories ORDER BY title;
+            SELECT id, title FROM categories WHERE id != "unassigned"
+            ORDER BY title;
         ''')
         categories = flask.g._categories = [Category(*row) for row in cursor]
     return categories
