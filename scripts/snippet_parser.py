@@ -58,43 +58,6 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420):
 
     return snippets
 
-def reload_snippets(db):
-    cursor = db.cursor()
-    wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
-    unsourced = wikitools.Category(wikipedia,
-        'All_articles_with_unsourced_statements')
-    for n, page in enumerate(unsourced.getAllMembersGen()):
-        wikitext = page.getWikiText()
-        snippets = extract_snippets(wikitext)
-
-        for s in snippets:
-            s = s.replace(MARKER, CITATION_NEEDED_HTML)
-
-            url = WIKIPEDIA_WIKI_URL + urlparse.unquote(page.urltitle)
-            url = unicode(url, 'utf-8')
-            id = unicode(hashlib.sha1(s.encode('utf-8')).hexdigest()[:2*8])
-
-            row = (id, s, url, page.title)
-            cursor.execute('''
-                INSERT INTO cn VALUES (?, ?, ?, ?) ''', row)
-
-            for c in page.getCategories():
-                category = wikitools.Category(wikipedia, title = c)
-
-                row = (category.title, category.pageid)
-                cursor.execute('''
-                    INSERT OR IGNORE INTO cat VALUES (?, ?)''', row
-                )
-
-                row = (id, category.pageid)
-                cursor.execute('''
-                    INSERT INTO cn_cat VALUES (?, ?)''', row
-                )
-            db.commit()
-
-        if n % 100 == 0:
-            print '\rprocessed %d pages' % n,
-
 if __name__ == '__main__':
     import pprint
 
