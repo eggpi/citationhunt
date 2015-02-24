@@ -22,13 +22,13 @@ def init_db():
         db.execute('''
             CREATE TABLE articles (page_id TEXT PRIMARY KEY, url TEXT,
             title TEXT, category_id TEXT,
-            FOREIGN KEY(category_id) REFERENCES categories(id))
-            ON DELETE CASCADE
+            FOREIGN KEY(category_id) REFERENCES categories(id)
+            ON DELETE CASCADE)
         ''')
         db.execute('''
             CREATE TABLE snippets (id TEXT PRIMARY KEY, snippet TEXT,
             article_id TEXT, FOREIGN KEY(article_id)
-            REFERENCES articles(page_id)) ON DELETE CASCADE
+            REFERENCES articles(page_id) ON DELETE CASCADE)
         ''')
 
     return db
