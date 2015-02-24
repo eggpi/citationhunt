@@ -14,6 +14,7 @@ import sys
 import pickle
 import sqlite3
 import pymysql
+import hashlib
 import collections
 
 def e(s):
@@ -63,14 +64,8 @@ def category_ids_to_names(wpcursor, category_ids):
             for row in wpcursor)
     return category_names
 
-def category_name_to_id(wpcursor, catname):
-    wpcursor.execute('''SELECT page_id FROM categories WHERE title = %s''',
-        catname.to_wp_categories())
-    row = wpcursor.fetchone()
-    if row is None:
-        print >>sys.stderr, repr(catname) + ' has no id!'
-        return None
-    return row[0]
+def category_name_to_id(catname):
+    return hashlib.sha1(e(catname)).hexdigest()[:2*8]
 
 def load_unsourced_pageids(chdb):
     return set(r[0] for r in chdb.execute('''SELECT page_id FROM articles'''))
@@ -123,7 +118,7 @@ def choose_categories(categories_to_ids, unsourced_pageids):
 
 def update_citationhunt_db(chdb, wpcursor, categories):
     for n, (catname, pageids) in enumerate(categories):
-        category_page_id = category_name_to_id(wpcursor, catname)
+        category_page_id = category_name_to_id(catname)
         with chdb:
             chdb.execute('''
                 INSERT INTO categories VALUES(?, ?)
