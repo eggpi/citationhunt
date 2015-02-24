@@ -64,7 +64,7 @@ class RowParser(workerpool.Worker):
             return (kind, [info])
 
         pageid, title, wikitext = info
-        url = WIKIPEDIA_WIKI_URL + title
+        url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
 
         snippets_rows = []
         snippets = snippet_parser.extract_snippets(wikitext)
