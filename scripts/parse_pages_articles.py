@@ -89,7 +89,7 @@ class DatabaseWriter(workerpool.Receiver):
         self.wpdb = None
 
     def setup(self):
-        self.chdb = chdb.init_db()
+        self.chdb = chdb.reset_db()
 
         self.wpdb = pymysql.connect(
             user = 'root', database = 'wikipedia', charset = 'utf8')
