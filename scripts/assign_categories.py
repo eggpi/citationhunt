@@ -57,7 +57,7 @@ class CategoryName(unicode):
 def category_ids_to_names(wpcursor, category_ids):
     category_names = set()
     for pageid in category_ids:
-        wpcursor.execute('''SELECT title FROM categories WHERE page_id = %s''',
+        wpcursor.execute('''SELECT title FROM categories WHERE id = %s''',
             (pageid,))
         category_names.update(
             CategoryName.from_wp_categories(row[0])
