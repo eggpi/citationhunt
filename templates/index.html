@@ -19,7 +19,7 @@
       <select name="cat" onchange="this.form.submit()">
         <option value="all">Filter by category</option>
       {% for category in categories %}
-        <option value={{ category.id }}{% if category.id == current_category %} selected{% endif %}>{{ category.name }}</option>
+        <option value={{ category.id }}{% if category.id == current_category %} selected{% endif %}>{{ category.title }}</option>
       {% endfor %}
       </select>
     </form>

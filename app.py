@@ -26,9 +26,9 @@ def get_categories():
 def select_snippet_by_id(id):
     cursor = get_db().cursor()
     cursor.execute('''
-        SELECT snippet.snippet, article.url, article.title
-        FROM snippets, article WHERE snippet.id = ? AND
-        snippet.article_id = article.page_id;''', (id,))
+        SELECT snippets.snippet, articles.url, articles.title
+        FROM snippets, articles WHERE snippets.id = ? AND
+        snippets.article_id = articles.page_id;''', (id,))
     ret = cursor.fetchone()
     if ret is None:
         ret = (None, None, None)
@@ -40,7 +40,7 @@ def select_random_id(category = None):
     ret = None
     if category is not None:
         cursor.execute('''
-            SELECT snippet.id FROM snippets, categories, articles
+            SELECT snippets.id FROM snippets, categories, articles
             WHERE categories.id = ? AND snippets.article_id = articles.page_id
             AND articles.category_id = categories.id ORDER BY RANDOM()
             LIMIT 1;''', (category,))

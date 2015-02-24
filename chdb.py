@@ -1,7 +1,12 @@
 import sqlite3
 
+DB_FILENAME = 'citationhunt.sqlite3'
+
 def init_db():
-    db = sqlite3.connect('citationhunt.sqlite3')
+    return sqlite3.connect(DB_FILENAME)
+
+def reset_db():
+    db = init_db()
 
     with db:
         db.execute('''
