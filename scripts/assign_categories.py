@@ -12,12 +12,14 @@ Options:
 
 from __future__ import unicode_literals
 
+import sys
+sys.path.append('../')
+
 import chdb
 
 import docopt
 
 import re
-import sys
 import pickle
 import pymysql
 import hashlib
