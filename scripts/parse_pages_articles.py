@@ -43,6 +43,8 @@ WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 NAMESPACE_ARTICLE = '0'
 NAMESPACE_CATEGORY = '14'
 
+CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
+
 def e(s):
     if type(s) == str:
         return str
@@ -69,6 +71,7 @@ class RowParser(workerpool.Worker):
         snippets_rows = []
         snippets = snippet_parser.extract_snippets(wikitext)
         for s in snippets:
+            s = s.replace(snippet_parser.MARKER, CITATION_NEEDED_HTML)
             id = hashlib.sha1(e(title + s)).hexdigest()[:2*8]
             row = (id, s, pageid)
             snippets_rows.append(row)
