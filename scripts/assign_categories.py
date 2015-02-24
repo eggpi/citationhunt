@@ -163,6 +163,7 @@ def assign_categories():
         print >>sys.stderr, '\rloaded categories for %d pageids' % n,
     print >>sys.stderr
 
+    # these will get removed when we remove "unassigned" from the categories
     print >>sys.stderr, \
         '%d pages lack usable categories!' % page_ids_with_no_categories
 
