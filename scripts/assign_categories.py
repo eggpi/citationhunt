@@ -15,7 +15,7 @@ from __future__ import unicode_literals
 import sys
 sys.path.append('../')
 
-import chdb
+import chdb as chdb_
 
 import docopt
 
@@ -131,7 +131,7 @@ def update_citationhunt_db(chdb, wpcursor, categories):
         category_page_id = category_name_to_id(catname)
         with chdb:
             chdb.execute('''
-                INSERT INTO categories VALUES(?, ?)
+                INSERT OR IGNORE INTO categories VALUES(?, ?)
             ''', (category_page_id, catname))
 
             for page_id in pageids:
@@ -142,18 +142,19 @@ def update_citationhunt_db(chdb, wpcursor, categories):
         print >>sys.stderr, '\rsaved %d categories' % (n + 1),
     print >>sys.stderr
 
-    print >>sys.stderr, 'deleting unassigned pages and snippets'
-    with chdb:
-        chdb.execute('''
-            DELETE FROM categories WHERE id = "unassigned"
-        ''')
+    if 0:
+        print >>sys.stderr, 'deleting unassigned pages and snippets'
+        with chdb:
+            chdb.execute('''
+                DELETE FROM categories WHERE id = "unassigned"
+            ''')
 
 def assign_categories(max_categories):
     wpdb = pymysql.Connect(
         user = 'root', database = 'wikipedia', charset = 'utf8')
     wpcursor = wpdb.cursor()
 
-    chdb = chdb.init_db()
+    chdb = chdb_.init_db()
     chdb.execute('PRAGMA foreign_keys = ON')
     unsourced_pageids = load_unsourced_pageids(chdb)
 
