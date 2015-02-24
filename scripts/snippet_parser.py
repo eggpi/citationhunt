@@ -12,7 +12,6 @@ WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 
 MARKER = '7b94863f3091b449e6ab04d44cb372a0' # unlikely to be in any article
-CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
 
 TEST_WIKITEXT_CACHE_FILENAME = '.test-wikitext.cache'
 
