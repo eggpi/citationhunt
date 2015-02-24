@@ -74,7 +74,7 @@ class RowParser(workerpool.Worker):
             snippets_rows.append(row)
 
         if snippets_rows:
-            article_row = (pageid, url, title, "undefined")
+            article_row = (pageid, url, title, "unassigned")
             return (kind, {'article': article_row, 'snippets': snippets_rows})
         return (kind, {})
 

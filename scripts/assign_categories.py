@@ -139,7 +139,7 @@ def update_citationhunt_db(chdb, wpcursor, categories):
 
     with chdb:
         chdb.execute('''
-            DELETE FROM categories WHERE page_id = "unassigned"
+            DELETE FROM categories WHERE id = "unassigned"
         ''')
 
 def assign_categories():
