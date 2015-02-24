@@ -57,7 +57,7 @@ class CategoryName(unicode):
 def category_ids_to_names(wpcursor, category_ids):
     category_names = set()
     for pageid in category_ids:
-        wpcursor.execute('''SELECT title FROM categories WHERE id = %s''',
+        wpcursor.execute('''SELECT title FROM categories WHERE page_id = %s''',
             (pageid,))
         category_names.update(
             CategoryName.from_wp_categories(row[0])
@@ -134,6 +134,7 @@ def update_citationhunt_db(chdb, wpcursor, categories):
         print >>sys.stderr, '\rsaved %d categories' % n,
     print >>sys.stderr
 
+    print >>sys.stderr, 'deleting unassigned pages and snippets'
     with chdb:
         chdb.execute('''
             DELETE FROM categories WHERE id = "unassigned"
@@ -145,6 +146,7 @@ def assign_categories():
     wpcursor = wpdb.cursor()
 
     chdb = sqlite3.connect('citationhunt.sqlite3')
+    chdb.execute('PRAGMA foreign_keys = ON')
     unsourced_pageids = load_unsourced_pageids(chdb)
 
     hidden_categories = load_hidden_categories(wpcursor)
@@ -160,7 +162,7 @@ def assign_categories():
         if not page_has_at_least_one_category:
             unsourced_pageids.remove(pageid)
             page_ids_with_no_categories += 1
-        print >>sys.stderr, '\rloaded categories for %d pageids' % n,
+        print >>sys.stderr, '\rloaded categories for %d pageids' % (n + 1),
     print >>sys.stderr
 
     # these will get removed when we remove "unassigned" from the categories
