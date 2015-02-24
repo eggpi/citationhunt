@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo 'SELECT cl_from FROM categorylinks WHERE cl_to = "All_articles_with_unsourced_statements"' | mysql -NB -u root wikipedia
