@@ -18,6 +18,9 @@ Usage:
 
 from __future__ import unicode_literals
 
+import sys
+sys.path.append('../')
+
 import chdb
 import snippet_parser
 import workerpool
@@ -30,7 +33,6 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
-import sys
 import pickle
 import sqlite3
 import pymysql
