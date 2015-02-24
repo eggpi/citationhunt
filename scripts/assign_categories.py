@@ -150,7 +150,7 @@ def assign_categories():
     hidden_categories = load_hidden_categories(wpcursor)
 
     categories_to_ids = collections.defaultdict(set)
-    page_ids_with_no_categories = []
+    page_ids_with_no_categories = 0
     for n, pageid in enumerate(list(unsourced_pageids)):
         page_has_at_least_one_category = False
         for catname in load_categories_for_page(wpcursor, pageid):
@@ -159,13 +159,12 @@ def assign_categories():
                 categories_to_ids[catname].add(pageid)
         if not page_has_at_least_one_category:
             unsourced_pageids.remove(pageid)
-            page_ids_with_no_categories.append(page_ids_with_no_categories)
+            page_ids_with_no_categories += 1
         print >>sys.stderr, '\rloaded categories for %d pageids' % n,
     print >>sys.stderr
 
     print >>sys.stderr, \
-        '%d pages lack usable categories!' % len(page_ids_with_no_categories)
-    # FIXME remove these pages
+        '%d pages lack usable categories!' % page_ids_with_no_categories
 
     print >>sys.stderr, 'found %d usable categories (%s, %s...)' % \
         (len(categories_to_ids), categories_to_ids.keys()[0],
