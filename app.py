@@ -12,13 +12,13 @@ def get_db():
         db = flask.g._db = chdb.init_db()
     return db
 
-Category = collections.namedtuple('Category', ['id', 'name'])
+Category = collections.namedtuple('Category', ['id', 'title'])
 def get_categories():
     categories = getattr(flask.g, '_categories', None)
     if categories is None:
         cursor = get_db().cursor()
         cursor.execute('''
-            SELECT id, name FROM cat ORDER BY name;
+            SELECT id, title FROM categories ORDER BY title;
         ''')
         categories = flask.g._categories = [Category(*row) for row in cursor]
     return categories
@@ -26,7 +26,9 @@ def get_categories():
 def select_snippet_by_id(id):
     cursor = get_db().cursor()
     cursor.execute('''
-        SELECT snippet, url, title FROM cn WHERE id = ?;''', (id,))
+        SELECT snippet.snippet, article.url, article.title
+        FROM snippets, article WHERE snippet.id = ? AND
+        snippet.article_id = article.page_id;''', (id,))
     ret = cursor.fetchone()
     if ret is None:
         ret = (None, None, None)
@@ -38,13 +40,15 @@ def select_random_id(category = None):
     ret = None
     if category is not None:
         cursor.execute('''
-            SELECT snippet_id FROM cn_cat WHERE
-            cat_id = ? ORDER BY RANDOM() LIMIT 1;''', (category,))
+            SELECT snippet.id FROM snippets, categories, articles
+            WHERE categories.id = ? AND snippets.article_id = articles.page_id
+            AND articles.category_id = categories.id ORDER BY RANDOM()
+            LIMIT 1;''', (category,))
         ret = cursor.fetchone()
 
     if ret is None:
         cursor.execute('''
-            SELECT id FROM cn ORDER BY RANDOM() LIMIT 1;''')
+            SELECT id FROM snippets ORDER BY RANDOM() LIMIT 1;''')
         ret = cursor.fetchone()
 
     assert ret and len(ret) == 1
