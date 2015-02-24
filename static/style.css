@@ -68,6 +68,7 @@ button:focus {
     margin: 0 5px;
     padding: 10px;
     border: 2px solid black;
+    border-radius: 4px;
     text-decoration: none;
     color: black;
     font-weight: bold;
