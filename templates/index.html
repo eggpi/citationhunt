@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/awesomplete.css">
     <link href='https://fonts.googleapis.com/css?family=Fondamento' rel='stylesheet' type='text/css'>
-    <script src="/static/awesomplete/awesomplete.min.js"></script>
+    <script src="/static/awesomplete/awesomplete.min.js" defer></script>
+    <script src="/static/category_filter.js" defer></script>
   </head>
   <body>
     <h1>Citation Hunt</h1>
@@ -18,7 +19,7 @@
       <button form="form-category" type="submit" id="button-next" class="button">Sorry, no idea. Next!</button>
     </div>
     <form method="GET" action="/" id="form-category">
-      <input type="text" id="category-input" list="categories" placeholder="Filter by category">
+      <input type="text" id="category-input" list="categories" autocomplete="off" placeholder="Filter by category">
       <datalist id="categories">
       {% for category in categories %}
         <option value={{ category.id }}>{{ category.title }}</option>
@@ -29,70 +30,11 @@
     <noscript>
       <span id="js-disabled-category-warning">sorry, filtering requires Javascript!</span>
     </noscript>
+    <p>Don't know how to add citations? See <a href=https://en.wikipedia.org/wiki/Help:Referencing_for_beginners target=_blank>Referencing for beginners.</a></p>
     <script>
-      var cin = document.getElementById("category-input");
-      var chi = document.getElementById("hidden-category-input");
-      var options = document.getElementsByTagName("option");
-
-      for (var i = 0; i < options.length; i++) {
-        if (options[i].value === "{{ current_category }}") {
-          cin.value = options[i].label;
-          chi.value = options[i].value;
-        }
-      }
-
-      function filterEmptyMatchesAll(text, input) {
-        return (input === "") || Awesomplete.FILTER_CONTAINS(text, input);
-      }
-
-      var awc = new Awesomplete(cin);
-      awc.minChars = 0;
-      awc.maxItems = options.length;
-      awc.sort = undefined;
-
-      // Awesomplete attempts to create several <li> elements at every
-      // keystroke. We know we only ever need |options.length| elements,
-      // so preallocate and cache them for speed.
-      var cacheIdx = 0;
-      var cache = [];
-      for (var i = 0; i < options.length; i++) {
-        cache.push(document.createElement("li"));
-      }
-
-      awc.item = function(text, input) {
-        if (cacheIdx == cache.length) {
-          cacheIdx = 0;
-        }
-
-        var element = cache[cacheIdx++];
-        element.innerHTML = text.replace(input.trim(), "<mark>$&</mark>");
-        return element;
-      }
-
-      cin.addEventListener('click', function() {
-          awc.evaluate();
-      });
-
-      cin.addEventListener("awesomplete-open", function() {
-        this.classList.add("open");
-      })
-
-      cin.addEventListener("awesomplete-close", function() {
-        this.classList.remove("open");
-      })
-
-      cin.addEventListener("awesomplete-selectcomplete", function() {
-        var catname = cin.value;
-
-        for (var i = 0; i < options.length; i++) {
-          if (options[i].label == catname) {
-            chi.value = options[i].value;
-          }
-        }
-
-        this.form.submit()
+      window.addEventListener("load", function() {
+        initCategoryFilter("{{ current_category }}");
       });
     </script>
-    <p>Don't know how to add citations? See <a href=https://en.wikipedia.org/wiki/Help:Referencing_for_beginners target=_blank>Referencing for beginners.</a></p>
   </body>
 </html>
