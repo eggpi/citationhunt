@@ -34,6 +34,7 @@ function initCategoryFilter(currentCategoryId) {
   function set_hidden_category() {
     var catname = cin.value.toLocaleLowerCase();
 
+    chi.value = "all";
     for (var i = 0; i < options.length; i++) {
       if (options[i].label.toLocaleLowerCase() == catname) {
         chi.value = options[i].value;
