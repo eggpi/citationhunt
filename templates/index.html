@@ -24,17 +24,12 @@
         <option value={{ category.id }}>{{ category.title }}</option>
       {% endfor %}
       </datalist>
-      <input type="text" id="hidden-category-input" name="cat">
+      <input type="text" id="hidden-category-input" name="cat" value="{{ current_category }}">
     </form>
     <noscript>
       <span id="js-disabled-category-warning">sorry, filtering requires Javascript!</span>
     </noscript>
     <p>Don't know how to add citations? See <a href=https://en.wikipedia.org/wiki/Help:Referencing_for_beginners target=_blank>Referencing for beginners.</a></p>
-    <script>
-      window.addEventListener("load", function() {
-        initCategoryFilter("{{ current_category }}");
-      });
-    </script>
     <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet" type="text/css">
   </body>
 </html>
