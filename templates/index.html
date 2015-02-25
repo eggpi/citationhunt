@@ -50,6 +50,25 @@
       awc.maxItems = options.length;
       awc.sort = undefined;
 
+      // Awesomplete attempts to create several <li> elements at every
+      // keystroke. We know we only ever need |options.length| elements,
+      // so preallocate and cache them for speed.
+      var cacheIdx = 0;
+      var cache = [];
+      for (var i = 0; i < options.length; i++) {
+        cache.push(document.createElement("li"));
+      }
+
+      awc.item = function(text, input) {
+        if (cacheIdx == cache.length) {
+          cacheIdx = 0;
+        }
+
+        var element = cache[cacheIdx++];
+        element.innerHTML = text.replace(input.trim(), "<mark>$&</mark>");
+        return element;
+      }
+
       cin.addEventListener('click', function() {
           awc.evaluate();
       });
