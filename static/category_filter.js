@@ -1,9 +1,9 @@
 function initCategoryFilter() {
   var cin = document.getElementById("category-input");
-  var currentCategoryId = cin.value;
   var chi = document.getElementById("hidden-category-input");
   var options = document.getElementsByTagName("option");
 
+  var currentCategoryId = chi.value;
   for (var i = 0; i < options.length; i++) {
     if (options[i].value === currentCategoryId) {
       cin.value = options[i].label;
