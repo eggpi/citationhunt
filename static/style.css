@@ -7,7 +7,7 @@ body {
 }
 
 body * {
-  background-color: inherit;
+    background-color: inherit;
 }
 
 h1 {
@@ -88,7 +88,6 @@ button:focus {
 
 #js-disabled-category-warning {
     color: crimson;
-    margin-left: 5px;
 }
 
 #hidden-category-input {
