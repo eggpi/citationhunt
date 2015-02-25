@@ -18,7 +18,7 @@
       <button form="form-category" type="submit" id="button-next" class="button">Sorry, no idea. Next!</button>
     </div>
     <form method="GET" action="/" id="form-category">
-      <input type="text" id="category-input" list="categories" autocomplete="off" placeholder="Filter by category">
+      <input type="text" id="category-input" list="categories" autocomplete="off" placeholder="Filter by category" style="visibility: hidden;">
       <datalist id="categories">
       {% for category in categories %}
         <option value={{ category.id }}>{{ category.title }}</option>
@@ -27,7 +27,7 @@
       <input type="text" id="hidden-category-input" name="cat" value="{{ current_category }}">
     </form>
     <noscript>
-      <span id="js-disabled-category-warning">sorry, filtering requires Javascript!</span>
+      <span id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</span>
     </noscript>
     <p>Don't know how to add citations? See <a href=https://en.wikipedia.org/wiki/Help:Referencing_for_beginners target=_blank>Referencing for beginners.</a></p>
     <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet" type="text/css">
