@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from gather import extract_snippets, MARKER
+from snippet_parser import extract_snippets, MARKER
 
 import unittest
 import functools
