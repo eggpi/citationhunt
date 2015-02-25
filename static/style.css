@@ -6,6 +6,10 @@ body {
     background-color: #FCFCFC;
 }
 
+body * {
+  background-color: inherit;
+}
+
 h1 {
     font-family: Georgia, serif;
     font-size: xx-large;
@@ -82,21 +86,11 @@ button:focus {
     background-color: #E75A42;
 }
 
-#form-category {
-    display: inline;
-}
-
-#form-category select {
-    width: 400px;
-    font-family: inherit;
-    font-size: small;
-}
-
-option {
-    padding: 2px 0;
-}
-
 #js-disabled-category-warning {
     color: crimson;
     margin-left: 5px;
+}
+
+#hidden-category-input {
+    display: none;
 }

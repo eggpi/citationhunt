@@ -1,0 +1,63 @@
+[hidden] { display: none; }
+
+div.awesomplete * {
+    font-family: inherit;
+    font-size: small;
+}
+
+div.awesomplete {
+    width: 420px;
+}
+
+div.awesomplete > ul {
+    position: absolute;
+    width: 420px;
+    padding: 2px;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    list-style: none;
+    margin-top: 0;
+    border: 1px solid #D4D4D4;
+    border-top: none;
+}
+
+div.awesomplete > ul > li {
+    width: 420px;
+    padding: 2px;
+}
+
+div.awesomplete > input {
+    width: 420px;
+    padding: 3px 2px;
+    border: 1px solid #D4D4D4;
+}
+
+div.awesomplete > input:focus {
+    outline: none;
+}
+
+div.awesomplete > input.open {
+    border-bottom-color: #ECECEC;
+}
+
+div.awesomplete > ul[hidden],
+div.awesomplete > ul:empty {
+    display: none;
+}
+
+div.awesomplete > ul > li:hover,
+div.awesomplete > ul > li[aria-selected="true"] {
+    color: black;
+    background: #ECECEC;
+}
+
+div.awesomplete mark {
+    background: none;
+    font-weight: bold;
+}
+
+div.awesomplete li:hover mark {
+    background: none;
+    font-weight: bold;
+}
