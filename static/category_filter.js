@@ -1,5 +1,6 @@
-function initCategoryFilter(currentCategoryId) {
+function initCategoryFilter() {
   var cin = document.getElementById("category-input");
+  var currentCategoryId = cin.value;
   var chi = document.getElementById("hidden-category-input");
   var options = document.getElementsByTagName("option");
 
@@ -50,5 +51,13 @@ function initCategoryFilter(currentCategoryId) {
   cin.form.addEventListener("submit", function() {
     set_hidden_category();
     return true;
+  });
+}
+
+if (document.readyState !== "loading") {
+  initCategoryFilter();
+} else {
+  window.addEventListener("DOMContentLoaded", function() {
+    initCategoryFilter();
   });
 }
