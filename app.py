@@ -2,6 +2,7 @@ import chdb
 
 import flask
 import flask_sslify
+from flask.ext.compress import Compress
 
 import os
 import collections
@@ -58,6 +59,7 @@ def select_random_id(category = None):
 app = flask.Flask(__name__)
 if 'DYNO' in os.environ:
     flask_sslify.SSLify(app)
+Compress(app)
 
 @app.route('/')
 def citation_hunt():
