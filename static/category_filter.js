@@ -52,6 +52,8 @@ function initCategoryFilter() {
     set_hidden_category();
     return true;
   });
+
+  cin.style.visibility = '';
 }
 
 var iframe = document.getElementById("categories-iframe");
