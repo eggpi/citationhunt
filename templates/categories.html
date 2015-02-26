@@ -1,0 +1,5 @@
+<datalist id="categories">
+{% for category in categories %}
+  <option value={{ category.id }}>{{ category.title }}</option>
+{% endfor %}
+</datalist>

@@ -78,6 +78,11 @@ def citation_hunt():
         snippet = s, url = u, title = t,
         categories = get_categories(), current_category = cat)
 
+@app.route('/categories.html')
+def categories_html():
+    return flask.render_template('categories.html',
+        categories = get_categories());
+
 @app.after_request
 def add_cache_header(response):
     if response.status_code != 302 and response.cache_control.max_age is None:

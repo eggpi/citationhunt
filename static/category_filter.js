@@ -52,14 +52,18 @@ function initCategoryFilter() {
     set_hidden_category();
     return true;
   });
-
-  cin.style.visibility = '';
 }
 
-if (document.readyState !== "loading") {
-  initCategoryFilter();
-} else {
-  window.addEventListener("DOMContentLoaded", function() {
+var iframe = document.getElementById("categories-iframe");
+iframe.addEventListener("load", function() {
+  var catlist = iframe.contentDocument.getElementById("categories");
+  document.body.appendChild(catlist);
+
+  if (document.readyState !== "loading") {
     initCategoryFilter();
-  });
-}
+  } else {
+    window.addEventListener("DOMContentLoaded", function() {
+      initCategoryFilter();
+    });
+  }
+});
