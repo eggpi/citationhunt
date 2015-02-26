@@ -1,3 +1,7 @@
+[hidden] {
+    display: none;
+}
+
 body {
     margin: 0;
     padding: 10px;
