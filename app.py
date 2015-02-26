@@ -78,6 +78,13 @@ def citation_hunt():
         snippet = s, url = u, title = t,
         categories = get_categories(), current_category = cat)
 
+@app.after_request
+def add_cache_header(response):
+    if response.status_code != 302 and response.cache_control.max_age is None:
+        response.cache_control.public = True
+        response.cache_control.max_age = 3 * 24 * 60 * 60
+    return response
+
 @app.teardown_appcontext
 def close_db(exception):
     db = getattr(flask.g, '_db', None)
