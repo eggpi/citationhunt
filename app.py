@@ -75,8 +75,7 @@ def citation_hunt():
     if (s, u, t) == (None, None, None):
         flask.abort(404)
     return flask.render_template('index.html',
-        snippet = s, url = u, title = t,
-        categories = get_categories(), current_category = cat)
+        snippet = s, url = u, title = t, current_category = cat)
 
 @app.route('/categories.html')
 def categories_html():
