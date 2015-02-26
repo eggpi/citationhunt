@@ -47,7 +47,9 @@ This script will also parse all the categories in the pages+articles dump, and
 will write their information (page id and category title) to a 'categories'
 table in the MySQL database. However, it will not assign categories to pages;
 instead, at the end of this step, each page in the database will reference a
-dummy "unassigned" category.
+dummy "unassigned" category. Finally, a pickled dictionary of statistics will be
+dumped to a file named stats.pkl at the end of the execution. It can be
+safely removed.
 
 The final step is to pick which categories will get to be displayed in
 CitationHunt, thus fixing the "unassigned" entries in the database. This can be
