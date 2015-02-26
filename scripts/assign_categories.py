@@ -20,7 +20,6 @@ import chdb as chdb_
 import docopt
 
 import re
-import pickle
 import pymysql
 import hashlib
 import collections
@@ -184,10 +183,6 @@ def assign_categories(max_categories):
 
     categories = choose_categories(categories_to_ids, unsourced_pageids,
         max_categories)
-
-    # FIXME remove this once everything works
-    with open('categories.pkl', 'wb') as cf:
-        pickle.dump(categories, cf)
 
     update_citationhunt_db(chdb, wpcursor, categories)
 
