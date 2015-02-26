@@ -24,6 +24,7 @@ sys.path.append('../')
 import chdb
 import snippet_parser
 import workerpool
+from utils import *
 
 import docopt
 import mwparserfromhell
@@ -36,7 +37,6 @@ except ImportError:
 import pickle
 import sqlite3
 import pymysql
-import hashlib
 import itertools
 
 WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
@@ -46,16 +46,6 @@ NAMESPACE_ARTICLE = '0'
 NAMESPACE_CATEGORY = '14'
 
 CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
-
-def e(s):
-    if type(s) == str:
-        return str
-    return s.encode('utf-8')
-
-def d(s):
-    if type(s) == unicode:
-        return s
-    return unicode(s, 'utf-8')
 
 class RowParser(workerpool.Worker):
     def setup(self):
@@ -74,7 +64,7 @@ class RowParser(workerpool.Worker):
         snippets = snippet_parser.extract_snippets(wikitext)
         for s in snippets:
             s = s.replace(snippet_parser.MARKER, CITATION_NEEDED_HTML)
-            id = hashlib.sha1(e(title + s)).hexdigest()[:2*8]
+            id = mkid(title + s)
             row = (id, s, pageid)
             snippets_rows.append(row)
 
