@@ -1,4 +1,6 @@
-[hidden] { display: none; }
+[hidden] {
+    display: none;
+}
 
 div.awesomplete * {
     font-family: inherit;
