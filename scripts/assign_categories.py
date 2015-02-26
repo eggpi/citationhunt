@@ -16,23 +16,13 @@ import sys
 sys.path.append('../')
 
 import chdb as chdb_
+from utils import *
 
 import docopt
 
 import re
 import pymysql
-import hashlib
 import collections
-
-def e(s):
-    if type(s) == str:
-        return str
-    return s.encode('utf-8')
-
-def d(s):
-    if type(s) == unicode:
-        return s
-    return unicode(s, 'utf-8')
 
 class CategoryName(unicode):
     '''
@@ -72,7 +62,7 @@ def category_ids_to_names(wpcursor, category_ids):
     return category_names
 
 def category_name_to_id(catname):
-    return hashlib.sha1(e(catname)).hexdigest()[:2*8]
+    return mkid(catname)
 
 def load_unsourced_pageids(chdb):
     return set(r[0] for r in chdb.execute('''SELECT page_id FROM articles'''))
