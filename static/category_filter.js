@@ -11,16 +11,23 @@ function initCategoryFilter() {
     }
   }
 
-  function filterEmptyMatchesAll(text, input) {
-    return (input === "") || Awesomplete.FILTER_CONTAINS(text, input);
+  function item(originalItem, text, input) {
+    if (input) {
+      return originalItem(text, input);
+    }
+
+    var li = document.createElement("li");
+    li.innerHTML = text;
+    return li;
   }
 
   var awc = new Awesomplete(cin);
   awc.minChars = 0;
   awc.maxItems = options.length;
   awc.sort = undefined;
+  awc.item = item.bind(null, awc.item);
 
-  cin.addEventListener('click', function() {
+  cin.addEventListener("click", function() {
     awc.evaluate();
   });
 
