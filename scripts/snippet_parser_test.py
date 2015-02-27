@@ -73,5 +73,25 @@ class ExtractSnippetTest(unittest.TestCase):
             extract_snippets(s % ('{{cn}}', '{{cn}}')),
             [s % (MARKER, MARKER)])
 
+    def test_citation_inside_template_false_positive(self):
+        s = '''{{Two other uses||the Irish football player|Anton Rodgers (footballer)|those of a similar name|Anthony Rogers (disambiguation)}}
+            <!--Anthony Rodgers redirects here-->
+            {{Infobox person
+            | name        = Anton Rodgers
+            | image       = Anton Rodgers.jpg
+            | imagesize   =
+            | caption     =
+            | birth_name  = Anthony Rodgers
+            | birth_date  = {{Birth date|1933|1|10|df=y}}<ref>http://www.imdb.com/name/nm0734668/</ref>
+            | birth_place = [[London]], UK
+            | death_date  = {{death date and age|2007|12|1|1933|1|10|df=y}}<ref>http://www.imdb.com/name/nm0734668/</ref>
+            | death_place = [[Reading, Berkshire]], UK
+            | occupation  = [[Actor]]
+            | spouse      = Morna Eugenie Watson<!-- marriage span? --><ref name=filmr/><br>[[Elizabeth Garvie]] (1983{{citation needed|date=April 2011}}&ndash;2007)
+            }}
+            \'\'\'Anton Rodgers\'\'\' (born \'\'\'Anthony Rodgers\'\'\';<ref>http://ftvdb.bfi.org.uk/sift/individual/16060</ref> 10 January 1933 &ndash; 1 December 2007) was an [[English people|English]] actor and occasional director. He performed on stage, in film, in television dramas and [[Situation comedy|sitcoms]] and in animation.<ref>{{cite news |title= Anton Rodgers |work=telegraph.co.uk |url=http://www.telegraph.co.uk/news/main.jhtml?view=DETAILS&grid=&xml=/news/2007/12/03/db0301a.xml |date=2007-12-03 |accessdate=2007-12-03| archiveurl= http://web.archive.org/web/20071203205358/http://www.telegraph.co.uk/news/main.jhtml?view=DETAILS&grid=&xml=/news/2007/12/03/db0301a.xml| archivedate= 3 December 2007 <!--DASHBot-->| deadurl= no}}</ref><ref>{{cite web |url=http://news.bbc.co.uk/2/hi/entertainment/7126800.stm |title=Actor Anton Rodgers dies aged 74 |accessdate=2007-12-04 |format= |work=BBC News Online  | date=2007-12-04| archiveurl= http://web.archive.org/web/20071206111432/http://news.bbc.co.uk/2/hi/entertainment/7126800.stm| archivedate= 6 December 2007 <!--DASHBot-->| deadurl= no}}</ref>'''
+        self.assertEqual(
+            extract_snippets(s), [])
+
 if __name__ == '__main__':
     unittest.main()

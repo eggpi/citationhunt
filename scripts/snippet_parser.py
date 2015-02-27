@@ -51,8 +51,8 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420):
                 # add the marker so we know where the Citation-needed template was
                 wikicode.insert_before(t, MARKER)
 
-        if MARKER in wikicode:
-            snippet = wikicode.strip_code()
+        snippet = wikicode.strip_code()
+        if MARKER in snippet: # MARKER may have been inside wiki markup
             snippets.append(snippet)
 
     return snippets
