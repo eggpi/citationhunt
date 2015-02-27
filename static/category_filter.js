@@ -56,16 +56,24 @@ function initCategoryFilter() {
   cin.style.visibility = '';
 }
 
-var iframe = document.getElementById("categories-iframe");
-iframe.addEventListener("load", function() {
-  var catlist = iframe.contentDocument.getElementById("categories");
-  document.body.appendChild(catlist);
+function loadCategoriesAndFilter() {
+  var iframe = document.createElement("iframe");
+  iframe.src = "/categories.html";
+  iframe.hidden = true;
+  iframe.addEventListener("load", function() {
+    var catlist = iframe.contentDocument.getElementById("categories");
+    document.body.appendChild(catlist);
 
-  if (document.readyState !== "loading") {
-    initCategoryFilter();
-  } else {
-    window.addEventListener("DOMContentLoaded", function() {
+    if (document.readyState !== "loading") {
       initCategoryFilter();
-    });
-  }
-});
+    } else {
+      window.addEventListener("DOMContentLoaded", function() {
+        initCategoryFilter();
+      });
+    }
+  });
+
+  document.body.appendChild(iframe);
+}
+
+loadCategoriesAndFilter();
