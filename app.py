@@ -26,6 +26,8 @@ def get_categories():
     return categories
 
 def select_snippet_by_id(id):
+    # The query below may match snippets with unassigned categories. That's
+    # fine, we don't display the current category in the UI anyway.
     cursor = get_db().cursor()
     cursor.execute('''
         SELECT snippets.snippet, articles.url, articles.title
