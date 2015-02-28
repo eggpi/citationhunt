@@ -14,10 +14,10 @@ function initCategoryFilter() {
   }
 
   var awc = new Awesomplete(cin);
-  awc.minChars = 0;
-  awc.maxItems = options.length;
-  awc.sort = undefined;
-  awc.item = item.bind(null, awc.item);
+  awc.minChars = 0; // open dropdown on focus
+  awc.maxItems = options.length; // display all options when cin is empty
+  awc.sort = undefined; // sort alphabetially regardless of item length
+  awc.item = item.bind(null, awc.item); // handle empty cin
 
   cin.addEventListener("click", function() {
     awc.evaluate();
