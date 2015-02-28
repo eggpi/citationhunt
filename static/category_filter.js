@@ -3,14 +3,6 @@ function initCategoryFilter() {
   var chi = document.getElementById("hidden-category-input");
   var options = document.getElementsByTagName("option");
 
-  var currentCategoryId = chi.value;
-  for (var i = 0; i < options.length; i++) {
-    if (options[i].value === currentCategoryId) {
-      cin.value = options[i].label;
-      chi.value = options[i].value;
-    }
-  }
-
   function item(originalItem, text, input) {
     if (input) {
       return originalItem(text, input);
