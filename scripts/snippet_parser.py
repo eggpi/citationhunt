@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+from __future__ import unicode_literals
+
+from utils import *
+
 import wikitools
 import mwparserfromhell
 
@@ -31,6 +35,14 @@ mwparserfromhell.nodes.Tag.__strip__ = tag_strip
 
 mwparserfromhell.nodes.Heading.__strip__ = mwparserfromhell.nodes.Node.__strip__
 
+def wikilink_strip(self, normalize, collapse):
+    if self.title.startswith('File:'):
+        return ''
+    return self._original_strip(normalize, collapse)
+mwparserfromhell.nodes.Wikilink._original_strip = \
+    mwparserfromhell.nodes.Wikilink.__strip__
+mwparserfromhell.nodes.Wikilink.__strip__ = wikilink_strip
+
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
 
@@ -38,7 +50,7 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420):
     snippets = []
 
     # FIXME we should only add each paragraph once
-    for paragraph in wikitext.split('\n\n'):
+    for paragraph in d(wikitext).split('\n\n'):
         wikicode = mwparserfromhell.parse(paragraph)
 
         for t in wikicode.filter_templates():
