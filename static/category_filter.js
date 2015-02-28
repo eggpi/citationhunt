@@ -31,7 +31,7 @@ function initCategoryFilter() {
     this.classList.remove("open");
   })
 
-  function set_hidden_category() {
+  function setHiddenCategory() {
     var catname = cin.value.toLocaleLowerCase();
 
     chi.value = "all";
@@ -43,12 +43,12 @@ function initCategoryFilter() {
   }
 
   cin.addEventListener("awesomplete-selectcomplete", function() {
-    set_hidden_category();
+    setHiddenCategory();
     this.form.submit();
   });
 
   cin.form.addEventListener("submit", function() {
-    set_hidden_category();
+    setHiddenCategory();
     return true;
   });
 
