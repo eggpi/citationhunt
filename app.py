@@ -15,7 +15,7 @@ def get_db():
 
 Category = collections.namedtuple('Category', ['id', 'title'])
 CATEGORY_ALL = Category('all', '')
-def get_categories():
+def get_categories(include_default = True):
     categories = getattr(flask.g, '_categories', None)
     if categories is None:
         cursor = get_db().cursor()
@@ -25,7 +25,7 @@ def get_categories():
         ''')
         categories = [CATEGORY_ALL] + [Category(*row) for row in cursor]
         flask.g._categories = categories
-    return categories
+    return categories if include_default else categories[1:]
 
 def get_category_by_id(catid, default = None):
     for c in get_categories():
@@ -103,7 +103,7 @@ def citation_hunt():
 @app.route('/categories.html')
 def categories_html():
     return flask.render_template('categories.html',
-        categories = get_categories());
+        categories = get_categories(include_default = False));
 
 @app.after_request
 def add_cache_header(response):
