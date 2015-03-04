@@ -32,7 +32,7 @@ def reset_db():
         ''')
         db.execute('''
             CREATE TABLE snippets (id TEXT PRIMARY KEY, snippet TEXT,
-            article_id TEXT, FOREIGN KEY(article_id)
+            section TEXT, article_id TEXT, FOREIGN KEY(article_id)
             REFERENCES articles(page_id) ON DELETE CASCADE)
         ''')
 
