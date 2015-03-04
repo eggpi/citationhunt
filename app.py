@@ -38,12 +38,10 @@ def select_snippet_by_id(id):
     # fine, we don't display the current category in the UI anyway.
     cursor = get_db().cursor()
     cursor.execute('''
-        SELECT snippets.snippet, articles.url, articles.title
+        SELECT snippets.snippet, snippets.section, articles.url, articles.title
         FROM snippets, articles WHERE snippets.id = ? AND
         snippets.article_id = articles.page_id;''', (id,))
     ret = cursor.fetchone()
-    if ret is None:
-        ret = (None, None, None)
     return ret
 
 def select_random_id(cat = CATEGORY_ALL):
@@ -89,12 +87,14 @@ def citation_hunt():
     if id is not None:
         # pick snippet by id and just echo back the category, even
         # if the snippet doesn't belong to it.
-        s, u, t = select_snippet_by_id(id)
-        if (s, u, t) == (None, None, None):
+        sinfo = select_snippet_by_id(id)
+        if sinfo is None:
             # invalid id
             flask.abort(404)
+        snippet, section, aurl, atitle = sinfo
         return flask.render_template('index.html',
-            snippet = s, url = u, title = t, current_category = cat)
+            snippet = snippet, section = section, article_url = aurl,
+            article_title = atitle, current_category = cat)
 
     id = select_random_id(cat)
     return flask.redirect(

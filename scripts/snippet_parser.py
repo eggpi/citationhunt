@@ -46,27 +46,37 @@ mwparserfromhell.nodes.Wikilink.__strip__ = wikilink_strip
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
 
-def extract_snippets(wikitext, minlen = 140, maxlen = 420):
-    snippets = []
+def extract_snippets(wikitext, minlen = 140, maxlen = 420, is_lead = False):
+    snippets = [] # [section, [snippets]]
 
-    # FIXME we should only add each paragraph once
-    for paragraph in d(wikitext).split('\n\n'):
-        wikicode = mwparserfromhell.parse(paragraph)
+    sections = mwparserfromhell.parse(wikitext).get_sections(
+        include_lead = True, include_headings = True, flat = True)
+    assert ''.join(unicode(s) for s in sections) == d(wikitext)
 
-        for t in wikicode.filter_templates():
-            if is_citation_needed(t):
-                stripped_len = len(wikicode.strip_code())
-                if stripped_len > maxlen or stripped_len < minlen:
-                    # TL;DR or too short
-                    continue
+    for i, section in enumerate(sections):
+        assert i == 0 or \
+            isinstance(section.get(0), mwparserfromhell.nodes.heading.Heading)
+        sectitle = unicode(section.get(0).title.strip()) if i != 0 else ''
+        secsnippets = []
+        snippets.append([sectitle, secsnippets])
 
-                # add the marker so we know where the Citation-needed template was
-                wikicode.insert_before(t, MARKER)
+        for paragraph in section.split('\n\n'):
+            wikicode = mwparserfromhell.parse(paragraph)
 
-        snippet = wikicode.strip_code()
-        if MARKER in snippet: # MARKER may have been inside wiki markup
-            snippets.append(snippet)
+            for t in wikicode.filter_templates():
+                if is_citation_needed(t):
+                    stripped_len = len(wikicode.strip_code())
+                    if stripped_len > maxlen or stripped_len < minlen:
+                        # TL;DR or too short
+                        continue
 
+                    # add the marker so we know where the Citation-needed
+                    # template was
+                    wikicode.insert_before(t, MARKER)
+
+            snippet = wikicode.strip_code()
+            if MARKER in snippet: # MARKER may have been inside wiki markup
+                secsnippets.append(snippet)
     return snippets
 
 if __name__ == '__main__':

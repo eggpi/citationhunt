@@ -62,11 +62,13 @@ class RowParser(workerpool.Worker):
 
         snippets_rows = []
         snippets = snippet_parser.extract_snippets(wikitext)
-        for s in snippets:
-            s = s.replace(snippet_parser.MARKER, CITATION_NEEDED_HTML)
-            id = mkid(title + s)
-            row = (id, s, pageid)
-            snippets_rows.append(row)
+        for sec, snips in snippets:
+            sec = sec.replace(' ', '_')
+            for sni in snips:
+                sni = sni.replace(snippet_parser.MARKER, CITATION_NEEDED_HTML)
+                id = mkid(title + sni)
+                row = (id, sni, sec, pageid)
+                snippets_rows.append(row)
 
         if snippets_rows:
             article_row = (pageid, url, title, "unassigned")
@@ -109,7 +111,7 @@ class DatabaseWriter(workerpool.Receiver):
             self.chdb.execute('''
                 INSERT INTO articles VALUES(?, ?, ?, ?)''', rows['article'])
             self.chdb.executemany('''
-                INSERT OR IGNORE INTO snippets VALUES(?, ?, ?)''',
+                INSERT OR IGNORE INTO snippets VALUES(?, ?, ?, ?)''',
                 rows['snippets'])
 
     def write_category_rows(self, rows):
