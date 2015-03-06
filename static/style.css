@@ -97,3 +97,10 @@ button:focus {
 #hidden-category-input {
     display: none;
 }
+
+#github-link {
+    position: absolute;
+    font-size: small;
+    top: 15px;
+    right: 15px;
+}
