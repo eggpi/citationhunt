@@ -136,6 +136,8 @@ class Worker(object):
         pass
 
 class Receiver(object):
+    __metaclass__ = abc.ABCMeta
+
     @abc.abstractmethod
     def setup(self):
         pass
