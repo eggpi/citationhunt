@@ -38,6 +38,7 @@ import pickle
 import sqlite3
 import pymysql
 import itertools
+import urllib
 
 WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
@@ -46,6 +47,18 @@ NAMESPACE_ARTICLE = '0'
 NAMESPACE_CATEGORY = '14'
 
 CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
+
+def section_name_to_anchor(section):
+    # See Sanitizer::escapeId
+    # https://doc.wikimedia.org/mediawiki-core/master/php/html/classSanitizer.html#ae091dfff62f13c9c1e0d2e503b0cab49
+    section = section.replace(' ', '_')
+    section = urllib.quote(e(section))
+    section = section.replace('%3A', ':')
+    section = section.replace('%', '.')
+    return section
+
+def insert_citation_needed_html(snippet):
+    return snippet.replace(snippet_parser.MARKER, CITATION_NEEDED_HTML)
 
 class RowParser(workerpool.Worker):
     def setup(self):
@@ -63,9 +76,9 @@ class RowParser(workerpool.Worker):
         snippets_rows = []
         snippets = snippet_parser.extract_snippets(wikitext)
         for sec, snips in snippets:
-            sec = sec.replace(' ', '_')
+            sec = section_name_to_anchor(sec)
             for sni in snips:
-                sni = sni.replace(snippet_parser.MARKER, CITATION_NEEDED_HTML)
+                sni = insert_citation_needed_html(sni)
                 id = mkid(title + sni)
                 row = (id, sni, sec, pageid)
                 snippets_rows.append(row)
