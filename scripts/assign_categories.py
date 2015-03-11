@@ -131,12 +131,11 @@ def update_citationhunt_db(chdb, wpcursor, categories):
         print >>sys.stderr, '\rsaved %d categories' % (n + 1),
     print >>sys.stderr
 
-    if 0:
-        print >>sys.stderr, 'deleting unassigned pages and snippets'
-        with chdb:
-            chdb.execute('''
-                DELETE FROM categories WHERE id = "unassigned"
-            ''')
+    # print >>sys.stderr, 'deleting unassigned pages and snippets'
+    # with chdb:
+    #    chdb.execute('''
+    #       DELETE FROM categories WHERE id = "unassigned"
+    #   ''')
 
 def assign_categories(max_categories):
     wpdb = pymysql.Connect(
@@ -144,9 +143,13 @@ def assign_categories(max_categories):
     wpcursor = wpdb.cursor()
 
     chdb = chdb_.init_db()
-    chdb.execute('PRAGMA foreign_keys = ON')
-    unsourced_pageids = load_unsourced_pageids(chdb)
+    # chdb.execute('PRAGMA foreign_keys = ON')
+    print >>sys.stderr, 'resetting articles table...'
+    chdb.execute('UPDATE articles SET category_id = "unassigned"')
+    print >>sys.stderr, 'resetting categories table...'
+    chdb.execute('DELETE FROM categories WHERE id != "unassigned"')
 
+    unsourced_pageids = load_unsourced_pageids(chdb)
     hidden_categories = load_hidden_categories(wpcursor)
 
     categories_to_ids = collections.defaultdict(set)
@@ -163,7 +166,6 @@ def assign_categories(max_categories):
         print >>sys.stderr, '\rloaded categories for %d pageids' % (n + 1),
     print >>sys.stderr
 
-    # these will get removed when we remove "unassigned" from the categories
     print >>sys.stderr, \
         '%d pages lack usable categories!' % page_ids_with_no_categories
 
