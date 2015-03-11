@@ -85,7 +85,8 @@ def category_is_usable(catname, hidden_categories):
     return catname not in hidden_categories \
         and not re.match(NUMBER_PATTERN, catname) \
         and not catname.startswith('Pages ') \
-        and not catname.startswith('Articles ')
+        and not catname.startswith('Articles ') \
+        and not catname.endswith(' stubs')
 
 def choose_categories(categories_to_ids, unsourced_pageids, max_categories):
     categories = set()
