@@ -65,6 +65,7 @@ button:focus {
     position: relative;
     top: -5px;
     color: #0645AD;
+    white-space: nowrap;
 }
 
 #buttons {
