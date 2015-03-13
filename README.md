@@ -37,3 +37,34 @@ $ python app.py
 
 Adding `DEBUG=1` to the environment will run the server in [Flask's debug
 mode](http://flask.pocoo.org/docs/0.10/quickstart/#debug-mode).
+
+#### On Tools Labs
+
+This section is a work in progress.
+
+CitationHunt can be installed on Wikimedia's Tools Labs using its [specialized
+support for Python uwsgi
+applications](https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Web#Python_.28uwsgi.29).
+
+After logging in to `login.tools.wmflabs.org`, run the following commands to
+create the directory structure and enter the virtualenv:
+
+```
+$ mkdir www/python/
+$ virtualenv www/python/venv/
+. www/python/venv/bin/activate
+```
+
+Now, clone this repository, point uwsgi to it and install the dependencies:
+
+```
+$ git clone https://github.com/guilherme-pg/citationhunt.git
+$ ln -s ../../citationhunt www/python/src
+$ pip install -r citationhunt/requirements.txt
+```
+
+and start the webserver:
+
+```
+$ webserver2 uwsgi-python start
+```
