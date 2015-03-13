@@ -37,3 +37,9 @@ def reset_db():
         ''')
 
     return db
+
+def create_indices():
+    db = init_db()
+
+    db.execute('''CREATE INDEX snippets_articles ON snippets(article_id);''')
+    db.execute('''CREATE INDEX articles_categories ON articles(category_id);''')

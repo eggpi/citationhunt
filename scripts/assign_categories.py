@@ -178,6 +178,7 @@ def assign_categories(max_categories):
         max_categories)
 
     update_citationhunt_db(chdb, wpcursor, categories)
+    chdb_.create_indices()
 
     wpdb.close()
     chdb.close()
