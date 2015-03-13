@@ -50,9 +50,9 @@ def select_random_id(cat = CATEGORY_ALL):
     ret = None
     if cat is not CATEGORY_ALL:
         cursor.execute('''
-            SELECT snippets.id FROM snippets, categories, articles
-            WHERE categories.id = ? AND snippets.article_id = articles.page_id
-            AND articles.category_id = categories.id ORDER BY RANDOM()
+            SELECT snippets.id FROM snippets, articles
+            WHERE snippets.article_id = articles.page_id
+            AND articles.category_id = ? ORDER BY RANDOM()
             LIMIT 1;''', (cat.id,))
         ret = cursor.fetchone()
 
