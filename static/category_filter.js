@@ -57,7 +57,7 @@ function initCategoryFilter() {
 
 function loadCategoriesAndFilter() {
   var iframe = document.createElement("iframe");
-  iframe.src = "/categories.html";
+  iframe.src = "categories.html";
   iframe.hidden = true;
   iframe.addEventListener("load", function() {
     var catlist = iframe.contentDocument.getElementById("categories");
