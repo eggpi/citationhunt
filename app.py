@@ -65,8 +65,7 @@ def select_random_id(cat = CATEGORY_ALL):
     return ret[0]
 
 app = flask.Flask(__name__)
-if 'DYNO' in os.environ:
-    flask_sslify.SSLify(app)
+flask_sslify.SSLify(app, permanent = True)
 Compress(app)
 
 @app.route('/')
