@@ -71,7 +71,7 @@ def select_random_id(cat = CATEGORY_ALL):
     if ret is None:
         with log_time('select without category'):
             cursor.execute('''
-                SELECT id FROM snippets ORDER BY RANDOM() LIMIT 1;''')
+                SELECT id FROM snippets WHERE RANDOM() % 10000 = 0 LIMIT 1;''')
             ret = cursor.fetchone()
 
     assert ret and len(ret) == 1
