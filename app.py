@@ -5,7 +5,17 @@ import flask_sslify
 from flask.ext.compress import Compress
 
 import os
+import contextlib
 import collections
+from datetime import datetime
+
+@contextlib.contextmanager
+def log_time(operation):
+    before = datetime.now()
+    yield
+    after = datetime.now()
+    ms = (after - before).microseconds / 1000.
+    print '[citationhunt] %s took %.2f ms' % (operation, ms)
 
 def get_db():
     db = getattr(flask.g, '_db', None)
@@ -49,17 +59,19 @@ def select_random_id(cat = CATEGORY_ALL):
 
     ret = None
     if cat is not CATEGORY_ALL:
-        cursor.execute('''
-            SELECT snippets.id FROM snippets, articles
-            WHERE snippets.article_id = articles.page_id
-            AND articles.category_id = ? ORDER BY RANDOM()
-            LIMIT 1;''', (cat.id,))
-        ret = cursor.fetchone()
+        with log_time('select with category'):
+            cursor.execute('''
+                SELECT snippets.id FROM snippets, articles
+                WHERE snippets.article_id = articles.page_id
+                AND articles.category_id = ? ORDER BY RANDOM()
+                LIMIT 1;''', (cat.id,))
+            ret = cursor.fetchone()
 
     if ret is None:
-        cursor.execute('''
-            SELECT id FROM snippets ORDER BY RANDOM() LIMIT 1;''')
-        ret = cursor.fetchone()
+        with log_time('select without category'):
+            cursor.execute('''
+                SELECT id FROM snippets ORDER BY RANDOM() LIMIT 1;''')
+            ret = cursor.fetchone()
 
     assert ret and len(ret) == 1
     return ret[0]
