@@ -47,11 +47,12 @@ def select_snippet_by_id(id):
     # The query below may match snippets with unassigned categories. That's
     # fine, we don't display the current category in the UI anyway.
     cursor = get_db().cursor()
-    cursor.execute('''
-        SELECT snippets.snippet, snippets.section, articles.url, articles.title
-        FROM snippets, articles WHERE snippets.id = ? AND
-        snippets.article_id = articles.page_id;''', (id,))
-    ret = cursor.fetchone()
+    with log_time('select snippet by id'):
+        cursor.execute('''
+            SELECT snippets.snippet, snippets.section, articles.url,
+            articles.title FROM snippets, articles WHERE snippets.id = ? AND
+            snippets.article_id = articles.page_id;''', (id,))
+        ret = cursor.fetchone()
     return ret
 
 def select_random_id(cat = CATEGORY_ALL):
