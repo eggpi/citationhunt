@@ -105,3 +105,14 @@ button:focus {
     top: 15px;
     right: 15px;
 }
+
+#lead-hint {
+    float: right;
+    border-radius: 4px;
+    font-size: small;
+    padding: 8px;
+    background-color: #EEE2EA;
+    text-align: justify;
+    max-width: 35%;
+    margin-left: 5px;
+}
