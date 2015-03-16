@@ -52,7 +52,7 @@ create the directory structure and enter the virtualenv:
 ```
 $ mkdir www/python/
 $ virtualenv www/python/venv/
-. www/python/venv/bin/activate
+$ . www/python/venv/bin/activate
 ```
 
 Now, clone this repository, point uwsgi to it and install the dependencies:
