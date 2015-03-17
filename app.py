@@ -116,9 +116,19 @@ def categories_html():
     return flask.render_template('categories.html',
         categories = get_categories(include_default = False));
 
+@app.route('/stats', methods = ['POST'])
+def stats():
+    id = flask.request.args.get('id')
+    stats = flask.request.get_json(force = True)
+    if isinstance(stats, dict):
+        event = stats.get('event', None)
+        if event and id:
+            print '[citationhunt] %s %s' % (event, id)
+    return flask.make_response(('', 204, ''))
+
 @app.after_request
 def add_cache_header(response):
-    if response.status_code != 302 and response.cache_control.max_age is None:
+    if response.status_code == 200 and response.cache_control.max_age is None:
         response.cache_control.public = True
         response.cache_control.max_age = 3 * 24 * 60 * 60
     return response
