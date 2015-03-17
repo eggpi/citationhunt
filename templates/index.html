@@ -17,7 +17,7 @@
       <a href={{ article_url }}{% if section %}#{{ section }}{% endif %} target=_blank><button class="button" id="button-wikilink">I got this, take me there!</button></a>
       <button form="form-category" type="submit" id="button-next" class="button">Sorry, no idea. Next!</button>
     </div>
-    {% if not section %}<div id="lead-hint">This text is part of the article's lead section, so referencing it may be optional.<br/>Please see <a href="https://en.wikipedia.org/wiki/Wikipedia:CITELEAD">WP:CITELEAD</a> for more information.</div>{% endif %}
+    {% if not section %}<div id="lead-hint">This text is part of the article's lead section, so referencing it may be optional.<br/>Please see <a target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:CITELEAD">WP:CITELEAD</a> for more information.</div>{% endif %}
     <div> <!-- The content to the left of #lead-hint must be display:block to wrap around it -->
       <form method="GET" action="" id="form-category">
         <input type="text" id="category-input" list="categories" value = "{{ current_category.title }}" autocomplete="off" placeholder="Filter by category" style="visibility: hidden;">
