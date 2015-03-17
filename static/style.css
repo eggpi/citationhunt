@@ -42,6 +42,7 @@ p {
     font-size: 100px;
     opacity: 0.1;
     font-family: Fondamento, cursive;
+    z-index: -1;
 }
 
 a {
