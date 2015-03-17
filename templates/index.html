@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="static/awesomplete.css">
     <script src="static/awesomplete/awesomplete.min.js" async></script>
     <script src="static/category_filter.js" async></script>
+    <script src="static/stats.js" async></script>
   </head>
   <body>
     <h1>Citation Hunt</h1>
     <p id=intro>Help find citations for Wikipedia articles!</h1>
-    <p id="preamble">In page <a href={{ article_url }} target=_blank>{{ article_title }}</a>:</p>
+    <p id="preamble">In page <a id="article-link" href={{ article_url }} target=_blank>{{ article_title }}</a>:</p>
     <blockquote id="snippet"><div id="quotation">"</div>{{ snippet | safe }}</blockquote>
     <div id="buttons">
       <a href={{ article_url }}{% if section %}#{{ section }}{% endif %} target=_blank><button class="button" id="button-wikilink">I got this, take me there!</button></a>
