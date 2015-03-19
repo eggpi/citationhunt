@@ -2,7 +2,7 @@
 
 CitationHunt is a simple tool for finding unsourced statements in the English
 Wikipedia, currently hosted at
-[https://citationhunt.herokuapp.com/](http://citationhunt.herokuapp.com/).
+[https://tools.wmflabs.org/citationhunt/](https://tools.wmflabs.org/citationhunt/).
 
 This repository contains the full server and client code. The
 [scripts/](https://github.com/guilherme-pg/citationhunt/tree/master/scripts)
