@@ -32,11 +32,13 @@ Once all dependencies are installed, just run `app.py` and point your browser to
 `localhost:5000`:
 
 ```
-$ python app.py
+$ DEBUG=1 python app.py
 ```
 
 Adding `DEBUG=1` to the environment will run the server in [Flask's debug
-mode](http://flask.pocoo.org/docs/0.10/quickstart/#debug-mode).
+mode](http://flask.pocoo.org/docs/0.10/quickstart/#debug-mode) and enable HTTP
+access (the default is to redirect all URLs to HTTPS, which causes certificate
+errors when running locally).
 
 #### On Tools Labs
 
