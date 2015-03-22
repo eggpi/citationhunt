@@ -8,10 +8,6 @@ snippets in the pages in the pageid file. It will store the pages containing
 valid snippets in the `articles` database table, and the snippets in the
 `snippets` table.
 
-This script will also fill a `categories` table in the Wikipedia database
-linking category pageids to titles. This is a subset of the `pages` table in the
-Wikipedia dump.
-
 Usage:
     parse_pages_articles.py <pages-articles-xml.bz2> <pageid-file>
 '''
@@ -37,7 +33,6 @@ except ImportError:
 import bz2file
 import pickle
 import sqlite3
-import pymysql
 import itertools
 import urllib
 
@@ -45,7 +40,6 @@ WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 
 NAMESPACE_ARTICLE = '0'
-NAMESPACE_CATEGORY = '14'
 
 CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
 
@@ -67,9 +61,7 @@ class RowParser(workerpool.Worker):
 
     def work(self, task):
         kind, info = task
-        if kind == 'category':
-            # nothing to parse, and info is a single row
-            return (kind, [info])
+        assert kind == 'article'
 
         pageid, title, wikitext = info
         url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
@@ -85,7 +77,7 @@ class RowParser(workerpool.Worker):
                 snippets_rows.append(row)
 
         if snippets_rows:
-            article_row = (pageid, url, title, "unassigned")
+            article_row = (pageid, url, title, 'unassigned')
             return (kind, {'article': article_row, 'snippets': snippets_rows})
         return (kind, {})
 
@@ -97,25 +89,14 @@ class RowParser(workerpool.Worker):
 class DatabaseWriter(workerpool.Receiver):
     def __init__(self):
         self.chdb = None
-        self.wpdb = None
 
     def setup(self):
         self.chdb = chdb.reset_db()
 
-        self.wpdb = pymysql.connect(
-            user = 'root', database = 'wikipedia', charset = 'utf8')
-        self.wpcursor = self.wpdb.cursor()
-        self.wpcursor.execute('''DROP TABLE IF EXISTS categories''')
-        self.wpcursor.execute('''
-            CREATE TABLE categories (page_id INT PRIMARY KEY, title VARCHAR(255))
-        ''')
-
     def receive(self, task):
         kind, rows = task
-        if kind == 'category':
-            self.write_category_rows(rows)
-        else:
-            self.write_article_rows(rows)
+        assert kind == 'article'
+        self.write_article_rows(rows)
 
     def write_article_rows(self, rows):
         if not rows:
@@ -128,23 +109,8 @@ class DatabaseWriter(workerpool.Receiver):
                 INSERT OR IGNORE INTO snippets VALUES(?, ?, ?, ?)''',
                 rows['snippets'])
 
-    def write_category_rows(self, rows):
-        with self.wpdb:
-            self.wpcursor.executemany('''
-                INSERT INTO categories VALUES(%s, %s)''', rows)
-
     def done(self):
         self.chdb.close()
-        self.wpdb.close()
-
-def handle_category(wp, element):
-    id = d(element.find('id').text)
-    if element.find('redirect') is not None:
-        return
-
-    title = d(element.find('title').text)
-    wp.post(('category', (id, title)))
-    return
 
 def handle_article(wp, element, pageids, stats):
     # elements are not pickelable, so we can't pass them to workers. extract
@@ -184,8 +150,6 @@ def parse_xml_dump(pages_articles_xml_bz2, pageids):
             ns = element.find('ns').text
             if ns == NAMESPACE_ARTICLE:
                 handle_article(wp, element, pageids, stats)
-            elif ns == NAMESPACE_CATEGORY:
-                handle_category(wp, element)
             count += 1
             if count % 10 == 0:
                 print >>sys.stderr, '\rprocessed about %d pages' % count,
