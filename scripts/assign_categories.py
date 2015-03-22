@@ -4,10 +4,11 @@
 Assign categories to the pages in the CitationHunt database.
 
 Usage:
-    assign_categories.py [--max-categories=<n>]
+    assign_categories.py [--max-categories=<n>] [--mysql-config=<FILE>]
 
 Options:
-    --max-categories=<n>  Maximum number of categories to use [default: inf].
+    --max-categories=<n>   Maximum number of categories to use [default: inf].
+    --mysql-config=<FILE>  MySQL config file [default: ./ch.my.cnf].
 '''
 
 from __future__ import unicode_literals
@@ -37,27 +38,28 @@ class CategoryName(unicode):
         unicode.__init__(self, ustr)
 
     @staticmethod
-    def from_wp_categories(ustr):
+    def from_wp_page(ustr):
         ustr = d(ustr)
-        assert ustr.startswith('Category:')
-        return CategoryName(ustr[len('Category:'):])
+        assert not ustr.startswith('Category:'), ustr
+        assert ' ' not in ustr, ustr
+        return CategoryName(ustr.replace('_', ' '))
 
-    def to_wp_categories(self):
-        return 'Category:' + self
+    def to_wp_category(self):
+        return self.replace(' ', '_')
 
     @staticmethod
     def from_wp_categorylinks(ustr):
         ustr = d(ustr)
-        assert not ustr.startswith('Category:')
+        assert not ustr.startswith('Category:'), ustr
         return CategoryName(ustr.replace('_', ' '))
 
 def category_ids_to_names(wpcursor, category_ids):
     category_names = set()
     for pageid in category_ids:
-        wpcursor.execute('''SELECT title FROM categories WHERE page_id = %s''',
+        wpcursor.execute('''SELECT page_title FROM page WHERE page_id = %s''',
             (pageid,))
         category_names.update(
-            CategoryName.from_wp_categories(row[0])
+            CategoryName.from_wp_page(row[0])
             for row in wpcursor)
     return category_names
 
@@ -138,10 +140,18 @@ def update_citationhunt_db(chdb, wpcursor, categories):
     #       DELETE FROM categories WHERE id = "unassigned"
     #   ''')
 
-def assign_categories(max_categories):
-    wpdb = pymysql.Connect(
-        user = 'root', database = 'wikipedia', charset = 'utf8')
-    wpcursor = wpdb.cursor()
+def assign_categories(max_categories, mysql_default_cnf):
+    try:
+        wpdb = pymysql.Connect(charset = 'utf8',
+            read_default_file = mysql_default_cnf)
+        wpcursor = wpdb.cursor()
+        assert wpcursor.execute('SELECT * FROM page LIMIT 1;') == 1
+        assert wpcursor.execute('SELECT * FROM categorylinks LIMIT 1;') == 1
+    except pymysql.err.Error as e:
+        print >>sys.stderr, 'Failed to connect to MySQL database: ' + e.args[1]
+        print >>sys.stderr, 'You may want to check your MySQL config file',
+        print >>sys.stderr, '(currently using %s)' % mysql_default_cnf
+        return 1
 
     chdb = chdb_.init_db()
     # chdb.execute('PRAGMA foreign_keys = ON')
@@ -152,6 +162,8 @@ def assign_categories(max_categories):
 
     unsourced_pageids = load_unsourced_pageids(chdb)
     hidden_categories = load_hidden_categories(wpcursor)
+    print >>sys.stderr, 'loaded %d hidden categories (%s...)' % \
+        (len(hidden_categories), next(iter(hidden_categories)))
 
     categories_to_ids = collections.defaultdict(set)
     page_ids_with_no_categories = 0
@@ -182,8 +194,11 @@ def assign_categories(max_categories):
 
     wpdb.close()
     chdb.close()
+    return 0
 
 if __name__ == '__main__':
     args = docopt.docopt(__doc__)
     max_categories = float(args['--max-categories'])
-    assign_categories(max_categories)
+    mysql_default_cnf = args['--mysql-config']
+    ret = assign_categories(max_categories, mysql_default_cnf)
+    sys.exit(ret)
