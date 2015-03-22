@@ -13,7 +13,7 @@ linking category pageids to titles. This is a subset of the `pages` table in the
 Wikipedia dump.
 
 Usage:
-    parse_pages_articles.py <pages-articles-xml> <pageid-file>
+    parse_pages_articles.py <pages-articles-xml.bz2> <pageid-file>
 '''
 
 from __future__ import unicode_literals
@@ -34,6 +34,7 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
+import bz2file
 import pickle
 import sqlite3
 import pymysql
@@ -169,14 +170,14 @@ def handle_article(wp, element, pageids, stats):
     wp.post(('article', (id, title, text)))
     return
 
-def parse_xml_dump(pages_articles_xml, pageids):
+def parse_xml_dump(pages_articles_xml_bz2, pageids):
     count = 0
     stats = {'redirect': [], 'empty': [], 'pageids': None}
 
     parser = RowParser()
     writer = DatabaseWriter()
     wp = workerpool.WorkerPool(parser, writer)
-    iterparser = ET.iterparse(pages_articles_xml)
+    iterparser = ET.iterparse(bz2file.BZ2File(pages_articles_xml_bz2))
     for _, element in iterparser:
         element.tag = element.tag[element.tag.rfind('}')+1:]
         if element.tag == 'page':
@@ -202,7 +203,7 @@ def parse_xml_dump(pages_articles_xml, pageids):
 
 if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
-    xml_dump_filename = arguments['<pages-articles-xml>']
+    xml_dump_filename = arguments['<pages-articles-xml.bz2>']
     pageids_file = arguments['<pageid-file>']
     with open(pageids_file) as pf:
         pageids = set(itertools.imap(str.strip, pf))
