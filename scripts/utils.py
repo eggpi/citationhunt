@@ -1,3 +1,4 @@
+import sys
 import hashlib
 
 def e(s):
@@ -12,3 +13,23 @@ def d(s):
 
 def mkid(s):
     return hashlib.sha1(e(s)).hexdigest()[:2*4]
+
+class Logger(object):
+    def __init__(self):
+        self._mode = 'INFO'
+
+    def progress(self, message):
+        if not sys.stderr.isatty():
+            return
+
+        if self._mode == 'PROGRESS':
+            print >>sys.stderr, '\r',
+        print >>sys.stderr, message,
+        self._mode = 'PROGRESS'
+
+    def info(self, message):
+        if self._mode == 'PROGRESS':
+            print >>sys.stderr
+
+        print >>sys.stderr, message
+        self._mode = 'INFO'

@@ -43,6 +43,8 @@ NAMESPACE_ARTICLE = '0'
 
 CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
 
+log = Logger()
+
 def section_name_to_anchor(section):
     # See Sanitizer::escapeId
     # https://doc.wikimedia.org/mediawiki-core/master/php/html/classSanitizer.html#ae091dfff62f13c9c1e0d2e503b0cab49
@@ -152,16 +154,15 @@ def parse_xml_dump(pages_articles_xml_bz2, pageids):
                 handle_article(wp, element, pageids, stats)
             count += 1
             if count % 10 == 0:
-                print >>sys.stderr, '\rprocessed about %d pages' % count,
+                log.progress('processed about %d pages' % count)
             element.clear()
     wp.done()
     stats['pageids'] = pageids
-    print >>sys.stderr
 
     if len(pageids) > 0:
-        print >>sys.stderr, '%d pageids were not found' % len(stats['pageids'])
-    print >>sys.stderr, '%d pages were redirects' % len(stats['redirect'])
-    print >>sys.stderr, '%d pages were empty' % len(stats['empty'])
+        log.info('%d pageids were not found' % len(stats['pageids']))
+    log.info('%d pages were redirects' % len(stats['redirect']))
+    log.info('%d pages were empty' % len(stats['empty']))
     with open('stats.pkl', 'wb') as statsf:
         pickle.dump(stats, statsf)
 

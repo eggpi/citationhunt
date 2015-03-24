@@ -25,6 +25,8 @@ import re
 import pymysql
 import collections
 
+log = Logger()
+
 class CategoryName(unicode):
     '''
     The canonical format for categories, which is the one we'll use
@@ -112,10 +114,9 @@ def choose_categories(categories_to_ids, unsourced_pageids, max_categories):
         unsourced_pageids -= covered_pageids
 
         rem = len(unsourced_pageids)
-        print >>sys.stderr, \
-            '\r%d uncategorized pages (%d %%)' % (rem, (rem / total) * 100),
-    print >>sys.stderr
-    print >>sys.stderr, 'finished with %d categories' % len(categories)
+        log.progress('%d uncategorized pages (%d %%)' % \
+            (rem, (rem / total) * 100))
+    log.info('finished with %d categories' % len(categories))
     return categories
 
 def update_citationhunt_db(chdb, wpcursor, categories):
@@ -131,14 +132,15 @@ def update_citationhunt_db(chdb, wpcursor, categories):
                     UPDATE articles SET category_id = ? WHERE page_id = ?
                 ''', (category_page_id, page_id))
 
-        print >>sys.stderr, '\rsaved %d categories' % (n + 1),
-    print >>sys.stderr
+        log.progress('saved %d categories' % (n + 1))
 
-    # print >>sys.stderr, 'deleting unassigned pages and snippets'
+    # log.info('deleting unassigned pages and snippets')
     # with chdb:
     #    chdb.execute('''
     #       DELETE FROM categories WHERE id = "unassigned"
     #   ''')
+
+    log.info('all done.')
 
 def assign_categories(max_categories, mysql_default_cnf):
     try:
@@ -148,22 +150,22 @@ def assign_categories(max_categories, mysql_default_cnf):
         assert wpcursor.execute('SELECT * FROM page LIMIT 1;') == 1
         assert wpcursor.execute('SELECT * FROM categorylinks LIMIT 1;') == 1
     except pymysql.err.Error as e:
-        print >>sys.stderr, 'Failed to connect to MySQL database: ' + e.args[1]
-        print >>sys.stderr, 'You may want to check your MySQL config file',
-        print >>sys.stderr, '(currently using %s)' % mysql_default_cnf
+        log.info('Failed to connect to MySQL database: ' + e.args[1])
+        log.info('You may want to check your MySQL config file' + \
+                 ' (currently using %s)' % mysql_default_cnf)
         return 1
 
     chdb = chdb_.init_db()
     # chdb.execute('PRAGMA foreign_keys = ON')
-    print >>sys.stderr, 'resetting articles table...'
+    log.info('resetting articles table...')
     chdb.execute('UPDATE articles SET category_id = "unassigned"')
-    print >>sys.stderr, 'resetting categories table...'
+    log.info('resetting categories table...')
     chdb.execute('DELETE FROM categories WHERE id != "unassigned"')
 
     unsourced_pageids = load_unsourced_pageids(chdb)
     hidden_categories = load_hidden_categories(wpcursor)
-    print >>sys.stderr, 'loaded %d hidden categories (%s...)' % \
-        (len(hidden_categories), next(iter(hidden_categories)))
+    log.info('loaded %d hidden categories (%s...)' % \
+        (len(hidden_categories), next(iter(hidden_categories))))
 
     categories_to_ids = collections.defaultdict(set)
     page_ids_with_no_categories = 0
@@ -176,15 +178,12 @@ def assign_categories(max_categories, mysql_default_cnf):
         if not page_has_at_least_one_category:
             unsourced_pageids.remove(pageid)
             page_ids_with_no_categories += 1
-        print >>sys.stderr, '\rloaded categories for %d pageids' % (n + 1),
-    print >>sys.stderr
+        log.progress('loaded categories for %d pageids' % (n + 1))
 
-    print >>sys.stderr, \
-        '%d pages lack usable categories!' % page_ids_with_no_categories
-
-    print >>sys.stderr, 'found %d usable categories (%s, %s...)' % \
+    log.info('%d pages lack usable categories!' % page_ids_with_no_categories)
+    log.info('found %d usable categories (%s, %s...)' % \
         (len(categories_to_ids), categories_to_ids.keys()[0],
-        categories_to_ids.keys()[1])
+        categories_to_ids.keys()[1]))
 
     categories = choose_categories(categories_to_ids, unsourced_pageids,
         max_categories)
