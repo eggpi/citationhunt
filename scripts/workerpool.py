@@ -1,5 +1,8 @@
+import os
 import abc
+import signal
 import itertools
+import Queue # Queue.Empty
 import multiprocessing
 
 class WorkerPool(object):
@@ -25,6 +28,12 @@ class WorkerPool(object):
     value is passed to the receiver's receive() method. This model makes
     WorkerPool suitable for large datasets that are generated lazily or via
     event-driven libraries.
+
+    A WorkerPool can also be canceled with the cancel() method. This will cause
+    SIGTERM to be sent to all child processes, which will intercept it, call
+    their respective Worker/Receiver's done() method, and exit gracefully.
+    Behavior is undefined if any other methods are called on a WorkerPool after
+    cancel(), or if cancel() is invoked more than once.
 
     For example, here's how WorkerPool can be used to process a big XML file
     such that the parent process parses it, the workers process the data it
@@ -68,6 +77,7 @@ class WorkerPool(object):
     def __init__(self, worker, receiver):
         self._procs = []
         self._queues = []
+        self._canceled = False
 
         # receiver process and queue
         self._queues.append(multiprocessing.Queue())
@@ -101,24 +111,51 @@ class WorkerPool(object):
         self._queues[0].put(('DONE', None))
         self._procs[0].join()
 
+    def cancel(self):
+        for p in self._procs:
+            os.kill(p.pid, signal.SIGTERM)
+        for p in self._procs:
+            p.join()
+
+    def _sigterm_handler(self, sig, stack):
+        self._canceled = True
+
     def _worker_loop(self, worker, q):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
+
         worker.setup()
         while True:
-            msg, task = q.get()
+            try:
+                msg, task = q.get(timeout = 1)
+            except Queue.Empty:
+                if self._canceled:
+                    break
+                continue
             if msg == 'DONE':
-                worker.done()
-                return
-            result = worker.work(task)
-            self._queues[0].put(('TASK', result))
+                break
+            if not self._canceled:
+                result = worker.work(task)
+                self._queues[0].put(('TASK', result))
+        worker.done()
+        return
 
     def _receiver_loop(self, receiver):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
+
         receiver.setup()
         while True:
-            msg, result = self._queues[0].get()
+            try:
+                msg, result = self._queues[0].get(timeout = 1)
+            except Queue.Empty:
+                if self._canceled:
+                    break
+                continue
             if msg == 'DONE':
-                receiver.done()
-                return
-            receiver.receive(result)
+                break
+            if not self._canceled:
+                receiver.receive(result)
+        receiver.done()
+        return
 
 class Worker(object):
     __metaclass__ = abc.ABCMeta

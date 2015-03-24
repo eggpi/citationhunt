@@ -30,6 +30,7 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
+import signal
 import bz2file
 import pickle
 import sqlite3
@@ -150,6 +151,10 @@ def parse_xml_dump(pages_articles_xml_bz2, pageids):
             if count % 10 == 0:
                 log.progress('processed about %d pages' % count)
             element.clear()
+        if canceled:
+            log.info('canceled, killing process pool...')
+            wp.cancel()
+            return
     wp.done()
     stats['pageids'] = pageids
 
@@ -161,9 +166,16 @@ def parse_xml_dump(pages_articles_xml_bz2, pageids):
         pickle.dump(stats, statsf)
 
 if __name__ == '__main__':
+    canceled = False
+    def set_canceled_flag(sig, stack):
+        global canceled
+        canceled = True
+    signal.signal(signal.SIGINT, set_canceled_flag)
+
     arguments = docopt.docopt(__doc__)
     xml_dump_filename = arguments['<pages-articles-xml.bz2>']
     pageids_file = arguments['<pageid-file>']
     with open(pageids_file) as pf:
         pageids = set(itertools.imap(str.strip, pf))
     parse_xml_dump(xml_dump_filename, pageids)
+    log.info('all done.')
