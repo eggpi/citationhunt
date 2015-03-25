@@ -27,6 +27,7 @@ div.awesomplete > ul {
 div.awesomplete > ul > li {
     width: 420px;
     padding: 2px;
+    cursor: default;
 }
 
 div.awesomplete > input {
