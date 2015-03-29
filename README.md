@@ -42,8 +42,6 @@ errors when running locally).
 
 #### On Tools Labs
 
-This section is a work in progress.
-
 CitationHunt can be installed on Wikimedia's Tools Labs using its [specialized
 support for Python uwsgi
 applications](https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Web#Python_.28uwsgi.29).
@@ -70,3 +68,8 @@ and start the webserver:
 ```
 $ webserver2 uwsgi-python start
 ```
+
+You will also want to schedule a cron job to automatically update the database
+as new dumps are released. See
+[scripts/README.md](https://github.com/guilherme-pg/citationhunt/blob/master/scripts/README.md)
+for more information.
