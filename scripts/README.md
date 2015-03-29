@@ -41,7 +41,7 @@ This will create a new database named 'wikipedia' and populate it with tables
 named 'citationlinks' and 'page'. This may take a few hours. You can use any
 database name you want, but make sure it's specified in a MySQL config file
 that can be picked up by these scripts. The easiest way to do this is to create
-a `ch.my.cnf` in this directory like so:
+a `ch.my.cnf` file in this directory like so:
 
 ```
 [client]
