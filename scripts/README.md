@@ -13,7 +13,7 @@ from the latest Wikipedia dump on Tools Labs. It is run weekly as a cron job.
 
 It will automatically find and use your MySQL credentials. Note, however, that
 *your user and password need to be unquoted* (that is, must not be enclosed in
-'') in your `replica.my.cnf`, which may not be the case.
+'') in your `replica.my.cnf`, and you may need to edit it to remove the quotes.
 
 Please refer to the following section for a more detailed explanation of how the
 database is generated.
@@ -61,9 +61,9 @@ $ ./print_unsourced_pageids_from_wikipedia > unsourced
 This list, along with the *compressed* pages+articles dump, should be fed into
 `parse_pages_articles.py`. This script will parse all pages in the list looking
 for snippets lacking citations. Page and snippet information will be written to
-a citationhunt.sqlite3 database file, whose schema you can peek into by looking
-at `chdb.py` in the directory above. This should take about an hour on a
-multi-core machine.
+a `citationhunt.sqlite3` database file, whose schema you can peek into by
+looking at `chdb.py` in the directory above. This should take a couple of hours
+on a multi-core machine.
 
 ```
 $ ./parse_pages_articles.py path/to/pages-articles.xml.bz2 unsourced
