@@ -32,6 +32,17 @@ function initCategoryFilter() {
     this.classList.remove("open");
   })
 
+  cin.addEventListener("awesomplete-highlight", function() {
+    if (!awc.selected) {
+      return;
+    }
+
+    var listRect = awc.ul.getBoundingClientRect(),
+        elemRect = awc.ul.children[awc.index].getBoundingClientRect(),
+        offset = elemRect.top - listRect.top;
+    awc.ul.scrollTop += offset;
+  });
+
   function setHiddenCategoryAndNextId(formElem) {
     var catname = cin.value.toLocaleLowerCase();
     var currentCategoryId = chi.value;

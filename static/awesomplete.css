@@ -14,7 +14,7 @@ div.awesomplete {
 div.awesomplete > ul {
     position: absolute;
     width: 420px;
-    padding: 2px;
+    padding: 0 2px;
     max-height: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
