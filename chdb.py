@@ -10,16 +10,16 @@ def reset_db():
 
     with db:
         db.execute('''
-            DROP TABLE IF EXISTS categories
+            DROP TABLE categories
         ''')
         db.execute('''
-            DROP TABLE IF EXISTS articles
+            DROP TABLE articles
         ''')
         db.execute('''
-            DROP TABLE IF EXISTS snippets
+            DROP TABLE snippets
         ''')
         db.execute('''
-            DROP TABLE IF EXISTS articles_categories
+            DROP TABLE articles_categories
         ''')
         db.execute('''
             CREATE TABLE categories (id TEXT PRIMARY KEY, title TEXT)
