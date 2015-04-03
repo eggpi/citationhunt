@@ -118,3 +118,10 @@ button:focus {
     max-width: 35%;
     margin-left: 5px;
 }
+
+#staging-warning {
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: #F0F00F;
+}
