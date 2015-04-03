@@ -79,7 +79,7 @@ class RowParser(workerpool.Worker):
                 snippets_rows.append(row)
 
         if snippets_rows:
-            article_row = (pageid, url, title, 'unassigned')
+            article_row = (pageid, url, title)
             return (kind, {'article': article_row, 'snippets': snippets_rows})
         return (kind, {})
 
@@ -106,7 +106,7 @@ class DatabaseWriter(workerpool.Receiver):
 
         with self.chdb:
             self.chdb.execute('''
-                INSERT INTO articles VALUES(?, ?, ?, ?)''', rows['article'])
+                INSERT INTO articles VALUES(?, ?, ?)''', rows['article'])
             self.chdb.executemany('''
                 INSERT OR IGNORE INTO snippets VALUES(?, ?, ?, ?)''',
                 rows['snippets'])

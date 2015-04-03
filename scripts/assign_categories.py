@@ -129,17 +129,10 @@ def update_citationhunt_db(chdb, wpcursor, categories):
 
             for page_id in pageids:
                 chdb.execute('''
-                    UPDATE articles SET category_id = ? WHERE page_id = ?
-                ''', (category_page_id, page_id))
+                    INSERT INTO articles_categories VALUES (?, ?)
+                ''', (page_id, category_page_id))
 
         log.progress('saved %d categories' % (n + 1))
-
-    # log.info('deleting unassigned pages and snippets')
-    # with chdb:
-    #    chdb.execute('''
-    #       DELETE FROM categories WHERE id = "unassigned"
-    #   ''')
-
     log.info('all done.')
 
 def assign_categories(max_categories, mysql_default_cnf):
@@ -157,10 +150,10 @@ def assign_categories(max_categories, mysql_default_cnf):
 
     chdb = chdb_.init_db()
     # chdb.execute('PRAGMA foreign_keys = ON')
-    log.info('resetting articles table...')
-    chdb.execute('UPDATE articles SET category_id = "unassigned"')
+    log.info('resetting articles_categories table...')
+    chdb.execute('DELETE FROM articles_categories')
     log.info('resetting categories table...')
-    chdb.execute('DELETE FROM categories WHERE id != "unassigned"')
+    chdb.execute('DELETE FROM categories')
 
     unsourced_pageids = load_unsourced_pageids(chdb)
     hidden_categories = load_hidden_categories(wpcursor)
