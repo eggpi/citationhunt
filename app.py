@@ -105,7 +105,8 @@ def citation_hunt():
         snippet, section, aurl, atitle = sinfo
         return flask.render_template('index.html',
             snippet = snippet, section = section, article_url = aurl,
-            article_title = atitle, current_category = cat)
+            article_title = atitle, current_category = cat,
+            staging = 'DYNO' in os.environ)
 
     id = select_random_id(cat)
     return flask.redirect(
