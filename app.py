@@ -62,9 +62,9 @@ def select_random_id(cat = CATEGORY_ALL):
     if cat is not CATEGORY_ALL:
         with log_time('select with category'):
             cursor.execute('''
-                SELECT snippets.id FROM snippets, articles
-                WHERE snippets.article_id = articles.page_id
-                AND articles.category_id = ? ORDER BY RANDOM()
+                SELECT snippets.id FROM snippets, articles_categories
+                WHERE snippets.article_id = articles_categories.article_id AND
+                articles_categories.category_id = ? ORDER BY RANDOM()
                 LIMIT 1;''', (cat.id,))
             ret = cursor.fetchone()
 

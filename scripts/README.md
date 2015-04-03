@@ -69,14 +69,12 @@ on a multi-core machine.
 $ ./parse_pages_articles.py path/to/pages-articles.xml.bz2 unsourced
 ```
 
-It will not assign categories to pages; instead, at the end of this step, each
-page in the database will reference a dummy "unassigned" category. Finally, a
-pickled dictionary of statistics will be dumped to a file named stats.pkl at
-the end of the execution. It can be safely removed.
+At the end of this step, a pickled dictionary of statistics will be dumped to a
+file named stats.pkl at the end of the execution. It can be safely removed.
 
 The final step is to pick which categories will get to be displayed in
-CitationHunt, thus fixing the "unassigned" entries in the database. This can be
-done with the `assign_categories.py` script:
+CitationHunt, thus filling up the `articles_categories` table in the database.
+This is done with the `assign_categories.py` script:
 
 ```
 $ ./assign_categories.py --max-categories=5500
@@ -93,8 +91,6 @@ more pages versus using more (potentially bad) categories.
 
 At the end of this step, the CitationHunt database will be ready to go -- you
 can move it to the directory above and `app.py` will pick it up. The pages that
-went unclassified will be kept in the database, referring to the dummy
-category, and you can later re-run `assign_categories.py` on the same database
-with a larger `--max-categories` to categorize them. Otherwise, if you'd like
-to drop them to shrink the database, just remove the "unassigned" category and
-that deletion will cascade to all relevant pages and snippets.
+went unclassified will be kept in the database, and you can later re-run
+`assign_categories.py` on the same database with a larger `--max-categories` to
+categorize them.
