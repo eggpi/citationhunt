@@ -123,3 +123,15 @@ button:focus {
     border-radius: 4px;
     background-color: #F0F00F;
 }
+
+/* HACK: ideally we would like to just include a word-joiner character
+ * (U+2060, &#8288;) in the markup before [citation-needed] tags, but that
+ * character is actually visible in Chrome due to a bug. The following
+ * workaround seems to work fine on FF, Chrome and Safari.
+ * Chrome issue: https://code.google.com/p/chromium/issues/detail?id=225862
+ */
+.citation-needed:before {
+    content: "⁠";
+    opacity: 0;
+    font-size: 1px;
+}
