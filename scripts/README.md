@@ -2,9 +2,7 @@
 
 The scripts in this directory are used to generate the CitationHunt database.
 
-### Generating the database
-
-#### On Tools Labs
+### Generating the database on Tools Labs
 
 The `update_db_tools_labs.sh` script automates the generation of the database
 from the latest Wikipedia dump on Tools Labs. It is run weekly as a cron job.
@@ -18,7 +16,7 @@ It will automatically find and use your MySQL credentials. Note, however, that
 Please refer to the following section for a more detailed explanation of how the
 database is generated.
 
-#### On a local machine
+### Generating the database locally
 
 Prerequisites:
 
@@ -33,15 +31,15 @@ can be done from the MySQL console:
 
 ```
 $ mysql -u root wikipedia
-mysql> source path/to/citationlinks.sql
+mysql> source path/to/categorylinks.sql
 mysql> source path/to/page.sql
 ```
 
 This will create a new database named 'wikipedia' and populate it with tables
-named 'citationlinks' and 'page'. This may take a few hours. You can use any
+named 'categorylinks' and 'page'. This will take a few hours. You can use any
 database name you want, but make sure it's specified in a MySQL config file
-that can be picked up by these scripts. The easiest way to do this is to create
-a `ch.my.cnf` file in this directory like so:
+that can be found by these scripts. The easiest way to do this is to create a
+`ch.my.cnf` file in this directory like so:
 
 ```
 [client]
@@ -83,11 +81,13 @@ $ ./assign_categories.py --max-categories=5500
 It's usually not a good idea to assign a category to every single page in the
 CitationHunt database, because that causes some awfully specific or generic
 categories to be picked (plus, it takes over 30 thousand categories to do
-that). Instead, CitationHunt used a fixed maximum number of categories,
-controlled by the `--max-categories` parameter, and the uncategorized snippets
-are only accessible when no category is selected on the website. You should
-play around with that number until you find a good compromise between including
-more pages versus using more (potentially bad) categories.
+that).
+
+Instead, CitationHunt used a fixed maximum number of categories, controlled by
+the `--max-categories` parameter, and the uncategorized snippets are only
+accessible when no category is selected on the website. You should play around
+with that number until you find a good compromise between categorizing more
+articles and using more (potentially bad) categories.
 
 At the end of this step, the CitationHunt database will be ready to go -- you
 can move it to the directory above and `app.py` will pick it up. The pages that

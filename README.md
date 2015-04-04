@@ -63,7 +63,7 @@ $ ln -s ../../citationhunt www/python/src
 $ pip install -r citationhunt/requirements.txt
 ```
 
-and start the webserver:
+and start the webservice:
 
 ```
 $ webservice2 uwsgi-python start
