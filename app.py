@@ -1,4 +1,5 @@
 import chdb
+from scripts.snippet_parser import MARKER as CITATION_NEEDED_MARKER
 
 import flask
 import flask_sslify
@@ -8,6 +9,11 @@ import os
 import contextlib
 import collections
 from datetime import datetime
+
+# the markup we're going to use for [citation-needed] tags, pre-marked as safe
+# for jinja
+CITATION_NEEDED_HTML = flask.Markup(
+    '<span class="citation-needed">[citation-needed]</span>')
 
 @contextlib.contextmanager
 def log_time(operation):
@@ -106,6 +112,7 @@ def citation_hunt():
         return flask.render_template('index.html',
             snippet = snippet, section = section, article_url = aurl,
             article_title = atitle, current_category = cat,
+            cn_marker = CITATION_NEEDED_MARKER, cn_html = CITATION_NEEDED_HTML,
             staging = 'DYNO' in os.environ)
 
     id = select_random_id(cat)

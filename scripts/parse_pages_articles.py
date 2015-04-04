@@ -41,8 +41,6 @@ WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 
 NAMESPACE_ARTICLE = '0'
 
-CITATION_NEEDED_HTML = '<span class="citation-needed">[citation needed]</span>'
-
 log = Logger()
 
 def section_name_to_anchor(section):
@@ -53,9 +51,6 @@ def section_name_to_anchor(section):
     section = section.replace('%3A', ':')
     section = section.replace('%', '.')
     return section
-
-def insert_citation_needed_html(snippet):
-    return snippet.replace(snippet_parser.MARKER, CITATION_NEEDED_HTML)
 
 class RowParser(workerpool.Worker):
     def setup(self):
@@ -73,7 +68,6 @@ class RowParser(workerpool.Worker):
         for sec, snips in snippets:
             sec = section_name_to_anchor(sec)
             for sni in snips:
-                sni = insert_citation_needed_html(sni)
                 id = mkid(title + sni)
                 row = (id, sni, sec, pageid)
                 snippets_rows.append(row)
