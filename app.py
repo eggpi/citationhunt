@@ -11,7 +11,7 @@ import collections
 from datetime import datetime
 
 # the markup we're going to use for [citation-needed] tags, pre-marked as safe
-# for jinja. &#8288; is the word-joiner character, preventing line breaks.
+# for jinja.
 CITATION_NEEDED_HTML = flask.Markup(
     '<sup class="citation-needed">[citation-needed]</sup>')
 
