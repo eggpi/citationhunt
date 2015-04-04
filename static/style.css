@@ -32,7 +32,7 @@ p {
     margin: 30px auto 40px auto;
     line-height: 20px;
     text-align: justify;
-    width: 85%;
+    max-width: 80%;
 }
 
 #quotation {
