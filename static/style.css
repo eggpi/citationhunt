@@ -65,6 +65,10 @@ button:focus {
     font-size: small;
     color: #0645AD;
     white-space: nowrap;
+    /* Fix <sup> messing up the line-height in Chrome and Safari.
+     * Source: https://stackoverflow.com/q/1530685/
+     */
+    line-height: 100%;
 }
 
 #buttons {
