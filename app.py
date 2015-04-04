@@ -139,6 +139,9 @@ def add_cache_header(response):
     if response.status_code == 200 and response.cache_control.max_age is None:
         response.cache_control.public = True
         response.cache_control.max_age = 3 * 24 * 60 * 60
+    elif response.status_code == 302:
+        response.cache_control.no_cache = True
+        response.cache_control.no_store = True
     return response
 
 @app.teardown_appcontext
