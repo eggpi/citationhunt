@@ -13,7 +13,7 @@ from datetime import datetime
 # the markup we're going to use for [citation-needed] tags, pre-marked as safe
 # for jinja. &#8288; is the word-joiner character, preventing line breaks.
 CITATION_NEEDED_HTML = flask.Markup(
-    '&#8288;<sup class="citation-needed">[citation-needed]</sup>')
+    '<sup class="citation-needed">[citation-needed]</sup>')
 
 @contextlib.contextmanager
 def log_time(operation):
