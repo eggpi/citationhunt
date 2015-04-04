@@ -66,7 +66,7 @@ $ pip install -r citationhunt/requirements.txt
 and start the webserver:
 
 ```
-$ webserver2 uwsgi-python start
+$ webservice2 uwsgi-python start
 ```
 
 You will also want to schedule a cron job to automatically update the database
