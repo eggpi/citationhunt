@@ -7,6 +7,7 @@ from utils import *
 import wikitools
 import mwparserfromhell
 
+import re
 import sys
 import urlparse
 import hashlib
@@ -48,6 +49,7 @@ def is_citation_needed(t):
 
 def extract_snippets(wikitext, minlen = 140, maxlen = 420, is_lead = False):
     snippets = [] # [section, [snippets]]
+    strip_regexp = re.compile('\s+' + MARKER) # strip spaces before MARKER
 
     sections = mwparserfromhell.parse(wikitext).get_sections(
         include_lead = True, include_headings = True, flat = True)
@@ -74,7 +76,7 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420, is_lead = False):
                     # template was
                     wikicode.insert_before(t, MARKER)
 
-            snippet = wikicode.strip_code()
+            snippet = re.sub(strip_regexp, MARKER, wikicode.strip_code())
             if MARKER in snippet: # MARKER may have been inside wiki markup
                 secsnippets.append(snippet)
     return snippets
