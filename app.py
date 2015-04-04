@@ -50,8 +50,6 @@ def get_category_by_id(catid, default = None):
     return default
 
 def select_snippet_by_id(id):
-    # The query below may match snippets with unassigned categories. That's
-    # fine, we don't display the current category in the UI anyway.
     cursor = get_db().cursor()
     with log_time('select snippet by id'):
         cursor.execute('''
