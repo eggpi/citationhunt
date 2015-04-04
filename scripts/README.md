@@ -70,7 +70,7 @@ $ ./parse_pages_articles.py path/to/pages-articles.xml.bz2 unsourced
 ```
 
 At the end of this step, a pickled dictionary of statistics will be dumped to a
-file named stats.pkl at the end of the execution. It can be safely removed.
+file named `stats.pkl`. It can be safely removed.
 
 The final step is to pick which categories will get to be displayed in
 CitationHunt, thus filling up the `articles_categories` table in the database.
