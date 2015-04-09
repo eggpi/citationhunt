@@ -1,6 +1,7 @@
 function initCategoryFilter() {
   var cin = document.getElementById("category-input");
   var chi = document.getElementById("hidden-category-input");
+  var ihi = document.getElementById("hidden-id-input");
   var options = document.getElementsByTagName("option");
 
   function item(originalItem, text, input) {
@@ -31,8 +32,9 @@ function initCategoryFilter() {
     this.classList.remove("open");
   })
 
-  function setHiddenCategory() {
+  function setHiddenCategoryAndNextId(formElem) {
     var catname = cin.value.toLocaleLowerCase();
+    var currentCategoryId = chi.value;
 
     chi.value = "all";
     for (var i = 0; i < options.length; i++) {
@@ -40,15 +42,19 @@ function initCategoryFilter() {
         chi.value = options[i].value;
       }
     }
+
+    if (chi.value !== currentCategoryId) {
+      formElem.removeChild(ihi);
+    }
   }
 
   cin.addEventListener("awesomplete-selectcomplete", function() {
-    setHiddenCategory();
+    setHiddenCategoryAndNextId(this.form);
     this.form.submit();
   });
 
   cin.form.addEventListener("submit", function() {
-    setHiddenCategory();
+    setHiddenCategoryAndNextId(this.form);
     return true;
   });
 

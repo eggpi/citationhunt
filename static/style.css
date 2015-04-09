@@ -99,10 +99,6 @@ button:focus {
     color: crimson;
 }
 
-#hidden-category-input {
-    display: none;
-}
-
 #github-link {
     position: absolute;
     font-size: small;

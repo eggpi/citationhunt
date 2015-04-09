@@ -83,6 +83,15 @@ def select_random_id(cat = CATEGORY_ALL):
     assert ret and len(ret) == 1
     return ret[0]
 
+#FIXME should just pick the next snippet when issue #4 lands
+def select_next_id(curr_id, cat = CATEGORY_ALL):
+    next_id = curr_id
+    for i in range(5):
+        next_id = select_random_id(cat)
+        if next_id != curr_id:
+            break
+    return next_id
+
 app = flask.Flask(__name__)
 Compress(app)
 
@@ -112,6 +121,7 @@ def citation_hunt():
         return flask.render_template('index.html',
             snippet = snippet, section = section, article_url = aurl,
             article_title = atitle, current_category = cat,
+            next_snippet_id = select_next_id(id, cat),
             cn_marker = CITATION_NEEDED_MARKER, cn_html = CITATION_NEEDED_HTML,
             staging = 'DYNO' in os.environ)
 
