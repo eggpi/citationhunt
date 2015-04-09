@@ -1,10 +1,17 @@
 import app
+import chdb
 
 import unittest
 
 class CitationHuntTest(unittest.TestCase):
     def setUp(self):
         self.app = app.app.test_client()
+        with chdb.init_db() as db:
+            ret = db.execute('SELECT id FROM snippets LIMIT 1;').fetchone()
+            self.sid = ret[0]
+
+            ret = db.execute('SELECT id FROM categories LIMIT 1;').fetchone()
+            self.cat = ret[0]
 
     def get_url_args(self, url):
         return dict(kv.split('=') for kv in url[url.rfind('?')+1:].split('&'))
@@ -18,14 +25,11 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(args['cat'], app.CATEGORY_ALL.id)
 
     def test_id_no_category(self):
-        sid = '9160e2db'
-        response = self.app.get('/?id=' + sid)
+        response = self.app.get('/?id=' + self.sid)
         self.assertEquals(response.status_code, 200)
 
     def test_id_valid_category(self):
-        sid = '9160e2db'
-        cid = '6cbc1911' # may be inconsistent with id, we don't care
-        response = self.app.get('/?id=' + sid + '&cat=' + cid)
+        response = self.app.get('/?id=' + self.sid + '&cat=' + self.cat)
         self.assertEquals(response.status_code, 200)
 
     def test_no_id_invalid_category(self):
@@ -37,21 +41,19 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(args['cat'], app.CATEGORY_ALL.id)
 
     def test_no_id_valid_category(self):
-        catid = '6cbc1911'
-        response = self.app.get('/?cat=' + catid)
+        response = self.app.get('/?cat=' + self.cat)
         args = self.get_url_args(response.location)
 
         self.assertEquals(response.status_code, 302)
         self.assertTrue('id' in args)
-        self.assertEquals(args['cat'], catid)
+        self.assertEquals(args['cat'], self.cat)
 
     def test_id_invalid_category(self):
-        sid = '9160e2db'
-        response = self.app.get('/?id=' + sid + '&cat=invalid')
+        response = self.app.get('/?id=' + self.sid + '&cat=invalid')
         args = self.get_url_args(response.location)
 
         self.assertEquals(response.status_code, 302)
-        self.assertEquals(args['id'], sid)
+        self.assertEquals(args['id'], self.sid)
         self.assertEquals(args['cat'], app.CATEGORY_ALL.id)
 
     def test_cache_control(self):
