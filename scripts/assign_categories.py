@@ -119,18 +119,36 @@ def choose_categories(categories_to_ids, unsourced_pageids, max_categories):
     log.info('finished with %d categories' % len(categories))
     return categories
 
+def build_snippets_links_for_category(chdb, category_id):
+    cursor = chdb.cursor()
+    cursor.execute('''
+        SELECT snippets.id FROM snippets, articles_categories
+        WHERE snippets.article_id = articles_categories.article_id AND
+        articles_categories.category_id = ? ORDER BY RANDOM();''',
+        (category_id,))
+    snippets = [r[0] for r in cursor]
+
+    prev = snippets[0]
+    for s in snippets[1:] + [snippets[0]]:
+        chdb.execute('''
+            INSERT INTO snippets_links VALUES (?, ?, ?)
+        ''', (prev, s, category_id))
+        prev = s
+
 def update_citationhunt_db(chdb, wpcursor, categories):
     for n, (catname, pageids) in enumerate(categories):
-        category_page_id = category_name_to_id(catname)
+        category_id = category_name_to_id(catname)
         with chdb:
             chdb.execute('''
                 INSERT OR IGNORE INTO categories VALUES(?, ?)
-            ''', (category_page_id, catname))
+            ''', (category_id, catname))
 
+            prev = ''
             for page_id in pageids:
                 chdb.execute('''
                     INSERT INTO articles_categories VALUES (?, ?)
-                ''', (page_id, category_page_id))
+                ''', (page_id, category_id))
+            build_snippets_links_for_category(chdb, category_id)
 
         log.progress('saved %d categories' % (n + 1))
     log.info('all done.')
@@ -154,6 +172,8 @@ def assign_categories(max_categories, mysql_default_cnf):
     chdb.execute('DELETE FROM articles_categories')
     log.info('resetting categories table...')
     chdb.execute('DELETE FROM categories')
+    log.info('resetting snippets_links table...')
+    chdb.execute('DELETE FROM snippets_links')
 
     unsourced_pageids = load_unsourced_pageids(chdb)
     hidden_categories = load_hidden_categories(wpcursor)
