@@ -22,6 +22,9 @@ def reset_db():
             DROP TABLE IF EXISTS articles_categories
         ''')
         db.execute('''
+            DROP TABLE IF EXISTS snippets_links
+        ''')
+        db.execute('''
             CREATE TABLE categories (id TEXT PRIMARY KEY, title TEXT)
         ''')
         db.execute('''
@@ -42,6 +45,12 @@ def reset_db():
             CREATE TABLE snippets (id TEXT PRIMARY KEY, snippet TEXT,
             section TEXT, article_id TEXT, FOREIGN KEY(article_id)
             REFERENCES articles(page_id) ON DELETE CASCADE)
+        ''')
+        db.execute('''
+            CREATE TABLE snippets_links (prev TEXT, next TEXT, cat_id TEXT,
+            FOREIGN KEY(prev) REFERENCES snippets(id) ON DELETE CASCADE,
+            FOREIGN KEY(next) REFERENCES snippets(id) ON DELETE CASCADE,
+            FOREIGN KEY(cat_id) REFERENCES categories(id) ON DELETE CASCADE)
         ''')
 
     return db

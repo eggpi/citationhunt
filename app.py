@@ -83,13 +83,23 @@ def select_random_id(cat = CATEGORY_ALL):
     assert ret and len(ret) == 1
     return ret[0]
 
-#FIXME should just pick the next snippet when issue #4 lands
 def select_next_id(curr_id, cat = CATEGORY_ALL):
-    next_id = curr_id
-    for i in range(5):
-        next_id = select_random_id(cat)
-        if next_id != curr_id:
-            break
+    cursor = get_db().cursor()
+
+    if cat is not CATEGORY_ALL:
+        with log_time('select next id'):
+            cursor.execute('''
+                SELECT next FROM snippets_links WHERE prev = ?
+                AND cat_id = ?''', (curr_id, cat.id))
+            ret = cursor.fetchone()
+            assert ret and len(ret) == 1
+            next_id = ret[0]
+    else:
+        next_id = curr_id
+        for i in range(3): # super paranoid :)
+            next_id = select_random_id(cat)
+            if next_id != curr_id:
+                break
     return next_id
 
 app = flask.Flask(__name__)
