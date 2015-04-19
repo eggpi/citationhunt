@@ -54,7 +54,7 @@ def select_snippet_by_id(id):
     with log_time('select snippet by id'):
         cursor.execute('''
             SELECT snippets.snippet, snippets.section, articles.url,
-            articles.title FROM snippets, articles WHERE snippets.id = ? AND
+            articles.title FROM snippets, articles WHERE snippets.id = %s AND
             snippets.article_id = articles.page_id;''', (id,))
         ret = cursor.fetchone()
     return ret
@@ -68,14 +68,14 @@ def select_random_id(cat = CATEGORY_ALL):
             cursor.execute('''
                 SELECT snippets.id FROM snippets, articles_categories
                 WHERE snippets.article_id = articles_categories.article_id AND
-                articles_categories.category_id = ? ORDER BY RANDOM()
+                articles_categories.category_id = %s ORDER BY RAND()
                 LIMIT 1;''', (cat.id,))
             ret = cursor.fetchone()
 
     if ret is None:
         with log_time('select without category'):
             cursor.execute('''
-                SELECT id FROM snippets WHERE RANDOM() % 10000 = 0 LIMIT 1;''')
+                SELECT id FROM snippets WHERE RAND() < 1e-4 LIMIT 1;''')
             ret = cursor.fetchone()
 
     assert ret and len(ret) == 1
@@ -87,8 +87,8 @@ def select_next_id(curr_id, cat = CATEGORY_ALL):
     if cat is not CATEGORY_ALL:
         with log_time('select next id'):
             cursor.execute('''
-                SELECT next FROM snippets_links WHERE prev = ?
-                AND cat_id = ?''', (curr_id, cat.id))
+                SELECT next FROM snippets_links WHERE prev = %s
+                AND cat_id = %s''', (curr_id, cat.id))
             ret = cursor.fetchone()
             assert ret and len(ret) == 1
             next_id = ret[0]

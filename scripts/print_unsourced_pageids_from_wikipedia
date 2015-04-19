@@ -1,5 +1,0 @@
-#!/bin/sh
-
-defaults_file=${1:-./ch.my.cnf}
-echo >&2 "using MySQL defaults file: $defaults_file"
-echo 'SELECT cl_from FROM categorylinks WHERE cl_to = "All_articles_with_unsourced_statements"' | mysql --defaults-file="$defaults_file" -NB

@@ -33,7 +33,6 @@ except ImportError:
 import signal
 import bz2file
 import pickle
-import sqlite3
 import itertools
 import urllib
 
@@ -81,14 +80,15 @@ class RowParser(workerpool.Worker):
     def done(self):
         pass
 
-# sqlite3 sucks at multiprocessing, so we confine all database access to a
-# single process
+# FIXME originally we needed only a single process writing to the database,
+# because sqlite3 sucks at multiprocessing. We can probably change that with
+# MySQL.
 class DatabaseWriter(workerpool.Receiver):
     def __init__(self):
         self.chdb = None
 
     def setup(self):
-        self.chdb = chdb.reset_db()
+        self.chdb = chdb.reset_scratch_db()
 
     def receive(self, task):
         kind, rows = task
@@ -99,11 +99,11 @@ class DatabaseWriter(workerpool.Receiver):
         if not rows:
             return
 
-        with self.chdb:
-            self.chdb.execute('''
-                INSERT INTO articles VALUES(?, ?, ?)''', rows['article'])
-            self.chdb.executemany('''
-                INSERT OR IGNORE INTO snippets VALUES(?, ?, ?, ?)''',
+        with self.chdb as cursor:
+            cursor.execute('''
+                INSERT INTO articles VALUES(%s, %s, %s)''', rows['article'])
+            cursor.executemany('''
+                INSERT IGNORE INTO snippets VALUES(%s, %s, %s, %s)''',
                 rows['snippets'])
 
     def done(self):
