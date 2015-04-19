@@ -2,3 +2,4 @@
 *.pyo
 .test-wikitext.cache
 ch.my.cnf
+wp.my.cnf

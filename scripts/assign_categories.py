@@ -22,7 +22,6 @@ from utils import *
 import docopt
 
 import re
-import pymysql
 import collections
 
 log = Logger()
@@ -66,7 +65,9 @@ def category_name_to_id(catname):
     return mkid(catname)
 
 def load_unsourced_pageids(chdb):
-    return set(r[0] for r in chdb.execute('''SELECT page_id FROM articles'''))
+    cursor = chdb.cursor()
+    cursor.execute('''SELECT page_id FROM articles''')
+    return set(r[0] for r in cursor)
 
 def load_hidden_categories(wpcursor):
     wpcursor.execute('''
@@ -116,63 +117,59 @@ def choose_categories(categories_to_ids, unsourced_pageids, max_categories):
     log.info('finished with %d categories' % len(categories))
     return categories
 
-def build_snippets_links_for_category(chdb, category_id):
-    cursor = chdb.cursor()
+def build_snippets_links_for_category(cursor, category_id):
     cursor.execute('''
         SELECT snippets.id FROM snippets, articles_categories
         WHERE snippets.article_id = articles_categories.article_id AND
-        articles_categories.category_id = ? ORDER BY RANDOM();''',
+        articles_categories.category_id = %s ORDER BY RAND();''',
         (category_id,))
     snippets = [r[0] for r in cursor]
 
     prev = snippets[0]
     for s in snippets[1:] + [snippets[0]]:
-        chdb.execute('''
-            INSERT INTO snippets_links VALUES (?, ?, ?)
+        cursor.execute('''
+            INSERT INTO snippets_links VALUES (%s, %s, %s)
         ''', (prev, s, category_id))
         prev = s
 
-def update_citationhunt_db(chdb, wpcursor, categories):
+def update_citationhunt_db(chdb, categories):
     for n, (catname, pageids) in enumerate(categories):
         category_id = category_name_to_id(catname)
-        with chdb:
-            chdb.execute('''
-                INSERT OR IGNORE INTO categories VALUES(?, ?)
-            ''', (category_id, catname))
+        with chdb as cursor:
+            cursor.execute('''
+                INSERT IGNORE INTO categories VALUES(%s, %s)
+            ''', (category_id, unicode(catname)))
 
             prev = ''
             for page_id in pageids:
-                chdb.execute('''
-                    INSERT INTO articles_categories VALUES (?, ?)
+                cursor.execute('''
+                    INSERT INTO articles_categories VALUES (%s, %s)
                 ''', (page_id, category_id))
-            build_snippets_links_for_category(chdb, category_id)
+            build_snippets_links_for_category(cursor, category_id)
 
         log.progress('saved %d categories' % (n + 1))
     log.info('all done.')
 
+def reset_chdb_tables(chdb):
+    with chdb as cursor:
+        log.info('resetting articles_categories table...')
+        cursor.execute('DELETE FROM articles_categories')
+        log.info('resetting categories table...')
+        cursor.execute('DELETE FROM categories')
+        log.info('resetting snippets_links table...')
+        cursor.execute('DELETE FROM snippets_links')
+
 def assign_categories(max_categories, mysql_default_cnf):
-    try:
-        wpdb = pymysql.Connect(charset = 'utf8',
-            read_default_file = mysql_default_cnf)
-        wpcursor = wpdb.cursor()
-        assert wpcursor.execute('SELECT * FROM page LIMIT 1;') == 1
-        assert wpcursor.execute('SELECT * FROM categorylinks LIMIT 1;') == 1
-    except pymysql.err.Error as e:
-        log.info('Failed to connect to MySQL database: ' + e.args[1])
-        log.info('You may want to check your MySQL config file' + \
-                 ' (currently using %s)' % mysql_default_cnf)
-        return 1
-
-    chdb = chdb_.init_db()
-    # chdb.execute('PRAGMA foreign_keys = ON')
-    log.info('resetting articles_categories table...')
-    chdb.execute('DELETE FROM articles_categories')
-    log.info('resetting categories table...')
-    chdb.execute('DELETE FROM categories')
-    log.info('resetting snippets_links table...')
-    chdb.execute('DELETE FROM snippets_links')
-
+    chdb = chdb_.init_scratch_db()
+    reset_chdb_tables(chdb)
     unsourced_pageids = load_unsourced_pageids(chdb)
+    chdb.close()
+
+    wpdb = chdb_.init_wp_replica_db()
+    wpcursor = wpdb.cursor()
+    assert wpcursor.execute('SELECT * FROM page LIMIT 1;') == 1
+    assert wpcursor.execute('SELECT * FROM categorylinks LIMIT 1;') == 1
+
     hidden_categories = load_hidden_categories(wpcursor)
     log.info('loaded %d hidden categories (%s...)' % \
         (len(hidden_categories), next(iter(hidden_categories))))
@@ -198,8 +195,10 @@ def assign_categories(max_categories, mysql_default_cnf):
     categories = choose_categories(categories_to_ids, unsourced_pageids,
         max_categories)
 
-    update_citationhunt_db(chdb, wpcursor, categories)
-    chdb_.create_indices()
+    # XXX keeping the connection open during choose_categories caused a 2006
+    # ('MySQL server has gone away') MySQL error, so we open a fresh one here.
+    chdb = chdb_.init_scratch_db()
+    update_citationhunt_db(chdb, categories)
 
     wpdb.close()
     chdb.close()
