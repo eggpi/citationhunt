@@ -46,9 +46,6 @@ class CategoryName(unicode):
         assert ' ' not in ustr, ustr
         return CategoryName(ustr.replace('_', ' '))
 
-    def to_wp_category(self):
-        return self.replace(' ', '_')
-
     @staticmethod
     def from_wp_categorylinks(ustr):
         ustr = d(ustr)
