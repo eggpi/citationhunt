@@ -33,11 +33,11 @@ class CategoryName(unicode):
     in the CitationHunt database: no Category: prefix and spaces instead
     of underscores.
     '''
-    def __init__(self, ustr):
+    def __new__(klass, ustr):
         assert isinstance(ustr, unicode)
         assert not ustr.startswith('Category:'), ustr
         assert '_' not in ustr, ustr
-        unicode.__init__(self, ustr)
+        return super(CategoryName, klass).__new__(klass, ustr)
 
     @staticmethod
     def from_wp_page(ustr):
