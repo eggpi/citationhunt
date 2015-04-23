@@ -89,6 +89,7 @@ find them:
 $ ./install_new_database.py
 ```
 
-And that's it! If everything went well, you can refer to the instructions in the
-above directory's [README.md](https://github.com/guilherme-pg/citationhunt/) to
-run CitationHunt using your new database.
+And that's it! If everything went well, you can refer to the instructions in
+the above directory's
+[README.md](https://github.com/guilherme-pg/citationhunt/blob/master/README.md)
+to run CitationHunt using your new database.
