@@ -130,8 +130,7 @@ def citation_hunt():
             snippet = snippet, section = section, article_url = aurl,
             article_title = atitle, current_category = cat,
             next_snippet_id = select_next_id(id, cat),
-            cn_marker = CITATION_NEEDED_MARKER, cn_html = CITATION_NEEDED_HTML,
-            staging = 'DYNO' in os.environ)
+            cn_marker = CITATION_NEEDED_MARKER, cn_html = CITATION_NEEDED_HTML)
 
     id = select_random_id(cat)
     return flask.redirect(

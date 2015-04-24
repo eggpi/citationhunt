@@ -117,13 +117,6 @@ button:focus {
     margin-left: 5px;
 }
 
-#staging-warning {
-    padding: 5px;
-    font-weight: bold;
-    border-radius: 4px;
-    background-color: #F0F00F;
-}
-
 /* HACK: ideally we would like to just include a word-joiner character
  * (U+2060, &#8288;) in the markup before [citation-needed] tags, but that
  * character is actually visible in Chrome due to a bug. The following
