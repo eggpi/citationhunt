@@ -6,12 +6,14 @@ import unittest
 class CitationHuntTest(unittest.TestCase):
     def setUp(self):
         self.app = app.app.test_client()
-        with chdb.init_db() as db:
-            ret = db.execute('SELECT id FROM snippets LIMIT 1;').fetchone()
-            self.sid = ret[0]
+        db = chdb.init_db()
+        cursor = db.cursor()
 
-            ret = db.execute('SELECT id FROM categories LIMIT 1;').fetchone()
-            self.cat = ret[0]
+        cursor.execute('SELECT snippets.id, category_id FROM ' \
+            'snippets, articles_categories WHERE ' \
+            'snippets.article_id = articles_categories.article_id ' \
+            'LIMIT 1;')
+        self.sid, self.cat = cursor.fetchone()
 
     def get_url_args(self, url):
         return dict(kv.split('=') for kv in url[url.rfind('?')+1:].split('&'))

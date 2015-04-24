@@ -90,6 +90,9 @@ def select_next_id(curr_id, cat = CATEGORY_ALL):
                 SELECT next FROM snippets_links WHERE prev = %s
                 AND cat_id = %s''', (curr_id, cat.id))
             ret = cursor.fetchone()
+            if ret is None:
+                # curr_id doesn't belong to the category
+                return None
             assert ret and len(ret) == 1
             next_id = ret[0]
     else:
@@ -119,17 +122,21 @@ def citation_hunt():
         cat = CATEGORY_ALL
 
     if id is not None:
-        # pick snippet by id and just echo back the category, even
-        # if the snippet doesn't belong to it.
         sinfo = select_snippet_by_id(id)
         if sinfo is None:
             # invalid id
             flask.abort(404)
         snippet, section, aurl, atitle = sinfo
+        next_snippet_id = select_next_id(id, cat)
+        if next_snippet_id is None:
+            # the snippet doesn't belong to the category!
+            assert cat is not CATEGORY_ALL
+            return flask.redirect(
+                flask.url_for('citation_hunt', id = id, cat = CATEGORY_ALL.id))
         return flask.render_template('index.html',
             snippet = snippet, section = section, article_url = aurl,
             article_title = atitle, current_category = cat,
-            next_snippet_id = select_next_id(id, cat),
+            next_snippet_id = next_snippet_id,
             cn_marker = CITATION_NEEDED_MARKER, cn_html = CITATION_NEEDED_HTML)
 
     id = select_random_id(cat)
