@@ -28,19 +28,19 @@ class ExtractSnippetTest(unittest.TestCase):
             [s + MARKER])
 
     def test_split_paragraph(self):
-        s = 'This is a better %s paragraph. It even countains two sentences.'
+        s = 'This is a better%s paragraph. It even countains two sentences.'
         self.assertEqual(
             extract_lead_snippets('This is a paragraph.\n\n' + s % '{{cn}}'),
             [s % MARKER])
 
     def test_remove_headings(self):
-        s = 'This paragraph needs a citation %s'
+        s = 'This paragraph needs a citation%s'
         self.assertEqual(
             extract_snippets('==Heading==\n' + s % '{{cn}}'),
             [['', []], ['Heading', [s % MARKER]]])
 
     def test_convert(self):
-        s = 'The Eiffel tower is %s tall and very pretty %s.'
+        s = 'The Eiffel tower is %s tall and very pretty.%s'
         self.assertEqual(
             extract_lead_snippets(s % ('{{Convert|324|m|ft|0}}', '{{cn}}')),
             [s % ('324 m', MARKER)])
@@ -114,6 +114,16 @@ class ExtractSnippetTest(unittest.TestCase):
         self.assertEqual((snippets[0][0], len(snippets[0][1])), ('', 1))
         self.assertEqual((snippets[1][0], len(snippets[1][1])), ('Section 1', 1))
         self.assertEqual((snippets[2][0], len(snippets[2][1])), ('Section 2', 1))
+
+    def test_strip_spaces_before_citation_needed(self):
+        s = 'This is a paragraph with spaces before the template%s%s.' \
+            "And here's some space that will only appear " \
+            'after stripping a%s%s'
+
+        self.assertEqual(
+            extract_lead_snippets(
+                s % ('     ', '{{cn}}', ' <ref>tag</ref>', '{{cn}}')),
+            [s % ('', MARKER, '', MARKER)])
 
 if __name__ == '__main__':
     unittest.main()
