@@ -119,9 +119,10 @@ def choose_categories(categories_to_ids, unsourced_pageids, max_categories):
 
 def build_snippets_links_for_category(cursor, category_id):
     cursor.execute('''
-        SELECT snippets.id FROM snippets, articles_categories
+        SELECT snippets.id FROM snippets, articles_categories, articles
         WHERE snippets.article_id = articles_categories.article_id AND
-        articles_categories.category_id = %s ORDER BY RAND();''',
+        articles.page_id = articles_categories.article_id AND
+        articles_categories.category_id = %s ORDER BY articles.title;''',
         (category_id,))
     snippets = [r[0] for r in cursor]
 
