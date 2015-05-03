@@ -1,0 +1,9 @@
+{
+	"name" : "citationhunt",
+	"title" : "CitationHunt",
+	"description" : "Simple tool for finding unsourced statements in the English Wikipedia.",
+	"url" : "https://tools.wmflabs.org/citationhunt/",
+	"keywords" : "citations, Wikipedia",
+	"author" : "Guilherme P. Gonçalves",
+	"repository" : "https://github.com/guilherme-pg/citationhunt"
+}
