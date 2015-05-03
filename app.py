@@ -105,6 +105,9 @@ def select_next_id(curr_id, cat = CATEGORY_ALL):
 
 app = flask.Flask(__name__)
 Compress(app)
+debug = 'DEBUG' in os.environ
+if not debug:
+    flask_sslify.SSLify(app, permanent = True)
 
 @app.route('/')
 def citation_hunt():
@@ -166,7 +169,4 @@ def close_db(exception):
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    debug = 'DEBUG' in os.environ
-    if not debug:
-        flask_sslify.SSLify(app, permanent = True)
     app.run(host = '0.0.0.0', port = port, debug = debug)
