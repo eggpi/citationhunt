@@ -16,7 +16,8 @@ WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 
-MARKER = '7b94863f3091b449e6ab04d44cb372a0' # unlikely to be in any article
+REF_MARKER = 'ec5b89dc49c433a9521a13928c032129'
+CITATION_NEEDED_MARKER = '7b94863f3091b449e6ab04d44cb372a0'
 
 TEST_WIKITEXT_CACHE_FILENAME = '.test-wikitext.cache'
 
@@ -29,7 +30,7 @@ mwparserfromhell.nodes.Template.__strip__ = template_strip
 
 def tag_strip(self, normalize, collapse):
     if self.tag == 'ref':
-        return None
+        return REF_MARKER
     return self._original_strip(normalize, collapse)
 mwparserfromhell.nodes.Tag._original_strip = mwparserfromhell.nodes.Tag.__strip__
 mwparserfromhell.nodes.Tag.__strip__ = tag_strip
@@ -49,7 +50,8 @@ def is_citation_needed(t):
 
 def extract_snippets(wikitext, minlen = 140, maxlen = 420, is_lead = False):
     snippets = [] # [section, [snippets]]
-    strip_regexp = re.compile('\s+' + MARKER) # strip spaces before MARKER
+    strip_regexp = re.compile( # strip spaces before the markers
+        '\s+(' + CITATION_NEEDED_MARKER + '|' + REF_MARKER + ')')
 
     sections = mwparserfromhell.parse(wikitext).get_sections(
         include_lead = True, include_headings = True, flat = True)
@@ -74,10 +76,12 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420, is_lead = False):
 
                     # add the marker so we know where the Citation-needed
                     # template was
-                    wikicode.insert_before(t, MARKER)
+                    wikicode.insert_before(t, CITATION_NEEDED_MARKER)
 
-            snippet = re.sub(strip_regexp, MARKER, wikicode.strip_code())
-            if MARKER in snippet: # MARKER may have been inside wiki markup
+            snippet = re.sub(strip_regexp, r'\1',
+                wikicode.strip_code())
+            if CITATION_NEEDED_MARKER in snippet:
+                # marker may have been inside wiki markup
                 secsnippets.append(snippet)
     return snippets
 

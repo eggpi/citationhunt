@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from snippet_parser import extract_snippets, MARKER
+from snippet_parser import extract_snippets, CITATION_NEEDED_MARKER, REF_MARKER
 
 import unittest
 import functools
@@ -19,37 +19,37 @@ class ExtractSnippetTest(unittest.TestCase):
         s = 'This needs a citation.'
         self.assertEqual(
             extract_lead_snippets(s + '{{ Citation needed | date=July 2009 }}'),
-            [s + MARKER])
+            [s + CITATION_NEEDED_MARKER])
 
     def test_simple_cn(self):
         s = 'This needs a citation.'
         self.assertEqual(
             extract_lead_snippets(s + '{{ cn | date=July 2009 }}'),
-            [s + MARKER])
+            [s + CITATION_NEEDED_MARKER])
 
     def test_split_paragraph(self):
         s = 'This is a better%s paragraph. It even countains two sentences.'
         self.assertEqual(
             extract_lead_snippets('This is a paragraph.\n\n' + s % '{{cn}}'),
-            [s % MARKER])
+            [s % CITATION_NEEDED_MARKER])
 
     def test_remove_headings(self):
         s = 'This paragraph needs a citation%s'
         self.assertEqual(
             extract_snippets('==Heading==\n' + s % '{{cn}}'),
-            [['', []], ['Heading', [s % MARKER]]])
+            [['', []], ['Heading', [s % CITATION_NEEDED_MARKER]]])
 
     def test_convert(self):
         s = 'The Eiffel tower is %s tall and very pretty.%s'
         self.assertEqual(
             extract_lead_snippets(s % ('{{Convert|324|m|ft|0}}', '{{cn}}')),
-            [s % ('324 m', MARKER)])
+            [s % ('324 m', CITATION_NEEDED_MARKER)])
 
     def test_ref(self):
-        s = 'The text inside references %s should go away.'
+        s = 'The text inside references%s should be marked.'
         self.assertEqual(
             extract_lead_snippets(s % ('<ref>like this</ref>',) + '{{cn}}'),
-            [s % ('',) + MARKER])
+            [s % (REF_MARKER,) + CITATION_NEEDED_MARKER])
 
     def test_multiline_ref(self):
         s = """{{Refimprove|date=July 2009}}'''''12 Miles of Bad Road''''' is a television show originally created for [[HBO]]<ref name = "news">{{cite news
@@ -64,19 +64,19 @@ class ExtractSnippetTest(unittest.TestCase):
             }}</ref> centered on a Texas matriarch who must reconcile her booming real estate business and immense wealth with the day-to-day struggles of her [[dysfunctional family]] life.{{Citation needed|date=July 2009}}"""
         self.assertEqual(
             extract_lead_snippets(s)[0],
-            '12 Miles of Bad Road is a television show originally created for HBO centered on a Texas matriarch who must reconcile her booming real estate business and immense wealth with the day-to-day struggles of her dysfunctional family life.' + MARKER)
+            '12 Miles of Bad Road is a television show originally created for HBO' + REF_MARKER + ' centered on a Texas matriarch who must reconcile her booming real estate business and immense wealth with the day-to-day struggles of her dysfunctional family life.' + CITATION_NEEDED_MARKER)
 
     def test_multiple_paragraphs(self):
         s = ['This needs a citation.%s', 'This also needs one%s', 'This does not.']
         self.assertEqual(
             extract_lead_snippets('\n\n'.join(s) % ('{{cn}}', '{{cn}}')),
-            [p % MARKER for p in s[:-1]])
+            [p % CITATION_NEEDED_MARKER for p in s[:-1]])
 
     def test_multiple_citations_per_paragraph(self):
         s = 'This needs a citation.%s This also needs one.%s'
         self.assertEqual(
             extract_lead_snippets(s % ('{{cn}}', '{{cn}}')),
-            [s % (MARKER, MARKER)])
+            [s % (CITATION_NEEDED_MARKER, CITATION_NEEDED_MARKER)])
 
     def test_citation_inside_template_false_positive(self):
         s = '''{{Two other uses||the Irish football player|Anton Rodgers (footballer)|those of a similar name|Anthony Rogers (disambiguation)}}
@@ -116,14 +116,20 @@ class ExtractSnippetTest(unittest.TestCase):
         self.assertEqual((snippets[2][0], len(snippets[2][1])), ('Section 2', 1))
 
     def test_strip_spaces_before_citation_needed(self):
-        s = 'This is a paragraph with spaces before the template%s%s.' \
-            "And here's some space that will only appear " \
-            'after stripping a%s%s'
+        s = 'This is a paragraph with spaces before the template%s%s.'
 
         self.assertEqual(
             extract_lead_snippets(
-                s % ('     ', '{{cn}}', ' <ref>tag</ref>', '{{cn}}')),
-            [s % ('', MARKER, '', MARKER)])
+                s % ('     ', '{{cn}}')),
+            [s % ('', CITATION_NEEDED_MARKER)])
+
+    def test_strip_spaces_before_ref(self):
+        s = 'This is a paragraph with spaces before the tag%s%s%s.'
+
+        self.assertEqual(
+            extract_lead_snippets(
+                s % ('     ', '<ref>some reference</ref>', '{{cn}}')),
+            [s % ('', REF_MARKER, CITATION_NEEDED_MARKER)])
 
 if __name__ == '__main__':
     unittest.main()

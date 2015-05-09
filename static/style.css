@@ -61,7 +61,7 @@ button:focus {
     outline: none;
 }
 
-.citation-needed {
+.superscript {
     font-size: small;
     color: #0645AD;
     white-space: nowrap;
