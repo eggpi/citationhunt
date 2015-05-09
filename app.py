@@ -1,5 +1,5 @@
 import chdb
-from scripts.snippet_parser import MARKER as CITATION_NEEDED_MARKER
+from scripts.snippet_parser import CITATION_NEEDED_MARKER, REF_MARKER
 
 import flask
 import flask_sslify
@@ -9,11 +9,17 @@ import os
 import contextlib
 import collections
 from datetime import datetime
+import itertools
 
-# the markup we're going to use for [citation-needed] tags, pre-marked as safe
-# for jinja.
-CITATION_NEEDED_HTML = flask.Markup(
-    '<sup class="citation-needed">[citation-needed]</sup>')
+# the markup we're going to use for [citation-needed] and <ref> tags,
+# pre-marked as safe for jinja.
+SUPERSCRIPT_HTML = '<sup class="superscript">[%s]</sup>'
+CITATION_NEEDED_HTML = flask.Markup(SUPERSCRIPT_HTML % 'citation-needed')
+class RefMarkup(object):
+    def __init__(self):
+        self._counter = itertools.count(1)
+    def __html__(self):
+        return SUPERSCRIPT_HTML % next(self._counter)
 
 @contextlib.contextmanager
 def log_time(operation):
@@ -140,7 +146,8 @@ def citation_hunt():
             snippet = snippet, section = section, article_url = aurl,
             article_title = atitle, current_category = cat,
             next_snippet_id = next_snippet_id,
-            cn_marker = CITATION_NEEDED_MARKER, cn_html = CITATION_NEEDED_HTML)
+            cn_marker = CITATION_NEEDED_MARKER, cn_html = CITATION_NEEDED_HTML,
+            ref_marker = REF_MARKER, ref_html = flask.Markup(RefMarkup()))
 
     id = select_random_id(cat)
     return flask.redirect(
