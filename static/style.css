@@ -71,6 +71,18 @@ button:focus {
     line-height: 100%;
 }
 
+/* HACK: ideally we would like to just include a word-joiner character
+ * (U+2060, &#8288;) in the markup before [citation-needed] tags, but that
+ * character is actually visible in Chrome due to a bug. The following
+ * workaround seems to work fine on FF, Chrome and Safari.
+ * Chrome issue: https://code.google.com/p/chromium/issues/detail?id=225862
+ */
+.superscript:before {
+    content: "⁠";
+    opacity: 0;
+    font-size: 1px;
+}
+
 #buttons {
     text-align: center;
     margin-bottom: 40px;
@@ -115,16 +127,4 @@ button:focus {
     text-align: justify;
     max-width: 35%;
     margin-left: 5px;
-}
-
-/* HACK: ideally we would like to just include a word-joiner character
- * (U+2060, &#8288;) in the markup before [citation-needed] tags, but that
- * character is actually visible in Chrome due to a bug. The following
- * workaround seems to work fine on FF, Chrome and Safari.
- * Chrome issue: https://code.google.com/p/chromium/issues/detail?id=225862
- */
-.citation-needed:before {
-    content: "⁠";
-    opacity: 0;
-    font-size: 1px;
 }
