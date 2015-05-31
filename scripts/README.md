@@ -7,7 +7,7 @@ The scripts in this directory are used to generate the CitationHunt database.
 The `update_db_tools_labs.sh` script automates the generation of the database
 from the latest Wikipedia dump on Tools Labs. It is run weekly as a cron job.
 
-`$ jsub -mem 8g /path/to/update_db_tools_labs.sh`
+`$ jsub -mem 10g /path/to/update_db_tools_labs.sh`
 
 This will automatically find and use the MySQL credentials in `~/replica.my.cnf`.
 
