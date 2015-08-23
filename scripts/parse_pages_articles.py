@@ -14,6 +14,7 @@ Usage:
 
 from __future__ import unicode_literals
 
+import os
 import sys
 sys.path.append('../')
 
@@ -170,6 +171,7 @@ if __name__ == '__main__':
     def set_canceled_flag(sig, stack):
         global canceled
         canceled = True
+        signal.signal(signal.SIGINT, signal.SIG_DFL)
     signal.signal(signal.SIGINT, set_canceled_flag)
 
     arguments = docopt.docopt(__doc__)
@@ -179,3 +181,5 @@ if __name__ == '__main__':
         pageids = set(itertools.imap(str.strip, pf))
     parse_xml_dump(xml_dump_filename, pageids)
     log.info('all done.')
+    if canceled:
+        os.kill(os.getpid(), signal.SIGINT)

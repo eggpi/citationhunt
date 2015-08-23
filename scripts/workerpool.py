@@ -120,42 +120,32 @@ class WorkerPool(object):
     def _sigterm_handler(self, sig, stack):
         self._canceled = True
 
-    def _worker_loop(self, worker, q):
+    def _loop_common(self, q, on_task):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-
-        worker.setup()
-        while True:
+        while not self._canceled:
             try:
                 msg, task = q.get(timeout = 1)
             except Queue.Empty:
-                if self._canceled:
-                    break
                 continue
             if msg == 'DONE':
                 break
             if not self._canceled:
-                result = worker.work(task)
-                self._queues[0].put(('TASK', result))
+                on_task(task)
+
+    def _worker_loop(self, worker, q):
+        def on_task(task):
+            result = worker.work(task)
+            self._queues[0].put(('TASK', result))
+        worker.setup()
+        self._loop_common(q, on_task)
         worker.done()
-        return
 
     def _receiver_loop(self, receiver):
-        signal.signal(signal.SIGTERM, self._sigterm_handler)
-
+        def on_task(task):
+            receiver.receive(task)
         receiver.setup()
-        while True:
-            try:
-                msg, result = self._queues[0].get(timeout = 1)
-            except Queue.Empty:
-                if self._canceled:
-                    break
-                continue
-            if msg == 'DONE':
-                break
-            if not self._canceled:
-                receiver.receive(result)
+        self._loop_common(self._queues[0], on_task)
         receiver.done()
-        return
 
 class Worker(object):
     __metaclass__ = abc.ABCMeta
