@@ -19,8 +19,8 @@
     {% endfor %}
     <blockquote id="snippet"><div id="quotation">"</div>{{ snippet_html[-1] }}</blockquote>
     <div id="buttons">
-      <a href={{ article_url }}{% if section %}#{{ section }}{% endif %} target=_blank><button class="button" id="button-wikilink">I got this, take me there!</button></a>
-      <button form="form-next" type="submit" id="button-next" class="button">Sorry, no idea. Next!</button>
+      <a href={{ article_url }}{% if section %}#{{ section }}{% endif %} target=_blank><button class="button" id="button-wikilink">I got this!</button></a>
+      <button form="form-next" type="submit" id="button-next" class="button">Nope, next!</button>
     </div>
     {% if not section %}<div id="lead-hint">This text is part of the article's lead section, so referencing it may be optional.<br/>Please see <a target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:CITELEAD">WP:CITELEAD</a> for more information.</div>{% endif %}
     <div> <!-- The content to the left of #lead-hint must be display:block to wrap around it -->
