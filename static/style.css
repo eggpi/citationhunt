@@ -97,14 +97,15 @@ button:focus {
     color: black;
     font-weight: bold;
     cursor: pointer;
+    width: 120px;
 }
 
 #button-wikilink {
-    background-color: #5BC5A7;
+    background-color: #65EAAD;
 }
 
 #button-next {
-    background-color: #E75A42;
+    background-color: #FF8C43;
 }
 
 #js-disabled-category-warning {
