@@ -19,6 +19,7 @@ class Logger(object):
         self._mode = 'INFO'
 
     def progress(self, message):
+        message = e(message)
         if not sys.stderr.isatty():
             return
 
@@ -28,6 +29,7 @@ class Logger(object):
         self._mode = 'PROGRESS'
 
     def info(self, message):
+        message = e(message)
         if self._mode == 'PROGRESS':
             print >>sys.stderr
 
