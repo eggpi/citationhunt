@@ -11,10 +11,10 @@ import collections
 from datetime import datetime
 import itertools
 
-# the markup we're going to use for [citation-needed] and <ref> tags,
+# the markup we're going to use for [citation needed] and <ref> tags,
 # pre-marked as safe for jinja.
 SUPERSCRIPT_HTML = flask.Markup('<sup class="superscript">[%s]</sup>')
-CITATION_NEEDED_HTML = flask.Markup(SUPERSCRIPT_HTML % 'citation-needed')
+CITATION_NEEDED_HTML = flask.Markup(SUPERSCRIPT_HTML % 'citation needed')
 
 @contextlib.contextmanager
 def log_time(operation):
