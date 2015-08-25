@@ -13,8 +13,9 @@ import itertools
 
 # the markup we're going to use for [citation needed] and <ref> tags,
 # pre-marked as safe for jinja.
-SUPERSCRIPT_HTML = flask.Markup('<sup class="superscript">[%s]</sup>')
-CITATION_NEEDED_HTML = flask.Markup(SUPERSCRIPT_HTML % 'citation&thinsp;needed')
+SUPERSCRIPT_HTML = '<sup class="superscript">[%s]</sup>'
+SUPERSCRIPT_MARKUP = flask.Markup(SUPERSCRIPT_HTML)
+CITATION_NEEDED_MARKUP = flask.Markup(SUPERSCRIPT_HTML % 'citation&thinsp;needed')
 
 @contextlib.contextmanager
 def log_time(operation):
@@ -142,8 +143,10 @@ def citation_hunt():
             snippet = snippet, section = section, article_url = aurl,
             article_title = atitle, current_category = cat,
             next_snippet_id = next_snippet_id,
-            cn_marker = CITATION_NEEDED_MARKER, cn_html = CITATION_NEEDED_HTML,
-            ref_marker = REF_MARKER, ref_html = SUPERSCRIPT_HTML)
+            cn_marker = CITATION_NEEDED_MARKER,
+            cn_html = CITATION_NEEDED_MARKUP,
+            ref_marker = REF_MARKER,
+            ref_html = SUPERSCRIPT_MARKUP)
 
     id = select_random_id(cat)
     return flask.redirect(
