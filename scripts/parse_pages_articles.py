@@ -48,7 +48,9 @@ def section_name_to_anchor(section):
     # See Sanitizer::escapeId
     # https://doc.wikimedia.org/mediawiki-core/master/php/html/classSanitizer.html#ae091dfff62f13c9c1e0d2e503b0cab49
     section = section.replace(' ', '_')
-    section = urllib.quote(e(section), safe = '')
+    # urllib.quote interacts really weirdly with unicode in Python2:
+    # https://bugs.python.org/issue23885
+    section = urllib.quote(e(section), safe = e(''))
     section = section.replace('%3A', ':')
     section = section.replace('%', '.')
     return section
