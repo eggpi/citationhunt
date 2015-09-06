@@ -32,6 +32,12 @@ dump_base_dir=/public/dumps/public/enwiki
 dump_date=`ls $dump_base_dir | tail -n1`
 dump_dir=$dump_base_dir/$dump_date
 echo >&2 ":: latest dump is $dump_date"
+pages_articles_xml_bz2=$dump_dir/enwiki-$dump_date-pages-articles.xml.bz2
+if [ ! -f $pages_articles_xml_bz2 ]; then
+    echo >&2 "no xml.bz2 file found, maybe the dump is in progress?"
+    email "Failed to find pages-articles.xml.bz2 dump file."
+    exit 1
+fi
 
 echo >&2 ":: generating unsourced pageids"
 ./print_unsourced_pageids_from_wikipedia.py "$wp_mysql_cnf" > unsourced
@@ -40,7 +46,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 echo >&2 ":: parsing pages-articles.xml.bz2"
-./parse_pages_articles.py $dump_dir/enwiki-$dump_date-pages-articles.xml.bz2 unsourced
+./parse_pages_articles.py  unsourced
 if [ $? -ne 0 ]; then
     email "Failed at parse_pages_articles.py"
     exit 1
