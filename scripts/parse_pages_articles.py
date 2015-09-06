@@ -139,11 +139,11 @@ def handle_article(wp, element, pageids, stats):
 def parse_xml_dump(pages_articles_xml_bz2, pageids):
     count = 0
     stats = {'redirect': [], 'empty': [], 'pageids': None}
+    iterparser = ET.iterparse(bz2file.BZ2File(pages_articles_xml_bz2))
 
     parser = RowParser()
     writer = DatabaseWriter()
     wp = workerpool.WorkerPool(parser, writer)
-    iterparser = ET.iterparse(bz2file.BZ2File(pages_articles_xml_bz2))
     for _, element in iterparser:
         element.tag = element.tag[element.tag.rfind('}')+1:]
         if element.tag == 'page':
