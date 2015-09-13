@@ -46,7 +46,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 echo >&2 ":: parsing pages-articles.xml.bz2"
-./parse_pages_articles.py  unsourced
+./parse_pages_articles.py "$pages_articles_xml_bz2" unsourced
 if [ $? -ne 0 ]; then
     email "Failed at parse_pages_articles.py"
     exit 1
