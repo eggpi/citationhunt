@@ -40,6 +40,8 @@ mwparserfromhell.nodes.Heading.__strip__ = mwparserfromhell.nodes.Node.__strip__
 def wikilink_strip(self, normalize, collapse):
     if self.title.startswith('File:'):
         return ''
+    elif self.title.startswith('Image:'):
+        return ''
     return self._original_strip(normalize, collapse)
 mwparserfromhell.nodes.Wikilink._original_strip = \
     mwparserfromhell.nodes.Wikilink.__strip__
@@ -79,7 +81,7 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420, is_lead = False):
                     wikicode.insert_before(t, CITATION_NEEDED_MARKER)
 
             snippet = re.sub(strip_regexp, r'\1',
-                wikicode.strip_code())
+                wikicode.strip_code()).strip()
             if CITATION_NEEDED_MARKER in snippet:
                 # marker may have been inside wiki markup
                 secsnippets.append(snippet)
