@@ -131,5 +131,18 @@ class ExtractSnippetTest(unittest.TestCase):
                 s % ('     ', '<ref>some reference</ref>', '{{cn}}')),
             [s % ('', REF_MARKER, CITATION_NEEDED_MARKER)])
 
+    def test_remove_image(self):
+        s = '\n'.join([
+            '[[Image:Potato field through fence - Thorpdale.JPG|thumb|right|Potato farming in rural Victoria.]]',
+            'Australia produces a wide variety of [[fruit]], [[nut (fruit)|nut]]s and [[vegetable]]s. The largest crops (>300 kilo tonnes, in 2001-2001) include [[orange (fruit)|orange]]s, [[apple]]s, [[banana]]s, [[chestnut]]s,{{Citation needed|date=November 2008}} [[potato]]es, [[carrot]]s and [[tomato]]es.'
+        ])
+
+        self.assertEqual(
+            extract_lead_snippets(s),
+            ['Australia produces a wide variety of fruit, nuts and vegetables. '
+            'The largest crops (>300 kilo tonnes, in 2001-2001) include oranges, '
+            'apples, bananas, chestnuts,7b94863f3091b449e6ab04d44cb372a0 '
+            'potatoes, carrots and tomatoes.'])
+
 if __name__ == '__main__':
     unittest.main()
