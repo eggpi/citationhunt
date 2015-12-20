@@ -102,12 +102,13 @@ class DatabaseWriter(workerpool.Receiver):
         if not rows:
             return
 
-        with self.chdb as cursor:
+        def insert(cursor):
             cursor.execute('''
                 INSERT INTO articles VALUES(%s, %s, %s)''', rows['article'])
             cursor.executemany('''
                 INSERT IGNORE INTO snippets VALUES(%s, %s, %s, %s)''',
                 rows['snippets'])
+        self.chdb.execute_with_retry(insert)
 
     def done(self):
         self.chdb.close()
