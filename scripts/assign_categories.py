@@ -136,7 +136,7 @@ def build_snippets_links_for_category(cursor, category_id):
 def update_citationhunt_db(chdb, categories):
     for n, (catname, pageids) in enumerate(categories):
         category_id = category_name_to_id(catname)
-        with chdb as cursor:
+        def insert(cursor):
             cursor.execute('''
                 INSERT IGNORE INTO categories VALUES(%s, %s)
             ''', (category_id, unicode(catname)))
@@ -147,24 +147,23 @@ def update_citationhunt_db(chdb, categories):
                     INSERT INTO articles_categories VALUES (%s, %s)
                 ''', (page_id, category_id))
             build_snippets_links_for_category(cursor, category_id)
+        chdb.execute_with_retry(insert)
 
         log.progress('saved %d categories' % (n + 1))
     log.info('all done.')
 
-def reset_chdb_tables(chdb):
-    with chdb as cursor:
-        log.info('resetting articles_categories table...')
-        cursor.execute('DELETE FROM articles_categories')
-        log.info('resetting categories table...')
-        cursor.execute('DELETE FROM categories')
-        log.info('resetting snippets_links table...')
-        cursor.execute('DELETE FROM snippets_links')
+def reset_chdb_tables(cursor):
+    log.info('resetting articles_categories table...')
+    cursor.execute('DELETE FROM articles_categories')
+    log.info('resetting categories table...')
+    cursor.execute('DELETE FROM categories')
+    log.info('resetting snippets_links table...')
+    cursor.execute('DELETE FROM snippets_links')
 
 def assign_categories(max_categories, mysql_default_cnf):
     chdb = chdb_.init_scratch_db()
-    reset_chdb_tables(chdb)
+    chdb.execute_with_retry(reset_chdb_tables)
     unsourced_pageids = load_unsourced_pageids(chdb)
-    chdb.close()
 
     wpdb = chdb_.init_wp_replica_db()
     wpcursor = wpdb.cursor()
@@ -196,11 +195,7 @@ def assign_categories(max_categories, mysql_default_cnf):
     categories = choose_categories(categories_to_ids, unsourced_pageids,
         max_categories)
 
-    # XXX keeping the connection open during choose_categories caused a 2006
-    # ('MySQL server has gone away') MySQL error, so we open a fresh one here.
-    chdb = chdb_.init_scratch_db()
     update_citationhunt_db(chdb, categories)
-
     wpdb.close()
     chdb.close()
     return 0

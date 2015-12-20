@@ -7,6 +7,43 @@ import contextlib
 ch_my_cnf = op.join(op.dirname(op.realpath(__file__)), 'ch.my.cnf')
 wp_my_cnf = op.join(op.dirname(op.realpath(__file__)), 'wp.my.cnf')
 
+class RetryingConnection(object):
+    '''
+    Wraps a MySQLdb connection, handling retries as needed.
+    '''
+
+    def __init__(self, connect):
+        self._connect = connect
+        self._do_connect()
+
+    def _do_connect(self):
+        self.conn = self._connect()
+        self.conn.ping(True) # set the reconnect flag
+
+    def execute_with_retry(self, operations):
+        max_retries = 5
+        for retry in range(max_retries):
+            try:
+                with self.conn as cursor:
+                    operations(cursor)
+            except MySQLdb.OperationalError:
+                if retry == max_retries - 1:
+                    raise
+                else:
+                    self._do_connect()
+            else:
+                break
+
+    # https://stackoverflow.com/questions/4146095/ (sigh)
+    def __enter__(self):
+        return self.conn.__enter__()
+
+    def __exit__(self, *args):
+        return self.conn.__exit__(*args)
+
+    def __getattr__(self, name):
+        return getattr(self.conn, name)
+
 @contextlib.contextmanager
 def ignore_warnings():
     warnings.filterwarnings('ignore', category = MySQLdb.Warning)
@@ -31,20 +68,26 @@ def _ensure_database(db, database):
         cursor.execute('USE %s' % dbname)
 
 def init_db():
-    db = _connect(ch_my_cnf)
-    _ensure_database(db, 'citationhunt')
-    return db
+    def connect_and_initialize():
+        db = _connect(ch_my_cnf)
+        _ensure_database(db, 'citationhunt')
+        return db
+    return RetryingConnection(connect_and_initialize)
 
 def init_scratch_db():
-    db = _connect(ch_my_cnf)
-    _ensure_database(db, 'scratch')
-    return db
+    def connect_and_initialize():
+        db = _connect(ch_my_cnf)
+        _ensure_database(db, 'scratch')
+        return db
+    return RetryingConnection(connect_and_initialize)
 
 def init_wp_replica_db():
-    db = _connect(wp_my_cnf)
-    with db as cursor:
-        cursor.execute('USE enwiki_p')
-    return db
+    def connect_and_initialize():
+        db = _connect(wp_my_cnf)
+        with db as cursor:
+            cursor.execute('USE enwiki_p')
+        return db
+    return RetryingConnection(connect_and_initialize)
 
 def reset_scratch_db():
     db = init_db()
