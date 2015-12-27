@@ -1,3 +1,6 @@
+import os
+os.environ['DEBUG'] = '1' # disable https redirects
+
 import app
 import chdb
 
