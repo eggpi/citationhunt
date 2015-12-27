@@ -19,6 +19,9 @@ WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 REF_MARKER = 'ec5b89dc49c433a9521a13928c032129'
 CITATION_NEEDED_MARKER = '7b94863f3091b449e6ab04d44cb372a0'
 
+STRIP_REGEXP = re.compile( # strip spaces before the markers
+    '\s+(' + CITATION_NEEDED_MARKER + '|' + REF_MARKER + ')')
+
 TEST_WIKITEXT_CACHE_FILENAME = '.test-wikitext.cache'
 
 # Monkey-patch mwparserfromhell so it strips some templates and tags the way
@@ -50,10 +53,13 @@ mwparserfromhell.nodes.Wikilink.__strip__ = wikilink_strip
 def is_citation_needed(t):
     return t.name.matches('Citation needed') or t.name.matches('cn')
 
+def cleanup_snippet(snippet):
+    snippet = re.sub(STRIP_REGEXP, r'\1', snippet).strip()
+    snippet = re.sub(',\s+\)', ')', snippet)
+    return re.sub('\(\)', '', snippet)
+
 def extract_snippets(wikitext, minlen = 140, maxlen = 420, is_lead = False):
     snippets = [] # [section, [snippets]]
-    strip_regexp = re.compile( # strip spaces before the markers
-        '\s+(' + CITATION_NEEDED_MARKER + '|' + REF_MARKER + ')')
 
     sections = mwparserfromhell.parse(wikitext).get_sections(
         include_lead = True, include_headings = True, flat = True)
@@ -80,8 +86,7 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420, is_lead = False):
                     # template was
                     wikicode.insert_before(t, CITATION_NEEDED_MARKER)
 
-            snippet = re.sub(strip_regexp, r'\1',
-                wikicode.strip_code()).strip()
+            snippet = cleanup_snippet(wikicode.strip_code())
             if CITATION_NEEDED_MARKER in snippet:
                 # marker may have been inside wiki markup
                 secsnippets.append(snippet)

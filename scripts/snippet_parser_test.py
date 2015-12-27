@@ -1,3 +1,4 @@
+#-*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
 from snippet_parser import extract_snippets, CITATION_NEEDED_MARKER, REF_MARKER
@@ -140,9 +141,17 @@ class ExtractSnippetTest(unittest.TestCase):
         self.assertEqual(
             extract_lead_snippets(s),
             ['Australia produces a wide variety of fruit, nuts and vegetables. '
-            'The largest crops (>300 kilo tonnes, in 2001-2001) include oranges, '
-            'apples, bananas, chestnuts,7b94863f3091b449e6ab04d44cb372a0 '
+            'The largest crops (>300 kilo tonnes, in 2001-2001) include oranges, ' +
+            'apples, bananas, chestnuts,%s ' % CITATION_NEEDED_MARKER +
             'potatoes, carrots and tomatoes.'])
+
+    def test_close_comma_parentheses(self):
+        s = """'''Haute cuisine''' ([[French language|French]]: literally "high cooking", {{IPA-fr|ot kɥi.zin|pron}}) or '''Grande cuisine''' refers to the [[cuisine]] of "high level" establishments.{{Citation needed|date=October 2013}}"""
+        self.assertEqual(
+            extract_lead_snippets(s),
+            ['Haute cuisine (French: literally "high cooking") or Grande cuisine '
+             'refers to the cuisine of "high level" establishments.' +
+             CITATION_NEEDED_MARKER])
 
 if __name__ == '__main__':
     unittest.main()
