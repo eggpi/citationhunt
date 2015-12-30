@@ -39,6 +39,22 @@ This will create a new database named 'enwiki_p' and populate it with tables
 named 'categorylinks' and 'page'. This will take a few hours. You'll want to use
 'enwiki_p' as the database, as it is hardcoded in these scripts.
 
+We should now make sure these scripts know how to find and log in to the databases
+it will use. In order to do that, you'll need two MySQL config files: `wp.my.cnf`
+tells CitationHunt where to find the database with Wikipedia dumps, and `ch.my.cnf`
+points tells it where to write its own database.
+
+For example, in a local setting, you could use:
+
+    $ cat wp.my.cnf
+    [client]
+    user='root'
+    host='localhost'
+
+and have `ch.my.cnf` be a symlink to `wp.my.cnf`. Put these two files in the
+root directory of this repository, where `chdb.py` is. Please refer to the
+MySQL documentation for the other options you can specify on this file.
+
 Next, let's generate the list of ids of pages with unsourced statements with
 `print_unsourced_pageids_from_wikipedia.py`:
 
