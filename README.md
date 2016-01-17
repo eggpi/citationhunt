@@ -5,7 +5,7 @@ Wikipedia, currently hosted at
 [https://tools.wmflabs.org/citationhunt/](https://tools.wmflabs.org/citationhunt/).
 
 This repository contains the full server and client code. The
-[scripts/](https://github.com/guilherme-pg/citationhunt/tree/master/scripts)
+[scripts/](https://github.com/eggpi/citationhunt/tree/master/scripts)
 directory contains all the scripts used for processing Wikipedia dumps.
 Hopefully they will be illustrative and reusable for similar applications.
 
@@ -23,7 +23,7 @@ $ . bin/activate
 Dependencies are managed via a `requirements.txt` file:
 
 ```
-$ git clone https://github.com/guilherme-pg/citationhunt
+$ git clone https://github.com/eggpi/citationhunt
 $ cd citationhunt
 $ pip install -r requirements.txt
 ```
@@ -58,7 +58,7 @@ $ . www/python/venv/bin/activate
 Now, clone this repository, point uwsgi to it and install the dependencies:
 
 ```
-$ git clone https://github.com/guilherme-pg/citationhunt.git
+$ git clone https://github.com/eggpi/citationhunt.git
 $ ln -s ../../citationhunt www/python/src
 $ pip install -r citationhunt/requirements.txt
 ```
@@ -71,5 +71,5 @@ $ webservice2 uwsgi-python start
 
 You will also want to schedule a cron job to automatically update the database
 as new dumps are released. See
-[scripts/README.md](https://github.com/guilherme-pg/citationhunt/blob/master/scripts/README.md)
+[scripts/README.md](https://github.com/eggpi/citationhunt/blob/master/scripts/README.md)
 for more information.
