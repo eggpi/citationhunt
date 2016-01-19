@@ -22,7 +22,7 @@ if [ ! -e "$ch_mysql_cnf" -a -f ~/replica.my.cnf ]; then
 fi
 
 wp_mysql_cnf="wp.my.cnf"
-if [ ! -e "$wp_mysql_cnf" -a -f ~/replica.my.cnf ]; then
+if [ -f ~/replica.my.cnf ]; then
     cp ~/replica.my.cnf "$wp_mysql_cnf"
     echo "host=${xxwiki}.labsdb" >> "$wp_mysql_cnf"
 fi
