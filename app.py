@@ -80,7 +80,9 @@ def select_random_id(lang_code, cat = CATEGORY_ALL):
 
     if ret is None:
         with log_time('select without category'):
-            p = '1e-4' if not debug else '1e-2'
+            # FIXME This should be configurable, or inferred from the total
+            # number of snippets
+            p = '1e-3' if not debug else '1e-2'
             cursor.execute('''
                 SELECT id FROM snippets WHERE RAND() < ''' + p + '''LIMIT 1;''')
             ret = cursor.fetchone()
