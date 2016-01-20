@@ -12,11 +12,14 @@ def handle_date(template):
     if isinstance(year, int):
         # assume {{date|d|m|y|...}}
         return ' '.join(map(unicode, template.params[:3]))
-    else:
+    elif template.params:
         # assume {{date|d m y|...}}
         return unicode(template.params[0])
+    return ''
 
 def handle_s(template):
+    if not template.params:
+        return ''
     ret = unicode(template.params[0])
     if len(template.params) == 2:
         ret += unicode(template.params[1])
