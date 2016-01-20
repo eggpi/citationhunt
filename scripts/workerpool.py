@@ -130,7 +130,10 @@ class WorkerPool(object):
             if msg == 'DONE':
                 break
             if not self._canceled:
-                on_task(task)
+                try:
+                    on_task(task)
+                except:
+                    pass
 
     def _worker_loop(self, worker, q):
         def on_task(task):
