@@ -9,6 +9,7 @@ function email() {
 
 truncate -s 0 update_db_tools_labs.err
 
+xxwiki=${CH_LANG}wiki
 . ~/www/python/venv/bin/activate
 cd ~/www/python/src/
 
@@ -23,16 +24,16 @@ fi
 wp_mysql_cnf="wp.my.cnf"
 if [ ! -e "$wp_mysql_cnf" -a -f ~/replica.my.cnf ]; then
     cp ~/replica.my.cnf "$wp_mysql_cnf"
-    echo "host=enwiki.labsdb" >> "$wp_mysql_cnf"
+    echo "host=${xxwiki}.labsdb" >> "$wp_mysql_cnf"
 fi
 
 cd scripts/
 
-dump_base_dir=/public/dumps/public/enwiki
+dump_base_dir=/public/dumps/public/${CH_LANG}wiki
 dump_date=`ls $dump_base_dir | tail -n1`
 dump_dir=$dump_base_dir/$dump_date
 echo >&2 ":: latest dump is $dump_date"
-pages_articles_xml_bz2=$dump_dir/enwiki-$dump_date-pages-articles.xml.bz2
+pages_articles_xml_bz2=$dump_dir/${xxwiki}-$dump_date-pages-articles.xml.bz2
 if [ ! -f $pages_articles_xml_bz2 ]; then
     echo >&2 "no xml.bz2 file found, maybe the dump is in progress?"
     email "Failed to find pages-articles.xml.bz2 dump file."
@@ -52,12 +53,12 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 echo >&2 ":: assigning categories"
-./assign_categories.py --max-categories=5500 --mysql-config="$mysql_cnf"
+./assign_categories.py --max-categories=$CH_MAX_CATEGORIES \
+    --mysql-config="$mysql_cnf"
 if [ $? -ne 0 ]; then
     email "Failed at assign_categories.py"
     exit 1
 fi
-
 echo >&2 ":: installing new database"
 ./install_new_database.py
 if [ $? -ne 0 ]; then

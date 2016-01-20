@@ -19,6 +19,7 @@ import sys
 sys.path.append('../')
 
 import chdb
+import config
 import snippet_parser
 import workerpool
 from utils import *
@@ -37,7 +38,8 @@ import pickle
 import itertools
 import urllib
 
-WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org'
+cfg = config.get_localized_config()
+WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 
 NAMESPACE_ARTICLE = '0'
@@ -57,7 +59,7 @@ def section_name_to_anchor(section):
 
 class RowParser(workerpool.Worker):
     def setup(self):
-        pass
+        self.parser = snippet_parser.get_localized_snippet_parser()
 
     def work(self, task):
         kind, info = task
@@ -67,7 +69,7 @@ class RowParser(workerpool.Worker):
         url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
 
         snippets_rows = []
-        snippets = snippet_parser.extract_snippets(wikitext)
+        snippets = self.parser.extract_snippets(wikitext)
         for sec, snips in snippets:
             sec = section_name_to_anchor(sec)
             for sni in snips:
