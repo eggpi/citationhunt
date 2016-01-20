@@ -1,6 +1,10 @@
 #-*- encoding: utf-8 -*-
+from __future__ import unicode_literals
 
 import base
+
+def matches_any(template, names):
+    return any(template.name.matches(n) for n in names)
 
 def handle_date(template):
     year = None
@@ -21,8 +25,11 @@ def handle_s(template):
     if not template.params:
         return ''
     ret = unicode(template.params[0])
-    if len(template.params) == 2:
-        ret += unicode(template.params[1])
+    if len(template.params) == 2 and unicode(template(params[1])) == 'er':
+        ret += 'ᵉʳ'
+    else:
+        ret += 'ᵉ'
+    ret += ' siècle'
     if template.name.matches('-s'):
         ret += ' av. J.-C'
     return ret
@@ -33,7 +40,7 @@ class SnippetParser(base.SnippetParserBase):
             return ' '.join(map(unicode, template.params[:2]))
         elif template.name.matches('date'):
             return handle_date(template)
-        elif template.name.matches('s') or template.name.matches('-s'):
+        elif matches_any(template, ('s', '-s', 's-')):
             return handle_s(template)
         elif self.is_citation_needed(template):
             repl = [base.CITATION_NEEDED_MARKER]
