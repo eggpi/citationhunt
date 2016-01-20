@@ -17,9 +17,9 @@ def handle_date(template):
         return unicode(template.params[0])
 
 def handle_s(template):
-    ret = template.params[0]
+    ret = unicode(template.params[0])
     if len(template.params) == 2:
-        ret += template.params[1]
+        ret += unicode(template.params[1])
     if template.name.matches('-s'):
         ret += ' av. J.-C'
     return ret
