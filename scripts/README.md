@@ -4,10 +4,10 @@ The scripts in this directory are used to generate the CitationHunt database.
 
 ### Generating the database on Tools Labs
 
-The `update_db_tools_labs.sh` script automates the generation of the database
+The `update_db_tools_labs.py` script automates the generation of the database
 from the latest Wikipedia dump on Tools Labs. It is run weekly as a cron job.
 
-`$ jsub -mem 10g /path/to/update_db_tools_labs.sh`
+`$ jsub -mem 10g /path/to/update_db_tools_labs.py --lang-code en`
 
 This will automatically find and use the MySQL credentials in `~/replica.my.cnf`.
 
@@ -37,7 +37,8 @@ mysql> source path/to/page.sql
 
 This will create a new database named 'enwiki_p' and populate it with tables
 named 'categorylinks' and 'page'. This will take a few hours. You'll want to use
-'enwiki_p' as the database, as it is hardcoded in these scripts.
+'enwiki_p' for simplicity, but that's configurable in
+[../config.py][https://github.com/eggpi/citationhunt/blob/master/config.py]
 
 We should now make sure these scripts know how to find and log in to the databases
 they will use. In order to do that, you'll need two MySQL config files: `wp.my.cnf`
@@ -54,6 +55,17 @@ For example, in a local setting, you could use:
 and have `ch.my.cnf` be a symlink to `wp.my.cnf`. Put these two files in the
 root directory of this repository, where `chdb.py` is. Please refer to the
 MySQL documentation for the other options you can specify on this file.
+
+From now on, the commands we'll be typing depend on the language you're
+generating a database for. They expect an environment variable `CH_LANG` to be
+set to a language code taken from
+[../config.py][https://github.com/eggpi/citationhunt/blob/master/config.py].
+Since we're dealing with English in this document, let's set the variable
+accordingly:
+
+```
+$ export CH_LANG=en
+```
 
 Next, let's generate the list of ids of pages with unsourced statements with
 `print_unsourced_pageids_from_wikipedia.py`:

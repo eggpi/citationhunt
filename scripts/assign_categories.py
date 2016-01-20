@@ -16,6 +16,7 @@ from __future__ import unicode_literals
 import sys
 sys.path.append('../')
 
+import config
 import chdb as chdb_
 from utils import *
 
@@ -70,9 +71,10 @@ def load_unsourced_pageids(chdb):
     return set(r[0] for r in cursor)
 
 def load_hidden_categories(wpcursor):
+    cfg = config.get_localized_config()
     wpcursor.execute('''
         SELECT cl_from FROM categorylinks WHERE
-        cl_to = "Hidden_categories"''')
+        cl_to = %s''', (cfg.hidden_category,))
     hidden_page_ids = [row[0] for row in wpcursor]
     return category_ids_to_names(wpcursor, hidden_page_ids)
 
@@ -81,14 +83,15 @@ def load_categories_for_page(wpcursor, pageid):
         SELECT cl_to FROM categorylinks WHERE cl_from = %s''', (pageid,))
     return set(CategoryName.from_wp_categorylinks(row[0]) for row in wpcursor)
 
-NUMBER_PATTERN = re.compile('.*[0-9]+.*')
 def category_is_usable(catname, hidden_categories):
     assert isinstance(catname, CategoryName)
-    return catname not in hidden_categories \
-        and not re.match(NUMBER_PATTERN, catname) \
-        and not catname.startswith('Pages ') \
-        and not catname.startswith('Articles ') \
-        and not catname.endswith(' stubs')
+    if catname in hidden_categories:
+        return False
+    cfg = config.get_localized_config()
+    for regexp in cfg.category_name_regexps_blacklist:
+        if re.match(regexp, catname):
+            return False
+    return True
 
 def choose_categories(categories_to_ids, unsourced_pageids, max_categories):
     categories = set()

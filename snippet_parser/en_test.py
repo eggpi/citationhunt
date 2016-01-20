@@ -1,14 +1,18 @@
 #-*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-from snippet_parser import extract_snippets, CITATION_NEEDED_MARKER, REF_MARKER
+import os
+os.environ['CH_LANG'] = 'en'
+from base import *
+snippet_parser = get_localized_snippet_parser()
 
 import unittest
 import functools
 
+
 # ignore size limits to make these tests
 extract_snippets = functools.partial(
-    extract_snippets, minlen = 0, maxlen = float('inf'))
+    snippet_parser.extract_snippets, minlen = 0, maxlen = float('inf'))
 
 def extract_lead_snippets(text):
     snippets = extract_snippets(text)
