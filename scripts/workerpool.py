@@ -74,6 +74,10 @@ class WorkerPool(object):
         wp.done()
     '''
 
+    # After getting this many exceptions in any subprocess, raise
+    # the last one and give up on that subprocess
+    MAX_EXCEPTIONS_PER_SUBPROCESS = 5
+
     def __init__(self, worker, receiver):
         self._procs = []
         self._queues = []
@@ -122,6 +126,7 @@ class WorkerPool(object):
 
     def _loop_common(self, q, on_task):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
+        exception_count = 0
         while not self._canceled:
             try:
                 msg, task = q.get(timeout = 1)
@@ -133,7 +138,9 @@ class WorkerPool(object):
                 try:
                     on_task(task)
                 except:
-                    pass
+                    exception_count += 1
+                    if exception_count >= self.MAX_EXCEPTIONS_PER_SUBPROCESS:
+                        raise
 
     def _worker_loop(self, worker, q):
         def on_task(task):
