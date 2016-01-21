@@ -69,6 +69,7 @@ lang_code_to_config = dict(
             'Référence nécessaire',
             'ref nec',
             'Inédit',
+            'refnec',
         ],
 
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
