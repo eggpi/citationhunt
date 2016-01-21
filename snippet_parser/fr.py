@@ -48,7 +48,9 @@ class SnippetParser(base.SnippetParserBase):
             return handle_s(template)
         elif self.is_citation_needed(template):
             repl = [base.CITATION_NEEDED_MARKER]
-            if template.params:
+            # Keep the text inside the template, but not other parameters
+            # like date
+            if template.params and not template.params[0].showkey:
                 repl = [template.params[0].value.strip_code()] + repl
             return ''.join(repl)
         return ''
