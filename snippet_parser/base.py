@@ -47,6 +47,17 @@ class SnippetParserBase(object):
         strip = strip.__get__(obj, type(obj)) # bind the method
         return strip(normalize, collapse)
 
+    def handle_common_templates(self, template, normalize, collapse):
+        '''Handle a few common, non-localized templates. You usually want
+        to call this from strip_template. This will either return a string
+        (the replacement for the template), or None if the template was not
+        handled.
+        '''
+
+        if template.name == 'lang':
+            return template.params[1].value.strip_code()
+        return None
+
     def strip_template(self, template, normalize, collapse):
         '''Override to control how templates are stripped in the wikicode.
 
