@@ -13,8 +13,8 @@ import config
 
 import mwparserfromhell
 
-REF_MARKER = 'ec5b89dc49c433a9521a13928c032129'
-CITATION_NEEDED_MARKER = '7b94863f3091b449e6ab04d44cb372a0'
+REF_MARKER = 'ec5b89dc49c433a9521a139'
+CITATION_NEEDED_MARKER = '7b94863f3091b449e6ab04d4'
 
 def get_localized_snippet_parser():
     import snippet_parser # requires CH_LANG
