@@ -130,6 +130,7 @@ def install_scratch_db():
         cursor.execute('DROP DATABASE ' + scname)
 
 def create_tables(db):
+    cfg = config.get_localized_config()
     with db as cursor, ignore_warnings():
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS categories (id VARCHAR(128) PRIMARY KEY,
@@ -153,10 +154,10 @@ def create_tables(db):
         ''')
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS snippets (id VARCHAR(128) PRIMARY KEY,
-            snippet VARCHAR(512), section VARCHAR(512), article_id VARCHAR(128),
+            snippet VARCHAR(%s), section VARCHAR(512), article_id VARCHAR(128),
             FOREIGN KEY(article_id) REFERENCES articles(page_id)
             ON DELETE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-        ''')
+        ''', (cfg.snippet_max_size * 2,))
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS snippets_links (prev VARCHAR(128),
             next VARCHAR(128), cat_id VARCHAR(128),

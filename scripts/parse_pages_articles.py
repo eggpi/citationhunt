@@ -69,7 +69,8 @@ class RowParser(workerpool.Worker):
         url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
 
         snippets_rows = []
-        snippets = self.parser.extract_snippets(wikitext)
+        snippets = self.parser.extract_snippets(
+            wikitext, cfg.snippet_min_size, cfg.snippet_max_size)
         for sec, snips in snippets:
             sec = section_name_to_anchor(sec)
             for sni in snips:
