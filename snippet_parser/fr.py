@@ -25,7 +25,7 @@ def handle_s(template):
     if not template.params:
         return ''
     ret = unicode(template.params[0])
-    if len(template.params) == 2 and unicode(template(params[1])) == 'er':
+    if len(template.params) == 2 and unicode(template.params[1]) == 'er':
         ret += 'ᵉʳ'
     else:
         ret += 'ᵉ'
