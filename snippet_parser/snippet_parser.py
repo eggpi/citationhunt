@@ -45,11 +45,20 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420):
         for paragraph in section.split('\n\n'):
             wikicode = mwparserfromhell.parse(paragraph)
             snippet = cleanup_snippet(wikicode.strip_code())
-            if len(snippet) > maxlen or len(snippet) < minlen:
-                continue
-            if CITATION_NEEDED_MARKER in snippet:
+            usable_len = len(snippet)
+            if CITATION_NEEDED_MARKER not in snippet:
                 # marker may have been inside wiki markup
-                secsnippets.append(snippet)
+                continue
+
+            usable_len = (
+                len(snippet) -
+                (len(CITATION_NEEDED_MARKER) *
+                    snippet.count(CITATION_NEEDED_MARKER)) -
+                (len(REF_MARKER) *
+                    snippet.count(REF_MARKER)))
+            if usable_len > maxlen or usable_len < minlen:
+                continue
+            secsnippets.append(snippet)
     return snippets
 
 if __name__ == '__main__':
