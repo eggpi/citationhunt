@@ -20,6 +20,16 @@ def get_localized_snippet_parser():
     import snippet_parser # requires CH_LANG
     return snippet_parser
 
+def matches_any(template, names):
+    return any(template.name.matches(n) for n in names)
+
+# (s)anitize (p)arameters from a template
+def sp(params):
+    if isinstance(params, mwparserfromhell.nodes.extras.Parameter):
+        params = [params]
+    sanitized = [unicode(p.value.strip_code()) for p in params]
+    return sanitized[0] if len(sanitized) == 1 else sanitized
+
 class SnippetParserBase(object):
     '''A base class for snippet parsers in various languages.'''
 
