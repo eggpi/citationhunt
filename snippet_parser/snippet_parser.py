@@ -42,10 +42,15 @@ def extract_snippets(wikitext, minlen = 140, maxlen = 420):
         secsnippets = []
         snippets.append([sectitle, secsnippets])
 
-        for paragraph in section.split('\n\n'):
+        paragraphs = section.split('\n\n')
+        for paragraph in paragraphs:
             wikicode = mwparserfromhell.parse(paragraph)
             snippet = cleanup_snippet(wikicode.strip_code())
-            usable_len = len(snippet)
+            if '\n' in snippet:
+                # Lists cause more 'paragraphs' to be generated
+                paragraphs.extend(snippet.split('\n'))
+                continue
+
             if CITATION_NEEDED_MARKER not in snippet:
                 # marker may have been inside wiki markup
                 continue

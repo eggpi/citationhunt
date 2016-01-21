@@ -157,5 +157,13 @@ class ExtractSnippetTest(unittest.TestCase):
              'refers to the cuisine of "high level" establishments.' +
              CITATION_NEEDED_MARKER])
 
+    def test_list(self):
+        s = '\n'.join([
+            '*[[2002 in comics|2002]]: Nominated for the "Best New Talent" [[National Comics Awards#Best New Talent|National Comics Award]]{{citation needed|date=November 2012}}',
+            '*[[2007 in comics|2007]]: Nominated the "Favorite Newcomer Writer" [[Eagle Awards#2007|Eagle Award]]{{citation needed|date=November 2012}}'
+        ])
+        # Should break each list item into one paragraph
+        self.assertEqual(len(extract_lead_snippets(s)), 2)
+
 if __name__ == '__main__':
     unittest.main()
