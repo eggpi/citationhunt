@@ -21,7 +21,7 @@ def handle_date(template):
 def handle_s(template):
     if not template.params:
         return ''
-    ret = sp(template.params[0])
+    ret = sp(template.params[0]).upper()
     if len(template.params) == 2 and sp(template.params[1]) == 'er':
         ret += 'ᵉʳ'
     else:
@@ -41,7 +41,7 @@ class SnippetParser(SnippetParserBase):
             return ' '.join(sp(template.params[:2]))
         elif template.name.matches('date'):
             return handle_date(template)
-        elif matches_any(template, ('s', '-s', 's-')):
+        elif matches_any(template, ('s', '-s', 's-', 'siècle')):
             return handle_s(template)
         elif self.is_citation_needed(template):
             repl = [CITATION_NEEDED_MARKER]
