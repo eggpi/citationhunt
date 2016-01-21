@@ -28,7 +28,7 @@ def cleanup_snippet(snippet):
     snippet = re.sub(',\s+\)', ')', snippet)
     return re.sub('\(\)', '', snippet)
 
-def extract_snippets(wikitext, minlen = 140, maxlen = 420):
+def extract_snippets(wikitext, minlen = 80, maxlen = 560):
     snippets = [] # [section, [snippets]]
 
     sections = mwparserfromhell.parse(wikitext).get_sections(
