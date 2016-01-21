@@ -74,4 +74,4 @@ if __name__ == '__main__':
     wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     page = wikitools.Page(wikipedia, title)
     wikitext = page.getWikiText()
-    pprint.pprint(extract_snippets(wikitext))
+    pprint.pprint(extract_snippets(wikitext, maxlen = float('inf')))

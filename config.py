@@ -1,6 +1,14 @@
 #-*- encoding: utf-8 -*-
 import os
 
+global_config = dict(
+    # Approximate maximum length for a snippet
+    snippet_max_size = 560,
+
+    # Approximate minimum length for a snippet
+    snippet_min_size = 80,
+)
+
 # Most (all?) Wikipedias support these English settings in addition
 # to the localized ones, so make sure to handle them!
 
@@ -94,5 +102,6 @@ class Config(object):
 def get_localized_config(lang_code = None):
     if lang_code is None:
         lang_code = os.getenv('CH_LANG')
-    cfg = Config(lang_code = lang_code, **lang_code_to_config[lang_code])
+    cfg = Config(lang_code = lang_code,
+        **dict(global_config, **lang_code_to_config[lang_code]))
     return cfg
