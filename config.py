@@ -74,10 +74,13 @@ lang_code_to_config = dict(
         # Looks like there are many other interesting templates:
         # https://fr.wikipedia.org/wiki/Aide:Référence_nécessaire
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
-            'Référence nécessaire',
-            'ref nec',
             'Inédit',
+            'Référence nécessaire',
+            'Référence souhaitée',
+            'ref nec',
+            'ref sou'
             'refnec',
+            'refsou'
         ],
 
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
