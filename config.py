@@ -78,9 +78,9 @@ lang_code_to_config = dict(
             'Référence nécessaire',
             'Référence souhaitée',
             'ref nec',
-            'ref sou'
+            'ref sou',
             'refnec',
-            'refsou'
+            'refsou',
         ],
 
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
