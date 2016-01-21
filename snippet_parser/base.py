@@ -64,7 +64,7 @@ class SnippetParserBase(object):
         handled.
         '''
 
-        if template.name == 'lang':
+        if template.name == 'lang' and len(template.params) > 1:
             return template.params[1].value.strip_code()
         return None
 
