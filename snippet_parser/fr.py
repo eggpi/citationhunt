@@ -31,6 +31,11 @@ def handle_s(template):
         ret += ' av. J.-C'
     return ret
 
+def handle_phonetique(template):
+    if not template.params:
+        return ''
+    return sp(template.params[0])
+
 class SnippetParser(SnippetParserBase):
     def strip_template(self, template, normalize, collapse):
         repl = self.handle_common_templates(template, normalize, collapse)
@@ -43,6 +48,8 @@ class SnippetParser(SnippetParserBase):
             return handle_date(template)
         elif matches_any(template, ('s', '-s', 's-', 'siècle')):
             return handle_s(template)
+        elif template.name.matches('phonétique'):
+            return handle_phonetique(template)
         elif self.is_citation_needed(template):
             repl = [CITATION_NEEDED_MARKER]
             # Keep the text inside the template, but not other parameters

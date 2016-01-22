@@ -26,5 +26,12 @@ class ExtractSnippetTest(unittest.TestCase):
             ['En 1693%s, il fait la connaissance de Leibniz.' %
                 CITATION_NEEDED_MARKER])
 
+    def test_phonetique(self):
+        s = '''Ce nom de famille se prononce [{{phonétique|dəbʁɔj}}]{{refnec}}'''
+        self.assertEqual(
+            extract_lead_snippets(s),
+            ['Ce nom de famille se prononce [dəbʁɔj]' +
+                CITATION_NEEDED_MARKER])
+
 if __name__ == '__main__':
     unittest.main()
