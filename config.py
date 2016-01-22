@@ -23,6 +23,10 @@ EN_CITATION_NEEDED_TEMPLATES = [
     'cn',
 ]
 
+EN_TAGS_BLACKLIST = [
+    'math'
+]
+
 lang_code_to_config = dict(
     en = dict(
         # A friendly name for the language
@@ -46,6 +50,10 @@ lang_code_to_config = dict(
         # entirely from the output; others will get replaced
         # by their titles.
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+
+        # A set of tags that we know for sure we can't handle, so
+        # snippets containing them will be dropped.
+        tags_blacklist = EN_TAGS_BLACKLIST,
 
         # The name of the category for hidden categories. Categories
         # belonging to this category are typically used for maintenance
@@ -86,6 +94,8 @@ lang_code_to_config = dict(
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
             'Fichier:',
         ],
+
+        tags_blacklist = EN_TAGS_BLACKLIST,
 
         hidden_category = 'Catégorie_cachée',
 

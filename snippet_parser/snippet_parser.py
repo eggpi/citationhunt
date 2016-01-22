@@ -45,6 +45,10 @@ def extract_snippets(wikitext, minlen = 80, maxlen = 560):
         paragraphs = section.split('\n\n')
         for paragraph in paragraphs:
             wikicode = mwparserfromhell.parse(paragraph)
+            for tag in wikicode.filter_tags():
+                if tag.tag in cfg.tags_blacklist:
+                    continue
+
             snippet = cleanup_snippet(wikicode.strip_code())
             if '\n' in snippet:
                 # Lists cause more 'paragraphs' to be generated
