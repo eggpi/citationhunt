@@ -47,7 +47,6 @@ class SnippetParser(SnippetParserBase):
             repl = [CITATION_NEEDED_MARKER]
             # Keep the text inside the template, but not other parameters
             # like date
-            if template.params and not template.params[0].showkey:
-                repl = [sp(template.params[0])] + repl
+            repl = [sp(p) for p in template.params if not p.showkey] + repl
             return ''.join(repl)
         return ''
