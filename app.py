@@ -181,14 +181,17 @@ def citation_hunt(lang_code):
 @app.route('/<lang_code>/categories.html')
 @validate_lang_code
 def categories_html(lang_code):
-    return flask.render_template('categories.html',
-        categories = get_categories(lang_code, include_default = False))
+    response = flask.make_response(
+        flask.render_template('categories.html',
+            categories = get_categories(lang_code, include_default = False)))
+    response.cache_control.max_age = 3 * 60 * 60
+    return response
 
 @app.after_request
 def add_cache_header(response):
     if response.status_code == 200 and response.cache_control.max_age is None:
         response.cache_control.public = True
-        response.cache_control.max_age = 3 * 24 * 60 * 60
+        response.cache_control.max_age = 24 * 60 * 60
     elif response.status_code == 302:
         response.cache_control.no_cache = True
         response.cache_control.no_store = True
