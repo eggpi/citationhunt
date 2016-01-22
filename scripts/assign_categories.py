@@ -89,7 +89,7 @@ def category_is_usable(catname, hidden_categories):
         return False
     cfg = config.get_localized_config()
     for regexp in cfg.category_name_regexps_blacklist:
-        if re.match(regexp, catname):
+        if re.search(regexp, catname):
             return False
     return True
 
