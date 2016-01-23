@@ -29,10 +29,11 @@ p {
 
 #snippet {
     position: relative;
-    margin: 30px auto 40px auto;
+    margin: 30px auto 0 auto;
     line-height: 20px;
     text-align: justify;
     max-width: 80%;
+    min-height: 64px;
 }
 
 #quotation {
@@ -85,6 +86,7 @@ button:focus {
 
 #buttons {
     text-align: center;
+    margin-top: 25px;
     margin-bottom: 35px;
 }
 
