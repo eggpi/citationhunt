@@ -37,6 +37,10 @@ def handle_phonetique(template):
         return ''
     return sp(template.params[0])
 
+def handle_citation(template):
+    if template.params:
+        return '« ' + sp(template.params[0]) + ' »'
+
 class SnippetParser(SnippetParserBase):
     def strip_template(self, template, normalize, collapse):
         repl = self.handle_common_templates(template, normalize, collapse)
@@ -51,6 +55,8 @@ class SnippetParser(SnippetParserBase):
             return handle_s(template)
         elif template.name.matches('phonétique'):
             return handle_phonetique(template)
+        elif template.name.matches('citation'):
+            return handle_citation(template)
         elif self.is_citation_needed(template):
             repl = [CITATION_NEEDED_MARKER]
             # Keep the text inside the template, but not other parameters

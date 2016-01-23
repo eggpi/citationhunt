@@ -40,5 +40,11 @@ class ExtractSnippetTest(unittest.TestCase):
             ['Il est confondu avec cette lettre jusqu’au XVIᵉ siècle' +
                 CITATION_NEEDED_MARKER])
 
+    def test_citation(self):
+        s = '''Selon un article paru en 2000 dans le mensuel ''[[Le Monde diplomatique]]''{{refnec}}, {{Citation|Sa tâche consiste généralement à assurer la promotion de l’image de ses clients en France et en Europe}}{{refnec}}.'''
+        self.assertEqual(
+            extract_lead_snippets(s),
+            ['''Selon un article paru en 2000 dans le mensuel Le Monde diplomatique{0}, « Sa tâche consiste généralement à assurer la promotion de l’image de ses clients en France et en Europe »{0}.'''.format(CITATION_NEEDED_MARKER)])
+
 if __name__ == '__main__':
     unittest.main()
