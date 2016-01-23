@@ -33,5 +33,12 @@ class ExtractSnippetTest(unittest.TestCase):
             ['Ce nom de famille se prononce [dəbʁɔj]' +
                 CITATION_NEEDED_MARKER])
 
+    def test_siecle(self):
+        s = '''Il est confondu avec cette lettre jusqu’au {{siècle|xvi}} siècle'''
+        self.assertEqual(
+            extract_lead_snippets(s + '{{refnec}}'),
+            ['Il est confondu avec cette lettre jusqu’au XVIᵉ siècle' +
+                CITATION_NEEDED_MARKER])
+
 if __name__ == '__main__':
     unittest.main()

@@ -26,7 +26,8 @@ def handle_s(template):
         ret += 'ᵉʳ'
     else:
         ret += 'ᵉ'
-    ret += ' siècle'
+    if template.name != 'siècle':
+        ret += ' siècle'
     if template.name.matches('-s'):
         ret += ' av. J.-C'
     return ret
