@@ -3,10 +3,10 @@ import os
 
 global_config = dict(
     # Approximate maximum length for a snippet
-    snippet_max_size = 560,
+    snippet_max_size = 420,
 
     # Approximate minimum length for a snippet
-    snippet_min_size = 80,
+    snippet_min_size = 100,
 )
 
 # Most (all?) Wikipedias support these English settings in addition
