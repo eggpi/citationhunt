@@ -59,6 +59,11 @@ class CitationHuntTest(unittest.TestCase):
         self.assertTrue('id' in args)
         self.assertEquals(args['cat'], self.cat)
 
+        # Now request the snippet, should be a 200
+        response = self.app.get(
+            '/en?id=%s&cat=%s' % (args['id'], args['cat']))
+        self.assertEquals(response.status_code, 200)
+
     def test_id_invalid_category(self):
         response = self.app.get('/en?id=' + self.sid + '&cat=invalid')
         args = self.get_url_args(response.location)
