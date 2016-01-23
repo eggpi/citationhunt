@@ -121,6 +121,11 @@ button:focus {
     right: 15px;
 }
 
+#bottom {
+    margin-left: 15px;
+    margin-right: 30px;
+}
+
 #lead-hint {
     float: right;
     border-radius: 4px;
@@ -129,5 +134,4 @@ button:focus {
     background-color: #EEE2EA;
     text-align: justify;
     max-width: 35%;
-    margin-left: 5px;
 }
