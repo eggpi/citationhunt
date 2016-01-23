@@ -193,9 +193,10 @@ def categories_html(lang_code):
 
 @app.after_request
 def add_cache_header(response):
-    if response.status_code == 200 and response.cache_control.max_age is None:
+    if response.status_code == 200:
         response.cache_control.public = True
-        response.cache_control.max_age = 24 * 60 * 60
+        if response.cache_control.max_age is None:
+            response.cache_control.max_age = 24 * 60 * 60
     elif response.status_code == 302:
         response.cache_control.no_cache = True
         response.cache_control.no_store = True
