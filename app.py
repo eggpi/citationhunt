@@ -123,9 +123,12 @@ def validate_lang_code(handler):
     @functools.wraps(handler)
     def wrapper(lang_code = '', *args, **kwds):
         if lang_code not in config.lang_code_to_config:
-            return flask.redirect(
+            response = flask.redirect(
                 flask.url_for('citation_hunt', lang_code = 'en',
                     **flask.request.args))
+            if flask.request.path != '/':
+                response.headers['Location'] += flask.request.path
+            return response
         return handler(lang_code, *args, **kwds)
     return wrapper
 
