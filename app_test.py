@@ -27,6 +27,11 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(response.status_code, 302)
         self.assertTrue(response.location.endswith('/en'))
 
+        # Must preserve path
+        response = self.app.get('/favicon.ico')
+        self.assertEquals(response.status_code, 302)
+        self.assertTrue(response.location.endswith('/en/favicon.ico'))
+
     def test_no_id_no_category(self):
         response = self.app.get('/en')
         args = self.get_url_args(response.location)
