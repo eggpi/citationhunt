@@ -5,6 +5,7 @@ from snippet_parser import CITATION_NEEDED_MARKER, REF_MARKER
 import flask
 import flask_sslify
 from flask.ext.compress import Compress
+from flask.ext.mobility import Mobility
 
 import os
 import contextlib
@@ -115,6 +116,9 @@ def select_next_id(lang_code, curr_id, cat = CATEGORY_ALL):
                 break
     return next_id
 
+def should_autofocus_category_filter(cat, request):
+    return cat is CATEGORY_ALL and not request.MOBILE
+
 def validate_lang_code(handler):
     @functools.wraps(handler)
     def wrapper(lang_code = '', *args, **kwds):
@@ -130,6 +134,7 @@ Compress(app)
 debug = 'DEBUG' in os.environ
 if not debug:
     flask_sslify.SSLify(app, permanent = True)
+Mobility(app)
 
 @app.route('/')
 @validate_lang_code
@@ -167,6 +172,7 @@ def citation_hunt(lang_code):
                 flask.url_for('citation_hunt',
                     id = id, cat = CATEGORY_ALL.id,
                     lang_code = lang_code))
+        autofocus = should_autofocus_category_filter(cat, flask.request)
         return flask.render_template('index.html',
             snippet = snippet, section = section, article_url = aurl,
             article_title = atitle, current_category = cat,
@@ -175,7 +181,8 @@ def citation_hunt(lang_code):
             cn_html = CITATION_NEEDED_MARKUP,
             ref_marker = REF_MARKER,
             ref_html = SUPERSCRIPT_MARKUP,
-            lang_code = lang_code)
+            lang_code = lang_code,
+            category_filter_autofocus = autofocus)
 
     id = select_random_id(lang_code, cat)
     return flask.redirect(

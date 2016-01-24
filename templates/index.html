@@ -26,7 +26,7 @@
       {% if not section %}<div id="lead-hint">This text is part of the article's lead section, so referencing it may be optional.<br/>Please see <a target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:CITELEAD">WP:CITELEAD</a> for more information.</div>{% endif %}
       <div> <!-- The content to the left of #lead-hint must be display:block to wrap around it -->
         <form method="GET" action="" id="form-next">
-          <input type="text" id="category-input" list="categories" value = "{{ current_category.title }}" autocomplete="off" placeholder="What makes you tick?" {% if not current_category.title %}autofocus{% endif %} style="visibility: hidden;">
+          <input type="text" id="category-input" list="categories" value = "{{ current_category.title }}" autocomplete="off" placeholder="What makes you tick?" {% if category_filter_autofocus %}autofocus{% endif %} style="visibility: hidden;">
           <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
           <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
         </form>
