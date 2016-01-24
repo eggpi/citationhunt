@@ -20,6 +20,19 @@ SUPERSCRIPT_HTML = '<sup class="superscript">[%s]</sup>'
 SUPERSCRIPT_MARKUP = flask.Markup(SUPERSCRIPT_HTML)
 CITATION_NEEDED_MARKUP = flask.Markup(SUPERSCRIPT_HTML % 'citation&thinsp;needed')
 
+# Cache duration for snippets.
+# Since each page contains a link to the next one, even when no category is
+# selected, we risk users getting trapped circling among their cached pages
+# sometimes. We do depend on caching for prefetching to work, but let's do
+# it for only a short period to be safe.
+# An alternative would be to never cache when no category is selected UNLESS
+# when prefetching, but that's a bit more complex.
+CACHE_DURATION_SNIPPET = 60
+
+# Cache duration for things that get regenerated along with database updates,
+# such as the list of categories.
+CACHE_DURATION_SEMI_STATIC = 3 * 60 * 60
+
 @contextlib.contextmanager
 def log_time(operation):
     before = datetime.now()
@@ -198,18 +211,24 @@ def categories_html(lang_code):
     response = flask.make_response(
         flask.render_template('categories.html',
             categories = get_categories(lang_code, include_default = False)))
-    response.cache_control.max_age = 3 * 60 * 60
+    response.cache_control.max_age = CACHE_DURATION_SEMI_STATIC
     return response
 
 @app.after_request
 def add_cache_header(response):
-    if response.status_code == 200:
-        response.cache_control.public = True
-        if response.cache_control.max_age is None:
-            response.cache_control.max_age = 24 * 60 * 60
-    elif response.status_code == 302:
+    if response.status_code == 302:
         response.cache_control.no_cache = True
         response.cache_control.no_store = True
+        return response
+
+    if response.status_code != 200:
+        return response
+
+    response.cache_control.public = True
+    if response.cache_control.max_age is not None:
+        return response
+
+    response.cache_control.max_age = CACHE_DURATION_SNIPPET
     return response
 
 @app.teardown_appcontext
