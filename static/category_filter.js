@@ -70,6 +70,7 @@ function initCategoryFilter() {
   });
 
   cin.style.visibility = '';
+  cin.focus();
 }
 
 function loadCategoriesAndFilter() {
