@@ -70,7 +70,10 @@ function initCategoryFilter() {
   });
 
   cin.style.visibility = '';
-  cin.focus();
+  if (cin.autofocus) {
+    // Force autofocus, looks like it doesn't work on Chrome sometimes
+    cin.focus();
+  }
 }
 
 function loadCategoriesAndFilter() {
