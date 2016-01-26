@@ -1,4 +1,6 @@
 #-*- encoding: utf-8 -*-
+from __future__ import unicode_literals
+
 import os
 
 global_config = dict(
@@ -30,7 +32,7 @@ EN_TAGS_BLACKLIST = [
 lang_code_to_config = dict(
     en = dict(
         # A friendly name for the language
-        name = 'English',
+        lang_name = 'English',
         # The database to use on Tools Labs
         database = 'enwiki_p',
         # The domain for Wikipedia in this language
@@ -74,7 +76,7 @@ lang_code_to_config = dict(
     ),
 
     fr = dict(
-        name = 'Français',
+        lang_name = 'Français',
         database = 'frwiki_p',
         wikipedia_domain = 'fr.wikipedia.org',
         citation_needed_category = 'Article_à_référence_nécessaire',

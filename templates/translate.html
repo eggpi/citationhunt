@@ -1,0 +1,100 @@
+{% extends "index.html" %}
+
+{% block head_extras %}
+<base href="../">
+{% endblock %}
+
+{% block bottom_extras %}
+<style>
+    #translate {
+        position: absolute;
+        z-index: 3;
+        width: 400px;
+        height: 65px;
+        padding: 10px;
+        box-shadow: 0 0 10px black;
+        border: none;
+    }
+
+    #translate-box {
+        width: 100%;
+        height: 100%;
+        resize: none;
+        border: none;
+        font: inherit;
+    }
+
+    #translate-box:focus {
+        outline: none;
+    }
+
+    #overlay-black, #overlay-glass {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #overlay-black {
+        background-color: black;
+        opacity: 0.6;
+        z-index: 0;
+    }
+
+    #overlay-glass {
+        background-color: transparent;
+        z-index: 2;
+    }
+
+    #translate-next, #translate-prev {
+        position: absolute;
+        font-size: 25px;
+        background: transparent;
+        bottom: 0;
+        color: black;
+        cursor: pointer;
+    }
+
+    #translate-next {
+        right: 5px;
+    }
+
+    #translate-prev {
+        left: 5px;
+        -moz-transform: scale(-1, 1);
+        -webkit-transform: scale(-1, 1);
+        -o-transform: scale(-1, 1);
+        -ms-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+    }
+
+    #translate-instructions {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 20px 10px;
+        border-top: 1px solid black;
+        background: inherit;
+    }
+
+    #translate-instructions span {
+        font-weight: bold;
+    }
+</style>
+<div id="translate">
+  <textarea id="translate-box" maxlength="200"></textarea>
+  <a id="translate-next">➜</a>
+  <a id="translate-prev" style="display: none">➜</a>
+</div>
+<div id="overlay-black"></div>
+<div id="overlay-glass"></div>
+<script src="static/translation_wizard.js" defer></script>
+<div id="translate-instructions">
+<p>You are helping translate Citation Hunt to <span>{{ lang_name }}</span>. Start typing to translate the messages as they are highlighted, click the arrows to switch between messages.</p>
+<p>Don't worry about translating everything - if in doubt, just skip the message. Thanks for helping!</p>
+</div>
+</div>
+{% endblock %}
+
