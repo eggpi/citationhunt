@@ -214,6 +214,32 @@ def categories_html(lang_code):
     response.cache_control.max_age = CACHE_DURATION_SEMI_STATIC
     return response
 
+@app.route('/<lang_code>/translate.html')
+@validate_lang_code
+def translate_html(lang_code):
+    # TODO pick one that is valid
+    id = '9a0619f2'
+    sinfo = select_snippet_by_id(lang_code, id)
+    if sinfo is None:
+        # invalid id
+        flask.abort(404)
+    snippet, section, aurl, atitle = sinfo
+    cfg = config.get_localized_config(lang_code)
+    return flask.render_template('translate.html',
+        snippet = snippet, section = section, article_url = aurl,
+        article_title = atitle, current_category = CATEGORY_ALL,
+        next_snippet_id = id, cn_marker = CITATION_NEEDED_MARKER,
+        cn_html = CITATION_NEEDED_MARKUP, ref_marker = REF_MARKER,
+        ref_html = SUPERSCRIPT_MARKUP, lang_code = lang_code,
+        lang_name = cfg.lang_name, category_filter_autofocus = False)
+    return response
+
+@app.route('/<lang_code>/translation', methods = ['POST'])
+@validate_lang_code
+def translation(lang_code):
+    print 'NEW TRANSLATION: ' + flask.request.data
+    return 'thanks!', 200
+
 @app.after_request
 def add_cache_header(response):
     if response.status_code == 302:
