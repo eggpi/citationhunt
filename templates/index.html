@@ -40,6 +40,9 @@
     <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet" type="text/css">
     <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">Hey! My source is on GitHub!</a>
     <link rel="prefetch" href="{{lang_code}}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
+    {% if lang_code != "fr" %}
+    <p id="help-translate">Parlez-vous français? <a target="_blank" href="fr/translate.html">Help translate Citation Hunt to French!</a></p>
+    {% endif %}
     {% block bottom_extras %}{% endblock %}
   </body>
 </html>

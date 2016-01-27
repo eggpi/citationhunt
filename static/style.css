@@ -135,3 +135,9 @@ button:focus {
     text-align: justify;
     max-width: 35%;
 }
+
+#help-translate {
+    margin-top: 50px;
+    text-align: center;
+    font-size: medium;
+}
