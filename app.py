@@ -217,8 +217,10 @@ def categories_html(lang_code):
 @app.route('/<lang_code>/translate.html')
 @validate_lang_code
 def translate_html(lang_code):
-    # TODO pick one that is valid
-    id = '9a0619f2'
+    cursor = get_db(lang_code).cursor()
+    cursor.execute('SELECT id FROM snippets WHERE section = ""')
+    id = cursor.fetchone()[0]
+
     sinfo = select_snippet_by_id(lang_code, id)
     if sinfo is None:
         # invalid id
