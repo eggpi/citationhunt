@@ -162,6 +162,7 @@ def index(lang_code):
 def citation_hunt(lang_code):
     id = flask.request.args.get('id')
     cat = flask.request.args.get('cat')
+    cfg = config.get_localized_config(lang_code)
 
     if cat is not None:
         cat = get_category_by_id(lang_code, cat)
@@ -197,7 +198,7 @@ def citation_hunt(lang_code):
             cn_html = CITATION_NEEDED_MARKUP,
             ref_marker = REF_MARKER,
             ref_html = SUPERSCRIPT_MARKUP,
-            lang_code = lang_code,
+            config = cfg,
             category_filter_autofocus = autofocus)
 
     id = select_random_id(lang_code, cat)
@@ -233,7 +234,7 @@ def translate_html(lang_code):
         next_snippet_id = id, cn_marker = CITATION_NEEDED_MARKER,
         cn_html = CITATION_NEEDED_MARKUP, ref_marker = REF_MARKER,
         ref_html = SUPERSCRIPT_MARKUP, lang_code = lang_code,
-        lang_name = cfg.lang_name, category_filter_autofocus = False)
+        config = cfg, category_filter_autofocus = False)
     return response
 
 @app.route('/<lang_code>/translation', methods = ['POST'])
