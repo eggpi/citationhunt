@@ -1,6 +1,8 @@
 #-*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
+import chstrings
+
 import os
 
 global_config = dict(
@@ -37,6 +39,19 @@ lang_code_to_config = dict(
         database = 'enwiki_p',
         # The domain for Wikipedia in this language
         wikipedia_domain = 'en.wikipedia.org',
+
+        # A link to an introductory article about adding citations
+        beginners_link = 'https://en.wikipedia.org/wiki/Help:Referencing_for_beginners',
+        # A human-readable title for the article specified above. This gets
+        # interpolated into the localizable string 'beginners_hint'
+        beginners_link_title = 'Referencing for beginners',
+
+        # Some Wikipedias have specific policies for adding citations to the
+        # lead section of an article. This should be a link to that policy.
+        lead_section_policy_link = "https://en.wikipedia.org/wiki/Wikipedia:CITELEAD",
+        # A human-readable title for the link above. This gets interpolated
+        # into the localizable string 'lead_section_hint'
+        lead_section_policy_link_title = "WP:CITELEAD",
 
         # The name of the category containing articles lacking
         # citations, without the 'Category:' prefix
@@ -80,6 +95,10 @@ lang_code_to_config = dict(
         database = 'frwiki_p',
         wikipedia_domain = 'fr.wikipedia.org',
         citation_needed_category = 'Article_à_référence_nécessaire',
+        beginners_link = 'https://fr.wikipedia.org/wiki/Aide:Pr%C3%A9sentez_vos_sources',
+        beginners_link_title = 'Aide:Source',
+        lead_section_policy_link = "https://fr.wikipedia.org/wiki/WP:INTRO",
+        lead_section_policy_link_title = "WP:INTRO",
 
         # Looks like there are many other interesting templates:
         # https://fr.wikipedia.org/wiki/Aide:Référence_nécessaire
@@ -119,4 +138,5 @@ def get_localized_config(lang_code = None):
         lang_code = os.getenv('CH_LANG')
     cfg = Config(lang_code = lang_code,
         **dict(global_config, **lang_code_to_config[lang_code]))
+    cfg.strings = chstrings.get_localized_strings(cfg, lang_code)
     return cfg

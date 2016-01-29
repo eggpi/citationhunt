@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-<html lang={{ lang_code }}>
+<html lang={{ config.lang_code }}>
   <head>
     {% block head_extras %}{% endblock %}
     <title>Citation Hunt</title>
@@ -11,8 +11,8 @@
   </head>
   <body>
     <h1>Citation Hunt</h1>
-    <p id=intro>Help find citations for Wikipedia articles!</h1>
-    <p id="preamble"><span id="page-title-text">In page</span> <a id="article-link" href={{ article_url }} target=_blank>{{ article_title }}</a>:</p>
+    <p id=intro>{{ config.strings.introduction }}</h1>
+    <p id="preamble"><span id="page-title-text">{{ config.strings.in_page }}</span> <a id="article-link" href={{ article_url }} target=_blank>{{ article_title }}</a>:</p>
     {# use a list for snippet_html to make sure we can access it outside the loop; see https://stackoverflow.com/questions/4870346 #}
     {% set snippet_html = [snippet | replace(cn_marker, cn_html)] %}
     {% for i in range(1, snippet_html[-1].count(ref_marker) + 1) %}
@@ -20,27 +20,27 @@
     {% endfor %}
     <blockquote id="snippet"><div id="quotation">"</div>{{ snippet_html[-1] }}</blockquote>
     <div id="buttons">
-      <a href={{ article_url }}{% if section %}#{{ section }}{% endif %} target=_blank><button class="button" id="button-wikilink">I got this!</button></a>
-      <button form="form-next" type="submit" id="button-next" class="button">Nope, next!</button>
+      <a href={{ article_url }}{% if section %}#{{ section }}{% endif %} target=_blank><button class="button" id="button-wikilink">{{ config.strings.button_wikilink }}</button></a>
+      <button form="form-next" type="submit" id="button-next" class="button">{{ config.strings.button_next }}</button>
     </div>
     <div id="bottom">
-      {% if not section %}<div id="lead-hint">This text is part of the article's lead section, so referencing it may be optional.<br/>Please see <a target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:CITELEAD">WP:CITELEAD</a> for more information.</div>{% endif %}
+      {% if not section %}<div id="lead-hint">{{ config.strings.lead_section_hint }}</div>{% endif %}
       <div> <!-- The content to the left of #lead-hint must be display:block to wrap around it -->
         <form method="GET" action="" id="form-next">
-          <input type="text" id="category-input" list="categories" value = "{{ current_category.title }}" autocomplete="off" placeholder="What makes you tick?" {% if category_filter_autofocus %}autofocus{% endif %} style="visibility: hidden;">
+          <input type="text" id="category-input" list="categories" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ config.strings.category_filter_placeholder }}" {% if category_filter_autofocus %}autofocus{% endif %} style="visibility: hidden;">
           <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
           <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
         </form>
         <noscript>
           <span id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</span>
         </noscript>
-        <p><span id="beginners-link-text">Don't know how to add citations? See</span> <a href=https://en.wikipedia.org/wiki/Help:Referencing_for_beginners target=_blank>Referencing for beginners.</a></p>
+        <p id="beginners-link-text">{{ config.strings.beginners_hint }}</p>
       </div>
     </div>
     <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet" type="text/css">
-    <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">Hey! My source is on GitHub!</a>
-    <link rel="prefetch" href="{{lang_code}}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
-    {% if lang_code != "fr" %}
+    <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">{{ config.strings.github_link_title }}</a>
+    <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
+    {% if config.lang_code != "fr" %}
     <p id="help-translate">Parlez-vous français? <a href="fr/translate.html">Help translate Citation Hunt to French!</a></p>
     {% endif %}
     {% block bottom_extras %}{% endblock %}
