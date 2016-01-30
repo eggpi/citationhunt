@@ -39,7 +39,7 @@ def log_time(operation):
     yield
     after = datetime.now()
     ms = (after - before).microseconds / 1000.
-    print '[citationhunt] %s took %.2f ms' % (operation, ms)
+    app.logger.debug('%s took %.2f ms', operation, ms)
 
 def get_db(lang_code):
     localized_dbs = getattr(flask.g, '_localized_dbs', {})
