@@ -18,7 +18,7 @@ import itertools
 # pre-marked as safe for jinja.
 SUPERSCRIPT_HTML = '<sup class="superscript">[%s]</sup>'
 SUPERSCRIPT_MARKUP = flask.Markup(SUPERSCRIPT_HTML)
-CITATION_NEEDED_MARKUP = flask.Markup(SUPERSCRIPT_HTML % 'citation&thinsp;needed')
+CITATION_NEEDED_MARKUP = flask.Markup(SUPERSCRIPT_HTML)
 
 # Cache duration for snippets.
 # Since each page contains a link to the next one, even when no category is
