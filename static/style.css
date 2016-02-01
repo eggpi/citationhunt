@@ -137,7 +137,21 @@ button:focus {
 }
 
 #help-translate {
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
     font-size: medium;
+}
+
+#lang-links {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#lang-links a {
+    padding: 2px;
+    font-size: 90%;
+}
+
+#lang-links .current-lang {
+    font-weight: bold;
 }

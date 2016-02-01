@@ -40,9 +40,11 @@
     <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet" type="text/css">
     <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">{{ config.strings.github_link_title }}</a>
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
-    {% if config.lang_code != "fr" %}
-    <p id="help-translate">Parlez-vous français? <a href="fr/translate.html">Help translate Citation Hunt to French!</a></p>
-    {% endif %}
+    <div id="lang-links">
+      {% for lang_code, lang_config in config.lang_code_to_config.items() | sort %}
+        <a href="{{ lang_code }}"{% if config.lang_code == lang_code %} class="current-lang" {% endif %}>{{ lang_config.lang_name }}</a>
+      {% endfor %}
+    </div>
     {% block bottom_extras %}{% endblock %}
   </body>
 </html>

@@ -139,4 +139,5 @@ def get_localized_config(lang_code = None):
     cfg = Config(lang_code = lang_code,
         **dict(global_config, **lang_code_to_config[lang_code]))
     cfg.strings = chstrings.get_localized_strings(cfg, lang_code)
+    cfg.lang_code_to_config = lang_code_to_config
     return cfg
