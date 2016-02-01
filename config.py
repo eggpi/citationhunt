@@ -66,7 +66,8 @@ lang_code_to_config = dict(
         # For consistency, we don't actually display each of the templates
         # listed in `citation_needed_templates` in the user interface; instead
         # we just replace them with one common name. For example, in the English
-        # Wikipedia, we use the iconic [citation needed].
+        # Wikipedia, we use the iconic [citation needed]. This should basically
+        # match what the user would see on Wikipedia, minus the brackets.
         citation_needed_template_name = 'citation needed',
 
         # Wikilinks having these prefixes will be omitted
@@ -117,7 +118,7 @@ lang_code_to_config = dict(
             'refnec',
             'refsou',
         ],
-        citation_needed_template_name = 'référence nécessaire',
+        citation_needed_template_name = 'réf. nécessaire',
 
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
             'Fichier:',
