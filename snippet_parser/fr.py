@@ -41,6 +41,13 @@ def handle_citation(template):
     if template.params:
         return '« ' + sp(template.params[0]) + ' »'
 
+def handle_quand(template):
+    return ''.join(sp(p) for p in template.params if not p.showkey)
+
+def handle_lesquelles(template):
+    # quand and lesquelles are basically the same template
+    return handle_quand(template)
+
 class SnippetParser(SnippetParserBase):
     def strip_template(self, template, normalize, collapse):
         repl = self.handle_common_templates(template, normalize, collapse)
@@ -57,6 +64,10 @@ class SnippetParser(SnippetParserBase):
             return handle_phonetique(template)
         elif template.name.matches('citation'):
             return handle_citation(template)
+        elif template.name.matches('quand'):
+            return handle_quand(template)
+        elif template.name.matches('lesquelles'):
+            return handle_lesquelles(template)
         elif self.is_citation_needed(template):
             repl = [CITATION_NEEDED_MARKER]
             # Keep the text inside the template, but not other parameters

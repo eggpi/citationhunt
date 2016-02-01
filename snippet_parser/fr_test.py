@@ -46,5 +46,17 @@ class ExtractSnippetTest(unittest.TestCase):
             extract_lead_snippets(s),
             ['''Selon un article paru en 2000 dans le mensuel Le Monde diplomatique{0}, « Sa tâche consiste généralement à assurer la promotion de l’image de ses clients en France et en Europe »{0}.'''.format(CITATION_NEEDED_MARKER)])
 
+    def test_quand(self):
+        s = '''{{Quand|Passage qui nécessite une décennie ou une date plus précise|date=2015}}{{refnec}}'''
+        self.assertEqual(
+            extract_lead_snippets(s),
+            ['Passage qui nécessite une décennie ou une date plus précise' + CITATION_NEEDED_MARKER])
+
+    def test_lesquelles(self):
+        s = '''{{lesquelles|Plusieurs instances, gouvernementales ou non, et même religieuses}}, {{refnec|se sont penchées sur la question et ont proposé plusieurs solutions afin de remédier à ce problème}}'''
+        self.assertEqual(
+            extract_lead_snippets(s),
+            ['Plusieurs instances, gouvernementales ou non, et même religieuses, se sont penchées sur la question et ont proposé plusieurs solutions afin de remédier à ce problème' + CITATION_NEEDED_MARKER])
+
 if __name__ == '__main__':
     unittest.main()
