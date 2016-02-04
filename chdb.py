@@ -64,6 +64,7 @@ def _ensure_database(db, database, lang_code):
     with db as cursor:
         dbname = _make_tools_labs_dbname(db, database, lang_code)
         with ignore_warnings():
+            cursor.execute('SET SESSION sql_mode = ""')
             cursor.execute(
                 'CREATE DATABASE IF NOT EXISTS %s CHARACTER SET utf8mb4' % dbname)
         cursor.execute('USE %s' % dbname)
@@ -80,6 +81,21 @@ def init_scratch_db():
     def connect_and_initialize():
         db = _connect(ch_my_cnf)
         _ensure_database(db, 'scratch', cfg.lang_code)
+        return db
+    return RetryingConnection(connect_and_initialize)
+
+def init_stats_db():
+    def connect_and_initialize():
+        db = _connect(ch_my_cnf)
+        _ensure_database(db, 'stats', 'global')
+        with db as cursor, ignore_warnings():
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS requests (
+                ts DATETIME, lang_code VARCHAR(4), snippet_id VARCHAR(128),
+                category_id VARCHAR(128), url VARCHAR(768), prefetch BOOLEAN,
+                user_agent VARCHAR(1024), status_code INTEGER,
+                referrer VARCHAR(128)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+            ''')
         return db
     return RetryingConnection(connect_and_initialize)
 
