@@ -38,7 +38,7 @@ mysql> source path/to/page.sql
 This will create a new database named 'enwiki_p' and populate it with tables
 named 'categorylinks' and 'page'. This will take a few hours. You'll want to use
 'enwiki_p' for simplicity, but that's configurable in
-[../config.py][https://github.com/eggpi/citationhunt/blob/master/config.py]
+[../config.py](https://github.com/eggpi/citationhunt/blob/master/config.py).
 
 We should now make sure these scripts know how to find and log in to the databases
 they will use. In order to do that, you'll need two MySQL config files: `wp.my.cnf`
