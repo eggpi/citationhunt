@@ -16,7 +16,7 @@ import wikitools
 import mwparserfromhell
 import importlib
 
-from base import REF_MARKER, CITATION_NEEDED_MARKER
+from base import matches_any, REF_MARKER, CITATION_NEEDED_MARKER
 
 cfg = config.get_localized_config()
 WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
@@ -55,6 +55,9 @@ def extract_snippets(wikitext, minlen = 80, maxlen = 560):
             wikicode = mwparserfromhell.parse(paragraph)
             for tag in wikicode.filter_tags():
                 if tag.tag in cfg.tags_blacklist:
+                    continue
+            for tpl in wikicode.filter_templates():
+                if matches_any(tpl, cfg.templates_blacklist):
                     continue
 
             snippet = cleanup_snippet(wikicode.strip_code())
