@@ -1,6 +1,6 @@
 {
   "introduction": "Aidez à trouver des références pour des articles Wikipedia !",
-  "in_page": "Sur la page",
+  "in_page": "Sur la page %s :",
   "button_wikilink": "C’est pour moi !",
   "button_next": "Non, suivant !",
   "lead_section_hint": "Ce texte est extrait de l’en-tête de l’article : si bien qu’y ajouter des références est facultatif. Consultez %s pour plus d’informations.",
