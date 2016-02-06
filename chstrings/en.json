@@ -1,6 +1,6 @@
 {
   "introduction": "Help find citations for Wikipedia articles!",
-  "in_page": "In page",
+  "in_page": "In page %s:",
   "button_wikilink": "I got this!",
   "button_next": "Nope, next!",
   "lead_section_hint": "This text is part of the article's lead section, so referencing it may be optional. Please see %s for more information.",

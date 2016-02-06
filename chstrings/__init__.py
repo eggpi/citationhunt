@@ -4,6 +4,11 @@ import os
 import json
 
 def _preprocess_variables(config, strings):
+    in_page_link = flask.Markup(
+        '<a target="_blank" href=%s>%s</a>')
+    strings['in_page'] = \
+        flask.Markup(strings['in_page']) % in_page_link
+
     lead_section_policy_link = flask.Markup(
         '<a target="_blank" href=%s>%s</a>') % (
             config.lead_section_policy_link,
