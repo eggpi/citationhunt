@@ -9,6 +9,15 @@ This repository contains the full server and client code. The
 directory contains all the scripts used for processing Wikipedia dumps.
 Hopefully they will be illustrative and reusable for similar applications.
 
+### Developing
+
+The `run-tests.sh` script will run all tests for you. You may want to install it
+as a pre-commit hook on git:
+
+```
+ln -s ../../run-tests.sh .git/hooks/pre-push
+```
+
 ### Running
 
 It's highly recommended that you use a
