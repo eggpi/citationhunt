@@ -50,10 +50,6 @@ def handle_lesquelles(template):
 
 class SnippetParser(SnippetParserBase):
     def strip_template(self, template, normalize, collapse):
-        repl = self.handle_common_templates(template, normalize, collapse)
-        if repl is not None:
-            return repl
-
         if template.name.matches('unité'):
             return ' '.join(sp(template.params[:2]))
         elif template.name.matches('date'):

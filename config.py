@@ -28,7 +28,11 @@ EN_CITATION_NEEDED_TEMPLATES = [
 ]
 
 EN_TAGS_BLACKLIST = [
-    'math'
+    'math',
+]
+
+EN_TEMPLATES_BLACKLIST = [
+    'lang',
 ]
 
 lang_code_to_config = dict(
@@ -81,6 +85,10 @@ lang_code_to_config = dict(
         # snippets containing them will be dropped.
         tags_blacklist = EN_TAGS_BLACKLIST,
 
+        # A set of templates that we know for sure we can't handle, so
+        # snippets containing them will be dropped.
+        templates_blacklist = EN_TAGS_BLACKLIST,
+
         # The name of the category for hidden categories. Categories
         # belonging to this category are typically used for maintenance
         # and should not show up on Citation Hunt.
@@ -128,6 +136,8 @@ lang_code_to_config = dict(
         ],
 
         tags_blacklist = EN_TAGS_BLACKLIST,
+
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
 
         hidden_category = 'Catégorie_cachée',
 
