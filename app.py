@@ -171,6 +171,10 @@ def citation_hunt(lang_code):
     cat = flask.request.args.get('cat')
     cfg = config.get_localized_config(lang_code)
 
+    lang_dir = cfg.lang_dir
+    if debug:
+        lang_dir = flask.request.args.get('dir', lang_dir)
+
     if cat is not None:
         cat = get_category_by_id(lang_code, cat)
         if cat is None:
@@ -206,6 +210,7 @@ def citation_hunt(lang_code):
             ref_marker = REF_MARKER,
             ref_html = SUPERSCRIPT_MARKUP,
             config = cfg,
+            lang_dir = lang_dir,
             category_filter_autofocus = autofocus)
 
     id = select_random_id(lang_code, cat)
