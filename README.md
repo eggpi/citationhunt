@@ -12,7 +12,7 @@ Hopefully they will be illustrative and reusable for similar applications.
 ### Developing
 
 The `run-tests.sh` script will run all tests for you. You may want to install it
-as a pre-commit hook on git:
+as a pre-push hook on git:
 
 ```
 ln -s ../../run-tests.sh .git/hooks/pre-push
