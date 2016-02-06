@@ -47,11 +47,18 @@ html[dir="rtl"] #preamble {
 #quotation {
     position: absolute;
     top: 15px;
-    left: -30px;
     font-size: 100px;
     opacity: 0.1;
     font-family: Fondamento, cursive;
     z-index: -1;
+}
+
+html[dir="ltr"] #quotation {
+    left: -30px;
+}
+
+html[dir="rtl"] #quotation {
+    right: -30px;
 }
 
 a {
