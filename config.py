@@ -35,6 +35,8 @@ lang_code_to_config = dict(
     en = dict(
         # A friendly name for the language
         lang_name = 'English',
+        # The direction of the language, either ltr or rtl
+        lang_dir = 'ltr',
         # The database to use on Tools Labs
         database = 'enwiki_p',
         # The domain for Wikipedia in this language
@@ -99,6 +101,7 @@ lang_code_to_config = dict(
 
     fr = dict(
         lang_name = 'Français',
+        lang_dir = 'ltr',
         database = 'frwiki_p',
         wikipedia_domain = 'fr.wikipedia.org',
         citation_needed_category = 'Article_à_référence_nécessaire',
