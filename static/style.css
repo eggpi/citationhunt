@@ -24,7 +24,15 @@ p {
 }
 
 #preamble {
-    margin: 40px 0 0 20px;
+    margin-top: 40px;
+}
+
+html[dir="ltr"] #preamble {
+    margin-left: 20px;
+}
+
+html[dir="rtl"] #preamble {
+    margin-right: 20px;
 }
 
 #snippet {
@@ -87,7 +95,7 @@ button:focus {
 #buttons {
     text-align: center;
     margin-top: 25px;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 }
 
 .button {
@@ -118,6 +126,10 @@ button:focus {
     position: absolute;
     font-size: small;
     top: 15px;
+}
+
+html[dir="ltr"] #github-link {
+    left: auto;
     right: 15px;
 }
 
@@ -127,18 +139,24 @@ html[dir="rtl"] #github-link {
 }
 
 #bottom {
-    margin-left: 15px;
-    margin-right: 30px;
+    margin: 0 20px;
 }
 
 #lead-hint {
-    float: right;
     border-radius: 4px;
     font-size: small;
     padding: 8px;
     background-color: #EEE2EA;
     text-align: justify;
     max-width: 35%;
+}
+
+html[dir="ltr"] #lead-hint {
+    float: right;
+}
+
+html[dir="rtl"] #lead-hint {
+    float: left;
 }
 
 #help-translate {
