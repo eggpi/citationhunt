@@ -1,7 +1,7 @@
 ## CitationHunt
 
-CitationHunt is a simple tool for finding unsourced statements in the English
-Wikipedia, currently hosted at
+CitationHunt is a simple tool for finding unsourced statements on
+Wikipedia in different languages. It is hosted at
 [https://tools.wmflabs.org/citationhunt/](https://tools.wmflabs.org/citationhunt/).
 
 This repository contains the full server and client code. The
