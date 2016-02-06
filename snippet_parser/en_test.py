@@ -165,5 +165,12 @@ class ExtractSnippetTest(unittest.TestCase):
         # Should break each list item into one paragraph
         self.assertEqual(len(extract_lead_snippets(s)), 2)
 
+    def test_dt(self):
+        s = ';The breadth of [[commonsense knowledge]]: The number of atomic facts that the average person knows is astronomical.{{citation needed}}'
+        self.assertEqual(
+            extract_lead_snippets(s),
+            ['The breadth of commonsense knowledge: The number of atomic facts that the average person knows is astronomical.' + CITATION_NEEDED_MARKER])
+
+
 if __name__ == '__main__':
     unittest.main()

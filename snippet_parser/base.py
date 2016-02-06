@@ -84,12 +84,16 @@ class SnippetParserBase(object):
         '''Override to control how tags are stripped in the wikicode.
 
         The return value will be the tag's replacement. The default
-        implementation replaces <ref> tags with REF_MARKER, which you probably
-        want to do when overriding, and delegates other tags to mwparserfromhell.
+        implementation replaces <ref> tags with REF_MARKER and handles a few
+        other common tags, delegating other tags to mwparserfromhell.
         '''
 
         if tag.tag == 'ref':
             return REF_MARKER
+        elif tag.tag == 'dt':
+            return ''
+        elif tag.tag == 'dd':
+            return ':'
         return self.delegate_strip(tag, normalize, collapse)
 
     def strip_wikilink(self, wikilink, normalize, collapse):
