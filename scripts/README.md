@@ -20,7 +20,7 @@ Prerequisites:
 
 - A local installation of MySQL;
 - The pages+articles XML dump and the page and categorylinks SQL dumps of
-  Wikipedia. You can find the latest versions of both for the English Wikipedia
+  Wikipedia. You can find the latest versions these for the English Wikipedia
   [here](https://dumps.wikimedia.org/enwiki/latest/);
 - A few hours, or potentially a rainy Sunday;
 
@@ -59,7 +59,7 @@ MySQL documentation for the other options you can specify on this file.
 From now on, the commands we'll be typing depend on the language you're
 generating a database for. They expect an environment variable `CH_LANG` to be
 set to a language code taken from
-[../config.py][https://github.com/eggpi/citationhunt/blob/master/config.py].
+[../config.py](https://github.com/eggpi/citationhunt/blob/master/config.py).
 Since we're dealing with English in this document, let's set the variable
 accordingly:
 
@@ -118,6 +118,5 @@ $ ./install_new_database.py
 ```
 
 And that's it! If everything went well, you can refer to the instructions in
-the above directory's
-[README.md](https://github.com/eggpi/citationhunt/blob/master/README.md)
+[../README.md](https://github.com/eggpi/citationhunt/blob/master/README.md)
 to run CitationHunt using your new database.
