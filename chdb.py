@@ -96,6 +96,12 @@ def init_stats_db():
                 user_agent VARCHAR(1024), status_code INTEGER,
                 referrer VARCHAR(128)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             ''')
+            # Create per-language views for convenience
+            for lang_code in config.lang_code_to_config:
+                cursor.execute('''
+                    CREATE OR REPLACE VIEW requests_''' + lang_code +
+                    ''' AS SELECT * FROM requests WHERE lang_code = %s
+                ''', (lang_code,))
         return db
     return RetryingConnection(connect_and_initialize)
 

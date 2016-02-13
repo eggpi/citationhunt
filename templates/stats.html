@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+
+<html lang=en dir=ltr>
+  <head>
+    <title>Citation Hunt</title>
+    <meta name="robots" content="nofollow, noodp, noarchive, noindex">
+    <meta name="description" content="Citation Hunt">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+    <style>
+      body {
+        padding: 20px;
+      }
+      h2 {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: medium;
+      }
+      .chart-wrapper {
+        margin: 20px auto;
+      }
+      .table-wrapper {
+        float: left;
+        width: 50%;
+      }
+    </style>
+    <script type="text/javascript">
+      google.charts.load("current", {"packages":["corechart", "table"]});
+      google.charts.setOnLoadCallback(draw);
+
+      function createChartElement(idx, type, title) {
+        var chartWrapper = document.createElement("section");
+        if (type == "table") {
+            chartWrapper.classList.add("table-wrapper");
+        }
+        chartWrapper.setAttribute("id", "chart-wrapper" + idx);
+        chartWrapper.classList.add("chart-wrapper");
+
+        var h = document.createElement("h2");
+        h.textContent = title;
+        h.classList.add("chart-title");
+        chartWrapper.appendChild(h);
+
+        var chartElement = document.createElement("div");
+        chartElement.setAttribute("id", "chart-" + idx);
+        chartElement.classList.add("chart");
+
+        chartWrapper.appendChild(chartElement);
+        document.body.appendChild(chartWrapper);
+        return chartElement;
+      }
+
+      {% for (title, data, type) in graphs %}
+      function draw{{ loop.index }}() {
+        var data = new google.visualization.arrayToDataTable({{ data | safe }}, false);
+        var chartElement = createChartElement({{ loop.index }}, "{{ type }}", "{{ title }}");
+        var options = {};
+
+        {% if type == "line" %}
+        var chart = new google.visualization.LineChart(chartElement);
+        options.legend = {position: "none"};
+        options.width = "100%";
+        {% elif type == "table" %}
+        var chart = new google.visualization.Table(chartElement);
+        options.page = "enable";
+        options.width = "95%";
+        {% endif %}
+
+        chart.draw(data, options);
+      }
+      {% endfor %}
+
+      function draw() {
+        {% for (title, data, type) in graphs %}
+          draw{{ loop.index }}();
+        {% endfor %}
+      }
+    </script>
+  </body>
+</html>

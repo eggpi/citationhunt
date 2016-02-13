@@ -38,7 +38,7 @@ class CitationHuntTest(unittest.TestCase):
 
         self.assertEquals(response.status_code, 302)
         self.assertTrue('id' in args)
-        self.assertEquals(args['cat'], app.CATEGORY_ALL.id)
+        self.assertEquals(args['cat'], app.handlers.CATEGORY_ALL.id)
 
     def test_id_no_category(self):
         response = self.app.get('/en?id=' + self.sid)
@@ -54,7 +54,7 @@ class CitationHuntTest(unittest.TestCase):
 
         self.assertEquals(response.status_code, 302)
         self.assertTrue('id' not in args)
-        self.assertEquals(args['cat'], app.CATEGORY_ALL.id)
+        self.assertEquals(args['cat'], app.handlers.CATEGORY_ALL.id)
 
     def test_no_id_valid_category(self):
         response = self.app.get('/en?cat=' + self.cat)
@@ -75,7 +75,7 @@ class CitationHuntTest(unittest.TestCase):
 
         self.assertEquals(response.status_code, 302)
         self.assertEquals(args['id'], self.sid)
-        self.assertEquals(args['cat'], app.CATEGORY_ALL.id)
+        self.assertEquals(args['cat'], app.handlers.CATEGORY_ALL.id)
 
     def test_cache_control(self):
         response = self.app.get('/en/categories.html')
