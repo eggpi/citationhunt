@@ -1,0 +1,10 @@
+{
+  "introduction": "Pomóż dodać przypisy do artykułów Wikipedii!",
+  "in_page": "W haśle %s:",
+  "button_wikilink": "Biorę się za to!",
+  "button_next": "Następny proszę!",
+  "lead_section_hint": "Ten fragment pochodzi z tzw. główki tekstu, gdzie wstawianie przypisów najczęściej nie jest wymagane. Więcej informacji znajdziesz tutaj: %s.",
+  "category_filter_placeholder": "Co Cię interesuje?",
+  "github_link_title": "Ejże! Mój kod źródłowy jest na GitHubie!",
+  "beginners_hint": "Nie wiesz jak dodawać przypisy? Przeczytaj stronę %s."
+}
