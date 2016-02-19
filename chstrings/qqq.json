@@ -1,10 +1,11 @@
 {
-  "introduction": "The message that appears below 'Citation Hunt' on the tool.",
-  "in_page": "Introduces the name of the article that needs a citation. %s gets replaced with a link to the name.",
-  "button_wikilink": "Label on the button that links to the article so the user can add a reference.",
-  "button_next": "Label on the button that browses to the next article.",
-  "lead_section_hint": "Some Wikipedias have special rules for adding references to the introduction section of the archive. In this message, %s is replaced with a link explaining those rules if applicable; otherwise, it is omitted entirely.",
-  "category_filter_placeholder": "The placeholder text in the input box for filtering articles by category.",
-  "github_link_title": "The label of a link to the source code of this tool (https://github.com/eggpi/citationhunt)",
-  "beginners_hint": "Introduces a link to begginner-friendly documentation about adding references. The %s gets replaced with the link itself."
+	"@metadata": [],
+	"introduction": "The message that appears below 'Citation Hunt' on the tool.",
+	"in_page": "Introduces the name of the article that needs a citation. %s gets replaced with a link to the name.",
+	"button_wikilink": "Label on the button that links to the article so the user can add a reference.",
+	"button_next": "Label on the button that browses to the next article.",
+	"lead_section_hint": "Some Wikipedias have special rules for adding references to the introduction section of the archive. In this message, %s is replaced with a link explaining those rules if applicable; otherwise, it is omitted entirely.",
+	"category_filter_placeholder": "The placeholder text in the input box for filtering articles by category.",
+	"github_link_title": "The label of a link to the source code of this tool (https://github.com/eggpi/citationhunt)",
+	"beginners_hint": "Introduces a link to begginner-friendly documentation about adding references. The %s gets replaced with the link itself."
 }
