@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Metalhead64"
+		]
+	},
+	"introduction": "Hilf, Zitate für Wikipedia-Artikel zu finden!",
+	"in_page": "In Seite %s:",
+	"button_wikilink": "Verstanden!",
+	"button_next": "Nein, nächstes!",
+	"lead_section_hint": "Dieser Text ist Teil eines Einleitungsabschnitts eines Artikels. Referenzierung ist eventuell optional. Siehe %s für weitere Informationen.",
+	"category_filter_placeholder": "Was bewegt dich?",
+	"github_link_title": "Hey! Meine Quelle ist auf GitHub!",
+	"beginners_hint": "Du weißt nicht, wie man Zitate hinzufügt? Siehe %s."
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand"
+		]
+	},
+	"introduction": "Help referenties vinden voor Wikipediapagina's!",
+	"in_page": "In pagina %s:",
+	"button_wikilink": "Dit gaat me lukken!",
+	"button_next": "Nee, volgende!",
+	"lead_section_hint": "Deze tekst is onderdeel van de openingsparagraaf van de pagina, dus referenties zijn optioneel. Zee %s voor mee informatie.",
+	"category_filter_placeholder": "Wat drijft u?",
+	"github_link_title": "De broncode staat op GitHub",
+	"beginners_hint": "Geen idee hoe referenties toe te voegen? Zie %s."
+}

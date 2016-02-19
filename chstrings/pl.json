@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"introduction": "Pomóż znaleźć źródła do artykułów w Wikipedii!",
+	"in_page": "Na stronie %s:",
+	"beginners_hint": "Nie wiesz jak dodać źródła? Zobacz %s."
+}

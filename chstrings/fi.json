@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jaakkoh"
+		]
+	},
+	"introduction": "Auta löytämään sitaatteja Wikipedia-artikkeleihin!",
+	"in_page": "Sivulla %s:",
+	"button_next": "Ehei, seuraava!",
+	"category_filter_placeholder": "Mikä saa sinut syttymään?",
+	"github_link_title": "Hoi! Lähdekoodini on GitHubissa!"
+}
