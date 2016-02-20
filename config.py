@@ -147,6 +147,38 @@ lang_code_to_config = dict(
 
         max_categories = 1000,
     ),
+
+    it = dict(
+        lang_name = 'Italiano',
+        lang_dir = 'ltr',
+        database = 'itwiki_p',
+        wikipedia_domain = 'it.wikipedia.org',
+        citation_needed_category = 'Informazioni_senza_fonte',
+        beginners_link = 'https://it.wikipedia.org/wiki/Aiuto:Uso_delle_fonti',
+        beginners_link_title = 'Aiuto:Uso_delle_fonti',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Citazione necessaria',
+            'Senza fonte',
+        ],
+        citation_needed_template_name = 'senza fonte',
+
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+
+        tags_blacklist = EN_TAGS_BLACKLIST,
+
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+
+        hidden_category = 'Categorie_nascoste',
+
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+
+        max_categories = 1000,
+    ),
 )
 
 # In py3: types.SimpleNamespace
