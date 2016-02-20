@@ -64,10 +64,5 @@ class SnippetParser(SnippetParserBase):
             return handle_quand(template)
         elif template.name.matches('lesquelles'):
             return handle_lesquelles(template)
-        elif self.is_citation_needed(template):
-            repl = [CITATION_NEEDED_MARKER]
-            # Keep the text inside the template, but not other parameters
-            # like date
-            repl = [sp(p) for p in template.params if not p.showkey] + repl
-            return ''.join(repl)
-        return ''
+        return super(SnippetParser, self).strip_template(
+                template, normalize, collapse)

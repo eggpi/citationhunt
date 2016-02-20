@@ -66,7 +66,10 @@ class SnippetParserBase(object):
         '''
 
         if self.is_citation_needed(template):
-            return CITATION_NEEDED_MARKER
+            repl = [CITATION_NEEDED_MARKER]
+            # Keep the text in the template, but not other parameters like date
+            repl = [sp(p) for p in template.params if not p.showkey] + repl
+            return ''.join(repl)
         return ''
 
     def strip_tag(self, tag, normalize, collapse):
