@@ -27,7 +27,7 @@
       <button form="form-next" type="submit" id="button-next" class="button">{{ config.strings.button_next }}</button>
     </div>
     <div id="bottom">
-      {% if not section %}<div id="lead-hint">{{ config.strings.lead_section_hint }}</div>{% endif %}
+      {% if not section and config.strings.lead_section_hint %}<div id="lead-hint">{{ config.strings.lead_section_hint }}</div>{% endif %}
       <div> <!-- The content to the left of #lead-hint must be display:block to wrap around it -->
         <form method="GET" action="" id="form-next">
           <input type="text" id="category-input" list="categories" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ config.strings.category_filter_placeholder }}" {% if category_filter_autofocus %}autofocus{% endif %} style="visibility: hidden;">

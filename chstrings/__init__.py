@@ -9,12 +9,16 @@ def _preprocess_variables(config, strings):
     strings['in_page'] = \
         flask.Markup(strings['in_page']) % in_page_link
 
-    lead_section_policy_link = flask.Markup(
-        '<a target="_blank" href=%s>%s</a>') % (
-            config.lead_section_policy_link,
-            config.lead_section_policy_link_title)
-    strings['lead_section_hint'] = \
-        flask.Markup(strings['lead_section_hint']) % lead_section_policy_link
+    if config.lead_section_policy_link:
+        lead_section_policy_link = flask.Markup(
+            '<a target="_blank" href=%s>%s</a>') % (
+                config.lead_section_policy_link,
+                config.lead_section_policy_link_title)
+        strings['lead_section_hint'] = \
+            flask.Markup(strings['lead_section_hint']) % \
+            lead_section_policy_link
+    else:
+        strings['lead_section_hint'] = ''
 
     beginners_hint_link = flask.Markup(
         '<a target="_blank" href=%s>%s</a>') % (
