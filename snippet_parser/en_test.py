@@ -171,6 +171,11 @@ class ExtractSnippetTest(unittest.TestCase):
             extract_lead_snippets(s),
             ['The breadth of commonsense knowledge: The number of atomic facts that the average person knows is astronomical.' + CITATION_NEEDED_MARKER])
 
+    def test_flag(self):
+        s = '{{flag|British Columbia|name=BC}} is a province in {{flag|Canada}}{{cn}}'
+        self.assertEqual(
+            extract_lead_snippets(s),
+            ['BC is a province in Canada' + CITATION_NEEDED_MARKER])
 
 if __name__ == '__main__':
     unittest.main()
