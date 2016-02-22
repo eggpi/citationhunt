@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Önni"
+		]
+	},
+	"introduction": "Ajuda a encontrar citações para artigos da Wikipédia!",
+	"in_page": "Na página %s:",
+	"button_wikilink": "Eu tenho esse!",
+	"button_next": "Não, seguinte!",
+	"lead_section_hint": "Este texto faz parte da secção principal do artigo, pelo que referenciá-lo pode ser opcional. Por favor, consulte %s para mais informações.",
+	"category_filter_placeholder": "O que é que te incentiva?",
+	"github_link_title": "Ei! O meu código-fonte está no GitHub!",
+	"beginners_hint": "Não sei como adicionar citações? Consulte %s."
+}
