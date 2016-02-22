@@ -70,7 +70,7 @@ def stats(lang_code):
     for category_id, count in stats_cursor:
         ch_cursor.execute('''
             SELECT title FROM categories WHERE id = %s''', (category_id,))
-        title = list(ch_cursor)[0][0] if ch_cursor.rowcount else None
+        title = list(ch_cursor)[0][0] if ch_cursor.rowcount else "(gone)"
         data_rows.append((title, count))
     graphs.append((
         '30 most popular categories in the past %s days' % days,
