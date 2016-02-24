@@ -58,5 +58,10 @@ class ExtractSnippetTest(unittest.TestCase):
             extract_lead_snippets(s),
             ['Plusieurs instances, gouvernementales ou non, et même religieuses, se sont penchées sur la question et ont proposé plusieurs solutions afin de remédier à ce problème' + CITATION_NEEDED_MARKER])
 
+    def test_drapeau(self):
+        s = '''{{drapeau|Algérie|1925|taille=50}}{{refnec}}'''
+        self.assertEqual(
+            extract_lead_snippets(s), ['Algérie' + CITATION_NEEDED_MARKER])
+
 if __name__ == '__main__':
     unittest.main()

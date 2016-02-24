@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 
 from base import *
 
+def handle_drapeau(template):
+    return template.get(1)
+
 def handle_date(template):
     year = None
     if len(template.params) >= 3:
@@ -64,5 +67,7 @@ class SnippetParser(SnippetParserBase):
             return handle_quand(template)
         elif template.name.matches('lesquelles'):
             return handle_lesquelles(template)
+        elif template.name.matches('drapeau'):
+            return handle_drapeau(template)
         return super(SnippetParser, self).strip_template(
                 template, normalize, collapse)
