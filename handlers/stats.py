@@ -10,12 +10,17 @@ import re
 
 def load_is_not_crawler_sql():
     crawler_user_agents = json.load(
-        file(os.path.join(
-            os.path.dirname(__file__),
+        file(os.path.join(os.path.dirname(__file__),
             'crawler-user-agents', 'crawler-user-agents.json')))
-    return ' AND '.join(
+    referrer_spam_blacklist = file(os.path.join(os.path.dirname(__file__),
+            'referrer-spam-blacklist', 'spammers.txt'))
+    return ' AND '.join([
         'user_agent NOT REGEXP "%s"' % obj['pattern']
-        for obj in crawler_user_agents)
+        for obj in crawler_user_agents
+    ] + [
+        'referrer NOT REGEXP "%s"' % domain.decode('utf-8').strip()
+        for domain in referrer_spam_blacklist
+    ])
 
 @validate_lang_code
 def stats(lang_code):
