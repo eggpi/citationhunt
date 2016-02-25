@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"introduction": "Ajudatz a trobar de referéncias per d'articles Wikipèdia !",
+	"in_page": "Dins la pagina %s :",
+	"button_wikilink": "Es per ieu !",
+	"button_next": "Non, seguent !",
+	"github_link_title": "Ei ! Mon còde font es sus GitHub !"
+}

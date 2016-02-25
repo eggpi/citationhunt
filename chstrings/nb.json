@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"SuperPotato"
+		]
+	},
+	"introduction": "Hjelp til å finne referenter til Wikipedia artikler!",
+	"in_page": "På side %s:",
+	"button_wikilink": "Jeg forstår!",
+	"button_next": "Nei, neste!"
+}
