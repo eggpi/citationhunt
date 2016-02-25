@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kvetoslav47"
+		]
+	},
+	"button_next": "Ne, další!",
+	"lead_section_hint": "Tento text je součástí hlavního oddílu článku, takže odkazování na něj může být volitelné. Přečtěte si prosím %s pro více informací.",
+	"github_link_title": "Hej! Můj zdroj je na Githubu!"
+}

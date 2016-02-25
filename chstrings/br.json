@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gwenn-Ael"
+		]
+	},
+	"introduction": "Skoazellit da gavout daveennoù evit ar pennadoù Wikipedia !",
+	"in_page": "Er bajenn %s",
+	"button_wikilink": "Evidon-me eo !",
+	"button_next": "Nann, an hini da-heul !",
+	"lead_section_hint": "Tennet eo an destenn-mañ eus talbenn ar pennad : diret eo ouzhpennañ daveennoù. Sellit ouzh %s evit gouzout hiroc'h.",
+	"category_filter_placeholder": "Ha c'hwi, petra eo ho albac'henn ?",
+	"github_link_title": "E ! GitHut eo ma c'hod mammennoù  !",
+	"beginners_hint": "N'ouzit ket penaos ouzhpennañ daveennoù ? Sellit ouzh %s"
+}
