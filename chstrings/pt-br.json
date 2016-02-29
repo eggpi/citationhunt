@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arthurteb303",
+			"Rodrigo codignoli"
+		]
+	},
+	"introduction": "Ajude a encontrar citações para os artigos da Wikipédia!",
+	"in_page": "Na pagina %s:",
+	"button_wikilink": "Consegui isso!",
+	"button_next": "Não, próximo!",
+	"lead_section_hint": "Esse texto faz parte da seção principal do artigo, por isso referencias podem ser opcionais. Veja %s para mais informações.",
+	"category_filter_placeholder": "O que te incentiva?",
+	"github_link_title": "Ei! O meu código-fonte está no GitHub!",
+	"beginners_hint": "Não sabe como adicionar citações? Veja %s."
+}
