@@ -210,6 +210,39 @@ lang_code_to_config = dict(
 
         max_categories = 1000,
     ),
+
+    ca = dict(
+        lang_name = 'Català',
+        lang_dir = 'ltr',
+        database = 'cawiki_p',
+        wikipedia_domain = 'ca.wikipedia.org',
+        citation_needed_category = 'Articles_amb_referències_puntuals_demanades',
+        beginners_link = 'https://ca.wikipedia.org/wiki/Viquip%C3%A8dia:Guia_per_referenciar',
+        beginners_link_title = 'Viquipèdia:Guia per referenciar',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Citació necessària',
+            'CC',
+            'CN',
+        ],
+        citation_needed_template_name = 'cal citació',
+
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+
+        tags_blacklist = EN_TAGS_BLACKLIST,
+
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+
+        hidden_category = 'Categories_ocultes',
+
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+
+        max_categories = 100,
+    ),
 )
 
 # In py3: types.SimpleNamespace
