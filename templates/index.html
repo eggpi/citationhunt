@@ -45,7 +45,9 @@
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
     <div id="lang-links">
       {% for lang_code, lang_config in config.lang_code_to_config.items() | sort %}
-        <a href="{{ lang_code }}"{% if config.lang_code == lang_code %} class="current-lang" {% endif %}>{{ lang_config.lang_name }}</a>
+          {% if not lang_config.wip %}
+            <a href="{{ lang_code }}"{% if config.lang_code == lang_code %} class="current-lang" {% endif %}>{{ lang_config.lang_name }}</a>
+          {% endif %}
       {% endfor %}
     </div>
     {% block bottom_extras %}{% endblock %}
