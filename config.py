@@ -179,6 +179,37 @@ lang_code_to_config = dict(
 
         max_categories = 1000,
     ),
+
+    pl = dict(
+        lang_name = 'Polski',
+        lang_dir = 'ltr',
+        database = 'plwiki_p',
+        wikipedia_domain = 'pl.wikipedia.org',
+        citation_needed_category = 'Artykuły_wymagające_uzupełnienia_źródeł',
+        beginners_link = 'https://pl.wikipedia.org/wiki/Pomoc:Przypisy',
+        beginners_link_title = 'Pomoc:Przypisy',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'fakt',
+        ],
+        citation_needed_template_name = 'potrzebne źródło',
+
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+
+        tags_blacklist = EN_TAGS_BLACKLIST,
+
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+
+        hidden_category = 'Ukryte_kategorie',
+
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+
+        max_categories = 1000,
+    ),
 )
 
 # In py3: types.SimpleNamespace
