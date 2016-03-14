@@ -7,5 +7,9 @@
 	"introduction": "Hjelp til å finne referenter til Wikipedia artikler!",
 	"in_page": "På side %s:",
 	"button_wikilink": "Jeg forstår!",
-	"button_next": "Nei, neste!"
+	"button_next": "Nei, neste!",
+	"lead_section_hint": "Denne teksten er ikke en del av artikkelens innledende avsnitt, så å referere til dette er valgfritt. Vennligst se %s for mer informasjon.",
+	"category_filter_placeholder": "Hva får deg til å gruble?",
+	"github_link_title": "Hei! Min kilde er på GitHub!",
+	"beginners_hint": "Vet du ikke hvordan man legger til referenter? Se %s."
 }
