@@ -19,13 +19,13 @@ database is generated.
 Prerequisites:
 
 - A local installation of MySQL;
-- The pages+articles XML dump and the page and categorylinks SQL dumps of
-  Wikipedia. You can find the latest versions these for the English Wikipedia
+- The pages+articles XML dump and the page, page_props and categorylinks SQL dumps
+  of Wikipedia. You can find the latest versions these for the English Wikipedia
   [here](https://dumps.wikimedia.org/enwiki/latest/);
 - A few hours, or potentially a rainy Sunday;
 
-The first thing to do is to import the categorylinks and page databases to MySQL. This
-can be done from the MySQL console:
+The first thing to do is to import the categorylinks, page and page_props databases
+to MySQL. This can be done from the MySQL console:
 
 ```
 $ mysql -u root
@@ -33,11 +33,12 @@ mysql> create database enwiki_p;
 mysql> use enwiki_p;
 mysql> source path/to/categorylinks.sql
 mysql> source path/to/page.sql
+mysql> source path/to/page_props.sql
 ```
 
 This will create a new database named 'enwiki_p' and populate it with tables
-named 'categorylinks' and 'page'. This will take a few hours. You'll want to use
-'enwiki_p' for simplicity, but that's configurable in
+named 'categorylinks', 'page' and 'page_props'. This will take a few hours.
+You'll want to use 'enwiki_p' for simplicity, but that's configurable in
 [../config.py](https://github.com/eggpi/citationhunt/blob/master/config.py).
 
 We should now make sure these scripts know how to find and log in to the databases
