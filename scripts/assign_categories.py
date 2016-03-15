@@ -42,14 +42,16 @@ class CategoryName(unicode):
     @staticmethod
     def from_wp_page(ustr):
         ustr = d(ustr)
-        assert not ustr.startswith('Category:'), ustr
+        if ustr.startswith('Category:'):
+            ustr = ustr[len('Category:'):]
         assert ' ' not in ustr, ustr
         return CategoryName(ustr.replace('_', ' '))
 
     @staticmethod
     def from_wp_categorylinks(ustr):
         ustr = d(ustr)
-        assert not ustr.startswith('Category:'), ustr
+        if ustr.startswith('Category:'):
+            ustr = ustr[len('Category:'):]
         return CategoryName(ustr.replace('_', ' '))
 
 def category_ids_to_names(wpcursor, category_ids):
