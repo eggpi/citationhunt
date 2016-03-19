@@ -1,9 +1,11 @@
 #!/bin/bash
 
 function email() {
+    cp ~/update_db_tools_labs.err ~/update_db_tools_labs.txt
     echo "The logs are attached." | \
-        /usr/bin/mail -s "$1" -a ~/update_db_tools_labs.err \
+        /usr/bin/mail -s "$1" -a ~/update_db_tools_labs.txt \
         citationhunt.update@tools.wmflabs.org
+    rm ~/update_db_tools_labs.txt
     sleep 2m
 }
 
