@@ -74,17 +74,17 @@ Next, let's generate the list of ids of pages with unsourced statements with
 $ ./print_unsourced_pageids_from_wikipedia > unsourced
 ```
 
-This list, along with the *compressed* pages+articles dump, should be fed into
-`parse_pages_articles.py`. This script will parse all pages in the list looking
-for snippets lacking citations. This should take a couple of hours on a
-multi-core machine.
+This list should be passed to the `parse_live.py` script, which will query the
+Wikipedia API for the actual content of the pages and identify snippets lacking
+citations:
 
 ```
-$ ./parse_pages_articles.py path/to/pages-articles.xml.bz2 unsourced
+$ ./parse_live.py unsourced
 ```
 
-At the end of this step, a pickled dictionary of statistics will be dumped to a
-file named `stats.pkl`. It can be safely removed.
+This should take a couple of hours on a multi-core machine. If you're
+impatient, you can also pass it a maximum running time in seconds using the
+`--timeout` command line option.
 
 The next thing to do is to pick which categories will get to be displayed in
 CitationHunt, thus filling up the `articles_categories` table in the database.

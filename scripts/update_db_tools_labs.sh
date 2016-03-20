@@ -31,27 +31,16 @@ fi
 
 cd scripts/
 
-dump_base_dir=/public/dumps/public/${CH_LANG}wiki
-dump_date=`ls $dump_base_dir | tail -n1`
-dump_dir=$dump_base_dir/$dump_date
-echo >&2 ":: latest dump is $dump_date"
-pages_articles_xml_bz2=$dump_dir/${xxwiki}-$dump_date-pages-articles.xml.bz2
-if [ ! -f $pages_articles_xml_bz2 ]; then
-    echo >&2 "no xml.bz2 file found, maybe the dump is in progress?"
-    email "Failed to find pages-articles.xml.bz2 dump file."
-    exit 1
-fi
-
 echo >&2 ":: generating unsourced pageids"
 ./print_unsourced_pageids_from_wikipedia.py "$wp_mysql_cnf" > unsourced
 if [ $? -ne 0 ]; then
     email "Failed at print_unsourced_pageids_from_wikipedia.py"
     exit 1
 fi
-echo >&2 ":: parsing pages-articles.xml.bz2"
-./parse_pages_articles.py "$pages_articles_xml_bz2" unsourced
+echo >&2 ":: parsing articles"
+./parse_live.py unsourced
 if [ $? -ne 0 ]; then
-    email "Failed at parse_pages_articles.py"
+    email "Failed at parse_live.py"
     exit 1
 fi
 echo >&2 ":: assigning categories"
