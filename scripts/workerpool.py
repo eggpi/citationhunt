@@ -1,5 +1,6 @@
 import os
 import abc
+import time
 import signal
 import itertools
 import Queue # Queue.Empty
@@ -20,7 +21,7 @@ class WorkerPool(object):
     The setup() method will get called right after forking, but before any tasks
     are sent to the workers and receiver. Likewise, the done() method will get
     called when there are no more tasks to be processed, as signaled by the
-    application by calling WorkerPool.done(), first in all the workers, then in
+    application by calling WorkerPool.join(), first in all the workers, then in
     the receiver when all worker processes have finished.
 
     Before WorkerPool.done() is called, the work() method in workers will get
@@ -82,6 +83,7 @@ class WorkerPool(object):
         self._procs = []
         self._queues = []
         self._canceled = False
+        self._joining = False
 
         # receiver process and queue
         self._queues.append(multiprocessing.Queue())
@@ -105,18 +107,30 @@ class WorkerPool(object):
         q = next(self._cycle_worker_queues)
         q.put(('TASK', obj))
 
-    def done(self):
-        # stop workers
-        for q in self._queues[1:]:
-            q.put(('DONE', None))
-        for p in self._procs[1:]:
-            p.join()
+    def join(self, timeout=None):
+        # don't notify subprocesses more than once
+        joining = self._joining
+        self._joining = True
 
-        self._queues[0].put(('DONE', None))
-        self._procs[0].join()
+        if not joining:
+            # stop workers
+            for q in self._queues[1:]:
+                q.put(('DONE', None))
+
+        start = time.time()
+        for p in self._procs[1:]:
+            p.join(timeout)
+            timeout -= (time.time() - start)
+            if timeout <= 0:
+                return
+
+        if not joining:
+            # now that the workers have safely stopped, stop the receiver
+            self._queues[0].put(('DONE', None))
+        self._procs[0].join(timeout)
 
     def cancel(self):
-        for p in self._procs:
+        for p in [p for p in self._procs if p.is_alive()]:
             os.kill(p.pid, signal.SIGTERM)
         for p in self._procs:
             p.join()

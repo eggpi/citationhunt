@@ -21,12 +21,12 @@ class RetryingConnection(object):
         self.conn = self._connect()
         self.conn.ping(True) # set the reconnect flag
 
-    def execute_with_retry(self, operations):
+    def execute_with_retry(self, operations, *args, **kwds):
         max_retries = 5
         for retry in range(max_retries):
             try:
                 with self.conn as cursor:
-                    operations(cursor)
+                    operations(cursor, *args, **kwds)
             except MySQLdb.OperationalError:
                 if retry == max_retries - 1:
                     raise

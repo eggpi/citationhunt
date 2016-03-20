@@ -162,7 +162,7 @@ def parse_xml_dump(pages_articles_xml_bz2, pageids):
             log.info('canceled, killing process pool...')
             wp.cancel()
             return
-    wp.done()
+    wp.join()
     stats['pageids'] = pageids
 
     if len(pageids) > 0:
