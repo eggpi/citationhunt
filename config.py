@@ -89,11 +89,6 @@ lang_code_to_config = dict(
         # snippets containing them will be dropped.
         templates_blacklist = EN_TAGS_BLACKLIST,
 
-        # The name of the category for hidden categories. Categories
-        # belonging to this category are typically used for maintenance
-        # and should not show up on Citation Hunt.
-        hidden_category = 'Hidden_categories',
-
         # Citation Hunt will ignore categories if their names match one
         # of these regular expressions.
         category_name_regexps_blacklist = [
@@ -139,8 +134,6 @@ lang_code_to_config = dict(
 
         templates_blacklist = EN_TEMPLATES_BLACKLIST,
 
-        hidden_category = 'Catégorie_cachée',
-
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
@@ -170,8 +163,6 @@ lang_code_to_config = dict(
         tags_blacklist = EN_TAGS_BLACKLIST,
 
         templates_blacklist = EN_TEMPLATES_BLACKLIST,
-
-        hidden_category = 'Categorie_nascoste',
 
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',

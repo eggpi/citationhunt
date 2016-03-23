@@ -75,8 +75,7 @@ def load_unsourced_pageids(chdb):
 def load_hidden_categories(wpcursor):
     cfg = config.get_localized_config()
     wpcursor.execute('''
-        SELECT cl_from FROM categorylinks WHERE
-        cl_to = %s''', (cfg.hidden_category,))
+        SELECT pp_page FROM page_props WHERE pp_propname = "hiddencat"''')
     hidden_page_ids = [row[0] for row in wpcursor]
     return category_ids_to_names(wpcursor, hidden_page_ids)
 
