@@ -1,15 +1,18 @@
 #!/bin/bash
 
+# Should match the job's name in crontab
+LOGFILE=citationhunt_update_${CH_LANG}
+
 function email() {
-    cp ~/update_db_tools_labs.err ~/update_db_tools_labs.txt
+    cp ~/$LOGFILE.err ~/$LOGFILE.txt
     echo "The logs are attached." | \
-        /usr/bin/mail -s "$1" -a ~/update_db_tools_labs.txt \
+        /usr/bin/mail -s "$1" -a ~/$LOGFILE.txt \
         citationhunt.update@tools.wmflabs.org
-    rm ~/update_db_tools_labs.txt
+    rm ~/$LOGFILE.txt
     sleep 2m
 }
 
-truncate -s 0 update_db_tools_labs.err
+truncate -s 0 $LOGFILE.err
 
 xxwiki=${CH_LANG}wiki
 . ~/www/python/venv/bin/activate
