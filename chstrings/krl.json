@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ilja.mos"
+		]
+	},
+	"introduction": "Auta eččie sitattie Wikipedia-artikkeleihin!",
+	"in_page": "Sivulla %s:",
+	"button_wikilink": "Miulla on!",
+	"button_next": "Ei, ielleh!",
+	"lead_section_hint": "Tämä teksti on artikkelin johdanto-ošuuven oša, joten lähtehien kirjuttamini ei ole pakollini. Olkua hyvä, tutuštukkua %s kera lisätietoloin suamisekši.",
+	"category_filter_placeholder": "Mitä šuau šiut šyttymäh?",
+	"github_link_title": "Hei! Miun lähdekoodi on GitHubissa!",
+	"beginners_hint": "Et tiijä, miten sitaatti lisätäh? Kačo %s."
+}
