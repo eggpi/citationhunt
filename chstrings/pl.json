@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
-			"Halibutt"
+			"Halibutt",
+			"Mateon1"
 		]
 	},
 	"introduction": "Pomóż dodać przypisy do artykułów Wikipedii!",
@@ -11,6 +12,6 @@
 	"button_next": "Następny proszę!",
 	"lead_section_hint": "Ten fragment pochodzi z tzw. główki tekstu, gdzie wstawianie przypisów najczęściej nie jest wymagane. Więcej informacji znajdziesz tutaj: %s.",
 	"category_filter_placeholder": "Co Cię interesuje?",
-	"github_link_title": "Ejże! Mój kod źródłowy jest na GitHubie!",
+	"github_link_title": "Hej! Mój kod źródłowy jest na GitHubie!",
 	"beginners_hint": "Nie wiesz jak dodawać przypisy? Przeczytaj stronę %s."
 }
