@@ -58,10 +58,10 @@ def select_random_id(lang_code, cat = CATEGORY_ALL):
     if ret is None:
         # Try to pick one id at random. For small datasets, the probability
         # of getting an empty set in a query is non-negligible, so retry a
-        # few times as needed.
+        # bunch of times as needed.
         p = '1e-4' if not flask.current_app.debug else '1e-2'
         with log_time('select without category'):
-            for retry in range(10):
+            for retry in range(1000):
                 cursor.execute(
                     'SELECT id FROM snippets WHERE RAND() < %s LIMIT 1;', (p,))
                 ret = cursor.fetchone()
