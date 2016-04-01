@@ -22,9 +22,9 @@ database is generated.
 Prerequisites:
 
 - A local installation of MySQL;
-- The pages+articles XML dump and the page and categorylinks SQL dumps of
-  Wikipedia. You can find the latest versions these for the English Wikipedia
-  [here](https://dumps.wikimedia.org/enwiki/latest/);
+- A working Internet connection;
+- The page and categorylinks SQL dumps of Wikipedia. You can find the latest
+versions these for the English Wikipedia [here](https://dumps.wikimedia.org/enwiki/latest/);
 - A few hours, or potentially a rainy Sunday;
 
 The first thing to do is to import the categorylinks and page databases to MySQL. This
