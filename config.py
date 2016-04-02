@@ -105,8 +105,8 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
 
-        # The maximum number of categories to use
-        max_categories = 5000,
+        # The maximum number of categories to use, excluding pinned categories
+        max_categories = 3500,
     ),
 
     fr = dict(
