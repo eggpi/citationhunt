@@ -23,12 +23,14 @@ cd ~/www/python/src/
 ch_mysql_cnf="ch.my.cnf"
 if [ ! -e "$ch_mysql_cnf" -a -f ~/replica.my.cnf ]; then
     cp ~/replica.my.cnf "$ch_mysql_cnf"
+    chmod +w "$ch_mysql_cnf"
     echo "host=tools-db" >> "$ch_mysql_cnf"
 fi
 
 wp_mysql_cnf="wp.my.cnf"
 if [ -f ~/replica.my.cnf ]; then
     cp ~/replica.my.cnf "$wp_mysql_cnf"
+    chmod +w "$wp_mysql_cnf"
     echo "host=${xxwiki}.labsdb" >> "$wp_mysql_cnf"
 fi
 
