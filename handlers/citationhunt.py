@@ -120,6 +120,7 @@ def citation_hunt(lang_code):
         sinfo = select_snippet_by_id(lang_code, id)
         if sinfo is None:
             # invalid id
+            flask.request.cfg = cfg
             flask.abort(404)
         snippet, section, aurl, atitle = sinfo
         next_snippet_id = select_next_id(lang_code, id, cat)
@@ -147,4 +148,3 @@ def citation_hunt(lang_code):
     return flask.redirect(
         flask.url_for('citation_hunt',
             id = id, cat = cat.id, lang_code = lang_code))
-

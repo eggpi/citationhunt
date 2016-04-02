@@ -8,4 +8,6 @@
 	"category_filter_placeholder": "The placeholder text in the input box for filtering articles by category.",
 	"github_link_title": "The label of a link to the source code of this tool (https://github.com/eggpi/citationhunt)",
 	"beginners_hint": "Introduces a link to begginner-friendly documentation about adding references. The %s gets replaced with the link itself."
+    "page_not_found": "The title in the 404 page.",
+    "page_not_found_text": "The text in the 404 page. The %s gets replaced with a link to the initial page."
 }
