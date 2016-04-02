@@ -47,10 +47,10 @@ lang_code_to_config = dict(
         wikipedia_domain = 'en.wikipedia.org',
 
         # A link to an introductory article about adding citations
-        beginners_link = 'https://en.wikipedia.org/wiki/Help:Referencing_for_beginners',
+        beginners_link = 'https://en.wikipedia.org/wiki/Help:Introduction_to_referencing_with_VisualEditor/1',
         # A human-readable title for the article specified above. This gets
         # interpolated into the localizable string 'beginners_hint'
-        beginners_link_title = 'Referencing for beginners',
+        beginners_link_title = 'Introduction to referencing with VisualEditor',
 
         # Some Wikipedias have specific policies for adding citations to the
         # lead section of an article. This should be a link to that policy.
