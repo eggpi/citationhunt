@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Önni"
+			"Önni",
+			"Vitorvicentevalente"
 		]
 	},
 	"introduction": "Ajuda a encontrar citações para artigos da Wikipédia!",
@@ -11,5 +12,6 @@
 	"lead_section_hint": "Este texto faz parte da secção principal do artigo, pelo que referenciá-lo pode ser opcional. Por favor, consulte %s para mais informações.",
 	"category_filter_placeholder": "O que é que te incentiva?",
 	"github_link_title": "Ei! O meu código-fonte está no GitHub!",
-	"beginners_hint": "Não sei como adicionar citações? Consulte %s."
+	"beginners_hint": "Não sei como adicionar citações? Consulte %s.",
+	"page_not_found": "Página não encontrada!"
 }
