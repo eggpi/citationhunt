@@ -11,5 +11,7 @@
 	"lead_section_hint": "此段文字是条目的序言章节的一部分，所以引用它可能是可选的。请参见%s以获取更多信息。",
 	"category_filter_placeholder": "是什么让您勾选这个？",
 	"github_link_title": "嘿！我的源代码位于GitHub！",
-	"beginners_hint": "不了解如何添加引用？请参见%s。"
+	"beginners_hint": "不了解如何添加引用？请参见%s。",
+	"page_not_found": "找不到页面！",
+	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已经被找到？返回%s以获取更多！"
 }

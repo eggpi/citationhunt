@@ -11,5 +11,6 @@
 	"lead_section_hint": "Este texto es parte de la sección principal del artículo, de modo que las referencia pueden ser opcionales. Consulta %s para más información.",
 	"category_filter_placeholder": "¿Qué te incentiva?",
 	"github_link_title": "¡Ey! ¡Mi fuente está en GitHub!",
-	"beginners_hint": "¿No sabes cómo añadir citas? Consulta %s."
+	"beginners_hint": "¿No sabes cómo añadir citas? Consulta %s.",
+	"page_not_found": "Página no encontrada"
 }
