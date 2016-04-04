@@ -12,5 +12,6 @@
 	"category_filter_placeholder": "¿Qué te incentiva?",
 	"github_link_title": "¡Ey! ¡Mi fuente está en GitHub!",
 	"beginners_hint": "¿No sabes cómo añadir citas? Consulta %s.",
-	"page_not_found": "Página no encontrada"
+	"page_not_found": "Página no encontrada",
+	"page_not_found_text": "La página que estás buscando ya no existe. Tal vez esta cita ya se ha encontrado? ¡Vuelve a %s para más!"
 }
