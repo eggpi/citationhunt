@@ -93,6 +93,10 @@ def load_categories_for_page(wpcursor, pageid):
     return set(CategoryName.from_wp_categorylinks(row[0]) for row in wpcursor)
 
 def load_projectindex(tlcursor):
+    # WikiProject categories are added to the talk page, not the article.
+    # We use a special table on Tools Labs to map talk pages to projects,
+    # which will hopefully be more broadly available soon
+    # (https://phabricator.wikimedia.org/T131578)
     projectindex_cache = {}
     tlcursor.execute('SELECT pi_project, pi_page from projectindex')
     for project, page in tlcursor:
@@ -102,10 +106,6 @@ def load_projectindex(tlcursor):
     return projectindex_cache
 
 def load_pinned_categories_for_page(wpcursor, projectindex, pageid):
-    # WikiProject categories are added to the talk page, not the article.
-    # We use a special table on Tools Labs to map talk pages to projects,
-    # which will hopefully be more broadly available soon
-    # (https://phabricator.wikimedia.org/T131578)
     wpcursor.execute('SELECT page_title FROM page WHERE page_id = %s',
         (pageid,))
     rows = list(wpcursor)
