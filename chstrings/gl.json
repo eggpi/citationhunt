@@ -11,5 +11,7 @@
 	"lead_section_hint": "Este texto é parte da sección de cabeceira do artigo, polo que referencialo pode ser opcional. Por favor, consulte %s para máis información.",
 	"category_filter_placeholder": "Que é o que o incentiva?",
 	"github_link_title": "Eh! O meu código fonte está en GitHub!",
-	"beginners_hint": "Non sabe como engadir citas? Consulte %s."
+	"beginners_hint": "Non sabe como engadir citas? Consulte %s.",
+	"page_not_found": "Páxina non atopada!",
+	"page_not_found_text": "A páxina que está a buscar xa non existe - tal vez esta cita xa se atopou? Volva a %s para máis!"
 }

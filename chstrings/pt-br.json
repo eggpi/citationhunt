@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Arthurteb303",
-			"Rodrigo codignoli"
+			"Rodrigo codignoli",
+			"Luk3"
 		]
 	},
 	"introduction": "Ajude a encontrar citações para os artigos da Wikipédia!",
@@ -12,5 +13,7 @@
 	"lead_section_hint": "Esse texto faz parte da seção principal do artigo, por isso referencias podem ser opcionais. Veja %s para mais informações.",
 	"category_filter_placeholder": "O que te incentiva?",
 	"github_link_title": "Ei! O meu código-fonte está no GitHub!",
-	"beginners_hint": "Não sabe como adicionar citações? Veja %s."
+	"beginners_hint": "Não sabe como adicionar citações? Veja %s.",
+	"page_not_found": "Página não encontrada!",
+	"page_not_found_text": "A página que você está procurado não existe mais — talvez esta citação já foi encontrada? Volte a %s para mais!"
 }
