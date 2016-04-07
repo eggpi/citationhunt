@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wolf Rex"
+		]
+	},
+	"introduction": "Segíts forrásokat találni a Wikipédia szócikkeihez!",
+	"in_page": "A(z) %s oldalon:",
+	"button_wikilink": "Megvan!",
+	"button_next": "Nem, a következőt!",
+	"beginners_hint": "Nem tudod, hogy kell hozzáadni forrásokat? Lásd itt:%s",
+	"page_not_found": "A lap nem található!",
+	"page_not_found_text": "Az általad keresett oldal már nem létezik — valószínűleg már találtak hozzá forrást? Menj vissza a(z) %s oldalra többért!"
+}
