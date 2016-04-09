@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html lang={{ config.lang_code }} dir={{ lang_dir }}>
+  <head>
+    {% block head_extras %}{% endblock %}
+    <title>Citation Hunt</title>
+    <meta name="robots" content="nofollow, noodp, noindex">
+    <meta name="description" content="Citation Hunt - {{ config.strings.introduction }}">
+    <!-- Since the 404 handler can be invoked for arbitrarily broken URLs, let's
+        not bother requesting style.css using its relative path, but rather just
+        inline the relevant CSS. -->
+    <style>
+        body {
+            margin: 0;
+            padding: 10px 15px;
+            font-family: Helvetica, sans-serif;
+            font-size: medium;
+            background-color: #FCFCFC;
+        }
+
+        body * {
+            background-color: inherit;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: xx-large;
+        }
+      </style>
+  </head>
+  <body>
+    <h1>{{ config.strings.page_not_found }}</h1>
+    <p>{{ config.strings.page_not_found_text }}</p>
+    {% block bottom_extras %}{% endblock %}
+  </body>
+</html>

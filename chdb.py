@@ -26,7 +26,7 @@ class RetryingConnection(object):
         for retry in range(max_retries):
             try:
                 with self.conn as cursor:
-                    operations(cursor, *args, **kwds)
+                    return operations(cursor, *args, **kwds)
             except MySQLdb.OperationalError:
                 if retry == max_retries - 1:
                     raise
@@ -111,6 +111,14 @@ def init_wp_replica_db():
         db = _connect(wp_my_cnf)
         with db as cursor:
             cursor.execute('USE ' + cfg.database)
+        return db
+    return RetryingConnection(connect_and_initialize)
+
+def init_projectindex_db():
+    def connect_and_initialize():
+        db = _connect(ch_my_cnf)
+        with db as cursor:
+            cursor.execute('USE s52475__wpx_p')
         return db
     return RetryingConnection(connect_and_initialize)
 

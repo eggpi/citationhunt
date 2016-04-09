@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Jopparn"
 		]
 	},
 	"introduction": "Hjälp till att hitta referenser till Wikipediaartiklar!",
@@ -9,7 +10,7 @@
 	"button_wikilink": "Jag förstår!",
 	"button_next": "Nej, nästa!",
 	"lead_section_hint": "Denna text är en del av artikelns inledande avsnitt, så det är valfritt att lägga till referenser. Se %s för mer information.",
-	"category_filter_placeholder": "Vad irriterar dig?",
+	"category_filter_placeholder": "Vad intresserar dig?",
 	"github_link_title": "Hallå! Min källkod finns på GitHub!",
 	"beginners_hint": "Vet du inte hur man lägger till referenser? Se %s."
 }

@@ -54,6 +54,13 @@ class CategoryName(unicode):
             ustr = ustr[len('Category:'):]
         return CategoryName(ustr.replace('_', ' '))
 
+    @staticmethod
+    def from_tl_projectindex(ustr):
+        ustr = d(ustr)
+        if ustr.startswith('Wikipedia:'):
+            ustr = ustr[len('Wikipedia:'):]
+        return CategoryName(ustr.replace('_', ' '))
+
 def category_ids_to_names(wpcursor, category_ids):
     category_names = set()
     for pageid in category_ids:
@@ -84,6 +91,29 @@ def load_categories_for_page(wpcursor, pageid):
     wpcursor.execute('''
         SELECT cl_to FROM categorylinks WHERE cl_from = %s''', (pageid,))
     return set(CategoryName.from_wp_categorylinks(row[0]) for row in wpcursor)
+
+def load_projectindex(tlcursor):
+    # WikiProject categories are added to the talk page, not the article.
+    # We use a special table on Tools Labs to map talk pages to projects,
+    # which will hopefully be more broadly available soon
+    # (https://phabricator.wikimedia.org/T131578)
+    projectindex_cache = {}
+    tlcursor.execute('SELECT pi_project, pi_page from projectindex')
+    for project, page in tlcursor:
+        project = CategoryName.from_tl_projectindex(project)
+        page = d(page)
+        projectindex_cache.setdefault(page, set()).add(project)
+    return projectindex_cache
+
+def load_pinned_categories_for_page(wpcursor, projectindex, pageid):
+    wpcursor.execute('SELECT page_title FROM page WHERE page_id = %s',
+        (pageid,))
+    rows = list(wpcursor)
+    if not rows:
+        return set()
+    title = d(rows[0][0])
+    talk_page_title = 'Talk:' + title
+    return set(projectindex.get(talk_page_title, []))
 
 def category_is_usable(catname, hidden_categories):
     assert isinstance(catname, CategoryName)
@@ -166,27 +196,45 @@ def reset_chdb_tables(cursor):
     cursor.execute('DELETE FROM snippets_links')
 
 def assign_categories(max_categories, mysql_default_cnf):
+    cfg = config.get_localized_config()
     chdb = chdb_.init_scratch_db()
+    wpdb = chdb_.init_wp_replica_db()
+
     chdb.execute_with_retry(reset_chdb_tables)
     unsourced_pageids = load_unsourced_pageids(chdb)
 
-    wpdb = chdb_.init_wp_replica_db()
-    wpcursor = wpdb.cursor()
-    assert wpcursor.execute('SELECT * FROM page LIMIT 1;') == 1
-    assert wpcursor.execute('SELECT * FROM categorylinks LIMIT 1;') == 1
+    projectindex = {}
+    if running_in_tools_labs() and cfg.lang_code == 'en':
+        tldb = chdb_.init_projectindex_db()
+        tlcursor = tldb.cursor()
 
-    hidden_categories = load_hidden_categories(wpcursor)
+        projectindex = load_projectindex(tlcursor)
+        log.info('loaded projects for %d talk pages (%s...)' % \
+            (len(projectindex), projectindex.values()[0]))
+
+    hidden_categories = wpdb.execute_with_retry(load_hidden_categories)
     log.info('loaded %d hidden categories (%s...)' % \
         (len(hidden_categories), next(iter(hidden_categories))))
 
     categories_to_ids = collections.defaultdict(set)
+    pinned_categories_to_ids = collections.defaultdict(set)
     page_ids_with_no_categories = 0
     for n, pageid in enumerate(list(unsourced_pageids)):
+        categories = wpdb.execute_with_retry(load_categories_for_page, pageid)
+        pinned_categories = (wpdb.execute_with_retry(
+            load_pinned_categories_for_page, projectindex, pageid)
+            if projectindex else set())
+        # Filter both kinds of categories and build the category -> pageid
+        # indexes
         page_has_at_least_one_category = False
-        for catname in load_categories_for_page(wpcursor, pageid):
+        for catname in categories:
             if category_is_usable(catname, hidden_categories):
                 page_has_at_least_one_category = True
                 categories_to_ids[catname].add(pageid)
+        for catname in pinned_categories:
+            if category_is_usable(catname, hidden_categories):
+                page_has_at_least_one_category = True
+                pinned_categories_to_ids[catname].add(pageid)
         if not page_has_at_least_one_category:
             unsourced_pageids.remove(pageid)
             page_ids_with_no_categories += 1
@@ -196,9 +244,15 @@ def assign_categories(max_categories, mysql_default_cnf):
     log.info('found %d usable categories (%s, %s...)' % \
         (len(categories_to_ids), categories_to_ids.keys()[0],
         categories_to_ids.keys()[1]))
+    if pinned_categories_to_ids:
+        log.info('%d pinned categories (%s, %s)' % \
+            (len(pinned_categories_to_ids), pinned_categories_to_ids.keys()[0],
+             pinned_categories_to_ids.keys()[1]))
 
     categories = choose_categories(categories_to_ids, unsourced_pageids,
         max_categories)
+    categories |= set(
+        (k, frozenset(v)) for k, v in pinned_categories_to_ids.items())
 
     update_citationhunt_db(chdb, categories)
     wpdb.close()

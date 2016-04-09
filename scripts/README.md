@@ -74,7 +74,7 @@ Next, let's generate the list of ids of pages with unsourced statements with
 `print_unsourced_pageids_from_wikipedia.py`:
 
 ```
-$ ./print_unsourced_pageids_from_wikipedia > unsourced
+$ ./print_unsourced_pageids_from_wikipedia.py > unsourced
 ```
 
 This list should be passed to the `parse_live.py` script, which will query the

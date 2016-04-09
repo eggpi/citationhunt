@@ -11,5 +11,7 @@
 	"lead_section_hint": "Dieser Text ist Teil eines Einleitungsabschnitts eines Artikels. Referenzierung ist eventuell optional. Siehe %s für weitere Informationen.",
 	"category_filter_placeholder": "Was bewegt dich?",
 	"github_link_title": "Hey! Meine Quelle ist auf GitHub!",
-	"beginners_hint": "Du weißt nicht, wie man Zitate hinzufügt? Siehe %s."
+	"beginners_hint": "Du weißt nicht, wie man Zitate hinzufügt? Siehe %s.",
+	"page_not_found": "Seite nicht gefunden!",
+	"page_not_found_text": "Die Seite, nach der du suchst, ist nicht mehr vorhanden. Vielleicht wurde dieses Zitat bereits gefunden. Gehe zurück zu %s für weitere Informationen!"
 }

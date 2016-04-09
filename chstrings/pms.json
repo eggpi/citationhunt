@@ -11,5 +11,7 @@
 	"lead_section_hint": "Ës test a l'é tirà da la session ëd testa dl'artìcol, donca dé n'arferiment a cost-sì a l'é opsional.\nCh'a consulta %s për pi d'anformassion.",
 	"category_filter_placeholder": "E chiel, col ch'a l'é sò giget?",
 	"github_link_title": "Eh! Mia sorgiss a l'é ansima a GitHub!",
-	"beginners_hint": "Sa-lo nen coma gionté dle sitassion? Ch'a consulta %s."
+	"beginners_hint": "Sa-lo nen coma gionté dle sitassion? Ch'a consulta %s.",
+	"page_not_found": "Pàgina nen trovà!",
+	"page_not_found_text": "La pàgina ch'a sërca a esist pi - miraco costa sitassion a l'é già stàita trovà? Ch'a torna andré a %s për savèjne ëd pi!"
 }

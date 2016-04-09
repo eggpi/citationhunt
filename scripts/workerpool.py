@@ -116,6 +116,7 @@ class WorkerPool(object):
             # stop workers
             for q in self._queues[1:]:
                 q.put(('DONE', None))
+                q.close()
 
         start = time.time()
         for p in self._procs[1:]:
@@ -127,13 +128,14 @@ class WorkerPool(object):
         if not joining:
             # now that the workers have safely stopped, stop the receiver
             self._queues[0].put(('DONE', None))
+            self._queues[0].close()
         self._procs[0].join(timeout)
 
     def cancel(self):
-        for p in [p for p in self._procs if p.is_alive()]:
-            os.kill(p.pid, signal.SIGTERM)
-        for p in self._procs:
-            p.join()
+        for p in reversed(self._procs): # kill receiver last
+            if p.is_alive():
+                os.kill(p.pid, signal.SIGTERM)
+                p.join()
 
     def _sigterm_handler(self, sig, stack):
         self._canceled = True

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"introduction": "幫忙找尋維基百科條目的引用！",
+	"in_page": "在頁面%s",
+	"button_wikilink": "我有這個！",
+	"button_next": "不是這個，下一個！",
+	"lead_section_hint": "此段文字是該條目的序言章節一部份，因此可選擇引用此內容。請查看%s獲得更多訊息。",
+	"category_filter_placeholder": "您勾選此項的原因是？",
+	"github_link_title": "嘿！我的原始碼放在GitHub上！",
+	"beginners_hint": "不清楚如何加入引用嗎？請參閱%s",
+	"page_not_found": "找無頁面！",
+	"page_not_found_text": "您找尋的頁面已不存在──或許此引用已被查找到？返回%s獲取更多訊息！"
+}

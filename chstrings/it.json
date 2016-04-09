@@ -11,5 +11,7 @@
 	"lead_section_hint": "Questo testo è parte della sezione iniziale della voce, quindi i riferimenti sono facoltativi. Vedi %s per ulteriori informazioni.",
 	"category_filter_placeholder": "Cosa vuoi selezionare?",
 	"github_link_title": "Ehi! Il mio sorgente è su GitHub!",
-	"beginners_hint": "Non sai come aggiungere citazioni? Vedi %s."
+	"beginners_hint": "Non sai come aggiungere citazioni? Vedi %s.",
+	"page_not_found": "Pagina non trovata!",
+	"page_not_found_text": "La pagina che stavi cercando non esiste più — forse questa citazione è già stata trovata? Torna a %s per altre!"
 }

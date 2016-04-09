@@ -1,10 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elyashiv"
+			"Elyashiv",
+			"Shdror"
 		]
 	},
+	"introduction": "עזרו בחיפוש מקורות לערכי ויקיפדיה!",
 	"in_page": "בדף %s:",
 	"button_wikilink": "מצאתי את זה!",
-	"button_next": "לא, הבא!"
+	"button_next": "לא, הבא!",
+	"lead_section_hint": "טקסט זה הוא חלק מתמצית המאמר, כך שהתייחסות אליו היא אופציונאלית.\nנא לעיין ב-%s לקבלת מידע נוסף.",
+	"category_filter_placeholder": "מה מעניין עבורך?",
+	"github_link_title": "הי! קבצי המקור שלי נמצאים ב-GitHub!",
+	"beginners_hint": "לא יודעים איך להוסיף מקורות? עיינו ב-%s",
+	"page_not_found": "הערך לא נמצא!",
+	"page_not_found_text": "הערך שחיפשת לא קיים כבר - האם ייתכן שהמקור כבר הוכנס? חזרו ל-%s להמשך!"
 }
