@@ -14,9 +14,16 @@ function initCategoryFilter() {
     return li;
   }
 
+  // Our "input" listener fires before Awesomplete's.
+  // This makes sure we display all options when the input is clicked,
+  // but otherwise cap the number of results to keep things responsive.
+  cin.addEventListener("input", function() {
+    awc.maxItems = (length > 0) ? 200 : options.length;
+  });
+
   var awc = new Awesomplete(cin);
   awc.minChars = 0; // open dropdown on focus
-  awc.maxItems = options.length; // display all options when cin is empty
+  awc.maxItems = options.length; // see listener for "input" on cin above
   awc.sort = undefined; // sort alphabetially regardless of item length
   awc.item = item.bind(null, awc.item); // handle empty cin
 
