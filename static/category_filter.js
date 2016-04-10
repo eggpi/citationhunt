@@ -18,7 +18,7 @@ function initCategoryFilter() {
   // This makes sure we display all options when the input is clicked,
   // but otherwise cap the number of results to keep things responsive.
   cin.addEventListener("input", function() {
-    awc.maxItems = (length > 0) ? 200 : options.length;
+    awc.maxItems = (cin.value.length > 0) ? 200 : options.length;
   });
 
   var awc = new Awesomplete(cin);
