@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Önni",
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Diniscoelho"
 		]
 	},
 	"introduction": "Ajuda a encontrar citações para artigos da Wikipédia!",
@@ -13,5 +14,6 @@
 	"category_filter_placeholder": "O que é que te incentiva?",
 	"github_link_title": "Ei! O meu código-fonte está no GitHub!",
 	"beginners_hint": "Não sei como adicionar citações? Consulte %s.",
-	"page_not_found": "Página não encontrada!"
+	"page_not_found": "Página não encontrada!",
+	"page_not_found_text": "A página que está a procurar não existe — talvez esta citação já foi encontrada? Volte a %s para mais!"
 }

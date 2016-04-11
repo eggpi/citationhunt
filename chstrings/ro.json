@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"ANDROBETA"
+		]
+	},
+	"introduction": "Ajutați la găsirea citatelor pentru articolele Wikipedia!",
+	"in_page": "În pagina %s:",
+	"button_wikilink": "Se rezolvă!",
+	"button_next": "Nu, mai departe!",
+	"lead_section_hint": "Acest text este parte a secțiunii introductive a articolului, adăugarea referințelor ar putea fi opțională. Vă rugăm consultați %s pentru mai multe informații.",
+	"category_filter_placeholder": "Ce anume vă interesează?",
+	"github_link_title": "Hei! Codul meu sursă este pe GitHub!",
+	"beginners_hint": "Nu știți cum să adăugați citate? Consultați %s.",
+	"page_not_found": "Pagina nu a fost găsită!",
+	"page_not_found_text": "Pagina pe care o căutați nu mai există — poate că acest citat a fost găsit deja? Reveniți la %s pentru mai multe!"
+}
