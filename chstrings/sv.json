@@ -13,5 +13,6 @@
 	"category_filter_placeholder": "Vad intresserar dig?",
 	"github_link_title": "Hallå! Min källkod finns på GitHub!",
 	"beginners_hint": "Vet du inte hur man lägger till referenser? Se %s.",
-	"page_not_found": "Sidan kunde inte hittas!"
+	"page_not_found": "Sidan kunde inte hittas!",
+	"page_not_found_text": "Sidan du letar efter finns inte längre — kanske denna referens har redan hittats? Gå tillbaka till %s för mer!"
 }
