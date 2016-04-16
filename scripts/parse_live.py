@@ -24,7 +24,7 @@ sys.path.append('../')
 import chdb
 import config
 import snippet_parser
-import workerpool
+import multiprocessing
 from utils import *
 
 import docopt
@@ -32,6 +32,8 @@ import requests
 import wikitools
 
 import time
+import functools
+import traceback
 import itertools
 import urllib
 import StringIO
@@ -40,6 +42,8 @@ cfg = config.get_localized_config()
 WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
+
+MAX_EXCEPTIONS_PER_SUBPROCESS = 5
 
 log = Logger()
 
@@ -92,82 +96,81 @@ class WikitoolsRequestsAdapter(object):
             StringIO.StringIO(response.text), request.headers,
             request.get_full_url(), response.status_code)
 
-class RowParser(workerpool.Worker):
-    def setup(self):
-        self.parser = snippet_parser.get_localized_snippet_parser()
-        self.wiki = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
-        self.wiki.setUserAgent(
-            'citationhunt (https://tools.wmflabs.org/citationhunt)')
-        self.opener = WikitoolsRequestsAdapter()
+# In py3: types.SimpleNamespace
+class State(object):
+    pass
+self = State() # Per-process state
 
-    def work(self, pageids):
-        data = []
-        results = query_pageids(self.wiki, self.opener, pageids)
-        for pageid, title, wikitext in results:
-            url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
+def initializer():
+    self.parser = snippet_parser.get_localized_snippet_parser()
+    self.wiki = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
+    self.wiki.setUserAgent(
+        'citationhunt (https://tools.wmflabs.org/citationhunt)')
+    self.opener = WikitoolsRequestsAdapter()
+    self.chdb = chdb.init_scratch_db()
+    self.exception_count = 0
 
-            snippets_rows = []
-            snippets = self.parser.extract_snippets(
-                wikitext, cfg.snippet_min_size, cfg.snippet_max_size)
-            for sec, snips in snippets:
-                sec = section_name_to_anchor(sec)
-                for sni in snips:
-                    id = mkid(title + sni)
-                    row = (id, sni, sec, pageid)
-                    snippets_rows.append(row)
+def with_max_exceptions(fn):
+    @functools.wraps(fn)
+    def wrapper(*args, **kwds):
+        try:
+            return fn(*args, **kwds)
+        except:
+            traceback.print_exc()
+            self.exception_count += 1
+            if self.exception_count > MAX_EXCEPTIONS_PER_SUBPROCESS:
+                raise
+    return wrapper
 
-            if snippets_rows:
-                article_row = (pageid, url, title)
-                data.append({'article': article_row, 'snippets': snippets_rows})
-        return data
+@with_max_exceptions
+def work(pageids):
+    rows = []
+    results = query_pageids(self.wiki, self.opener, pageids)
+    for pageid, title, wikitext in results:
+        url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
 
-    def done(self):
-        pass
+        snippets_rows = []
+        snippets = self.parser.extract_snippets(
+            wikitext, cfg.snippet_min_size, cfg.snippet_max_size)
+        for sec, snips in snippets:
+            sec = section_name_to_anchor(sec)
+            for sni in snips:
+                id = mkid(title + sni)
+                row = (id, sni, sec, pageid)
+                snippets_rows.append(row)
 
-# FIXME originally we needed only a single process writing to the database,
-# because sqlite3 sucks at multiprocessing. We can probably change that with
-# MySQL.
-class DatabaseWriter(workerpool.Receiver):
-    def __init__(self):
-        self.chdb = None
+        if snippets_rows:
+            article_row = (pageid, url, title)
+            rows.append({'article': article_row, 'snippets': snippets_rows})
 
-    def setup(self):
-        self.chdb = chdb.reset_scratch_db()
-
-    def receive(self, rows):
-        self.write_article_rows(rows)
-
-    def write_article_rows(self, rows):
-        if not rows:
-            return
-
-        def insert(cursor, r):
-            cursor.execute('''
-                INSERT INTO articles VALUES(%s, %s, %s)''', r['article'])
-            cursor.executemany('''
-                INSERT IGNORE INTO snippets VALUES(%s, %s, %s, %s)''',
-                r['snippets'])
-        for r in rows:
-            self.chdb.execute_with_retry(insert, r)
-
-    def done(self):
-        self.chdb.close()
+    def insert(cursor, r):
+        cursor.execute('''
+            INSERT INTO articles VALUES(%s, %s, %s)''', r['article'])
+        cursor.executemany('''
+            INSERT IGNORE INTO snippets VALUES(%s, %s, %s, %s)''',
+            r['snippets'])
+    for r in rows:
+        self.chdb.execute_with_retry(insert, r)
 
 def parse_live(pageids, timeout):
-    start = time.time()
-    parser = RowParser()
-    writer = DatabaseWriter()
-    wp = workerpool.WorkerPool(parser, writer)
+    chdb.reset_scratch_db()
+    pool = multiprocessing.Pool(initializer = initializer)
 
+    # Make sure we query the API 32 pageids at a time
+    tasks = []
     batch_size = 32
     pageids_list = list(pageids)
     for i in range(0, len(pageids), batch_size):
-        wp.post(pageids_list[i:i+batch_size])
+        tasks.append(pageids_list[i:i+batch_size])
 
-    wp.join(timeout)
-    if time.time() - start > timeout:
-        log.info('timeout, canceling the worker pool!')
-        wp.cancel()
+    result = pool.map_async(work, tasks)
+    pool.close()
+
+    result.wait(timeout)
+    if not result.ready():
+        log.info('timeout, canceling the process pool!')
+        pool.terminate()
+    pool.join()
 
 if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
