@@ -101,8 +101,8 @@ class State(object):
     pass
 self = State() # Per-process state
 
-def initializer():
-    self.parser = snippet_parser.get_localized_snippet_parser()
+def initializer(parser):
+    self.parser = parser
     self.wiki = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     self.wiki.setUserAgent(
         'citationhunt (https://tools.wmflabs.org/citationhunt)')
@@ -154,7 +154,9 @@ def work(pageids):
 
 def parse_live(pageids, timeout):
     chdb.reset_scratch_db()
-    pool = multiprocessing.Pool(initializer = initializer)
+    parser = snippet_parser.get_localized_snippet_parser()
+    pool = multiprocessing.Pool(
+        initializer = initializer, initargs = (parser,))
 
     # Make sure we query the API 32 pageids at a time
     tasks = []

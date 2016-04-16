@@ -26,9 +26,15 @@ WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 STRIP_REGEXP = re.compile( # strip spaces before the markers
     '\s+(' + CITATION_NEEDED_MARKER + '|' + REF_MARKER + ')')
 
+log = Logger()
+
 import os
 sys.path.append(os.path.dirname(__file__))
-localized_module = importlib.import_module(cfg.lang_code)
+try:
+    localized_module = importlib.import_module(cfg.lang_code)
+except ImportError:
+    log.info('No snippet_parser for lang_code %s, using stub!' % cfg.lang_code)
+    localized_module = importlib.import_module('stub')
 snippet_parser = localized_module.SnippetParser()
 
 def cleanup_snippet(snippet):
