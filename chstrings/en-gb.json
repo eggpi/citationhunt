@@ -11,5 +11,7 @@
 	"lead_section_hint": "This text is part of the article's lead section, so referencing it may be optional. Please see %s for more information.",
 	"category_filter_placeholder": "What makes you tick?",
 	"github_link_title": "Hey! My source is on GitHub!",
-	"beginners_hint": "Don't know how to add citations? See %s."
+	"beginners_hint": "Don't know how to add citations? See %s.",
+	"page_not_found": "Page not found!",
+	"page_not_found_text": "The page you are looking for no longer exists — perhaps this citation has already been found? Go back to %s for more!"
 }
