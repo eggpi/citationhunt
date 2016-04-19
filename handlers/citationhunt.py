@@ -1,10 +1,13 @@
 import chdb
 import config
+from utils import *
 from common import *
 
 from snippet_parser import CITATION_NEEDED_MARKER, REF_MARKER
 
 import collections
+import urllib
+import urlparse
 
 # the markup we're going to use for [citation needed] and <ref> tags,
 # pre-marked as safe for jinja.
@@ -132,8 +135,11 @@ def citation_hunt(lang_code):
                     id = id, cat = CATEGORY_ALL.id,
                     lang_code = lang_code))
         autofocus = should_autofocus_category_filter(cat, flask.request)
+        article_url_path = urllib.quote(
+            e(urlparse.urlparse(aurl).path.lstrip('/')))
         return flask.render_template('index.html',
             snippet = snippet, section = section, article_url = aurl,
+            article_url_path = article_url_path,
             article_title = atitle, current_category = cat,
             next_snippet_id = next_snippet_id,
             cn_marker = CITATION_NEEDED_MARKER,

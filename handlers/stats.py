@@ -52,6 +52,16 @@ def stats(lang_code):
         'Distinct user agents in the past %s days' % days,
         json.dumps([['Date', lang_code]] + list(stats_cursor)), 'line'))
 
+    stats_cursor.execute('''
+        SELECT DATE_FORMAT(ts, GET_FORMAT(DATE, 'ISO')) AS dt, COUNT(*)
+        FROM requests_''' + lang_code +
+        ''' WHERE url LIKE '%%redirect%%' AND status_code = 302
+        AND DATEDIFF(NOW(), ts) < %s AND ''' + is_not_crawler_sql +
+        ''' GROUP BY dt ORDER BY dt''', (days,))
+    graphs.append((
+        'Number of redirects to article in the past %s days' % days,
+        json.dumps([['Date', lang_code]] + list(stats_cursor)), 'line'))
+
     # FIXME don't assume tools labs?
     stats_cursor.execute('''
         SELECT referrer, COUNT(*) FROM requests_''' + lang_code + '''
