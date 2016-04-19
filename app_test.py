@@ -102,5 +102,11 @@ class CitationHuntTest(unittest.TestCase):
 
             self.assertEquals(response.content_encoding, 'gzip')
 
+    def test_redirect(self):
+        response = self.app.get('/en/redirect?to=wiki/AT%26T#History')
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(response.headers['Location'],
+            'https://en.wikipedia.org/wiki/AT&T#History')
+
 if __name__ == '__main__':
     unittest.main()

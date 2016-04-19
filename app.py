@@ -8,6 +8,8 @@ from flask.ext.compress import Compress
 from flask.ext.mobility import Mobility
 
 import os
+import urllib
+import urlparse
 
 # Cache duration for snippets.
 # Since each page contains a link to the next one, even when no category is
@@ -36,6 +38,14 @@ def index(lang_code):
 
 app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt)
 app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
+
+@app.route('/<lang_code>/redirect')
+@handlers.validate_lang_code
+def redirect(lang_code):
+    to = urllib.unquote(flask.request.args.get('to', ''))
+    cfg = config.get_localized_config(lang_code)
+    return flask.redirect(
+        urlparse.urljoin('https://' + cfg.wikipedia_domain, to))
 
 @app.route('/<lang_code>/categories.html')
 @handlers.validate_lang_code
@@ -70,7 +80,6 @@ def log_request(response):
     id = flask.request.args.get('id')
     cat = flask.request.args.get('cat')
     url = flask.request.url
-    prefetch = False
     prefetch = (flask.request.headers.get('purpose') == 'prefetch' or
                 flask.request.headers.get('X-Moz') == 'prefetch')
     user_agent = flask.request.headers.get('User-Agent', 'NULL')
