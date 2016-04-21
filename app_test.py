@@ -1,23 +1,40 @@
 import os
 os.environ['DEBUG'] = '1' # disable https redirects
 
+# Disable stats since it requires a database, and we're not
+# testing it anyway
+import config
+config.get_localized_config('en').flagged_off.append('stats')
+
 import app
-import chdb
+import mock
 
 import unittest
 
 class CitationHuntTest(unittest.TestCase):
     def setUp(self):
         self.app = app.app.test_client()
-        db = chdb.init_db('en')
-        cursor = db.cursor()
 
-        # FIXME should really mock chdb instead.
-        cursor.execute('SELECT snippets.id, category_id FROM ' \
-            'snippets, articles_categories WHERE ' \
-            'snippets.article_id = articles_categories.article_id ' \
-            'LIMIT 1;')
-        self.sid, self.cat = cursor.fetchone()
+        self.sid = '93b6f3cf'
+        self.cat = 'b5e1a25d'
+        self.fake_snippet_info = (
+            'Some snippet', 'Some section',
+            'https://en.wikipedia.org/wiki/A', 'Some title')
+
+        methods_and_return_values = [
+            ('query_categories', [(self.cat, 'Category')]),
+            ('query_snippet_by_id', self.fake_snippet_info),
+            ('query_snippet_by_category', (self.sid,)),
+            ('query_random_snippet', (self.sid,)),
+            ('query_next_id', (self.sid[::-1],)),
+        ]
+
+        self.patchers = [
+            mock.patch('app.handlers.Database.' + m, return_value = rv).start()
+            for m, rv in methods_and_return_values
+        ]
+        for patcher in self.patchers:
+            self.addCleanup(patcher.stop)
 
     def get_url_args(self, url):
         return dict(kv.split('=') for kv in url[url.rfind('?')+1:].split('&'))
@@ -37,7 +54,7 @@ class CitationHuntTest(unittest.TestCase):
         args = self.get_url_args(response.location)
 
         self.assertEquals(response.status_code, 302)
-        self.assertTrue('id' in args)
+        self.assertEquals(args['id'], self.sid)
         self.assertEquals(args['cat'], app.handlers.CATEGORY_ALL.id)
 
     def test_id_no_category(self):
@@ -61,7 +78,7 @@ class CitationHuntTest(unittest.TestCase):
         args = self.get_url_args(response.location)
 
         self.assertEquals(response.status_code, 302)
-        self.assertTrue('id' in args)
+        self.assertEquals(args['id'], self.sid)
         self.assertEquals(args['cat'], self.cat)
 
         # Now request the snippet, should be a 200
@@ -95,12 +112,13 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(response.cache_control.max_age, None)
 
     def test_gzip(self):
+        compress_min_size = app.app.config['COMPRESS_MIN_SIZE']
+        app.app.config['COMPRESS_MIN_SIZE'] = 1
         with app.app.test_request_context('/en/categories.html'):
             response = self.app.get('/en/categories.html',
                 headers = {'Accept-encoding': 'gzip'})
-            response = app.app.process_response(response)
-
             self.assertEquals(response.content_encoding, 'gzip')
+        app.app.config['COMPRESS_MIN_SIZE'] = compress_min_size
 
     def test_redirect(self):
         response = self.app.get('/en/redirect?to=wiki/AT%26T#History')

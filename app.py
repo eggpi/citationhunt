@@ -37,8 +37,9 @@ def index(lang_code):
     pass # nothing to do but validate lang_code
 
 app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt)
-app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
-app.after_request(handlers.log_request)
+if 'stats' not in config.get_localized_config('en').flagged_off:
+    app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
+    app.after_request(handlers.log_request)
 
 @app.route('/<lang_code>/redirect')
 @handlers.validate_lang_code
