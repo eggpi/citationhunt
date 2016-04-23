@@ -22,6 +22,24 @@ def load_is_not_crawler_sql():
         for domain in referrer_spam_blacklist
     ])
 
+def log_request(response):
+    lang_code = getattr(flask.request, 'lang_code', None)
+    id = flask.request.args.get('id')
+    cat = flask.request.args.get('cat')
+    url = flask.request.url
+    prefetch = (flask.request.headers.get('purpose') == 'prefetch' or
+                flask.request.headers.get('X-Moz') == 'prefetch')
+    user_agent = flask.request.headers.get('User-Agent', 'NULL')
+    referrer = flask.request.referrer
+    status_code = response.status_code
+
+    with get_stats_db() as cursor, chdb.ignore_warnings():
+        cursor.execute('INSERT INTO requests VALUES '
+            '(NOW(), %s, %s, %s, %s, %s, %s, %s, %s)',
+            (lang_code, id, cat, url, prefetch, user_agent,
+             status_code, referrer))
+    return response
+
 @validate_lang_code
 def stats(lang_code):
     days = flask.request.args.get('days', 10)

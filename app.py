@@ -38,6 +38,7 @@ def index(lang_code):
 
 app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt)
 app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
+app.after_request(handlers.log_request)
 
 @app.route('/<lang_code>/redirect')
 @handlers.validate_lang_code
@@ -72,25 +73,6 @@ def add_cache_header(response):
         return response
 
     response.cache_control.max_age = CACHE_DURATION_SNIPPET
-    return response
-
-@app.after_request
-def log_request(response):
-    lang_code = getattr(flask.request, 'lang_code', None)
-    id = flask.request.args.get('id')
-    cat = flask.request.args.get('cat')
-    url = flask.request.url
-    prefetch = (flask.request.headers.get('purpose') == 'prefetch' or
-                flask.request.headers.get('X-Moz') == 'prefetch')
-    user_agent = flask.request.headers.get('User-Agent', 'NULL')
-    referrer = flask.request.referrer
-    status_code = response.status_code
-
-    with handlers.get_stats_db() as cursor, chdb.ignore_warnings():
-        cursor.execute('INSERT INTO requests VALUES '
-            '(NOW(), %s, %s, %s, %s, %s, %s, %s, %s)',
-            (lang_code, id, cat, url, prefetch, user_agent,
-             status_code, referrer))
     return response
 
 @app.teardown_appcontext
