@@ -4,7 +4,7 @@ import hashlib
 
 def e(s):
     if type(s) == str:
-        return str
+        return s
     return s.encode('utf-8')
 
 def d(s):
