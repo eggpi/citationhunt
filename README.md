@@ -1,4 +1,4 @@
-## CitationHunt
+## Citation Hunt
 
 CitationHunt is a simple tool for finding unsourced statements on
 Wikipedia in different languages. It is hosted at
@@ -9,47 +9,13 @@ This repository contains the full server and client code. The
 directory contains all the scripts used for processing Wikipedia dumps.
 Hopefully they will be illustrative and reusable for similar applications.
 
-### Developing
+#### I want to help!
 
-The `run-tests.sh` script will run all tests for you. You may want to install it
-as a pre-push hook on git:
+That's great! There are many ways you can help. Please take a look at
+[CONTRIBUTING.md](https://github.com/eggpi/citationhunt/blob/master/CONTRIBUTING.md)
+for guidelines and instructions.
 
-```
-ln -s ../../run-tests.sh .git/hooks/pre-push
-```
-
-### Running
-
-It's highly recommended that you use a
-[virtualenv](https://pypi.python.org/pypi/virtualenv) for running CitationHunt:
-
-```
-$ virtualenv ch-venv
-$ cd ch-venv
-$ . bin/activate
-```
-
-Dependencies are managed via a `requirements.txt` file:
-
-```
-$ git clone https://github.com/eggpi/citationhunt
-$ cd citationhunt
-$ pip install -r requirements.txt
-```
-
-Once all dependencies are installed, just run `app.py` and point your browser to
-`localhost:5000`:
-
-```
-$ DEBUG=1 python app.py
-```
-
-Adding `DEBUG=1` to the environment will run the server in [Flask's debug
-mode](http://flask.pocoo.org/docs/0.10/quickstart/#debug-mode) and enable HTTP
-access (the default is to redirect all URLs to HTTPS, which causes certificate
-errors when running locally).
-
-#### On Tools Labs
+#### Installing on Tools Labs
 
 CitationHunt can be installed on Wikimedia's Tools Labs using its [specialized
 support for Python uwsgi
