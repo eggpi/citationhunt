@@ -14,3 +14,4 @@ requests==2.9.1
 Werkzeug==0.10.4
 wikitools==1.3
 mock==2.0.0
+python-dateutil==2.5.3
