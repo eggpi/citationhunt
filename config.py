@@ -12,6 +12,12 @@ global_config = dict(
     # Approximate minimum length for a snippet
     snippet_min_size = 100,
 
+    # If running on Tools labs, keep database dumps in this directory...
+    archive_dir = os.path.join(os.path.expanduser('~'), 'ch_archives'),
+
+    # ...and delete dumps that are older than this many days
+    archive_duration_days = 90,
+
     flagged_off = []
 )
 

@@ -7,19 +7,28 @@ _upper_dir = os.path.abspath(
 if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 
-import utils
+import chdb
 import config
+import utils
 
 import time
 import commands
 import argparse
 import tempfile
+import dateutil.parser
+import datetime
 
 def email(message, attachment):
     commands.getoutput(
         '/usr/bin/mail -s "%s" -a %s citationhunt.update@tools.wmflabs.org' % (
         message, attachment))
     time.sleep(2*60)
+
+def shell(cmdline):
+    print >>sys.stderr, 'Running %s' % cmdline
+    status, output = commands.getstatusoutput(cmdline)
+    print >>sys.stderr, output
+    return status == 0
 
 def ensure_db_config(cfg):
     xxwiki = cfg.lang_code + 'wiki'
@@ -37,25 +46,57 @@ def ensure_db_config(cfg):
 
     return ch_my_cnf, wp_my_cnf
 
-def update_db_tools_labs(cfg):
-    # Should match the job's name in crontab
-    logfile = 'citationhunt_update_' + cfg.lang_code + '.err'
-    file(logfile, 'w').close()  # truncate logfile
+def get_db_names_to_archive(lang_code):
+    database_names = []
+    for db in [chdb.init_db(lang_code), chdb.init_stats_db()]:
+        with db as cursor:
+            cursor.execute('SELECT DATABASE()')
+            database_names.append(cursor.fetchone()[0])
+    return database_names
+
+def delete_old_archives(archive_dir, archive_duration_days):
+    try:
+        all_archives = os.listdir(archive_dir)
+    except OSError:
+        print >>sys.stderr, 'No archives to delete!'
+        return
+
+    for a in all_archives:
+        # format: YYYYMMDD-HHMM-${LANG_CODE}.gz
+        when = dateutil.parser.parse(a.rsplit('-', 1)[0])
+        age = (datetime.datetime.today() - when).days
+        if age > archive_duration_days:
+            print >>sys.stderr, 'Archive %s is %d days old, deleting' % (a, age)
+            os.remove(os.path.join(archive_dir, a))
+
+def archive_database(ch_my_cnf, cfg):
+    dbs_to_archive = get_db_names_to_archive(cfg.lang_code)
+    if cfg.archive_duration_days > 0:
+        delete_old_archives(cfg.archive_dir, cfg.archive_duration_days)
+
+    os.makedirs(cfg.archive_dir)
+    now = datetime.datetime.now()
+    output = os.path.join(cfg.archive_dir, now.strftime('%Y%m%d-%H%M'))
+
+   print >>sys.stderr, 'Archiving the current database'
+   return shell(
+       'mysqldump --defaults-file="%s" --databases %s | '
+       'gzip > %s' % (ch_my_cnf, ' '.join(dbs_to_archive), output))
+
+def _update_db_tools_labs(cfg):
+    os.environ['CH_LANG'] = cfg.lang_code
+    ch_my_cnf, wp_my_cnf = ensure_db_config(cfg)
+    if cfg.archive_dir and not archive_database(ch_my_cnf, cfg):
+        # Log, but don't assert, this is not fatal
+        print >>sys.stderr, 'Failed to archive database!'
 
     # FIXME Import and calll these scripts instead of shelling out?
     def run_script(script, cmdline = ''):
         scripts_dir = os.path.dirname(os.path.realpath(__file__))
         script_path = os.path.join(scripts_dir, script)
         cmdline = ' '.join([sys.executable, script_path, cmdline])
-        print >>sys.stderr, 'Running %s' % cmdline
-        status, output = commands.getstatusoutput(cmdline)
-        print >>sys.stderr, output
-        if status != 0:
-            email('Failed at %s!' % script, logfile)
-            sys.exit(1)
+        assert shell(cmdline) == True, 'Failed at %s' % script
 
-    os.environ['CH_LANG'] = cfg.lang_code
-    ch_my_cnf, wp_my_cnf = ensure_db_config(cfg)
     unsourced = tempfile.NamedTemporaryFile()
     run_script(
         'print_unsourced_pageids_from_wikipedia.py', wp_my_cnf + ' > ' +
@@ -64,7 +105,19 @@ def update_db_tools_labs(cfg):
     run_script(
         'assign_categories.py', '--max_categories=%d' % cfg.max_categories)
     run_script('install_new_database.py')
-    email('All done!', logfile)
+
+def update_db_tools_labs(cfg):
+    # Should match the job's name in crontab
+    logfile = 'citationhunt_update_' + cfg.lang_code + '.err'
+    file(logfile, 'w').close()  # truncate logfile
+
+    try:
+        _update_db_tools_labs(cfg)
+    except Exception, e:
+        # TODO Use e.message as the email's body
+        email('Failed to build database for %s' % cfg.lang_code, logfile)
+        sys.exit(1)
+    email('All done for %s!' % cfg.lang_code, logfile)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
