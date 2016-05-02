@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ilja.mos"
+		]
+	},
+	"introduction": "Avvuta eččie situattoi Wikipedien kirjutuksih!",
+	"in_page": "Sivul %s:",
+	"button_wikilink": "Minul on!",
+	"button_next": "Ei, ielleh!",
+	"lead_section_hint": "Tämä tekstu on oza kirjutuksen alguu, sendäh lähtehien käyttö ei ole vältämätöi. Ole hyvä, kačo %s, tahtonet suaja ližätieduo.",
+	"category_filter_placeholder": "Mibo sinuu kiinnostau?",
+	"github_link_title": "Hoi! Minun lähtehkoudu on GitHubas!",
+	"beginners_hint": "Et tiijä, kui situattu ližätäh? Kačo %s.",
+	"page_not_found": "Sivuu ei löydynyh!",
+	"page_not_found_text": "Sivuu, kudamua ečit, ei ole enämbiä olemas - toinah situattu on jo löydynyh? Mene järilleh %s da valliče uuzi!"
+}
