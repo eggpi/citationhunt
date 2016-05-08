@@ -4,11 +4,11 @@
 Assign categories to the pages in the CitationHunt database.
 
 Usage:
-    assign_categories.py [--max-categories=<n>] [--mysql-config=<FILE>]
+    assign_categories.py [--max_categories=<n>] [--mysql_config=<FILE>]
 
 Options:
-    --max-categories=<n>   Maximum number of categories to use [default: inf].
-    --mysql-config=<FILE>  MySQL config file [default: ./ch.my.cnf].
+    --max_categories=<n>   Maximum number of categories to use [default: inf].
+    --mysql_config=<FILE>  MySQL config file [default: ./ch.my.cnf].
 '''
 
 from __future__ import unicode_literals
@@ -265,7 +265,7 @@ def assign_categories(max_categories, mysql_default_cnf):
 
 if __name__ == '__main__':
     args = docopt.docopt(__doc__)
-    max_categories = float(args['--max-categories'])
-    mysql_default_cnf = args['--mysql-config']
+    max_categories = float(args['--max_categories'])
+    mysql_default_cnf = args['--mysql_config']
     ret = assign_categories(max_categories, mysql_default_cnf)
     sys.exit(ret)

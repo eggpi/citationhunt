@@ -5,11 +5,13 @@ The scripts in this directory are used to generate the CitationHunt database.
 ### Generating the database on Tools Labs
 
 The `update_db_tools_labs.py` script automates the generation of the database
-from the latest Wikipedia dump on Tools Labs. It is run weekly as a cron job.
+from the latest Wikipedia dump on Tools Labs. It is run weekly as a cron job
+and needs to run from a virtualenv.
 
 ```
 /usr/bin/jsub -mem 20g -N citationhunt_update_en -once -l release=trusty \
-  /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py --lang-code en
+  /data/project/citationhunt/www/python/venv/bin/python2 \
+  /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py en
 ```
 
 This will automatically find and use the MySQL credentials in `~/replica.my.cnf`.
