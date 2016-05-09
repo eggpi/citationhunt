@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen"
+		]
+	},
+	"introduction": "Giúp tìm nguồn gốc cho bài Wikipedia!",
+	"in_page": "Trong trang %s:",
+	"beginners_hint": "Không biết cách chú thích nguồn gốc? Xem %s.",
+	"page_not_found": "Không tìm thấy trang!"
+}
