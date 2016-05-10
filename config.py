@@ -12,7 +12,7 @@ global_config = dict(
     # Approximate minimum length for a snippet
     snippet_min_size = 100,
 
-    flagged_off = ['404']
+    flagged_off = []
 )
 
 # Most (all?) Wikipedias support these English settings in addition
@@ -211,6 +211,9 @@ lang_code_to_config = dict(
         ],
 
         max_categories = 1000,
+
+        # Not fully translated
+        flagged_off = ['404']
     ),
 
     ca = dict(
