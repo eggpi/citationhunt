@@ -28,7 +28,7 @@ def _preprocess_variables(config, strings):
         flask.Markup(strings['beginners_hint']) % beginners_hint_link
 
     if '404' not in config.flagged_off:
-        page_not_found_link = flask.Markup('<a href=/%s>Citation Hunt</a>') % (
+        page_not_found_link = flask.Markup('<a href=%s>Citation Hunt</a>') % (
             config.lang_code)
         strings['page_not_found_text'] = \
             flask.Markup(strings['page_not_found_text']) % page_not_found_link
