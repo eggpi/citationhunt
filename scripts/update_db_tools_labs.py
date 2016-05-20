@@ -78,10 +78,10 @@ def archive_database(ch_my_cnf, cfg):
     now = datetime.datetime.now()
     output = os.path.join(cfg.archive_dir, now.strftime('%Y%m%d-%H%M'))
 
-   print >>sys.stderr, 'Archiving the current database'
-   return shell(
-       'mysqldump --defaults-file="%s" --databases %s | '
-       'gzip > %s' % (ch_my_cnf, ' '.join(dbs_to_archive), output))
+    print >>sys.stderr, 'Archiving the current database'
+    return shell(
+        'mysqldump --defaults-file="%s" --databases %s | '
+        'gzip > %s' % (ch_my_cnf, ' '.join(dbs_to_archive), output))
 
 def _update_db_tools_labs(cfg):
     os.environ['CH_LANG'] = cfg.lang_code
