@@ -17,6 +17,7 @@ import argparse
 import tempfile
 import dateutil.parser
 import datetime
+import traceback
 
 def email(message, attachment):
     commands.getoutput(
@@ -114,7 +115,7 @@ def update_db_tools_labs(cfg):
     try:
         _update_db_tools_labs(cfg)
     except Exception, e:
-        # TODO Use e.message as the email's body
+        traceback.print_exc(file = sys.stderr)
         email('Failed to build database for %s' % cfg.lang_code, logfile)
         sys.exit(1)
     email('All done for %s!' % cfg.lang_code, logfile)
