@@ -78,7 +78,7 @@ def archive_database(ch_my_cnf, cfg):
     archive_dir = os.path.join(cfg.archive_dir, cfg.lang_code)
     os.makedirs(archive_dir)
     now = datetime.datetime.now()
-    output = os.path.join(archive_dir, now.strftime('%Y%m%d-%H%M'))
+    output = os.path.join(archive_dir, now.strftime('%Y%m%d-%H%M.sql.gz'))
 
     print >>sys.stderr, 'Archiving the current database'
     return shell(
