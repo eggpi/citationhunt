@@ -63,8 +63,8 @@ def delete_old_archives(archive_dir, archive_duration_days):
         return
 
     for a in all_archives:
-        # format: YYYYMMDD-HHMM-${LANG_CODE}.gz
-        when = dateutil.parser.parse(a.rsplit('-', 1)[0])
+        # format: YYYYMMDD-HHMM.sql.gz
+        when = dateutil.parser.parse(a.split('.', 1)[0])
         age = (datetime.datetime.today() - when).days
         if age > archive_duration_days:
             print >>sys.stderr, 'Archive %s is %d days old, deleting' % (a, age)
@@ -72,10 +72,10 @@ def delete_old_archives(archive_dir, archive_duration_days):
 
 def archive_database(ch_my_cnf, cfg):
     dbs_to_archive = get_db_names_to_archive(cfg.lang_code)
+    archive_dir = os.path.join(cfg.archive_dir, cfg.lang_code)
     if cfg.archive_duration_days > 0:
         delete_old_archives(cfg.archive_dir, cfg.archive_duration_days)
 
-    archive_dir = os.path.join(cfg.archive_dir, cfg.lang_code)
     os.makedirs(archive_dir)
     now = datetime.datetime.now()
     output = os.path.join(archive_dir, now.strftime('%Y%m%d-%H%M.sql.gz'))
