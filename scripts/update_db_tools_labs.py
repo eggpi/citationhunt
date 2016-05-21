@@ -74,7 +74,7 @@ def archive_database(ch_my_cnf, cfg):
     dbs_to_archive = get_db_names_to_archive(cfg.lang_code)
     archive_dir = os.path.join(cfg.archive_dir, cfg.lang_code)
     if cfg.archive_duration_days > 0:
-        delete_old_archives(cfg.archive_dir, cfg.archive_duration_days)
+        delete_old_archives(archive_dir, cfg.archive_duration_days)
 
     os.makedirs(archive_dir)
     now = datetime.datetime.now()
