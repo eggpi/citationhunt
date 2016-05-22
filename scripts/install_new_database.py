@@ -9,4 +9,5 @@ if _upper_dir not in sys.path:
 
 import chdb
 
-chdb.install_scratch_db()
+if __name__ == '__main__':
+    chdb.install_scratch_db()
