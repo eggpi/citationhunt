@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import errno
 import os
 import sys
 _upper_dir = os.path.abspath(
@@ -30,6 +31,16 @@ def shell(cmdline):
     status, output = commands.getstatusoutput(cmdline)
     print >>sys.stderr, output
     return status == 0
+
+# Thanks, StackOverflow! https://stackoverflow.com/questions/600268
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
 
 def ensure_db_config(cfg):
     xxwiki = cfg.lang_code + 'wiki'
