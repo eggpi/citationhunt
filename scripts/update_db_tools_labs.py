@@ -87,7 +87,7 @@ def archive_database(ch_my_cnf, cfg):
     if cfg.archive_duration_days > 0:
         delete_old_archives(archive_dir, cfg.archive_duration_days)
 
-    os.makedirs(archive_dir)
+    mkdir_p(archive_dir)
     now = datetime.datetime.now()
     output = os.path.join(archive_dir, now.strftime('%Y%m%d-%H%M.sql.gz'))
 
