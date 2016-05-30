@@ -11,5 +11,7 @@
 	"lead_section_hint": "Tämä teksti on artikkelin johdanto-ošuuven oša, joten lähtehien kirjuttamini ei ole pakollini. Olkua hyvä, tutuštukkua %s kera lisätietoloin suamisekši.",
 	"category_filter_placeholder": "Mitä šuau šiut šyttymäh?",
 	"github_link_title": "Hei! Miun lähdekoodi on GitHubissa!",
-	"beginners_hint": "Et tiijä, miten sitaatti lisätäh? Kačo %s."
+	"beginners_hint": "Et tiijä, miten sitaatti lisätäh? Kačo %s.",
+	"page_not_found": "Šivu ei löytyn!",
+	"page_not_found_text": "Šivu, jotta ečit, ei ole enyä olomašša. Voit olla, jotta šen lähteh on jo löytyn? Siirry %s lisätietoja varten!"
 }
