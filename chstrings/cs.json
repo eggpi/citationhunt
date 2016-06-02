@@ -3,12 +3,13 @@
 		"authors": [
 			"Kvetoslav47",
 			"Clon",
-			"LukasJandera"
+			"LukasJandera",
+			"Mormegil"
 		]
 	},
-	"introduction": "Pomoci najít citace pro články z Wikipedie!",
+	"introduction": "Pomozte najít citace pro články Wikipedie!",
 	"in_page": "Na stránce %s:",
-	"button_wikilink": "Mám to!",
+	"button_wikilink": "Chápu!",
 	"button_next": "Ne, další!",
 	"lead_section_hint": "Tento text je součástí hlavního oddílu článku, takže odkazování na něj může být volitelné. Přečtěte si prosím %s pro více informací.",
 	"github_link_title": "Hej! Můj zdroj je na Githubu!",
