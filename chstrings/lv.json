@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Silraks"
+		]
+	},
+	"introduction": "Palīdzēt atrast atsauces Vikipēdijas rakstiem!",
+	"in_page": "Lapā %s:",
+	"button_wikilink": "Varēšu šo!",
+	"button_next": "Nē, nākamo!",
+	"lead_section_hint": "Šis teksts ir daļa no raksta galvenās daļas, līdz ar to atsauces šeit ir neobligātas. Lūdzu ieskaties %s priekš vairāk informācijas.",
+	"category_filter_placeholder": "Ievadi šeit kategoriju...",
+	"github_link_title": "Hei! Mans kods atrodas iekš GitHub!",
+	"beginners_hint": "Nezini kā pievienot atsauces? Apskaties %s.",
+	"page_not_found": "Lapa nav atrasta!",
+	"page_not_found_text": "Lapa kuru jūs meklējat vairs neeksistē — varbūt šī atsauce ir jau atrasta? Dodies atpakaļ uz %s, lai iegūtu vēl!"
+}
