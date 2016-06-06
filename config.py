@@ -219,7 +219,7 @@ lang_code_to_config = dict(
         max_categories = 1000,
 
         # Not fully translated
-        flagged_off = ['404']
+        flagged_off = ['404'],
     ),
 
     ca = dict(
@@ -253,6 +253,9 @@ lang_code_to_config = dict(
         ],
 
         max_categories = 100,
+
+        # Not fully translated
+        flagged_off = ['404'],
     ),
 
     he = dict(
