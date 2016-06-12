@@ -12,6 +12,7 @@ import config
 from utils import *
 
 import re
+import itertools
 import wikitools
 import mwparserfromhell
 import importlib
@@ -59,12 +60,15 @@ def extract_snippets(wikitext, minlen = 80, maxlen = 560):
         paragraphs = section.split('\n\n')
         for paragraph in paragraphs:
             wikicode = mwparserfromhell.parse(paragraph)
-            for tag in wikicode.filter_tags():
-                if tag.tag in cfg.tags_blacklist:
-                    continue
-            for tpl in wikicode.filter_templates():
-                if matches_any(tpl, cfg.templates_blacklist):
-                    continue
+
+            blacklisted_tag_or_template = itertools.chain(
+                (tag.tag in cfg.tags_blacklist
+                    for tag in wikicode.filter_tags()),
+                (matches_any(tpl, cfg.templates_blacklist)
+                    for tpl in wikicode.filter_templates()),
+            )
+            if any(blacklisted_tag_or_template):
+                continue
 
             snippet = cleanup_snippet(wikicode.strip_code())
             if '\n' in snippet:
