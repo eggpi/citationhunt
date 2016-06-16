@@ -4,7 +4,8 @@
 			"Kvetoslav47",
 			"Clon",
 			"LukasJandera",
-			"Mormegil"
+			"Mormegil",
+			"Dvorapa"
 		]
 	},
 	"introduction": "Pomozte najít citace pro články Wikipedie!",
@@ -12,8 +13,9 @@
 	"button_wikilink": "Chápu!",
 	"button_next": "Ne, další!",
 	"lead_section_hint": "Tento text je součástí hlavního oddílu článku, takže odkazování na něj může být volitelné. Přečtěte si prosím %s pro více informací.",
+	"category_filter_placeholder": "Co vás zajímá?",
 	"github_link_title": "Hej! Můj zdroj je na Githubu!",
-	"beginners_hint": "Nevíš, jak přidat citace? Viz %s.",
+	"beginners_hint": "Nevíte, jak přidat citace? Viz %s.",
 	"page_not_found": "Stránka nenalezena!",
 	"page_not_found_text": "Stránka, kterou hledáte, již neexistuje — možná, že tato citace již byla nalezena? Vraťte se na %s pro další!"
 }
