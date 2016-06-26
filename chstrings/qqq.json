@@ -5,6 +5,8 @@
 		]
 	},
 	"introduction": "The message that appears below 'Citation Hunt' on the tool.",
+	"introduction_goal": "The message at the top of the page that explains how Citation Hunt works."
+	"instructions_details": "Usage instructions. The %s are replaced with the 'button_wikilink' and 'button_next' messages and the title to beginner-friendly documentation about adding references, respectively.",
 	"in_page": "Text that links to the article that needs a citation. %s gets replaced with the article's name.",
 	"button_wikilink": "Label on the button that links to the article so the user can add a reference.",
 	"button_next": "Label on the button that browses to the next article.",

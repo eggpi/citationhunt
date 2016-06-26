@@ -13,7 +13,14 @@
   </head>
   <body>
     <h1>Citation Hunt</h1>
+    {% if config.strings.instructions_goal %}
+    <div id=instructions>
+        <p>{{ config.strings.instructions_goal }}</p>
+        <p>{{ config.strings.instructions_details }}</p>
+    </div>
+    {% else %}
     <p id=intro>{{ config.strings.introduction }}</p>
+    {% endif %}
     <p id="preamble"><span id="page-title-text">{{ config.strings.in_page % (article_url, article_title) }}</span></p>
     {# use a list for snippet_html to make sure we can access it outside the loop; see https://stackoverflow.com/questions/4870346 #}
     {% set cn_html = cn_html % config.citation_needed_template_name | replace(' ', '&thinsp;') | safe %}
@@ -38,7 +45,9 @@
         <noscript>
           <span id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</span>
         </noscript>
+        {% if not config.strings.instructions_details %}
         <p id="beginners-link-text">{{ config.strings.beginners_hint }}</p>
+        {% endif %}
       </div>
     </div>
     <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet" type="text/css">
