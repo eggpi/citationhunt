@@ -33,6 +33,14 @@ def _preprocess_variables(config, strings):
         strings['page_not_found_text'] = \
             flask.Markup(strings['page_not_found_text']) % page_not_found_link
 
+    strings.setdefault('instructions_goal', '')
+    strings.setdefault('instructions_details', '')
+    if strings['instructions_details']:
+        strings['instructions_details'] = flask.Markup(
+                strings['instructions_details']) % (
+                    flask.Markup('<b>' + strings['button_wikilink'] + '</b>'),
+                    flask.Markup('<b>' + strings['button_next'] + '</b>'),
+                    beginners_hint_link)
     return strings
 
 def get_localized_strings(config, lang_code):

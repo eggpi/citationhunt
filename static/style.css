@@ -17,6 +17,7 @@ body * {
 h1 {
     font-family: Georgia, serif;
     font-size: xx-large;
+    margin-bottom: 15px;
 }
 
 p {
@@ -178,4 +179,8 @@ html[dir="rtl"] #lead-hint {
 
 #lang-links .current-lang {
     font-weight: bold;
+}
+
+#instructions {
+    color: #5f5f54;
 }
