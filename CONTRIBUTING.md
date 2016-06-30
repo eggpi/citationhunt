@@ -73,7 +73,7 @@ The name of the database should follow the format above, that is,
 `USER__citationhunt_LANG`.
 
 You will now need to tell the Citation Hunt server where to find this database.
-For that, write a config file called `ch.my.cnf` in the root of this directory,
+For that, write a config file called `ch.my.cnf` in the root of this repository,
 where `chdb.py` is. It just needs to contain the location of the MySQL server
 and the credentials to use:
 
