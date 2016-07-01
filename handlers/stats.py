@@ -83,7 +83,7 @@ def stats(lang_code):
     # FIXME don't assume tools labs?
     stats_cursor.execute('''
         SELECT referrer, COUNT(*) FROM requests_''' + lang_code + '''
-        WHERE status_code = 200 AND DATEDIFF(NOW(), ts) <= %s
+        WHERE status_code = 200 AND DATEDIFF(NOW(), ts) < %s
         AND referrer NOT LIKE "%%tools.wmflabs.org/citationhunt%%"
         AND ''' + is_not_crawler_sql +
         ''' GROUP BY referrer ORDER BY COUNT(*) DESC LIMIT 30
@@ -112,7 +112,7 @@ def stats(lang_code):
     # FIXME don't assume tools labs?
     stats_cursor.execute('''
         SELECT user_agent, COUNT(*) FROM requests_''' + lang_code + '''
-        WHERE status_code = 200 AND DATEDIFF(NOW(), ts) <= %s
+        WHERE status_code = 200 AND DATEDIFF(NOW(), ts) < %s
         AND referrer NOT LIKE "%%tools.wmflabs.org/citationhunt%%"
         AND ''' + is_not_crawler_sql +
         ''' GROUP BY user_agent ORDER BY COUNT(*) DESC LIMIT 30
