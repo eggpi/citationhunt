@@ -5,6 +5,8 @@
 		]
 	},
 	"introduction": "Axuda a atopar citas para artigos de Wikipedia!",
+	"instructions_goal": "O extracto de texto da Wikipedia de abaixo non está baseado nunha fonte fiable. Pode atopar unha?",
+	"instructions_details": "Prema %s para ir á Wikipedia e amañar o fragmento, ou %s para ver outro. Marque %s se ten preguntas. Boa sorteǃ",
 	"in_page": "Na páxina %s:",
 	"button_wikilink": "Collo esta!",
 	"button_next": "Non, seguinte!",

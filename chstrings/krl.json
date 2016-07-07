@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ilja.mos"
+			"Ilja.mos",
+			"Likopiän tyttö"
 		]
 	},
 	"introduction": "Auta eččie sitattie Wikipedia-artikkeleihin!",
-	"in_page": "Sivulla %s:",
+	"in_page": "Šivulla %s:",
 	"button_wikilink": "Miulla on!",
 	"button_next": "Ei, ielleh!",
 	"lead_section_hint": "Tämä teksti on artikkelin johdanto-ošuuven oša, joten lähtehien kirjuttamini ei ole pakollini. Olkua hyvä, tutuštukkua %s kera lisätietoloin suamisekši.",
