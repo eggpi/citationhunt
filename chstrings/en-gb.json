@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Andibing"
+			"Andibing",
+			"Chase me ladies, I'm the Cavalry"
 		]
 	},
 	"introduction": "Help find citations for Wikipedia articles!",
+	"instructions_goal": "The Wikipedia snippet below is not backed by a reliable source. Can you find one?",
+	"instructions_details": "Click %s to go to Wikipedia and fix the snippet, or %s to see another one. Check %s if you have questions. Good luck!",
 	"in_page": "In page %s:",
-	"button_wikilink": "I got this!",
+	"button_wikilink": "I've got this!",
 	"button_next": "Nope, next!",
 	"lead_section_hint": "This text is part of the article's lead section, so referencing it may be optional. Please see %s for more information.",
 	"category_filter_placeholder": "What makes you tick?",

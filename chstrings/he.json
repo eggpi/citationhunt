@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Elyashiv",
-			"Shdror"
+			"Shdror",
+			"Guycn2"
 		]
 	},
 	"introduction": "עזרו בחיפוש מקורות לערכי ויקיפדיה!",
+	"instructions_goal": "הקטע הבא מוויקיפדיה אינו מגובה במקור אמין. תוכלו למצוא מקור כזה?",
 	"in_page": "בדף %s:",
-	"button_wikilink": "מצאתי את זה!",
+	"button_wikilink": "הבנתי!",
 	"button_next": "לא, הבא!",
 	"lead_section_hint": "טקסט זה הוא חלק מתמצית המאמר, כך שהתייחסות אליו היא אופציונאלית.\nנא לעיין ב-%s לקבלת מידע נוסף.",
 	"category_filter_placeholder": "מה מעניין עבורך?",

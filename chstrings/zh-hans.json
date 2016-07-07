@@ -5,6 +5,8 @@
 		]
 	},
 	"introduction": "帮助查找维基百科条目的引用！",
+	"instructions_goal": "下方的维基百科片段没有有效来源支持。您可以找到一个么？",
+	"instructions_details": "点击%s前往维基百科并修复片段，或%s以查看另一个。如果您有问题请先查看%s。祝好运！",
 	"in_page": "在页面%s：",
 	"button_wikilink": "我有这个！",
 	"button_next": "不是，下一个！",
