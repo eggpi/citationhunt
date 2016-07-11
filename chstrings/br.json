@@ -5,11 +5,15 @@
 		]
 	},
 	"introduction": "Skoazellit da gavout daveennoù evit ar pennadoù Wikipedia !",
+	"instructions_goal": "N'eo ket bet kadarnaet an tamm kod gant ur vammenn hag a c'haller fiziout enni. Ha gallout a rit kavout unan ?",
+	"instructions_details": "Klikit war %s evit mont e Wikimedia ha reizhañ an tamm kod pe %s evit kaout unan all. Sellit ouzh %s m'ho pez goulennoù. Chañs vat deoc'h !",
 	"in_page": "Er bajenn %s",
 	"button_wikilink": "Evidon-me eo !",
 	"button_next": "Nann, an hini da-heul !",
 	"lead_section_hint": "Tennet eo an destenn-mañ eus talbenn ar pennad : diret eo ouzhpennañ daveennoù. Sellit ouzh %s evit gouzout hiroc'h.",
 	"category_filter_placeholder": "Ha c'hwi, petra eo ho albac'henn ?",
 	"github_link_title": "E ! GitHut eo ma c'hod mammennoù  !",
-	"beginners_hint": "N'ouzit ket penaos ouzhpennañ daveennoù ? Sellit ouzh %s"
+	"beginners_hint": "N'ouzit ket penaos ouzhpennañ daveennoù ? Sellit ouzh %s",
+	"page_not_found": "N'eo ket bet kavet ar bajenn !",
+	"page_not_found_text": "N'eus ket mui eus ar bajenn emaoc'h o sellet outi - Kavet eo bet an arroudenn-se dija marteze ? Distroit da %s evit gouzout hiroc'h !"
 }

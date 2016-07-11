@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"introduction": "Adjuta a trovar referentias pro articulos de Wikipedia!",
+	"instructions_goal": "Le sequente fragmento de Wikipedia non es validate per un fonte digne de fide. Pote tu trovar un?",
+	"instructions_details": "Clicca sur %s pro ir a Wikipedia e corriger le fragmento, o sur %s pro vider un altere. Lege %s si tu ha questiones. Bon fortuna!",
+	"in_page": "In pagina %s:",
+	"button_wikilink": "Io prende isto!",
+	"button_next": "No, sequente!",
+	"lead_section_hint": "Iste texto face parte del introduction del articulo, e referentiar lo pote esser optional. Vide %s pro plus information.",
+	"category_filter_placeholder": "Que te interessa?",
+	"github_link_title": "Mi codice-fonte es sur GitHub.",
+	"beginners_hint": "Non sape como adder referentias? Vide %s.",
+	"page_not_found": "Pagina non trovate!",
+	"page_not_found_text": "Le pagina que tu cerca non existe plus. Es possibile que iste referentia ha jam essite trovate. Retorna a %s pro vider alteres."
+}

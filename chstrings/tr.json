@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Incelemeelemani",
+			"Sayginer"
+		]
+	},
+	"introduction": "Vikipedi maddelerindeki alıntıları bulma yardımı!",
+	"instructions_goal": "Aşağıdaki Vikipedi bölümü, güvenilir bir kaynak ile doğrulanmamıştır. Siz bir kaynak bulabilir misiniz?",
+	"instructions_details": "Vikipedi'ye giderek bölümü düzeltmek için %s buraya tıklayın ya da bir diğerini %s görebilirsiniz. Sorularınız için %s kontrol edin. Bol şans!",
+	"in_page": "%s sayfasında:",
+	"button_wikilink": "Bunu anladım!",
+	"button_next": "Hayır, bir sonraki!",
+	"lead_section_hint": "Bu metin makalenin giriş bölümünün parçasıdır ve bu nedenle kaynak eklenmesi isteğe bağlı olabilir. Lütfen daha fazla bilgi için %s bakınız.",
+	"category_filter_placeholder": "Doğrulama için ne yapabilirsiniz?",
+	"github_link_title": "Hey! Benim kaynak kodum GitHub'da!",
+	"beginners_hint": "Nasıl kaynak ekleneceğini bilimiyor musunuz? Bkz %s.",
+	"page_not_found": "Sayfa bulunamadı!",
+	"page_not_found_text": "Aradığınız sayfa artık bulunmuyor — muhtemelen bu kaynak zaten bulunmuş olabilir mi? Daha fazla bilgi için %s geriye dönün!"
+}
