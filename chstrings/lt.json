@@ -1,12 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zygimantus"
+			"Zygimantus",
+			"Eitvys200"
 		]
 	},
+	"introduction": "Padėkite rasti citatas Vikipedijos straipsniams!",
+	"instructions_goal": "Vikipedijos fragmentas žemiau nėra paremtas patikimais šaltiniais. Ar galite rasti patikimą šaltinį?",
+	"instructions_details": "Paspauskite %s, kad pataisytumėte Vikipedijos fragmentą arba %s, kad pamatytumėte naują. Žiūrėkite %s jei turite klausimų. Sėkmės!",
 	"in_page": "Puslapyje \"%s:",
 	"button_wikilink": "Supratau!",
 	"button_next": "Ne, toliau!",
 	"github_link_title": "Ei! Mano šaltinis yra „GitHub“!",
-	"beginners_hint": "Nežinote kaip pridėti citatas? Žiūrėkite %s."
+	"beginners_hint": "Nežinote kaip pridėti citatas? Žiūrėkite %s.",
+	"page_not_found": "Puslapis nerastas!",
+	"page_not_found_text": "Puslapio, kurio ieškote nebėra, galbūt citata jau buvo rasta? Grįžkite į %s!"
 }
