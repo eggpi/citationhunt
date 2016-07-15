@@ -286,6 +286,45 @@ lang_code_to_config = dict(
         max_categories = 120,
     ),
 
+    es = dict(
+        lang_name = 'Español',
+        lang_dir = 'ltr',
+        database = 'eswiki_p',
+        wikipedia_domain = 'es.wikipedia.org',
+
+        beginners_link = 'https://es.wikipedia.org/wiki/Wikipedia:Referencias',
+        beginners_link_title = 'Wikipedia:Referencias',
+        lead_section_policy_link = 'https://es.wikipedia.org/wiki/Wikipedia:Secci%C3%B3n_introductoria#Referencias',
+        lead_section_policy_link_title = 'Wikipedia:Sección introductoria',
+
+        citation_needed_category = 'Wikipedia:Artículos_que_necesitan_referencias',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Añadir referencias',
+            'Cita necesaria',
+            'Citarequerida',
+            'CN',
+            'cr',
+            'Citar',
+            'Demostrar',
+            'Falta cita',
+            'Hechos',
+            'Noref',
+            'Pruébalo',
+            'Sinref',
+            'Sinreferencias',
+            'Sin referencias',
+        ],
+        citation_needed_template_name = 'cita requerida',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TAGS_BLACKLIST,
+        hidden_category = 'Wikipedia:Categorías_ocultas',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+
+        max_categories = 1000,
+    ),
 )
 
 # In py3: types.SimpleNamespace
