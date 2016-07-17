@@ -33,6 +33,7 @@ EN_WIKILINK_PREFIX_BLACKLIST = [
 EN_CITATION_NEEDED_TEMPLATES = [
     'Citation needed',
     'cn',
+    'fact',
 ]
 
 EN_TAGS_BLACKLIST = [
@@ -340,9 +341,18 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = 'WP:CITELEAD',
 
         citation_needed_category = 'উৎসবিহীন_তথ্যসহ_সকল_নিবন্ধ',
+        # Some of these are not exactly [citation needed] but bnwiki is quite
+        # small, so they help.
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'তথ্যসূত্র প্রয়োজন',
             'তথ্যসূত্র যাচাই',
+            'সত্যতা',
+            'Check',
+            'Vn',
+            'Vs',
+            'Verification needed',
+            'Verifysource',
+            'Verify source',
         ],
         citation_needed_template_name = 'তথ্যসূত্র প্রয়োজন|',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
