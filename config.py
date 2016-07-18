@@ -366,7 +366,6 @@ lang_code_to_config = dict(
 
         snippet_min_size = 20,
         max_categories = 100,
-        wip = True,
     ),
 )
 
