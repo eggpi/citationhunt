@@ -5,6 +5,8 @@
 		]
 	},
 	"introduction": "幫忙找尋維基百科條目的引用！",
+	"instructions_goal": "下方的維基百科段落裡沒有可靠來源來證明內容，您可以幫忙找一個嗎？",
+	"instructions_details": "點擊%s前往維基百科來修正段落內容，或以%s來檢視另一個。如果您有問題可查看%s。祝好運！",
 	"in_page": "在頁面%s",
 	"button_wikilink": "我有這個！",
 	"button_next": "不是這個，下一個！",
