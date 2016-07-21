@@ -97,27 +97,23 @@ def load_categories_for_page(wpcursor, pageid):
     return set(CategoryName.from_wp_categorylinks(row[0]) for row in wpcursor)
 
 def load_projectindex(tlcursor):
-    # WikiProject categories are added to the talk page, not the article.
-    # We use a special table on Tools Labs to map talk pages to projects,
+    # We use a special table on Tools Labs to map page IDs to projects,
     # which will hopefully be more broadly available soon
     # (https://phabricator.wikimedia.org/T131578)
     projectindex_cache = {}
-    tlcursor.execute('SELECT pi_project, pi_page from projectindex')
-    for project, page in tlcursor:
-        project = CategoryName.from_tl_projectindex(project)
-        page = d(page)
-        projectindex_cache.setdefault(page, set()).add(project)
-    return projectindex_cache
 
-def load_pinned_categories_for_page(wpcursor, projectindex, pageid):
-    wpcursor.execute('SELECT page_title FROM page WHERE page_id = %s',
-        (pageid,))
-    rows = list(wpcursor)
-    if not rows:
-        return set()
-    title = d(rows[0][0])
-    talk_page_title = 'Talk:' + title
-    return set(projectindex.get(talk_page_title, []))
+    query = """
+    SELECT page_id, project_title
+    FROM enwiki_index
+    JOIN enwiki_page ON index_page = page_id
+    JOIN enwiki_project ON index_project = project_id
+    WHERE page_ns = 0 AND page_is_redirect = 0
+    """
+    tlcursor.execute(query)
+    for pageid, project in tlcursor:
+        project = CategoryName.from_tl_projectindex(project)
+        projectindex_cache.setdefault(pageid, set()).add(project)
+    return projectindex_cache
 
 def category_is_usable(catname, hidden_categories):
     assert isinstance(catname, CategoryName)
@@ -213,7 +209,7 @@ def assign_categories(max_categories, mysql_default_cnf):
         tlcursor = tldb.cursor()
 
         projectindex = load_projectindex(tlcursor)
-        log.info('loaded projects for %d talk pages (%s...)' % \
+        log.info('loaded projects for %d pages (%s...)' % \
             (len(projectindex), projectindex.values()[0]))
 
     hidden_categories = wpdb.execute_with_retry(load_hidden_categories)
@@ -225,9 +221,7 @@ def assign_categories(max_categories, mysql_default_cnf):
     page_ids_with_no_categories = 0
     for n, pageid in enumerate(list(unsourced_pageids)):
         categories = wpdb.execute_with_retry(load_categories_for_page, pageid)
-        pinned_categories = (wpdb.execute_with_retry(
-            load_pinned_categories_for_page, projectindex, pageid)
-            if projectindex else set())
+        pinned_categories = set(projectindex.get(pageid, []))
         # Filter both kinds of categories and build the category -> pageid
         # indexes
         page_has_at_least_one_category = False
