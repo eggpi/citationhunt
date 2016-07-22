@@ -170,13 +170,13 @@ def create_tables(db):
             INSERT IGNORE INTO categories VALUES("unassigned", "unassigned")
         ''')
         cursor.execute('''
-            CREATE TABLE IF NOT EXISTS articles (page_id VARCHAR(128)
+            CREATE TABLE IF NOT EXISTS articles (page_id INT(8) UNSIGNED
             PRIMARY KEY, url VARCHAR(512), title VARCHAR(512))
             ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
         ''')
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS articles_categories (
-            article_id VARCHAR(128), category_id VARCHAR(128),
+            article_id INT(8) UNSIGNED, category_id VARCHAR(128),
             FOREIGN KEY(article_id) REFERENCES articles(page_id)
             ON DELETE CASCADE,
             FOREIGN KEY(category_id) REFERENCES categories(id)
@@ -184,8 +184,8 @@ def create_tables(db):
         ''')
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS snippets (id VARCHAR(128) PRIMARY KEY,
-            snippet VARCHAR(%s), section VARCHAR(768), article_id VARCHAR(128),
-            FOREIGN KEY(article_id) REFERENCES articles(page_id)
+            snippet VARCHAR(%s), section VARCHAR(768), article_id INT(8)
+            UNSIGNED, FOREIGN KEY(article_id) REFERENCES articles(page_id)
             ON DELETE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
         ''', (cfg.snippet_max_size * 2,))
         cursor.execute('''
