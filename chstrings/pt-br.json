@@ -7,6 +7,8 @@
 		]
 	},
 	"introduction": "Ajude a encontrar citações para os artigos da Wikipédia!",
+	"instructions_goal": "O trecho abaixo da Wikipédia não é suportado por nenhuma fonte confiável. Consegue encontrar alguma?",
+	"instructions_details": "Clique em %s para ir à Wikipédia e corrigir o trecho, ou em %s para ver outro. Verifique %s se tiver dúvidas. Boa sorte!",
 	"in_page": "Na pagina %s:",
 	"button_wikilink": "Consegui isso!",
 	"button_next": "Não, próximo!",
