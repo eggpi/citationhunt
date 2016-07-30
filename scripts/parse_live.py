@@ -109,7 +109,7 @@ class State(object):
     pass
 self = State() # Per-process state
 
-def initializer(parser, backdir, should_profile):
+def initializer(parser, backdir):
     self.parser = parser
     self.backdir = backdir
     self.wiki = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
@@ -119,7 +119,7 @@ def initializer(parser, backdir, should_profile):
     self.chdb = chdb.init_scratch_db()
     self.exception_count = 0
 
-    if should_profile:
+    if cfg.profile:
         self.profiler = cProfile.Profile()
         self.profiler.enable()
         # Undocumented :( https://stackoverflow.com/questions/24717468
@@ -172,13 +172,12 @@ def work(pageids):
     for r in rows:
         self.chdb.execute_with_retry(insert, r)
 
-def parse_live(pageids, timeout, should_profile):
+def parse_live(pageids, timeout):
     chdb.reset_scratch_db()
     backdir = tempfile.mkdtemp(prefix = 'citationhunt_parse_live_')
     parser = snippet_parser.get_localized_snippet_parser()
     pool = multiprocessing.Pool(
-        initializer = initializer,
-        initargs = (parser, backdir, should_profile))
+        initializer = initializer, initargs = (parser, backdir))
 
     # Make sure we query the API 32 pageids at a time
     tasks = []
@@ -196,7 +195,7 @@ def parse_live(pageids, timeout, should_profile):
         pool.terminate()
     pool.join()
 
-    if should_profile:
+    if cfg.profile:
         profiles = map(pstats.Stats,
             glob.glob(os.path.join(backdir, 'profile-*')))
         stats = reduce(
@@ -214,5 +213,5 @@ if __name__ == '__main__':
     start = time.time()
     with open(pageids_file) as pf:
         pageids = set(itertools.imap(str.strip, pf))
-    parse_live(pageids, timeout, cfg.profile)
+    parse_live(pageids, timeout)
     log.info('all done in %d seconds.' % (time.time() - start))
