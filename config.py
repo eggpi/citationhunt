@@ -18,7 +18,10 @@ global_config = dict(
     # ...and delete dumps that are older than this many days
     archive_duration_days = 90,
 
-    flagged_off = []
+    flagged_off = [],
+
+    # Profiling is enabled for individual languages
+    profile = False,
 )
 
 # Most (all?) Wikipedias support these English settings in addition
@@ -155,6 +158,8 @@ lang_code_to_config = dict(
         ],
 
         max_categories = 1000,
+
+        profile = True,
     ),
 
     it = dict(
@@ -187,6 +192,8 @@ lang_code_to_config = dict(
         ],
 
         max_categories = 1000,
+
+        profile = True,
     ),
 
     pl = dict(
@@ -257,6 +264,8 @@ lang_code_to_config = dict(
 
         # Not fully translated
         flagged_off = ['404'],
+
+        profile = True,
     ),
 
     he = dict(
@@ -325,6 +334,8 @@ lang_code_to_config = dict(
         ],
 
         max_categories = 1000,
+
+        profile = True,
     ),
 
     bn = dict(

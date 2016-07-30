@@ -34,12 +34,17 @@ import docopt
 import requests
 import wikitools
 
-import time
-import functools
-import traceback
-import itertools
-import urllib
 import StringIO
+import cProfile
+import functools
+import glob
+import itertools
+import pstats
+import shutil
+import tempfile
+import time
+import traceback
+import urllib
 
 cfg = config.get_localized_config()
 WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
@@ -104,14 +109,26 @@ class State(object):
     pass
 self = State() # Per-process state
 
-def initializer(parser):
+def initializer(parser, backdir, should_profile):
     self.parser = parser
+    self.backdir = backdir
     self.wiki = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     self.wiki.setUserAgent(
         'citationhunt (https://tools.wmflabs.org/citationhunt)')
     self.opener = WikitoolsRequestsAdapter()
     self.chdb = chdb.init_scratch_db()
     self.exception_count = 0
+
+    if should_profile:
+        self.profiler = cProfile.Profile()
+        self.profiler.enable()
+        # Undocumented :( https://stackoverflow.com/questions/24717468
+        multiprocessing.util.Finalize(None, finalizer, exitpriority=16)
+
+def finalizer():
+    self.profiler.disable()
+    profile_path = os.path.join(self.backdir, 'profile-%s' % os.getpid())
+    pstats.Stats(self.profiler).dump_stats(profile_path)
 
 def with_max_exceptions(fn):
     @functools.wraps(fn)
@@ -155,11 +172,13 @@ def work(pageids):
     for r in rows:
         self.chdb.execute_with_retry(insert, r)
 
-def parse_live(pageids, timeout):
+def parse_live(pageids, timeout, should_profile):
     chdb.reset_scratch_db()
+    backdir = tempfile.mkdtemp(prefix = 'citationhunt_parse_live_')
     parser = snippet_parser.get_localized_snippet_parser()
     pool = multiprocessing.Pool(
-        initializer = initializer, initargs = (parser,))
+        initializer = initializer,
+        initargs = (parser, backdir, should_profile))
 
     # Make sure we query the API 32 pageids at a time
     tasks = []
@@ -177,11 +196,23 @@ def parse_live(pageids, timeout):
         pool.terminate()
     pool.join()
 
+    if should_profile:
+        profiles = map(pstats.Stats,
+            glob.glob(os.path.join(backdir, 'profile-*')))
+        stats = reduce(
+            lambda stats, other: (stats.add(other), stats)[1],
+            profiles if profiles else [None])
+        if stats is not None:
+            stats.sort_stats('cumulative').print_stats(30)
+
+    shutil.rmtree(backdir)
+
 if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
     pageids_file = arguments['<pageid-file>']
     timeout = float(arguments['--timeout'])
+    start = time.time()
     with open(pageids_file) as pf:
         pageids = set(itertools.imap(str.strip, pf))
-    parse_live(pageids, timeout)
-    log.info('all done.')
+    parse_live(pageids, timeout, cfg.profile)
+    log.info('all done in %d seconds.' % (time.time() - start))
