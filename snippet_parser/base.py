@@ -52,6 +52,8 @@ class SnippetParserBase(object):
                 return monkey_patched_classes[type(self)](self, *args)
             klass.__strip__ = unbind
 
+        self.cfg = config.get_localized_config()
+
     def delegate_strip(self, obj, normalize, collapse):
         strip = self._original_strip_methods[type(obj)]
         strip = strip.__get__(obj, type(obj)) # bind the method
@@ -97,8 +99,7 @@ class SnippetParserBase(object):
         mwparserfromhell.
         '''
 
-        cfg = config.get_localized_config()
-        for prefix in cfg.wikilink_prefix_blacklist:
+        for prefix in self.cfg.wikilink_prefix_blacklist:
             if wikilink.title.startswith(prefix):
                 return ''
         return self.delegate_strip(wikilink, normalize, collapse)
@@ -110,7 +111,6 @@ class SnippetParserBase(object):
         config.citation_needed_templates.
         '''
 
-        cfg = config.get_localized_config()
         return any(
             template.name.matches(tpl)
-            for tpl in cfg.citation_needed_templates)
+            for tpl in self.cfg.citation_needed_templates)
