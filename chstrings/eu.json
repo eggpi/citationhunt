@@ -5,7 +5,15 @@
 		]
 	},
 	"introduction": "Lagundu Wikipediako artikuluentzat aipamenak bilatzen!",
+	"instructions_goal": "Wikipediako azpiko adierazpen horrek ez du erreferentzia egiaztagarririk. Bilatuko al diozu zuk?",
+	"instructions_details": "Klik egin %s Wikipediara joan eta adierazpena zuzentzeko, edo %s beste batetara pasatzeko. Klik egin %s galderarik baduzu. Zorte on!",
+	"in_page": "%s orrialdean:",
 	"button_wikilink": "Hau lortu dut!",
 	"button_next": "Ezer ez, hurrengoa!",
-	"page_not_found": "Ez da orrialdea aurkitu!"
+	"lead_section_hint": "Testu hau artikuluaren atal nagusikoa da, beraz, erreferentzia egitea aukerazkoa da. Ikus %s informazio gehiagorako.",
+	"category_filter_placeholder": "Zerk mugiarazten zaitu?",
+	"github_link_title": "Aizu! Ni iturria GitHuben dago!",
+	"beginners_hint": "Ez al dakizu aipuak gehitzen? Ikus %s.",
+	"page_not_found": "Ez da orrialdea aurkitu!",
+	"page_not_found_text": "Bilatzen ari zaren orrialdea dagoeneko ez dago - agian aipua aurkitu izan da? Joan atzera %sra gehiagorako!"
 }
