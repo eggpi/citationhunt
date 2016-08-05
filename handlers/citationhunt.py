@@ -68,6 +68,17 @@ class Database(object):
                 AND cat_id = %s''', (curr_id, cat_id))
             return cursor.fetchone()
 
+    @staticmethod
+    def search_category(lang_code, needle, max_results):
+        cursor = get_db(lang_code).cursor()
+
+        needle = '%' + needle + '%'
+        with log_time('search category'):
+            cursor.execute('''
+                SELECT id, title FROM categories WHERE title LIKE %s
+                LIMIT %s''', (needle, max_results))
+        return [{'id': row[0], 'title': row[1]} for row in cursor]
+
 def get_categories(lang_code, include_default = True):
     categories = getattr(flask.g, '_categories', None)
     if categories is None:
@@ -176,3 +187,9 @@ def citation_hunt(lang_code):
     return flask.redirect(
         flask.url_for('citation_hunt',
             id = id, cat = cat.id, lang_code = lang_code))
+
+@validate_lang_code
+def search_category(lang_code):
+    return flask.jsonify(
+        results=Database.search_category(
+            lang_code, flask.request.args.get('q'), max_results = 400))

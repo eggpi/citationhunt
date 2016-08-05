@@ -40,6 +40,8 @@ app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt)
 if 'stats' not in config.get_localized_config('en').flagged_off:
     app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
     app.after_request(handlers.log_request)
+app.add_url_rule('/<lang_code>/search/category',
+    view_func = handlers.search_category)
 
 @app.route('/<lang_code>/redirect')
 @handlers.validate_lang_code
