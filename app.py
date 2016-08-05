@@ -20,10 +20,6 @@ import urlparse
 # when prefetching, but that's a bit more complex.
 CACHE_DURATION_SNIPPET = 60
 
-# Cache duration for things that get regenerated along with database updates,
-# such as the list of categories.
-CACHE_DURATION_SEMI_STATIC = 3 * 60 * 60
-
 app = flask.Flask(__name__)
 Compress(app)
 debug = 'DEBUG' in os.environ
@@ -50,16 +46,6 @@ def redirect(lang_code):
     cfg = config.get_localized_config(lang_code)
     return flask.redirect(
         urlparse.urljoin('https://' + cfg.wikipedia_domain, to))
-
-@app.route('/<lang_code>/categories.html')
-@handlers.validate_lang_code
-def categories_html(lang_code):
-    response = flask.make_response(
-        flask.render_template('categories.html',
-            categories = handlers.get_categories(
-                lang_code, include_default = False)))
-    response.cache_control.max_age = CACHE_DURATION_SEMI_STATIC
-    return response
 
 @app.after_request
 def add_cache_header(response):
