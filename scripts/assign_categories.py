@@ -95,6 +95,12 @@ def load_categories_for_page(wpcursor, pageid):
         SELECT cl_to FROM categorylinks WHERE cl_from = %s''', (pageid,))
     return set(CategoryName.from_wp_categorylinks(row[0]) for row in wpcursor)
 
+def load_snippets_for_pages(chcursor, page_ids):
+    chcursor.execute(
+        '''SELECT id FROM snippets WHERE article_id IN %s''',
+        (tuple(page_ids),))
+    return set(row[0] for row in chcursor)
+
 def load_projectindex(tlcursor):
     # We use a special table on Tools Labs to map page IDs to projects,
     # which will hopefully be more broadly available soon
@@ -188,8 +194,7 @@ def assign_categories(mysql_default_cnf):
     log.info('loaded %d hidden categories (%s...)' % \
         (len(hidden_categories), next(iter(hidden_categories))))
 
-    categories_to_ids = collections.defaultdict(set)
-    pinned_categories_to_ids = collections.defaultdict(set)
+    categories_to_article_ids = collections.defaultdict(set)
     page_ids_with_no_categories = 0
     for n, pageid in enumerate(list(unsourced_pageids)):
         categories = wpdb.execute_with_retry(load_categories_for_page, pageid)
@@ -197,14 +202,10 @@ def assign_categories(mysql_default_cnf):
         # Filter both kinds of categories and build the category -> pageid
         # indexes
         page_has_at_least_one_category = False
-        for catname in categories:
+        for catname in categories | pinned_categories:
             if category_is_usable(catname, hidden_categories):
                 page_has_at_least_one_category = True
-                categories_to_ids[catname].add(pageid)
-        for catname in pinned_categories:
-            if category_is_usable(catname, hidden_categories):
-                page_has_at_least_one_category = True
-                pinned_categories_to_ids[catname].add(pageid)
+                categories_to_article_ids[catname].add(pageid)
         if not page_has_at_least_one_category:
             unsourced_pageids.remove(pageid)
             page_ids_with_no_categories += 1
@@ -212,17 +213,19 @@ def assign_categories(mysql_default_cnf):
 
     log.info('%d pages lack usable categories!' % page_ids_with_no_categories)
     log.info('found %d usable categories (%s, %s...)' % \
-        (len(categories_to_ids), categories_to_ids.keys()[0],
-        categories_to_ids.keys()[1]))
-    if pinned_categories_to_ids:
-        log.info('%d pinned categories (%s, %s)' % \
-            (len(pinned_categories_to_ids), pinned_categories_to_ids.keys()[0],
-             pinned_categories_to_ids.keys()[1]))
+        (len(categories_to_article_ids), categories_to_article_ids.keys()[0],
+        categories_to_article_ids.keys()[1]))
 
+    # Now find out how many snippets each category has
+    categories_to_snippet_ids = {}
+    for category, article_ids in categories_to_article_ids.iteritems():
+        categories_to_snippet_ids[category] = chdb.execute_with_retry(
+            load_snippets_for_pages, article_ids)
+
+    # And keep only the ones with at least two
     categories = set(
-        (k, frozenset(v)) for k, v in categories_to_ids.items() if len(v) >= 2)
-    categories |= set(
-        (k, frozenset(v)) for k, v in pinned_categories_to_ids.items())
+        (k, frozenset(v)) for k, v in categories_to_article_ids.items()
+         if len(categories_to_snippet_ids[k]) >= 2)
     log.info('finished with %d categories' % len(categories))
 
     update_citationhunt_db(chdb, categories)
