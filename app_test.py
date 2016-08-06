@@ -22,18 +22,24 @@ class CitationHuntTest(unittest.TestCase):
             'https://en.wikipedia.org/wiki/A', 'Some title')
 
         methods_and_return_values = [
-            ('query_categories', [(self.cat, 'Category')]),
-            ('query_snippet_by_id', self.fake_snippet_info),
             ('query_snippet_by_category', (self.sid,)),
             ('query_random_snippet', (self.sid,)),
             ('query_next_id', (self.sid[::-1],)),
         ]
 
         self.patchers = [
-            mock.patch('app.handlers.Database.' + m, return_value = rv).start()
+            mock.patch('app.handlers.Database.' + m, return_value = rv)
             for m, rv in methods_and_return_values
         ]
+        self.patchers.append(
+            mock.patch('app.handlers.Database.query_category_by_id', wraps = (
+                lambda _, id: (self.cat, 'C') if id == self.cat else None)))
+        self.patchers.append(
+            mock.patch('app.handlers.Database.query_snippet_by_id',wraps = (
+                lambda _, id: self.fake_snippet_info if id == self.sid else None)
+        ))
         for patcher in self.patchers:
+            patcher.start()
             self.addCleanup(patcher.stop)
 
     def get_url_args(self, url):
