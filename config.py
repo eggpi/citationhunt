@@ -7,7 +7,7 @@ import os
 
 global_config = dict(
     # Approximate maximum length for a snippet
-    snippet_max_size = 420,
+    snippet_max_size = 500,
 
     # Approximate minimum length for a snippet
     snippet_min_size = 100,
