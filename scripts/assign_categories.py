@@ -4,10 +4,9 @@
 Assign categories to the pages in the CitationHunt database.
 
 Usage:
-    assign_categories.py [--max_categories=<n>] [--mysql_config=<FILE>]
+    assign_categories.py [--mysql_config=<FILE>]
 
 Options:
-    --max_categories=<n>   Maximum number of categories to use [default: inf].
     --mysql_config=<FILE>  MySQL config file [default: ./ch.my.cnf].
 '''
 
@@ -125,33 +124,6 @@ def category_is_usable(catname, hidden_categories):
             return False
     return True
 
-def choose_categories(categories_to_ids, unsourced_pageids, max_categories):
-    categories = set()
-    category_sets = categories_to_ids.items()
-    total = float(len(unsourced_pageids))
-
-    desired_pages_per_category = 20
-    category_costs = {
-        catname: abs(len(pageids) - desired_pages_per_category) + 1.0
-        for catname, pageids in category_sets
-    }
-
-    def key_fn(cs):
-        catname, pageids = cs
-        return len(pageids & unsourced_pageids) / category_costs[catname]
-
-    while unsourced_pageids and len(categories) < max_categories:
-        category_sets.sort(key = key_fn)
-        catname, covered_pageids = category_sets.pop()
-        categories.add((catname, frozenset(covered_pageids)))
-        unsourced_pageids -= covered_pageids
-
-        rem = len(unsourced_pageids)
-        log.progress('%d uncategorized pages (%d %%)' % \
-            (rem, (rem / total) * 100))
-    log.info('finished with %d categories' % len(categories))
-    return categories
-
 def build_snippets_links_for_category(cursor, category_id):
     cursor.execute('''
         SELECT snippets.id FROM snippets, articles_categories, articles
@@ -195,7 +167,7 @@ def reset_chdb_tables(cursor):
     log.info('resetting snippets_links table...')
     cursor.execute('DELETE FROM snippets_links')
 
-def assign_categories(max_categories, mysql_default_cnf):
+def assign_categories(mysql_default_cnf):
     cfg = config.get_localized_config()
     chdb = chdb_.init_scratch_db()
     wpdb = chdb_.init_wp_replica_db()
@@ -247,10 +219,11 @@ def assign_categories(max_categories, mysql_default_cnf):
             (len(pinned_categories_to_ids), pinned_categories_to_ids.keys()[0],
              pinned_categories_to_ids.keys()[1]))
 
-    categories = choose_categories(categories_to_ids, unsourced_pageids,
-        max_categories)
+    categories = set(
+        (k, frozenset(v)) for k, v in categories_to_ids.items() if len(v) >= 2)
     categories |= set(
         (k, frozenset(v)) for k, v in pinned_categories_to_ids.items())
+    log.info('finished with %d categories' % len(categories))
 
     update_citationhunt_db(chdb, categories)
     wpdb.close()
@@ -259,7 +232,6 @@ def assign_categories(max_categories, mysql_default_cnf):
 
 if __name__ == '__main__':
     args = docopt.docopt(__doc__)
-    max_categories = float(args['--max_categories'])
     mysql_default_cnf = args['--mysql_config']
-    ret = assign_categories(max_categories, mysql_default_cnf)
+    ret = assign_categories(mysql_default_cnf)
     sys.exit(ret)

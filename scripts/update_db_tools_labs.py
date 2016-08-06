@@ -115,8 +115,7 @@ def _update_db_tools_labs(cfg):
         'print_unsourced_pageids_from_wikipedia.py', wp_my_cnf + ' > ' +
         unsourced.name)
     run_script('parse_live.py', unsourced.name)
-    run_script(
-        'assign_categories.py', '--max_categories=%d' % cfg.max_categories)
+    run_script('assign_categories.py')
     run_script('install_new_database.py')
 
 def update_db_tools_labs(cfg):
