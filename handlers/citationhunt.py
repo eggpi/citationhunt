@@ -22,13 +22,13 @@ CATEGORY_ALL = Category('all', '')
 # mock when testing.
 class Database(object):
     @staticmethod
-    def query_categories(lang_code):
+    def query_category_by_id(lang_code, cat_id):
         cursor = get_db(lang_code).cursor()
-        cursor.execute('''
-            SELECT id, title FROM categories WHERE id != "unassigned"
-            ORDER BY title;
-        ''')
-        return list(cursor)
+        with log_time('get category by id'):
+            cursor.execute('''
+                SELECT id, title FROM categories WHERE id = %s
+            ''', (cat_id,))
+            return cursor.fetchone()
 
     @staticmethod
     def query_snippet_by_id(lang_code, id):
@@ -79,20 +79,11 @@ class Database(object):
                 LIMIT %s''', (needle, max_results))
         return [{'id': row[0], 'title': row[1]} for row in cursor]
 
-def get_categories(lang_code, include_default = True):
-    categories = getattr(flask.g, '_categories', None)
-    if categories is None:
-        categories = [
-            CATEGORY_ALL
-        ] + [Category(*row) for row in Database.query_categories(lang_code)]
-        flask.g._categories = categories
-    return categories if include_default else categories[1:]
-
-def get_category_by_id(lang_code, catid, default = None):
-    for c in get_categories(lang_code):
-        if catid == c.id:
-            return c
-    return default
+def get_category_by_id(lang_code, cat_id):
+    if cat_id == CATEGORY_ALL.id:
+        return CATEGORY_ALL
+    c = Database.query_category_by_id(lang_code, cat_id)
+    return Category(*c) if c is not None else None
 
 def select_random_id(lang_code, cat = CATEGORY_ALL):
     ret = None
