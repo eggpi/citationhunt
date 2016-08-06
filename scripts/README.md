@@ -96,21 +96,8 @@ CitationHunt, thus filling up the `articles_categories` table in the database.
 This is done with the `assign_categories.py` script:
 
 ```
-$ ./assign_categories.py --max-categories=5500
+$ ./assign_categories.py
 ```
-
-It's usually not a good idea to assign a category to every single page in the
-CitationHunt database, because that causes some awfully specific or generic
-categories to be picked (plus, it takes over 30 thousand categories to do
-that).  Instead, CitationHunt used a fixed maximum number of categories,
-controlled by the `--max-categories` parameter, and the uncategorized snippets
-are only accessible when no category is selected on the website.
-
-You should play around with that number until you find a good compromise
-between categorizing more articles and using more (potentially bad) categories.
-The pages that went unclassified will be kept in the database, and you can
-later re-run `assign_categories.py` on the same database with a larger
-`--max-categories` to categorize them.
 
 At the end of this step, your MySQL installation should contain a database named
 `root__scratch` with all the tables CitationHunt needs. The

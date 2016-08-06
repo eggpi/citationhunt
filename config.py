@@ -114,9 +114,6 @@ lang_code_to_config = dict(
             ' stubs$',
             '.*[0-9]+.*',
         ],
-
-        # The maximum number of categories to use, excluding pinned categories
-        max_categories = 3500,
     ),
 
     fr = dict(
@@ -157,8 +154,6 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
 
-        max_categories = 1000,
-
         profile = True,
     ),
 
@@ -191,8 +186,6 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
 
-        max_categories = 1000,
-
         profile = True,
     ),
 
@@ -223,8 +216,6 @@ lang_code_to_config = dict(
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
-
-        max_categories = 1000,
 
         # Not fully translated
         flagged_off = ['404'],
@@ -260,8 +251,6 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
 
-        max_categories = 100,
-
         # Not fully translated
         flagged_off = ['404'],
 
@@ -292,8 +281,6 @@ lang_code_to_config = dict(
             ' stubs$',
             '.*[0-9]+.*',
         ],
-
-        max_categories = 120,
     ),
 
     es = dict(
@@ -332,8 +319,6 @@ lang_code_to_config = dict(
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
-
-        max_categories = 1000,
 
         profile = True,
     ),
@@ -376,7 +361,6 @@ lang_code_to_config = dict(
         ],
 
         snippet_min_size = 20,
-        max_categories = 100,
     ),
 )
 
