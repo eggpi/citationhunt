@@ -61,6 +61,14 @@ class CitationHuntTest(unittest.TestCase):
         response = self.app.get('/en?id=' + self.sid)
         self.assertEquals(response.status_code, 200)
 
+    def test_invalid_id_no_category(self):
+        response = self.app.get('/en?id=invalid')
+        self.assertEquals(response.status_code, 404)
+
+    def test_invalid_id_valid_category(self):
+        response = self.app.get('/en?id=invalid&cat=' + self.cat)
+        self.assertEquals(response.status_code, 404)
+
     def test_id_valid_category(self):
         response = self.app.get('/en?id=' + self.sid + '&cat=' + self.cat)
         self.assertEquals(response.status_code, 200)
