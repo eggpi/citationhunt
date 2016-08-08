@@ -82,8 +82,7 @@ def load_unsourced_pageids(chdb):
     cursor.execute('''SELECT page_id FROM articles''')
     return set(r[0] for r in cursor)
 
-def load_hidden_categories(wpcursor):
-    cfg = config.get_localized_config()
+def load_hidden_categories(wpcursor, cfg):
     wpcursor.execute('''
         SELECT cl_from FROM categorylinks WHERE
         cl_to = %s''', (cfg.hidden_category,))
@@ -120,11 +119,10 @@ def load_projectindex(tlcursor):
         projectindex_cache.setdefault(pageid, set()).add(project)
     return projectindex_cache
 
-def category_is_usable(catname, hidden_categories):
+def category_is_usable(cfg, catname, hidden_categories):
     assert isinstance(catname, CategoryName)
     if catname in hidden_categories:
         return False
-    cfg = config.get_localized_config()
     for regexp in cfg.category_name_regexps_blacklist:
         if re.search(regexp, catname):
             return False
@@ -190,7 +188,8 @@ def assign_categories(mysql_default_cnf):
         log.info('loaded projects for %d pages (%s...)' % \
             (len(projectindex), projectindex.values()[0]))
 
-    hidden_categories = wpdb.execute_with_retry(load_hidden_categories)
+    hidden_categories = wpdb.execute_with_retry(
+        load_hidden_categories, cfg)
     log.info('loaded %d hidden categories (%s...)' % \
         (len(hidden_categories), next(iter(hidden_categories))))
 
@@ -203,7 +202,7 @@ def assign_categories(mysql_default_cnf):
         # indexes
         page_has_at_least_one_category = False
         for catname in categories | pinned_categories:
-            if category_is_usable(catname, hidden_categories):
+            if category_is_usable(cfg, catname, hidden_categories):
                 page_has_at_least_one_category = True
                 categories_to_article_ids[catname].add(pageid)
         if not page_has_at_least_one_category:
