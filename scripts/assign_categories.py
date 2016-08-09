@@ -26,6 +26,7 @@ from utils import *
 import docopt
 
 import cProfile
+import itertools as it
 import re
 import collections
 import pstats
@@ -131,39 +132,61 @@ def category_is_usable(cfg, catname, hidden_categories):
             return False
     return True
 
-def build_snippets_links_for_category(cursor, category_id):
+def build_snippets_links_for_category(cursor, category_ids):
+    def pair_with_next(iterator):
+        """
+        Given an iterator (..., x, y, z, w, ...), returns another iterator of
+        tuples that pair each element to its successor, that is
+        (..., (x, y), (y, z), (z, w), ...).
+
+        The iterator "wraps around" at the end, that is, the last element is
+        paired with the first.
+        """
+
+        i1, i2 = it.tee(iterator)
+        return it.izip(i1, it.chain(i2, [next(i2)]))
+
+    # Populate the snippets_links table with pairs of snippets in the same
+    # category, so each article "points" to the next one in that category.
+    # The snippets are sorted by the title of their corresponding article.
+
+    # First, query all categories and snippets, in the proper order
     cursor.execute('''
-        SELECT snippets.id FROM snippets, articles_categories, articles
+        SELECT articles_categories.category_id, snippets.id
+        FROM snippets, articles_categories, articles
         WHERE snippets.article_id = articles_categories.article_id AND
         articles.page_id = articles_categories.article_id AND
-        articles_categories.category_id = %s ORDER BY articles.title;''',
-        (category_id,))
-    snippets = [r[0] for r in cursor]
+        articles_categories.category_id IN %s
+        ORDER BY articles_categories.category_id, articles.title;''',
+        (tuple(category_ids),))
 
-    prev = snippets[0]
-    for s in snippets[1:] + [snippets[0]]:
-        cursor.execute('''
-            INSERT INTO snippets_links VALUES (%s, %s, %s)
-        ''', (prev, s, category_id))
-        prev = s
+    # Now we indulge in some itertools magic to produce the pairs (or rather,
+    # triplets, as they also include the category id) that we want to insert.
+    # We want to use executemany for performance; the use of iterators saves
+    # some memory, but really I just wanted to look cool.
+    cursor.executemany('''
+        INSERT INTO snippets_links VALUES (%s, %s, %s)
+    ''', ((p, n, category_id)
+        for category_id, group in it.groupby(cursor, lambda (cid, sid): cid)
+        for p, n in pair_with_next(snippet_id for (_, snippet_id) in group)))
 
-def update_citationhunt_db(chdb, categories):
-    for n, (catname, pageids) in enumerate(categories):
-        category_id = category_name_to_id(catname)
-        def insert(cursor):
-            cursor.execute('''
-                INSERT IGNORE INTO categories VALUES(%s, %s)
-            ''', (category_id, unicode(catname)))
+def update_citationhunt_db(chdb, category_name_id_and_pageids):
+    def insert(cursor, chunk):
+        cursor.executemany('''
+            INSERT IGNORE INTO categories VALUES (%s, %s)
+        ''', ((category_id, category_name)
+            for category_name, category_id, _ in chunk))
+        cursor.executemany('''
+            INSERT INTO articles_categories VALUES (%s, %s)
+        ''', ((pageid, catid)
+            for _, catid, pageids in chunk for pageid in pageids))
+        build_snippets_links_for_category(cursor,
+            (cid for (_, cid, _) in chunk))
 
-            prev = ''
-            for page_id in pageids:
-                cursor.execute('''
-                    INSERT INTO articles_categories VALUES (%s, %s)
-                ''', (page_id, category_id))
-            build_snippets_links_for_category(cursor, category_id)
-        chdb.execute_with_retry(insert)
-
-        log.progress('saved %d categories' % (n + 1))
+    chunk_size = 4096
+    for i in range(0, len(category_name_id_and_pageids), chunk_size):
+        chdb.execute_with_retry(insert,
+            category_name_id_and_pageids[i:i+chunk_size])
 
 def reset_chdb_tables(cursor):
     log.info('resetting articles_categories table...')
@@ -229,12 +252,14 @@ def assign_categories(mysql_default_cnf):
             load_snippets_for_pages, article_ids)
 
     # And keep only the ones with at least two
-    categories = set(
-        (k, frozenset(v)) for k, v in categories_to_article_ids.items()
-         if len(categories_to_snippet_ids[k]) >= 2)
-    log.info('finished with %d categories' % len(categories))
+    category_name_id_and_pageids = []
+    for catname, pageids in categories_to_article_ids.iteritems():
+        if len(categories_to_snippet_ids[catname]) >= 2:
+            category_name_id_and_pageids.append(
+                (unicode(catname), category_name_to_id(catname), pageids))
+    log.info('finished with %d categories' % len(category_name_id_and_pageids))
 
-    update_citationhunt_db(chdb, categories)
+    update_citationhunt_db(chdb, category_name_id_and_pageids)
     wpdb.close()
     chdb.close()
     log.info('all done in %d seconds.' % (time.time() - start))
