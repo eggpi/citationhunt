@@ -25,8 +25,11 @@ from utils import *
 
 import docopt
 
+import cProfile
 import re
 import collections
+import pstats
+import time
 
 log = Logger()
 
@@ -161,7 +164,6 @@ def update_citationhunt_db(chdb, categories):
         chdb.execute_with_retry(insert)
 
         log.progress('saved %d categories' % (n + 1))
-    log.info('all done.')
 
 def reset_chdb_tables(cursor):
     log.info('resetting articles_categories table...')
@@ -173,6 +175,11 @@ def reset_chdb_tables(cursor):
 
 def assign_categories(mysql_default_cnf):
     cfg = config.get_localized_config()
+    profiler = cProfile.Profile()
+    if cfg.profile:
+        profiler.enable()
+    start = time.time()
+
     chdb = chdb_.init_scratch_db()
     wpdb = chdb_.init_wp_replica_db()
 
@@ -230,6 +237,12 @@ def assign_categories(mysql_default_cnf):
     update_citationhunt_db(chdb, categories)
     wpdb.close()
     chdb.close()
+    log.info('all done in %d seconds.' % (time.time() - start))
+
+    if cfg.profile:
+        profiler.disable()
+        pstats.Stats(profiler).sort_stats('cumulative').print_stats(
+            30, 'assign_categories.py')
     return 0
 
 if __name__ == '__main__':
