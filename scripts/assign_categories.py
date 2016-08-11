@@ -34,6 +34,13 @@ import time
 
 log = Logger()
 
+def ichunk(iterable, chunk_size):
+    it0 = iter(iterable)
+    while True:
+        it1, it2 = it.tee(it.islice(it0, chunk_size))
+        next(it2)  # raises StopIteration if it0 is exhausted
+        yield it1
+
 class CategoryName(unicode):
     '''
     The canonical format for categories, which is the one we'll use
@@ -93,35 +100,33 @@ def load_hidden_categories(wpcursor, cfg):
     hidden_page_ids = [row[0] for row in wpcursor]
     return category_ids_to_names(wpcursor, hidden_page_ids)
 
-def load_categories_for_page(wpcursor, pageid):
+def load_categories_for_pages(wpcursor, pageids):
     wpcursor.execute('''
-        SELECT cl_to FROM categorylinks WHERE cl_from = %s''', (pageid,))
-    return set(CategoryName.from_wp_categorylinks(row[0]) for row in wpcursor)
+        SELECT cl_to, cl_from FROM categorylinks WHERE cl_from IN %s''',
+        (tuple(pageids),))
+    return ((CategoryName.from_wp_categorylinks(row[0]), row[1])
+            for row in wpcursor)
 
-def load_snippets_for_pages(chcursor, page_ids):
+def count_snippets_for_pages(chcursor):
     chcursor.execute(
-        '''SELECT id FROM snippets WHERE article_id IN %s''',
-        (tuple(page_ids),))
-    return set(row[0] for row in chcursor)
+        '''SELECT article_id, count(snippets.id) '''
+        '''FROM snippets GROUP BY article_id''')
+    return {row[0]: row[1] for row in chcursor}
 
 def load_projectindex(tlcursor):
     # We use a special table on Tools Labs to map page IDs to projects,
     # which will hopefully be more broadly available soon
     # (https://phabricator.wikimedia.org/T131578)
-    projectindex_cache = {}
-
     query = """
-    SELECT page_id, project_title
+    SELECT project_title, page_id
     FROM enwiki_index
     JOIN enwiki_page ON index_page = page_id
     JOIN enwiki_project ON index_project = project_id
     WHERE page_ns = 0 AND page_is_redirect = 0
     """
     tlcursor.execute(query)
-    for pageid, project in tlcursor:
-        project = CategoryName.from_tl_projectindex(project)
-        projectindex_cache.setdefault(pageid, set()).add(project)
-    return projectindex_cache
+    return ((CategoryName.from_tl_projectindex(row[0]), row[1])
+            for row in tlcursor)
 
 def category_is_usable(cfg, catname, hidden_categories):
     assert isinstance(catname, CategoryName)
@@ -170,7 +175,7 @@ def build_snippets_links_for_category(cursor, category_ids):
         for category_id, group in it.groupby(cursor, lambda (cid, sid): cid)
         for p, n in pair_with_next(snippet_id for (_, snippet_id) in group)))
 
-def update_citationhunt_db(chdb, category_name_id_and_pageids):
+def update_citationhunt_db(chdb, category_name_id_and_page_ids):
     def insert(cursor, chunk):
         cursor.executemany('''
             INSERT IGNORE INTO categories VALUES (%s, %s)
@@ -183,10 +188,8 @@ def update_citationhunt_db(chdb, category_name_id_and_pageids):
         build_snippets_links_for_category(cursor,
             (cid for (_, cid, _) in chunk))
 
-    chunk_size = 4096
-    for i in range(0, len(category_name_id_and_pageids), chunk_size):
-        chdb.execute_with_retry(insert,
-            category_name_id_and_pageids[i:i+chunk_size])
+    for c in ichunk(category_name_id_and_page_ids, 4096):
+        chdb.execute_with_retry(insert, list(c))
 
 def reset_chdb_tables(cursor):
     log.info('resetting articles_categories table...')
@@ -209,57 +212,46 @@ def assign_categories(mysql_default_cnf):
     chdb.execute_with_retry(reset_chdb_tables)
     unsourced_pageids = load_unsourced_pageids(chdb)
 
-    projectindex = {}
+    # Load a list of (wikiproject, page ids)
+    projectindex = []
     if running_in_tools_labs() and cfg.lang_code == 'en':
         tldb = chdb_.init_projectindex_db()
         tlcursor = tldb.cursor()
-
         projectindex = load_projectindex(tlcursor)
-        log.info('loaded projects for %d pages (%s...)' % \
-            (len(projectindex), projectindex.values()[0]))
+        log.info('loaded %d entries from projectinfo (%s...)' % \
+            (len(projectindex), projectindex[0][0]))
 
+    # Load a set() of hidden categories
     hidden_categories = wpdb.execute_with_retry(
         load_hidden_categories, cfg)
     log.info('loaded %d hidden categories (%s...)' % \
         (len(hidden_categories), next(iter(hidden_categories))))
 
-    categories_to_article_ids = collections.defaultdict(set)
-    page_ids_with_no_categories = 0
-    for n, pageid in enumerate(list(unsourced_pageids)):
-        categories = wpdb.execute_with_retry(load_categories_for_page, pageid)
-        pinned_categories = set(projectindex.get(pageid, []))
-        # Filter both kinds of categories and build the category -> pageid
-        # indexes
-        page_has_at_least_one_category = False
-        for catname in categories | pinned_categories:
-            if category_is_usable(cfg, catname, hidden_categories):
-                page_has_at_least_one_category = True
-                categories_to_article_ids[catname].add(pageid)
-        if not page_has_at_least_one_category:
-            unsourced_pageids.remove(pageid)
-            page_ids_with_no_categories += 1
-        log.progress('loaded categories for %d pageids' % (n + 1))
-
-    log.info('%d pages lack usable categories!' % page_ids_with_no_categories)
-    log.info('found %d usable categories (%s, %s...)' % \
-        (len(categories_to_article_ids), categories_to_article_ids.keys()[0],
-        categories_to_article_ids.keys()[1]))
+    # Load all usable categories into a dict category -> [page ids]
+    category_to_page_ids = {}
+    for c, p in projectindex:
+        category_to_page_ids.setdefault(c, []).append(p)
+    for c in ichunk(unsourced_pageids, 10000):
+        for c, p in wpdb.execute_with_retry(load_categories_for_pages, c):
+            if category_is_usable(cfg, c, hidden_categories):
+                category_to_page_ids.setdefault(c, []).append(p)
 
     # Now find out how many snippets each category has
-    categories_to_snippet_ids = {}
-    for category, article_ids in categories_to_article_ids.iteritems():
-        categories_to_snippet_ids[category] = chdb.execute_with_retry(
-            load_snippets_for_pages, article_ids)
+    category_to_snippet_count = {}
+    page_id_to_snippet_count = chdb.execute_with_retry(count_snippets_for_pages)
+    for category, page_ids in category_to_page_ids.iteritems():
+        category_to_snippet_count[category] = sum(
+            page_id_to_snippet_count.get(p, 0) for p in page_ids)
 
-    # And keep only the ones with at least two
-    category_name_id_and_pageids = []
-    for catname, pageids in categories_to_article_ids.iteritems():
-        if len(categories_to_snippet_ids[catname]) >= 2:
-            category_name_id_and_pageids.append(
-                (unicode(catname), category_name_to_id(catname), pageids))
-    log.info('finished with %d categories' % len(category_name_id_and_pageids))
+    # And keep only the ones with at least two.
+    category_name_id_and_page_ids = [
+        (unicode(category), category_name_to_id(category), page_ids)
+        for category, page_ids in category_to_page_ids.iteritems()
+        if category_to_snippet_count[category] >= 2
+    ]
+    log.info('finished with %d categories' % len(category_name_id_and_page_ids))
 
-    update_citationhunt_db(chdb, category_name_id_and_pageids)
+    update_citationhunt_db(chdb, category_name_id_and_page_ids)
     wpdb.close()
     chdb.close()
     log.info('all done in %d seconds.' % (time.time() - start))
