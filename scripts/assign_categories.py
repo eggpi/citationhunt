@@ -113,7 +113,12 @@ def count_snippets_for_pages(chcursor):
         '''FROM snippets GROUP BY article_id''')
     return {row[0]: row[1] for row in chcursor}
 
-def load_projectindex(tlcursor):
+def load_projectindex(cfg):
+    if not running_in_tools_labs() or cfg.lang_code != 'en':
+        return []
+    tldb = chdb_.init_projectindex_db()
+    tlcursor = tldb.cursor()
+
     # We use a special table on Tools Labs to map page IDs to projects,
     # which will hopefully be more broadly available soon
     # (https://phabricator.wikimedia.org/T131578)
@@ -125,8 +130,11 @@ def load_projectindex(tlcursor):
     WHERE page_ns = 0 AND page_is_redirect = 0
     """
     tlcursor.execute(query)
-    return ((CategoryName.from_tl_projectindex(row[0]), row[1])
-            for row in tlcursor)
+
+    ret = [(CategoryName.from_tl_projectindex(r[0]), r[1]) for r in tlcursor]
+    log.info('loaded %d entries from projectinfo (%s...)' % \
+        (len(ret), ret[0][0]))
+    return ret
 
 def category_is_usable(cfg, catname, hidden_categories):
     assert isinstance(catname, CategoryName)
@@ -212,14 +220,8 @@ def assign_categories(mysql_default_cnf):
     chdb.execute_with_retry(reset_chdb_tables)
     unsourced_pageids = load_unsourced_pageids(chdb)
 
-    # Load a list of (wikiproject, page ids)
-    projectindex = []
-    if running_in_tools_labs() and cfg.lang_code == 'en':
-        tldb = chdb_.init_projectindex_db()
-        tlcursor = tldb.cursor()
-        projectindex = load_projectindex(tlcursor)
-        log.info('loaded %d entries from projectinfo (%s...)' % \
-            (len(projectindex), projectindex[0][0]))
+    # Load a list of (wikiproject, page ids), if applicable
+    projectindex = load_projectindex(cfg)
 
     # Load a set() of hidden categories
     hidden_categories = wpdb.execute_with_retry(
