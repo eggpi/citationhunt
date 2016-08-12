@@ -20,8 +20,7 @@ global_config = dict(
 
     flagged_off = [],
 
-    # Profiling is enabled for individual languages
-    profile = False,
+    profile = True,
 )
 
 # Most (all?) Wikipedias support these English settings in addition
@@ -153,8 +152,6 @@ lang_code_to_config = dict(
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
-
-        profile = True,
     ),
 
     it = dict(
@@ -185,8 +182,6 @@ lang_code_to_config = dict(
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
-
-        profile = True,
     ),
 
     pl = dict(
@@ -253,8 +248,6 @@ lang_code_to_config = dict(
 
         # Not fully translated
         flagged_off = ['404'],
-
-        profile = True,
     ),
 
     he = dict(
@@ -319,8 +312,6 @@ lang_code_to_config = dict(
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
-
-        profile = True,
     ),
 
     bn = dict(
