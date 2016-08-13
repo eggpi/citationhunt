@@ -221,6 +221,9 @@ def assign_categories(mysql_default_cnf):
     unsourced_pageids = load_unsourced_pageids(chdb)
 
     # Load a list of (wikiproject, page ids), if applicable
+    # FIXME: We load all category -> page id mappings for all projects, then
+    # filter out the ones with no unsourced snippets. It's likely better to just
+    # query the projects of the pages we know of instead.
     projectindex = load_projectindex(cfg)
 
     # Load a set() of hidden categories
@@ -232,7 +235,8 @@ def assign_categories(mysql_default_cnf):
     # Load all usable categories into a dict category -> [page ids]
     category_to_page_ids = {}
     for c, p in projectindex:
-        category_to_page_ids.setdefault(c, []).append(p)
+        if p in unsourced_pageids:
+            category_to_page_ids.setdefault(c, []).append(p)
     for c in ichunk(unsourced_pageids, 10000):
         for c, p in wpdb.execute_with_retry(load_categories_for_pages, c):
             if category_is_usable(cfg, c, hidden_categories):
