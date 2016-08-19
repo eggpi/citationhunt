@@ -24,13 +24,16 @@ referrer_spam_regexps = [
 ]
 
 def is_spam(user_agent, referrer):
+    # Normalize None to the empty string
+    user_agent = user_agent or ''
+    referrer = referrer or ''
     return any(itertools.chain(
         (r.search(user_agent) for r in crawler_user_agents_regexps),
         (r.search(referrer) for r in referrer_spam_regexps)))
 
 def log_request(response):
-    user_agent = flask.request.headers.get('User-Agent', 'NULL')
-    referrer = flask.request.referrer or ''
+    user_agent = flask.request.headers.get('User-Agent', None)
+    referrer = flask.request.referrer or None
     if is_spam(user_agent, referrer):
         return
     lang_code = getattr(flask.request, 'lang_code', None)
@@ -68,7 +71,7 @@ def stats(lang_code):
         SELECT DATE_FORMAT(ts, GET_FORMAT(DATE, 'ISO')) AS dt,
         COUNT(DISTINCT user_agent) FROM requests_''' + lang_code + '''
         WHERE snippet_id IS NOT NULL AND status_code = 200 AND
-        user_agent != "NULL" AND DATEDIFF(NOW(), ts) < %s
+        user_agent IS NOT NULL AND DATEDIFF(NOW(), ts) < %s
         GROUP BY dt ORDER BY dt''', (days,))
     graphs.append((
         'Distinct user agents in the past %s days' % days,
@@ -88,6 +91,7 @@ def stats(lang_code):
         SELECT referrer, COUNT(*) FROM requests_''' + lang_code + '''
         WHERE status_code = 200 AND DATEDIFF(NOW(), ts) < %s
         AND referrer NOT LIKE "%%tools.wmflabs.org/citationhunt%%"
+        AND referrer IS NOT NULL
         GROUP BY referrer ORDER BY COUNT(*) DESC LIMIT 30
     ''', (days,))
     graphs.append((
@@ -115,6 +119,7 @@ def stats(lang_code):
         SELECT user_agent, COUNT(*) FROM requests_''' + lang_code + '''
         WHERE status_code = 200 AND DATEDIFF(NOW(), ts) < %s
         AND referrer NOT LIKE "%%tools.wmflabs.org/citationhunt%%"
+        AND user_agent IS NOT NULL
         GROUP BY user_agent ORDER BY COUNT(*) DESC LIMIT 30''', (days,))
     graphs.append((
         '30 most popular user agents in the past %s days' % days,
