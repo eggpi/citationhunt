@@ -21,6 +21,8 @@ global_config = dict(
     flagged_off = [],
 
     profile = True,
+
+    stats_max_age_days = 90,
 )
 
 # Most (all?) Wikipedias support these English settings in addition

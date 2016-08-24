@@ -96,12 +96,20 @@ def archive_database(ch_my_cnf, cfg):
         'mysqldump --defaults-file="%s" --databases %s | '
         'gzip > %s' % (ch_my_cnf, ' '.join(dbs_to_archive), output))
 
+def expire_stats(cfg):
+    stats_db = chdb.init_stats_db()
+    with get_stats_db() as cursor, chdb.ignore_warnings():
+        cursor.execute('DELETE FROM requests WHERE DATEDIFF(NOW(), ts) > %s',
+                cfg.stats_max_age_days)
+
 def _update_db_tools_labs(cfg):
     os.environ['CH_LANG'] = cfg.lang_code
     ch_my_cnf, wp_my_cnf = ensure_db_config(cfg)
     if cfg.archive_dir and not archive_database(ch_my_cnf, cfg):
         # Log, but don't assert, this is not fatal
         print >>sys.stderr, 'Failed to archive database!'
+
+    expire_stats(cfg)
 
     # FIXME Import and calll these scripts instead of shelling out?
     def run_script(script, cmdline = ''):
