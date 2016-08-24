@@ -98,9 +98,9 @@ def archive_database(ch_my_cnf, cfg):
 
 def expire_stats(cfg):
     stats_db = chdb.init_stats_db()
-    with get_stats_db() as cursor, chdb.ignore_warnings():
+    with chdb.init_stats_db() as cursor, chdb.ignore_warnings():
         cursor.execute('DELETE FROM requests WHERE DATEDIFF(NOW(), ts) > %s',
-                cfg.stats_max_age_days)
+                (cfg.stats_max_age_days,))
 
 def _update_db_tools_labs(cfg):
     os.environ['CH_LANG'] = cfg.lang_code
