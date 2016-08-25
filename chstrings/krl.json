@@ -2,17 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Ilja.mos",
-			"Likopiän tyttö"
+			"Likopiän tyttö",
+			"Varvana"
 		]
 	},
-	"introduction": "Auta eččie sitattie Wikipedia-artikkeleihin!",
+	"introduction": "Auta löytämäh lainauššanoja Wikipedija-artikkeliloih!",
 	"in_page": "Šivulla %s:",
-	"button_wikilink": "Miulla on!",
-	"button_next": "Ei, ielleh!",
-	"lead_section_hint": "Tämä teksti on artikkelin johdanto-ošuuven oša, joten lähtehien kirjuttamini ei ole pakollini. Olkua hyvä, tutuštukkua %s kera lisätietoloin suamisekši.",
-	"category_filter_placeholder": "Mitä šuau šiut šyttymäh?",
-	"github_link_title": "Hei! Miun lähdekoodi on GitHubissa!",
-	"beginners_hint": "Et tiijä, miten sitaatti lisätäh? Kačo %s.",
+	"button_wikilink": "Miula on!",
+	"button_next": "Ei, ielläh!",
+	"lead_section_hint": "Tämä teksti on artikkelin alkušanojen oša, šentäh lähtehien kirjuttamini ei ole pakollini. Olkua hyvä, tutuštukkua %s kera lisätietojen šuamisekši.",
+	"category_filter_placeholder": "Mi šilma kiinnoštau?",
+	"github_link_title": "Hoi! Miun lähtehkoodi on GitHubissa!",
+	"beginners_hint": "Et tiijä, mitein lainauššana lisätäh? Kačo %s.",
 	"page_not_found": "Šivu ei löytyn!",
-	"page_not_found_text": "Šivu, jotta ečit, ei ole enyä olomašša. Voit olla, jotta šen lähteh on jo löytyn? Siirry %s lisätietoja varten!"
+	"page_not_found_text": "Šivu, kumpaista ečit, ei ole enyä olomašša. Voit olla, jotta šen lähteh on jo löytyn? Šiirry %s lisätietoja varoin!"
 }

@@ -6,6 +6,7 @@
 	},
 	"introduction": "Giúp tìm nguồn gốc cho bài Wikipedia!",
 	"in_page": "Trong trang %s:",
+	"github_link_title": "Này, mã nguồn của tôi nằm trên GitHub!",
 	"beginners_hint": "Không biết cách chú thích nguồn gốc? Xem %s.",
 	"page_not_found": "Không tìm thấy trang!"
 }
