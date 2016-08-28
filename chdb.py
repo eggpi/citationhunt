@@ -93,8 +93,8 @@ def init_stats_db():
                 CREATE TABLE IF NOT EXISTS requests (
                 ts DATETIME, lang_code VARCHAR(4), snippet_id VARCHAR(128),
                 category_id VARCHAR(128), url VARCHAR(768), prefetch BOOLEAN,
-                user_agent VARCHAR(1024), status_code INTEGER,
-                referrer VARCHAR(128)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+                status_code INTEGER, referrer VARCHAR(128))
+                ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             ''')
             # Create per-language views for convenience
             for lang_code in config.lang_code_to_config:
