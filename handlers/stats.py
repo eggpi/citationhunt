@@ -58,6 +58,15 @@ def stats(lang_code):
     ch_cursor = get_db(lang_code).cursor()
 
     stats_cursor.execute('''
+        SELECT DATE_FORMAT(clicked_ts, GET_FORMAT(DATE, 'ISO')) AS dt, COUNT(*)
+        FROM fixed_''' + lang_code +
+        ''' WHERE DATEDIFF(NOW(), clicked_ts) < %s GROUP BY dt ORDER BY dt''',
+        (days,))
+    graphs.append((
+        'Number of snippets fixed in the past %s days (estimate!)' % days,
+        json.dumps([['Date', lang_code]] + list(stats_cursor)), 'line'))
+
+    stats_cursor.execute('''
         SELECT DATE_FORMAT(ts, GET_FORMAT(DATE, 'ISO')) AS dt, COUNT(*)
         FROM requests_''' + lang_code +
         ''' WHERE snippet_id IS NOT NULL AND status_code = 200

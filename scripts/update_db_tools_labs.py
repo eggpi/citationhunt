@@ -124,6 +124,7 @@ def _update_db_tools_labs(cfg):
         unsourced.name)
     run_script('parse_live.py', unsourced.name)
     run_script('assign_categories.py')
+    run_script('compute_fixed_snippets.py')
     run_script('install_new_database.py')
 
 def update_db_tools_labs(cfg):
