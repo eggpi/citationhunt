@@ -35,6 +35,14 @@ class RetryingConnection(object):
             else:
                 break
 
+    def execute_with_retry_s(self, sql, *args):
+        def operations(cursor, sql, *args):
+            cursor.execute(sql, args)
+            if cursor.rowcount > 0:
+                return cursor.fetchall()
+            return None
+        return self.execute_with_retry(operations, sql, *args)
+
     # https://stackoverflow.com/questions/4146095/ (sigh)
     def __enter__(self):
         return self.conn.__enter__()
@@ -96,11 +104,21 @@ def init_stats_db():
                 status_code INTEGER, referrer VARCHAR(128))
                 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             ''')
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS fixed (
+                clicked_ts DATETIME, snippet_id VARCHAR(128),
+                lang_code VARCHAR(4))
+                ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+            ''')
             # Create per-language views for convenience
             for lang_code in config.lang_code_to_config:
                 cursor.execute('''
                     CREATE OR REPLACE VIEW requests_''' + lang_code +
                     ''' AS SELECT * FROM requests WHERE lang_code = %s
+                ''', (lang_code,))
+                cursor.execute('''
+                    CREATE OR REPLACE VIEW fixed_''' + lang_code +
+                    ''' AS SELECT * FROM fixed WHERE lang_code = %s
                 ''', (lang_code,))
         return db
     return RetryingConnection(connect_and_initialize)
