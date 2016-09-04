@@ -26,7 +26,7 @@
 #   the two.
 #
 # m h  dom mon dow   command
-0 0 * * */5 /usr/bin/jsub -mem 20g -N citationhunt_update_en -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py en
+0 0 */4 * * /usr/bin/jsub -mem 20g -N citationhunt_update_en -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py en
 0 0 * * 1 /usr/bin/jsub -mem 10g -N citationhunt_update_fr -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py fr
 0 14 * * 1 /usr/bin/jsub -mem 10g -N citationhunt_update_it -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py it
 0 22 * * 1 /usr/bin/jsub -mem 10g -N citationhunt_update_pl -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py pl
