@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Crucifunked"
+		]
+	},
+	"introduction": "Ayúa a atopal citas p'artículus de Güiquipeya!",
+	"instructions_goal": "Esti fragmentu de Güiquipeya nu está acorpau pol nenguna huenti confiable. Pues atopal una?",
+	"instructions_details": "Haz click en %s pa dil a Güiquipeya i correhil el fragmentu, o %s pa vel otru. Compreba %s si tienis preguntas. Güena suerti!",
+	"in_page": "Ena páhina %s:",
+	"button_wikilink": "Lo tengu!",
+	"button_next": "No, siguienti!",
+	"lead_section_hint": "Esti testu es parti de la seción prencipal del artículu, asin que referencialu pue sel opcional. Consulta %s pa más enhormación.",
+	"category_filter_placeholder": "Qué te motiva?",
+	"github_link_title": "Ei! La mi huenti está en GitHub!",
+	"beginners_hint": "Nu sabes cómo azeñil citas? Consulta %s.",
+	"page_not_found": "Páhina no atopá.",
+	"page_not_found_text": "La páhina qu'estás buscandu ya nu esisti. Quiziá esta cita ya s'á atopau? Güelvi a %s pa más!"
+}
