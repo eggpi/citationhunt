@@ -74,7 +74,7 @@ def pad_before(data, days, default = 0):
 
 @validate_lang_code
 def stats(lang_code):
-    days = flask.request.args.get('days', 10)
+    days = int(flask.request.args.get('days', 10))
     graphs = [] # title, data table as array, type
     stats_cursor = get_stats_db().cursor()
     ch_cursor = get_db(lang_code).cursor()
