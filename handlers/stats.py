@@ -85,7 +85,8 @@ def stats(lang_code):
         ''' WHERE DATEDIFF(NOW(), clicked_ts) < %s GROUP BY dt ORDER BY dt''',
         (days,))
     graphs.append((
-        'Number of snippets fixed in the past %s days (estimate!)' % days,
+        'Number of snippets fixed in the past %s days '
+        '(estimate, lags behind a few days)' % days,
         json.dumps(
             [['Date', lang_code]] + pad_before(stats_cursor, days)), 'line'))
 
