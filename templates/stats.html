@@ -61,6 +61,7 @@
         var chart = new google.visualization.LineChart(chartElement);
         options.legend = {position: "none"};
         options.width = "100%";
+        options.vAxis = {viewWindow: {min: 0}};
         {% elif type == "table" %}
         var chart = new google.visualization.Table(chartElement);
         options.page = "enable";
