@@ -118,12 +118,18 @@ button:focus {
     min-width: 140px;
 }
 
+.button:active {
+    opacity: 0.8;
+}
+
 #button-wikilink {
     background-color: #65EAAD;
+    box-shadow: 1px -1px 5px #209936 inset, 0 2px 8px #BABABA;
 }
 
 #button-next {
     background-color: #FF8C43;
+    box-shadow: -1px -1px 5px #A76D48 inset, 0 2px 8px #BABABA;
 }
 
 #js-disabled-category-warning {
