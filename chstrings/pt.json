@@ -3,18 +3,19 @@
 		"authors": [
 			"Önni",
 			"Vitorvicentevalente",
-			"Diniscoelho"
+			"Diniscoelho",
+			"Mansil"
 		]
 	},
-	"introduction": "Ajuda a encontrar referências para artigos da Wikipédia!",
+	"introduction": "Ajude a encontrar referências para artigos da Wikipédia!",
 	"instructions_goal": "O trecho abaixo da Wikipédia não é suportado por nenhuma fonte confiável. Consegue encontrar alguma?",
-	"instructions_details": "Clique em %s para ir à Wikipédia e corrigir o trecho, ou em %s para ver outro. Verifique %s se tiver dúvidas. Boa sorte!",
+	"instructions_details": "Clique em %s para ir para a Wikipédia e corrigir o trecho, ou em %s para ver outro. Consulte %s se tiver questões. Boa sorte!",
 	"in_page": "Na página %s:",
 	"button_wikilink": "Eu consigo!",
 	"button_next": "Não, seguinte!",
 	"lead_section_hint": "Este texto faz parte da secção principal do artigo, pelo que referenciá-lo pode ser opcional. Por favor, consulte %s para mais informações.",
-	"category_filter_placeholder": "O que é o incentiva?",
-	"github_link_title": "Hey! O meu código-fonte está no GitHub!",
+	"category_filter_placeholder": "O que é que o incentiva?",
+	"github_link_title": "Olá! O meu código-fonte está no GitHub!",
 	"beginners_hint": "Não sabe como adicionar referências? Consulte %s.",
 	"page_not_found": "Página não encontrada!",
 	"page_not_found_text": "A página que está a procurar não existe — talvez esta referência já tenha sido encontrada? Volte a %s para mais!"

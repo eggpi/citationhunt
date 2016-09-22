@@ -5,11 +5,13 @@
 			"Clon",
 			"LukasJandera",
 			"Mormegil",
-			"Dvorapa"
+			"Dvorapa",
+			"Vojtěch Dostál"
 		]
 	},
 	"introduction": "Pomozte najít citace pro články Wikipedie!",
 	"instructions_goal": "Následující úryvek článku Wikipedie není podložen věrohodným zdrojem. Můžete nějaký najít?",
+	"instructions_details": "Stisknutím tlačítka %s můžete přejít na Wikipedii a úryvek opravit, nebo na %s zobrazte jiný úryvek. Zkontrolujte %s, pokud máte dotazy. Hodně štěstí!",
 	"in_page": "Na stránce %s:",
 	"button_wikilink": "Chápu!",
 	"button_next": "Ne, další!",
