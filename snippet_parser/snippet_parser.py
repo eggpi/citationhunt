@@ -38,6 +38,10 @@ except ImportError:
     localized_module = importlib.import_module('stub')
 snippet_parser = localized_module.SnippetParser()
 
+# Used for fast searching in the tokenize function
+_lowercase_cn_templates = [
+    t.lower() for t in cfg.citation_needed_templates]
+
 def cleanup_snippet(snippet):
     snippet = re.sub(STRIP_REGEXP, r'\1', snippet).strip()
     snippet = re.sub(',\s+\)', ')', snippet)
@@ -45,12 +49,48 @@ def cleanup_snippet(snippet):
     snippet = re.sub('\[\]\s', '', snippet)
     return snippet
 
+def fast_parse(wikitext):
+    tokenizer = mwparserfromhell.parser.CTokenizer()
+    # Passing skip_style_tags helps us get around some builder exceptions,
+    # see https://github.com/earwig/mwparserfromhell/issues/40
+    tokens = tokenizer.tokenize(wikitext, 0, True)
+    # Add a sentinel representing a "end of article" section
+    tokens.append(mwparserfromhell.parser.tokens.HeadingStart())
+
+    # Slice the original token stream into a (potentially much smaller) stream
+    # consisting only of the tokens in sections that contain citation needed
+    # templates. We can then build the parser tree out of those as usual, which
+    # is a more expensive operation.
+    reduced_tokens = []
+    prev_section_idx = 0
+    section_has_citation_needed = False
+    for i, (t1, t2) in enumerate(zip(tokens, tokens[1:])):
+        if isinstance(t2, mwparserfromhell.parser.tokens.HeadingStart):
+            if section_has_citation_needed:
+                reduced_tokens.extend(tokens[prev_section_idx:i+1])
+            prev_section_idx = i+1
+            section_has_citation_needed = False
+
+        # We detect a citation needed template by looking at a TemplateOpen
+        # token followed by a suitable Text token
+        section_has_citation_needed |= (
+            isinstance(t1, mwparserfromhell.parser.tokens.TemplateOpen) and
+            isinstance(t2, mwparserfromhell.parser.tokens.Text) and
+            any(t in t2.text.lower() for t in _lowercase_cn_templates))
+    try:
+        return mwparserfromhell.parser.Builder().build(reduced_tokens)
+    except mwparserfromhell.parser.ParserError:
+        return None
+
 def extract_snippets(wikitext, minlen, maxlen):
     snippets = [] # [section, [snippets]]
 
-    sections = mwparserfromhell.parse(wikitext).get_sections(
+    wikicode = fast_parse(wikitext)
+    if wikicode is None:
+        # Fall back to full parsing if fast parsing fails
+        wikicode = mwparserfromhell.parse(wikitext)
+    sections = wikicode.get_sections(
         include_lead = True, include_headings = True, flat = True)
-    assert ''.join(unicode(s) for s in sections) == d(wikitext)
 
     for i, section in enumerate(sections):
         assert i == 0 or \
@@ -61,6 +101,8 @@ def extract_snippets(wikitext, minlen, maxlen):
 
         paragraphs = section.split('\n\n')
         for paragraph in paragraphs:
+            # Invoking a string method on a Wikicode object returns a string,
+            # so we need to parse it again :(
             wikicode = mwparserfromhell.parse(paragraph)
 
             blacklisted_tag_or_template = itertools.chain(
