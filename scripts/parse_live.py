@@ -194,6 +194,12 @@ def parse_live(pageids, timeout):
         log.info('timeout, canceling the process pool!')
         pool.terminate()
     pool.join()
+    try:
+        result.get()
+        ret = 0
+    except Exception:
+        log.info('Too many exceptions, failed!')
+        ret = 1
 
     if cfg.profile:
         profiles = map(pstats.Stats,
@@ -205,6 +211,7 @@ def parse_live(pageids, timeout):
             stats.sort_stats('cumulative').print_stats(30)
 
     shutil.rmtree(backdir)
+    return ret
 
 if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
@@ -213,5 +220,6 @@ if __name__ == '__main__':
     start = time.time()
     with open(pageids_file) as pf:
         pageids = set(itertools.imap(str.strip, pf))
-    parse_live(pageids, timeout)
+    ret = parse_live(pageids, timeout)
     log.info('all done in %d seconds.' % (time.time() - start))
+    sys.exit(ret)
