@@ -45,7 +45,7 @@ def cleanup_snippet(snippet):
     snippet = re.sub('\[\]\s', '', snippet)
     return snippet
 
-def extract_snippets(wikitext, minlen = 80, maxlen = 560):
+def extract_snippets(wikitext, minlen, maxlen):
     snippets = [] # [section, [snippets]]
 
     sections = mwparserfromhell.parse(wikitext).get_sections(
@@ -101,4 +101,5 @@ if __name__ == '__main__':
     wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     page = wikitools.Page(wikipedia, title)
     wikitext = page.getWikiText()
-    pprint.pprint(extract_snippets(wikitext, maxlen = float('inf')))
+    pprint.pprint(extract_snippets(wikitext,
+        cfg.snippet_min_size, cfg.snippet_max_size))
