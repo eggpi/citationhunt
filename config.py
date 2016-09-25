@@ -268,7 +268,7 @@ lang_code_to_config = dict(
         citation_needed_template_name = 'דרוש מקור',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
         tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'קטגוריות_מוסתרות',
         category_name_regexps_blacklist = [
             '^ויקיפדיה',
@@ -309,7 +309,7 @@ lang_code_to_config = dict(
         citation_needed_template_name = 'cita requerida',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
         tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'Wikipedia:Categorías_ocultas',
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
@@ -346,7 +346,7 @@ lang_code_to_config = dict(
         citation_needed_template_name = 'তথ্যসূত্র প্রয়োজন|',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
         tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'লুকায়িত_বিষয়শ্রেণীসমূহ',
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
