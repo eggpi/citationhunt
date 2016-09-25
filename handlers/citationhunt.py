@@ -150,6 +150,8 @@ def citation_hunt(lang_code):
             flask.request.cfg = cfg
             flask.abort(404)
         snippet, section, aurl, atitle = sinfo
+        if cfg.html_snippet:
+            snippet = flask.Markup(snippet)
         next_snippet_id = select_next_id(lang_code, id, cat)
         if next_snippet_id is None:
             # the snippet doesn't belong to the category!
