@@ -39,11 +39,8 @@ class SnippetParserBase(object):
             mwparserfromhell.nodes.Template: self.strip_template,
             mwparserfromhell.nodes.Tag: self.strip_tag,
             mwparserfromhell.nodes.Wikilink: self.strip_wikilink,
+            mwparserfromhell.nodes.Heading: self.strip_heading,
         }
-
-        # Always strip headings entirely
-        mwparserfromhell.nodes.Heading.__strip__ = \
-        mwparserfromhell.nodes.Node.__strip__
 
         self._original_strip_methods = {}
         for klass, method in monkey_patched_classes.items():
@@ -103,6 +100,15 @@ class SnippetParserBase(object):
             if wikilink.title.startswith(prefix):
                 return ''
         return self.delegate_strip(wikilink, normalize, collapse)
+
+    def strip_heading(self, heading, normalize, collapse):
+        '''Override to control how headings are stripped in the wikicode.
+
+        The default delegates to mwparserfromhell.nodes.Node.__strip__.
+        '''
+
+        return mwparserfromhell.nodes.Node.__strip__(
+            heading, normalize, collapse)
 
     def is_citation_needed(self, template):
         '''Override to control which templates are considered Citation needed.

@@ -23,6 +23,10 @@ global_config = dict(
     profile = True,
 
     stats_max_age_days = 90,
+
+    # Whether or not snippets should be converted to HTML using the
+    # Wikipedia API before storing them in the database
+    html_snippet = False
 )
 
 # Most (all?) Wikipedias support these English settings in addition
@@ -503,6 +507,48 @@ lang_code_to_config = dict(
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
+    ),
+
+    de = dict(
+        lang_name = 'Deutsch',
+        lang_dir = 'ltr',
+        database = 'dewiki_p',
+        wikipedia_domain = 'de.wikipedia.org',
+
+        beginners_link = 'https://de.wikipedia.org/wiki/Wikipedia:Literatur',
+        beginners_link_title = 'Wikipedia:Literatur',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        # For German, we just display the lead section of the article, so
+        # some of these keys don't apply
+        citation_needed_category = 'Wikipedia:Belege_fehlen',
+        citation_needed_templates = [
+            'Belege',
+            'Belege fehlen',
+            'Quelle',
+            'Quellen',
+            'Quellen fehlen',
+        ],
+        citation_needed_template_name = '',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
+            'Datei:',
+            'Kategorie:',
+            'Bild:',
+        ],
+        tags_blacklist = [],
+        templates_blacklist = [],
+        hidden_category = 'Kategorie:Versteckt',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+
+        html_snippet = True,
+
+        # We use big chunks of sections for German, and convert them to
+        # HTML. The min/max sizes apply to the final HTML.
+        snippet_min_size = 200,
+        snippet_max_size = 30000,
     ),
 )
 

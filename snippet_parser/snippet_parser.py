@@ -83,6 +83,21 @@ def fast_parse(wikitext):
         return None
 
 def extract_snippets(wikitext, minlen, maxlen):
+    """Extracts snippets lacking citations.
+
+    This function looks for snippets of the article that are marked with any of
+    the templates in `cfg.citation_needed_templates` from the `wikitext` passed
+    as parameter, and returns those that are greater than `minlen` but smaller
+    than `maxlen`.
+
+    The return value is a list of lists of the form:
+        [
+            [<section1>, [<snippet1>, <snippet2>, ...]],
+            [<section2>, [<snippet1>, ...]],
+            ...
+        ]
+    """
+
     snippets = [] # [section, [snippets]]
 
     wikicode = fast_parse(wikitext)
@@ -132,6 +147,81 @@ def extract_snippets(wikitext, minlen, maxlen):
                     snippet.count(REF_MARKER)))
             if usable_len > maxlen or usable_len < minlen:
                 continue
+            secsnippets.append(snippet)
+    return snippets
+
+def extract_sections(wikitext, minlen=None, maxlen=None):
+    """Extracts sections/subsections lacking citations.
+
+    This function looks for sections of the article that are marked with any of
+    the templates in `cfg.citation_needed_templates`. The output is meant to be
+    converted into HTML by the Wikimedia API.
+
+    The return value is a list of lists of the form:
+        [
+            [<section1>, [<subsection1>, <subsection2>, ...]],
+            [<section2>, [<subsection1>, ...]],
+            ...
+        ]
+    """
+
+    snippets = [] # [section, [snippets]]
+    sections = mwparserfromhell.parse(wikitext).get_sections(
+        include_lead = True, include_headings = True, flat = True)
+
+    i = 0
+    while i < len(sections):
+        section = sections[i]
+        assert i == 0 or \
+            isinstance(section.get(0), mwparserfromhell.nodes.heading.Heading)
+        sectitle = unicode(section.get(0).title.strip()) if i != 0 else ''
+        seclevel = section.get(0).level if i != 0 else float('inf')
+        secsnippets = []
+        snippets.append([sectitle, secsnippets])
+        i += 1
+
+        for tpl in section.filter_templates():
+            if matches_any(tpl, cfg.citation_needed_templates):
+                break
+        else:
+            # This section doesn't need references, move on to the next one
+            continue
+
+        # Consume the following sections until we find another one at the
+        # same level (or the end of the wikicode). All of that needs references.
+        nodes = section.nodes
+        while i < len(sections):
+            subsection = sections[i]
+            if subsection.get(0).level <= seclevel:
+                # not really a subsection
+                break
+            nodes.extend(subsection.nodes)
+            i += 1
+
+        if not nodes:
+            # weird, looks like this section was really empty!
+            continue
+
+        wikicode = mwparserfromhell.parse(
+                mwparserfromhell.wikicode.Wikicode(nodes).strip_code())
+
+        # skip the templates that remained at the beginning and end
+        empty_or_template = (lambda node:
+            node == '' or
+            isinstance(node, mwparserfromhell.nodes.template.Template) or
+            re.match('^\n+$', e(node)))
+        nodes = list(itertools.dropwhile(empty_or_template, wikicode.nodes))
+        wikicode.nodes = reversed(list(
+            itertools.dropwhile(empty_or_template, nodes[::-1])))
+        snippet = cleanup_snippet(unicode(wikicode))
+
+        # Chop off some paragraphs at the end until we're at a reasonable
+        # size, since we don't actually display the whole thing in the UI
+        snippet = '\n\n'.join(p.strip(' ') for p in snippet.split('\n\n')[:10])
+        if snippet:
+            # We'll often end up with just a section header here, so hopefully
+            # it will be smaller than the minimum size when converted to HTML.
+            # FIXME: Maybe this can be detected?
             secsnippets.append(snippet)
     return snippets
 

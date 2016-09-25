@@ -35,6 +35,7 @@ html[dir="rtl"] #preamble {
 #snippet-wrapper {
     text-align: center;
     min-height: 64px;
+    overflow-y: hidden;
 }
 
 #snippet {
@@ -42,7 +43,18 @@ html[dir="rtl"] #preamble {
     line-height: 20px;
     text-align: justify;
     max-width: 80%;
-    margin: 30px auto 0 auto;
+    margin: 20px auto 0 auto;
+    max-height: 200px;
+}
+
+#snippet:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(transparent 120px, #FCFCFC);
 }
 
 #quotation {
