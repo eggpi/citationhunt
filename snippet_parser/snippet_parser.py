@@ -41,7 +41,9 @@ snippet_parser = localized_module.SnippetParser()
 def cleanup_snippet(snippet):
     snippet = re.sub(STRIP_REGEXP, r'\1', snippet).strip()
     snippet = re.sub(',\s+\)', ')', snippet)
-    return re.sub('\(\)', '', snippet)
+    snippet = re.sub('\(\)\s', '', snippet)
+    snippet = re.sub('\[\]\s', '', snippet)
+    return snippet
 
 def extract_snippets(wikitext, minlen = 80, maxlen = 560):
     snippets = [] # [section, [snippets]]
