@@ -355,6 +355,34 @@ lang_code_to_config = dict(
 
         snippet_min_size = 20,
     ),
+
+    cs = dict(
+        lang_name = 'Čeština',
+        lang_dir = 'ltr',
+        database = 'cswiki_p',
+        wikipedia_domain = 'cs.wikipedia.org',
+
+        beginners_link = 'https://cs.wikipedia.org/wiki/Wikipedie:Pr%C5%AFvodce/Vkl%C3%A1d%C3%A1n%C3%AD_citac%C3%AD',
+        beginners_link_title = 'Wikipedie:Průvodce/Vkládání citací',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Údržba:Stránky_obsahující_nedoložená_tvrzení',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Není ve zdroji',
+            'Doplňte zdroj',
+            'subst:fakt',
+            'subst:Fakt',
+        ],
+        citation_needed_template_name = 'zrdoj?',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+        hidden_category = 'Wikipedie:Skryté_kategorie',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+    ),
 )
 
 # In py3: types.SimpleNamespace
