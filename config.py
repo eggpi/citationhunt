@@ -374,7 +374,7 @@ lang_code_to_config = dict(
             'subst:fakt',
             'subst:Fakt',
         ],
-        citation_needed_template_name = 'zrdoj?',
+        citation_needed_template_name = 'zdroj?',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
         tags_blacklist = EN_TAGS_BLACKLIST,
         templates_blacklist = EN_TEMPLATES_BLACKLIST,
