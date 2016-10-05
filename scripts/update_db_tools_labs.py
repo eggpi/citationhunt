@@ -112,11 +112,11 @@ def _update_db_tools_labs(cfg):
     expire_stats(cfg)
 
     # FIXME Import and calll these scripts instead of shelling out?
-    def run_script(script, cmdline = ''):
+    def run_script(script, cmdline = '', optional = False):
         scripts_dir = os.path.dirname(os.path.realpath(__file__))
         script_path = os.path.join(scripts_dir, script)
         cmdline = ' '.join([sys.executable, script_path, cmdline])
-        assert shell(cmdline) == True, 'Failed at %s' % script
+        assert shell(cmdline) == True or optional, 'Failed at %s' % script
 
     unsourced = tempfile.NamedTemporaryFile()
     run_script(
@@ -124,7 +124,7 @@ def _update_db_tools_labs(cfg):
         unsourced.name)
     run_script('parse_live.py', unsourced.name)
     run_script('assign_categories.py')
-    run_script('compute_fixed_snippets.py')
+    run_script('compute_fixed_snippets.py', optional = True)
     run_script('install_new_database.py')
 
 def update_db_tools_labs(cfg):
