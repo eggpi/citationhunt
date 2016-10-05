@@ -18,7 +18,7 @@ import urlparse
 # it for only a short period to be safe.
 # An alternative would be to never cache when no category is selected UNLESS
 # when prefetching, but that's a bit more complex.
-CACHE_DURATION_SNIPPET = 60
+CACHE_DURATION_SNIPPET = 30
 
 app = flask.Flask(__name__)
 Compress(app)
