@@ -177,10 +177,11 @@ html[dir="rtl"] #lead-hint {
 
 #instructions {
     color: #5f5f54;
+    font-size: 15.5px;
 }
 
 #footer {
-    font-size: small;
+    font-size: 13px;
     margin-top: 50px;
     text-align: center;
 }
