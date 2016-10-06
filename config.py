@@ -382,6 +382,34 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
     ),
+
+    sv = dict(
+        lang_name = 'Svenska',
+        lang_dir = 'ltr',
+        database = 'svwiki_p',
+        wikipedia_domain = 'sv.wikipedia.org',
+
+        beginners_link = 'https://sv.wikipedia.org/wiki/Wikipedia:K%C3%A4llh%C3%A4nvisningar',
+        beginners_link_title = 'Wikipedia:Källhänvisningar',
+        lead_section_policy_link = 'https://sv.wikipedia.org/wiki/Wikipedia:K%C3%A4llh%C3%A4nvisningar#N.C3.A4r_beh.C3.B6ver_man_inte_ange_en_k.C3.A4lla.3F',
+        lead_section_policy_link_title = 'Wikipedia:Källhänvisningar',
+
+        citation_needed_category = 'Alla_artiklar_märkta_med_mallen_källor',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'kb',
+            'Källa behövs',
+            'Referens behövs',
+            'Fact',
+        ],
+        citation_needed_template_name = 'källa behövs',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+        hidden_category = 'Dolda_kategorier',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+    ),
 )
 
 # In py3: types.SimpleNamespace
