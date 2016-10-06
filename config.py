@@ -371,8 +371,7 @@ lang_code_to_config = dict(
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Není ve zdroji',
             'Doplňte zdroj',
-            'subst:fakt',
-            'subst:Fakt',
+            'Fakt/dne',
         ],
         citation_needed_template_name = 'zdroj?',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
