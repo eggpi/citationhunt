@@ -394,7 +394,7 @@ lang_code_to_config = dict(
         lead_section_policy_link = 'https://sv.wikipedia.org/wiki/Wikipedia:K%C3%A4llh%C3%A4nvisningar#N.C3.A4r_beh.C3.B6ver_man_inte_ange_en_k.C3.A4lla.3F',
         lead_section_policy_link_title = 'Wikipedia:Källhänvisningar',
 
-        citation_needed_category = 'Alla_artiklar_märkta_med_mallen_källor',
+        citation_needed_category = 'Alla_artiklar_som_behöver_enstaka_källor',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'kb',
             'Källa behövs',
