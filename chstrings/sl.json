@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar",
+			"Pickle12"
+		]
+	},
+	"introduction": "Pomagaj pri iskanju navedkov za Wikipedijine članke!",
+	"instructions_goal": "Spodnji odstavek ni podprt z zanesljivim virom. Ga lahko poiščeš?",
+	"instructions_details": "Klikni %s, da popraviš odstavek, ali %s za ogled drugega. Če imaš še kakšno vprašanje, klikni %s. Srečno!",
+	"in_page": "Na strani %s:",
+	"button_wikilink": "Razumem!",
+	"button_next": "Ne hvala, naslednji!",
+	"lead_section_hint": "To besedilo se nahaja v glavnem delu članka, zato ga morda ni potrebno dodati pod opombe. Za več informacij klikni na %s.",
+	"category_filter_placeholder": "Kaj te zanima?",
+	"github_link_title": "Hej! Moj vir je na GitHub-u!",
+	"beginners_hint": "Težave pri dodajanju navedkov? Poglej na %s.",
+	"page_not_found": "Strani ni bilo mogoče najti!",
+	"page_not_found_text": "Stran, ki jo iščete, ne obstaja več. Morda je navedek že najden? Preveri na %s!"
+}
