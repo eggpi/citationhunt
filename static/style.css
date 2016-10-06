@@ -136,20 +136,22 @@ button:focus {
     color: crimson;
 }
 
-#github-link {
+#lang-selector {
     position: absolute;
-    font-size: small;
+    font-size: 13px;
     top: 15px;
+    border: 1.8px solid #967A7A;
+    border-radius: 2px;
 }
 
-html[dir="ltr"] #github-link {
+html[dir="ltr"] #lang-selector {
     left: auto;
-    right: 15px;
+    right: 30px;
 }
 
-html[dir="rtl"] #github-link {
+html[dir="rtl"] #lang-selector {
     right: auto;
-    left: 15px;
+    left: 30px;
 }
 
 #bottom {
@@ -173,20 +175,12 @@ html[dir="rtl"] #lead-hint {
     float: left;
 }
 
-#lang-links {
-    text-align: center;
-    margin-top: 70px;
-}
-
-#lang-links a {
-    padding: 2px;
-    font-size: 90%;
-}
-
-#lang-links .current-lang {
-    font-weight: bold;
-}
-
 #instructions {
     color: #5f5f54;
+}
+
+#footer {
+    font-size: small;
+    margin-top: 50px;
+    text-align: center;
 }
