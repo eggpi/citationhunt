@@ -4,14 +4,15 @@
 			"WikiPhoenix",
 			"Jopparn",
 			"Josve05a",
-			"PeterKz"
+			"PeterKz",
+			"Ainali"
 		]
 	},
 	"introduction": "Hjälp till att hitta referenser till Wikipediaartiklar!",
 	"instructions_goal": "Texten från Wikipedia nedan saknar källhänvisning. Kan du hitta en?",
 	"instructions_details": "Klicka på %s för att gå till Wikipedia och fixa delen eller %s för att se en annan. Gå in på %s om du har frågor. Lycka till!",
 	"in_page": "På sidan %s:",
-	"button_wikilink": "Jag förstår!",
+	"button_wikilink": "Jag fixar den!",
 	"button_next": "Nej, nästa!",
 	"lead_section_hint": "Denna text är en del av artikelns inledande avsnitt, så det är valfritt att lägga till referenser. Se %s för mer information.",
 	"category_filter_placeholder": "Vad intresserar dig?",
