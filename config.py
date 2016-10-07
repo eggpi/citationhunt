@@ -367,7 +367,7 @@ lang_code_to_config = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Údržba:Stránky_obsahující_nedoložená_tvrzení',
+        citation_needed_category = 'Údržba:Články_obsahující_nedoložená_tvrzení',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Není ve zdroji',
             'Doplňte zdroj',
