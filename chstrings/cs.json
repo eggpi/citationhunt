@@ -10,15 +10,15 @@
 		]
 	},
 	"introduction": "Pomozte najít citace pro články Wikipedie!",
-	"instructions_goal": "Následující úryvek článku Wikipedie není podložen věrohodným zdrojem. Můžete nějaký najít?",
-	"instructions_details": "Stisknutím tlačítka %s můžete přejít na Wikipedii a úryvek opravit, nebo na %s zobrazte jiný úryvek. Zkontrolujte %s, pokud máte dotazy. Hodně štěstí!",
-	"in_page": "Na stránce %s:",
+	"instructions_goal": "Následující úryvek článku Wikipedie není podložen věrohodným zdrojem. Zkusíte ho dohledat?",
+	"instructions_details": "Stisknutím tlačítka %s můžete přejít na Wikipedii a úryvek opravit, tlačítkem %s zobrazíte jiný úryvek. Přečtěte si stránku %s, pokud máte další dotazy. Ať se daří!",
+	"in_page": "V článku %s:",
 	"button_wikilink": "Chápu!",
 	"button_next": "Ne, další!",
 	"lead_section_hint": "Tento text je součástí hlavního oddílu článku, takže odkazování na něj může být volitelné. Přečtěte si prosím %s pro více informací.",
-	"category_filter_placeholder": "Co vás zajímá?",
-	"github_link_title": "Hej! Můj zdroj je na Githubu!",
+	"category_filter_placeholder": "Vyberte si kategorii, které se chcete věnovat:",
+	"github_link_title": "Můj zdrojový kód je na Githubu!",
 	"beginners_hint": "Nevíte, jak přidat citace? Viz %s.",
-	"page_not_found": "Stránka nenalezena!",
-	"page_not_found_text": "Stránka, kterou hledáte, již neexistuje — možná, že tato citace již byla nalezena? Vraťte se na %s pro další!"
+	"page_not_found": "Stránka nebyla nalezena.",
+	"page_not_found_text": "Stránka, kterou hledáte, již neexistuje — možná, že tato citace již byla dohledána? Vraťte se na stránku %s pro další návrh!"
 }
