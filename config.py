@@ -410,6 +410,72 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
     ),
+
+    nb = dict(
+        lang_name = 'Norsk (bokmål)',
+        lang_dir = 'ltr',
+        database = 'nowiki_p',
+        wikipedia_domain = 'no.wikipedia.org',
+
+        beginners_link = 'https://no.wikipedia.org/wiki/Wikipedia:Bruk_av_kilder',
+        beginners_link_title = 'Wikipedia:Bruk av kilder',
+        lead_section_policy_link = 'https://no.wikipedia.org/wiki/Wikipedia:Bruk_av_kilder#Hvorfor_siterer_vi_kilder',
+        lead_section_policy_link_title = 'Wikipedia:Bruk_av_kilder',
+
+        citation_needed_category = 'Artikler_som_trenger_referanser',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Trenger referanse',
+            'Tr',
+            'Referanse',
+        ],
+        citation_needed_template_name = 'trenger referanse',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+        hidden_category = 'Skjulte_kategorier',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+    ),
+
+    nn = dict(
+        lang_name = 'Norsk (nynorsk)',
+        lang_dir = 'ltr',
+        database = 'nnwiki_p',
+        wikipedia_domain = 'nn.wikipedia.org',
+
+        beginners_link = 'https://nn.wikipedia.org/wiki/Wikipedia:Kjelder',
+        beginners_link_title = 'Wikipedia:Kjelder',
+        lead_section_policy_link = 'https://nn.wikipedia.org/wiki/Wikipedia:Kjelder#Korleis_oppgje_kjelder',
+        lead_section_policy_link_title = 'Wikipedia:Kjelder',
+
+        citation_needed_category = 'Artiklar_som_manglar_kjelder',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Treng kjelde',
+            'Manglar kjelde',
+            'Mangler kjelde',
+            'Kjelde manglar',
+            'Referanse manglar',
+            'Manglar referanse',
+            'Kjelda manglar',
+            'Treng referanse',
+            'Tarv kjelde',
+            'Kjelde tarvst',
+            'Kjelda tarvst',
+            'Referanse tarvst',
+            'Referanse trengst',
+            'Kjelde trengst',
+            'Kjelde manglar',
+        ],
+        citation_needed_template_name = 'treng kjelde',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+        hidden_category = 'Gøymde_kategoriar',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+    ),
 )
 
 # In py3: types.SimpleNamespace
