@@ -37,3 +37,4 @@
 0 11 * * 5 /usr/bin/jsub -mem 10g -N citationhunt_update_bn -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py bn
 0 13 * * 5 /usr/bin/jsub -mem 10g -N citationhunt_update_cs -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py cs
 0 14 * * 5 /usr/bin/jsub -mem 10g -N citationhunt_update_nb -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py nb
+0 15 * * 5 /usr/bin/jsub -mem 10g -N citationhunt_update_nn -once -l release=trusty /data/project/citationhunt/www/python/venv/bin/python2 /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py nn
