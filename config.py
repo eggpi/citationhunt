@@ -422,7 +422,7 @@ lang_code_to_config = dict(
         lead_section_policy_link = 'https://no.wikipedia.org/wiki/Wikipedia:Bruk_av_kilder#Hvorfor_siterer_vi_kilder',
         lead_section_policy_link_title = 'Wikipedia:Bruk_av_kilder',
 
-        citation_needed_category = 'Artikler som trenger referanser',
+        citation_needed_category = 'Artikler_som_trenger_referanser',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Trenger referanse',
             'Tr',
@@ -432,7 +432,7 @@ lang_code_to_config = dict(
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
         tags_blacklist = EN_TAGS_BLACKLIST,
         templates_blacklist = EN_TEMPLATES_BLACKLIST,
-        hidden_category = 'Skjulte kategorier',
+        hidden_category = 'Skjulte_kategorier',
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
@@ -449,7 +449,7 @@ lang_code_to_config = dict(
         lead_section_policy_link = 'https://nn.wikipedia.org/wiki/Wikipedia:Kjelder#Korleis_oppgje_kjelder',
         lead_section_policy_link_title = 'Wikipedia:Kjelder',
 
-        citation_needed_category = 'Artiklar som manglar kjelder',
+        citation_needed_category = 'Artiklar_som_manglar_kjelder',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Treng kjelde',
             'Manglar kjelde',
@@ -471,7 +471,7 @@ lang_code_to_config = dict(
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
         tags_blacklist = EN_TAGS_BLACKLIST,
         templates_blacklist = EN_TEMPLATES_BLACKLIST,
-        hidden_category = 'Gøymde kategoriar',
+        hidden_category = 'Gøymde_kategoriar',
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
