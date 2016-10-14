@@ -106,44 +106,42 @@ button:focus {
     margin-bottom: 40px;
 }
 
-
-
 .button {
-    font-size:1em;
-    display:inline-block;
-    padding:.5em 1em;
-    margin:0 5px;
-    border-radius:2px;
-    transition:background .1s ease-in-out, box-shadow .1s ease-in-out, border .1s ease-in-out;
+    font-size: 1em;
+    display: inline-block;
+    padding: .5em 1em;
+    margin: 0 5px;
+    border-radius: 2px;
+    transition: background .1s ease-in-out, box-shadow .1s ease-in-out, border .1s ease-in-out;
     cursor: pointer;
-    font-weight:bold;
-    color:#fff;
-    min-width:140px;
+    font-weight: bold;
+    color: #fff;
+    min-width: 140px;
 }
 .button:hover {
-    box-shadow:0 1px rgba(0,0,0,.1),inset 0 -3px rgba(0,0,0,.2);
+    box-shadow: 0 1px rgba(0,0,0,.1),inset 0 -3px rgba(0,0,0,.2);
 }
 #button-next {
-    background:#347bff;
-    border:1px solid #347bff;
+    background: #347bff;
+    border: 1px solid #347bff;
 }
 #button-next:hover, #button-next:focus {
-    border-bottom-color:#2a62cc;
+    border-bottom-color: #2a62cc;
 }
 #button-next:active {
-    background:#2a62cc;
-    box-shadow:0;
+    background: #2a62cc;
+    box-shadow: 0;
 }
 #button-wikilink {
-    background:#00af89;
-    border:1px solid #00af89;
+    background: #00af89;
+    border: 1px solid #00af89;
 }
 #button-wikilink:hover, #button-wikilink:focus {
-    border-bottom-color:#008c6e;
+    border-bottom-color: #008c6e;
 }
 #button-wikilink:active {
-    background:#008c6e;
-    box-shadow:0;
+    background: #008c6e;
+    box-shadow: 0;
 }
 
 #js-disabled-category-warning {
