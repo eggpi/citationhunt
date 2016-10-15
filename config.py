@@ -67,13 +67,14 @@ lang_code_to_config = dict(
 
         # Some Wikipedias have specific policies for adding citations to the
         # lead section of an article. This should be a link to that policy.
-        lead_section_policy_link = "https://en.wikipedia.org/wiki/Wikipedia:CITELEAD",
+        lead_section_policy_link = 'https://en.wikipedia.org/wiki/Wikipedia:CITELEAD',
         # A human-readable title for the link above. This gets interpolated
         # into the localizable string 'lead_section_hint'
-        lead_section_policy_link_title = "WP:CITELEAD",
+        lead_section_policy_link_title = 'WP:CITELEAD',
 
         # The name of the category containing articles lacking
-        # citations, without the 'Category:' prefix
+        # citations, without the 'Category:' prefix and with underscores
+        # instead of spaces.
         citation_needed_category = 'All_articles_with_unsourced_statements',
 
         # The names of templates that mark statements lacking
@@ -102,9 +103,10 @@ lang_code_to_config = dict(
         # snippets containing them will be dropped.
         templates_blacklist = EN_TAGS_BLACKLIST,
 
-        # The name of the category for hidden categories. Categories
-        # belonging to this category are typically used for maintenance
-        # and should not show up on Citation Hunt.
+        # The name of the category for hidden categories, without the
+        # 'Category:' prefix and with underscores instead of spaces.
+        # Categories belonging to this category are typically used for
+        # maintenance and will not show up on Citation Hunt.
         hidden_category = 'Hidden_categories',
 
         # Citation Hunt will ignore categories if their names match one
@@ -125,8 +127,8 @@ lang_code_to_config = dict(
         citation_needed_category = 'Article_à_référence_nécessaire',
         beginners_link = 'https://fr.wikipedia.org/wiki/Aide:Pr%C3%A9sentez_vos_sources',
         beginners_link_title = 'Aide:Source',
-        lead_section_policy_link = "https://fr.wikipedia.org/wiki/WP:INTRO",
-        lead_section_policy_link_title = "WP:INTRO",
+        lead_section_policy_link = 'https://fr.wikipedia.org/wiki/WP:INTRO',
+        lead_section_policy_link_title = 'WP:INTRO',
 
         # Looks like there are many other interesting templates:
         # https://fr.wikipedia.org/wiki/Aide:Référence_nécessaire
