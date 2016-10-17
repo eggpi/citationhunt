@@ -3,19 +3,20 @@
 		"authors": [
 			"Arthurteb303",
 			"Rodrigo codignoli",
-			"Luk3"
+			"Luk3",
+			"ArgonSim"
 		]
 	},
 	"introduction": "Ajude a encontrar citações para os artigos da Wikipédia!",
-	"instructions_goal": "O trecho abaixo da Wikipédia não é suportado por nenhuma fonte confiável. Consegue encontrar alguma?",
+	"instructions_goal": "O trecho abaixo da Wikipédia não está referenciado em nenhuma fonte confiável. Consegue encontrar alguma?",
 	"instructions_details": "Clique em %s para ir à Wikipédia e corrigir o trecho, ou em %s para ver outro. Verifique %s se tiver dúvidas. Boa sorte!",
 	"in_page": "Na pagina %s:",
-	"button_wikilink": "Consegui isso!",
+	"button_wikilink": "Eu consigo!",
 	"button_next": "Não, próximo!",
 	"lead_section_hint": "Esse texto faz parte da seção principal do artigo, por isso referencias podem ser opcionais. Veja %s para mais informações.",
-	"category_filter_placeholder": "O que te incentiva?",
+	"category_filter_placeholder": "Que assunto te interessa?",
 	"github_link_title": "Ei! O meu código-fonte está no GitHub!",
 	"beginners_hint": "Não sabe como adicionar citações? Veja %s.",
 	"page_not_found": "Página não encontrada!",
-	"page_not_found_text": "A página que você está procurado não existe mais — talvez esta citação já foi encontrada? Volte a %s para mais!"
+	"page_not_found_text": "A página que você está procurado não existe mais — talvez esta citação já tenha sido encontrada? Volte a %s para mais!"
 }
