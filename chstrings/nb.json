@@ -2,19 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"SuperPotato",
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Jon Harald Søby (WMNO)"
 		]
 	},
-	"introduction": "Hjelp til å finne referenter til Wikipedia artikler!",
+	"introduction": "Hjelp til å finne referanser til Wikipedia-artikler!",
 	"instructions_goal": "Wikipedia-utdraget nedenfor støttes ikke av en pålitelig kilde. Kan du finne en?",
-	"instructions_details": "Klikk %s for å gå til Wikipedia og fikse utdraget, eller %s for å se et annet. Sjekk %s om du har noen spørsmål. Lykke til!",
-	"in_page": "På side %s:",
-	"button_wikilink": "Jeg forstår!",
+	"instructions_details": "Klikk på %s for å gå til Wikipedia og fikse utdraget, eller på %s for å se et annet. Sjekk %s om du har noen spørsmål. Lykke til!",
+	"in_page": "På siden «%s»:",
+	"button_wikilink": "Den fikser jeg!",
 	"button_next": "Nei, neste!",
-	"lead_section_hint": "Denne teksten er ikke en del av artikkelens innledende avsnitt, så å referere til dette er valgfritt. Vennligst se %s for mer informasjon.",
-	"category_filter_placeholder": "Hva får deg til å gruble?",
-	"github_link_title": "Hei! Min kilde er på GitHub!",
-	"beginners_hint": "Vet du ikke hvordan man legger til referenter? Se %s.",
+	"lead_section_hint": "Denne teksten er ikke en del av artikkelens ingress, så det kan være valgfritt å sette inn en referanse.Se %s for mer informasjon.",
+	"category_filter_placeholder": "Hva interesserer deg?",
+	"github_link_title": "Hei! Kilden min er på GitHub!",
+	"beginners_hint": "Vet du ikke hvordan man legger til referanser? Se %s.",
 	"page_not_found": "Siden ikke funnet!",
-	"page_not_found_text": "Siden du leter etter finner ikke lenger – kanskje har noen allerede funnet en kilde? Gå tilbake til %s for mer!"
+	"page_not_found_text": "Siden du leter etter finnes ikke lenger – kanskje har noen allerede funnet en kilde? Gå tilbake til %s for mer!"
 }

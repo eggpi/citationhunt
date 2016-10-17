@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby (WMNO)"
+		]
+	},
+	"introduction": "Hjelp til å finne referansar til Wikipedia-artiklar!",
+	"instructions_goal": "Wikipedia-utdraget nedanfor manglar ei påliteleg kjelde. Kan du finne éi?",
+	"instructions_details": "Klikk på %s for å gå til Wikipedia og fikse utdraget, eller på %s for å sjå eit anna utdrag. Lukke til!",
+	"in_page": "På sida «%s»:",
+	"button_wikilink": "Denne fiksar eg!",
+	"button_next": "Nei, neste!",
+	"lead_section_hint": "Denne teksta er del av ingressen til artikkelen, så det kan vere valgfritt å nytte referansar. Sjå %s for meir informasjon.",
+	"category_filter_placeholder": "Kva interesserer deg?",
+	"github_link_title": "Hei! Kjelda mi er på GitHub!",
+	"beginners_hint": "Veit di ikkje korleis du legg til referansar? Sjå %s.",
+	"page_not_found": "Sida vart ikkje funnen!",
+	"page_not_found_text": "Sida du ser etter finst ikkje lenger ­– kanskje ein referanse har blitt funnen allereie? Gå tilbake til %s for meir!"
+}
