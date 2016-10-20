@@ -109,27 +109,40 @@ button:focus {
 .button {
     margin: 0 5px;
     padding: 10px;
-    border: 2px solid black;
     border-radius: 4px;
     text-decoration: none;
     color: black;
     font-weight: bold;
     cursor: pointer;
     min-width: 140px;
+    transition: box-shadow 0.1s ease-in-out, opacity 0.1s ease-in-out;
 }
 
 .button:active {
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
 #button-wikilink {
-    background-color: #65EAAD;
-    box-shadow: 1px -1px 5px #209936 inset, 0 2px 8px #BABABA;
+    color: white;
+    background: #00AF89;
+    box-shadow: 1px -1px 5px #008C6E inset, 0 2px 3px #BABABA;
+    border: 2px solid #1C6F2C;
+}
+
+#button-wikilink:hover, #button-wikilink:focus {
+    box-shadow: 1px -1px 5px #1C6F2C inset, 0 2px 3px #BABABA;
 }
 
 #button-next {
-    background-color: #FF8C43;
-    box-shadow: -1px -1px 5px #A76D48 inset, 0 2px 8px #BABABA;
+    color: white;
+    background: #347BFF;
+    box-shadow: -1px -1px 5px #2A62CC inset, 0 2px 3px #BABABA;
+    transition: box-shadow 0.1s, opacity 0.1s;
+    border: 2px solid #41499F;
+}
+
+#button-next:hover, #button-next:focus {
+    box-shadow: -1px -1px 5px #41499F inset, 0 2px 3px #BABABA;
 }
 
 #js-disabled-category-warning {
