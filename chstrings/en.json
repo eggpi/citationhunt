@@ -4,11 +4,12 @@
   "instructions_details": "Click %s to go to Wikipedia and fix the snippet, or %s to see another one. Check %s if you have questions. Good luck!",
   "in_page": "In page %s:",
   "button_wikilink": "I got this!",
-  "button_next": "Nope, next!",
+  "button_next": "Next!",
   "lead_section_hint": "This text is part of the article's lead section, so referencing it may be optional. Please see %s for more information.",
   "category_filter_placeholder": "What makes you tick?",
   "github_link_title": "Hey! My source is on GitHub!",
   "beginners_hint": "Don't know how to add citations? See %s.",
   "page_not_found": "Page not found!",
-  "page_not_found_text": "The page you are looking for no longer exists — perhaps this citation has already been found? Go back to %s for more!"
+  "page_not_found_text": "The page you are looking for no longer exists — perhaps this citation has already been found? Go back to %s for more!",
+  "footer": "Citation Hunt is made by volunteers, hosted on %s and translated via %s."
 }

@@ -20,10 +20,6 @@ h1 {
     margin-bottom: 15px;
 }
 
-p {
-    margin: 10px 0;
-}
-
 #preamble {
     margin-top: 40px;
 }
@@ -196,8 +192,26 @@ html[dir="rtl"] #lang-selector {
     font-size: 15.5px;
 }
 
+#instructions p {
+    margin: 10px 0;
+}
+
 #footer {
     font-size: 13px;
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
+}
+
+#footer p {
+    margin: 5px auto;
+    line-height: 14px;
+    max-width: 450px;
+    color: #5f5f54;
+}
+
+#footer:before {
+    content: "⁓";
+    display: block;
+    margin-bottom: 3px;
+    font-size: 18px;
 }

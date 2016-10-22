@@ -60,6 +60,7 @@
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
     <div id="footer">
       <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">{{ config.strings.github_link_title }}</a>
+      <p>{{ config.strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if config.strings.footer else '' }}</p>
     </div>
     <select id="lang-selector">
       {% for lang_code, lang_config in config.lang_code_to_config.items() | sort %}
