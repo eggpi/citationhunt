@@ -36,13 +36,17 @@ html[dir="rtl"] #preamble {
     margin-right: 20px;
 }
 
+#snippet-wrapper {
+    text-align: center;
+    min-height: 64px;
+}
+
 #snippet {
     position: relative;
-    margin: 30px auto 0 auto;
     line-height: 20px;
     text-align: justify;
     max-width: 80%;
-    min-height: 64px;
+    margin: 30px auto 0 auto;
 }
 
 #quotation {
@@ -51,7 +55,6 @@ html[dir="rtl"] #preamble {
     font-size: 100px;
     opacity: 0.1;
     font-family: Fondamento, cursive;
-    z-index: -1;
 }
 
 html[dir="ltr"] #quotation {
@@ -100,14 +103,8 @@ button:focus {
     font-size: 1px;
 }
 
-#buttons {
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 40px;
-}
-
 .button {
-    margin: 0 5px;
+    margin: 10px 5px;
     padding: 10px;
     border-radius: 4px;
     text-decoration: none;
@@ -171,21 +168,18 @@ html[dir="rtl"] #lang-selector {
     margin: 0 20px;
 }
 
+#after-snippet {
+    margin-top: 35px;
+    text-align: center;
+}
+
 #lead-hint {
     border-radius: 4px;
     font-size: small;
     padding: 8px;
     background-color: #EEE2EA;
-    text-align: justify;
-    max-width: 35%;
-}
-
-html[dir="ltr"] #lead-hint {
-    float: right;
-}
-
-html[dir="rtl"] #lead-hint {
-    float: left;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 #instructions {
