@@ -29,15 +29,22 @@
     {% for i in range(1, snippet_html[-1].count(ref_marker) + 1) %}
       {% if snippet_html.append(snippet_html[-1] | replace(ref_marker, ref_html % i, 1)) %}{% endif %}
     {% endfor %}
-    <blockquote id="snippet"><div id="quotation">"</div>{{ snippet_html[-1] }}</blockquote>
-    <div id="buttons">
+    <div id="snippet-wrapper">
+        <blockquote id="snippet">
+            <div id="quotation">"</div>
+            {{ snippet_html[-1] }}
+        </blockquote>
+        {% if not section and config.strings.lead_section_hint %}<div id="lead-hint">{{ config.strings.lead_section_hint }}</div>{% endif %}
+    </div>
+    <div id="after-snippet">
+      <div>
         <a href="{{ config.lang_code }}/redirect?to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
-            target=_blank><button class="button" id="button-wikilink">{{ config.strings.button_wikilink }}</button></a>
-      <button form="form-next" type="submit" id="button-next" class="button">{{ config.strings.button_next }}</button>
+          target=_blank><button class="button" id="button-wikilink">{{ config.strings.button_wikilink }}</button></a>
+        <button form="form-next" type="submit" id="button-next" class="button">{{ config.strings.button_next }}</button>
+      </div>
     </div>
     <div id="bottom">
-      {% if not section and config.strings.lead_section_hint %}<div id="lead-hint">{{ config.strings.lead_section_hint }}</div>{% endif %}
-      <div> <!-- The content to the left of #lead-hint must be display:block to wrap around it -->
+      <div>
         <form method="GET" action="" id="form-next">
           <input type="text" id="category-input" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ config.strings.category_filter_placeholder }}" {% if category_filter_autofocus %}autofocus{% endif %} style="visibility: hidden;">
           <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
