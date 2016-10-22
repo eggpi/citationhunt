@@ -104,7 +104,7 @@ button:focus {
 }
 
 .button {
-    margin: 10px 5px;
+    margin: 0 5px;
     padding: 10px;
     border-radius: 4px;
     text-decoration: none;
@@ -171,6 +171,15 @@ html[dir="rtl"] #lang-selector {
 #after-snippet {
     margin-top: 35px;
     text-align: center;
+}
+
+#after-snippet > div {
+    margin: 10px 10px;
+}
+
+#category-filter-wrapper {
+    text-align: left;
+    display: inline-block;
 }
 
 #lead-hint {

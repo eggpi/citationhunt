@@ -8,7 +8,8 @@ div.awesomplete * {
 }
 
 div.awesomplete {
-    width: 440px;
+    /* should be equal to the width of the input, including border */
+    width: 450px;
 }
 
 div.awesomplete > ul {
