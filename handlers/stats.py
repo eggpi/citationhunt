@@ -59,7 +59,7 @@ def pad(data, days, default = 0):
     """
     return sorted(dict(
         [((datetime.datetime.now() -
-            datetime.timedelta(days=d)).strftime('%Y-%m-%d'), 0)
+            datetime.timedelta(days=d)).strftime('%Y-%m-%d'), default)
         for d in range(days)] + list(data)).items())
 
 def pad_before(data, days, default = 0):
