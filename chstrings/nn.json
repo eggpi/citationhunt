@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jon Harald Søby (WMNO)"
+			"Jon Harald Søby (WMNO)",
+			"Jon Harald Søby"
 		]
 	},
 	"introduction": "Hjelp til å finne referansar til Wikipedia-artiklar!",
 	"instructions_goal": "Wikipedia-utdraget nedanfor manglar ei påliteleg kjelde. Kan du finne éi?",
-	"instructions_details": "Klikk på %s for å gå til Wikipedia og fikse utdraget, eller på %s for å sjå eit anna utdrag. Lukke til!",
+	"instructions_details": "Klikk på %s for å gå til Wikipedia og fikse utdraget, eller på %s for å sjå eit anna utdrag. Sjekk %s om du har nokre spørsmål. Lukke til!",
 	"in_page": "På sida «%s»:",
 	"button_wikilink": "Denne fiksar eg!",
 	"button_next": "Nei, neste!",

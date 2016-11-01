@@ -3,10 +3,13 @@
 		"authors": [
 			"Chrumps",
 			"Halibutt",
-			"Mateon1"
+			"Mateon1",
+			"Woytecr"
 		]
 	},
 	"introduction": "Pomóż dodać przypisy do artykułów Wikipedii!",
+	"instructions_goal": "Poniższy fragment z Wikipedii nie jest poparty wiarygodnym źródłem. Czy mógłbyś takowe znaleźć?",
+	"instructions_details": "Kliknij %s aby przejść do Wikipedii i poprawić ten fragment, lub %s aby zobaczyć inny. Zobacz %s jeżeli masz pytania. Powodzenia!",
 	"in_page": "W artykule %s:",
 	"button_wikilink": "Biorę się za to!",
 	"button_next": "Następny proszę!",
@@ -14,5 +17,6 @@
 	"category_filter_placeholder": "Co Cię interesuje?",
 	"github_link_title": "Hej! Mój kod źródłowy jest na GitHubie!",
 	"beginners_hint": "Nie wiesz jak dodawać przypisy? Przeczytaj stronę %s.",
-	"page_not_found": "Nie odnaleziono strony!"
+	"page_not_found": "Nie odnaleziono strony!",
+	"page_not_found_text": "Strona, której szukasz już nie istnieje — być może to źródło zostało już znalezione? Przejdź z powrotem do %s po więcej!"
 }
