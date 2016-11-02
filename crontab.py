@@ -26,7 +26,6 @@ command_template = ' '.join([
 h = 0
 for lc in sorted(config.lang_code_to_config):
     command = command_template.format(lc=lc)
-    spec = spec_template.format(
+    print spec_template.format(
         h=(h % 24), dom=1 + (h / 24), command=command, freq=freq)
-    print spec + ' ' + command
     h += duration
