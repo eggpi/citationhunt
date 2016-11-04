@@ -9,11 +9,12 @@
 	"instructions_details": "Klicke auf %s, um zu Wikipedia zu gehen und das Snippet zu reparieren oder %s, um ein anderes zu sehen. Besuche %s, wenn du Fragen hast. Viel Glück!",
 	"in_page": "In Seite %s:",
 	"button_wikilink": "Verstanden!",
-	"button_next": "Nein, nächstes!",
+	"button_next": "Nächstes!",
 	"lead_section_hint": "Dieser Text ist Teil eines Einleitungsabschnitts eines Artikels. Referenzierung ist eventuell optional. Siehe %s für weitere Informationen.",
 	"category_filter_placeholder": "Was bewegt dich?",
 	"github_link_title": "Hey! Meine Quelle ist auf GitHub!",
 	"beginners_hint": "Du weißt nicht, wie man Zitate hinzufügt? Siehe %s.",
 	"page_not_found": "Seite nicht gefunden!",
-	"page_not_found_text": "Die Seite, nach der du suchst, ist nicht mehr vorhanden. Vielleicht wurde dieses Zitat bereits gefunden. Gehe zurück zu %s für weitere Informationen!"
+	"page_not_found_text": "Die Seite, nach der du suchst, ist nicht mehr vorhanden. Vielleicht wurde dieses Zitat bereits gefunden. Gehe zurück zu %s für weitere Informationen!",
+	"footer": "Citation Hunt wurde von Freiwilligen erstellt, gehostet auf %s und übersetzt mithilfe von %s."
 }

@@ -9,11 +9,12 @@
 	"instructions_details": "点击%s前往维基百科并修复片段，或%s以查看另一个。如果您有问题请先查看%s。祝好运！",
 	"in_page": "在页面%s：",
 	"button_wikilink": "我有这个！",
-	"button_next": "不是，下一个！",
+	"button_next": "下一个！",
 	"lead_section_hint": "此段文字是条目的序言章节的一部分，所以引用它可能是可选的。请参见%s以获取更多信息。",
 	"category_filter_placeholder": "是什么让您勾选这个？",
 	"github_link_title": "嘿！我的源代码位于GitHub！",
 	"beginners_hint": "不了解如何添加引用？请参见%s。",
 	"page_not_found": "找不到页面！",
-	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已经被找到？返回%s以获取更多！"
+	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已经被找到？返回%s以获取更多！",
+	"footer": "Citation Hunt由志愿者制作，托管于%s，并由%s提供翻译。"
 }
