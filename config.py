@@ -215,9 +215,6 @@ lang_code_to_config = dict(
         category_name_regexps_blacklist = [
             '.*[0-9]+.*',
         ],
-
-        # Not fully translated
-        flagged_off = ['404'],
     ),
 
     ca = dict(
