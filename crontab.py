@@ -14,7 +14,7 @@ import config
 freq = 4  # how many days between runs, for each language
 duration = 4  # how many hours between runs within a single day
 
-spec_template = '0 {h} {dom}/{freq} * * {command}'
+spec_template = '0 {h} {dom}-31/{freq} * * {command}'
 command_template = ' '.join([
     '/usr/bin/jsub -mem 10g -N citationhunt_update_{lc} -once',
     '-l release=trusty',
