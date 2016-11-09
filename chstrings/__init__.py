@@ -10,6 +10,8 @@ def _link(url, title):
 def _preprocess_variables(config, strings):
     strings['in_page'] = \
         flask.Markup(strings['in_page']) % _link('%s', '%s')
+    
+    strings.setdefault('tooltitle', 'Citation Hunt')
 
     if config.lead_section_policy_link:
         strings['lead_section_hint'] = \
