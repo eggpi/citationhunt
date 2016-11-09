@@ -3,17 +3,17 @@
 <html lang={{ config.lang_code }} dir={{ lang_dir }}>
   <head>
     {% block head_extras %}{% endblock %}
-    <title>Citation Hunt</title>
+    <title>{{ config.strings.tooltitle }}</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/awesomplete.css">
     <script src="static/awesomplete/awesomplete.min.js" defer></script>
     <script src="static/category_filter.js" defer></script>
     <script src="static/lang_selector.js" defer></script>
     <meta name="robots" content="nofollow, noodp">
-    <meta name="description" content="Citation Hunt - {{ config.strings.introduction }}">
+    <meta name="description" content="{{ config.strings.tooltitle }} - {{ config.strings.introduction }}">
   </head>
   <body>
-    <h1>Citation Hunt</h1>
+    <h1>{{ config.strings.tooltitle }}</h1>
     {% if config.strings.instructions_goal %}
     <div id=instructions>
         <p>{{ config.strings.instructions_goal }}</p>
