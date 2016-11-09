@@ -3,9 +3,9 @@
 <html lang={{ config.lang_code }} dir={{ lang_dir }}>
   <head>
     {% block head_extras %}{% endblock %}
-    <title>Citation Hunt</title>
+    <title>{{ config.strings.tooltitle }}</title>
     <meta name="robots" content="nofollow, noodp, noindex">
-    <meta name="description" content="Citation Hunt - {{ config.strings.introduction }}">
+    <meta name="description" content="{{ config.strings.tooltitle }} - {{ config.strings.introduction }}">
     <!-- Since the 404 handler can be invoked for arbitrarily broken URLs, let's
         not bother requesting style.css using its relative path, but rather just
         inline the relevant CSS. -->
