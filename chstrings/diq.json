@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mirzali",
-			"Kumkumuk"
+			"Kumkumuk",
+			"1917 Ekim Devrimi"
 		]
 	},
 	"introduction": "Peşti bıde, seba meqaleyanê Wikipediya rê vateyan bıvêne.",
@@ -10,7 +11,7 @@
 	"instructions_details": "Wikipedia de lete vurnayışi kerdışi rê %s tiyay bıploğnê yana yewnay %s bıvinê. Qandé persan %s tiyay kontrol kerê. Sıhudê şıma zaf bo!",
 	"in_page": "Pele de %s:",
 	"button_wikilink": "Mı fehm kerd!",
-	"button_next": "Nê, yewo bin!",
+	"button_next": "Bahdoyên",
 	"lead_section_hint": "No nuşte yew parçeyê qısmê meqaleyê erzizıniyo, coke ra referansê dey beno ke waştış gore bıbo. Seba tayêna melamati rê %s bıvênên.",
 	"category_filter_placeholder": "Çı to fetelneno?",
 	"github_link_title": "Hey! Çımeyê mı GitHub dero!",

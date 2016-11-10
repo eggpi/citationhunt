@@ -9,11 +9,12 @@
 	"instructions_details": "Klickt op %2 fir op Wikipedia ze goen an den Extrait ze reparéieren, oder %s fir een Anere gewisen ze kréien. Kuckt %s wann Dir Froen hutt. Vill Gléck!",
 	"in_page": "Op der Säit %s:",
 	"button_wikilink": "Ech hunn dat verstan!",
-	"button_next": "Näischt, virun!",
+	"button_next": "Virun!",
 	"lead_section_hint": "Dësen Text ass en Deel vum Ufanksabschnitt vum Artikel, dofir ass d'Referenzéieren optional. Kuckt w.e.g. %s fir méi Informatiounen.",
 	"category_filter_placeholder": "Wat ass Ären Dada?",
 	"github_link_title": "Mäi Quellcode ass op GitHub!",
 	"beginners_hint": "Wann Dir net wësst wéi een Zitater dobäisetze kann, da kuckt %s",
 	"page_not_found": "Säit net fonnt!",
-	"page_not_found_text": "D'Säit no där Dir sicht gëtt et net méi - vläicht gouf dat Zitat scho fonnt? Gitt zréck op %s fir méi Informatiounen!"
+	"page_not_found_text": "D'Säit no där Dir sicht gëtt et net méi - vläicht gouf dat Zitat scho fonnt? Gitt zréck op %s fir méi Informatiounen!",
+	"footer": "Citation Hunt gëtt vu Fräiwëllege gemaach, vu(n) %s gehost an op %s iwwersat."
 }

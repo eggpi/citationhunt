@@ -9,11 +9,12 @@
 	"instructions_details": "Fai clic en %s pa dir a la Wikipedia y correxir el fragmentu, o %s pa ver otru. Mira %s si tienes entrugues. ¡Bona suerte!",
 	"in_page": "Na páxina %s:",
 	"button_wikilink": "¡Tengo esta!",
-	"button_next": "Non, ¡siguiente!",
+	"button_next": "¡Siguiente!",
 	"lead_section_hint": "Esti testu ye parte de la sección d'entrada del artículu, de manera que les referencies pueden ser opcionales. Consulta %s pa más información.",
 	"category_filter_placeholder": "¿Qué te motiva?",
 	"github_link_title": "¡Ey! ¡La mio fonte ta en GitHub!",
 	"beginners_hint": "¿Nun sabes cómo añadir cites? Mira %s.",
 	"page_not_found": "Nun s'alcontró la páxina",
-	"page_not_found_text": "La páxina que tas buscando yá nun esiste. ¿Seique alcontraríen yá esta cita? Vuelve a %s a por más."
+	"page_not_found_text": "La páxina que tas buscando yá nun esiste. ¿Seique alcontraríen yá esta cita? Vuelve a %s a por más.",
+	"footer": "Citation Hunt ta fechu por voluntarios, agospiáu en %s y traducíu en %s."
 }
