@@ -11,11 +11,12 @@
 	"instructions_details": "Cliquez sur %s pour aller sur Wikipédia et corriger le fragment de code ou %s pour en voir un autre. Regardez %s si vous avez des questions. Bonne chance !",
 	"in_page": "Sur la page %s :",
 	"button_wikilink": "C’est pour moi !",
-	"button_next": "Non, suivant !",
+	"button_next": "Suivant !",
 	"lead_section_hint": "Ce texte est extrait de l’en-tête de l’article : si bien qu’y ajouter des références est facultatif. Consultez %s pour plus d’informations.",
 	"category_filter_placeholder": "Et vous, c’est quoi votre dada ?",
 	"github_link_title": "Eh ! Mon code source est sur GitHub !",
 	"beginners_hint": "Vous ne savez pas comment ajouter des références ? Consultez %s.",
 	"page_not_found": "Page non trouvée",
-	"page_not_found_text": "La page que vous regardez n’existe plus — peut-être que cette citation a déjà été trouvée ? Revenez à %s pour en savoir plus !"
+	"page_not_found_text": "La page que vous regardez n’existe plus — peut-être que cette citation a déjà été trouvée ? Revenez à %s pour en savoir plus !",
+	"footer": "Citation Hunt est fait par des bénévoles, est hébergé sur %s et traduit via %s."
 }

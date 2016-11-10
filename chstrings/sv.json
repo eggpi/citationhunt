@@ -13,11 +13,12 @@
 	"instructions_details": "Klicka på %s för att gå till Wikipedia och fixa delen eller %s för att se en annan. Gå in på %s om du har frågor. Lycka till!",
 	"in_page": "På sidan %s:",
 	"button_wikilink": "Jag fixar den!",
-	"button_next": "Nej, nästa!",
+	"button_next": "Nästa!",
 	"lead_section_hint": "Denna text är en del av artikelns inledande avsnitt, så det är valfritt att lägga till referenser. Se %s för mer information.",
 	"category_filter_placeholder": "Vad intresserar dig?",
 	"github_link_title": "Hallå! Min källkod finns på GitHub!",
 	"beginners_hint": "Vet du inte hur man lägger till referenser? Se %s.",
 	"page_not_found": "Sidan kunde inte hittas!",
-	"page_not_found_text": "Sidan du letar efter finns inte längre — kanske denna referens har redan hittats? Gå tillbaka till %s för mer!"
+	"page_not_found_text": "Sidan du letar efter finns inte längre — kanske denna referens har redan hittats? Gå tillbaka till %s för mer!",
+	"footer": "Citation Hunt är skapat av volontärer, körs på %s och översätts via %s."
 }

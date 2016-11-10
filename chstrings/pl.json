@@ -12,7 +12,7 @@
 	"instructions_details": "Kliknij %s aby przejść do Wikipedii i poprawić ten fragment, lub %s aby zobaczyć inny. Zobacz %s jeżeli masz pytania. Powodzenia!",
 	"in_page": "W artykule %s:",
 	"button_wikilink": "Biorę się za to!",
-	"button_next": "Następny proszę!",
+	"button_next": "Następny!",
 	"lead_section_hint": "Ten fragment pochodzi z tzw. główki tekstu, gdzie wstawianie przypisów najczęściej nie jest wymagane. Więcej informacji znajdziesz tutaj: %s.",
 	"category_filter_placeholder": "Co Cię interesuje?",
 	"github_link_title": "Hej! Mój kod źródłowy jest na GitHubie!",

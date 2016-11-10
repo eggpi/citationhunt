@@ -4,7 +4,8 @@
 			"Önni",
 			"Vitorvicentevalente",
 			"Diniscoelho",
-			"Mansil"
+			"Mansil",
+			"Hamilton Abreu"
 		]
 	},
 	"introduction": "Ajude a encontrar referências para artigos da Wikipédia!",
@@ -12,7 +13,7 @@
 	"instructions_details": "Clique em %s para ir para a Wikipédia e corrigir o trecho, ou em %s para ver outro. Consulte %s se tiver questões. Boa sorte!",
 	"in_page": "Na página %s:",
 	"button_wikilink": "Eu consigo!",
-	"button_next": "Não, seguinte!",
+	"button_next": "Seguinte!",
 	"lead_section_hint": "Este texto faz parte da secção principal do artigo, pelo que referenciá-lo pode ser opcional. Por favor, consulte %s para mais informações.",
 	"category_filter_placeholder": "O que é que o incentiva?",
 	"github_link_title": "Olá! O meu código-fonte está no GitHub!",

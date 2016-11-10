@@ -3,7 +3,8 @@
 		"authors": [
 			"Elyashiv",
 			"Shdror",
-			"Guycn2"
+			"Guycn2",
+			"Or"
 		]
 	},
 	"introduction": "עזרו בחיפוש מקורות לערכי ויקיפדיה!",
@@ -11,7 +12,7 @@
 	"instructions_details": "לחצו על \"%s\" כדי לעבור לוויקיפדיה ולתקן את הקטע, או %s כדי לראות קטע אחר. בִדקו %s אם יש לכם שאלות. בהצלחה!",
 	"in_page": "בדף %s:",
 	"button_wikilink": "הבנתי!",
-	"button_next": "לא, הבא!",
+	"button_next": "הבא!",
 	"lead_section_hint": "טקסט זה הוא חלק מתמצית המאמר, כך שהתייחסות אליו היא אופציונאלית.\nנא לעיין ב-%s לקבלת מידע נוסף.",
 	"category_filter_placeholder": "מה מעניין עבורך?",
 	"github_link_title": "הי! קבצי המקור שלי נמצאים ב-GitHub!",
