@@ -475,6 +475,33 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
     ),
+    
+    fi = dict(
+        lang_name = 'Suomi',
+        lang_dir = 'ltr',
+        database = 'fiwiki_p',
+        wikipedia_domain = 'fi.wikipedia.org',
+
+        beginners_link = 'https://fi.wikipedia.org/wiki/Wikipedia:Merkitse_l%C3%A4hteet',
+        beginners_link_title = 'Wikipedia:Merkitse lähteet',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Lähteettömät_artikkelit',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Lähde',
+            'Lähde tarkemmin',
+            'Kenen mukaan',
+        ],
+        citation_needed_template_name = 'lähde',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+        hidden_category = 'Piilotetut_luokat',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+    ),
 )
 
 # In py3: types.SimpleNamespace
