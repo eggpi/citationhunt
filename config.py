@@ -475,6 +475,35 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
     ),
+    
+    fi = dict(
+        lang_name = 'Suomi',
+        lang_dir = 'ltr',
+        database = 'fiwiki_p',
+        wikipedia_domain = 'fi.wikipedia.org',
+
+        beginners_link = 'https://fi.wikipedia.org/wiki/Ohje:L%C3%A4hteen_lis%C3%A4%C3%A4minen_visuaalisella_muokkaimella/1',
+        beginners_link_title = 'Lähteen lisääminen visuaalisella muokkaimella',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Puutteelliset_lähdemerkinnät',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Lähde',
+            'Lähde?',
+            'Fact',
+            'Lähde tarkemmin',
+            'Kenen mukaan',
+        ],
+        citation_needed_template_name = 'lähde?',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+        hidden_category = 'Piilotetut_luokat',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+    ),
 )
 
 # In py3: types.SimpleNamespace
