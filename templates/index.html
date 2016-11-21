@@ -1,26 +1,26 @@
 <!DOCTYPE HTML>
 
-<html lang={{ config.lang_code }} dir={{ lang_dir }}>
+<html lang="{{ config.lang_code }}" dir="{{ lang_dir }}">
   <head>
     {% block head_extras %}{% endblock %}
-    <title>Citation Hunt</title>
+    <title>{{ config.strings.tooltitle }}</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/awesomplete.css">
     <script src="static/awesomplete/awesomplete.min.js" defer></script>
     <script src="static/category_filter.js" defer></script>
     <script src="static/lang_selector.js" defer></script>
     <meta name="robots" content="nofollow, noodp">
-    <meta name="description" content="Citation Hunt - {{ config.strings.introduction }}">
+    <meta name="description" content="{{ config.strings.tooltitle }} - {{ config.strings.introduction }}">
   </head>
   <body>
-    <h1>Citation Hunt</h1>
+    <h1>{{ config.strings.tooltitle }}</h1>
     {% if config.strings.instructions_goal %}
     <div id=instructions>
         <p>{{ config.strings.instructions_goal }}</p>
         <p>{{ config.strings.instructions_details }}</p>
     </div>
     {% else %}
-    <p id=intro>{{ config.strings.introduction }}</p>
+    <p id="intro">{{ config.strings.introduction }}</p>
     {% endif %}
     <p id="preamble"><span id="page-title-text">{{ config.strings.in_page % (article_url, article_title) }}</span></p>
     {# use a list for snippet_html to make sure we can access it outside the loop; see https://stackoverflow.com/questions/4870346 #}
@@ -39,7 +39,7 @@
     <div id="after-snippet">
       <div>
         <a href="{{ config.lang_code }}/redirect?to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
-          target=_blank><button class="button" id="button-wikilink">{{ config.strings.button_wikilink }}</button></a>
+          target="_blank"><button class="button" id="button-wikilink">{{ config.strings.button_wikilink }}</button></a>
         <button form="form-next" type="submit" id="button-next" class="button">{{ config.strings.button_next }}</button>
       </div>
       <div id="category-filter-wrapper">
@@ -64,7 +64,7 @@
     </div>
     <select id="lang-selector">
       {% for lang_code, lang_config in config.lang_code_to_config.items() | sort %}
-      <option data-lang-code={{ lang_code }} {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_config.lang_name }}</option>
+      <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_config.lang_name }}</option>
       {% endfor %}
     </select>
   </body>
