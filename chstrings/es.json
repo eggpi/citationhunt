@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"Zpizza"
 		]
 	},
+	"tooltitle": "Citation Hunt",
 	"introduction": "¡Ayuda a encontrar citas para artículos de Wikipedia!",
 	"instructions_goal": "El siguiente fragmento de Wikipedia no está respaldado por una fuente confiable. ¿Puedes encontrar una?",
 	"instructions_details": "Haz clic en %s para ir a la Wikipedia y corregir el fragmento, o %s para ver otro. Comprueba %s si tienes preguntas. ¡Buena suerte!",

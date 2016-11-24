@@ -6,6 +6,7 @@
 			"Trial"
 		]
 	},
+	"tooltitle": "Chasse à la citation",
 	"introduction": "Aidez à trouver des références pour des articles Wikipedia !",
 	"instructions_goal": "L'extrait de code Wikipédia ci-dessous n'est pas validé par une source fiable. Pouvez-vous en trouver une ?",
 	"instructions_details": "Cliquez sur %s pour aller sur Wikipédia et corriger le fragment de code ou %s pour en voir un autre. Regardez %s si vous avez des questions. Bonne chance !",

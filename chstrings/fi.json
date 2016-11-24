@@ -5,8 +5,9 @@
 			"Olimar"
 		]
 	},
+	"tooltitle": "Lähdejahti",
 	"introduction": "Auta löytämään lähdeviitteitä Wikipedia-artikkeleihin!",
-	"instructions_goal": "Seuraava ote Wikipediasta ei ole lähteistetty luotettavalla lähteellä. Voitko sinä lähteistää tämän?",
+	"instructions_goal": "Seuraavaa otetta Wikipediasta ei ole lähteistetty luotettavalla lähteellä. Voitko sinä lähteistää tämän?",
 	"instructions_details": "Klikkaa %s, niin pääset Wikipediaan korjaamaan puutteellisen lähdemerkinnän, tai %s nähdäksesi uuden otteen. Jos sinulla on kysyttävää, katso %s.",
 	"in_page": "Sivulla %s:",
 	"button_wikilink": "Korjaan tämän!",
@@ -17,5 +18,5 @@
 	"beginners_hint": "Etkö tiedä, kuinka lähdeviite lisätään? Katso %s.",
 	"page_not_found": "Sivua ei löytynyt!",
 	"page_not_found_text": "Etsimäsi sivu ei ole enää olemassa — ehkä lähdeviite on jo lisätty? Mene takaisin sivulle %s löytääksesi uusia puutteita!",
-	"footer": "Citation Hunt on vapaaehtoisten tekemä. Sitä isännöi %s ja se on käännetty %sssä."
+	"footer": "Citation Hunt on vapaaehtoisten tekemä. Sitä isännöi %s ja se on käännetty sivustolla %s."
 }

@@ -6,6 +6,7 @@
 			"Jon Harald Søby (WMNO)"
 		]
 	},
+	"tooltitle": "Referansejakt",
 	"introduction": "Hjelp til å finne referanser til Wikipedia-artikler!",
 	"instructions_goal": "Wikipedia-utdraget nedenfor støttes ikke av en pålitelig kilde. Kan du finne en?",
 	"instructions_details": "Klikk på %s for å gå til Wikipedia og fikse utdraget, eller på %s for å se et annet. Sjekk %s om du har noen spørsmål. Lykke til!",
