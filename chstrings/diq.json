@@ -6,6 +6,7 @@
 			"1917 Ekim Devrimi"
 		]
 	},
+	"tooltitle": "Citation Hunt",
 	"introduction": "Peşti bıde, seba meqaleyanê Wikipediya rê vateyan bıvêne.",
 	"instructions_goal": "Cêrdı letey Wikipedia çımey cı araşt nêbiyo,  şıma şenê yew çıme bıvinê?",
 	"instructions_details": "Wikipedia de lete vurnayışi kerdışi rê %s tiyay bıploğnê yana yewnay %s bıvinê. Qandé persan %s tiyay kontrol kerê. Sıhudê şıma zaf bo!",
@@ -17,5 +18,6 @@
 	"github_link_title": "Hey! Çımeyê mı GitHub dero!",
 	"beginners_hint": "Tı nêzanena ke çıtewri vateyi benê cı? Bıvêne %s.",
 	"page_not_found": "Pele nêvêniye!",
-	"page_not_found_text": "Pela ke tı cı geyrena, endi çıniya. Beno ke no vate rew ra vêniyayo. Seba zewbina melumat ra peyser şo %s!"
+	"page_not_found_text": "Pela ke tı cı geyrena, endi çıniya. Beno ke no vate rew ra vêniyayo. Seba zewbina melumat ra peyser şo %s!",
+	"footer": "Citation Hunt xo rızayan ra ho,  esten %s açarneyaye %s."
 }
