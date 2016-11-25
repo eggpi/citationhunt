@@ -479,7 +479,7 @@ lang_code_to_config = dict(
             '.*[0-9]+.*',
         ],
     ),
-    
+
     fi = dict(
         lang_name = 'Suomi',
         lang_dir = 'ltr',
