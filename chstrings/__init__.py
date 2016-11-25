@@ -3,14 +3,14 @@ import flask
 import os
 import json
 
-def _link(url, title):
+def _link(url, title, target = "_blank"):
     return flask.Markup(
-        '<a target="_blank" href="%s">%s</a>' % (url, title))
+        '<a target="%s" href="%s">%s</a>' % (target, url, title))
 
 def _preprocess_variables(config, strings):
     strings['in_page'] = \
         flask.Markup(strings['in_page']) % _link('%s', '%s')
-    
+
     strings.setdefault('tooltitle', 'Citation Hunt')
 
     if config.lead_section_policy_link:
@@ -30,7 +30,7 @@ def _preprocess_variables(config, strings):
     if '404' not in config.flagged_off:
         strings['page_not_found_text'] = \
             flask.Markup(strings['page_not_found_text']) % _link(
-                config.lang_code, 'Citation Hunt')
+                config.lang_code, 'Citation Hunt', "_self")
 
     strings.setdefault('instructions_goal', '')
     strings.setdefault('instructions_details', '')
