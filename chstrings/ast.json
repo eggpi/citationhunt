@@ -4,6 +4,7 @@
 			"Xuacu"
 		]
 	},
+	"tooltitle": "Citation Hunt",
 	"introduction": "Ayuda a alcontrar cites p'artículos de Wikipedia",
 	"instructions_goal": "El siguiente fragmentu de Wikipedia nun ta sofitáu por una fonte d'enfotu. ¿Puedes alcontrar una?",
 	"instructions_details": "Fai clic en %s pa dir a la Wikipedia y correxir el fragmentu, o %s pa ver otru. Mira %s si tienes entrugues. ¡Bona suerte!",
