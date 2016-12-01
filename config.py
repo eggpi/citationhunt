@@ -550,6 +550,33 @@ lang_code_to_config = dict(
         snippet_min_size = 200,
         snippet_max_size = 30000,
     ),
+
+    el = dict(
+        lang_name = 'Ελληνικά',
+        lang_dir = 'ltr',
+        database = 'elwiki_p',
+        wikipedia_domain = 'el.wikipedia.org',
+
+        beginners_link = 'https://el.wikipedia.org/wiki/Βοήθεια:Προσθήκη_παραπομπών_με_τον_VisualEditor',
+        beginners_link_title = 'iΠροσθήκη παραπομπών με τον VisualEditor',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Λήμματα_που_χρειάζονται_παραπομπές_με_επισήμανση',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+            'Εκκρεμεί παραπομπή',
+            'Πηγή',
+        ],
+        citation_needed_template_name = 'Εκκρεμεί παραπομπή',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TEMPLATES_BLACKLIST,
+        hidden_category = 'Κρυμμένες_κατηγορίες',
+        category_name_regexps_blacklist = [
+            '.*[0-9]+.*',
+        ],
+        snippet_max_size = 700,
+    ),
 )
 
 # In py3: types.SimpleNamespace
