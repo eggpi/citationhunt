@@ -558,7 +558,7 @@ lang_code_to_config = dict(
         wikipedia_domain = 'el.wikipedia.org',
 
         beginners_link = 'https://el.wikipedia.org/wiki/Βοήθεια:Προσθήκη_παραπομπών_με_τον_VisualEditor',
-        beginners_link_title = 'iΠροσθήκη παραπομπών με τον VisualEditor',
+        beginners_link_title = 'Προσθήκη παραπομπών με τον VisualEditor',
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
