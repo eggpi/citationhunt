@@ -287,8 +287,8 @@ lang_code_to_config = dict(
         database = 'eswiki_p',
         wikipedia_domain = 'es.wikipedia.org',
 
-        beginners_link = 'https://es.wikipedia.org/wiki/Wikipedia:Referencias',
-        beginners_link_title = 'Wikipedia:Referencias',
+        beginners_link = 'https://es.wikipedia.org/wiki/Ayuda:Introducci%C3%B3n_a_las_referencias_con_Editor_Visual/1',
+        beginners_link_title = 'Introducción a las referencias con Editor Visual',
         lead_section_policy_link = 'https://es.wikipedia.org/wiki/Wikipedia:Secci%C3%B3n_introductoria#Referencias',
         lead_section_policy_link_title = 'Wikipedia:Sección introductoria',
 
