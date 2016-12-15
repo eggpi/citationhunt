@@ -1,10 +1,9 @@
 #-*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-import os
-os.environ['CH_LANG'] = 'fr'
-from base import *
-snippet_parser = get_localized_snippet_parser()
+from core import *
+
+snippet_parser = create_snippet_parser(config.get_localized_config('fr'))
 
 import unittest
 import functools

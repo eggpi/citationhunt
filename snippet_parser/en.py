@@ -1,4 +1,4 @@
-from base import *
+from core import *
 
 def handle_flag(template):
     if template.has('name'):

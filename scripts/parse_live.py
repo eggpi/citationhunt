@@ -231,7 +231,7 @@ def work(pageids):
 def parse_live(pageids, timeout):
     chdb.reset_scratch_db()
     backdir = tempfile.mkdtemp(prefix = 'citationhunt_parse_live_')
-    parser = snippet_parser.get_localized_snippet_parser()
+    parser = snippet_parser.create_snippet_parser(cfg)
     pool = multiprocessing.Pool(
         initializer = initializer, initargs = (parser, backdir))
 

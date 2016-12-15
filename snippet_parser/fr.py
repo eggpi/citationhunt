@@ -1,7 +1,7 @@
 #-*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-from base import *
+from core import *
 
 def handle_drapeau(template):
     return template.get(1)
