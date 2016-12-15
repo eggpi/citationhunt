@@ -292,11 +292,12 @@ lang_code_to_config = dict(
         lead_section_policy_link = 'https://es.wikipedia.org/wiki/Wikipedia:Secci%C3%B3n_introductoria#Referencias',
         lead_section_policy_link_title = 'Wikipedia:Sección introductoria',
 
-        citation_needed_category = 'Wikipedia:Artículos_que_necesitan_referencias',
+        citation_needed_category = 'Wikipedia:Artículos_con_pasajes_que_requieren_referencias',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Añadir referencias',
             'Cita necesaria',
             'Citarequerida',
+            'cita requerida',
             'CN',
             'cr',
             'Citar',
