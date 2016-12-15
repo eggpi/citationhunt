@@ -1,2 +1,4 @@
-from base import REF_MARKER, CITATION_NEEDED_MARKER
-from base import get_localized_snippet_parser
+from core import (
+    REF_MARKER, CITATION_NEEDED_MARKER,
+    create_snippet_parser
+)

@@ -1,4 +1,4 @@
-from base import *
+from core import *
 
 class SnippetParser(SnippetParserBase):
     def strip_template(self, template, normalize, collapse):

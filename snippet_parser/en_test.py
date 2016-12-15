@@ -1,14 +1,12 @@
 #-*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-import os
-os.environ['CH_LANG'] = 'en'
-from base import *
-snippet_parser = get_localized_snippet_parser()
+from core import *
+
+snippet_parser = create_snippet_parser(config.get_localized_config('en'))
 
 import unittest
 import functools
-
 
 # ignore size limits to make these tests
 extract_snippets = functools.partial(

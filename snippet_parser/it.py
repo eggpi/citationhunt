@@ -1,7 +1,7 @@
 #-*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-from base import *
+from core import *
 
 def handle_bandiera(template):
     return template.get(1)
