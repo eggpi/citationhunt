@@ -3,71 +3,72 @@ from __future__ import unicode_literals
 
 from core import *
 
-def handle_drapeau(template):
-    return template.get(1)
-
-def handle_date(template):
-    year = None
-    if len(template.params) >= 3:
-        try:
-            year = int(sp(template.params[2]))
-        except ValueError:
-            pass
-    if isinstance(year, int):
-        # assume {{date|d|m|y|...}}
-        return ' '.join(sp(template.params[:3]))
-    elif template.params:
-        # assume {{date|d m y|...}}
-        return sp(template.params[0])
-    return ''
-
-def handle_s(template):
-    if not template.params:
-        return ''
-    ret = sp(template.params[0]).upper()
-    if len(template.params) == 2 and sp(template.params[1]) == 'er':
-        ret += 'ᵉʳ'
-    else:
-        ret += 'ᵉ'
-    if template.name != 'siècle':
-        ret += ' siècle'
-    if template.name.matches('-s'):
-        ret += ' av. J.-C'
-    return ret
-
-def handle_phonetique(template):
-    if not template.params:
-        return ''
-    return sp(template.params[0])
-
-def handle_citation(template):
-    if template.params:
-        return '« ' + sp(template.params[0]) + ' »'
-
-def handle_quand(template):
-    return ''.join(sp(p) for p in template.params if not p.showkey)
-
-def handle_lesquelles(template):
-    # quand and lesquelles are basically the same template
-    return handle_quand(template)
-
 class SnippetParser(SnippetParserBase):
     def strip_template(self, template, normalize, collapse):
         if template.name.matches('unité'):
-            return ' '.join(sp(template.params[:2]))
+            return ' '.join(self.sp(self, template.params[:2]))
         elif template.name.matches('date'):
-            return handle_date(template)
+            return self.handle_date(template)
         elif matches_any(template, ('s', '-s', 's-', 'siècle')):
-            return handle_s(template)
+            return self.handle_s(template)
         elif template.name.matches('phonétique'):
-            return handle_phonetique(template)
+            return self.handle_phonetique(template)
         elif template.name.matches('citation'):
-            return handle_citation(template)
+            return self.handle_citation(template)
         elif template.name.matches('quand'):
-            return handle_quand(template)
+            return self.handle_quand(template)
         elif template.name.matches('lesquelles'):
-            return handle_lesquelles(template)
+            return self.handle_lesquelles(template)
         elif template.name.matches('drapeau'):
-            return handle_drapeau(template)
+            return self.handle_drapeau(template)
         return super(SnippetParser, self).strip_template(
                 template, normalize, collapse)
+
+    def handle_drapeau(self, template):
+        return template.get(1)
+
+    def handle_date(self, template):
+        year = None
+        if len(self, template.params) >= 3:
+            try:
+                year = int(self.sp(self, self, template.params[2]))
+            except ValueError:
+                pass
+        if isinstance(year, int):
+            # assume {{date|d|m|y|...}}
+            return ' '.join(self.sp(self, self, template.params[:3]))
+        elif template.params:
+            # assume {{date|d m y|...}}
+            return self.sp(self, self, template.params[0])
+        return ''
+
+    def handle_s(self, template):
+        if not template.params:
+            return ''
+        ret = self.sp(template.params[0]).upper()
+        if (len(template.params) == 2 and
+            self.sp(template.params[1]) == 'er'):
+            ret += 'ᵉʳ'
+        else:
+            ret += 'ᵉ'
+        if template.name != 'siècle':
+            ret += ' siècle'
+        if template.name.matches('-s'):
+            ret += ' av. J.-C'
+        return ret
+
+    def handle_phonetique(self, template):
+        if not template.params:
+            return ''
+        return self.sp(template.params[0])
+
+    def handle_citation(self, template):
+        if template.params:
+            return '« ' + self.sp(template.params[0]) + ' »'
+
+    def handle_quand(self, template):
+        return ''.join(self.sp(p) for p in template.params if not p.showkey)
+
+    def handle_lesquelles(self, template):
+        # quand and lesquelles are basically the same template
+        return self.handle_quand(template)

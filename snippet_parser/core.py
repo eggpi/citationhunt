@@ -27,42 +27,53 @@ STRIP_REGEXP = re.compile( # strip spaces before the markers
 def matches_any(template, names):
     return any(template.name.matches(n) for n in names)
 
-# (s)anitize (p)arameters from a template
-def sp(params):
-    if isinstance(params, mwparserfromhell.nodes.extras.Parameter):
-        params = [params]
-    sanitized = [unicode(p.value.strip_code()) for p in params]
-    return sanitized[0] if len(sanitized) == 1 else sanitized
-
 class SnippetParserBase(object):
     '''A base class for snippet parsers in various languages.'''
 
     def __init__(self, cfg):
         self._cfg = cfg
 
-        # Monkey-patch mwparserfromhell to use our own methods.
-        monkey_patched_classes = {
+        self._strip_methods = {
             mwparserfromhell.nodes.Template: self.strip_template,
             mwparserfromhell.nodes.Tag: self.strip_tag,
             mwparserfromhell.nodes.Wikilink: self.strip_wikilink,
             mwparserfromhell.nodes.Heading: self.strip_heading,
         }
 
-        self._original_strip_methods = {}
-        for klass, method in monkey_patched_classes.items():
-            self._original_strip_methods[klass] = klass.__strip__
-            def unbind(self, *args):
-                return monkey_patched_classes[type(self)](self, *args)
-            klass.__strip__ = unbind
-
         # Used for fast searching in the tokenize function
         self._lowercase_cn_templates = [
-            t.lower() for t in self.cfg.citation_needed_templates]
+            t.lower() for t in self._cfg.citation_needed_templates]
+
+    def _strip_code(self, wikicode, normalize=True, collapse=True):
+        '''A copy of mwparserfromhell's strip_code, using our methods.'''
+
+        nodes = []
+        for node in wikicode.nodes:
+            if type(node) in self._strip_methods:
+                stripped = self._strip_methods[type(node)](
+                    node, normalize, collapse)
+            else:
+                stripped = node.__strip__(normalize, collapse)
+            if stripped:
+                nodes.append(unicode(stripped))
+
+        if collapse:
+            stripped = "".join(nodes).strip("\n")
+            while "\n\n\n" in stripped:
+                stripped = stripped.replace("\n\n\n", "\n\n")
+            return stripped
+        else:
+	    return "".join(nodes)
+
+    # (s)anitize (p)arameters from a template
+    def sp(self, params):
+        if isinstance(params, mwparserfromhell.nodes.extras.Parameter):
+            params = [params]
+        sanitized = [unicode(self._strip_code(p.value)) for p in params]
+        return sanitized[0] if len(sanitized) == 1 else sanitized
 
     def delegate_strip(self, obj, normalize, collapse):
-        strip = self._original_strip_methods[type(obj)]
-        strip = strip.__get__(obj, type(obj)) # bind the method
-        return strip(normalize, collapse)
+        return obj.__strip__(normalize, collapse)
 
     def strip_template(self, template, normalize, collapse):
         '''Override to control how templates are stripped in the wikicode.
@@ -75,7 +86,7 @@ class SnippetParserBase(object):
         if self.is_citation_needed(template):
             repl = [CITATION_NEEDED_MARKER]
             # Keep the text in the template, but not other parameters like date
-            repl = [sp(p) for p in template.params if not p.showkey] + repl
+            repl = [self.sp(p) for p in template.params if not p.showkey] + repl
             return ''.join(repl)
         return ''
 
@@ -176,7 +187,7 @@ class SnippetParserBase(object):
                 if any(blacklisted_tag_or_template):
                     continue
 
-                snippet = self._cleanup_snippet(wikicode.strip_code())
+                snippet = self._cleanup_snippet(self._strip_code(wikicode))
                 if '\n' in snippet:
                     # Lists cause more 'paragraphs' to be generated
                     paragraphs.extend(snippet.split('\n'))
@@ -250,7 +261,7 @@ class SnippetParserBase(object):
                 continue
 
             wikicode = mwparserfromhell.parse(
-                    mwparserfromhell.wikicode.Wikicode(nodes).strip_code())
+                self._strip_code(mwparserfromhell.wikicode.Wikicode(nodes)))
 
             # skip the templates that remained at the beginning and end
             empty_or_template = (lambda node:
