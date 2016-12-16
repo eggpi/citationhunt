@@ -52,10 +52,10 @@ class Database(object):
             return cursor.fetchone()
 
     @staticmethod
-    def query_random_snippet(lang_code, p):
+    def query_random_snippet(lang_code):
         cursor = get_db(lang_code).cursor()
         cursor.execute(
-            'SELECT id FROM snippets WHERE RAND() < %s LIMIT 1;', (p,))
+            'SELECT id FROM snippets WHERE RAND() < 1e-4 LIMIT 1;')
         return cursor.fetchone()
 
     @staticmethod
@@ -94,10 +94,9 @@ def select_random_id(lang_code, cat = CATEGORY_ALL):
         # Try to pick one id at random. For small datasets, the probability
         # of getting an empty set in a query is non-negligible, so retry a
         # bunch of times as needed.
-        p = '1e-4' if not flask.current_app.debug else '1e-2'
         with log_time('select without category'):
             for retry in range(1000):
-                ret = Database.query_random_snippet(lang_code, p)
+                ret = Database.query_random_snippet(lang_code)
                 if ret: break
 
     assert ret and len(ret) == 1
