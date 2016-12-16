@@ -158,13 +158,13 @@ class State(object):
     pass
 self = State() # Per-process state
 
-def initializer(parser, backdir):
-    self.parser = parser
+def initializer(backdir):
     self.backdir = backdir
     self.wiki = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     self.wiki.setUserAgent(
         'citationhunt (https://tools.wmflabs.org/citationhunt)')
     self.opener = WikitoolsRequestsAdapter()
+    self.parser = snippet_parser.create_snippet_parser(self.wiki, cfg)
     self.chdb = chdb.init_scratch_db()
     self.exception_count = 0
 
@@ -231,9 +231,8 @@ def work(pageids):
 def parse_live(pageids, timeout):
     chdb.reset_scratch_db()
     backdir = tempfile.mkdtemp(prefix = 'citationhunt_parse_live_')
-    parser = snippet_parser.create_snippet_parser(cfg)
     pool = multiprocessing.Pool(
-        initializer = initializer, initargs = (parser, backdir))
+        initializer = initializer, initargs = (backdir,))
 
     # Make sure we query the API 32 pageids at a time
     tasks = []

@@ -13,6 +13,7 @@ import config
 from utils import *
 
 import mwparserfromhell
+import wikitools
 
 import re
 import importlib
@@ -30,8 +31,9 @@ def matches_any(template, names):
 class SnippetParserBase(object):
     '''A base class for snippet parsers in various languages.'''
 
-    def __init__(self, cfg):
+    def __init__(self, wikipedia, cfg):
         self._cfg = cfg
+        self._wikipedia = wikipedia
 
         self._strip_methods = {
             mwparserfromhell.nodes.Template: self.strip_template,
@@ -40,9 +42,39 @@ class SnippetParserBase(object):
             mwparserfromhell.nodes.Heading: self.strip_heading,
         }
 
+        self._citation_needed_templates = self._resolve_redirects_to_templates(
+            self._cfg.citation_needed_templates)
+        assert len(self._citation_needed_templates) > 0
+
         # Used for fast searching in the tokenize function
         self._lowercase_cn_templates = [
-            t.lower() for t in self._cfg.citation_needed_templates]
+            t.lower() for t in self._citation_needed_templates]
+
+    def _resolve_redirects_to_templates(self, templates):
+        templates = set(templates)
+        params = {
+            'action': 'query',
+            'format': 'json',
+            'prop': 'redirects',
+            'titles': '|'.join(
+                # The API resolves Template: to the relevant per-language prefix
+                'Template:' + tplname
+                for tplname in self._cfg.citation_needed_templates
+            ),
+            'rnamespace': 10,
+        }
+        request = wikitools.APIRequest(self._wikipedia, params)
+        # We could fall back to just using self._cfg.citation_needed_templates
+        # if the API request fails, but for now let's just crash
+        for result in request.queryGen():
+            for page in result['query']['pages'].values():
+                for redirect in page.get('redirects', []):
+                    # TODO We technically only need to keep the templates that
+                    # mwparserfromhell will consider different from one another
+                    # (e.g., no need to have both Cn and CN)
+                    tplname = redirect['title'].split(':', 1)[1]
+                    templates.add(tplname)
+        return templates
 
     def _strip_code(self, wikicode, normalize=True, collapse=True):
         '''A copy of mwparserfromhell's strip_code, using our methods.'''
@@ -138,7 +170,7 @@ class SnippetParserBase(object):
 
         return any(
             template.name.matches(tpl)
-            for tpl in self._cfg.citation_needed_templates)
+            for tpl in self._citation_needed_templates)
 
     def extract_snippets(self, wikitext, minlen, maxlen):
         """Extracts snippets lacking citations.
@@ -325,7 +357,7 @@ class SnippetParserBase(object):
 
 _log = Logger()
 
-def create_snippet_parser(cfg):
+def create_snippet_parser(wikipedia, cfg):
     if os.path.dirname(__file__) not in sys.path:
         sys.path.append(os.path.dirname(__file__))
     try:
@@ -333,7 +365,7 @@ def create_snippet_parser(cfg):
     except ImportError:
         _log.info('No snippet_parser for lang_code %s, using stub!' % cfg.lang_code)
         localized_module = importlib.import_module('stub')
-    return localized_module.SnippetParser(cfg)
+    return localized_module.SnippetParser(wikipedia, cfg)
 
 if __name__ == '__main__':
     import wikitools
@@ -342,7 +374,6 @@ if __name__ == '__main__':
     import sys
 
     cfg = config.get_localized_config()
-    parser = create_snippet_parser(cfg)
 
     WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
     WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
@@ -350,6 +381,8 @@ if __name__ == '__main__':
 
     title = sys.argv[1]
     wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
+    parser = create_snippet_parser(wikipedia, cfg)
+
     page = wikitools.Page(wikipedia, title)
     wikitext = page.getWikiText()
     pprint.pprint(parser.extract_snippets(wikitext,

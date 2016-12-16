@@ -40,8 +40,6 @@ EN_WIKILINK_PREFIX_BLACKLIST = [
 
 EN_CITATION_NEEDED_TEMPLATES = [
     'Citation needed',
-    'cn',
-    'fact',
 ]
 
 EN_TAGS_BLACKLIST = [
@@ -81,10 +79,11 @@ lang_code_to_config = dict(
         # instead of spaces.
         citation_needed_category = 'All_articles_with_unsourced_statements',
 
-        # The names of templates that mark statements lacking
-        # citations. The first letter is case-insensitive. When
-        # adding a new language, this may help:
-        # https://www.wikidata.org/wiki/Q5312535
+        # The names of templates that mark statements lacking citations. The
+        # first letter is case-insensitive. When adding a new language, this
+        # may help: https://www.wikidata.org/wiki/Q5312535
+        # Other templates that redirect to any of these templates are also
+        # processed automatically, so there's no need to list them here.
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES,
 
         # For consistency, we don't actually display each of the templates
@@ -140,10 +139,6 @@ lang_code_to_config = dict(
             'Inédit',
             'Référence nécessaire',
             'Référence souhaitée',
-            'ref nec',
-            'ref sou',
-            'refnec',
-            'refsou',
         ],
         citation_needed_template_name = 'réf. nécessaire',
 
@@ -295,20 +290,7 @@ lang_code_to_config = dict(
         citation_needed_category = 'Wikipedia:Artículos_con_pasajes_que_requieren_referencias',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Añadir referencias',
-            'Cita necesaria',
-            'Citarequerida',
-            'cita requerida',
-            'CN',
-            'cr',
-            'Citar',
-            'Demostrar',
-            'Falta cita',
-            'Hechos',
-            'Noref',
-            'Pruébalo',
-            'Sinref',
-            'Sinreferencias',
-            'Sin referencias',
+            'Cita requerida'
         ],
         citation_needed_template_name = 'cita requerida',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
@@ -341,10 +323,7 @@ lang_code_to_config = dict(
             'তথ্যসূত্র যাচাই',
             'সত্যতা',
             'Check',
-            'Vn',
-            'Vs',
             'Verification needed',
-            'Verifysource',
             'Verify source',
         ],
         citation_needed_template_name = 'তথ্যসূত্র প্রয়োজন|',
@@ -403,7 +382,6 @@ lang_code_to_config = dict(
             'kb',
             'Källa behövs',
             'Referens behövs',
-            'Fact',
         ],
         citation_needed_template_name = 'källa behövs',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
@@ -429,7 +407,6 @@ lang_code_to_config = dict(
         citation_needed_category = 'Artikler_som_trenger_referanser',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Trenger referanse',
-            'Tr',
             'Referanse',
         ],
         citation_needed_template_name = 'trenger referanse',
@@ -456,20 +433,6 @@ lang_code_to_config = dict(
         citation_needed_category = 'Artiklar_som_manglar_kjelder',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Treng kjelde',
-            'Manglar kjelde',
-            'Mangler kjelde',
-            'Kjelde manglar',
-            'Referanse manglar',
-            'Manglar referanse',
-            'Kjelda manglar',
-            'Treng referanse',
-            'Tarv kjelde',
-            'Kjelde tarvst',
-            'Kjelda tarvst',
-            'Referanse tarvst',
-            'Referanse trengst',
-            'Kjelde trengst',
-            'Kjelde manglar',
         ],
         citation_needed_template_name = 'treng kjelde',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
@@ -495,8 +458,6 @@ lang_code_to_config = dict(
         citation_needed_category = 'Puutteelliset_lähdemerkinnät',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Lähde',
-            'Lähde?',
-            'Fact',
             'Lähde tarkemmin',
             'Kenen mukaan',
         ],
@@ -525,11 +486,7 @@ lang_code_to_config = dict(
         # some of these keys don't apply
         citation_needed_category = 'Wikipedia:Belege_fehlen',
         citation_needed_templates = [
-            'Belege',
             'Belege fehlen',
-            'Quelle',
-            'Quellen',
-            'Quellen fehlen',
         ],
         citation_needed_template_name = '',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
@@ -566,7 +523,6 @@ lang_code_to_config = dict(
         citation_needed_category = 'Λήμματα_που_χρειάζονται_παραπομπές_με_επισήμανση',
         citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
             'Εκκρεμεί παραπομπή',
-            'Πηγή',
         ],
         citation_needed_template_name = 'Εκκρεμεί παραπομπή',
         wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
