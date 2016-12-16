@@ -88,55 +88,6 @@ def query_pageids(wiki, opener, pageids):
             text = d(text)
             yield (id, title, text)
 
-# FIXME: This is here because it reuses the Wikipedia API session, but maybe
-# it belongs in the snippet_parser?
-def to_html(wiki, opener, text):
-    params = {
-        'action': 'parse',
-        'format': 'json',
-        'text': text
-    }
-    request = wikitools.APIRequest(wiki, params)
-    request.opener = opener
-    # FIXME Sometimes the request fails because the text is too long;
-    # in that case, the API response is HTML, not JSON, which raises
-    # an exception when wikitools tries to parse it.
-    #
-    # Normally this would cause wikitools to happily retry forever
-    # (https://github.com/alexz-enwp/wikitools/blob/b71481796c350/wikitools/api.py#L304),
-    # which is a bug, but due to our use of a custom opener, wikitools'
-    # handling of the exception raises its own exception: the object returned
-    # by our opener doesnt support seek().
-    #
-    # We use that interesting coincidence to catch the exception and move
-    # on, bypassing wikitools' faulty retry, but this is obviously a terrible
-    # "solution".
-    try:
-        ret = request.query()['parse']['text']['*']
-    except:
-        return ''
-
-    # Links are always relative so they end up broken in the UI. We could make
-    # them absolute, but let's just remove them (by replacing with <span>) since
-    # we don't actually need them.
-    import xml.etree.cElementTree as ET
-    ret = '<div>' + ret + '</div>'
-    tree = ET.fromstring(e(ret))
-    for parent_of_a in tree.findall('.//a/..'):
-        for i, tag in enumerate(parent_of_a):
-            if tag.tag == 'a' and tag.text:
-                repl = ET.Element('span')
-                repl.extend(list(tag))
-                if tag.text:
-                    repl.text = tag.text
-                if tag.tail:
-                    repl.tail = tag.tail + ' '
-                else:
-                    repl.tail = ' '
-                parent_of_a.insert(i+1, repl)
-                parent_of_a.remove(tag)
-    return d(ET.tostring(tree))
-
 # An adapter that lets us use requests for wikitools until it doesn't grow
 # native support. This allows us to have persistent connections.
 class WikitoolsRequestsAdapter(object):
@@ -199,18 +150,17 @@ def work(pageids):
         url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
 
         snippets_rows = []
+        # FIXME Invoke a single method of the snippet parser and let it figure
+        # out what to extract, per template
         if cfg.html_snippet:
-            snippets = self.parser.extract_sections(wikitext)
+            snippets = self.parser.extract_sections(
+                wikitext, cfg.snippet_min_size, cfg.snippet_max_size)
         else:
             snippets = self.parser.extract_snippets(
                 wikitext, cfg.snippet_min_size, cfg.snippet_max_size)
         for sec, snips in snippets:
             sec = section_name_to_anchor(sec)
             for sni in snips:
-                if cfg.html_snippet:
-                    sni = to_html(self.wiki, self.opener, sni)
-                    if not (cfg.snippet_min_size < len(sni) < cfg.snippet_max_size):
-                        continue
                 id = mkid(title + sni)
                 row = (id, sni, sec, pageid)
                 snippets_rows.append(row)

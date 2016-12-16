@@ -18,6 +18,7 @@ import wikitools
 import re
 import importlib
 import itertools
+import xml.etree.cElementTree as ET
 
 REF_MARKER = 'ec5b89dc49c433a9521a139'
 CITATION_NEEDED_MARKER = '7b94863f3091b449e6ab04d4'
@@ -219,7 +220,7 @@ class SnippetParserBase(object):
                 if any(blacklisted_tag_or_template):
                     continue
 
-                snippet = self._cleanup_snippet(self._strip_code(wikicode))
+                snippet = self._cleanup_snippet_text(self._strip_code(wikicode))
                 if '\n' in snippet:
                     # Lists cause more 'paragraphs' to be generated
                     paragraphs.extend(snippet.split('\n'))
@@ -229,18 +230,23 @@ class SnippetParserBase(object):
                     # marker may have been inside wiki markup
                     continue
 
-                usable_len = (
-                    len(snippet) -
-                    (len(CITATION_NEEDED_MARKER) *
-                        snippet.count(CITATION_NEEDED_MARKER)) -
-                    (len(REF_MARKER) *
-                        snippet.count(REF_MARKER)))
-                if usable_len > maxlen or usable_len < minlen:
-                    continue
+                if not self._cfg.html_snippet:
+                    usable_len = (
+                        len(snippet) -
+                        (len(CITATION_NEEDED_MARKER) *
+                            snippet.count(CITATION_NEEDED_MARKER)) -
+                        (len(REF_MARKER) *
+                            snippet.count(REF_MARKER)))
+                    if usable_len > maxlen or usable_len < minlen:
+                        continue
+                else:
+                    snippet = self._to_html(snippet)
+                    if not (minlen < len(snippet) < maxlen):
+                        continue
                 secsnippets.append(snippet)
         return snippets
 
-    def extract_sections(self, wikitext, minlen=None, maxlen=None):
+    def extract_sections(self, wikitext, minlen, maxlen):
         """Extracts sections/subsections lacking citations.
 
         This function looks for sections of the article that are marked with any of
@@ -303,24 +309,46 @@ class SnippetParserBase(object):
             nodes = list(itertools.dropwhile(empty_or_template, wikicode.nodes))
             wikicode.nodes = reversed(list(
                 itertools.dropwhile(empty_or_template, nodes[::-1])))
-            snippet = self._cleanup_snippet(unicode(wikicode))
+            snippet = self._cleanup_snippet_text(unicode(wikicode))
 
             # Chop off some paragraphs at the end until we're at a reasonable
             # size, since we don't actually display the whole thing in the UI
+            # We'll often end up with just a section header here, so hopefully
+            # it will be smaller than the minimum size when converted to HTML.
+            # FIXME: Maybe this can be detected?
             snippet = '\n\n'.join(p.strip(' ') for p in snippet.split('\n\n')[:10])
-            if snippet:
-                # We'll often end up with just a section header here, so hopefully
-                # it will be smaller than the minimum size when converted to HTML.
-                # FIXME: Maybe this can be detected?
+            snippet = self._to_html(snippet)
+            if len(snippet) > minlen and len(snippet) < maxlen:
                 secsnippets.append(snippet)
         return snippets
 
-    def _cleanup_snippet(self, snippet):
+    def _cleanup_snippet_text(self, snippet):
         snippet = re.sub(STRIP_REGEXP, r'\1', snippet).strip()
         snippet = re.sub(',\s+\)', ')', snippet)
         snippet = re.sub('\(\)\s', '', snippet)
         snippet = re.sub('\[\]\s', '', snippet)
         return snippet
+
+    def _cleanup_snippet_html(self, html):
+        # Links are always relative so they end up broken in the UI. We could make
+        # them absolute, but let's just remove them (by replacing with <span>) since
+        # we don't actually need them.
+        html = '<div>' + html + '</div>'
+        tree = ET.fromstring(e(html))
+        for parent_of_a in tree.findall('.//a/..'):
+            for i, tag in enumerate(parent_of_a):
+                if tag.tag == 'a' and tag.text:
+                    repl = ET.Element('span')
+                    repl.extend(list(tag))
+                    if tag.text:
+                        repl.text = tag.text
+                    if tag.tail:
+                        repl.tail = tag.tail + ' '
+                    else:
+                        repl.tail = ' '
+                    parent_of_a.insert(i+1, repl)
+                    parent_of_a.remove(tag)
+        return d(ET.tostring(tree))
 
     def _fast_parse(self, wikitext):
         tokenizer = mwparserfromhell.parser.CTokenizer()
@@ -354,6 +382,32 @@ class SnippetParserBase(object):
             return mwparserfromhell.parser.Builder().build(reduced_tokens)
         except mwparserfromhell.parser.ParserError:
             return None
+
+    def _to_html(self, snippet):
+        params = {
+            'action': 'parse',
+            'format': 'json',
+            'text': text
+        }
+        request = wikitools.APIRequest(self.wikipedia, params)
+        # FIXME Sometimes the request fails because the text is too long;
+        # in that case, the API response is HTML, not JSON, which raises
+        # an exception when wikitools tries to parse it.
+        #
+        # Normally this would cause wikitools to happily retry forever
+        # (https://github.com/alexz-enwp/wikitools/blob/b71481796c350/wikitools/api.py#L304),
+        # which is a bug, but due to our use of a custom opener, wikitools'
+        # handling of the exception raises its own exception: the object returned
+        # by our opener doesnt support seek().
+        #
+        # We use that interesting coincidence to catch the exception and move
+        # on, bypassing wikitools' faulty retry, but this is obviously a terrible
+        # "solution".
+        try:
+            html = request.query()['parse']['text']['*']
+        except:
+            return ''
+        return self._cleanup_snippet_html(html)
 
 _log = Logger()
 
