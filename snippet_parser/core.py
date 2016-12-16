@@ -53,6 +53,9 @@ class SnippetParserBase(object):
 
     def _resolve_redirects_to_templates(self, templates):
         templates = set(templates)
+        if self._wikipedia is None:
+            # Testing
+            return templates
         params = {
             'action': 'query',
             'format': 'json',
@@ -240,6 +243,7 @@ class SnippetParserBase(object):
                     if usable_len > maxlen or usable_len < minlen:
                         continue
                 else:
+                    # TODO Maybe batch all snippets and do a single API request?
                     snippet = self._to_html(snippet)
                     if not (minlen < len(snippet) < maxlen):
                         continue
@@ -384,12 +388,16 @@ class SnippetParserBase(object):
             return None
 
     def _to_html(self, snippet):
+        if self._wikipedia is None:
+            # Testing
+            return snippet
+
         params = {
             'action': 'parse',
             'format': 'json',
-            'text': text
+            'text': snippet,
         }
-        request = wikitools.APIRequest(self.wikipedia, params)
+        request = wikitools.APIRequest(self._wikipedia, params)
         # FIXME Sometimes the request fails because the text is too long;
         # in that case, the API response is HTML, not JSON, which raises
         # an exception when wikitools tries to parse it.
