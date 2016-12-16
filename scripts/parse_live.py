@@ -66,7 +66,7 @@ def section_name_to_anchor(section):
     section = section.replace('%', '.')
     return section
 
-def query_pageids(wiki, opener, pageids):
+def query_pageids(wiki, pageids):
     params = {
         'action': 'query',
         'pageids': '|'.join(map(str, pageids)),
@@ -75,7 +75,6 @@ def query_pageids(wiki, opener, pageids):
     }
 
     request = wikitools.APIRequest(wiki, params)
-    request.opener = opener
     for response in request.queryGen():
         for id, page in response['query']['pages'].items():
             if 'title' not in page:
@@ -111,10 +110,20 @@ self = State() # Per-process state
 
 def initializer(backdir):
     self.backdir = backdir
+
+    # Monkey-patch wikitools to always use our existing session
+    opener = WikitoolsRequestsAdapter()
+    APIRequest = wikitools.api.APIRequest
+    class RequestsAPIRequest(wikitools.api.APIRequest):
+        def __init__(self, *args, **kwds):
+            APIRequest.__init__(self, *args, **kwds)
+            self.opener = opener
+    wikitools.APIRequest = RequestsAPIRequest
+    wikitools.api.APIRequest = RequestsAPIRequest
+
     self.wiki = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     self.wiki.setUserAgent(
         'citationhunt (https://tools.wmflabs.org/citationhunt)')
-    self.opener = WikitoolsRequestsAdapter()
     self.parser = snippet_parser.create_snippet_parser(self.wiki, cfg)
     self.chdb = chdb.init_scratch_db()
     self.exception_count = 0
@@ -145,7 +154,7 @@ def with_max_exceptions(fn):
 @with_max_exceptions
 def work(pageids):
     rows = []
-    results = query_pageids(self.wiki, self.opener, pageids)
+    results = query_pageids(self.wiki, pageids)
     for pageid, title, wikitext in results:
         url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
 
