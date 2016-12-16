@@ -2,7 +2,9 @@
 from __future__ import unicode_literals
 
 from core import *
-snippet_parser = create_snippet_parser(config.get_localized_config('de'))
+cfg = config.get_localized_config('de')
+cfg.citation_needed_templates.append('Quellen')
+snippet_parser = create_snippet_parser(None, config.get_localized_config('de'))
 
 import unittest
 import functools
