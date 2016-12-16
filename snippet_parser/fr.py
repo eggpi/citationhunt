@@ -6,7 +6,7 @@ from core import *
 class SnippetParser(SnippetParserBase):
     def strip_template(self, template, normalize, collapse):
         if template.name.matches('unité'):
-            return ' '.join(self.sp(self, template.params[:2]))
+            return ' '.join(self.sp(template.params[:2]))
         elif template.name.matches('date'):
             return self.handle_date(template)
         elif matches_any(template, ('s', '-s', 's-', 'siècle')):
@@ -29,17 +29,17 @@ class SnippetParser(SnippetParserBase):
 
     def handle_date(self, template):
         year = None
-        if len(self, template.params) >= 3:
+        if len(template.params) >= 3:
             try:
-                year = int(self.sp(self, self, template.params[2]))
+                year = int(self.sp(template.params[2]))
             except ValueError:
                 pass
         if isinstance(year, int):
             # assume {{date|d|m|y|...}}
-            return ' '.join(self.sp(self, self, template.params[:3]))
+            return ' '.join(self.sp(template.params[:3]))
         elif template.params:
             # assume {{date|d m y|...}}
-            return self.sp(self, self, template.params[0])
+            return self.sp(template.params[0])
         return ''
 
     def handle_s(self, template):
