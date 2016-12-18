@@ -41,6 +41,22 @@ div.awesomplete > ul > li {
     cursor: default;
 }
 
+div.awesomplete > ul > li > div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background: transparent;
+    display: table-cell;
+}
+
+div.awesomplete > ul > li > div.label {
+    width: 100%;
+}
+
+div.awesomplete > ul > li > div.npages {
+    color: #5f5f54;
+}
+
 div.awesomplete > input {
     width: 440px;
     padding: 4px;

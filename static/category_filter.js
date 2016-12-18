@@ -1,3 +1,6 @@
+// global for debugging
+var awc = null;
+
 function getJSON(url, success, error) {
   var xhr = new XMLHttpRequest();
   xhr.open("get", url, true);
@@ -16,6 +19,7 @@ function initCategoryFilter() {
   var cin = document.getElementById("category-input");
   var chi = document.getElementById("hidden-category-input");
   var ihi = document.getElementById("hidden-id-input");
+  var strings = document.getElementById("js-strings").dataset;
 
   function search() {
     var lang_code = document.documentElement.lang;
@@ -29,13 +33,28 @@ function initCategoryFilter() {
     });
   }
 
-  function item(originalItem, text, input) {
+  function item(originalItem, suggestion, input) {
+    var li;
     if (input) {
-      return originalItem(text, input);
+      li = originalItem(suggestion.label.title, input);
+    } else {
+      li = document.createElement("li");
+      li.innerHTML = suggestion.label.title;
     }
 
-    var li = document.createElement("li");
-    li.innerHTML = text;
+    var ldiv = document.createElement("div");
+    ldiv.innerHTML = li.innerHTML;
+    ldiv.classList.add('label');
+
+    var pdiv = document.createElement("div");
+    var npages = suggestion.label.npages;
+    var fmt = strings["articleCount" + (npages == 1 ? "Singular" : "Plural")]
+    pdiv.innerText = (fmt || "").replace("%s", suggestion.label.npages);
+    pdiv.classList.add('npages');
+
+    li.innerHTML = "";
+    li.appendChild(ldiv);
+    li.appendChild(pdiv);
     return li;
   }
 
@@ -48,18 +67,27 @@ function initCategoryFilter() {
   // track of the category id, so we need to override Awesomplete's `data` and
   // `replace` functions.
   function data(item, input) {
-    return {label: item.title, value: item.id};
+    return {label: {title: item.title, npages: item.npages}, value: item.id};
   }
 
-  function replace(text) {
-    this.input.value = text.label;
+  function filter(originalFilter, suggestion, value) {
+    return originalFilter(suggestion.label.title, value);
   }
 
-  var awc = new Awesomplete(cin);
+  function replace(suggestion) {
+    this.input.value = suggestion.label.title;
+  }
+
+  function sort(sugg1, sugg2) {
+    return sugg1.label.title.localeCompare(sugg2.label.title);
+  }
+
+  awc = new Awesomplete(cin);
   awc.minChars = 0; // open dropdown on focus
   awc.replace = replace;
   awc.data = data;
-  awc.sort = undefined; // sort alphabetially regardless of item length
+  awc.filter = filter.bind(null, awc.filter);
+  awc.sort = sort;
   awc.item = item.bind(null, awc.item); // handle empty cin
 
   cin.addEventListener("click", function() {
