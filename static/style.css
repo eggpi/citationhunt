@@ -176,6 +176,9 @@ html[dir="rtl"] #lang-selector {
     margin: 0 20px;
 }
 
+/* Use text-align: center as a hack to center the contents of
+ * #after-snippet, but don't propagate that to descendants.
+ */
 #after-snippet {
     margin-top: 35px;
     text-align: center;
@@ -186,7 +189,6 @@ html[dir="rtl"] #lang-selector {
 }
 
 #category-filter-wrapper {
-    text-align: left;
     display: inline-block;
 }
 
