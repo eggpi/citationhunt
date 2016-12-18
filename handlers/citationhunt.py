@@ -71,13 +71,22 @@ class Database(object):
     @staticmethod
     def search_category(lang_code, needle, max_results):
         cursor = get_db(lang_code).cursor()
-
         needle = '%' + needle + '%'
         with log_time('search category'):
             cursor.execute('''
                 SELECT id, title FROM categories WHERE title LIKE %s
                 LIMIT %s''', (needle, max_results))
-        return [{'id': row[0], 'title': row[1]} for row in cursor]
+        search_results = {
+            row[0]: {'id': row[0], 'title': row[1]} for row in cursor}
+        with log_time('search category/number of pages'):
+            cursor.execute('''
+                SELECT category_id, COUNT(article_id)
+                FROM articles_categories WHERE category_id IN
+                %s GROUP BY category_id''',
+                (tuple(search_results),))
+        for category, count in cursor:
+            search_results[category]['npages'] = count
+        return search_results.values()
 
 def get_category_by_id(lang_code, cat_id):
     if cat_id == CATEGORY_ALL.id:
@@ -173,7 +182,8 @@ def citation_hunt(lang_code):
             ref_html = SUPERSCRIPT_MARKUP,
             config = cfg,
             lang_dir = lang_dir,
-            category_filter_autofocus = autofocus)
+            category_filter_autofocus = autofocus,
+            js_strings = cfg.strings['js'])
 
     id = select_random_id(lang_code, cat)
     return flask.redirect(

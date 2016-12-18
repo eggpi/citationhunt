@@ -67,5 +67,10 @@
       <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_config.lang_name }}</option>
       {% endfor %}
     </select>
+    <div id="js-strings"
+      {% for k, v in js_strings.items() | sort %}
+        data-{{ k }}="{{ v }}"
+      {% endfor %}
+    </div>
   </body>
 </html>

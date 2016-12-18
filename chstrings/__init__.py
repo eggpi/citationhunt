@@ -50,7 +50,17 @@ def _preprocess_variables(config, strings):
             _link('%s', 'translatewiki.net'))
     return strings
 
+def _partition_js_strings(strings):
+    # Separate js- strings into its own sub-key. These are meant for
+    # client-side use.
+    strings['js'] = {}
+    for k, v in strings.items():
+        if k.startswith('js-'):
+            strings['js'][k[3:]] = strings.pop(k)
+
 def get_localized_strings(config, lang_code):
     strings_dir = os.path.dirname(__file__)
     strings = json.load(file(os.path.join(strings_dir, lang_code + '.json')))
-    return _preprocess_variables(config, strings)
+    strings = _preprocess_variables(config, strings)
+    _partition_js_strings(strings)
+    return strings
