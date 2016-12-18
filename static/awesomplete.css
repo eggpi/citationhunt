@@ -10,13 +10,13 @@ div.awesomplete * {
 div.awesomplete {
     /* should be equal to the width of the input, including border */
     width: 450px;
+    text-align: initial;
 }
 
 div.awesomplete > ul {
     position: absolute;
     width: 440px;
     /* left + right should add up to the padding in the input element */
-    padding: 0 7px 0 1px;
     max-height: 250px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -25,6 +25,14 @@ div.awesomplete > ul {
     border: 1.8px solid #967A7A;
     border-top: none;
     border-radius: 0 0 2px 2px;
+}
+
+html[dir="ltr"] div.awesomplete > ul {
+    padding: 0 7px 0 1px;
+}
+
+html[dir="rtl"] div.awesomplete > ul {
+    padding: 0 1px 0 7px;
 }
 
 div.awesomplete > ul > li {
