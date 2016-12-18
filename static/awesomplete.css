@@ -51,10 +51,19 @@ div.awesomplete > ul > li > div {
 
 div.awesomplete > ul > li > div.label {
     width: 100%;
+    max-width: 0;
 }
 
 div.awesomplete > ul > li > div.npages {
     color: #5f5f54;
+}
+
+html[dir="ltr"] div.awesomplete > ul > li > div.npages {
+    padding-left: 5px;
+}
+
+html[dir="rtl"] div.awesomplete > ul > li > div.npages {
+    padding-right: 5px;
 }
 
 div.awesomplete > input {
