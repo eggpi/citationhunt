@@ -15,6 +15,19 @@ def get_db(lang_code):
     flask.g._localized_dbs = localized_dbs
     return db
 
+def get_stats_db():
+    db = getattr(flask.g, '_stats_db', None)
+    if db is None:
+        db = flask.g._stats_db = chdb.init_stats_db()
+    return db
+
+def teardown_appcontext(unused_exception):
+    localized_dbs = getattr(flask.g, '_localized_dbs', {})
+    for db in localized_dbs.values():
+        db.close()
+    if hasattr(flask.g, '_stats_db'):
+        flask.g._stats_db.close()
+
 @contextlib.contextmanager
 def log_time(operation):
     before = datetime.now()
@@ -22,12 +35,6 @@ def log_time(operation):
     after = datetime.now()
     ms = (after - before).microseconds / 1000.
     flask.current_app.logger.debug('%s took %.2f ms', operation, ms)
-
-def get_stats_db():
-    db = getattr(flask.g, '_stats_db', None)
-    if db is None:
-        db = flask.g._stats_db = chdb.init_stats_db()
-    return db
 
 def validate_lang_code(handler):
     @functools.wraps(handler)
@@ -42,4 +49,3 @@ def validate_lang_code(handler):
             return response
         return handler(lang_code, *args, **kwds)
     return wrapper
-
