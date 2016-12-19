@@ -78,6 +78,8 @@ class Database(object):
                 LIMIT %s''', (needle, max_results))
         search_results = {
             row[0]: {'id': row[0], 'title': row[1]} for row in cursor}
+        if not search_results:
+            return []
         with log_time('search category/number of pages'):
             cursor.execute('''
                 SELECT category_id, COUNT(article_id)
