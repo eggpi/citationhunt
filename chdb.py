@@ -4,9 +4,29 @@ import config
 import warnings
 import os.path as op
 import contextlib
+import functools
+import threading
 
 ch_my_cnf = op.join(op.dirname(op.realpath(__file__)), 'ch.my.cnf')
 wp_my_cnf = op.join(op.dirname(op.realpath(__file__)), 'wp.my.cnf')
+
+def _with_connection_pool(fn):
+    lock = threading.Lock()
+    free_connections = []
+
+    def return_conn(conn):
+        with lock:
+            free_connections.append(conn)
+
+    @functools.wraps(fn)
+    def wrapper(*args, **kwds):
+        with lock:
+            if not free_connections:
+                conn = fn(*args, **kwds)
+                conn.set_close_callback(return_conn)
+                free_connections.append(conn)
+            return free_connections.pop()
+    return wrapper
 
 class RetryingConnection(object):
     '''
@@ -15,6 +35,7 @@ class RetryingConnection(object):
 
     def __init__(self, connect):
         self._connect = connect
+        self._close_callback = None
         self._do_connect()
 
     def _do_connect(self):
@@ -43,12 +64,21 @@ class RetryingConnection(object):
             return None
         return self.execute_with_retry(operations, sql, *args)
 
+    def set_close_callback(self, cb):
+        self._close_callback = cb
+
     # https://stackoverflow.com/questions/4146095/ (sigh)
     def __enter__(self):
         return self.conn.__enter__()
 
     def __exit__(self, *args):
         return self.conn.__exit__(*args)
+
+    def close(self):
+        if self._close_callback is not None:
+            self._close_callback(self)
+        else:
+            self.conn.close()
 
     def __getattr__(self, name):
         return getattr(self.conn, name)
@@ -77,6 +107,7 @@ def _ensure_database(db, database, lang_code):
                 'CREATE DATABASE IF NOT EXISTS %s CHARACTER SET utf8mb4' % dbname)
         cursor.execute('USE %s' % dbname)
 
+@_with_connection_pool
 def init_db(lang_code):
     def connect_and_initialize():
         db = _connect(ch_my_cnf)
@@ -84,6 +115,7 @@ def init_db(lang_code):
         return db
     return RetryingConnection(connect_and_initialize)
 
+@_with_connection_pool
 def init_scratch_db():
     cfg = config.get_localized_config()
     def connect_and_initialize():
@@ -92,6 +124,7 @@ def init_scratch_db():
         return db
     return RetryingConnection(connect_and_initialize)
 
+@_with_connection_pool
 def init_stats_db():
     def connect_and_initialize():
         db = _connect(ch_my_cnf)
@@ -123,6 +156,7 @@ def init_stats_db():
         return db
     return RetryingConnection(connect_and_initialize)
 
+@_with_connection_pool
 def init_wp_replica_db():
     cfg = config.get_localized_config()
     def connect_and_initialize():
@@ -132,6 +166,7 @@ def init_wp_replica_db():
         return db
     return RetryingConnection(connect_and_initialize)
 
+@_with_connection_pool
 def init_projectindex_db():
     def connect_and_initialize():
         db = _connect(ch_my_cnf)
