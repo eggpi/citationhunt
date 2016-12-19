@@ -17,5 +17,7 @@
 	"beginners_hint": "不清楚如何加入引用嗎？請參閱%s",
 	"page_not_found": "找無頁面！",
 	"page_not_found_text": "您找尋的頁面已不存在──或許此引用已被查找到？返回%s獲取更多訊息！",
-	"footer": "Citation Hunt是由志願者們所開發、托管於%s，並由%s提供翻譯。"
+	"footer": "Citation Hunt是由志願者們所開發、托管於%s，並由%s提供翻譯。",
+	"js-article-count-singular": "%s個條目",
+	"js-article-count-plural": "%s個條目"
 }

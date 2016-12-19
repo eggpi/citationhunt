@@ -17,5 +17,7 @@
 	"beginners_hint": "不了解如何添加引用？请参见%s。",
 	"page_not_found": "找不到页面！",
 	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已经被找到？返回%s以获取更多！",
-	"footer": "Citation Hunt由志愿者制作，托管于%s，并由%s提供翻译。"
+	"footer": "Citation Hunt由志愿者制作，托管于%s，并由%s提供翻译。",
+	"js-article-count-singular": "%s个条目",
+	"js-article-count-plural": "%s个条目"
 }

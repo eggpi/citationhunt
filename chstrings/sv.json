@@ -20,5 +20,7 @@
 	"beginners_hint": "Vet du inte hur man lägger till referenser? Se %s.",
 	"page_not_found": "Sidan kunde inte hittas!",
 	"page_not_found_text": "Sidan du letar efter finns inte längre — kanske denna referens har redan hittats? Gå tillbaka till %s för mer!",
-	"footer": "Citation Hunt är skapat av volontärer, körs på %s och översätts via %s."
+	"footer": "Citation Hunt är skapat av volontärer, körs på %s och översätts via %s.",
+	"js-article-count-singular": "%s artikel",
+	"js-article-count-plural": "%s artiklar"
 }

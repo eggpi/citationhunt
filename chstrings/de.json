@@ -17,5 +17,7 @@
 	"beginners_hint": "Du weißt nicht, wie man Zitate hinzufügt? Siehe %s.",
 	"page_not_found": "Seite nicht gefunden!",
 	"page_not_found_text": "Die Seite, nach der du suchst, ist nicht mehr vorhanden. Vielleicht wurde dieses Zitat bereits gefunden. Gehe zurück zu %s für weitere Informationen!",
-	"footer": "Citation Hunt wurde von Freiwilligen erstellt, gehostet auf %s und übersetzt mithilfe von %s."
+	"footer": "Citation Hunt wurde von Freiwilligen erstellt, gehostet auf %s und übersetzt mithilfe von %s.",
+	"js-article-count-singular": "%s Artikel",
+	"js-article-count-plural": "%s Artikel"
 }

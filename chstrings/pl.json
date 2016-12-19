@@ -19,5 +19,6 @@
 	"beginners_hint": "Nie wiesz jak dodawać przypisy? Przeczytaj stronę %s.",
 	"page_not_found": "Nie odnaleziono strony!",
 	"page_not_found_text": "Strona, której szukasz już nie istnieje — być może to źródło zostało już znalezione? Przejdź z powrotem do %s po więcej!",
-	"footer": "Citation Hunt jest tworzony przez wolontariuszy, znajduje się na serwerze %s, a jego tłumaczenie dostarcza %s."
+	"footer": "Citation Hunt jest tworzony przez wolontariuszy, znajduje się na serwerze %s, a jego tłumaczenie dostarcza %s.",
+	"js-article-count-singular": "%s artykuł"
 }
