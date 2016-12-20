@@ -6,6 +6,7 @@ from common import *
 from snippet_parser import CITATION_NEEDED_MARKER, REF_MARKER
 
 import collections
+import datetime
 import urllib
 import urlparse
 
@@ -84,10 +85,12 @@ class Database(object):
         } for row in cursor]
 
     @staticmethod
-    def query_fixed_snippets(lang_code):
+    def query_fixed_snippets(lang_code, from_ts):
         with get_stats_db() as cursor:
             cursor.execute(
-                'SELECT COUNT(*) FROM fixed_%s' % lang_code)
+                'SELECT COUNT(*) FROM fixed_%s '
+                'WHERE clicked_ts BETWEEN %%s AND NOW()' % lang_code,
+                (from_ts,))
         nfixed = cursor.fetchone()
         return nfixed[0] if nfixed else 0
 
@@ -201,5 +204,13 @@ def search_category(lang_code):
 
 @validate_lang_code
 def fixed(lang_code):
+    from_ts = flask.request.args.get('from_ts', None)
+    try:
+        from_ts = datetime.datetime.fromtimestamp(float(from_ts))
+    except:
+        # Technically an invalid request, but let's just normalize below
+        pass
+    if from_ts is None:
+        from_ts = datetime.datetime.today() - datetime.timedelta(hours = 24)
     return flask.make_response(
-        str(Database.query_fixed_snippets(lang_code)), 200)
+        str(Database.query_fixed_snippets(lang_code, from_ts)), 200)
