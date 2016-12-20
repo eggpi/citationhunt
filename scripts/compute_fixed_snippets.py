@@ -17,24 +17,17 @@ if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 import time
 import urlparse
+import datetime
 
 import config
 import chdb
 from utils import *
+import snippet_parser
 
 import docopt
+import wikitools
 
 log = Logger()
-
-def load_snippets(cursor):
-    cursor.execute('SELECT id FROM snippets')
-    return set(row[0] for row in cursor)
-
-def load_table_creation_date(cursor, table):
-    cursor.execute(
-        'SELECT create_time FROM information_schema.tables '
-        'WHERE table_schema = DATABASE() AND table_name = %s', (table,))
-    return cursor.fetchone()[0]
 
 def load_snippet_clicks_between(cursor, lang_code, start_date, end_date):
     cursor.execute(
@@ -50,43 +43,76 @@ def load_snippet_clicks_between(cursor, lang_code, start_date, end_date):
             clicked_snippets[query_dict['id'][0]] = ts
     return clicked_snippets
 
-def compute_fixed_snippets():
-    start = time.time()
-    # FIXME This could probably just be one query on a single database
-    # connection, insead of one connection per database and loading all
-    # snippets in memory for comparison.
-    cfg = config.get_localized_config()
-    scratch_db = chdb.init_scratch_db()
+def compute_fixed_snippets(cfg):
+    log.info('computing fixed snippets for %s' % cfg.lang_code)
+
     live_db = chdb.init_db(cfg.lang_code)
     stats_db = chdb.init_stats_db()
 
-    # Find the set of snippets that that were "clicked" (redirected to article)
-    # between the dates of the previous/live and next/scratch database
-    from_ts = live_db.execute_with_retry(load_table_creation_date, 'snippets')
-    to_ts = scratch_db.execute_with_retry(load_table_creation_date, 'snippets')
+    # Load snippets that have been clicked in the past few hours
+    to_ts = datetime.datetime.today()
+    from_ts = to_ts - datetime.timedelta(hours = 3)
     clicked = stats_db.execute_with_retry(
         load_snippet_clicks_between, cfg.lang_code, from_ts, to_ts)
 
-    # Load the snippets from both databases
-    scratch_snippets = scratch_db.execute_with_retry(load_snippets)
-    live_snippets = live_db.execute_with_retry(load_snippets)
+    # Don't re-process snippets we've already looked at
+    already_seen = stats_db.execute_with_retry_s(
+        'SELECT snippet_id FROM fixed WHERE '
+        'clicked_ts BETWEEN %s AND %s AND lang_code = %s',
+        from_ts, to_ts, lang_code) or []
+    for id in already_seen:
+        clicked.pop(id, None)
 
-    # And for each snippet that disappeared across databases AND had been
-    # clicked in the meantime, store its information in the stats database.
-    gone = live_snippets.difference(scratch_snippets)
-    for id, clicked_ts in clicked.iteritems():
-        if id in gone:
-            log.info(id)
+    # Partition the snippets by page, loading each page once
+    wiki = None  # lazy loaded
+    pages_to_process = {}  # page_id -> (page, {snippet_id: clicked_ts})
+    for snippet_id, clicked_ts in clicked.iteritems():
+        page_id = live_db.execute_with_retry_s(
+            'SELECT article_id FROM snippets WHERE id = %s',
+            (snippet_id,))
+        if page_id is None:
+            log.info("Didn't find snippet %s in the database!" % snippet_id)
+            continue
+        page_id = page_id[0][0]  # one row, one column
+
+        log.info('will reparse page %s' % page_id)
+        if page_id not in pages_to_process:
+            if wiki is None:
+                wiki = wikitools.wiki.Wiki(
+                    'https://' + cfg.wikipedia_domain + '/w/api.php')
+                wiki.setUserAgent(
+                    'citationhunt (https://tools.wmflabs.org/citationhunt)')
+            pages_to_process[page_id] = (
+                wikitools.Page(wiki, pageid = page_id), {})
+        pages_to_process[page_id][1][snippet_id] = clicked_ts
+
+    if not pages_to_process:
+        log.info('No pages to process!')
+        return
+
+    # Now parse the pages and check which snippets are gone
+    parser = snippet_parser.create_snippet_parser(wiki, cfg)
+    for page, target_snippets in pages_to_process.values():
+        snippets = parser.extract(page.getWikiText())
+        for sec, snips in snippets:
+            for sni in snips:
+                id = mkid(page.title + sni)
+                target_snippets.pop(id, None)
+
+        for snippet_id, clicked_ts in target_snippets.items():
+            log.info(snippet_id)
             stats_db.execute_with_retry_s(
                 'INSERT INTO fixed VALUES (%s, %s, %s)',
-                clicked_ts, id, cfg.lang_code)
+                clicked_ts, snippet_id, cfg.lang_code)
 
-    log.info('all done in %d seconds.' % (time.time() - start))
-    scratch_db.close()
     live_db.close()
     stats_db.close()
     return 0
 
 if __name__ == '__main__':
+    start = time.time()
     args = docopt.docopt(__doc__)
-    sys.exit(compute_fixed_snippets())
+    for lang_code in config.lang_code_to_config:
+        cfg = config.get_localized_config(lang_code)
+        compute_fixed_snippets(cfg)
+    log.info('all done in %d seconds.' % (time.time() - start))
