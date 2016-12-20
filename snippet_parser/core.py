@@ -76,6 +76,9 @@ class SnippetParserBase(object):
                     # TODO We technically only need to keep the templates that
                     # mwparserfromhell will consider different from one another
                     # (e.g., no need to have both Cn and CN)
+                    if ':' not in redirect['title']:
+                        # Not a template?
+                        continue
                     tplname = redirect['title'].split(':', 1)[1]
                     templates.add(tplname)
         return templates
