@@ -9,13 +9,14 @@
     <script src="static/awesomplete/awesomplete.min.js" defer></script>
     <script src="static/category_filter.js" defer></script>
     <script src="static/lang_selector.js" defer></script>
+    <script src="static/fixed.js" defer></script>
     <meta name="robots" content="nofollow, noodp">
     <meta name="description" content="{{ config.strings.tooltitle }} - {{ config.strings.introduction }}">
   </head>
   <body>
     <h1>{{ config.strings.tooltitle }}</h1>
     {% if config.strings.instructions_goal %}
-    <div id=instructions>
+    <div id=instructions class="info">
         <p>{{ config.strings.instructions_goal }}</p>
         <p>{{ config.strings.instructions_details }}</p>
     </div>
@@ -55,10 +56,11 @@
         <p id="beginners-link-text">{{ config.strings.beginners_hint }}</p>
         {% endif %}
       </div>
+      <div id="fixed-count-container" class="info" hidden></div>
     </div>
     <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet" type="text/css">
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
-    <div id="footer">
+    <div id="footer" class="info">
       <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">{{ config.strings.github_link_title }}</a>
       <p>{{ config.strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if config.strings.footer else '' }}</p>
     </div>

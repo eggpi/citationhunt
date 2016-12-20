@@ -201,14 +201,25 @@ html[dir="rtl"] #lang-selector {
     margin-top: 10px;
 }
 
-#instructions {
+.info {
     color: #5f5f54;
+}
+
+#instructions {
     font-size: 15.5px;
 }
 
 #instructions p {
     line-height: 20px;
     margin: 10px 0;
+}
+
+#fixed-count-container {
+    margin-top: 20px;
+}
+
+#nfixed {
+    font-weight: bold;
 }
 
 #footer {
@@ -221,7 +232,6 @@ html[dir="rtl"] #lang-selector {
     margin: 5px auto;
     line-height: 14px;
     max-width: 450px;
-    color: #5f5f54;
 }
 
 #footer:before {
