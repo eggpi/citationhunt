@@ -17,5 +17,7 @@
 	"page_not_found": "{{Identical|Page not found}}",
 	"footer": "The text at the bottom of the page. The %s get replaced with the tool name, and links to Tools Labs and TranslateWiki, respectively.",
 	"js-article-count-singular": "{{Identical|Article}}",
-	"js-article-count-plural": "{{Identical|Article}}"
+	"js-article-count-plural": "{{Identical|Article}}",
+	"js-refs-added-today-singular": "How many citations were added today (singular). %s gets replaced with the number",
+	"js-refs-added-today-plural": "How many citations were added today (plural). %s gets replaced with the number"
 }
