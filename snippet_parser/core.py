@@ -179,13 +179,17 @@ class SnippetParserBase(object):
             template.name.matches(tpl)
             for tpl in self._citation_needed_templates)
 
-    def extract_snippets(self, wikitext, minlen, maxlen):
+    def extract(self, wikitext):
+        if self._cfg.extract == 'snippet':
+            return self.extract_snippets(wikitext)
+        return self.extract_sections(wikitext)
+
+    def extract_snippets(self, wikitext):
         """Extracts snippets lacking citations.
 
         This function looks for snippets of the article that are marked with any of
         the templates in `cfg.citation_needed_templates` from the `wikitext` passed
-        as parameter, and returns those that are greater than `minlen` but smaller
-        than `maxlen`.
+        as parameter.
 
         The return value is a list of lists of the form:
             [
@@ -196,6 +200,7 @@ class SnippetParserBase(object):
         """
 
         snippets = [] # [section, [snippets]]
+        minlen, maxlen = self._cfg.snippet_min_size, self._cfg.snippet_max_size
 
         wikicode = self._fast_parse(wikitext)
         if wikicode is None:
@@ -253,12 +258,11 @@ class SnippetParserBase(object):
                 secsnippets.append(snippet)
         return snippets
 
-    def extract_sections(self, wikitext, minlen, maxlen):
+    def extract_sections(self, wikitext):
         """Extracts sections/subsections lacking citations.
 
         This function looks for sections of the article that are marked with any of
-        the templates in `cfg.citation_needed_templates`. The output is meant to be
-        converted into HTML by the Wikimedia API.
+        the templates in `cfg.citation_needed_templates`.
 
         The return value is a list of lists of the form:
             [
@@ -269,6 +273,7 @@ class SnippetParserBase(object):
         """
 
         snippets = [] # [section, [snippets]]
+        minlen, maxlen = self._cfg.snippet_min_size, self._cfg.snippet_max_size
         sections = mwparserfromhell.parse(wikitext).get_sections(
             include_lead = True, include_headings = True, flat = True)
 
@@ -450,5 +455,4 @@ if __name__ == '__main__':
 
     page = wikitools.Page(wikipedia, title)
     wikitext = page.getWikiText()
-    pprint.pprint(parser.extract_snippets(wikitext,
-        cfg.snippet_min_size, cfg.snippet_max_size))
+    pprint.pprint(parser.extract(wikitext))

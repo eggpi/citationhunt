@@ -159,14 +159,7 @@ def work(pageids):
         url = WIKIPEDIA_WIKI_URL + title.replace(' ', '_')
 
         snippets_rows = []
-        # FIXME Invoke a single method of the snippet parser and let it figure
-        # out what to extract, per template
-        if cfg.html_snippet:
-            snippets = self.parser.extract_sections(
-                wikitext, cfg.snippet_min_size, cfg.snippet_max_size)
-        else:
-            snippets = self.parser.extract_snippets(
-                wikitext, cfg.snippet_min_size, cfg.snippet_max_size)
+        snippets = self.parser.extract(wikitext)
         for sec, snips in snippets:
             sec = section_name_to_anchor(sec)
             for sni in snips:
