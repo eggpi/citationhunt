@@ -83,6 +83,14 @@ class Database(object):
             'id': row[0], 'title': row[1], 'npages': row[2]
         } for row in cursor]
 
+    @staticmethod
+    def query_fixed_snippets(lang_code):
+        with get_stats_db() as cursor:
+            cursor.execute(
+                'SELECT COUNT(*) FROM fixed_%s' % lang_code)
+        nfixed = cursor.fetchone()
+        return nfixed[0] if nfixed else 0
+
 def get_category_by_id(lang_code, cat_id):
     if cat_id == CATEGORY_ALL.id:
         return CATEGORY_ALL
@@ -188,5 +196,10 @@ def citation_hunt(lang_code):
 @validate_lang_code
 def search_category(lang_code):
     return flask.jsonify(
-        results=Database.search_category(
+        results = Database.search_category(
             lang_code, flask.request.args.get('q'), max_results = 400))
+
+@validate_lang_code
+def fixed(lang_code):
+    return flask.make_response(
+        str(Database.query_fixed_snippets(lang_code)), 200)
