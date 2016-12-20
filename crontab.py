@@ -16,16 +16,23 @@ duration = 4  # how many hours between runs within a single day
 
 spec_template = '0 {h} {dom}-31/{freq} * * {command}'
 command_template = ' '.join([
-    '/usr/bin/jsub -mem 10g -N citationhunt_update_{lc} -once',
+    '/usr/bin/jsub -mem 10g -N {jobname}_{lc} -once',
     '-l release=trusty',
     '/data/project/citationhunt/www/python/venv/bin/python2',
-    '/data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py',
+    '/data/project/citationhunt/citationhunt/scripts/{scriptname}',
     '{lc}'
 ])
 
 h = 0
 for lc in sorted(config.lang_code_to_config):
-    command = command_template.format(lc=lc)
+    command = command_template.format(
+        jobname = 'citationhunt_update', lc = lc,
+        scriptname = 'update_db_tools_labs.py')
     print spec_template.format(
         h=(h % 24), dom=1 + (h / 24), command=command, freq=freq)
     h += duration
+
+# print entry for compute_fixed_snippets
+print '*/5 * * * * ' + command_template.format(
+    jobname = 'compute_fixed_snippets', lc = 'global',
+    scriptname = 'compute_fixed_snippets.py')
