@@ -4,14 +4,13 @@ from __future__ import unicode_literals
 from core import *
 cfg = config.get_localized_config('de')
 cfg.citation_needed_templates.append('Quellen')
-snippet_parser = create_snippet_parser(None, config.get_localized_config('de'))
+cfg.snippet_min_size = 0
+cfg.snippet_max_size = float('inf')
+snippet_parser = create_snippet_parser(None, cfg)
+extract_sections = snippet_parser.extract_sections
 
 import unittest
 import functools
-
-# ignore size limits to make these tests
-extract_sections = functools.partial(
-    snippet_parser.extract_sections, minlen = 0, maxlen = float('inf'))
 
 def extract_lead_snippets(text):
     snippets = extract_sections('{{Belege fehlen}}\n' + text)

@@ -5,14 +5,13 @@ from core import *
 
 cfg = config.get_localized_config('en')
 cfg.citation_needed_templates.append('cn')
+cfg.snippet_min_size = 0
+cfg.snippet_max_size = float('inf')
 snippet_parser = create_snippet_parser(None, cfg)
+extract_snippets = snippet_parser.extract_snippets
 
 import unittest
 import functools
-
-# ignore size limits to make these tests
-extract_snippets = functools.partial(
-    snippet_parser.extract_snippets, minlen = 0, maxlen = float('inf'))
 
 def extract_lead_snippets(text):
     snippets = extract_snippets(text)

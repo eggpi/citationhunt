@@ -26,7 +26,11 @@ global_config = dict(
 
     # Whether or not snippets should be converted to HTML using the
     # Wikipedia API before storing them in the database
-    html_snippet = False
+    html_snippet = False,
+
+    # What to extract for each citation needed template found in the wikitext,
+    # either 'snippet' or 'section'
+    extract = 'snippet'
 )
 
 # Most (all?) Wikipedias support these English settings in addition
@@ -502,6 +506,8 @@ lang_code_to_config = dict(
         ],
 
         html_snippet = True,
+
+        extract = 'section',
 
         # We use big chunks of sections for German, and convert them to
         # HTML. The min/max sizes apply to the final HTML.
