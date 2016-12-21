@@ -102,7 +102,7 @@ def compute_fixed_snippets(cfg):
         for snippet_id, clicked_ts in target_snippets.items():
             log.info(snippet_id)
             stats_db.execute_with_retry_s(
-                'INSERT INTO fixed VALUES (%s, %s, %s)',
+                'INSERT IGNORE INTO fixed VALUES (%s, %s, %s)',
                 clicked_ts, snippet_id, cfg.lang_code)
 
     live_db.close()
