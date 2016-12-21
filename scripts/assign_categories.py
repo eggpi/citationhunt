@@ -199,6 +199,11 @@ def update_citationhunt_db(chdb, category_name_id_and_page_ids):
     for c in ichunk(category_name_id_and_page_ids, 4096):
         chdb.execute_with_retry(insert, list(c))
 
+    chdb.execute_with_retry_s('''
+        INSERT INTO category_article_count
+        SELECT category_id, COUNT(*) AS article_count
+        FROM articles_categories GROUP BY category_id''')
+
 def reset_chdb_tables(cursor):
     log.info('resetting articles_categories table...')
     cursor.execute('DELETE FROM articles_categories')

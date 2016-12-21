@@ -231,6 +231,12 @@ def create_tables(db):
             ON DELETE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
         ''')
         cursor.execute('''
+            CREATE TABLE IF NOT EXISTS category_article_count (
+            category_id VARCHAR(128), article_count INT(8) UNSIGNED,
+            FOREIGN KEY(category_id) REFERENCES categories(id)
+            ON DELETE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+        ''')
+        cursor.execute('''
             CREATE TABLE IF NOT EXISTS snippets (id VARCHAR(128) PRIMARY KEY,
             snippet VARCHAR(%s), section VARCHAR(768), article_id INT(8)
             UNSIGNED, FOREIGN KEY(article_id) REFERENCES articles(page_id)
