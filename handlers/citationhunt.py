@@ -72,23 +72,16 @@ class Database(object):
     def search_category(lang_code, needle, max_results):
         cursor = get_db(lang_code).cursor()
         needle = '%' + needle + '%'
-        with log_time('search category'):
+        with log_time('search category & page count'):
             cursor.execute('''
-                SELECT id, title FROM categories WHERE title LIKE %s
+                SELECT category_id, title, article_count
+                FROM categories, category_article_count
+                WHERE title LIKE %s
+                AND category_article_count.category_id = categories.id
                 LIMIT %s''', (needle, max_results))
-        search_results = {
-            row[0]: {'id': row[0], 'title': row[1]} for row in cursor}
-        if not search_results:
-            return []
-        with log_time('search category/number of pages'):
-            cursor.execute('''
-                SELECT category_id, COUNT(article_id)
-                FROM articles_categories WHERE category_id IN
-                %s GROUP BY category_id''',
-                (tuple(search_results),))
-        for category, count in cursor:
-            search_results[category]['npages'] = count
-        return search_results.values()
+        return [{
+            'id': row[0], 'title': row[1], 'npages': row[2]
+        } for row in cursor]
 
 def get_category_by_id(lang_code, cat_id):
     if cat_id == CATEGORY_ALL.id:
