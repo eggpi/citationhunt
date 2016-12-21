@@ -44,8 +44,14 @@ def _preprocess_variables(config, strings):
 
     strings.setdefault('footer', '')
     if strings['footer']:
+        # Work around for incorrect translations that contain "Citation Hunt"
+        # literally, rather than a placeholder for toolname
+        # FIXME Remove this once no translations have "Citation Hunt" hardcoded.
+        strings['footer'] = strings['footer'].replace('Citation Hunt', '%s')
+
         # We replace the URLs in the template itself
         strings['footer'] = flask.Markup(strings['footer']) % (
+            strings['tooltitle'],
             _link('%s', 'Tools Labs'),
             _link('%s', 'translatewiki.net'))
     return strings
