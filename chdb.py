@@ -136,7 +136,7 @@ def init_stats_db():
             ''')
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS fixed (
-                clicked_ts DATETIME, snippet_id VARCHAR(128),
+                clicked_ts DATETIME, snippet_id VARCHAR(128) UNIQUE,
                 lang_code VARCHAR(4))
                 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             ''')
