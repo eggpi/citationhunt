@@ -12,9 +12,9 @@ class SnippetParser(SnippetParserBase):
         return super(SnippetParser, self).strip_template(
                 template, normalize, collapse)
 
-    def handle_bandiera(template):
+    def handle_bandiera(self, template):
         return template.get(1)
 
-    def handle_citazione(template):
+    def handle_citazione(self, template):
         if template.params:
             return '« ' + self.sp(template.params[0]) + ' »'
