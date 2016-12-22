@@ -17,7 +17,9 @@
 	"category_filter_placeholder": "Hva interesserer deg?",
 	"github_link_title": "Hei! Kilden min er på GitHub!",
 	"beginners_hint": "Vet du ikke hvordan man legger til referanser? Se %s.",
-	"page_not_found": "Siden ikke funnet!",
+	"page_not_found": "Siden ble ikke funnet!",
 	"page_not_found_text": "Siden du leter etter finnes ikke lenger – kanskje har noen allerede funnet en kilde? Gå tilbake til %s for mer!",
-	"footer": "Citation Hunt er lagd av frivillige, ligger på %s og oversettes på %s."
+	"footer": "Citation Hunt er lagd av frivillige, ligger på %s og oversettes på %s.",
+	"js-article-count-singular": "%s artikkel",
+	"js-article-count-plural": "%s artikler"
 }
