@@ -19,5 +19,7 @@
 	"beginners_hint": "Vous ne savez pas comment ajouter des références ? Consultez %s.",
 	"page_not_found": "Page non trouvée",
 	"page_not_found_text": "La page que vous regardez n’existe plus — peut-être que cette citation a déjà été trouvée ? Revenez à %s pour en savoir plus !",
-	"footer": "Citation Hunt est fait par des bénévoles, est hébergé sur %s et traduit via %s."
+	"footer": "Citation Hunt est fait par des bénévoles, est hébergé sur %s et traduit via %s.",
+	"js-article-count-singular": "%s article",
+	"js-article-count-plural": "%s articles"
 }

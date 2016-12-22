@@ -17,5 +17,7 @@
 	"beginners_hint": "Sa-lo nen coma gionté dle sitassion? Ch'a consulta %s.",
 	"page_not_found": "Pàgina nen trovà!",
 	"page_not_found_text": "La pàgina ch'a sërca a esist pi - miraco costa sitassion a l'é già stàita trovà? Ch'a torna andré a %s për savèjne ëd pi!",
-	"footer": "Citation Hunt a l'é fàit da dij volontari, ospità su %s e voltà via %s."
+	"footer": "Citation Hunt a l'é fàit da dij volontari, ospità su %s e voltà via %s.",
+	"js-article-count-singular": "%s artìcol",
+	"js-article-count-plural": "%s artìcoj"
 }
