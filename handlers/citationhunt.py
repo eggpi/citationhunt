@@ -178,7 +178,8 @@ def citation_hunt(lang_code):
         article_url_path = urllib.quote(
             e(urlparse.urlparse(aurl).path.lstrip('/')))
         return flask.render_template('index.html',
-            snippet = snippet, section = section, article_url = aurl,
+            snippet_id = id, snippet = snippet,
+            section = section, article_url = aurl,
             article_url_path = article_url_path,
             article_title = atitle, current_category = cat,
             next_snippet_id = next_snippet_id,

@@ -31,19 +31,35 @@ import wikitools
 
 log = Logger()
 
-def load_snippet_clicks_between(cursor, lang_code, start_date, end_date):
-    cursor.execute(
-        'SELECT ts, referrer FROM requests WHERE url LIKE "%%redirect%%" AND '
-        'ts BETWEEN %s AND %s AND lang_code = %s AND referrer IS NOT NULL '
-        'ORDER BY ts',
-        (start_date, end_date, lang_code))
+def load_pages_and_snippets_to_process(cursor, lang_code, start_date, end_date):
+    cursor.execute('''
+        SELECT ts, snippet_id, url FROM requests
+        WHERE url LIKE "%%redirect%%" AND
+        ts BETWEEN %s AND %s AND lang_code = %s
+        AND snippet_id NOT IN (
+            SELECT snippet_id FROM fixed WHERE
+            clicked_ts BETWEEN %s AND %s AND lang_code = %s
+        ) ORDER BY ts''', (start_date, end_date, lang_code) * 2)
 
-    clicked_snippets = {}
-    for ts, url in cursor:
+    # url is of the form /<lang_code>/redirect?id=<snippet_id>&to=wiki/<page>,
+    # so we can parse the page and snippet id out of it. The snippet id is also
+    # in the database as a separate column, but get it from the url anyway.
+    page_title_to_snippets = {}
+    for ts, _, url in cursor:
         query_dict = urlparse.parse_qs(urlparse.urlparse(url).query)
-        if 'id' in query_dict:
-            clicked_snippets[query_dict['id'][0]] = ts
-    return clicked_snippets
+        if not 'id' in query_dict or not 'to' in query_dict:
+            log.info('malformed redirect url: %r' % url)
+            continue
+
+        snippet_id = query_dict['id'][0]
+        page_title = query_dict['to'][0]
+        if not page_title.startswith('wiki/'):
+            log.info('malformed redirect url: %r' % url)
+            continue
+        page_title = page_title.split('/', 1)[1]
+
+        page_title_to_snippets.setdefault(page_title, {})[snippet_id] = ts
+    return page_title_to_snippets
 
 def compute_fixed_snippets(cfg):
     log.info('computing fixed snippets for %s' % cfg.lang_code)
@@ -54,54 +70,31 @@ def compute_fixed_snippets(cfg):
     # Load snippets that have been clicked in the past few hours
     to_ts = datetime.datetime.today()
     from_ts = to_ts - datetime.timedelta(hours = 3)
-    clicked = stats_db.execute_with_retry(
-        load_snippet_clicks_between, cfg.lang_code, from_ts, to_ts)
+    page_title_to_snippets = stats_db.execute_with_retry(
+        load_pages_and_snippets_to_process, cfg.lang_code, from_ts, to_ts)
 
-    # Don't re-process snippets we've already looked at
-    already_seen = stats_db.execute_with_retry_s(
-        'SELECT snippet_id FROM fixed WHERE '
-        'clicked_ts BETWEEN %s AND %s AND lang_code = %s',
-        from_ts, to_ts, lang_code) or []
-    for id in already_seen:
-        clicked.pop(id, None)
-
-    # Partition the snippets by page, loading each page once
-    wiki = None  # lazy loaded
-    pages_to_process = {}  # page_id -> (page, {snippet_id: clicked_ts})
-    for snippet_id, clicked_ts in clicked.iteritems():
-        page_id = live_db.execute_with_retry_s(
-            'SELECT article_id FROM snippets WHERE id = %s',
-            (snippet_id,))
-        if page_id is None:
-            log.info("Didn't find snippet %s in the database!" % snippet_id)
-            continue
-        page_id = page_id[0][0]  # one row, one column
-
-        log.info('will reparse page %s' % page_id)
-        if page_id not in pages_to_process:
-            if wiki is None:
-                wiki = wikitools.wiki.Wiki(
-                    'https://' + cfg.wikipedia_domain + '/w/api.php')
-                wiki.setUserAgent(
-                    'citationhunt (https://tools.wmflabs.org/citationhunt)')
-            pages_to_process[page_id] = (
-                wikitools.Page(wiki, pageid = page_id), {})
-        pages_to_process[page_id][1][snippet_id] = clicked_ts
-
-    if not pages_to_process:
+    if not page_title_to_snippets:
         log.info('No pages to process!')
         return
+    log.info('Will reparse pages: %r' % page_title_to_snippets.keys())
 
-    # Now parse the pages and check which snippets are gone
+    # Now fetch and parse the pages and check which snippets are gone
+    wiki = wikitools.wiki.Wiki(
+            'https://' + cfg.wikipedia_domain + '/w/api.php')
+    wiki.setUserAgent(
+            'citationhunt (https://tools.wmflabs.org/citationhunt)')
     parser = snippet_parser.create_snippet_parser(wiki, cfg)
-    for page, target_snippets in pages_to_process.values():
+
+    for page_title, snippet_to_ts in page_title_to_snippets.items():
+        page = wikitools.Page(wiki, page_title)
         snippets = parser.extract(page.getWikiText())
+        # FIXME Duplicated logic with parse_live.py :(
         for sec, snips in snippets:
             for sni in snips:
                 id = mkid(d(page.title) + sni)
-                target_snippets.pop(id, None)
+                snippet_to_ts.pop(id, None)
 
-        for snippet_id, clicked_ts in target_snippets.items():
+        for snippet_id, clicked_ts in snippet_to_ts.items():
             log.info(snippet_id)
             stats_db.execute_with_retry_s(
                 'INSERT IGNORE INTO fixed VALUES (%s, %s, %s)',
