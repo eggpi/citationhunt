@@ -364,9 +364,14 @@ class SnippetParserBase(object):
 
     def _fast_parse(self, wikitext):
         tokenizer = mwparserfromhell.parser.CTokenizer()
-        # Passing skip_style_tags helps us get around some builder exceptions,
-        # see https://github.com/earwig/mwparserfromhell/issues/40
-        tokens = tokenizer.tokenize(wikitext, 0, True)
+        try:
+            # Passing skip_style_tags helps us get around some builder exceptions,
+            # see https://github.com/earwig/mwparserfromhell/issues/40
+            tokens = tokenizer.tokenize(wikitext, 0, True)
+        except SystemError:
+            # FIXME This happens sometimes on Tools Labs, why?
+            return None
+
         # Add a sentinel representing a "end of article" section
         tokens.append(mwparserfromhell.parser.tokens.HeadingStart())
 
