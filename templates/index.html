@@ -39,7 +39,7 @@
     </div>
     <div id="after-snippet">
       <div>
-        <a href="{{ config.lang_code }}/redirect?to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
+        <a href="{{ config.lang_code }}/redirect?id={{ snippet_id }}&to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
           target="_blank"><button class="button" id="button-wikilink">{{ config.strings.button_wikilink }}</button></a>
         <button form="form-next" type="submit" id="button-next" class="button">{{ config.strings.button_next }}</button>
       </div>
