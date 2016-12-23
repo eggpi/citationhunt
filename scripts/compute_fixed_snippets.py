@@ -4,7 +4,9 @@
 Compute some statistics on how many snippets have been fixed across databases.
 
 Usage:
-    compute_fixed_snippets.py
+    compute_fixed_snippets.py <lang-code>
+
+Use 'global' for lang-code to go over all languages.
 '''
 
 from __future__ import unicode_literals
@@ -112,7 +114,12 @@ def compute_fixed_snippets(cfg):
 if __name__ == '__main__':
     start = time.time()
     args = docopt.docopt(__doc__)
-    for lang_code in config.lang_code_to_config:
+    lang_codes = (
+        config.lang_code_to_config.keys()
+        if args['<lang-code>'] == 'global'
+        else [args['<lang-code>']])
+
+    for lang_code in lang_codes:
         cfg = config.get_localized_config(lang_code)
         compute_fixed_snippets(cfg)
     log.info('all done in %d seconds.' % (time.time() - start))
