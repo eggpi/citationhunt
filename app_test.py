@@ -9,6 +9,8 @@ config.get_localized_config('en').flagged_off.append('stats')
 import app
 import mock
 
+import time
+import datetime
 import unittest
 
 class CitationHuntTest(unittest.TestCase):
@@ -25,6 +27,7 @@ class CitationHuntTest(unittest.TestCase):
             ('query_snippet_by_category', (self.sid,)),
             ('query_random_snippet', (self.sid,)),
             ('query_next_id', (self.sid[::-1],)),
+            ('query_fixed_snippets', 6)
         ]
 
         self.patchers = [
@@ -124,6 +127,49 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(response.status_code, 302)
         self.assertEquals(response.headers['Location'],
             'https://en.wikipedia.org/wiki/AT&T#History')
+
+    def test_fixed_small_time_window(self):
+        now = time.time()
+        from_ts = int(now - 6 * 3600)
+        response = self.app.get('/en/fixed?from_ts=' + str(from_ts))
+
+        # only 6 hours ago, pass the date through
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.get_data(), '6')
+        app.handlers.Database.query_fixed_snippets.assert_called_once_with(
+            'en', datetime.datetime.fromtimestamp(from_ts))
+
+    def test_fixed_garbage_ts(self):
+        response = self.app.get('/en/fixed?from_ts=garbage')
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.get_data(), '6')
+
+        now = datetime.datetime.today()
+        normalized = app.handlers.Database.query_fixed_snippets.call_args[0][1]
+        self.assertTrue((now - normalized) > datetime.timedelta(hours = 23))
+        self.assertTrue((now - normalized) < datetime.timedelta(hours = 25))
+
+    def test_fixed_ts_not_provided(self):
+        response = self.app.get('/en/fixed')
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.get_data(), '6')
+
+        now = datetime.datetime.today()
+        normalized = app.handlers.Database.query_fixed_snippets.call_args[0][1]
+        self.assertTrue((now - normalized) > datetime.timedelta(hours = 23))
+        self.assertTrue((now - normalized) < datetime.timedelta(hours = 25))
+
+    def test_fixed_ts_too_old(self):
+        now = time.time()
+        from_ts = int(now - 48 * 3600)
+        now = datetime.datetime.fromtimestamp(now)
+        response = self.app.get('/en/fixed?from_ts=' + str(from_ts))
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.get_data(), '6')
+
+        normalized = app.handlers.Database.query_fixed_snippets.call_args[0][1]
+        self.assertTrue((now - normalized) > datetime.timedelta(hours = 23))
+        self.assertTrue((now - normalized) < datetime.timedelta(hours = 25))
 
 if __name__ == '__main__':
     unittest.main()
