@@ -62,16 +62,6 @@ def pad(data, days, default = 0):
             datetime.timedelta(days=d)).strftime('%Y-%m-%d'), default)
         for d in range(days)] + list(data)).items())
 
-def pad_before(data, days, default = 0):
-    """Same as pad, but won't add entries past the latest day
-    in `data`."""
-
-    data = list(data)
-    padded = pad(data, days, default)
-    if not data:
-        return padded
-    return padded[:padded.index(data[-1])+1]
-
 @validate_lang_code
 def stats(lang_code):
     days = int(flask.request.args.get('days', 10))
@@ -85,10 +75,9 @@ def stats(lang_code):
         ''' WHERE DATEDIFF(NOW(), clicked_ts) < %s GROUP BY dt ORDER BY dt''',
         (days,))
     graphs.append((
-        'Number of snippets fixed in the past %s days '
-        '(estimate, lags behind a few days)' % days,
+        'Number of snippets fixed in the past %s days (estimate!)' % days,
         json.dumps(
-            [['Date', lang_code]] + pad_before(stats_cursor, days)), 'line'))
+            [['Date', lang_code]] + pad(stats_cursor, days)), 'line'))
 
     stats_cursor.execute('''
         SELECT DATE_FORMAT(ts, GET_FORMAT(DATE, 'ISO')) AS dt, COUNT(*)
