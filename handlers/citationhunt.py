@@ -210,8 +210,11 @@ def fixed(lang_code):
         from_ts = datetime.datetime.fromtimestamp(float(from_ts))
     except:
         # Technically an invalid request, but let's just normalize below
+        from_ts = None
         pass
-    if from_ts is None:
-        from_ts = datetime.datetime.today() - datetime.timedelta(hours = 24)
+    now = datetime.datetime.today()
+    max_delta = datetime.timedelta(hours = 24)
+    if from_ts is None or abs(now - from_ts) > max_delta:
+        from_ts = now - max_delta
     return flask.make_response(
         str(Database.query_fixed_snippets(lang_code, from_ts)), 200)
