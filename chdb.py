@@ -141,7 +141,7 @@ def init_stats_db():
                 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             ''')
             # Create per-language views for convenience
-            for lang_code in config.lang_code_to_config:
+            for lang_code in config.LANG_CODES_TO_LANG_NAMES:
                 cursor.execute('''
                     CREATE OR REPLACE VIEW requests_''' + lang_code +
                     ''' AS SELECT * FROM requests WHERE lang_code = %s

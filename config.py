@@ -5,13 +5,18 @@ import chstrings
 
 import os
 
-global_config = dict(
-    # Approximate maximum length for a snippet
-    snippet_max_size = 500,
+# The configuration for a language is a set of key/value pairs, where the
+# values may be True/False, strings or lists of strings. It is computed by
+# inheriting from the global config, base config, and language-specific
+# config below, in that order.
+# When inheriting, for simple string or True/False keys, the "inheritor's"
+# value overrides the base value, and for list values, the base and inheritor
+# lists are merged. There is currently no way to completely override a base list
+# value.
 
-    # Approximate minimum length for a snippet
-    snippet_min_size = 100,
-
+# Configuration keys that don't correspond to user-visible or snippet parsing
+# behavior. Boring stuff.
+_GLOBAL_CONFIG = dict(
     # If running on Tools labs, keep database dumps in this directory...
     archive_dir = os.path.join(os.path.expanduser('~'), 'ch_archives'),
 
@@ -23,6 +28,15 @@ global_config = dict(
     profile = True,
 
     stats_max_age_days = 90,
+)
+
+# A base configuration that all languages "inherit" from.
+_BASE_LANG_CONFIG = dict(
+    # Approximate maximum length for a snippet
+    snippet_max_size = 500,
+
+    # Approximate minimum length for a snippet
+    snippet_min_size = 100,
 
     # Whether or not snippets should be converted to HTML using the
     # Wikipedia API before storing them in the database
@@ -30,31 +44,52 @@ global_config = dict(
 
     # What to extract for each citation needed template found in the wikitext,
     # either 'snippet' or 'section'
-    extract = 'snippet'
+    extract = 'snippet',
+
+    # Most (all?) Wikipedias support the English settings below in addition
+    # to the localized ones, so make sure to handle them!
+
+    # Wikilinks having these prefixes will be omitted entirely from the output;
+    # others will get replaced by their titles.
+    wikilink_prefix_blacklist = [
+        'File:',
+        'Image:',
+        'Media:'
+    ],
+
+    # The names of templates that mark statements lacking citations. The
+    # first letter is case-insensitive. When adding a new language, this
+    # may help: https://www.wikidata.org/wiki/Q5312535
+    # Other templates that redirect to any of these templates are also
+    # processed automatically, so there's no need to list them here.
+    citation_needed_templates = [
+        'Citation needed',
+    ],
+
+    # A set of tags that we know for sure we can't handle, so  snippets
+    # containing them will be dropped.
+    tags_blacklist = [
+        'math',
+    ],
+
+    # A set of templates that we know for sure we can't handle, so
+    # snippets containing them will be dropped.
+    templates_blacklist = [
+        'lang',
+    ],
+
+    # Citation Hunt will ignore categories if their names match one
+    # of these regular expressions.
+    category_name_regexps_blacklist = [
+        '^Articles',
+        '^Pages ',
+        ' stubs$',
+        '.*[0-9]+.*',
+    ],
 )
 
-# Most (all?) Wikipedias support these English settings in addition
-# to the localized ones, so make sure to handle them!
-
-EN_WIKILINK_PREFIX_BLACKLIST = [
-    'File:',
-    'Image:',
-    'Media:'
-]
-
-EN_CITATION_NEEDED_TEMPLATES = [
-    'Citation needed',
-]
-
-EN_TAGS_BLACKLIST = [
-    'math',
-]
-
-EN_TEMPLATES_BLACKLIST = [
-    'lang',
-]
-
-lang_code_to_config = dict(
+# Language-specific config, inheriting from the base config above.
+_LANG_CODE_TO_CONFIG = dict(
     en = dict(
         # A friendly name for the language
         lang_name = 'English',
@@ -83,13 +118,6 @@ lang_code_to_config = dict(
         # instead of spaces.
         citation_needed_category = 'All_articles_with_unsourced_statements',
 
-        # The names of templates that mark statements lacking citations. The
-        # first letter is case-insensitive. When adding a new language, this
-        # may help: https://www.wikidata.org/wiki/Q5312535
-        # Other templates that redirect to any of these templates are also
-        # processed automatically, so there's no need to list them here.
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES,
-
         # For consistency, we don't actually display each of the templates
         # listed in `citation_needed_templates` in the user interface; instead
         # we just replace them with one common name. For example, in the English
@@ -97,33 +125,11 @@ lang_code_to_config = dict(
         # match what the user would see on Wikipedia, minus the brackets.
         citation_needed_template_name = 'citation needed',
 
-        # Wikilinks having these prefixes will be omitted
-        # entirely from the output; others will get replaced
-        # by their titles.
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-
-        # A set of tags that we know for sure we can't handle, so
-        # snippets containing them will be dropped.
-        tags_blacklist = EN_TAGS_BLACKLIST,
-
-        # A set of templates that we know for sure we can't handle, so
-        # snippets containing them will be dropped.
-        templates_blacklist = EN_TAGS_BLACKLIST,
-
         # The name of the category for hidden categories, without the
         # 'Category:' prefix and with underscores instead of spaces.
         # Categories belonging to this category are typically used for
         # maintenance and will not show up on Citation Hunt.
         hidden_category = 'Hidden_categories',
-
-        # Citation Hunt will ignore categories if their names match one
-        # of these regular expressions.
-        category_name_regexps_blacklist = [
-            '^Articles',
-            '^Pages ',
-            ' stubs$',
-            '.*[0-9]+.*',
-        ],
     ),
 
     fr = dict(
@@ -139,26 +145,18 @@ lang_code_to_config = dict(
 
         # Looks like there are many other interesting templates:
         # https://fr.wikipedia.org/wiki/Aide:Référence_nécessaire
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Inédit',
             'Référence nécessaire',
             'Référence souhaitée',
         ],
         citation_needed_template_name = 'réf. nécessaire',
 
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
+        wikilink_prefix_blacklist = [
             'Fichier:',
         ],
 
-        tags_blacklist = EN_TAGS_BLACKLIST,
-
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
-
         hidden_category = 'Catégorie_cachée',
-
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     it = dict(
@@ -172,23 +170,13 @@ lang_code_to_config = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Citazione necessaria',
             'Senza fonte',
         ],
         citation_needed_template_name = 'senza fonte',
 
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-
-        tags_blacklist = EN_TAGS_BLACKLIST,
-
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
-
         hidden_category = 'Categorie_nascoste',
-
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     pl = dict(
@@ -202,22 +190,12 @@ lang_code_to_config = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'fakt',
         ],
         citation_needed_template_name = 'potrzebne źródło',
 
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-
-        tags_blacklist = EN_TAGS_BLACKLIST,
-
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
-
         hidden_category = 'Ukryte_kategorie',
-
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     ca = dict(
@@ -231,24 +209,14 @@ lang_code_to_config = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Citació necessària',
             'CC',
             'CN',
         ],
         citation_needed_template_name = 'cal citació',
 
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-
-        tags_blacklist = EN_TAGS_BLACKLIST,
-
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
-
         hidden_category = 'Categories_ocultes',
-
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
 
         # Not fully translated
         flagged_off = ['404'],
@@ -266,17 +234,11 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = '',
 
         citation_needed_category = 'ויקיפדיה:_ערכים_הדורשים_מקורות',
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + ['דרוש מקור', ],
+        citation_needed_templates = ['דרוש מקור'],
         citation_needed_template_name = 'דרוש מקור',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'קטגוריות_מוסתרות',
         category_name_regexps_blacklist = [
             '^ויקיפדיה',
-            '^Pages ',
-            ' stubs$',
-            '.*[0-9]+.*',
         ],
     ),
 
@@ -292,18 +254,12 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = 'Wikipedia:Sección introductoria',
 
         citation_needed_category = 'Wikipedia:Artículos_con_pasajes_que_requieren_referencias',
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Añadir referencias',
             'Cita requerida'
         ],
         citation_needed_template_name = 'cita requerida',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'Wikipedia:Categorías_ocultas',
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     bn = dict(
@@ -322,7 +278,7 @@ lang_code_to_config = dict(
         citation_needed_category = 'উৎসবিহীন_তথ্যসহ_সকল_নিবন্ধ',
         # Some of these are not exactly [citation needed] but bnwiki is quite
         # small, so they help.
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'তথ্যসূত্র প্রয়োজন',
             'তথ্যসূত্র যাচাই',
             'সত্যতা',
@@ -331,12 +287,8 @@ lang_code_to_config = dict(
             'Verify source',
         ],
         citation_needed_template_name = 'তথ্যসূত্র প্রয়োজন|',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'লুকায়িত_বিষয়শ্রেণীসমূহ',
         category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
             '.*[০১২৩৪৫৬৭৮৯].*',
         ],
 
@@ -355,19 +307,13 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = '',
 
         citation_needed_category = 'Údržba:Články_obsahující_nedoložená_tvrzení',
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Není ve zdroji',
             'Doplňte zdroj',
             'Fakt/dne',
         ],
         citation_needed_template_name = 'zdroj?',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'Wikipedie:Skryté_kategorie',
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     sv = dict(
@@ -382,19 +328,13 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = 'Wikipedia:Källhänvisningar',
 
         citation_needed_category = 'Alla_artiklar_som_behöver_enstaka_källor',
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'kb',
             'Källa behövs',
             'Referens behövs',
         ],
         citation_needed_template_name = 'källa behövs',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'Dolda_kategorier',
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     nb = dict(
@@ -409,18 +349,12 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = 'Wikipedia:Bruk_av_kilder',
 
         citation_needed_category = 'Artikler_som_trenger_referanser',
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Trenger referanse',
             'Referanse',
         ],
         citation_needed_template_name = 'trenger referanse',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'Skjulte_kategorier',
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     nn = dict(
@@ -435,17 +369,11 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = 'Wikipedia:Kjelder',
 
         citation_needed_category = 'Artiklar_som_manglar_kjelder',
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Treng kjelde',
         ],
         citation_needed_template_name = 'treng kjelde',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'Gøymde_kategoriar',
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     fi = dict(
@@ -460,19 +388,13 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = '',
 
         citation_needed_category = 'Puutteelliset_lähdemerkinnät',
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Lähde',
             'Lähde tarkemmin',
             'Kenen mukaan',
         ],
         citation_needed_template_name = 'lähde?',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'Piilotetut_luokat',
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
     ),
 
     de = dict(
@@ -493,7 +415,7 @@ lang_code_to_config = dict(
             'Belege fehlen',
         ],
         citation_needed_template_name = '',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST + [
+        wikilink_prefix_blacklist = [
             'Datei:',
             'Kategorie:',
             'Bild:',
@@ -501,9 +423,6 @@ lang_code_to_config = dict(
         tags_blacklist = [],
         templates_blacklist = [],
         hidden_category = 'Kategorie:Versteckt',
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
 
         html_snippet = True,
 
@@ -527,17 +446,11 @@ lang_code_to_config = dict(
         lead_section_policy_link_title = '',
 
         citation_needed_category = 'Λήμματα_που_χρειάζονται_παραπομπές_με_επισήμανση',
-        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + [
+        citation_needed_templates = [
             'Εκκρεμεί παραπομπή',
         ],
         citation_needed_template_name = 'Εκκρεμεί παραπομπή',
-        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
-        tags_blacklist = EN_TAGS_BLACKLIST,
-        templates_blacklist = EN_TEMPLATES_BLACKLIST,
         hidden_category = 'Κρυμμένες_κατηγορίες',
-        category_name_regexps_blacklist = [
-            '.*[0-9]+.*',
-        ],
         snippet_max_size = 700,
     ),
 )
@@ -547,11 +460,26 @@ class Config(object):
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
+def _inherit(base, child):
+    ret = dict(base)  # shallow copy
+    for k, v in child.iteritems():
+        if k in ret and isinstance(v, list):
+            ret[k] = ret[k] + v  # copy
+        else:
+            ret[k] = v
+    return ret
+
+LANG_CODES_TO_LANG_NAMES = {
+    lang_code: _LANG_CODE_TO_CONFIG[lang_code]['lang_name']
+    for lang_code in _LANG_CODE_TO_CONFIG
+}
+
 def get_localized_config(lang_code = None):
     if lang_code is None:
         lang_code = os.getenv('CH_LANG')
-    cfg = Config(lang_code = lang_code,
-        **dict(global_config, **lang_code_to_config[lang_code]))
+    lang_config = _LANG_CODE_TO_CONFIG[lang_code]
+    cfg = Config(lang_code = lang_code, **reduce(
+        _inherit, [_GLOBAL_CONFIG, _BASE_LANG_CONFIG, lang_config]))
     cfg.strings = chstrings.get_localized_strings(cfg, lang_code)
-    cfg.lang_code_to_config = lang_code_to_config
+    cfg.lang_codes_to_lang_names = LANG_CODES_TO_LANG_NAMES
     return cfg

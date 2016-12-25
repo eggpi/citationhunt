@@ -108,7 +108,7 @@ if __name__ == '__main__':
     start = time.time()
     args = docopt.docopt(__doc__)
     lang_codes = (
-        config.lang_code_to_config.keys()
+        config.LANG_CODES_TO_LANG_NAMES.keys()
         if args['<lang-code>'] == 'global'
         else [args['<lang-code>']])
 

@@ -24,7 +24,7 @@ command_template = ' '.join([
 ])
 
 h = 0
-for lc in sorted(config.lang_code_to_config):
+for lc in sorted(config.LANG_CODES_TO_LANG_NAMES):
     command = command_template.format(
         jobname = 'citationhunt_update', lc = lc,
         scriptname = 'update_db_tools_labs.py')
