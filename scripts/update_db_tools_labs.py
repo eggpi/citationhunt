@@ -150,9 +150,9 @@ if __name__ == '__main__':
         print >>sys.stderr, 'Not running in a virtualenv in Tools Labs!'
         sys.exit(1)
 
-    if args.lang_code not in config.lang_code_to_config:
+    if args.lang_code not in config.LANG_CODES_TO_LANG_NAMES:
         print >>sys.stderr, 'Invalid lang code! Use one of: ',
-        print >>sys.stderr, config.lang_code_to_config.keys()
+        print >>sys.stderr, config.LANG_CODES_TO_LANG_NAMES.keys()
         parser.print_usage()
         sys.exit(1)
 

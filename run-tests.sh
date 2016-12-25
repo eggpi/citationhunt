@@ -5,7 +5,7 @@ ret=0
 find . -name '*_test.py' -print0 | xargs -0 -n1 python
 [ $? -ne 0 ] && ret=1
 
-LANGS=$(python -c 'import config; print " ".join(config.lang_code_to_config)')
+LANGS=$(python -c 'import config; print " ".join(config.LANG_CODES_TO_LANG_NAMES)')
 for l in $LANGS; do
     # I'm too lazy to write tests for most of the scripts,
     # and they usually break very obviously on Tools Labs anyway,
