@@ -36,7 +36,7 @@ def log_request(response):
     user_agent = flask.request.headers.get('User-Agent', None)
     referrer = flask.request.referrer or None
     if is_spam(user_agent, referrer):
-        return
+        return response
     lang_code = getattr(flask.request, 'lang_code', None)
     id = flask.request.args.get('id')
     cat = flask.request.args.get('cat')
