@@ -1,6 +1,7 @@
 import chdb
 import config
 import handlers
+import utils
 
 import flask
 import flask_sslify
@@ -10,6 +11,8 @@ from flask.ext.mobility import Mobility
 import os
 import urllib
 import urlparse
+import traceback
+import logging.handlers
 
 # Cache duration for snippets.
 # Since each page contains a link to the next one, even when no category is
@@ -33,12 +36,22 @@ def index(lang_code):
     pass # nothing to do but validate lang_code
 
 app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt)
-if 'stats' not in config.get_localized_config('en').flagged_off:
-    app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
-    app.after_request(handlers.log_request)
+app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
+app.after_request(handlers.log_request)
 app.add_url_rule('/<lang_code>/search/category',
     view_func = handlers.search_category)
 app.add_url_rule('/<lang_code>/fixed', view_func = handlers.fixed)
+
+log_dir = config.get_global_config().log_dir
+utils.mkdir_p(log_dir)
+log_file = os.path.join(log_dir, 'ch.log')
+log_handler = logging.handlers.RotatingFileHandler(
+    log_file, maxBytes = 1024 * 1024, encoding = 'utf-8')
+log_handler.setLevel(logging.INFO if not debug else logging.DEBUG)
+log_handler.setFormatter(logging.Formatter(
+    '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'))
+app.logger.addHandler(log_handler)
+print 'writing server logs to %s' % log_file
 
 @app.route('/<lang_code>/redirect')
 @handlers.validate_lang_code
@@ -77,6 +90,11 @@ def page_not_found(e):
         flask.request.cfg = config.get_localized_config('en')
     return flask.render_template(
         '404.html', config = flask.request.cfg), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    app.logger.error(traceback.format_exc())
+    flask.abort()
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import errno
 import os
 import sys
 _upper_dir = os.path.abspath(
@@ -31,16 +30,6 @@ def shell(cmdline):
     status, output = commands.getstatusoutput(cmdline)
     print >>sys.stderr, output
     return status == 0
-
-# Thanks, StackOverflow! https://stackoverflow.com/questions/600268
-def mkdir_p(path):
-    try:
-        os.makedirs(path)
-    except OSError as exc:  # Python >2.5
-        if exc.errno == errno.EEXIST and os.path.isdir(path):
-            pass
-        else:
-            raise
 
 def ensure_db_config(cfg):
     xxwiki = cfg.lang_code + 'wiki'
@@ -87,7 +76,7 @@ def archive_database(ch_my_cnf, cfg):
     if cfg.archive_duration_days > 0:
         delete_old_archives(archive_dir, cfg.archive_duration_days)
 
-    mkdir_p(archive_dir)
+    utils.mkdir_p(archive_dir)
     now = datetime.datetime.now()
     output = os.path.join(archive_dir, now.strftime('%Y%m%d-%H%M.sql.gz'))
 
@@ -138,11 +127,8 @@ def update_db_tools_labs(cfg):
         email('Failed to build database for %s' % cfg.lang_code, logfile)
         sys.exit(1)
     email('All done for %s!' % cfg.lang_code, logfile)
-    try:
-        os.mkdir(cfg.log_dir)
-    except Exception:
-        pass
-    os.rename(logfile, os.path.join(cfg.log_dir, logfile)
+    utils.mkdir_p(cfg.log_dir)
+    os.rename(logfile, os.path.join(cfg.log_dir, logfile))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
