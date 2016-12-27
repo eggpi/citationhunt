@@ -94,7 +94,10 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     app.logger.error(traceback.format_exc())
-    flask.abort()
+    response = flask.Response()
+    response.status_code = 500
+    handlers.log_request(response)
+    return '<h1>Internal Error</h1><p>Sorry :(</p>', 500
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
