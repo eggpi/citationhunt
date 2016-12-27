@@ -23,6 +23,9 @@ _GLOBAL_CONFIG = dict(
     # ...and delete dumps that are older than this many days
     archive_duration_days = 90,
 
+    # Where to put various logs
+    log_dir = os.path.join(os.path.expanduser('~'), 'ch_logs'),
+
     flagged_off = [],
 
     profile = True,

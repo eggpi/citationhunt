@@ -138,6 +138,11 @@ def update_db_tools_labs(cfg):
         email('Failed to build database for %s' % cfg.lang_code, logfile)
         sys.exit(1)
     email('All done for %s!' % cfg.lang_code, logfile)
+    try:
+        os.mkdir(cfg.log_dir)
+    except Exception:
+        pass
+    os.rename(logfile, os.path.join(cfg.log_dir, logfile)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
