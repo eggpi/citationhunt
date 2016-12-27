@@ -477,6 +477,9 @@ LANG_CODES_TO_LANG_NAMES = {
     for lang_code in _LANG_CODE_TO_CONFIG
 }
 
+def get_global_config():
+    return Config(**_GLOBAL_CONFIG)
+
 def get_localized_config(lang_code = None):
     if lang_code is None:
         lang_code = os.getenv('CH_LANG')

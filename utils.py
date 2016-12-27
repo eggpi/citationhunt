@@ -1,3 +1,4 @@
+import errno
 import os
 import sys
 import hashlib
@@ -20,6 +21,16 @@ def running_in_virtualenv():
 
 def running_in_tools_labs():
     return os.path.exists('/etc/wmflabs-project')
+
+# Thanks, StackOverflow! https://stackoverflow.com/questions/600268
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
 
 class Logger(object):
     def __init__(self):
