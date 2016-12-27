@@ -42,16 +42,17 @@ app.add_url_rule('/<lang_code>/search/category',
     view_func = handlers.search_category)
 app.add_url_rule('/<lang_code>/fixed', view_func = handlers.fixed)
 
-log_dir = config.get_global_config().log_dir
-utils.mkdir_p(log_dir)
-log_file = os.path.join(log_dir, 'ch.log')
-log_handler = logging.handlers.RotatingFileHandler(
-    log_file, maxBytes = 1024 * 1024, encoding = 'utf-8')
-log_handler.setLevel(logging.INFO if not debug else logging.DEBUG)
-log_handler.setFormatter(logging.Formatter(
-    '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'))
-app.logger.addHandler(log_handler)
-print 'writing server logs to %s' % log_file
+if not debug:
+    log_dir = config.get_global_config().log_dir
+    utils.mkdir_p(log_dir)
+    log_file = os.path.join(log_dir, 'ch.log')
+    log_handler = logging.handlers.RotatingFileHandler(
+        log_file, maxBytes = 1024 * 1024, encoding = 'utf-8')
+    log_handler.setLevel(logging.INFO if not debug else logging.DEBUG)
+    log_handler.setFormatter(logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'))
+    app.logger.addHandler(log_handler)
+    print 'writing server logs to %s' % log_file
 
 @app.route('/<lang_code>/redirect')
 @handlers.validate_lang_code
