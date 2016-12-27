@@ -65,7 +65,11 @@ def add_cache_header(response):
     response.cache_control.max_age = CACHE_DURATION_SNIPPET
     return response
 
-app.teardown_appcontext(handlers.teardown_appcontext)
+@app.teardown_appcontext
+def close_db(exception):
+    db = getattr(flask.g, '_db', None)
+    if db is not None:
+        db.close()
 
 @app.errorhandler(404)
 def page_not_found(e):
