@@ -224,13 +224,13 @@ html[dir="rtl"] #lang-selector {
 
 #footer {
     font-size: 13px;
+    line-height: 17px;
     margin-top: 40px;
     text-align: center;
 }
 
 #footer p {
-    margin: 5px auto;
-    line-height: 14px;
+    margin: 0px auto;
     max-width: 450px;
 }
 
