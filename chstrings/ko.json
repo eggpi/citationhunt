@@ -3,7 +3,8 @@
 		"authors": [
 			"아라",
 			"Ykhwong",
-			"Revi"
+			"Revi",
+			"Jerrykim306"
 		]
 	},
 	"introduction": "위키백과 문서를 위해 인용을 찾는 것을 도와주세요!",
@@ -18,7 +19,9 @@
 	"beginners_hint": "인용을 추가하는 방법을 알지 못하나요? %s를 보세요.",
 	"page_not_found": "문서를 찾을 수 없습니다!",
 	"page_not_found_text": "찾으려는 문서가 더 이상 존재하지 않습니다. 이 인용을 이미 발견했을 수도 있습니다. %s로 돌아가면 더 많은 정보를 볼 수 있습니다.",
-	"footer": "Citation Hunt는 자발적인 사용자들에 의해서 만들어지고, %s에서 호스팅되며, %s를 통해 번역되었습니다.",
+	"footer": "%s는 자발적인 사용자들에 의해서 만들어지고, %s에서 호스팅되며, %s를 통해 번역되었습니다.",
 	"js-article-count-singular": "%s개의 문서",
-	"js-article-count-plural": "%s개의 문서"
+	"js-article-count-plural": "%s개의 문서",
+	"js-refs-added-today-singular": "오늘 %s개의 인용을 추가했습니다!",
+	"js-refs-added-today-plural": "오늘 %s개의 인용을 추가했습니다!"
 }

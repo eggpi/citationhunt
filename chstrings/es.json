@@ -3,7 +3,8 @@
 		"authors": [
 			"Macofe",
 			"Fitoschido",
-			"Zpizza"
+			"Zpizza",
+			"Dgstranz"
 		]
 	},
 	"tooltitle": "Citation Hunt",
@@ -19,7 +20,9 @@
 	"beginners_hint": "¿No sabes cómo añadir citas? Consulta %s.",
 	"page_not_found": "Página no encontrada",
 	"page_not_found_text": "La página que estás buscando ya no existe. Tal vez esta cita ya se ha encontrado. ¡Vuelve a %s para más!",
-	"footer": "Citation Hunt fue creado por voluntarios, está alojado en %s y se traduce por medio de %s.",
+	"footer": "%s es obra de voluntarios, está alojado en %s y se traduce por medio de %s.",
 	"js-article-count-singular": "%s artículo",
-	"js-article-count-plural": "%s artículos"
+	"js-article-count-plural": "%s artículos",
+	"js-refs-added-today-singular": "¡%s cita añadida hoy!",
+	"js-refs-added-today-plural": "¡%s citas añadidas hoy!"
 }
