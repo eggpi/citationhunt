@@ -17,7 +17,9 @@
 	"beginners_hint": "Wann Dir net wësst wéi een Zitater dobäisetze kann, da kuckt %s",
 	"page_not_found": "Säit net fonnt!",
 	"page_not_found_text": "D'Säit no där Dir sicht gëtt et net méi - vläicht gouf dat Zitat scho fonnt? Gitt zréck op %s fir méi Informatiounen!",
-	"footer": "Citation Hunt gëtt vu Fräiwëllege gemaach, vu(n) %s gehost an op %s iwwersat.",
+	"footer": "%s gëtt vu Fräiwëllege gemaach, vu(n) %s gehost an op %s iwwersat.",
 	"js-article-count-singular": "%s Artikel",
-	"js-article-count-plural": "%s Artikelen"
+	"js-article-count-plural": "%s Artikelen",
+	"js-refs-added-today-singular": "%s Zitat gouf hat derbäigesat!",
+	"js-refs-added-today-plural": "%s Zitater goufen haut derbäigesat!"
 }

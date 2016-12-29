@@ -3,7 +3,8 @@
 		"authors": [
 			"Mirzali",
 			"Kumkumuk",
-			"1917 Ekim Devrimi"
+			"1917 Ekim Devrimi",
+			"Gırd"
 		]
 	},
 	"tooltitle": "Citation Hunt",
@@ -19,7 +20,9 @@
 	"beginners_hint": "Tı nêzanena ke çıtewri vateyi benê cı? Bıvêne %s.",
 	"page_not_found": "Pele nêvêniye!",
 	"page_not_found_text": "Pela ke tı cı geyrena, endi çıniya. Beno ke no vate rew ra vêniyayo. Seba zewbina melumat ra peyser şo %s!",
-	"footer": "Citation Hunt xo rızayan ra ho,  esten %s açarneyaye %s.",
+	"footer": "% hetê merdımanê waşteyan ra vıraziyay, %s wayirê keyi kerdo ro u %s sero çarniyay.",
 	"js-article-count-singular": "%s wesiqe",
-	"js-article-count-plural": "%s wesiqey"
+	"js-article-count-plural": "%s wesiqey",
+	"js-refs-added-today-singular": "Ewro %s izahat de bi!",
+	"js-refs-added-today-plural": "Ewro %s izahati de biyay!"
 }

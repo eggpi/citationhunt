@@ -5,7 +5,8 @@
 			"Rodrigo codignoli",
 			"Luk3",
 			"ArgonSim",
-			"!Silent"
+			"!Silent",
+			"Iagocds"
 		]
 	},
 	"introduction": "Ajude a encontrar citações para os artigos da Wikipédia!",
@@ -20,5 +21,5 @@
 	"beginners_hint": "Não sabe como adicionar citações? Veja %s.",
 	"page_not_found": "Página não encontrada!",
 	"page_not_found_text": "A página que você está procurado não existe mais — talvez esta citação já tenha sido encontrada? Volte a %s para mais!",
-	"footer": "O Citation Hunt é feito por voluntários e está hospedado em %s e traduzido via %s."
+	"footer": "%s é feito por voluntários e está hospedado em %s e traduzido via %s."
 }
