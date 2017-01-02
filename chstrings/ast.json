@@ -17,5 +17,9 @@
 	"beginners_hint": "¿Nun sabes cómo añadir cites? Mira %s.",
 	"page_not_found": "Nun s'alcontró la páxina",
 	"page_not_found_text": "La páxina que tas buscando yá nun esiste. ¿Seique alcontraríen yá esta cita? Vuelve a %s a por más.",
-	"footer": "Citation Hunt ta fechu por voluntarios, agospiáu en %s y traducíu en %s."
+	"footer": "%s ta fechu por voluntarios, agospiáu en %s y traducíu en %s.",
+	"js-article-count-singular": "%s artículu",
+	"js-article-count-plural": "%s artículos",
+	"js-refs-added-today-singular": "¡%s cita añadida güei!",
+	"js-refs-added-today-plural": "¡%s cites añadíes güei!"
 }
