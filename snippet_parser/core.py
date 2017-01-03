@@ -127,7 +127,7 @@ class SnippetParserBase(object):
             # Keep the text in the template, but not other parameters like date
             repl = [self.sp(p) for p in template.params if not p.showkey] + repl
             return ''.join(repl)
-        return ''
+        return template if self._cfg.html_snippet else ''
 
     def strip_tag(self, tag, normalize, collapse):
         '''Override to control how tags are stripped in the wikicode.
@@ -139,11 +139,17 @@ class SnippetParserBase(object):
 
         if tag.tag == 'ref':
             return REF_MARKER
-        elif tag.tag == 'dt':
-            return ''
-        elif tag.tag == 'dd':
-            return ':'
-        return self.delegate_strip(tag, normalize, collapse)
+        if not self._cfg.html_snippet:
+            if tag.tag == 'dd':
+                return ':'
+            elif tag.tag == 'dt':
+                return ''
+            return self.delegate_strip(tag, normalize, collapse)
+        elif str(tag.tag) in {'i', 'b', 'li', 'dt', 'dd'}:
+            # strip the contents, but keep the tag itself
+            tag.contents = self.delegate_strip(tag, normalize, collapse)
+            return tag
+        return ''
 
     def strip_wikilink(self, wikilink, normalize, collapse):
         '''Override to control how wikilinks are stripped in the wikicode.
