@@ -238,7 +238,7 @@ class SnippetParserBase(object):
                     continue
 
                 snippet = self._cleanup_snippet_text(self._strip_code(wikicode))
-                if '\n' in snippet:
+                if not self._cfg.html_snippet and '\n' in snippet:
                     # Lists cause more 'paragraphs' to be generated
                     paragraphs.extend(snippet.split('\n'))
                     continue
