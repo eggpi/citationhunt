@@ -18,15 +18,6 @@ class SnippetParser(SnippetParserBase):
             return ''
         return template
 
-    def strip_tag(self, tag, normalize, collapse):
-        if tag.tag == 'ref':
-            return REF_MARKER
-        if str(tag.tag) in {'i', 'b', 'li', 'dt', 'dd'}:
-            # strip the contents, but keep the tag itself
-            tag.contents = self.delegate_strip(tag, normalize, collapse)
-            return tag
-        return ''
-
     def strip_heading(self, heading, normalize, collapse):
         if heading.level <= 2:
             return super(SnippetParser, self).strip_heading(
