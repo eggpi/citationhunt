@@ -456,6 +456,30 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Κρυμμένες_κατηγορίες',
         snippet_max_size = 700,
     ),
+
+    lv = dict(
+        lang_name = 'Latviešu',
+        lang_dir = 'ltr',
+        database = 'lvwiki_p',
+        wikipedia_domain = 'lv.wikipedia.org',
+
+        beginners_link = 'https://lv.wikipedia.org/wiki/Pal%C4%ABdz%C4%ABba:Atsauces_un_%C4%81r%C4%93j%C4%81s_saites',
+        beginners_link_title = 'Palīdzība:Atsauces un ārējās saites',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Raksti,_kuru_apgalvojumiem_nepieciešamas_atsauces',
+        citation_needed_templates = [
+            'Nepieciešama atsauce',
+        ],
+        wikilink_prefix_blacklist = [
+            'Attēls',
+        ],
+        citation_needed_template_name = 'nepieciešama atsauce',
+        hidden_category = 'Slēptās_kategorijas',
+        html_snippet = True,
+        snippet_max_size = 5000,
+    ),
 )
 
 # In py3: types.SimpleNamespace
