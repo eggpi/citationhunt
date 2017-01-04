@@ -359,6 +359,9 @@ class SnippetParserBase(object):
             StringIO.StringIO(e(html)),
             parser = lxml.html.HTMLParser(
                 encoding = 'utf-8', remove_comments = True)).getroot()
+        if tree is None:
+            # TODO Log/investigate these
+            return ''
 
         # Links are always relative so they end up broken in the UI. We could make
         # them absolute, but let's just remove them (by replacing with <span>) since
