@@ -49,6 +49,7 @@ _BASE_LANG_CONFIG = dict(
     # are removed from the HTML returned by the Wikipedia API
     html_css_selectors_to_strip = [
         'table',
+        '.references',
     ],
 
     # What to extract for each citation needed template found in the wikitext,
