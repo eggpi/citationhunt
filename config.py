@@ -475,8 +475,8 @@ _LANG_CODE_TO_CONFIG = dict(
         database = 'lvwiki_p',
         wikipedia_domain = 'lv.wikipedia.org',
 
-        beginners_link = 'https://lv.wikipedia.org/wiki/Pal%C4%ABdz%C4%ABba:Atsauces_un_%C4%81r%C4%93j%C4%81s_saites',
-        beginners_link_title = 'Palīdzība:Atsauces un ārējās saites',
+        beginners_link = 'https://lv.wikipedia.org/wiki/Pal%C4%ABdz%C4%ABba:Atsauces',
+        beginners_link_title = 'Palīdzība:Atsauces',
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
