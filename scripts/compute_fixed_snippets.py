@@ -114,5 +114,6 @@ if __name__ == '__main__':
 
     for lang_code in lang_codes:
         cfg = config.get_localized_config(lang_code)
-        compute_fixed_snippets(cfg)
+        if cfg.extract == 'snippet':
+            compute_fixed_snippets(cfg)
     log.info('all done in %d seconds.' % (time.time() - start))
