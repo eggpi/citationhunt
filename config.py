@@ -48,8 +48,10 @@ _BASE_LANG_CONFIG = dict(
     # When html_snippet is True, the elements identified by these CSS selectors
     # are removed from the HTML returned by the Wikipedia API
     html_css_selectors_to_strip = [
-        'table',
+        '.hatnote',
+        '.noexcerpt',
         '.references',
+        'table',
     ],
 
     # What to extract for each citation needed template found in the wikitext,
