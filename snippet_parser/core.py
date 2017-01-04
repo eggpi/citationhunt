@@ -15,10 +15,12 @@ from utils import *
 import mwparserfromhell
 import wikitools
 
+import cStringIO as StringIO
 import re
 import importlib
 import itertools
-import xml.etree.cElementTree as ET
+import lxml.html
+import lxml.cssselect
 
 REF_MARKER = 'ec5b89dc49c433a9521a139'
 CITATION_NEEDED_MARKER = '7b94863f3091b449e6ab04d4'
@@ -50,6 +52,11 @@ class SnippetParserBase(object):
         # Used for fast searching in the tokenize function
         self._lowercase_cn_templates = [
             t.lower() for t in self._citation_needed_templates]
+
+        self._html_css_selectors_to_strip = [
+            lxml.cssselect.CSSSelector(css_selector)
+            for css_selector in self._cfg.html_css_selectors_to_strip
+        ]
 
     def _resolve_redirects_to_templates(self, templates):
         templates = set(templates)
@@ -348,25 +355,26 @@ class SnippetParserBase(object):
         return snippet
 
     def _cleanup_snippet_html(self, html):
+        tree = lxml.html.parse(
+            StringIO.StringIO(e(html)),
+            parser = lxml.html.HTMLParser(
+                encoding = 'utf-8', remove_comments = True)).getroot()
+
         # Links are always relative so they end up broken in the UI. We could make
         # them absolute, but let's just remove them (by replacing with <span>) since
         # we don't actually need them.
-        html = '<div>' + html + '</div>'
-        tree = ET.fromstring(e(html))
-        for parent_of_a in tree.findall('.//a/..'):
-            for i, tag in enumerate(parent_of_a):
-                if tag.tag == 'a' and tag.text:
-                    repl = ET.Element('span')
-                    repl.extend(list(tag))
-                    if tag.text:
-                        repl.text = tag.text
-                    if tag.tail:
-                        repl.tail = tag.tail + ' '
-                    else:
-                        repl.tail = ' '
-                    parent_of_a.insert(i+1, repl)
-                    parent_of_a.remove(tag)
-        return d(ET.tostring(tree))
+        for a in tree.findall('.//a'):
+            a.tag = 'span'
+
+        for css_selector in self._html_css_selectors_to_strip:
+            for element in css_selector(tree):
+                element.getparent().remove(element)
+
+        # lxml wraps the HTML with proper <html><body> tags, so remove that
+        newroot = tree.find('.//body')
+        newroot.tag = 'div'
+        return d(lxml.html.tostring(
+            newroot, encoding = 'utf-8', method = 'html'))
 
     def _fast_parse(self, wikitext):
         tokenizer = mwparserfromhell.parser.CTokenizer()
