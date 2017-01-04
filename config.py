@@ -45,6 +45,12 @@ _BASE_LANG_CONFIG = dict(
     # Wikipedia API before storing them in the database
     html_snippet = False,
 
+    # When html_snippet is True, the elements identified by these CSS selectors
+    # are removed from the HTML returned by the Wikipedia API
+    html_css_selectors_to_strip = [
+        'table',
+    ],
+
     # What to extract for each citation needed template found in the wikitext,
     # either 'snippet' or 'section'
     extract = 'snippet',
@@ -428,6 +434,9 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Kategorie:Versteckt',
 
         html_snippet = True,
+        html_css_selectors_to_strip = [
+            '.noprint',
+        ],
 
         extract = 'section',
 

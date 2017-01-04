@@ -8,12 +8,6 @@ class SnippetParser(SnippetParserBase):
         if self.is_citation_needed(template):
             # we just suppress these for German
             return
-        # TODO Also remove any templates under the German equivalent
-        # of Category:Wikipedia_Maintenance_templates and/or
-        # Category:Exclude_in_print?
-        tplname = template.name.lower()
-        if 'infobox' in tplname or 'taxobox' in tplname:
-            return ''
         if template.name.matches('Überarbeiten'):
             return ''
         return template
