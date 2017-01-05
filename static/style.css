@@ -42,7 +42,7 @@ html[dir="rtl"] #preamble {
     position: relative;
     line-height: 20px;
     text-align: justify;
-    max-width: 80%;
+    max-width: 80%;  /* slightly larger than #lead-hint */
     margin: 20px auto 0 auto;
     max-height: 200px;
 }
@@ -199,6 +199,7 @@ html[dir="rtl"] #lang-selector {
     background-color: #EEE2EA;
     display: inline-block;
     margin-top: 10px;
+    max-width: 75%; /* slightly smaller than that of #snippet */
 }
 
 .info {
