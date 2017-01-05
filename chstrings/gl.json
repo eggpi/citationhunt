@@ -16,7 +16,9 @@
 	"beginners_hint": "Non sabe como engadir citas? Consulte %s.",
 	"page_not_found": "Páxina non atopada!",
 	"page_not_found_text": "A páxina que está a buscar xa non existe - tal vez esta cita xa se atopou? Volva a %s para máis!",
-	"footer": "Citation Hunt está feito por voluntarios, está albergado en %s e traducido vía %s.",
+	"footer": "%s está feito por voluntarios, está albergado en %s e traducido vía %s.",
 	"js-article-count-singular": "%s artigo",
-	"js-article-count-plural": "%s artigos"
+	"js-article-count-plural": "%s artigos",
+	"js-refs-added-today-singular": "%s cita engadida hoxeǃ",
+	"js-refs-added-today-plural": "%s citas engadidas hoxe!"
 }
