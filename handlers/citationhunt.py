@@ -140,7 +140,7 @@ def should_autofocus_category_filter(cat, request):
 def citation_hunt(lang_code):
     id = flask.request.args.get('id')
     cat = flask.request.args.get('cat')
-    cfg = config.get_localized_config(lang_code)
+    cfg = flask.g._cfg
 
     lang_dir = cfg.lang_dir
     if flask.current_app.debug:
@@ -161,7 +161,6 @@ def citation_hunt(lang_code):
         sinfo = Database.query_snippet_by_id(lang_code, id)
         if sinfo is None:
             # invalid id
-            flask.request.cfg = cfg
             flask.abort(404)
         snippet, section, aurl, atitle = sinfo
         if cfg.html_snippet:

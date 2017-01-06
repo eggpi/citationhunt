@@ -32,7 +32,7 @@ def get_stats_db():
 def validate_lang_code(handler):
     @functools.wraps(handler)
     def wrapper(lang_code = '', *args, **kwds):
-        flask.request.lang_code = lang_code
+        flask.g._lang_code = lang_code
         if lang_code not in config.LANG_CODES_TO_LANG_NAMES:
             response = flask.redirect(
                 flask.url_for('citation_hunt', lang_code = 'en',
@@ -40,6 +40,7 @@ def validate_lang_code(handler):
             if flask.request.path != '/':
                 response.headers['Location'] += flask.request.path
             return response
+        flask.g._cfg = config.get_localized_config(lang_code)
         return handler(lang_code, *args, **kwds)
     return wrapper
 

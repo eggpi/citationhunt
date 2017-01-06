@@ -1,7 +1,6 @@
 import flask
 
 import chdb
-import config
 from common import *
 
 import datetime
@@ -37,7 +36,7 @@ def log_request(response):
     referrer = flask.request.referrer or None
     if is_spam(user_agent, referrer):
         return response
-    lang_code = getattr(flask.request, 'lang_code', None)
+    lang_code = getattr(flask.g, '_lang_code', None)
     id = flask.request.args.get('id')
     cat = flask.request.args.get('cat')
     url = flask.request.url
