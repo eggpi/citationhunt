@@ -87,10 +87,12 @@ def close_db(exception):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    if not hasattr(flask.request, 'cfg'):
-        flask.request.cfg = config.get_localized_config('en')
+    if hasattr(flask.g, '_cfg'):
+        cfg = flask.g._cfg
+    else:
+        cfg = config.get_localized_config('en')
     return flask.render_template(
-        '404.html', config = flask.request.cfg), 404
+        '404.html', config = cfg), 404
 
 @app.errorhandler(500)
 def internal_server_error(e):
