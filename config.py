@@ -264,7 +264,9 @@ _LANG_CODE_TO_CONFIG = dict(
         beginners_link_title = 'Introducción a las referencias con Editor Visual',
         lead_section_policy_link = 'https://es.wikipedia.org/wiki/Wikipedia:Secci%C3%B3n_introductoria#Referencias',
         lead_section_policy_link_title = 'Wikipedia:Sección introductoria',
-
+        wikilink_prefix_blacklist = [
+            'Archivo:',
+        ],
         citation_needed_category = 'Wikipedia:Artículos_con_pasajes_que_requieren_referencias',
         citation_needed_templates = [
             'Añadir referencias',
