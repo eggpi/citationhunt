@@ -268,6 +268,9 @@ class SnippetParserBase(object):
                     snippet = self._to_html(snippet)
                     if not (minlen < len(snippet) < maxlen):
                         continue
+                    if CITATION_NEEDED_MARKER not in snippet:
+                        # marker may have been removed in the HTML processing
+                        continue
                 secsnippets.append(snippet)
         return snippets
 
