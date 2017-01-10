@@ -461,23 +461,3 @@ def create_snippet_parser(wikipedia, cfg):
         _log.info('No snippet_parser for lang_code %s, using stub!' % cfg.lang_code)
         localized_module = importlib.import_module('stub')
     return localized_module.SnippetParser(wikipedia, cfg)
-
-if __name__ == '__main__':
-    import wikitools
-
-    import pprint
-    import sys
-
-    cfg = config.get_localized_config()
-
-    WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
-    WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
-    WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
-
-    title = sys.argv[1]
-    wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
-    parser = create_snippet_parser(wikipedia, cfg)
-
-    page = wikitools.Page(wikipedia, title)
-    wikitext = page.getWikiText()
-    pprint.pprint(parser.extract(wikitext))
