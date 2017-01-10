@@ -50,6 +50,7 @@ _BASE_LANG_CONFIG = dict(
     html_css_selectors_to_strip = [
         '.hatnote',
         '.noexcerpt',
+        '.noprint',
         '.references',
         'table',
     ],
@@ -439,9 +440,6 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Kategorie:Versteckt',
 
         html_snippet = True,
-        html_css_selectors_to_strip = [
-            '.noprint',
-        ],
 
         extract = 'section',
 
