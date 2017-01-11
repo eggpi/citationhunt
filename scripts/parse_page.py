@@ -1,3 +1,17 @@
+#!/usr/bin/env python
+
+'''
+Parse a single page and display the snippets found in it.
+
+Make sure to set the CH_LANG environment variable before invoking this script.
+
+Usage:
+    parse_page.py <title_or_pageid> [--output=<output>]
+
+Options:
+    output    'raw' or 'html' (inferred from the config if not passed)
+'''
+
 import os
 import sys
 _upper_dir = os.path.abspath(
@@ -8,6 +22,7 @@ if _upper_dir not in sys.path:
 import config
 import snippet_parser
 
+import docopt
 import wikitools
 
 import pprint
@@ -26,24 +41,31 @@ def format_html(html):
         return html
     return stdout.decode('utf-8').strip('\n')
 
-cfg = config.get_localized_config()
-
-WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
-WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
-WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
-
 if __name__ == '__main__':
-    title = sys.argv[1]
+    arguments = docopt.docopt(__doc__)
+    cfg = config.get_localized_config()
+
+    WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
+    WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
+    WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
+
     wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
     parser = snippet_parser.create_snippet_parser(wikipedia, cfg)
 
-    page = wikitools.Page(wikipedia, title)
+    try:
+        int(arguments['<title_or_pageid>'])
+        page = wikitools.Page(
+            wikipedia, pageid = int(arguments['<title_or_pageid>']))
+    except:
+        page = wikitools.Page(
+            wikipedia, title = arguments['<title_or_pageid>'])
+
     wikitext = page.getWikiText()
     for section, snippets in parser.extract(wikitext):
         if not snippets: continue
         print 'Section: %s' % section.encode('utf-8')
         for snippet in snippets:
-            if cfg.html_snippet:
+            if cfg.html_snippet and arguments['--output'] != 'raw':
                 print format_html(snippet)
             else:
                 print '   ' + '\n   '.join(textwrap.wrap(snippet, 80))
