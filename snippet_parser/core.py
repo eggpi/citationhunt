@@ -111,6 +111,16 @@ class SnippetParserBase(object):
         else:
 	    return "".join(nodes)
 
+    def _has_blacklisted_tag_or_template(self, wikicode):
+        blacklisted_tag_or_template = itertools.chain(
+            (tag.tag in self._cfg.tags_blacklist
+                for tag in wikicode.filter_tags()),
+            ((matches_any(tpl, self._cfg.templates_blacklist)
+                for tpl in wikicode.filter_templates())
+            if not self._cfg.html_snippet else iter([]))
+        )
+        return any(blacklisted_tag_or_template)
+
     # (s)anitize (p)arameters from a template
     def sp(self, params):
         if isinstance(params, mwparserfromhell.nodes.extras.Parameter):
@@ -235,14 +245,7 @@ class SnippetParserBase(object):
                 # Invoking a string method on a Wikicode object returns a string,
                 # so we need to parse it again :(
                 wikicode = mwparserfromhell.parse(paragraph)
-
-                blacklisted_tag_or_template = itertools.chain(
-                    (tag.tag in self._cfg.tags_blacklist
-                        for tag in wikicode.filter_tags()),
-                    (matches_any(tpl, self._cfg.templates_blacklist)
-                        for tpl in wikicode.filter_templates()),
-                )
-                if any(blacklisted_tag_or_template):
+                if self._has_blacklisted_tag_or_template(wikicode):
                     continue
 
                 snippet = self._cleanup_snippet_text(self._strip_code(wikicode))
@@ -310,6 +313,9 @@ class SnippetParserBase(object):
                     break
             else:
                 # This section doesn't need references, move on to the next one
+                continue
+
+            if self._has_blacklisted_tag_or_template(section):
                 continue
 
             # Consume the following sections until we find another one at the
