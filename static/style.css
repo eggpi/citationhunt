@@ -89,7 +89,7 @@ button:focus {
     outline: none;
 }
 
-.superscript {
+sup {
     font-size: small;
     color: #0645AD;
     white-space: nowrap;
@@ -105,7 +105,7 @@ button:focus {
  * workaround seems to work fine on FF, Chrome and Safari.
  * Chrome issue: https://code.google.com/p/chromium/issues/detail?id=225862
  */
-.superscript:before {
+sup:before {
     content: "⁠";
     opacity: 0;
     font-size: 1px;
