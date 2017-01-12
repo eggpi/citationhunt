@@ -79,14 +79,15 @@ _BASE_LANG_CONFIG = dict(
         'Citation needed',
     ],
 
-    # A set of tags that we know for sure we can't handle, so  snippets
+    # A set of tags that we know for sure we can't handle, so snippets
     # containing them will be dropped.
     tags_blacklist = [
         'math',
     ],
 
     # A set of templates that we know for sure we can't handle, so
-    # snippets containing them will be dropped.
+    # snippets containing them will be dropped. Only applies when
+    # html_snippet is False.
     templates_blacklist = [
         'lang',
     ],
@@ -435,12 +436,8 @@ _LANG_CODE_TO_CONFIG = dict(
             'Kategorie:',
             'Bild:',
         ],
-        tags_blacklist = [],
-        templates_blacklist = [],
         hidden_category = 'Kategorie:Versteckt',
-
         html_snippet = True,
-
         extract = 'section',
 
         # We use big chunks of sections for German, and convert them to
