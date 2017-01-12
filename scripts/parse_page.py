@@ -12,6 +12,8 @@ Options:
     output    'raw' or 'html' (inferred from the config if not passed)
 '''
 
+from __future__ import unicode_literals
+
 import os
 import sys
 _upper_dir = os.path.abspath(
@@ -29,6 +31,9 @@ import pprint
 import subprocess
 import sys
 import textwrap
+
+def _print(str):
+    print str.encode('utf-8')
 
 def format_html(html):
     lynx = subprocess.Popen(
@@ -63,10 +68,11 @@ if __name__ == '__main__':
     wikitext = page.getWikiText()
     for section, snippets in parser.extract(wikitext):
         if not snippets: continue
-        print 'Section: %s' % section.encode('utf-8')
+        _print('Section: %s' % section)
         for snippet in snippets:
             if cfg.html_snippet and arguments['--output'] != 'raw':
-                print format_html(snippet)
+                output = format_html(snippet)
             else:
-                print '   ' + '\n   '.join(textwrap.wrap(snippet, 80))
-            print '.'
+                output = '   ' + '\n   '.join(textwrap.wrap(snippet, 80))
+            _print(output)
+            _print('.')
