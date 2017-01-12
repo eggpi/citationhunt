@@ -183,12 +183,20 @@ _LANG_CODE_TO_CONFIG = dict(
             'Référence souhaitée',
         ],
         citation_needed_template_name = 'réf. nécessaire',
-
         wikilink_prefix_blacklist = [
             'Fichier:',
         ],
-
         hidden_category = 'Catégorie_cachée',
+        html_snippet = True,
+        snippet_max_size = 1200,
+        html_css_selectors_to_strip = [
+            '.bandeau-article',
+            '.bandeau-section',
+            '.bandeau-niveau-detail',
+            '.bandeau-niveau-modere',
+            '.homonymie',
+        ],
+        snippet_max_size = 600,
     ),
 
     it = dict(
