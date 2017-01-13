@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from core import *
 
 cfg = config.get_localized_config('en')
-cfg.citation_needed_templates.append('cn')
+cfg.citation_needed_templates = ['cn', 'Citation needed']
 cfg.snippet_min_size = 0
 cfg.snippet_max_size = float('inf')
 snippet_parser = create_snippet_parser(None, cfg)

@@ -45,13 +45,10 @@ class SnippetParserBase(object):
             mwparserfromhell.nodes.Heading: self.strip_heading,
         }
 
-        self._citation_needed_templates = self._resolve_redirects_to_templates(
-            self._cfg.citation_needed_templates)
-        assert len(self._citation_needed_templates) > 0
-
-        # Used for fast searching in the tokenize function
-        self._lowercase_cn_templates = [
-            t.lower() for t in self._citation_needed_templates]
+        self._lowercase_cn_templates = set(
+            t.lower() for t in self._resolve_redirects_to_templates(
+                self._cfg.citation_needed_templates))
+        assert len(self._lowercase_cn_templates) > 0
 
         self._html_css_selectors_to_strip = [
             lxml.cssselect.CSSSelector(css_selector)
@@ -199,9 +196,7 @@ class SnippetParserBase(object):
         config.citation_needed_templates.
         '''
 
-        return any(
-            template.name.matches(tpl)
-            for tpl in self._citation_needed_templates)
+        return template.name.lower().strip() in self._lowercase_cn_templates
 
     def extract(self, wikitext):
         if self._cfg.extract == 'snippet':
@@ -421,7 +416,7 @@ class SnippetParserBase(object):
             section_has_citation_needed |= (
                 isinstance(t1, mwparserfromhell.parser.tokens.TemplateOpen) and
                 isinstance(t2, mwparserfromhell.parser.tokens.Text) and
-                any(t in t2.text.lower() for t in self._lowercase_cn_templates))
+                t2.text.lower().strip() in self._lowercase_cn_templates)
         try:
             return mwparserfromhell.parser.Builder().build(reduced_tokens)
         except mwparserfromhell.parser.ParserError:
