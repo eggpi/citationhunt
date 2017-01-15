@@ -54,7 +54,7 @@ html[dir="rtl"] #preamble {
     top: 0;
     left: 0;
     position: absolute;
-    background: linear-gradient(transparent 120px, #FCFCFC);
+    background: linear-gradient(rgba(255, 255, 255, 0) 120px, #FCFCFC);
 }
 
 #quotation {
