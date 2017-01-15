@@ -6,7 +6,6 @@ import utils
 import flask
 import flask_sslify
 from flask.ext.compress import Compress
-from flask.ext.mobility import Mobility
 
 import os
 import urllib
@@ -28,7 +27,6 @@ Compress(app)
 debug = 'DEBUG' in os.environ
 if not debug:
     flask_sslify.SSLify(app, permanent = True)
-Mobility(app)
 
 @app.route('/')
 @handlers.validate_lang_code
