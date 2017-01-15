@@ -133,9 +133,6 @@ def select_next_id(lang_code, curr_id, cat = CATEGORY_ALL):
                 break
     return next_id
 
-def should_autofocus_category_filter(cat, request):
-    return cat is CATEGORY_ALL and not request.MOBILE
-
 @validate_lang_code
 def citation_hunt(lang_code):
     id = flask.request.args.get('id')
@@ -173,7 +170,6 @@ def citation_hunt(lang_code):
                 flask.url_for('citation_hunt',
                     id = id, cat = CATEGORY_ALL.id,
                     lang_code = lang_code))
-        autofocus = should_autofocus_category_filter(cat, flask.request)
         article_url_path = urllib.quote(
             e(urlparse.urlparse(aurl).path.lstrip('/')))
         return flask.render_template('index.html',
@@ -188,7 +184,6 @@ def citation_hunt(lang_code):
             ref_html = SUPERSCRIPT_MARKUP,
             config = cfg,
             lang_dir = lang_dir,
-            category_filter_autofocus = autofocus,
             js_strings = cfg.strings['js'])
 
     id = select_random_id(lang_code, cat)
