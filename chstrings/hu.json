@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Wolf Rex",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"BanKris"
 		]
 	},
 	"introduction": "Segíts forrásokat találni a Wikipédia szócikkeihez!",
@@ -10,11 +11,15 @@
 	"instructions_details": "Kattints a(z) %s gombra, hogy eljuss a Wikipédiára és kijavíthasd a részletet vagy a(z) %s gombra egy másikért. További információkért lásd a(z) %s lapot. Sok szerencsét!",
 	"in_page": "A(z) %s oldalon:",
 	"button_wikilink": "Megvan!",
-	"button_next": "Nem, a következőt!",
+	"button_next": "Következő!",
 	"lead_section_hint": "Ez a szöveg a szócikk bevezetőjének része, úgyhogy a forrás feltüntetése opcionális lehet. Lásd a %s lapot további információkért.",
-	"category_filter_placeholder": "Mi érdekel?",
+	"category_filter_placeholder": "Téma keresése.",
 	"github_link_title": "Helló! A forráskódom elérhető a GitHubon!",
 	"beginners_hint": "Nem tudod, hogy kell hozzáadni forrásokat? Lásd itt:%s",
 	"page_not_found": "A lap nem található!",
-	"page_not_found_text": "Az általad keresett oldal már nem létezik — valószínűleg már találtak hozzá forrást? Menj vissza a(z) %s oldalra többért!"
+	"page_not_found_text": "Az általad keresett oldal már nem létezik — valószínűleg már találtak hozzá forrást? Menj vissza a(z) %s oldalra többért!",
+	"js-article-count-singular": "%s cikk",
+	"js-article-count-plural": "%s cikk",
+	"js-refs-added-today-singular": "%s idézet lett ma hozzáadva!",
+	"js-refs-added-today-plural": "%s idézet lett ma hozzáadva!"
 }

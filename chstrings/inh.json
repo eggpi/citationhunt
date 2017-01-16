@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adam-Yourist"
+		]
+	},
+	"introduction": "Новкъостал де Википеден статьяшта хьасташ (источникаш) лаха!",
+	"button_next": "ДIахо!",
+	"page_not_found": "ОагIув кораяьяц!",
+	"page_not_found_text": "Iа лехаш йола оагIув кхы йолаш яц. Цун источник корадаь хила мегаш дий-те? Юхавола укхаз %s керда дараш долча!",
+	"js-article-count-singular": "%s статья",
+	"js-article-count-plural": "%s статьяш",
+	"js-refs-added-today-singular": "%s источник тIатехад тахан!",
+	"js-refs-added-today-plural": "%s источник тIатехад тахан!"
+}
