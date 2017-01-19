@@ -20,6 +20,7 @@
 	"footer": "%s wurde von Freiwilligen erstellt, gehostet auf %s und übersetzt mithilfe von %s.",
 	"js-article-count-singular": "%s Artikel",
 	"js-article-count-plural": "%s Artikel",
+	"js-keyboard-shortcut": "Tastaturkürzel: %s",
 	"js-refs-added-today-singular": "%s Zitat wurde heute hinzugefügt!",
 	"js-refs-added-today-plural": "%s Zitate wurden heute hinzugefügt!"
 }

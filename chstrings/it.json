@@ -21,6 +21,7 @@
 	"footer": "%s è fatto da volontari, ospitato su %s e tradotto tramite %s.",
 	"js-article-count-singular": "%s voce",
 	"js-article-count-plural": "%s voci",
+	"js-keyboard-shortcut": "Scorciatoia da tastiera: %s",
 	"js-refs-added-today-singular": "%s citazione aggiunta oggi!",
 	"js-refs-added-today-plural": "%s citazioni aggiunte oggi!"
 }

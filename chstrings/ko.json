@@ -22,6 +22,7 @@
 	"footer": "%s는 자발적인 사용자들에 의해서 만들어지고, %s에서 호스팅되며, %s를 통해 번역되었습니다.",
 	"js-article-count-singular": "%s개의 문서",
 	"js-article-count-plural": "%s개의 문서",
+	"js-keyboard-shortcut": "단축 키: %s",
 	"js-refs-added-today-singular": "오늘 %s개의 인용을 추가했습니다!",
 	"js-refs-added-today-plural": "오늘 %s개의 인용을 추가했습니다!"
 }

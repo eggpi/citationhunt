@@ -12,7 +12,7 @@
 	"button_wikilink": "I lo pijo mi!",
 	"button_next": "Anans!",
 	"lead_section_hint": "Ës test a l'é tirà da la session ëd testa dl'artìcol, donca dé n'arferiment a cost-sì a l'é opsional.\nCh'a consulta %s për pi d'anformassion.",
-	"category_filter_placeholder": "E chiel, col ch'a l'é sò giget?",
+	"category_filter_placeholder": "Arsërché un soget.",
 	"github_link_title": "Eh! Mia sorgiss a l'é ansima a GitHub!",
 	"beginners_hint": "Sa-lo nen coma gionté dle sitassion? Ch'a consulta %s.",
 	"page_not_found": "Pàgina nen trovà!",
@@ -20,6 +20,7 @@
 	"footer": "%sCitation Hunt a l'é fàit da dij volontari, ospità su %s e voltà via %s.",
 	"js-article-count-singular": "%s artìcol",
 	"js-article-count-plural": "%s artìcoj",
+	"js-keyboard-shortcut": "Scursa për la tastadura: %s",
 	"js-refs-added-today-singular": "%s sitassion giontà ancheuj!",
 	"js-refs-added-today-plural": "%s sitassion giontà ancheuj!"
 }

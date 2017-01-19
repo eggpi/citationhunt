@@ -3,7 +3,8 @@
 		"authors": [
 			"Wolf Rex",
 			"Tacsipacsi",
-			"BanKris"
+			"BanKris",
+			"Máté"
 		]
 	},
 	"introduction": "Segíts forrásokat találni a Wikipédia szócikkeihez!",
@@ -20,6 +21,6 @@
 	"page_not_found_text": "Az általad keresett oldal már nem létezik — valószínűleg már találtak hozzá forrást? Menj vissza a(z) %s oldalra többért!",
 	"js-article-count-singular": "%s cikk",
 	"js-article-count-plural": "%s cikk",
-	"js-refs-added-today-singular": "%s idézet lett ma hozzáadva!",
-	"js-refs-added-today-plural": "%s idézet lett ma hozzáadva!"
+	"js-refs-added-today-singular": "%s hivatkozást adtak ma hozzá!",
+	"js-refs-added-today-plural": "%s hivatkozást adtak ma hozzá!"
 }
