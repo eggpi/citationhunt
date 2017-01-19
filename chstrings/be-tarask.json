@@ -13,7 +13,7 @@
 	"button_wikilink": "Я зразумеў!",
 	"button_next": "Далей!",
 	"lead_section_hint": "Гэты тэкст зьяўляецца часткай асноўнай сэкцыі артыкула, таму крыніцу можна не пазначаць. Калі ласка, глядзіце падрабязьней на %s.",
-	"category_filter_placeholder": "Што Вас бянтэжыць?",
+	"category_filter_placeholder": "Пошук тэмы.",
 	"github_link_title": "Вітаю! Мая крыніца знаходзіцца на GitHub!",
 	"beginners_hint": "Ня ведаеце як дадаваць крыніцы? Глядзіце %s.",
 	"page_not_found": "Старонка ня знойдзеная!",
@@ -21,6 +21,7 @@
 	"footer": "%s ствараецца добраахвотнікамі, разьмяшчаецца на %s і перакладаецца праз %s.",
 	"js-article-count-singular": "%s артыкул",
 	"js-article-count-plural": "%s артыкулаў",
+	"js-keyboard-shortcut": "Клявіятурны скарот: %s",
 	"js-refs-added-today-singular": "%s крыніцаў дададзена сёньня!",
 	"js-refs-added-today-plural": "%s крыніцаў дададзена сёньня!"
 }

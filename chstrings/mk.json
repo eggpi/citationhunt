@@ -12,7 +12,7 @@
 	"button_wikilink": "Јасно!",
 	"button_next": "Следна!",
 	"lead_section_hint": "Овој текст е дел од воведниот дел на статијата, па затоа наводите не се сосем задолжителни. Повеќе информации ќе најдете на %s.",
-	"category_filter_placeholder": "Што ве поттикнува?",
+	"category_filter_placeholder": "Пребарајте тема.",
 	"github_link_title": "Еј! Изворот ми е на GitHub!",
 	"beginners_hint": "Не знаете како да ставате наводи? Видете %s.",
 	"page_not_found": "Страницата не е пронајдена!",
@@ -20,6 +20,7 @@
 	"footer": "„%s“ е дело на доброволци. Вдомен е на %s, а преведен преку %s.",
 	"js-article-count-singular": "%s статија",
 	"js-article-count-plural": "%s статии",
+	"js-keyboard-shortcut": "Тастатурна кратенка: %s",
 	"js-refs-added-today-singular": "Денес е додаден %s навод!",
 	"js-refs-added-today-plural": "Денес се додадени %s наводи!"
 }

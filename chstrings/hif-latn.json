@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Girmitya"
+			"Girmitya",
+			"Smcnarayan"
 		]
 	},
 	"introduction": "Wikipedia articles me citation khoje ke madat karo!",
@@ -11,7 +12,7 @@
 	"button_wikilink": "Ham iske samajh gayaa hai!",
 	"button_next": "Duusra!",
 	"lead_section_hint": "Ii text article ke lead section ke hissa hai, tab iske reference kare ke jaruuri nai hai. Meharbaani kar ke, aur jaan kari ke khaatir %s ke dekho.",
-	"category_filter_placeholder": "App ke konchi tick kare hai?",
+	"category_filter_placeholder": "Ek topic ke khojo",
 	"github_link_title": "Hey! Hamaar source GitHub me hai!",
 	"beginners_hint": "Citation jorre nai jantaa hai? %s ke dekho.",
 	"page_not_found": "Panna ke nai paawa gais hai!",
@@ -19,6 +20,7 @@
 	"footer": "%s ke volunteers banaain hai, jiske %s me host karaa gais hai aur %s se translate karaa gais hai.",
 	"js-article-count-singular": "%s article",
 	"js-article-count-plural": "%s articles",
+	"js-keyboard-shortcut": "Keyboard ke shortcut: %s",
 	"js-refs-added-today-singular": "%s citation aaj jorraa gais hai!",
 	"js-refs-added-today-plural": "%s citations aaj jorraa gais hai!"
 }

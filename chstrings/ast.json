@@ -12,7 +12,7 @@
 	"button_wikilink": "¡Tengo esta!",
 	"button_next": "¡Siguiente!",
 	"lead_section_hint": "Esti testu ye parte de la sección d'entrada del artículu, de manera que les referencies pueden ser opcionales. Consulta %s pa más información.",
-	"category_filter_placeholder": "¿Qué te motiva?",
+	"category_filter_placeholder": "Buscar un tema.",
 	"github_link_title": "¡Ey! ¡La mio fonte ta en GitHub!",
 	"beginners_hint": "¿Nun sabes cómo añadir cites? Mira %s.",
 	"page_not_found": "Nun s'alcontró la páxina",
@@ -20,6 +20,7 @@
 	"footer": "%s ta fechu por voluntarios, agospiáu en %s y traducíu en %s.",
 	"js-article-count-singular": "%s artículu",
 	"js-article-count-plural": "%s artículos",
+	"js-keyboard-shortcut": "Atayu de tecláu: %s",
 	"js-refs-added-today-singular": "¡%s cita añadida güei!",
 	"js-refs-added-today-plural": "¡%s cites añadíes güei!"
 }
