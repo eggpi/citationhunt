@@ -46,11 +46,16 @@ if not debug:
     log_file = os.path.join(log_dir, 'ch.log')
     log_handler = logging.handlers.RotatingFileHandler(
         log_file, maxBytes = 1024 * 1024, encoding = 'utf-8')
-    log_handler.setLevel(logging.INFO if not debug else logging.DEBUG)
     log_handler.setFormatter(logging.Formatter(
         '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'))
+    log_handler.setLevel(logging.INFO)
     app.logger.addHandler(log_handler)
+    app.logger.setLevel(logging.INFO)
     print 'writing server logs to %s' % log_file
+
+@app.before_first_request
+def log_hello():
+    app.logger.info('logging says hello!')
 
 @app.route('/<lang_code>/redirect')
 @handlers.validate_lang_code
