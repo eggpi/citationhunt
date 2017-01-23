@@ -12,7 +12,7 @@
 	"button_wikilink": "Evidon-me eo !",
 	"button_next": "War-lerc'h !",
 	"lead_section_hint": "Tennet eo an destenn-mañ eus talbenn ar pennad : diret eo ouzhpennañ daveennoù. Sellit ouzh %s evit gouzout hiroc'h.",
-	"category_filter_placeholder": "Ha c'hwi, petra eo ho albac'henn ?",
+	"category_filter_placeholder": "Klask un danvez.",
 	"github_link_title": "E ! GitHut eo ma c'hod mammennoù  !",
 	"beginners_hint": "N'ouzit ket penaos ouzhpennañ daveennoù ? Sellit ouzh %s",
 	"page_not_found": "N'eo ket bet kavet ar bajenn !",
@@ -20,6 +20,7 @@
 	"footer": "Gant tud a-youl vat ez a %s en-dro, herberc'hiet war %s ha troet dre %s.",
 	"js-article-count-singular": "%s pennad",
 	"js-article-count-plural": "%s pennad",
+	"js-keyboard-shortcut": "Berradenn klavier : %s",
 	"js-refs-added-today-singular": "%s arroud ouzhpennet hiziv !",
 	"js-refs-added-today-plural": "%s arroud ouzhpennet hiziv !"
 }

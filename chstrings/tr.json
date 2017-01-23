@@ -19,5 +19,6 @@
 	"beginners_hint": "Nasıl kaynak ekleneceğini bilimiyor musunuz? Bkz %s.",
 	"page_not_found": "Sayfa bulunamadı!",
 	"page_not_found_text": "Aradığınız sayfa artık bulunmuyor — muhtemelen bu kaynak zaten bulunmuş olabilir mi? Daha fazla bilgi için %s geriye dönün!",
-	"footer": "Citation Hunt gönüllülerden oluşuyor, barındırılan %s ve çevrilen %s."
+	"footer": "Citation Hunt gönüllülerden oluşuyor, barındırılan %s ve çevrilen %s.",
+	"js-keyboard-shortcut": "Tuş takımı kısayolları: %s"
 }
