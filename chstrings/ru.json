@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Irus"
+			"Irus",
+			"Kareyac"
 		]
 	},
 	"tooltitle": "Citation Hunt",
@@ -21,6 +22,7 @@
 	"footer": "%s создан добровольцами, размещён на %s и переведён с помощью %s.",
 	"js-article-count-singular": "%s статья",
 	"js-article-count-plural": "%s статей/статьи",
+	"js-keyboard-shortcut": "Сочетание клавиш: %ы",
 	"js-refs-added-today-singular": "%s источник добавлен сегодня!",
 	"js-refs-added-today-plural": "%s источников добавлено сегодня!"
 }

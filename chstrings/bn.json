@@ -21,6 +21,7 @@
 	"footer": "%s স্বেচ্ছাসেবকদের দ্বারা তৈরি করা হয়েছে, যা %s-এ হোস্ট করা হয়েছে এবং %s-এর সহায়তায় অনূদিত হয়েছে।",
 	"js-article-count-singular": "%sটি নিবন্ধ",
 	"js-article-count-plural": "%sটি নিবন্ধ",
+	"js-keyboard-shortcut": "কীবোর্ড শর্টকাট: %s",
 	"js-refs-added-today-singular": "আজ %s উদ্ধৃতি যোগ হয়েছে!",
 	"js-refs-added-today-plural": "আজ %s উদ্ধৃতি যোগ হয়েছে!"
 }
