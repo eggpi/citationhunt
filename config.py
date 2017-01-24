@@ -119,6 +119,12 @@ _LANG_CODE_TO_CONFIG = dict(
         # A human-readable title for the article specified above. This gets
         # interpolated into the localizable string 'beginners_hint'
         beginners_link_title = 'Introduction to referencing with VisualEditor',
+        
+        # A link to an introductory article on finding "reliable" sources
+        reliable_sources_link = 'https://en.wikipedia.org/wiki/Wikipedia:Identifying_reliable_sources'
+        # A human-readable title for the article specified above. This gets
+        # interpolated into the localizable string 'reliable_sources_hint'
+        reliable_sources_link_title = 'reliable source'
 
         # Some Wikipedias have specific policies for adding citations to the
         # lead section of an article. This should be a link to that policy.
