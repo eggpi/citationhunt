@@ -3,8 +3,8 @@
 }
 
 div.awesomplete * {
+    font-size: 14px;
     font-family: inherit;
-    font-size: small;
 }
 
 div.awesomplete {
@@ -15,9 +15,8 @@ div.awesomplete {
 
 div.awesomplete > ul {
     position: absolute;
-    width: 440px;
-    /* left + right should add up to the padding in the input element */
-    max-height: 250px;
+    width: 444px;
+    max-height: 255px;
     overflow-y: scroll;
     overflow-x: hidden;
     list-style: none;
@@ -28,11 +27,11 @@ div.awesomplete > ul {
 }
 
 html[dir="ltr"] div.awesomplete > ul {
-    padding: 0 7px 0 1px;
+    padding: 0 3px 0 1px;
 }
 
 html[dir="rtl"] div.awesomplete > ul {
-    padding: 0 1px 0 7px;
+    padding: 0 1px 0 3px;
 }
 
 div.awesomplete > ul > li {
