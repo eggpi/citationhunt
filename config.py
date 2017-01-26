@@ -489,6 +489,29 @@ _LANG_CODE_TO_CONFIG = dict(
         html_snippet = True,
         snippet_max_size = 5000,
     ),
+
+    ru = dict(
+        lang_name = 'Русский',
+        lang_dir = 'ltr',
+        database = 'ruwiki_p',
+        wikipedia_domain = 'ru.wikipedia.org',
+
+        beginners_link =
+        'https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A1%D1%81%D1%8B%D0%BB%D0%BA%D0%B8_%D0%BD%D0%B0_%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B8',
+        beginners_link_title = 'Википедия:Ссылки_на_источники',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Википедия:Статьи_с_утверждениями_без_источников',
+        citation_needed_templates = [
+            'Нет АИ',
+            'Нет АИ 2',
+            'Нет источника',
+        ],
+        citation_needed_template_name = 'источник?',
+        hidden_category = 'Скрытые_категории',
+        snippet_max_size = 800,
+    ),
 )
 
 # In py3: types.SimpleNamespace
