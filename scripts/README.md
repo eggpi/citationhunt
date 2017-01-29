@@ -5,8 +5,8 @@ The scripts in this directory are used to generate the CitationHunt database.
 ### Generating the database on Tools Labs
 
 The `update_db_tools_labs.py` script automates the generation of the database
-from the latest Wikipedia dump on Tools Labs. It is run weekly as a cron job
-and needs to run from a virtualenv.
+on Tools Labs. It is run regularly as as a cron job and needs to run from a
+virtualenv.
 
 ```
 /usr/bin/jsub -mem 20g -N citationhunt_update_en -once -l release=trusty \
