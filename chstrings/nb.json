@@ -22,6 +22,7 @@
 	"footer": "%s er lagd av frivillige, ligger på %s og oversettes på %s.",
 	"js-article-count-singular": "%s artikkel",
 	"js-article-count-plural": "%s artikler",
+	"js-keyboard-shortcut": "Hurtigtast: %s",
 	"js-refs-added-today-singular": "%s referanse lagt til i dag!",
 	"js-refs-added-today-plural": "%s referanser lagt til i dag!"
 }

@@ -1,17 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"ANDROBETA"
+			"ANDROBETA",
+			"Strainu"
 		]
 	},
 	"introduction": "Ajutați la găsirea citatelor pentru articolele Wikipedia!",
+	"instructions_goal": "Bucata de articol de mai jos nu este susținută de o sursă de încredere. Puteți găsi una?",
+	"instructions_details": "Apăsați pe %s pentru a merge la Wikipedia și a corecta articolul, sau %s, pentru a vedea o altă bucată cu probleme. Dacă aveți întrebări, vedeți %s. Succes!",
 	"in_page": "În pagina %s:",
 	"button_wikilink": "Se rezolvă!",
-	"button_next": "Nu, mai departe!",
+	"button_next": "Mai departe!",
 	"lead_section_hint": "Acest text este parte a secțiunii introductive a articolului, adăugarea referințelor ar putea fi opțională. Vă rugăm consultați %s pentru mai multe informații.",
-	"category_filter_placeholder": "Ce anume vă interesează?",
+	"category_filter_placeholder": "Căutați un subiect.",
 	"github_link_title": "Hei! Codul meu sursă este pe GitHub!",
 	"beginners_hint": "Nu știți cum să adăugați citate? Consultați %s.",
 	"page_not_found": "Pagina nu a fost găsită!",
-	"page_not_found_text": "Pagina pe care o căutați nu mai există — poate că acest citat a fost găsit deja? Reveniți la %s pentru mai multe!"
+	"page_not_found_text": "Pagina pe care o căutați nu mai există — poate că acest citat a fost găsit deja? Reveniți la %s pentru mai multe!",
+	"footer": "%s e realizat de voluntari, găzduit pe %s și tradus via %s.",
+	"js-article-count-singular": "%s articol",
+	"js-article-count-plural": "%s (de) articole",
+	"js-keyboard-shortcut": "Combinație de taste: %s",
+	"js-refs-added-today-singular": "%s referință adăugată azi!",
+	"js-refs-added-today-plural": "%s referințe adăugate azi!"
 }

@@ -6,7 +6,8 @@
 			"LukasJandera",
 			"Mormegil",
 			"Dvorapa",
-			"Vojtěch Dostál"
+			"Vojtěch Dostál",
+			"Walter Klosse"
 		]
 	},
 	"introduction": "Pomozte najít citace pro články Wikipedie!",
@@ -14,11 +15,17 @@
 	"instructions_details": "Stisknutím tlačítka %s můžete přejít na Wikipedii a úryvek opravit, tlačítkem %s zobrazíte jiný úryvek. Přečtěte si stránku %s, pokud máte další dotazy. Ať se daří!",
 	"in_page": "V článku %s:",
 	"button_wikilink": "Chápu!",
-	"button_next": "Ne, další!",
+	"button_next": "Další!",
 	"lead_section_hint": "Tento text je součástí hlavního oddílu článku, takže odkazování na něj může být volitelné. Přečtěte si prosím %s pro více informací.",
-	"category_filter_placeholder": "Vyberte si kategorii, které se chcete věnovat:",
+	"category_filter_placeholder": "Hledat téma.",
 	"github_link_title": "Můj zdrojový kód je na Githubu!",
 	"beginners_hint": "Nevíte, jak přidat citace? Viz %s.",
 	"page_not_found": "Stránka nebyla nalezena.",
-	"page_not_found_text": "Stránka, kterou hledáte, již neexistuje — možná, že tato citace již byla dohledána? Vraťte se na stránku %s pro další návrh!"
+	"page_not_found_text": "Stránka, kterou hledáte, již neexistuje — možná, že tato citace již byla dohledána? Vraťte se na stránku %s pro další návrh!",
+	"footer": "%s je vytvořen dobrovolníky, hostil na %s a přeložen pomocí %s.",
+	"js-article-count-singular": "%s článek",
+	"js-article-count-plural": "%s článků",
+	"js-keyboard-shortcut": "Klávesová zkratka: %s",
+	"js-refs-added-today-singular": "%s citace byla přidána dnes!",
+	"js-refs-added-today-plural": "%s citací přidané dnes!"
 }
