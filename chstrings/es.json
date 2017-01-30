@@ -24,6 +24,7 @@
 	"footer": "%s es obra de voluntarios, está alojado en %s y se traduce por medio de %s.",
 	"js-article-count-singular": "%s artículo",
 	"js-article-count-plural": "%s artículos",
+	"js-keyboard-shortcut": "Atajo de teclado: %s",
 	"js-refs-added-today-singular": "¡%s cita añadida hoy!",
 	"js-refs-added-today-plural": "¡%s citas añadidas hoy!"
 }
