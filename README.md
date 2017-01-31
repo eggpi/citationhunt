@@ -45,6 +45,6 @@ $ webservice2 uwsgi-python start
 ```
 
 You will also want to schedule a cron job to automatically update the database
-as new dumps are released. See
+regularly. See
 [scripts/README.md](https://github.com/eggpi/citationhunt/blob/master/scripts/README.md)
 for more information.
