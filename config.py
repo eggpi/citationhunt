@@ -512,6 +512,26 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Скрытые_категории',
         snippet_max_size = 800,
     ),
+
+    ro = dict(
+        lang_name = 'Română',
+        lang_dir = 'ltr',
+        database = 'rowiki_p',
+        wikipedia_domain = 'ro.wikipedia.org',
+
+        beginners_link = 'https://ro.wikipedia.org/wiki/Wikipedia:Citarea_surselor',
+        beginners_link_title = 'Wikipedia:Citarea_surselor',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Articole_care_necesită_citări_suplimentare',
+        citation_needed_templates = [
+            'Necesită citare',
+        ],
+        citation_needed_template_name = 'necesită citare',
+        hidden_category = 'Categorii_ascunse',
+        snippet_max_size = 800,
+    ),
 )
 
 # In py3: types.SimpleNamespace
