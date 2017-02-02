@@ -532,6 +532,26 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Categorii_ascunse',
         snippet_max_size = 800,
     ),
+
+    ml = dict(
+        lang_name = 'മലയാളം',
+        lang_dir = 'ltr',
+        database = 'mlwiki_p',
+        wikipedia_domain = 'ml.wikipedia.org',
+
+        beginners_link = 'https://ml.wikipedia.org/wiki/വിക്കിപീഡിയ:അവലംബങ്ങൾ_ഉദ്ധരിക്കേണ്ടതെങ്ങനെ',
+        beginners_link_title = 'വിക്കിപീഡിയ:അവലംബങ്ങൾ ഉദ്ധരിക്കേണ്ടതെങ്ങനെ',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'അവലംബം_ചേർക്കേണ്ട_വാചകങ്ങളുള്ള_ലേഖനങ്ങൾ',
+        citation_needed_templates = [
+            'തെളിവ്',
+        ],
+        citation_needed_template_name = 'അവലംബം ആവശ്യമാണ്',
+        hidden_category = 'മറഞ്ഞിരിക്കുന്ന_വർഗ്ഗങ്ങൾ',
+        snippet_max_size = 1000,
+    ),
 )
 
 # In py3: types.SimpleNamespace
