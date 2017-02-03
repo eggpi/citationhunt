@@ -552,6 +552,30 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'മറഞ്ഞിരിക്കുന്ന_വർഗ്ഗങ്ങൾ',
         snippet_max_size = 1000,
     ),
+
+    ja = dict(
+        lang_name = '日本語',
+        lang_dir = 'ltr',
+        database = 'jawiki_p',
+        # database = '',
+        wikipedia_domain = 'ja.wikipedia.org',
+
+        beginners_link = 'https://ja.wikipedia.org/wiki/Wikipedia:出典を明記する',
+        beginners_link_title = 'Wikipedia:出典を明記する',
+
+        lead_section_policy_link = 'https://ja.wikipedia.org/wiki/Wikipedia:スタイルマニュアル_(導入部)#.E5.87.BA.E5.85.B8',
+        
+        lead_section_policy_link_title = 'リード部の出典',
+
+        # citation_needed_category = '';
+        citation_needed_template = [
+            '出典の明記',
+            '要出典',
+        ],
+        hidden_category = '隠しカテゴリ',
+
+        snippet_max_size = 1000,
+    ),
 )
 
 # In py3: types.SimpleNamespace
