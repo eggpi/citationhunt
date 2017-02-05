@@ -120,6 +120,10 @@ _LANG_CODE_TO_CONFIG = dict(
         # interpolated into the localizable string 'beginners_hint'
         beginners_link_title = 'Introduction to referencing with VisualEditor',
 
+        # A link to an introductory article about identifying reliable sources.
+        # Optional.
+        reliable_sources_link = 'https://en.wikipedia.org/wiki/Help:Introduction_to_referencing_with_VisualEditor/5',
+
         # Some Wikipedias have specific policies for adding citations to the
         # lead section of an article. This should be a link to that policy.
         lead_section_policy_link = 'https://en.wikipedia.org/wiki/Wikipedia:CITELEAD',
