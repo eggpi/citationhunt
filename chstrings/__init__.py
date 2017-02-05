@@ -3,9 +3,11 @@ import flask
 import os
 import json
 
+def _link_start(url, target = '_blank'):
+    return flask.Markup('<a target="%s" href="%s">' % (target, url))
+
 def _link(url, title, target = "_blank"):
-    return flask.Markup(
-        '<a target="%s" href="%s">%s</a>' % (target, url, title))
+    return flask.Markup('%s%s</a>' % (_link_start(url, target), title))
 
 def _preprocess_variables(config, strings):
     strings['in_page'] = \
@@ -26,6 +28,18 @@ def _preprocess_variables(config, strings):
         config.beginners_link_title)
     strings['beginners_hint'] = \
         flask.Markup(strings['beginners_hint']) % beginners_hint_link
+
+    if hasattr(config, 'reliable_sources_link'):
+        link_start, link_end = _link_start(config.reliable_sources_link), '</a>'
+    else:
+        link_start = link_end = ''
+
+    # Note that format() doesn't raise an exception if the string doesn't
+    # have any formatters, so this is fine even if instructions_goal doesn't
+    # contain the {link_start}/{link_end} markers.
+    strings['instructions_goal'] = flask.Markup(
+        strings['instructions_goal'].format(
+            link_start = link_start, link_end = link_end))
 
     if '404' not in config.flagged_off:
         strings['page_not_found_text'] = \

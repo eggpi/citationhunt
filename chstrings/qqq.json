@@ -8,6 +8,7 @@
 		]
 	},
 	"introduction": "The message that appears below 'Citation Hunt' on the tool.",
+	"instructions_goal": "The text between {link_start} and {link_end} may be turned into a link to documentation that helps identify reliable sources, depending on the language's configuration.",
 	"in_page": "Text that links to the article that needs a citation. %s gets replaced with the article's name.",
 	"button_wikilink": "Label on the button that links to the article so the user can add a reference.",
 	"button_next": "Label on the button that browses to the next article.\n{{Identical|Next}}",
