@@ -4,7 +4,8 @@
 			"Lxlalexlxl",
 			"Visem",
 			"Ата",
-			"Piramidion"
+			"Piramidion",
+			"AS"
 		]
 	},
 	"introduction": "Допоможіть знайти джерела для статей Вікіпедії!",
@@ -14,7 +15,7 @@
 	"button_wikilink": "У мене є!",
 	"button_next": "Наступна!",
 	"lead_section_hint": "Цей текст є частиною початкового розділу статті, тому вказувати джерела для неї може бути необов'язковим. Будь ласка, ознайомтеся з %s для отримання додаткової інформації.",
-	"category_filter_placeholder": "Що саме вас цікавить?",
+	"category_filter_placeholder": "Шукати за темою.",
 	"github_link_title": "Агов! Мої сирці є на GitHub!",
 	"beginners_hint": "Не знаєте, як додавати джерела? Дивіться на %s.",
 	"page_not_found": "Сторінку не знайдено!",
@@ -22,6 +23,7 @@
 	"footer": "%s створено волонтерами, розміщено на %s, і перекладено через %s.",
 	"js-article-count-singular": "%s стаття",
 	"js-article-count-plural": "%s статей",
+	"js-keyboard-shortcut": "Поєднання клавіш: %s",
 	"js-refs-added-today-singular": "%s цитування додано сьогодні!",
 	"js-refs-added-today-plural": "%s цитувань додано сьогодні!"
 }

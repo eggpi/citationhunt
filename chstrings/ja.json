@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Takot"
+		]
+	},
+	"introduction": "ウィキペディアの記事に出典をつけましょう！",
+	"instructions_goal": "以下はウィキペディアの記事の一部分ですが、信頼できる情報源によってカバーされていません。出典をご存知ないですか？",
+	"instructions_details": "%s ボタンを押すとウィキペディアに飛び、その文を直せます。%s を押すと別の文が読み込まれます。出典の付け方に質問があれば %s をチェックしてみてください。グッドラック！",
+	"in_page": "%s の記事にはこうあります。",
+	"button_wikilink": "知ってる！",
+	"button_next": "次！",
+	"lead_section_hint": "この文は記事の導入部にあるため、出典の明示はオプションである場合があります。詳しくは %s をご覧ください。",
+	"category_filter_placeholder": "トピックを検索",
+	"github_link_title": "やあ！ このソースは GitHub にあるよ！",
+	"beginners_hint": "出典の追加方法が分からない場合には %s を見てね。",
+	"page_not_found": "ページが見つかりません！",
+	"page_not_found_text": "お探しのページは見つかりませんでした―もしかすると誰かがもう出典を見つけたのかも？　%s に戻ってもっと探してみましょう！",
+	"footer": "%s はボランティアによって製作されています。%s 上でホスティングされ、%s で翻訳されています。",
+	"js-article-count-singular": "%s 記事",
+	"js-article-count-plural": "%s 記事",
+	"js-keyboard-shortcut": "ショートカットキー: %s",
+	"js-refs-added-today-singular": "今日は %s 件の出典が追加されました！",
+	"js-refs-added-today-plural": "今日は %s 件の出典が追加されました！"
+}
