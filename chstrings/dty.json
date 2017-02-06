@@ -11,7 +11,7 @@
 	"button_wikilink": "मैले पाया!",
 	"button_next": "अर्खो!",
 	"lead_section_hint": "यो पाठ लेखओ नेतृत्व खण्ड हो, तबै सन्दर्भ राख्द्या काम वैकल्पिक होइसकन्छ। जेदा जानकारी खिलाइ %s तक:।",
-	"category_filter_placeholder": "तमलाई क्या:ले सही बनाउँछ?",
+	"category_filter_placeholder": " शीर्षक खिलाइ खोजी अरऽ।",
 	"github_link_title": "हजुरौ! मेरो स्रोत GitHub मी छ!",
 	"beginners_hint": "साइटेसन कस्याँ राख्दु हो जाण्णानँ? %s तक:।",
 	"page_not_found": "पान्नो पायिएन!",
@@ -19,6 +19,7 @@
 	"footer": "%s स्वयमसेवकअन हताँ बनायियाऽ हुन, %sमी होस्ट अरियाऽ रे %s बठेइ अनुवाद अरियाऽ हो।",
 	"js-article-count-singular": "%s लेख",
 	"js-article-count-plural": "%s लेखअन",
+	"js-keyboard-shortcut": "किबोर्ड छोटकरीः %s",
 	"js-refs-added-today-singular": "%s उद्धरण आज थपिया!",
 	"js-refs-added-today-plural": "%s उद्धरणअन आज थपिया!"
 }
