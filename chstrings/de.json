@@ -6,7 +6,7 @@
 	},
 	"tooltitle": "Citation Hunt",
 	"introduction": "Hilf, Zitate für Wikipedia-Artikel zu finden!",
-	"instructions_goal": "Das unten stehende Wikipedia-Snippet wird von keiner verlässlichen Quelle unterstützt. Kannst du eine finden?",
+	"instructions_goal": "Das unten stehende Wikipedia-Snippet wird von keiner {link_start}verlässlichen Quelle{link_end} unterstützt. Kannst du eine finden?",
 	"instructions_details": "Klicke auf %s, um zu Wikipedia zu gehen und das Snippet zu reparieren oder %s, um ein anderes zu sehen. Besuche %s, wenn du Fragen hast. Viel Glück!",
 	"in_page": "In Seite %s:",
 	"button_wikilink": "Verstanden!",
