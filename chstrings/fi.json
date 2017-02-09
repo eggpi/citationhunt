@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jaakkoh",
-			"Olimar"
+			"Olimar",
+			"Pyscowicz"
 		]
 	},
 	"tooltitle": "Lähdejahti",
@@ -18,5 +19,6 @@
 	"beginners_hint": "Etkö tiedä, kuinka lähdeviite lisätään? Katso %s.",
 	"page_not_found": "Sivua ei löytynyt!",
 	"page_not_found_text": "Etsimäsi sivu ei ole enää olemassa — ehkä lähdeviite on jo lisätty? Mene takaisin sivulle %s löytääksesi uusia puutteita!",
-	"footer": "Citation Hunt on vapaaehtoisten tekemä. Sitä isännöi %s ja se on käännetty sivustolla %s."
+	"footer": "Citation Hunt on vapaaehtoisten tekemä. Sitä isännöi %s ja se on käännetty sivustolla %s.",
+	"js-keyboard-shortcut": "Pikanäppäin: %s"
 }

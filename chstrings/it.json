@@ -7,7 +7,7 @@
 	},
 	"tooltitle": "Citation Hunt",
 	"introduction": "Aiuta a trovare citazioni per le voci di Wikipedia!",
-	"instructions_goal": "Il seguente frammento di Wikipedia non è supportato da una fonte affidabile. Riesci a trovare una?",
+	"instructions_goal": "Il seguente frammento di Wikipedia non è supportato da una {link_start}fonte affidabile{link_end}. Riesci a trovare una?",
 	"instructions_details": "Clicca %s per andare su Wikipedia e correggere il frammento, o %s per vederne un altro. Controlla %s se hai domande. Buona fortuna!",
 	"in_page": "Nella pagina %s:",
 	"button_wikilink": "Prendo questo!",

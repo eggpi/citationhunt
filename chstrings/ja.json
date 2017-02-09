@@ -5,10 +5,10 @@
 		]
 	},
 	"introduction": "ウィキペディアの記事に出典をつけましょう！",
-	"instructions_goal": "以下はウィキペディアの記事の一部分ですが、信頼できる情報源によってカバーされていません。出典をご存知ないですか？",
+	"instructions_goal": "以下はウィキペディアの記事の一部分ですが、{link_start}信頼できる情報源{link_end}が不足しています。出典をご存知ないですか？",
 	"instructions_details": "%s ボタンを押すとウィキペディアに飛び、その文を直せます。%s を押すと別の文が読み込まれます。出典の付け方に質問があれば %s をチェックしてみてください。グッドラック！",
 	"in_page": "%s の記事にはこうあります。",
-	"button_wikilink": "知ってる！",
+	"button_wikilink": "出典知ってる！",
 	"button_next": "次！",
 	"lead_section_hint": "この文は記事の導入部にあるため、出典の明示はオプションである場合があります。詳しくは %s をご覧ください。",
 	"category_filter_placeholder": "トピックを検索",
