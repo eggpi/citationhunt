@@ -29,18 +29,6 @@ def _preprocess_variables(config, strings):
     strings['beginners_hint'] = \
         flask.Markup(strings['beginners_hint']) % beginners_hint_link
 
-    if hasattr(config, 'reliable_sources_link'):
-        link_start, link_end = _link_start(config.reliable_sources_link), '</a>'
-    else:
-        link_start = link_end = ''
-
-    # Note that format() doesn't raise an exception if the string doesn't
-    # have any formatters, so this is fine even if instructions_goal doesn't
-    # contain the {link_start}/{link_end} markers.
-    strings['instructions_goal'] = flask.Markup(
-        strings['instructions_goal'].format(
-            link_start = link_start, link_end = link_end))
-
     if '404' not in config.flagged_off:
         strings['page_not_found_text'] = \
             flask.Markup(strings['page_not_found_text']) % _link(
@@ -49,6 +37,20 @@ def _preprocess_variables(config, strings):
 
     strings.setdefault('instructions_goal', '')
     strings.setdefault('instructions_details', '')
+    if strings['instructions_goal']:
+        if hasattr(config, 'reliable_sources_link'):
+            link_start, link_end = (
+                _link_start(config.reliable_sources_link), '</a>')
+        else:
+            link_start = link_end = ''
+
+        # Note that format() doesn't raise an exception if the string doesn't
+        # have any formatters, so this is fine even if instructions_goal is
+        # outdated and doesn't contain the {link_start}/{link_end} markers.
+        strings['instructions_goal'] = flask.Markup(
+            strings['instructions_goal'].format(
+                link_start = link_start, link_end = link_end))
+
     if strings['instructions_details']:
         strings['instructions_details'] = flask.Markup(
                 strings['instructions_details']) % (
