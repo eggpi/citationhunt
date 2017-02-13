@@ -6,7 +6,7 @@
 	},
 	"tooltitle": "Ziate-Juegd",
 	"introduction": "Hëlleft Zitater fir Wikipedia-Artikelen ze fannen!",
-	"instructions_goal": "Den Extrait aus Wikipedia hei drënner huet keng zouverlässeg Quell. Kënnt Dir eng fannen?",
+	"instructions_goal": "Den Extrait aus Wikipedia hei drënner huet keng  {link_start}zouverlässeg Quell{link_end}. Kënnt Dir eng fannen?",
 	"instructions_details": "Klickt op %2 fir op Wikipedia ze goen an den Extrait ze reparéieren, oder %s fir een Anere gewisen ze kréien. Kuckt %s wann Dir Froen hutt. Vill Gléck!",
 	"in_page": "Op der Säit %s:",
 	"button_wikilink": "Ech hunn dat verstan!",

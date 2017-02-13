@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Srdjan m"
+		]
+	},
+	"tooltitle": "Lov na reference",
+	"introduction": "Pomozite nam da pronađemo reference za članke na Wikipediji!",
+	"instructions_goal": "Za ovaj isječak s Wikipedije nije navedena {link_start}pouzdana referenca{link_end}. Možete li pronaći neku?",
+	"instructions_details": "Kliknite na %s da biste otišli na Wikipediju i popravili isječak ili %s da biste vidjeli drugi. Pogledajte stranicu %s ako imate pitanja. Sretno!",
+	"in_page": "Na stranici %s:",
+	"button_wikilink": "Ja ću!",
+	"button_next": "Sljedeći!",
+	"lead_section_hint": "Ovaj tekst je dio uvodnog dijela članka, pa je moguće da je navođenje reference neobavezno. Za više informacija pogledajte %s.",
+	"category_filter_placeholder": "Pronađi temu.",
+	"github_link_title": "Hej! Izvorni kôd mi je na GitHubu!",
+	"beginners_hint": "Ne znate kako dodati reference? Pogledajte %s.",
+	"page_not_found": "Stranica nije pronađena!",
+	"page_not_found_text": "Stranica koju ste tražili više ne postoji – možda je referenca za nju već pronađena. Vratite se na %s za još!",
+	"footer": "%s je djelo dobrovoljaca, omogućava ga %s i prevodi se na sajtu %s.",
+	"js-article-count-singular": "%s članak",
+	"js-article-count-plural": "%s članaka",
+	"js-keyboard-shortcut": "Prečica na tastaturi: %s",
+	"js-refs-added-today-singular": "%s referenca dodana danas!",
+	"js-refs-added-today-plural": "%s referenci dodanih danas!"
+}

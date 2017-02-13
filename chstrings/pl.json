@@ -8,7 +8,7 @@
 		]
 	},
 	"introduction": "Pomóż dodać przypisy do artykułów Wikipedii!",
-	"instructions_goal": "Poniższy fragment z Wikipedii nie jest poparty wiarygodnym źródłem. Czy mógłbyś takowe znaleźć?",
+	"instructions_goal": "Poniższy fragment z Wikipedii nie jest poparty {link_start}wiarygodnym źródłem{link_end}. Czy możesz takowe znaleźć?",
 	"instructions_details": "Kliknij %s aby przejść do Wikipedii i poprawić ten fragment, lub %s aby zobaczyć inny. Zobacz %s jeżeli masz pytania. Powodzenia!",
 	"in_page": "W artykule %s:",
 	"button_wikilink": "Biorę się za to!",
