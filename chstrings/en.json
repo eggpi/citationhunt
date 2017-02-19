@@ -15,5 +15,5 @@
   "footer": "%s is made by volunteers, hosted on %s and translated via %s.",
   "js-article-count": "$1 {{PLURAL:$1|article|articles}}",
   "js-keyboard-shortcut": "Keyboard shortcut: %s",
-  "js-refs-added-today": "$1 {{PLURAL:$1|citation|citations}} added today!",
+  "js-refs-added-today": "$1 {{PLURAL:$1|citation|citations}} added today!"
 }
