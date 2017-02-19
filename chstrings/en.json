@@ -13,8 +13,7 @@
   "page_not_found": "Page not found!",
   "page_not_found_text": "The page you are looking for no longer exists — perhaps this citation has already been found? Go back to %s for more!",
   "footer": "%s is made by volunteers, hosted on %s and translated via %s.",
-  "js-article-count-singular": "%s article",
-  "js-article-count-plural": "%s articles",
+  "js-article-count": "$1 {{PLURAL:$1|article|articles}}",
   "js-keyboard-shortcut": "Keyboard shortcut: %s",
   "js-refs-added-today": "$1 {{PLURAL:$1|citation|citations}} added today!",
 }

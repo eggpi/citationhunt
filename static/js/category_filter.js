@@ -48,9 +48,10 @@ function initCategoryFilter() {
 
     var pdiv = document.createElement("div");
     var npages = suggestion.label.npages;
-    pdiv.innerText = (fmt || "").replace("%s", suggestion.label.npages);
-    pdiv.classList.add('npages');
-    $pdiv.text($.i18n(strings.articleCount, npages));
+    if (strings.articleCount) {
+      pdiv.innerText = $.i18n(strings.articleCount, npages);
+    }
+    pdiv.classList.add("npages");
 
     li.innerHTML = "";
     li.appendChild(ldiv);
@@ -137,10 +138,4 @@ function initCategoryFilter() {
   }
 }
 
-if (document.readyState !== "loading") {
-  initCategoryFilter();
-} else {
-  window.addEventListener("DOMContentLoaded", function() {
-    initCategoryFilter();
-  });
-}
+$(initCategoryFilter);

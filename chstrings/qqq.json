@@ -18,7 +18,6 @@
 	"beginners_hint": "Introduces a link to begginner-friendly documentation about adding references. The %s gets replaced with the link itself.",
 	"page_not_found": "{{Identical|Page not found}}",
 	"footer": "The text at the bottom of the page. The %s get replaced with the tool name, and links to Tools Labs and translatewiki.net, respectively.",
-	"js-article-count-singular": "{{Identical|Article}}",
-	"js-article-count-plural": "{{Identical|Article}}",
+	"js-article-count": "{{Identical|Article}}",
 	"js-refs-added-today": "How many citations were added today. See https://github.com/wikimedia/jquery.i18n#plurals for the syntax.",
 }
