@@ -48,9 +48,9 @@ function initCategoryFilter() {
 
     var pdiv = document.createElement("div");
     var npages = suggestion.label.npages;
-    var fmt = strings["articleCount" + (npages == 1 ? "Singular" : "Plural")]
     pdiv.innerText = (fmt || "").replace("%s", suggestion.label.npages);
     pdiv.classList.add('npages');
+    $pdiv.text($.i18n(strings.articleCount, npages));
 
     li.innerHTML = "";
     li.appendChild(ldiv);

@@ -12,13 +12,10 @@ function get(url, callback) {
 function initFixedCounter() {
   var lang_code = document.documentElement.lang;
   var strings = document.getElementById("js-strings").dataset;
-  var s = strings.refsAddedTodaySingular, p = strings.refsAddedTodayPlural;
-  if (!s || !p)  {
-      return;
-  }
+  if (!strings.refsAddedToday) return;
 
   var baseUrl = lang_code + "/fixed";
-  var container = document.getElementById("fixed-count-container");
+  var $container = $("#fixed-count-container");
 
   // Find the Unix timestamp of today at midnight (in the local timezone)
   function today() {
@@ -27,9 +24,12 @@ function initFixedCounter() {
 
   function render(fixed) {
     fixed = parseInt(fixed);
-    container.innerHTML = (fixed == 1 ? s : p).replace(
-      "%s", '<span id="nfixed">' + fixed + '</span>');
-    container.hidden = (fixed <= 0);
+    // First pass the bare number to $.i18n so it can compute the correct plural
+    // form, then replace it with the actual markup we want in the result.
+    var markup = '<span id="nfixed">' + fixed + "</span>";
+    $container.html(
+        $.i18n(strings.refsAddedToday, fixed).replace(fixed, markup));
+    if (fixed) $container.show();
   }
 
   function update() {
@@ -43,10 +43,4 @@ function initFixedCounter() {
   }, 45000);
 }
 
-if (document.readyState !== "loading") {
-  initFixedCounter();
-} else {
-  window.addEventListener("DOMContentLoaded", function() {
-    initFixedCounter();
-  });
-}
+$(initFixedCounter);
