@@ -18,9 +18,5 @@
 	"page_not_found": "ପ୍ରୁଷ୍ଠା ମିଳିଲା ନାହିଁ!",
 	"page_not_found_text": "ଆପଣ ଖୋଜୁଥିବା ପ୍ରୁଷ୍ଠା ଆଉ ନାହିଁ-ହୁଏତ ଏହି ସାଇଟେସନ ଆଗରୁ ମିଳି ସାରିଛି? ଅଧିକ ପାଇଁ %s କୁ ଫେରସ୍ତ ଯାଆନ୍ତୁ!",
 	"footer": "%s ସ୍ଵେଚ୍ଛାସେବୀ ମାନଙ୍କ ଦ୍ଵାରା ନିର୍ମିତ,%s ଉପରେ ସଂସ୍ଥାପିତ ଏବଂ %s ଜରିଆ ରେ ଅନୁଦିତ.",
-	"js-article-count-singular": "%s ପ୍ରସଙ୍ଗ",
-	"js-article-count-plural": "%s ପ୍ରସଙ୍ଗ ଗୁଡିକ",
-	"js-keyboard-shortcut": "କିବୋର୍ଡ ସର୍ଟକଟ:: %s",
-	"js-refs-added-today-singular": "%s ଆଧାର ଆଜି ଯୋଡାଗଲା!",
-	"js-refs-added-today-plural": "%s ଆଧାରଗୁଡିକ ଆଜି ଯୋଡାଗଲା!"
+	"js-keyboard-shortcut": "କିବୋର୍ଡ ସର୍ଟକଟ:: %s"
 }

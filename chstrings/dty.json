@@ -17,9 +17,5 @@
 	"page_not_found": "पान्नो पायिएन!",
 	"page_not_found_text": "तमले खोज्जार्‍यो पान्नो अस्तित्वमी आथिन - सायद यो साइटेसन पैली पाइसकीरैछ? जेदा खिलाइ %sमी फिर्ता जा:!",
 	"footer": "%s स्वयमसेवकअन हताँ बनायियाऽ हुन, %sमी होस्ट अरियाऽ रे %s बठेइ अनुवाद अरियाऽ हो।",
-	"js-article-count-singular": "%s लेख",
-	"js-article-count-plural": "%s लेखअन",
-	"js-keyboard-shortcut": "किबोर्ड छोटकरीः %s",
-	"js-refs-added-today-singular": "%s उद्धरण आज थपिया!",
-	"js-refs-added-today-plural": "%s उद्धरणअन आज थपिया!"
+	"js-keyboard-shortcut": "किबोर्ड छोटकरीः %s"
 }

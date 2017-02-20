@@ -18,9 +18,5 @@
 	"page_not_found": "N'eo ket bet kavet ar bajenn !",
 	"page_not_found_text": "N'eus ket mui eus ar bajenn emaoc'h o sellet outi - Kavet eo bet an arroudenn-se dija marteze ? Distroit da %s evit gouzout hiroc'h !",
 	"footer": "Gant tud a-youl vat ez a %s en-dro, herberc'hiet war %s ha troet dre %s.",
-	"js-article-count-singular": "%s pennad",
-	"js-article-count-plural": "%s pennad",
-	"js-keyboard-shortcut": "Berradenn klavier : %s",
-	"js-refs-added-today-singular": "%s arroud ouzhpennet hiziv !",
-	"js-refs-added-today-plural": "%s arroud ouzhpennet hiziv !"
+	"js-keyboard-shortcut": "Berradenn klavier : %s"
 }

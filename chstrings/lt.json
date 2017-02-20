@@ -17,9 +17,5 @@
 	"beginners_hint": "Nežinote kaip pridėti citatas? Žiūrėkite %s.",
 	"page_not_found": "Puslapis nerastas!",
 	"page_not_found_text": "Puslapio, kurio ieškote nebėra, galbūt citata jau buvo rasta? Grįžkite į %s!",
-	"footer": "Citation Hunt yra sukurtas savanorių, talpinamas %s ir išverstas per %s.",
-	"js-article-count-singular": "%s straipsnis",
-	"js-article-count-plural": "%s straipsniai",
-	"js-refs-added-today-singular": "%s citata pridėta šiandien!",
-	"js-refs-added-today-plural": "%s citatų pridėta šiandien!"
+	"footer": "Citation Hunt yra sukurtas savanorių, talpinamas %s ir išverstas per %s."
 }

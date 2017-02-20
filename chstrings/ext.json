@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Crucifunked"
+			"Crucifunked",
+			"Fitoschido"
 		]
 	},
 	"introduction": "Ayúa a atopal citas p'artículus de Güiquipeya!",
-	"instructions_goal": "Esti fragmentu de Güiquipeya nu está acorpau pol nenguna huenti confiable. Pues atopal una?",
+	"instructions_goal": "Esti fragmentu de Güiquipeya nu está acorpau pol nenguna {link_start}huenti confiable{link_end}. Pues atopal una?",
 	"instructions_details": "Haz click en %s pa dil a Güiquipeya i correhil el fragmentu, o %s pa vel otru. Compreba %s si tienis preguntas. Güena suerti!",
 	"in_page": "Ena páhina %s:",
 	"button_wikilink": "Lo tengu!",

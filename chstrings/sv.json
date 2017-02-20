@@ -22,9 +22,5 @@
 	"page_not_found": "Sidan kunde inte hittas!",
 	"page_not_found_text": "Sidan du letar efter finns inte längre — kanske denna referens har redan hittats? Gå tillbaka till %s för mer!",
 	"footer": "%s skapas av volontärer, körs på %s och översätts via %s.",
-	"js-article-count-singular": "%s artikel",
-	"js-article-count-plural": "%s artiklar",
-	"js-keyboard-shortcut": "Kortkommando: %s",
-	"js-refs-added-today-singular": "%s referens lades till i dag!",
-	"js-refs-added-today-plural": "%s referenser lades till i dag!"
+	"js-keyboard-shortcut": "Kortkommando: %s"
 }

@@ -10,8 +10,5 @@
 	"button_next": "Seguent !",
 	"category_filter_placeholder": "Recèrca d'un subjècte.",
 	"github_link_title": "Ei ! Mon còdi font es sus GitHub !",
-	"page_not_found": "Pagina pas trobada !",
-	"js-article-count-singular": "%s article",
-	"js-article-count-plural": "%s articles",
-	"js-refs-added-today-singular": "%s citacion aponduda(s) uèi!"
+	"page_not_found": "Pagina pas trobada !"
 }

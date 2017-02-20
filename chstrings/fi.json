@@ -20,9 +20,5 @@
 	"page_not_found": "Sivua ei löytynyt!",
 	"page_not_found_text": "Etsimäsi sivu ei ole enää olemassa — ehkä lähdeviite on jo lisätty? Mene takaisin sivulle %s löytääksesi uusia puutteita!",
 	"footer": "%s on vapaaehtoisten tekemä, isännöi %s ja\nkäännetty sivustolla %s.",
-	"js-article-count-singular": "%s artikkeli",
-	"js-article-count-plural": "%s artikkelit",
-	"js-keyboard-shortcut": "Pikanäppäin: %s",
-	"js-refs-added-today-singular": "%s sitaatti lisätty tänään!",
-	"js-refs-added-today-plural": "%s sitaattia lisätty tänään!"
+	"js-keyboard-shortcut": "Pikanäppäin: %s"
 }

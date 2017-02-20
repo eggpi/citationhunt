@@ -18,9 +18,5 @@
 	"page_not_found": "Pagina niet gevonden",
 	"page_not_found_text": "De pagina die u zoekt bestaat niet meer. Misschien is het citaat al gevonden? Ga terug naar %s voor meer informatie.",
 	"footer": "%st wordt gemaakt door vrijwilligers, gehost op %s en vertaald via %s.",
-	"js-article-count-singular": "%s pagina",
-	"js-article-count-plural": "%s pagina's",
-	"js-keyboard-shortcut": "Sneltoets: %s",
-	"js-refs-added-today-singular": "%s citaat toegevoegd vandaag!",
-	"js-refs-added-today-plural": "%s citaten toegevoegd vandaag!"
+	"js-keyboard-shortcut": "Sneltoets: %s"
 }

@@ -7,9 +7,11 @@
 	"introduction": "Hanampy amin'ny fanampiana tsiahy amin'ny lahatsoratr'i Wikipedia!",
 	"in_page": "Amin'ny pejy %s:",
 	"button_wikilink": "Azoko ilay izy!",
-	"button_next": "Tsy, manaraka!",
+	"button_next": "Manaraka!",
 	"lead_section_hint": "Avy amin'ny lohasoratry ny lahatsoratra izy ity, ka mety tsy voatery atao ny manampy tsiahy. Jereo %s ho an'ny fampahalalana fanampiny.",
-	"category_filter_placeholder": "Ary inona ny mahaliana anao?",
+	"category_filter_placeholder": "Hitady lohahevitra.",
 	"github_link_title": "E! GitHub ny loharanoko!",
-	"beginners_hint": "Tsy hainao ve ny nanampy tsiahy? Jereo %s."
+	"beginners_hint": "Tsy hainao ve ny nanampy tsiahy? Jereo %s.",
+	"page_not_found": "Tsy hita ilay pejy!",
+	"page_not_found_text": "Efa tsy misy intsony ilay pejy tadiavinao — mety efa hita angamba ilay tsiahy? Miverena ny amin'i %s ho an'ny fanazavana fanampiny!"
 }
