@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie"
+			"McDutchie",
+			"Fitoschido"
 		]
 	},
 	"introduction": "Adjuta a trovar referentias pro articulos de Wikipedia!",
-	"instructions_goal": "Le sequente fragmento de Wikipedia non es validate per un fonte digne de fide. Pote tu trovar un?",
+	"instructions_goal": "Le sequente fragmento de Wikipedia non es validate per un {link_start}fonte digne de fide{link_end}. Pote tu trovar un?",
 	"instructions_details": "Clicca sur %s pro ir a Wikipedia e corriger le fragmento, o sur %s pro vider un altere. Lege %s si tu ha questiones. Bon fortuna!",
 	"in_page": "In pagina %s:",
 	"button_wikilink": "Io prende isto!",

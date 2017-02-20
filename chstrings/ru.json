@@ -22,9 +22,5 @@
 	"page_not_found": "Статья не найдена!",
 	"page_not_found_text": "Вы ищете страницу, которой больше нет. Возможно, источник для неё уже был найден? Вернитесь на %s за новыми!",
 	"footer": "%s создан добровольцами, размещён на %s и переведён с помощью %s.",
-	"js-article-count-singular": "%s статья",
-	"js-article-count-plural": "%s статей/статьи",
-	"js-keyboard-shortcut": "Сочетание клавиш: %s",
-	"js-refs-added-today-singular": "Сегодня добавлена %s ссылка на источник!",
-	"js-refs-added-today-plural": "Сегодня добавлено ссылок на источники: %s"
+	"js-keyboard-shortcut": "Сочетание клавиш: %s"
 }

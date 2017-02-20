@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Elisardojm",
-			"Banjo"
+			"Banjo",
+			"Fitoschido"
 		]
 	},
 	"introduction": "Axuda a atopar citas para artigos de Wikipedia!",
-	"instructions_goal": "O extracto de texto da Wikipedia de abaixo non está baseado nunha fonte fiable. Pode atopar unha?",
+	"instructions_goal": "O extracto de texto da Wikipedia de abaixo non está baseado nunha {link_start}fonte fiable{link_end}. Pode atopar unha?",
 	"instructions_details": "Prema %s para ir á Wikipedia e amañar o fragmento, ou %s para ver outro. Marque %s se ten preguntas. Boa sorteǃ",
 	"in_page": "Na páxina %s:",
 	"button_wikilink": "Collo esta!",
@@ -18,9 +19,5 @@
 	"page_not_found": "Páxina non atopada!",
 	"page_not_found_text": "A páxina que está a buscar xa non existe - tal vez esta cita xa se atopou? Volva a %s para máis!",
 	"footer": "%s está feito por voluntarios, está albergado en %s e traducido vía %s.",
-	"js-article-count-singular": "%s artigo",
-	"js-article-count-plural": "%s artigos",
-	"js-keyboard-shortcut": "Atallo de teclado: %s",
-	"js-refs-added-today-singular": "%s cita engadida hoxeǃ",
-	"js-refs-added-today-plural": "%s citas engadidas hoxe!"
+	"js-keyboard-shortcut": "Atallo de teclado: %s"
 }

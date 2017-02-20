@@ -20,9 +20,5 @@
 	"page_not_found": "הערך לא נמצא!",
 	"page_not_found_text": "הערך שחיפשת לא קיים כבר - האם ייתכן שהמקור כבר הוכנס? חזרו ל-%s להמשך!",
 	"footer": "%s פותחה ע\"י מתנדבים, נמצאת באירוח %s ותורגמה באמצעות %s",
-	"js-article-count-singular": "ערך %s",
-	"js-article-count-plural": "%s ערכים",
-	"js-keyboard-shortcut": "קיצור דרך בהקלדה: %s",
-	"js-refs-added-today-singular": "ציטוט %s נוסף היום!",
-	"js-refs-added-today-plural": "%s ציטוטים נוספו היום!"
+	"js-keyboard-shortcut": "קיצור דרך בהקלדה: %s"
 }

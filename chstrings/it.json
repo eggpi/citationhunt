@@ -19,9 +19,5 @@
 	"page_not_found": "Pagina non trovata!",
 	"page_not_found_text": "La pagina che stavi cercando non esiste più — forse questa citazione è già stata trovata? Torna a %s per altre!",
 	"footer": "%s è fatto da volontari, ospitato su %s e tradotto tramite %s.",
-	"js-article-count-singular": "%s voce",
-	"js-article-count-plural": "%s voci",
-	"js-keyboard-shortcut": "Scorciatoia da tastiera: %s",
-	"js-refs-added-today-singular": "%s citazione aggiunta oggi!",
-	"js-refs-added-today-plural": "%s citazioni aggiunte oggi!"
+	"js-keyboard-shortcut": "Scorciatoia da tastiera: %s"
 }

@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"ANDROBETA",
-			"Strainu"
+			"Strainu",
+			"Fitoschido"
 		]
 	},
 	"introduction": "Ajutați la găsirea citatelor pentru articolele Wikipedia!",
-	"instructions_goal": "Bucata de articol de mai jos nu este susținută de o sursă de încredere. Puteți găsi una?",
+	"instructions_goal": "Bucata de articol de mai jos nu este susținută de o {link_start}sursă de încredere{link_end}. Puteți găsi una?",
 	"instructions_details": "Apăsați pe %s pentru a merge la Wikipedia și a corecta articolul, sau %s, pentru a vedea o altă bucată cu probleme. Dacă aveți întrebări, vedeți %s. Succes!",
 	"in_page": "În pagina %s:",
 	"button_wikilink": "Se rezolvă!",
@@ -18,9 +19,5 @@
 	"page_not_found": "Pagina nu a fost găsită!",
 	"page_not_found_text": "Pagina pe care o căutați nu mai există — poate că acest citat a fost găsit deja? Reveniți la %s pentru mai multe!",
 	"footer": "%s e realizat de voluntari, găzduit pe %s și tradus via %s.",
-	"js-article-count-singular": "%s articol",
-	"js-article-count-plural": "%s (de) articole",
-	"js-keyboard-shortcut": "Combinație de taste: %s",
-	"js-refs-added-today-singular": "%s referință adăugată azi!",
-	"js-refs-added-today-plural": "%s referințe adăugate azi!"
+	"js-keyboard-shortcut": "Combinație de taste: %s"
 }

@@ -20,9 +20,5 @@
 	"page_not_found": "Page non trouvée",
 	"page_not_found_text": "La page que vous regardez n’existe plus — peut-être que cette citation a déjà été trouvée ? Revenez à %s pour en savoir plus !",
 	"footer": "%s est fait par des bénévoles, est hébergé sur %s et traduit via %s.",
-	"js-article-count-singular": "%s article",
-	"js-article-count-plural": "%s articles",
-	"js-keyboard-shortcut": "Raccourci clavier : %s",
-	"js-refs-added-today-singular": "%s citation ajoutée(s) aujourd'hui!",
-	"js-refs-added-today-plural": "%s citations ajoutée(s) aujourd'hui!"
+	"js-keyboard-shortcut": "Raccourci clavier : %s"
 }

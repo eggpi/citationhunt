@@ -5,11 +5,12 @@
 			"Vitorvicentevalente",
 			"Diniscoelho",
 			"Mansil",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Fitoschido"
 		]
 	},
 	"introduction": "Ajude a encontrar referências para artigos da Wikipédia!",
-	"instructions_goal": "O trecho abaixo da Wikipédia não é suportado por nenhuma fonte confiável. Consegue encontrar alguma?",
+	"instructions_goal": "O trecho abaixo da Wikipédia não é suportado por nenhuma {link_start}fonte confiável{link_end}. Consegue encontrar alguma?",
 	"instructions_details": "Clique em %s para ir para a Wikipédia e corrigir o trecho, ou em %s para ver outro. Consulte %s se tiver questões. Boa sorte!",
 	"in_page": "Na página %s:",
 	"button_wikilink": "Eu consigo!",

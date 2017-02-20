@@ -21,9 +21,5 @@
 	"page_not_found": "Сторінку не знайдено!",
 	"page_not_found_text": "Сторінка, яку Ви шукаєте, більше не існує — можливо, це цитування вже було знайдене? Поверніться до %s за новими!",
 	"footer": "%s створено волонтерами, розміщено на %s, і перекладено через %s.",
-	"js-article-count-singular": "%s стаття",
-	"js-article-count-plural": "%s статей",
-	"js-keyboard-shortcut": "Поєднання клавіш: %s",
-	"js-refs-added-today-singular": "%s цитування додано сьогодні!",
-	"js-refs-added-today-plural": "%s цитувань додано сьогодні!"
+	"js-keyboard-shortcut": "Поєднання клавіш: %s"
 }

@@ -10,7 +10,7 @@
 	},
 	"tooltitle": "Citation Hunt",
 	"introduction": "¡Ayuda a encontrar citas para artículos de Wikipedia!",
-	"instructions_goal": "El siguiente fragmento de Wikipedia no está respaldado por una fuente confiable. ¿Puedes encontrar una?",
+	"instructions_goal": "El siguiente fragmento de Wikipedia no está respaldado por una {link_start}fuente confiable{link_end}. ¿Puedes encontrar una?",
 	"instructions_details": "Haz clic en %s para ir a la Wikipedia y corregir el fragmento, o %s para ver otro. Comprueba %s si tienes preguntas. ¡Buena suerte!",
 	"in_page": "En la página %s:",
 	"button_wikilink": "¡Lo tengo!",
@@ -22,9 +22,5 @@
 	"page_not_found": "Página no encontrada",
 	"page_not_found_text": "La página que estás buscando ya no existe. Tal vez esta cita ya se ha encontrado. ¡Vuelve a %s para más!",
 	"footer": "%s es obra de voluntarios, está alojado en %s y se traduce por medio de %s.",
-	"js-article-count-singular": "%s artículo",
-	"js-article-count-plural": "%s artículos",
-	"js-keyboard-shortcut": "Atajo de teclado: %s",
-	"js-refs-added-today-singular": "¡%s cita añadida hoy!",
-	"js-refs-added-today-plural": "¡%s citas añadidas hoy!"
+	"js-keyboard-shortcut": "Atajo de teclado: %s"
 }

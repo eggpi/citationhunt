@@ -17,9 +17,5 @@
 	"page_not_found": "ページが見つかりません！",
 	"page_not_found_text": "お探しのページは見つかりませんでした―もしかすると誰かがもう出典を見つけたのかも？　%s に戻ってもっと探してみましょう！",
 	"footer": "%s はボランティアによって製作されています。%s 上でホスティングされ、%s で翻訳されています。",
-	"js-article-count-singular": "%s 記事",
-	"js-article-count-plural": "%s 記事",
-	"js-keyboard-shortcut": "ショートカットキー: %s",
-	"js-refs-added-today-singular": "今日は %s 件の出典が追加されました！",
-	"js-refs-added-today-plural": "今日は %s 件の出典が追加されました！"
+	"js-keyboard-shortcut": "ショートカットキー: %s"
 }

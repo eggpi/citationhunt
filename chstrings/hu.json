@@ -18,9 +18,5 @@
 	"github_link_title": "Helló! A forráskódom elérhető a GitHubon!",
 	"beginners_hint": "Nem tudod, hogy kell hozzáadni forrásokat? Lásd itt:%s",
 	"page_not_found": "A lap nem található!",
-	"page_not_found_text": "Az általad keresett oldal már nem létezik — valószínűleg már találtak hozzá forrást? Menj vissza a(z) %s oldalra többért!",
-	"js-article-count-singular": "%s cikk",
-	"js-article-count-plural": "%s cikk",
-	"js-refs-added-today-singular": "%s hivatkozást adtak ma hozzá!",
-	"js-refs-added-today-plural": "%s hivatkozást adtak ma hozzá!"
+	"page_not_found_text": "Az általad keresett oldal már nem létezik — valószínűleg már találtak hozzá forrást? Menj vissza a(z) %s oldalra többért!"
 }
