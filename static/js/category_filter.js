@@ -1,6 +1,32 @@
 // global for debugging
 var awc = null;
 
+// http://stackoverflow.com/a/8079681
+function getScrollBarWidth () {
+  var inner = document.createElement('p');
+  inner.style.width = "100%";
+  inner.style.height = "200px";
+
+  var outer = document.createElement('div');
+  outer.style.position = "absolute";
+  outer.style.top = "0px";
+  outer.style.left = "0px";
+  outer.style.visibility = "hidden";
+  outer.style.width = "200px";
+  outer.style.height = "150px";
+  outer.style.overflow = "hidden";
+  outer.appendChild(inner);
+
+  document.body.appendChild(outer);
+  var w1 = inner.offsetWidth;
+  outer.style.overflow = 'scroll';
+  var w2 = inner.offsetWidth;
+  if (w1 == w2) w2 = outer.clientWidth;
+  document.body.removeChild(outer);
+
+  return w1 - w2;
+};
+
 function getJSON(url, success, error) {
   var xhr = new XMLHttpRequest();
   xhr.open("get", url, true);
@@ -20,6 +46,7 @@ function initCategoryFilter() {
   var chi = document.getElementById("hidden-category-input");
   var ihi = document.getElementById("hidden-id-input");
   var strings = document.getElementById("js-strings").dataset;
+  var scrollBarWidth = getScrollBarWidth();
 
   function search() {
     var lang_code = document.documentElement.lang;
@@ -50,6 +77,11 @@ function initCategoryFilter() {
     var npages = suggestion.label.npages;
     if (strings.articleCount) {
       pdiv.innerText = $.i18n(strings.articleCount, npages);
+      if (document.dir === 'rtl') {
+        pdiv.style.paddingLeft = scrollBarWidth + 'px';
+      } else {
+        pdiv.style.paddingRight = scrollBarWidth + 'px';
+      }
     }
     pdiv.classList.add("npages");
 
