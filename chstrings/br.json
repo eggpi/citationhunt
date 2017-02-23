@@ -6,7 +6,7 @@
 		]
 	},
 	"introduction": "Skoazellit da gavout daveennoù evit ar pennadoù Wikipedia !",
-	"instructions_goal": "N'eo ket bet kadarnaet an tamm kod gant ur vammenn hag a c'haller fiziout enni. Ha gallout a rit kavout unan ?",
+	"instructions_goal": "N'eo ket diazezet an tamm kod a-is war {link_start}ur vammenn fizius{link_end}. Ha gallout a rit kavout unan ?",
 	"instructions_details": "Klikit war %s evit mont e Wikimedia ha reizhañ an tamm kod pe %s evit kaout unan all. Sellit ouzh %s m'ho pez goulennoù. Chañs vat deoc'h !",
 	"in_page": "Er bajenn %s",
 	"button_wikilink": "Evidon-me eo !",
@@ -18,5 +18,7 @@
 	"page_not_found": "N'eo ket bet kavet ar bajenn !",
 	"page_not_found_text": "N'eus ket mui eus ar bajenn emaoc'h o sellet outi - Kavet eo bet an arroudenn-se dija marteze ? Distroit da %s evit gouzout hiroc'h !",
 	"footer": "Gant tud a-youl vat ez a %s en-dro, herberc'hiet war %s ha troet dre %s.",
-	"js-keyboard-shortcut": "Berradenn klavier : %s"
+	"js-article-count": "$1 {{PLURAL:$1|pennad|pennad}}",
+	"js-keyboard-shortcut": "Berradenn klavier : %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|arroud|arroud}} bet ouzhpennet hiziv !"
 }

@@ -22,5 +22,7 @@
 	"page_not_found": "Sidan kunde inte hittas!",
 	"page_not_found_text": "Sidan du letar efter finns inte längre — kanske denna referens har redan hittats? Gå tillbaka till %s för mer!",
 	"footer": "%s skapas av volontärer, körs på %s och översätts via %s.",
-	"js-keyboard-shortcut": "Kortkommando: %s"
+	"js-article-count": "$1 {{PLURAL:$1|artikel|artiklar}}",
+	"js-keyboard-shortcut": "Kortkommando: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|referens|referenser}} lades till idag!"
 }

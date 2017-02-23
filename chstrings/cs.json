@@ -23,5 +23,7 @@
 	"page_not_found": "Stránka nebyla nalezena.",
 	"page_not_found_text": "Stránka, kterou hledáte, již neexistuje — možná, že tato citace již byla dohledána? Vraťte se na stránku %s pro další návrh!",
 	"footer": "%s je vytvořen dobrovolníky, hostil na %s a přeložen pomocí %s.",
-	"js-keyboard-shortcut": "Klávesová zkratka: %s"
+	"js-article-count": "$1 {{PLURAL:$1|článek|články}}",
+	"js-keyboard-shortcut": "Klávesová zkratka: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|citace|citace}} byla přidána dnes!"
 }
