@@ -4,7 +4,7 @@ os.environ['DEBUG'] = '1' # disable https redirects
 # Disable stats since it requires a database, and we're not
 # testing it anyway
 import config
-config.get_localized_config('en').flagged_off.append('stats')
+config.get_global_config().flagged_off.append('stats')
 
 import app
 import mock
