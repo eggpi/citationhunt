@@ -22,5 +22,7 @@
 	"page_not_found": "Página no encontrada",
 	"page_not_found_text": "La página que estás buscando ya no existe. Tal vez esta cita ya se ha encontrado. ¡Vuelve a %s para más!",
 	"footer": "%s es obra de voluntarios, está alojado en %s y se traduce por medio de %s.",
-	"js-keyboard-shortcut": "Atajo de teclado: %s"
+	"js-article-count": "$1 {{PLURAL:$1|artículo|artículos}}",
+	"js-keyboard-shortcut": "Atajo de teclado: %s",
+	"js-refs-added-today": "¡$1 {{PLURAL:$1|cita añadida|citas añadidas}} hoy!"
 }

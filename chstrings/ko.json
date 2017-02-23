@@ -8,7 +8,7 @@
 		]
 	},
 	"introduction": "위키백과 문서를 위해 인용을 찾는 것을 도와주세요!",
-	"instructions_goal": "이 위키백과 문서의 일부 부분은 신뢰할 수 있는 출처가 없습니다. 하나 찾아 보시겠어요?",
+	"instructions_goal": "이 위키백과 문서의 일부 부분은 {link_start}신뢰할 수 있는 출처{link_end}가 없습니다. 하나 찾아 보시겠어요?",
 	"instructions_details": "위키백과로 가서 문서를 고치려면 %s을(를) 클릭하시고, 다른 부분을 보려면 %s을(를) 누르십시오. 질문이 있다면 %s을(를) 누르세요. 좋은 시간 되세요!",
 	"in_page": "%s 문서에서:",
 	"button_wikilink": "이것을 얻었습니다!",
@@ -20,5 +20,7 @@
 	"page_not_found": "문서를 찾을 수 없습니다!",
 	"page_not_found_text": "찾으려는 문서가 더 이상 존재하지 않습니다. 이 인용을 이미 발견했을 수도 있습니다. %s로 돌아가면 더 많은 정보를 볼 수 있습니다.",
 	"footer": "%s는 자발적인 사용자들에 의해서 만들어지고, %s에서 호스팅되며, %s를 통해 번역되었습니다.",
-	"js-keyboard-shortcut": "단축 키: %s"
+	"js-article-count": "$1개의 {{PLURAL:$1|문서|문서}}",
+	"js-keyboard-shortcut": "단축 키: %s",
+	"js-refs-added-today": "$1개의 {{PLURAL:$1|인용|인용}}이 오늘 추가되었습니다!"
 }

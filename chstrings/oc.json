@@ -5,10 +5,19 @@
 		]
 	},
 	"introduction": "Ajudatz a trobar de referéncias per d'articles Wikipèdia !",
+	"instructions_goal": "L'extrait de còdi Wikipèdia çaijós es pas validat per una {link_start}font fisabla{link_end}. Ne podètz trobar una ?",
+	"instructions_details": "Clicatz sus %s per anar sus Wikipèdia e corregir lo fragment de còdi o %s per ne veire un autre. Gaitatz %s se avètz de questions. Bon astre !",
 	"in_page": "Dins la pagina %s :",
 	"button_wikilink": "Es per ieu !",
 	"button_next": "Seguent !",
+	"lead_section_hint": "Aqueste tèxte es extrait de l’entèsta de l’article : tant plan qu’i apondre de referéncias es facultatiu. Consultatz %s per mai d’informacions.",
 	"category_filter_placeholder": "Recèrca d'un subjècte.",
 	"github_link_title": "Ei ! Mon còdi font es sus GitHub !",
-	"page_not_found": "Pagina pas trobada !"
+	"beginners_hint": "Sabètz pas cossí apondre de referéncias ? Consultatz %s.",
+	"page_not_found": "Pagina pas trobada !",
+	"page_not_found_text": "La pagina que gaitatz existís pas mai — benlèu qu'aquesta citacion es ja estada trobada ? Tornatz a %s per ne saber mai !",
+	"footer": "%s es fait per de benevòls, es albergat sus %s e traduit via %s.",
+	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
+	"js-keyboard-shortcut": "Acorchi de clavièr : %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|citacion aponduda|citacions apondudas}} uèi !"
 }

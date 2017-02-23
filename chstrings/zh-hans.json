@@ -18,5 +18,7 @@
 	"page_not_found": "找不到页面！",
 	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已经被找到？返回%s以获取更多！",
 	"footer": "%s由志愿者制作，托管于%s，并由%s提供翻译。",
-	"js-keyboard-shortcut": "键盘快捷键：%s"
+	"js-article-count": "$1个{{PLURAL:$1|条目}}",
+	"js-keyboard-shortcut": "键盘快捷键：%s",
+	"js-refs-added-today": "今天已添加$1个{{PLURAL:$1|引用}}！"
 }

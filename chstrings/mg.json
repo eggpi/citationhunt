@@ -5,6 +5,7 @@
 		]
 	},
 	"introduction": "Hanampy amin'ny fanampiana tsiahy amin'ny lahatsoratr'i Wikipedia!",
+	"instructions_details": "Tsindrio %s raha handeha any amin'i Wikipedia hanitsy ilay singan-kaody, na %s raha te-hijery hafa. Jereo %s raha manam-panontaniana. Mazotoa!",
 	"in_page": "Amin'ny pejy %s:",
 	"button_wikilink": "Azoko ilay izy!",
 	"button_next": "Manaraka!",
@@ -13,5 +14,9 @@
 	"github_link_title": "E! GitHub ny loharanoko!",
 	"beginners_hint": "Tsy hainao ve ny nanampy tsiahy? Jereo %s.",
 	"page_not_found": "Tsy hita ilay pejy!",
-	"page_not_found_text": "Efa tsy misy intsony ilay pejy tadiavinao — mety efa hita angamba ilay tsiahy? Miverena ny amin'i %s ho an'ny fanazavana fanampiny!"
+	"page_not_found_text": "Efa tsy misy intsony ilay pejy tadiavinao — mety efa hita angamba ilay tsiahy? Miverena ny amin'i %s ho an'ny fanazavana fanampiny!",
+	"footer": "%s no nataon'ny mpilatsaka an-tsitrapo, apetraka eo amin'i %s ary nodikaina tamin'ny alalan'i %s.",
+	"js-article-count": "Lahatsoratra $1",
+	"js-keyboard-shortcut": "Fanivahana amin'ny fitendry: %s",
+	"js-refs-added-today": "Tsiahy $1 no nampiana androany!"
 }

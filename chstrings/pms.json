@@ -6,7 +6,7 @@
 	},
 	"tooltitle": "Cassa a la sitassion",
 	"introduction": "Ch'a giuta a trové dj'arferiment për dj'artìcoj ëd Wikipedia!",
-	"instructions_goal": "Ël tòch ëd còdes sì-sota a l'é pa sostnù da na sorgiss afidàbil. Peul-lo trovene un-a?",
+	"instructions_goal": "Ël tòch ëd còdes sì-sota a l'é pa sostnù da na {link_start}sorgiss afidàbil{link_end}. Peul-lo trovene un-a?",
 	"instructions_details": "Ch'a sgnaca su %s për andé su Wikipedia a corege ël tòch ëd còdes, o %s për vëdd-ne n'àutr. Ch'a bèica %s s'a l'ha 'd chestion. An piòta!",
 	"in_page": "An sla pàgina %s:",
 	"button_wikilink": "I lo pijo mi!",
@@ -18,5 +18,7 @@
 	"page_not_found": "Pàgina nen trovà!",
 	"page_not_found_text": "La pàgina ch'a sërca a esist pi - miraco costa sitassion a l'é già stàita trovà? Ch'a torna andré a %s për savèjne ëd pi!",
 	"footer": "%sCitation Hunt a l'é fàit da dij volontari, ospità su %s e voltà via %s.",
-	"js-keyboard-shortcut": "Scursa për la tastadura: %s"
+	"js-article-count": "$1 {{PLURAL:$1|artìcol|artìcoj}}",
+	"js-keyboard-shortcut": "Scursa për la tastadura: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|sitassion}} giontà ancheuj!"
 }
