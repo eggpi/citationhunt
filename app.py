@@ -22,6 +22,8 @@ import logging.handlers
 # when prefetching, but that's a bit more complex.
 CACHE_DURATION_SNIPPET = 30
 
+global_config = config.get_global_config()
+
 app = flask.Flask(__name__)
 Compress(app)
 debug = 'DEBUG' in os.environ
@@ -35,13 +37,14 @@ def index(lang_code):
 
 app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt)
 app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
-app.after_request(handlers.log_request)
+if 'stats' not in global_config.flagged_off:
+    app.after_request(handlers.log_request)
 app.add_url_rule('/<lang_code>/search/category',
     view_func = handlers.search_category)
 app.add_url_rule('/<lang_code>/fixed', view_func = handlers.fixed)
 
 if not debug:
-    log_dir = config.get_global_config().log_dir
+    log_dir = global_config.log_dir
     utils.mkdir_p(log_dir)
     log_file = os.path.join(log_dir, 'ch.log')
     log_handler = logging.handlers.RotatingFileHandler(
@@ -96,7 +99,8 @@ def internal_server_error(e):
     app.logger.error(traceback.format_exc())
     response = flask.Response()
     response.status_code = 500
-    handlers.log_request(response)
+    if 'stats' not in global_config.flagged_off:
+        handlers.log_request(response)
     return '<h1>Internal Error</h1><p>Sorry :(</p>', 500
 
 if __name__ == '__main__':
