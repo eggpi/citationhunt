@@ -2,3 +2,6 @@
 *.pyo
 ch.my.cnf
 wp.my.cnf
+unsourced
+tzdatabase
+*~

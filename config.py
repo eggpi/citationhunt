@@ -567,7 +567,6 @@ _LANG_CODE_TO_CONFIG = dict(
         beginners_link_title = 'Wikipedia:出典を明記する',
 
         lead_section_policy_link = 'https://ja.wikipedia.org/wiki/Wikipedia:スタイルマニュアル_(導入部)#.E5.87.BA.E5.85.B8',
-
         lead_section_policy_link_title = '導入部の出典',
 
         citation_needed_category = '出典を必要とする記述のある記事',
@@ -578,6 +577,7 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_template_name = '要出典',
         hidden_category = '隠しカテゴリ',
 
+        html_snippet = True,
         snippet_max_size = 1000,
     ),
 )
