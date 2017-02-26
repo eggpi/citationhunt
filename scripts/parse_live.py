@@ -26,19 +26,18 @@ if _upper_dir not in sys.path:
 
 import chdb
 import config
+import mwapi
 import snippet_parser
-import multiprocessing
 from utils import *
 
 import docopt
 import requests
-import wikitools
 
-import StringIO
 import cProfile
 import functools
 import glob
 import itertools
+import multiprocessing
 import pstats
 import shutil
 import tempfile
@@ -68,40 +67,20 @@ def section_name_to_anchor(section):
 
 def query_pageids(wiki, pageids):
     params = {
-        'action': 'query',
         'pageids': '|'.join(map(str, pageids)),
         'prop': 'revisions',
         'rvprop': 'content'
     }
-
-    request = wikitools.APIRequest(wiki, params)
-    for response in request.queryGen():
+    for response in self.wiki.query(params):
         for id, page in response['query']['pages'].items():
             if 'title' not in page:
                 continue
             title = d(page['title'])
-
             text = page['revisions'][0]['*']
             if not text:
                 continue
             text = d(text)
             yield (id, title, text)
-
-# An adapter that lets us use requests for wikitools until it doesn't grow
-# native support. This allows us to have persistent connections.
-class WikitoolsRequestsAdapter(object):
-    def __init__(self):
-        self.session = requests.Session()
-
-    def open(self, request):
-        headers = dict(request.headers)
-        headers.pop('Content-length') # Let requests compute this
-        response = self.session.get(
-            request.get_full_url() + '?' + request.get_data(),
-            headers = headers)
-        return urllib.addinfourl(
-            StringIO.StringIO(response.text), request.headers,
-            request.get_full_url(), response.status_code)
 
 # In py3: types.SimpleNamespace
 class State(object):
@@ -111,19 +90,7 @@ self = State() # Per-process state
 def initializer(backdir):
     self.backdir = backdir
 
-    # Monkey-patch wikitools to always use our existing session
-    opener = WikitoolsRequestsAdapter()
-    APIRequest = wikitools.api.APIRequest
-    class RequestsAPIRequest(wikitools.api.APIRequest):
-        def __init__(self, *args, **kwds):
-            APIRequest.__init__(self, *args, **kwds)
-            self.opener = opener
-    wikitools.APIRequest = RequestsAPIRequest
-    wikitools.api.APIRequest = RequestsAPIRequest
-
-    self.wiki = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
-    self.wiki.setUserAgent(
-        'citationhunt (https://tools.wmflabs.org/citationhunt)')
+    self.wiki = mwapi.MediaWikiAPI(WIKIPEDIA_API_URL, cfg.user_agent)
     self.parser = snippet_parser.create_snippet_parser(self.wiki, cfg)
     self.chdb = chdb.init_scratch_db()
     self.exception_count = 0

@@ -31,6 +31,8 @@ _GLOBAL_CONFIG = dict(
     profile = True,
 
     stats_max_age_days = 90,
+
+    user_agent = 'citationhunt (https://tools.wmflabs.org/citationhunt)',
 )
 
 # A base configuration that all languages "inherit" from.
