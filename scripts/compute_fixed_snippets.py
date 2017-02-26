@@ -24,10 +24,10 @@ import datetime
 import config
 import chdb
 from utils import *
+import mwapi
 import snippet_parser
 
 import docopt
-import wikitools
 
 log = Logger()
 
@@ -79,15 +79,12 @@ def compute_fixed_snippets(cfg):
     log.info('Will reparse pages: %r' % page_title_to_snippets.keys())
 
     # Now fetch and parse the pages and check which snippets are gone
-    wiki = wikitools.wiki.Wiki(
-            'https://' + cfg.wikipedia_domain + '/w/api.php')
-    wiki.setUserAgent(
-            'citationhunt (https://tools.wmflabs.org/citationhunt)')
+    wiki = mwapi.MediaWikiAPI(
+        'https://' + cfg.wikipedia_domain + '/w/api.php', cfg.user_agent)
     parser = snippet_parser.create_snippet_parser(wiki, cfg)
 
     for page_title, snippet_to_ts in page_title_to_snippets.items():
-        page = wikitools.Page(wiki, page_title)
-        snippets = parser.extract(page.getWikiText())
+        snippets = parser.extract(wiki.get_page_contents(title = page_title))
         # FIXME Duplicated logic with parse_live.py :(
         for sec, snips in snippets:
             for sni in snips:

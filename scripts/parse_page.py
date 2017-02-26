@@ -22,10 +22,10 @@ if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 
 import config
+import mwapi
 import snippet_parser
 
 import docopt
-import wikitools
 
 import pprint
 import subprocess
@@ -54,18 +54,17 @@ if __name__ == '__main__':
     WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
     WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 
-    wikipedia = wikitools.wiki.Wiki(WIKIPEDIA_API_URL)
+    wikipedia = mwapi.MediaWikiAPI(WIKIPEDIA_API_URL, cfg.user_agent)
     parser = snippet_parser.create_snippet_parser(wikipedia, cfg)
 
     try:
         int(arguments['<title_or_pageid>'])
-        page = wikitools.Page(
-            wikipedia, pageid = int(arguments['<title_or_pageid>']))
+        wikitext = wikipedia.get_page_contents(
+            pageid = int(arguments['<title_or_pageid>']))
     except:
-        page = wikitools.Page(
-            wikipedia, title = arguments['<title_or_pageid>'])
+        wikitext = wikipedia.get_page_contents(
+            title = arguments['<title_or_pageid>'])
 
-    wikitext = page.getWikiText()
     for section, snippets in parser.extract(wikitext):
         if not snippets: continue
         _print('Section: %s' % section)

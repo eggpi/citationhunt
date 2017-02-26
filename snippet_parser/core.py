@@ -13,7 +13,6 @@ import config
 from utils import *
 
 import mwparserfromhell
-import wikitools
 
 import cStringIO as StringIO
 import re
@@ -61,8 +60,6 @@ class SnippetParserBase(object):
             # Testing
             return templates
         params = {
-            'action': 'query',
-            'format': 'json',
             'prop': 'redirects',
             'titles': '|'.join(
                 # The API resolves Template: to the relevant per-language prefix
@@ -71,10 +68,9 @@ class SnippetParserBase(object):
             ),
             'rnamespace': 10,
         }
-        request = wikitools.APIRequest(self._wikipedia, params)
-        # We could fall back to just using self._cfg.citation_needed_templates
-        # if the API request fails, but for now let's just crash
-        for result in request.queryGen():
+        for result in self._wikipedia.query(params):
+            # We could fall back to just using self._cfg.citation_needed_templates
+            # if the API request fails, but for now let's just crash
             for page in result['query']['pages'].values():
                 for redirect in page.get('redirects', []):
                     # TODO We technically only need to keep the templates that
@@ -426,28 +422,9 @@ class SnippetParserBase(object):
         if self._wikipedia is None:
             # Testing
             return snippet
-
-        params = {
-            'action': 'parse',
-            'format': 'json',
-            'text': snippet,
-        }
-        request = wikitools.APIRequest(self._wikipedia, params)
-        # FIXME Sometimes the request fails because the text is too long;
-        # in that case, the API response is HTML, not JSON, which raises
-        # an exception when wikitools tries to parse it.
-        #
-        # Normally this would cause wikitools to happily retry forever
-        # (https://github.com/alexz-enwp/wikitools/blob/b71481796c350/wikitools/api.py#L304),
-        # which is a bug, but due to our use of a custom opener, wikitools'
-        # handling of the exception raises its own exception: the object returned
-        # by our opener doesnt support seek().
-        #
-        # We use that interesting coincidence to catch the exception and move
-        # on, bypassing wikitools' faulty retry, but this is obviously a terrible
-        # "solution".
         try:
-            html = request.query()['parse']['text']['*']
+            html = self._wikipedia.parse(
+                {'text': snippet})['parse']['text']['*']
         except:
             return ''
         return self._cleanup_snippet_html(html)
