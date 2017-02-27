@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nirajan pant",
+			"सरोज कुमार ढकाल"
+		]
+	},
+	"tooltitle": "साइटेसन हन्ट",
+	"introduction": "विकिपिडिया लेखहरूको लागि साइटेसन भेटाउन मद्दत गर्नुहोस्!",
+	"instructions_goal": "The Wikipedia snippet below is not backed by a {link_start}reliable source{link_end}. के तपाईँ एक भेटाउन सक्नुहुन्छ?",
+	"instructions_details": "Click %s to go to Wikipedia and fix the snippet, or %s to see another one. तपाईँसँग प्रश्नहरू छन् भने %s जाँच गर्नुहोस्। शुभकामना!",
+	"in_page": "पृष्ठ %sमा:",
+	"button_wikilink": "मैले यो भेटाएँ!",
+	"button_next": "अर्को!",
+	"github_link_title": "ओइ ! मेरो स्रोत GitHub मा छ!",
+	"beginners_hint": "साइटेसन कसरी थप्ने थाह छ? %s हेर्नुहोस्।",
+	"page_not_found": "पृष्ठ फेला परेन!",
+	"page_not_found_text": "The page you are looking for no longer exists — perhaps this citation has already been found? थपको लागि %s मा जानुहोस्!",
+	"footer": "%s स्वयंसेवकहरूद्वारा बनाइएको हो,  %s द्वारा होस्ट गरिएको छ र %s द्वारा अनुवाद गरिएको छ।",
+	"js-article-count": "$1 {{PLURAL:$1|लेख|लेखहरू}}",
+	"js-keyboard-shortcut": "किबोर्ड  छोटकरी: %s",
+	"js-refs-added-today": "आज $1 {{PLURAL:$1|साइटेसन|साइटेसनहरू}} थपियो!"
+}
