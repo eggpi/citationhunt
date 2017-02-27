@@ -18,5 +18,6 @@
 	"page_not_found": "Pagina niet gevonden",
 	"page_not_found_text": "De pagina die u zoekt bestaat niet meer. Misschien is het citaat al gevonden? Ga terug naar %s voor meer informatie.",
 	"footer": "%st wordt gemaakt door vrijwilligers, gehost op %s en vertaald via %s.",
+	"js-article-count": "$1 {{PLURAL:$1|pagina|pagina's}}",
 	"js-keyboard-shortcut": "Sneltoets: %s"
 }
