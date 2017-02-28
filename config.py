@@ -580,6 +580,35 @@ _LANG_CODE_TO_CONFIG = dict(
 
         snippet_max_size = 1000,
     ),
+
+    he = dict(
+        lang_name = 'עברית',
+        lang_dir = 'rtl',
+        database = 'hewiki_p',
+        wikipedia_domain = 'he.wikipedia.org',
+
+        beginners_link = 'https://he.wikipedia.org/wiki/%D7%A2%D7%96%D7%A8%D7%94:%D7%94%D7%A2%D7%A8%D7%AA_%D7%A9%D7%95%D7%9C%D7%99%D7%99%D7%9D',
+        beginners_link_title = 'עזרה:הערת_שוליים',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'ויקיפדיה:_ערכים_הדורשים_מקורות',
+        citation_needed_templates = EN_CITATION_NEEDED_TEMPLATES + ['דרוש מקור', ],
+        citation_needed_template_name = 'דרוש מקור',
+        wikilink_prefix_blacklist = EN_WIKILINK_PREFIX_BLACKLIST,
+        tags_blacklist = EN_TAGS_BLACKLIST,
+        templates_blacklist = EN_TAGS_BLACKLIST,
+        hidden_category = 'קטגוריות_מוסתרות',
+        category_name_regexps_blacklist = [
+            '^ויקיפדיה',
+            '^Pages ',
+            ' stubs$',
+            '.*[0-9]+.*',
+        ],
+
+        max_categories = 120,
+    ),
+
 )
 
 # In py3: types.SimpleNamespace
