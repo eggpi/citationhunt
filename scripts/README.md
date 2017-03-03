@@ -100,10 +100,10 @@ $ ./assign_categories.py
 ```
 
 At the end of this step, your MySQL installation should contain a database named
-`root__scratch` with all the tables CitationHunt needs. The
+`root__scratch_en` with all the tables CitationHunt needs. The
 `install_new_database.py` script will atomically move these tables to a new
-database named `root__citationhunt`, which is where the app actually expects to
-find them:
+database named `root__citationhunt_en`, which is where the app actually expects
+to find them:
 
 ```
 $ ./install_new_database.py
