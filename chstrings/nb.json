@@ -8,7 +8,7 @@
 	},
 	"tooltitle": "Referansejakt",
 	"introduction": "Hjelp til å finne referanser til Wikipedia-artikler!",
-	"instructions_goal": "Wikipedia-utdraget nedenfor støttes ikke av en pålitelig kilde. Kan du finne en?",
+	"instructions_goal": "Wikipedia-utdraget nedenfor støttes ikke av en {link_start}pålitelig kilde{link_end}. Kan du finne en?",
 	"instructions_details": "Klikk på %s for å gå til Wikipedia og fikse utdraget, eller på %s for å se et annet. Sjekk %s om du har noen spørsmål. Lykke til!",
 	"in_page": "På siden «%s»:",
 	"button_wikilink": "Den fikser jeg!",
@@ -20,5 +20,7 @@
 	"page_not_found": "Siden ble ikke funnet!",
 	"page_not_found_text": "Siden du leter etter finnes ikke lenger – kanskje har noen allerede funnet en kilde? Gå tilbake til %s for mer!",
 	"footer": "%s er lagd av frivillige, ligger på %s og oversettes på %s.",
-	"js-keyboard-shortcut": "Hurtigtast: %s"
+	"js-article-count": "$1 {{PLURAL:$1|artikkel|artikler}}",
+	"js-keyboard-shortcut": "Hurtigtast: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|referanse|referanser}} lagt til i dag!"
 }

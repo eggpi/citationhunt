@@ -5,6 +5,7 @@
 		]
 	},
 	"introduction": "Hanampy amin'ny fanampiana tsiahy amin'ny lahatsoratr'i Wikipedia!",
+	"instructions_goal": "Ny tsongan-kaody Wikipedia eo ambany eo dia tsy norohizina tamin'ny {link_start}loharano azo antoka{link_end}. Afaka mahita iray ve ianao?",
 	"instructions_details": "Tsindrio %s raha handeha any amin'i Wikipedia hanitsy ilay singan-kaody, na %s raha te-hijery hafa. Jereo %s raha manam-panontaniana. Mazotoa!",
 	"in_page": "Amin'ny pejy %s:",
 	"button_wikilink": "Azoko ilay izy!",
