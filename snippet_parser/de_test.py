@@ -22,10 +22,6 @@ class ExtractSnippetTest(unittest.TestCase):
         s = """We want to keep '''bold''' and ''italics''."""
         self.assertEqual(extract_lead_snippets(s), s)
 
-    def test_remove_tags(self):
-        s = '<gallery>This should be dropped.</gallery> This should not'
-        self.assertEqual(extract_lead_snippets(s), 'This should not')
-
     def test_markup_inside_tag(self):
         s = "''We should strip [[links]] inside tags''"
         self.assertEqual(extract_lead_snippets(s),
