@@ -188,7 +188,6 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Catégorie_cachée',
         html_snippet = True,
-        snippet_max_size = 1200,
         html_css_selectors_to_strip = [
             '.bandeau-article',
             '.bandeau-section',

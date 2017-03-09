@@ -212,7 +212,7 @@ def create_tables(db):
             snippet VARCHAR(%s), section VARCHAR(768), article_id INT(8)
             UNSIGNED, FOREIGN KEY(article_id) REFERENCES articles(page_id)
             ON DELETE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-        ''', (cfg.snippet_max_size * 2,))
+        ''', (cfg.snippet_max_size * 10,))
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS snippets_links (prev VARCHAR(128),
             next VARCHAR(128), cat_id VARCHAR(128),
