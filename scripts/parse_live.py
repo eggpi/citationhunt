@@ -33,6 +33,7 @@ from utils import *
 import docopt
 import requests
 
+import re
 import cProfile
 import functools
 import glob
@@ -51,6 +52,9 @@ WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 
 MAX_EXCEPTIONS_PER_SUBPROCESS = 5
+
+DATA_TRUNCATED_WARNING_RE = re.compile(
+    'Data truncated for column .* at row (\d+)')
 
 log = Logger()
 
@@ -144,6 +148,27 @@ def work(pageids):
         cursor.executemany('''
             INSERT IGNORE INTO snippets VALUES(%s, %s, %s, %s)''',
             r['snippets'])
+
+        # We can't allow data to be truncated for HTML snippets, as that can
+        # completely break the UI, so we detect truncation warnings and get rid
+        # of the corresponding data.
+        warnings = cursor.execute('SHOW WARNINGS')
+        truncated_snippets = []
+        for _, _, message in cursor.fetchall():
+            m = DATA_TRUNCATED_WARNING_RE.match(message)
+            if m is None:
+                # Not a truncation, ignore (it's already logged)
+                continue
+            # MySQL warnings index rows starting at 1
+            idx = int(m.groups()[0]) - 1
+            truncated_snippets.append((r['snippets'][idx][0],))
+        if len(truncated_snippets) < len(r['snippets']):
+            cursor.executemany('''
+                DELETE FROM snippets WHERE id = %s''', truncated_snippets)
+        else:
+            # Every single snippet was truncated, remove the article itself
+            cursor.execute('''DELETE FROM articles WHERE page_id = %s''',
+                (r['article'][0],))
     for r in rows:
         self.chdb.execute_with_retry(insert, r)
 
