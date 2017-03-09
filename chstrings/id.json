@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hidayatsrf"
+		]
+	},
+	"introduction": "Bantu temukan kutipan untuk artikel Wikipedia!",
+	"instructions_goal": "Potongan Wikipedia bawah tidak didukung oleh {link_start}sumber terpercaya{link_end}. Dapatkah Anda menemukannya?",
+	"instructions_details": "Klik %s untuk pergi ke Wikipedia dan memperbaiki potongan, atau %s untuk melihat yang lain. Periksa %s jika Anda memiliki pertanyaan. Semoga berhasil!",
+	"in_page": "Di halaman %s:",
+	"button_wikilink": "Saya menemukannya!",
+	"button_next": "Selanjutnya!",
+	"lead_section_hint": "Teks ini merupakan bagian dari bagian utama artikel ini, sehingga penambahan referensi mungkin opsional. Silakan lihat %s untuk informasi lebih lanjut.",
+	"category_filter_placeholder": "Cari topik",
+	"github_link_title": "Hey, sumber saya ada di GitHub!",
+	"beginners_hint": "Tidak tahu bagaimana cara menambah kutipan? Lihat %s.",
+	"page_not_found": "Halaman tidak ditemukan",
+	"page_not_found_text": "Halaman yang Anda cari tidak tersedia — mungkin kutipan ini telah ada? Kembali ke %s untuk melihat selengkapnya!",
+	"footer": "%s dibuat oleh sukarelawan, disediakan dari %s dan diterjemahkan melalui %s",
+	"js-article-count": "$1 {{PLURAL:$1|article|artikel}}",
+	"js-keyboard-shortcut": "Pintasan Papan ketik: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|citation|kutipan}} ditambahkan hari ini!"
+}
