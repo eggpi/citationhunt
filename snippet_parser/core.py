@@ -19,6 +19,7 @@ import re
 import importlib
 import itertools
 import lxml.html
+import lxml.html.clean
 import lxml.cssselect
 
 REF_MARKER = 'ec5b89dc49c433a9521a139'
@@ -36,6 +37,10 @@ class SnippetParserBase(object):
     def __init__(self, wikipedia, cfg):
         self._cfg = cfg
         self._wikipedia = wikipedia
+
+        # only used when cfg.html_snippet = True
+        self._cleaner = lxml.html.clean.Cleaner(
+            remove_tags = lxml.html.defs.tags)
 
         self._strip_methods = {
             mwparserfromhell.nodes.Template: self.strip_template,
@@ -260,8 +265,8 @@ class SnippetParserBase(object):
                         continue
                 else:
                     # TODO Maybe batch all snippets and do a single API request?
-                    snippet = self._to_html(snippet)
-                    if not (minlen < len(snippet) < maxlen):
+                    length, snippet = self._to_html(snippet)
+                    if not (minlen < length < maxlen):
                         continue
                     if CITATION_NEEDED_MARKER not in snippet:
                         # marker may have been removed in the HTML processing
@@ -343,8 +348,8 @@ class SnippetParserBase(object):
             # it will be smaller than the minimum size when converted to HTML.
             # FIXME: Maybe this can be detected?
             snippet = '\n\n'.join(p.strip(' ') for p in snippet.split('\n\n')[:10])
-            snippet = self._to_html(snippet)
-            if len(snippet) > minlen and len(snippet) < maxlen:
+            length, snippet = self._to_html(snippet)
+            if length > minlen and length < maxlen:
                 secsnippets.append(snippet)
         return snippets
 
@@ -362,7 +367,7 @@ class SnippetParserBase(object):
                 encoding = 'utf-8', remove_comments = True)).getroot()
         if tree is None:
             # TODO Log/investigate these
-            return ''
+            return 0, ''
 
         # Links are always relative so they end up broken in the UI. We could make
         # them absolute, but let's just remove them (by replacing with <span>) since
@@ -377,7 +382,12 @@ class SnippetParserBase(object):
         # lxml wraps the HTML with proper <html><body> tags, so remove that
         newroot = tree.find('.//body')
         newroot.tag = 'div'
-        return d(lxml.html.tostring(
+
+        # Remove tags to estimate the length of the text content
+        text_content = self._cleaner.clean_html(newroot)
+        length = len(text_content.text) if text_content.text is not None else 0
+
+        return length, d(lxml.html.tostring(
             newroot, encoding = 'utf-8', method = 'html'))
 
     def _fast_parse(self, wikitext):
@@ -421,12 +431,12 @@ class SnippetParserBase(object):
     def _to_html(self, snippet):
         if self._wikipedia is None:
             # Testing
-            return snippet
+            return len(snippet), snippet
         try:
             html = self._wikipedia.parse(
                 {'text': snippet})['parse']['text']['*']
         except:
-            return ''
+            return 0, ''
         return self._cleanup_snippet_html(html)
 
 _log = Logger()
