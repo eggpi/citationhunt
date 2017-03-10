@@ -87,6 +87,23 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(response.status_code, 302)
         self.assertTrue(response.location.endswith('/en'))
 
+    def test_zh_redirects(self):
+        # Just use the real config for these, make sure we properly
+        # match Chinese headers with the lang code
+        response = self.app.get('/', headers = {'Accept-Language': 'zh-TW'})
+        self.assertEquals(response.status_code, 302)
+        self.assertTrue(response.location.endswith('/zh_hant'))
+
+        response = self.app.get('/', headers = {'Accept-Language': 'zh-CN'})
+        self.assertEquals(response.status_code, 302)
+        self.assertTrue(response.location.endswith('/zh_hans'))
+
+    def test_zh_html_lang(self):
+        # Again using the new config, request zh_hans and make sure the
+        # language attribute is set correctly in the response
+        response = self.app.get('/zh_hans?id=' + self.sid)
+        self.assertIn('lang="zh-Hans"', response.data)
+
     def test_no_id_no_category(self):
         response = self.app.get('/en')
         args = self.get_url_args(response.location)
