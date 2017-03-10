@@ -160,8 +160,8 @@ class SnippetParserBase(object):
             elif tag.tag == 'dt':
                 return ''
             return self.delegate_strip(tag, normalize, collapse)
-        elif str(tag.tag) in {'i', 'b', 'li', 'dt', 'dd'}:
-            # strip the contents, but keep the tag itself
+        else:
+            # Strip contents, but it's generally fine to leave the tag itself
             if tag.contents:
                 tag.contents = self._strip_code(tag.contents)
             return tag
