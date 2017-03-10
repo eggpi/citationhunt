@@ -592,6 +592,55 @@ _LANG_CODE_TO_CONFIG = dict(
 
         snippet_max_size = 1000,
     ),
+
+    zh_hant = dict(
+        lang_name = '繁體中文',
+        lang_dir = 'ltr',
+        accept_language = [
+            'zh-TW',
+            'zh-HK',
+            'zh-MO',
+            'zh-Hant',
+        ],
+        database = 'zhwiki_p',
+        wikipedia_domain = 'zh.wikipedia.org',
+        beginners_link = 'https://zh.wikipedia.org/wiki/Wikipedia:列明来源',
+        beginners_link_title = 'Wikipedia:列明來源',
+        lead_section_policy_link = 'https://zh.wikipedia.org/wiki/Wikipedia:LEADCITE',
+        lead_section_policy_link_title = '序言章節的引用',
+        citation_needed_category = '有未列明来源语句的条目',
+        citation_needed_templates = [
+            'Unreferenced',
+            'Fact',
+        ],
+        citation_needed_template_name = '来源请求',
+        hidden_category = '隐藏分类',
+        snippet_max_size = 1000,
+    ),
+
+    zh_hans = dict(
+        lang_name = '简体中文',
+        lang_dir = 'ltr',
+        accept_language = [
+            'zh-CN',
+            'zh-SG',
+            'zh-Hans',
+        ],
+        database = 'zhwiki_p',
+        wikipedia_domain = 'zh.wikipedia.org',
+        beginners_link = 'https://zh.wikipedia.org/wiki/Wikipedia:列明来源',
+        beginners_link_title = 'Wikipedia:列明来源',
+        lead_section_policy_link = 'https://zh.wikipedia.org/wiki/Wikipedia:LEADCITE',
+        lead_section_policy_link_title = '序言章节的引用',
+        citation_needed_category = '有未列明来源语句的条目',
+        citation_needed_templates = [
+            'Unreferenced',
+            'Fact',
+        ],
+        citation_needed_template_name = '來源請求',
+        hidden_category = '隐藏分类',
+        snippet_max_size = 1000,
+    )
 )
 
 # In py3: types.SimpleNamespace
