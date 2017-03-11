@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 
-<html lang="{{ config.lang_code }}" dir="{{ lang_dir }}">
+<html lang="{{ lang_tag }}" dir="{{ lang_dir }}">
   <head>
     {% block head_extras %}{% endblock %}
-    <title>{{ config.strings.tooltitle }}</title>
+    <title>{{ strings.tooltitle }}</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/awesomplete.css">
 
@@ -24,19 +24,19 @@
     <script src="static/js/fixed.js" defer></script>
     <script src="static/js/shortcuts.js" defer></script>
     <meta name="robots" content="nofollow, noodp">
-    <meta name="description" content="{{ config.strings.tooltitle }} - {{ config.strings.introduction }}">
+    <meta name="description" content="{{ strings.tooltitle }} - {{ strings.introduction }}">
   </head>
   <body>
-    <h1>{{ config.strings.tooltitle }}</h1>
-    {% if config.strings.instructions_goal %}
+    <h1>{{ strings.tooltitle }}</h1>
+    {% if strings.instructions_goal %}
     <div id=instructions class="info">
-        <p>{{ config.strings.instructions_goal }}</p>
-        <p>{{ config.strings.instructions_details }}</p>
+        <p>{{ strings.instructions_goal }}</p>
+        <p>{{ strings.instructions_details }}</p>
     </div>
     {% else %}
-    <p id="intro">{{ config.strings.introduction }}</p>
+    <p id="intro">{{ strings.introduction }}</p>
     {% endif %}
-    <p id="preamble"><span id="page-title-text">{{ config.strings.in_page % (article_url, article_title) }}</span></p>
+    <p id="preamble"><span id="page-title-text">{{ strings.in_page % (article_url, article_title) }}</span></p>
     {# use a list for snippet_html to make sure we can access it outside the loop; see https://stackoverflow.com/questions/4870346 #}
     {% set cn_html = cn_html % config.citation_needed_template_name | replace(' ', '&thinsp;') | safe %}
     {% set snippet_html = [snippet | replace(cn_marker, cn_html)] %}
@@ -48,25 +48,25 @@
             <div id="quotation">"</div>
             {{ snippet_html[-1] }}
         </blockquote>
-        {% if not section and config.strings.lead_section_hint %}<div id="lead-hint">{{ config.strings.lead_section_hint }}</div>{% endif %}
+        {% if not section and strings.lead_section_hint %}<div id="lead-hint">{{ strings.lead_section_hint }}</div>{% endif %}
     </div>
     <div id="after-snippet">
       <div>
         <a href="{{ config.lang_code }}/redirect?id={{ snippet_id }}&to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
-          target="_blank"><button class="button" id="button-wikilink">{{ config.strings.button_wikilink }}</button></a>
-        <button form="form-next" type="submit" id="button-next" class="button">{{ config.strings.button_next }}</button>
+          target="_blank"><button class="button" id="button-wikilink">{{ strings.button_wikilink }}</button></a>
+        <button form="form-next" type="submit" id="button-next" class="button">{{ strings.button_next }}</button>
       </div>
       <div id="category-filter-wrapper">
         <form method="GET" action="" id="form-next">
-          <input type="text" id="category-input" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ config.strings.category_filter_placeholder }}" style="visibility: hidden;">
+          <input type="text" id="category-input" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ strings.category_filter_placeholder }}" style="visibility: hidden;">
           <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
           <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
         </form>
         <noscript>
           <span id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</span>
         </noscript>
-        {% if not config.strings.instructions_details %}
-        <p id="beginners-link-text">{{ config.strings.beginners_hint }}</p>
+        {% if not strings.instructions_details %}
+        <p id="beginners-link-text">{{ strings.beginners_hint }}</p>
         {% endif %}
       </div>
       <div id="fixed-count-container" class="info" hidden></div>
@@ -74,8 +74,8 @@
     <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet" type="text/css">
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
     <div id="footer" class="info">
-      <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">{{ config.strings.github_link_title }}</a>
-      <p>{{ config.strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if config.strings.footer else '' }}</p>
+      <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">{{ strings.github_link_title }}</a>
+      <p>{{ strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if strings.footer else '' }}</p>
     </div>
     <select id="lang-selector">
       {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}

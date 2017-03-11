@@ -48,15 +48,44 @@ class CitationHuntTest(unittest.TestCase):
     def get_url_args(self, url):
         return dict(kv.split('=') for kv in url[url.rfind('?')+1:].split('&'))
 
-    def test_default_en_redirect(self):
-        response = self.app.get('/')
+    def test_default_en_redirect_no_accept_language(self):
+        with mock.patch.dict(
+            config.LANG_CODES_TO_ACCEPT_LANGUAGE, {
+                'en': [], 'ru': []
+            }, True):
+            response = self.app.get('/')
+            self.assertEquals(response.status_code, 302)
+            self.assertTrue(response.location.endswith('/en'))
+
+            # Must preserve path
+            response = self.app.get('/favicon.ico')
+            self.assertEquals(response.status_code, 302)
+            self.assertTrue(response.location.endswith('/en/favicon.ico'))
+
+    def test_accept_language_redirect(self):
+        headers = {'Accept-Language': 'ru'}
+        with mock.patch.dict(
+            config.LANG_CODES_TO_LANG_NAMES, {
+                'en': '', 'ru': ''
+            }, True):
+            response = self.app.get('/', headers = headers)
+            self.assertEquals(response.status_code, 302)
+            self.assertTrue(response.location.endswith('/ru'))
+
+            # We don't really bother telling apart a path and an invalid lang
+            # code, so this just redirects to /en, not /ru
+            response = self.app.get('/favicon.ico', headers = headers)
+            self.assertEquals(response.status_code, 302)
+            self.assertTrue(response.location.endswith('/en/favicon.ico'))
+
+    def test_default_en_redirect_unsupported_language(self):
+        headers = {'Accept-Language': 'lv'}
+        # Pretend we don't support lv
+        with mock.patch.dict(config.LANG_CODES_TO_ACCEPT_LANGUAGE,
+                {'en': ''}, True):
+            response = self.app.get('/', headers = headers)
         self.assertEquals(response.status_code, 302)
         self.assertTrue(response.location.endswith('/en'))
-
-        # Must preserve path
-        response = self.app.get('/favicon.ico')
-        self.assertEquals(response.status_code, 302)
-        self.assertTrue(response.location.endswith('/en/favicon.ico'))
 
     def test_no_id_no_category(self):
         response = self.app.get('/en')
