@@ -1,4 +1,5 @@
 import chdb
+import chstrings
 import config
 import handlers
 import utils
@@ -91,8 +92,16 @@ def page_not_found(e):
         cfg = flask.g._cfg
     else:
         cfg = config.get_localized_config('en')
+    if hasattr(flask.g, '_strings'):
+        lang_tag = flask.g._lang_tag
+        strings = flask.g._strings
+    else:
+        lang_tag = 'en'
+        strings = chstrings.get_localized_strings(cfg, 'en')
     return flask.render_template(
-        '404.html', config = cfg), 404
+        '404.html', config = cfg,
+        lang_tag = lang_tag,
+        lang_dir = cfg.lang_dir, strings = strings), 404
 
 @app.errorhandler(500)
 def internal_server_error(e):
