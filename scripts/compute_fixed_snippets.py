@@ -88,7 +88,7 @@ def compute_fixed_snippets(cfg):
         # FIXME Duplicated logic with parse_live.py :(
         for sec, snips in snippets:
             for sni in snips:
-                id = mkid(d(page.title) + sni)
+                id = mkid(d(page_title) + sni)
                 snippet_to_ts.pop(id, None)
 
         for snippet_id, clicked_ts in snippet_to_ts.items():
