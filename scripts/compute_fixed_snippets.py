@@ -56,8 +56,7 @@ def load_pages_and_snippets_to_process(cursor, lang_code, start_date, end_date):
         if not page_title.startswith('wiki/'):
             log.info('malformed redirect url: %r' % url)
             continue
-        page_title = page_title.split('/', 1)[1]
-
+        page_title = page_title.split('/', 1)[1].replace('_', ' ')
         page_title_to_snippets.setdefault(page_title, {})[snippet_id] = ts
     return page_title_to_snippets
 
