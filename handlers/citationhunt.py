@@ -138,6 +138,7 @@ def citation_hunt(lang_code):
     id = flask.request.args.get('id')
     cat = flask.request.args.get('cat')
     cfg = flask.g._cfg
+    strings = flask.g._strings
 
     lang_dir = cfg.lang_dir
     if flask.current_app.debug:
@@ -183,8 +184,10 @@ def citation_hunt(lang_code):
             ref_marker = REF_MARKER,
             ref_html = SUPERSCRIPT_MARKUP,
             config = cfg,
+            lang_tag = flask.g._lang_tag,
             lang_dir = lang_dir,
-            js_strings = cfg.strings['js'])
+            strings = strings,
+            js_strings = strings['js'])
 
     id = select_random_id(lang_code, cat)
     return flask.redirect(

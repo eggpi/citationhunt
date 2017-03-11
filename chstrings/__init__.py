@@ -80,9 +80,13 @@ def _partition_js_strings(strings):
         if k.startswith('js-'):
             strings['js'][k[3:]] = strings.pop(k)
 
-def get_localized_strings(config, lang_code):
+def get_localized_strings(config, lang_tag):
     strings_dir = os.path.dirname(__file__)
-    strings = json.load(file(os.path.join(strings_dir, lang_code + '.json')))
+    json_path = os.path.join(strings_dir, lang_tag.lower() + '.json')
+    try:
+        strings = json.load(file(json_path))
+    except:
+        return {}
     strings = _preprocess_variables(config, strings)
     _partition_js_strings(strings)
     return strings

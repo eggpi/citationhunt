@@ -102,6 +102,16 @@ _BASE_LANG_CONFIG = dict(
         ' stubs$',
         '.*[0-9]+.*',
     ],
+
+    # Locales that apply to this language config, to be matched against
+    # the Accept-Language header. This is used for:
+    #   - choosing which config to redirect the user to when they access /
+    #   - choosing which strings to use in the UI when they access /<lang_code>
+    # For the second case, the last value on this list is used as a fallback
+    # if no match happens; if this is empty, the fallback is the language
+    # code itself. Whatever the fallback is, it MUST match the name of some
+    # file inside the chstrings/ directory.
+    accept_language = [],
 )
 
 # Language-specific config, inheriting from the base config above.
@@ -603,6 +613,17 @@ LANG_CODES_TO_LANG_NAMES = {
     for lang_code in _LANG_CODE_TO_CONFIG
 }
 
+LANG_CODES_TO_ACCEPT_LANGUAGE = {
+    lang_code: _LANG_CODE_TO_CONFIG[lang_code].get('accept_language', [])
+    for lang_code in _LANG_CODE_TO_CONFIG
+}
+# Ugly one-liner to check whether the different accept_language are
+# disjoint, since we depend on that to redirect the user to the right
+# config if no lang_code is provided in the URL.
+assert len(
+    set.union(set(), *LANG_CODES_TO_ACCEPT_LANGUAGE.values())
+) == sum(map(len, LANG_CODES_TO_ACCEPT_LANGUAGE.values()))
+
 def get_global_config():
     return Config(**_GLOBAL_CONFIG)
 
@@ -612,6 +633,5 @@ def get_localized_config(lang_code = None):
     lang_config = _LANG_CODE_TO_CONFIG[lang_code]
     cfg = Config(lang_code = lang_code, **reduce(
         _inherit, [_GLOBAL_CONFIG, _BASE_LANG_CONFIG, lang_config]))
-    cfg.strings = chstrings.get_localized_strings(cfg, lang_code)
     cfg.lang_codes_to_lang_names = LANG_CODES_TO_LANG_NAMES
     return cfg
