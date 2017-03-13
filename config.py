@@ -573,7 +573,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link_title = '導入部の出典',
 
         citation_needed_category = '出典を必要とする記述のある記事',
-        citation_needed_template = [
+        citation_needed_templates = [
             '出典の明記',
             '要出典',
         ],
