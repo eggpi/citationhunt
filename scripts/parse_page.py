@@ -72,6 +72,7 @@ if __name__ == '__main__':
             if cfg.html_snippet and arguments['--output'] != 'raw':
                 output = format_html(snippet)
             else:
-                output = '   ' + '\n   '.join(textwrap.wrap(snippet, 80))
+                output = '   ' + '\n   '.join(
+                    textwrap.wrap(snippet, 80, break_long_words = False))
             _print(output)
             _print('.')
