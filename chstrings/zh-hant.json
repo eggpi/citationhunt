@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
-			"Shangkuanlc"
+			"Shangkuanlc",
+			"LNDDYL"
 		]
 	},
 	"tooltitle": "Citation Hunt",
@@ -15,11 +16,11 @@
 	"lead_section_hint": "此段文字是該條目的序言章節一部份，因此可選擇引用此內容。請查看%s獲得更多訊息。",
 	"category_filter_placeholder": "搜尋一個標題。",
 	"github_link_title": "嘿！我的原始碼放在GitHub上！",
-	"beginners_hint": "不清楚如何添加引用文獻嗎？請參閱%s",
+	"beginners_hint": "不清楚如何新增引用文獻嗎？請參閱%s",
 	"page_not_found": "找不到頁面！",
 	"page_not_found_text": "您找尋的頁面已不存在－－或許這筆引用已被人找到？返回%s瞭解更多訊息！",
 	"footer": "%s是由志工們所開發、托管於%s，並由%s提供翻譯。",
 	"js-article-count": "$1 {{PLURAL:$1|個條目|個條目}}",
-	"js-keyboard-shortcut": "鍵盤快捷鍵：%s",
+	"js-keyboard-shortcut": "鍵盤快速鍵：%s",
 	"js-refs-added-today": "今日有$1{{PLURAL:$1|個引用|個引用}}被添加！"
 }
