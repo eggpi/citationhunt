@@ -18,5 +18,7 @@
 	"page_not_found": "Säit net fonnt!",
 	"page_not_found_text": "D'Säit no där Dir sicht gëtt et net méi - vläicht gouf dat Zitat scho fonnt? Gitt zréck op %s fir méi Informatiounen!",
 	"footer": "%s gëtt vu Fräiwëllege gemaach, vu(n) %s gehost an op %s iwwersat.",
-	"js-article-count": "{{PLURAL:$1|Een Artikel|$1 Artikelen}}"
+	"js-article-count": "{{PLURAL:$1|Een Artikel|$1 Artikelen}}",
+	"js-keyboard-shortcut": "Tastatur-Ofkierzung: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|Zitat gouf|Zitater goufen}} haut dobäigesat!"
 }
