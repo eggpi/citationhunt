@@ -10,7 +10,7 @@ function get(url, callback) {
 }
 
 function initFixedCounter() {
-  var lang_code = document.documentElement.lang;
+  var lang_code = document.documentElement.dataset.chLangCode;
   var strings = document.getElementById("js-strings").dataset;
   if (!strings.refsAddedToday) return;
 
