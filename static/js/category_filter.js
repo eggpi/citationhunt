@@ -49,7 +49,7 @@ function initCategoryFilter() {
   var scrollBarWidth = getScrollBarWidth();
 
   function search() {
-    var lang_code = document.documentElement.lang;
+    var lang_code = document.documentElement.dataset.chLangCode;
     var url = lang_code + "/search/category?q=" + encodeURIComponent(cin.value);
     getJSON(url, function(response) {
       awc.list = response['results'];

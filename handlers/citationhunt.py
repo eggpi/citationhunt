@@ -186,6 +186,7 @@ def citation_hunt(lang_code):
             config = cfg,
             lang_tag = flask.g._lang_tag,
             lang_dir = lang_dir,
+            lang_code = lang_code,
             strings = strings,
             js_strings = strings['js'])
 
