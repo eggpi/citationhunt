@@ -164,6 +164,7 @@ def install_scratch_db():
         # generate a sql query that will atomically swap tables in
         # 'citationhunt' and 'scratch'. Modified from:
         # http://blog.shlomoid.com/2010/02/emulating-missing-rename-database.html
+        cursor.execute('''SET group_concat_max_len = 2048;''')
         cursor.execute('''
             SELECT CONCAT('RENAME TABLE ',
             GROUP_CONCAT('%s.', table_name,
