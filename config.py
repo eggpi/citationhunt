@@ -613,7 +613,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Unreferenced',
             'Fact',
         ],
-        citation_needed_template_name = '来源请求',
+        citation_needed_template_name = '來源請求',
         hidden_category = '隐藏分类',
         snippet_max_size = 1000,
     ),
@@ -637,7 +637,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Unreferenced',
             'Fact',
         ],
-        citation_needed_template_name = '來源請求',
+        citation_needed_template_name = '来源请求',
         hidden_category = '隐藏分类',
         snippet_max_size = 1000,
     )
