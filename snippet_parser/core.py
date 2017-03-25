@@ -434,8 +434,9 @@ class SnippetParserBase(object):
             # Testing
             return len(snippet), snippet
         try:
-            html = self._wikipedia.parse(
-                {'text': snippet})['parse']['text']['*']
+            html = self._wikipedia.parse({
+                'text': snippet, 'disabletoc': 'true'
+            })['parse']['text']['*']
         except:
             return 0, ''
         return self._cleanup_snippet_html(html)
