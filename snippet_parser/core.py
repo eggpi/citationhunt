@@ -172,14 +172,15 @@ class SnippetParserBase(object):
 
         The return value will be the link's replacement. The default value
         will strip the wikilink entirely if its title has a prefix-match in
-        config.wikilink_prefix_blacklist; otherwise, it will delegate to
-        mwparserfromhell.
+        config.wikilink_prefix_blacklist; otherwise, it will return the
+        (stripped) text or title of the link.
         '''
 
         for prefix in self._cfg.wikilink_prefix_blacklist:
             if wikilink.title.startswith(prefix):
                 return ''
-        return self.delegate_strip(wikilink, normalize, collapse)
+        text = wikilink.text if wikilink.text else wikilink.title
+        return self._strip_code(text)
 
     def strip_heading(self, heading, normalize, collapse):
         '''Override to control how headings are stripped in the wikicode.
