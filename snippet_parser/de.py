@@ -17,7 +17,7 @@ class SnippetParser(SnippetParserBase):
             return super(SnippetParser, self).strip_heading(
                 heading, normalize, collapse)
         # Keep sub-headings, as the template we're looking for is often
-        # applied right after 1 or 2-level headings, before a level 3 heading
-        # However, "pre-render" them as bold so we don't have to deal with
-        # their HTML representation (which includes links to edit the section).
-        return "'''" + heading.title.strip() + "'''\n\n"
+        # applied right after 1 or 2-level headings, before a level 3 heading.
+        # We just make sure it will be a h3 by the time it comes back, so we
+        # can apply styling to it later.
+        return "<h3>" + heading.title.strip() + "</h3>\n\n"

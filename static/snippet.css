@@ -19,3 +19,7 @@
     opacity: 0;
     font-size: 1px;
 }
+
+#snippet h3 {
+    font-size: 16px;
+}
