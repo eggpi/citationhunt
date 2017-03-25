@@ -44,7 +44,7 @@ class ExtractSnippetTest(unittest.TestCase):
         self.assertEqual(
             extract_sections(s), [
             ['', []],
-            ['Section', ["'''Subsection'''\n\nSome text"]]
+            ['Section', ["<h3>Subsection</h3>\n\nSome text"]]
             ])
 
     def test_use_subsections(self):
@@ -53,7 +53,7 @@ class ExtractSnippetTest(unittest.TestCase):
             extract_sections(s), [
                 ['', []],
                 ['Section', []],
-                ['Subsection', ["'''Subsection'''\n\nSome text"]]
+                ['Subsection', ["<h3>Subsection</h3>\n\nSome text"]]
             ])
 
     def test_identify_sections(self):
@@ -61,7 +61,7 @@ class ExtractSnippetTest(unittest.TestCase):
         self.assertEqual(
             extract_sections(s), [
             ['', []],
-            ['Section1', ["'''Subsection'''\n\nSome text"]],
+            ['Section1', ["<h3>Subsection</h3>\n\nSome text"]],
             ['Section2', []]
             ])
 
