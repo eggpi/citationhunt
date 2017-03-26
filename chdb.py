@@ -99,7 +99,7 @@ def init_stats_db():
         with db as cursor, ignore_warnings():
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS requests (
-                ts DATETIME, lang_code VARCHAR(4), snippet_id VARCHAR(128),
+                ts DATETIME, lang_code VARCHAR(10), snippet_id VARCHAR(128),
                 category_id VARCHAR(128), url VARCHAR(768), prefetch BOOLEAN,
                 status_code INTEGER, referrer VARCHAR(128))
                 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
