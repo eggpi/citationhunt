@@ -53,6 +53,7 @@ _BASE_LANG_CONFIG = dict(
         '.hatnote',
         '.noexcerpt',
         '.noprint',
+        '.notice',
         '.references',
         '.gallery',
         'gallery',
