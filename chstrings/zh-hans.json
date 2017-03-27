@@ -1,24 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Arthur2e5"
 		]
 	},
 	"tooltitle": "Citation Hunt",
-	"introduction": "帮助查找维基百科条目的引用！",
-	"instructions_goal": "下方的维基百科片段没有{link_start}有效来源{link_end}支持。您可以找到一个么？",
-	"instructions_details": "点击%s前往维基百科并修复片段，或%s以查看另一个。如果您有问题请先查看%s。祝好运！",
-	"in_page": "在页面%s：",
-	"button_wikilink": "我有这个！",
+	"introduction": "帮维基百科条目找找引用吧！",
+	"instructions_goal": "下方的维基百科片段没有{link_start}可靠来源{link_end}支持。您可以找到一个么？",
+	"instructions_details": "点击%s前往维基百科并修复片段，或%s查看另一个。如果您有问题请先查看%s。祝好运！",
+	"in_page": "页面%s中：",
+	"button_wikilink": "这个我行！",
 	"button_next": "下一个！",
-	"lead_section_hint": "此段文字是条目的序言章节的一部分，所以引用它可能是可选的。请参见%s以获取更多信息。",
+	"lead_section_hint": "此段文字位于条目的导言章节，可能不需加引用。详见%s。",
 	"category_filter_placeholder": "搜索一个话题。",
-	"github_link_title": "嘿！我的源代码位于GitHub！",
+	"github_link_title": "嘿！我的源代码在GitHub上！",
 	"beginners_hint": "不了解如何添加引用？请参见%s。",
 	"page_not_found": "找不到页面！",
-	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已经被找到？返回%s以获取更多！",
+	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已被找到？返回%s解决更多引用！",
 	"footer": "%s由志愿者制作，托管于%s，并由%s提供翻译。",
-	"js-article-count": "$1个{{PLURAL:$1|条目}}",
+	"js-article-count": "$1个条目",
 	"js-keyboard-shortcut": "键盘快捷键：%s",
-	"js-refs-added-today": "今天已添加$1个{{PLURAL:$1|引用}}！"
+	"js-refs-added-today": "今天一共添加了$1个{{PLURAL:$1|引用}}！"
 }
