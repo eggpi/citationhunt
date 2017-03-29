@@ -19,7 +19,6 @@ import re
 import importlib
 import itertools
 import lxml.html
-import lxml.html.clean
 import lxml.cssselect
 
 REF_MARKER = 'ec5b89dc49c433a9521a139'
@@ -37,10 +36,6 @@ class SnippetParserBase(object):
     def __init__(self, wikipedia, cfg):
         self._cfg = cfg
         self._wikipedia = wikipedia
-
-        # only used when cfg.html_snippet = True
-        self._cleaner = lxml.html.clean.Cleaner(
-            remove_tags = lxml.html.defs.tags)
 
         self._strip_methods = {
             mwparserfromhell.nodes.Template: self.strip_template,
@@ -384,11 +379,7 @@ class SnippetParserBase(object):
         newroot = tree.find('.//body')
         newroot.tag = 'div'
 
-        # Remove tags to estimate the length of the text content
-        text_content = self._cleaner.clean_html(newroot)
-        length = len(text_content.text) if text_content.text is not None else 0
-
-        return length, d(lxml.html.tostring(
+        return len(newroot.text_content()), d(lxml.html.tostring(
             newroot, encoding = 'utf-8', method = 'html'))
 
     def _fast_parse(self, wikitext):
