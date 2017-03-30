@@ -512,7 +512,7 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_template_name = 'nepieciešama atsauce',
         hidden_category = 'Slēptās_kategorijas',
         html_snippet = True,
-        snippet_max_size = 5000,
+        snippet_max_size = 600,
     ),
 
     ru = dict(
