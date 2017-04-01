@@ -45,7 +45,7 @@ _BASE_LANG_CONFIG = dict(
 
     # Whether or not snippets should be converted to HTML using the
     # Wikipedia API before storing them in the database
-    html_snippet = False,
+    html_snippet = True,
 
     # When html_snippet is True, the elements identified by these CSS selectors
     # are removed from the HTML returned by the Wikipedia API
@@ -194,7 +194,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Fichier:',
         ],
         hidden_category = 'Catégorie_cachée',
-        html_snippet = True,
         html_css_selectors_to_strip = [
             '.bandeau-article',
             '.bandeau-section',
@@ -469,7 +468,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Bild:',
         ],
         hidden_category = 'Kategorie:Versteckt',
-        html_snippet = True,
         extract = 'section',
 
         # We use big chunks of sections for German, and convert them to
@@ -518,8 +516,6 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         citation_needed_template_name = 'nepieciešama atsauce',
         hidden_category = 'Slēptās_kategorijas',
-        html_snippet = True,
-        snippet_max_size = 600,
     ),
 
     ru = dict(
@@ -542,7 +538,6 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         citation_needed_template_name = 'источник?',
         hidden_category = 'Скрытые_категории',
-        snippet_max_size = 800,
     ),
 
     ro = dict(
@@ -631,7 +626,6 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         citation_needed_template_name = '來源請求',
         hidden_category = '隐藏分类',
-        html_snippet = True,
         html_parse_parameters = {
             'variant': 'zh-hant',
         },
@@ -658,7 +652,6 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         citation_needed_template_name = '来源请求',
         hidden_category = '隐藏分类',
-        html_snippet = True,
         html_parse_parameters = {
             'variant': 'zh-hans',
         },
