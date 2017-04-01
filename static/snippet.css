@@ -1,23 +1,30 @@
-#snippet sup {
-    font-size: small;
-    color: #0645AD;
-    white-space: nowrap;
-    /* Fix <sup> messing up the line-height in Chrome and Safari.
-     * Source: https://stackoverflow.com/q/1530685/
-     */
-    line-height: 100%;
-}
-
 /* HACK: ideally we would like to just include a word-joiner character
  * (U+2060, &#8288;) in the markup before [citation-needed] tags, but that
  * character is actually visible in Chrome due to a bug. The following
  * workaround seems to work fine on FF, Chrome and Safari.
  * Chrome issue: https://code.google.com/p/chromium/issues/detail?id=225862
  */
-#snippet sup:before {
+#snippet .ch-cn-marker:before {
     content: "⁠";
     opacity: 0;
     font-size: 1px;
+}
+
+/* FIXME We apply this style to _any_ <sup>, because that's usually the
+ * right thing to do for <sup> that come from any other template, but it does
+ * cause false positives: for example, we also style inline <sup> tags that
+ * didn't belong to a template at all.
+ * This doesn't seem to be very frequent, but we could have the snippet parser
+ * mark those inline <sup> with a special class to rule them out here if needed.
+ */
+#snippet sup {
+    white-space: nowrap;
+    font-size: small;
+    color: #0645AD;
+    /* Fix <sup> messing up the line-height in Chrome and Safari.
+     * Source: https://stackoverflow.com/q/1530685/
+     */
+    line-height: 100%;
 }
 
 #snippet h3 {
