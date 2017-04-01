@@ -425,9 +425,9 @@ class SnippetParserBase(object):
             # Testing
             return len(snippet), snippet
         try:
-            html = self._wikipedia.parse({
-                'text': snippet, 'disabletoc': 'true'
-            })['parse']['text']['*']
+            params = dict(text = snippet, **self._cfg.html_parse_parameters)
+            result = self._wikipedia.parse(params)
+            html = result['parse']['text']['*']
         except:
             return 0, ''
         return self._cleanup_snippet_html(html)

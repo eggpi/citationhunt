@@ -6,13 +6,13 @@ import chstrings
 import os
 
 # The configuration for a language is a set of key/value pairs, where the
-# values may be True/False, strings or lists of strings. It is computed by
-# inheriting from the global config, base config, and language-specific
+# values may be True/False, strings or lists/dicts of strings. It is computed
+# by inheriting from the global config, base config, and language-specific
 # config below, in that order.
 # When inheriting, for simple string or True/False keys, the "inheritor's"
-# value overrides the base value, and for list values, the base and inheritor
-# lists are merged. There is currently no way to completely override a base list
-# value.
+# value overrides the base value, and for list/dict values, the base and
+# inheritor lists are merged. There is currently no way to completely override
+# a base list/dict value.
 
 # Configuration keys that don't correspond to user-visible or snippet parsing
 # behavior. Boring stuff.
@@ -59,6 +59,12 @@ _BASE_LANG_CONFIG = dict(
         'gallery',
         'table',
     ],
+
+    # Parameters to pass to the Wikipedia API's parse method when converting
+    # snippets to HTML, in addition to the snippet itself.
+    html_parse_parameters = {
+        'disabletoc': 'true',
+    },
 
     # What to extract for each citation needed template found in the wikitext,
     # either 'snippet' or 'section'
@@ -625,7 +631,10 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         citation_needed_template_name = '來源請求',
         hidden_category = '隐藏分类',
-        snippet_max_size = 1000,
+        html_snippet = True,
+        html_parse_parameters = {
+            'variant': 'zh-hant',
+        },
     ),
 
     zh_hans = dict(
@@ -649,7 +658,10 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         citation_needed_template_name = '来源请求',
         hidden_category = '隐藏分类',
-        snippet_max_size = 1000,
+        html_snippet = True,
+        html_parse_parameters = {
+            'variant': 'zh-hans',
+        },
     )
 )
 
@@ -661,10 +673,12 @@ class Config(object):
 def _inherit(base, child):
     ret = dict(base)  # shallow copy
     for k, v in child.iteritems():
-        if k in ret and isinstance(v, list):
-            ret[k] = ret[k] + v  # copy
-        else:
-            ret[k] = v
+        if k in ret:
+            if isinstance(v, list):
+                v = ret[k] + v
+            elif isinstance(v, dict):
+                v = dict(ret[k], **v)
+        ret[k] = v
     return ret
 
 LANG_CODES_TO_LANG_NAMES = {
