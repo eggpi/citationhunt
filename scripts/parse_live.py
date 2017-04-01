@@ -119,6 +119,7 @@ def with_max_exceptions(fn):
             traceback.print_exc()
             self.exception_count += 1
             if self.exception_count > MAX_EXCEPTIONS_PER_SUBPROCESS:
+                log.info('Too many exceptions, quitting!')
                 raise
     return wrapper
 

@@ -7,6 +7,7 @@ cfg = config.get_localized_config('en')
 cfg.citation_needed_templates = ['cn', 'Citation needed']
 cfg.snippet_min_size = 0
 cfg.snippet_max_size = float('inf')
+cfg.html_snippet = False
 snippet_parser = create_snippet_parser(None, cfg)
 extract_snippets = snippet_parser.extract_snippets
 
