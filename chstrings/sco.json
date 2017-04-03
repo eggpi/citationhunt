@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"AmaryllisGardener"
+		]
+	},
+	"introduction": "Help find citations for Wikipaedia airticles!",
+	"instructions_goal": "The Wikipaedia snippet ablo isna backed bi a {link_start}reliable source{link_end}. Can ye find ane?",
+	"instructions_details": "Click %s tae gae tae Wikipaedia an fix the snippet, or %s tae see anither ane. Check %s if ye hae quaistiens. Good luck!",
+	"in_page": "In page %s:",
+	"button_wikilink": "I gat this!",
+	"button_next": "Next!",
+	"lead_section_hint": "This text is pairt o the airticle's lead section, sae referencin it mey be optional. Please see %s for mair information.",
+	"category_filter_placeholder": "Sairch for a topic.",
+	"github_link_title": "Hey! Ma soorce is on GitHub!",
+	"beginners_hint": "Dinna knaw hou tae add citations? See %s.",
+	"page_not_found": "Page nae foond!",
+	"page_not_found_text": "The page ye are leukin for na langer exeests — perhaps this citation haes awready been foond? Gae back tae %s for mair!",
+	"footer": "%s is made bi volunteers, hostit on %s an translatit via %s.",
+	"js-article-count": "$1 {{PLURAL:$1|airticle|airticles}}",
+	"js-keyboard-shortcut": "Keybuird shortcut: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|citation|citations}} addit the day!"
+}

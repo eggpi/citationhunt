@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Takot"
+			"Takot",
+			"ネイ"
 		]
 	},
 	"introduction": "ウィキペディアの記事に出典をつけましょう！",
@@ -17,5 +18,7 @@
 	"page_not_found": "ページが見つかりません！",
 	"page_not_found_text": "お探しのページは見つかりませんでした―もしかすると誰かがもう出典を見つけたのかも？　%s に戻ってもっと探してみましょう！",
 	"footer": "%s はボランティアによって製作されています。%s 上でホスティングされ、%s で翻訳されています。",
-	"js-keyboard-shortcut": "ショートカットキー: %s"
+	"js-article-count": "$1 {{PLURAL:$1|記事|記事}}",
+	"js-keyboard-shortcut": "ショートカットキー: %s",
+	"js-refs-added-today": "今日脚注を$1か所追加しました！"
 }
