@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"introduction": "Danne 'na màne a circà le citazziune pe le vôsce de Uicchipedie!",
+	"instructions_goal": "'U stuézze de Uicchipèdie non g'avéne supportate da 'na {link_start}fonde secure{link_end}. Ne puè cercà une?",
+	"instructions_details": "Cazze %s pe scè sus a Uicchipèdie pe correggere 'u stuézze, o %s pe 'ndrucarne 'n'otre. Condrolle %s ce tìne dumande da ffà. Fatta calà!",
+	"in_page": "Jndr'à pàgene %s:",
+	"button_wikilink": "'U tenghe!",
+	"button_next": "Prossime",
+	"page_not_found": "Vôsce non acchiate!",
+	"js-article-count": "$1 {{PLURAL:$1|vôsce}}",
+	"js-refs-added-today": "$1 {{PLURAL:$1|citazzione|citazziune}} mise osce!"
+}
