@@ -193,40 +193,50 @@ class SnippetParserBase(object):
                     if not inside_marker:
                         element.getparent().remove(element)
 
-            # We climb up from each marker to the nearest antecessor element
-            # that we can use as a snippet.
+            if self._cfg.extract == 'snippet':
+                # We climb up from each marker to the nearest antecessor element
+                # that we can use as a snippet.
+                snippet_roots = []
+                for marker in tree.cssselect('.' + CITATION_NEEDED_MARKER_CLASS):
+                    assert marker.attrib['class'] == CITATION_NEEDED_MARKER_CLASS
+                    root = marker.getparent()
+                    while root is not None and root.tag not in ('p', 'ol', 'ul'):
+                        root = root.getparent()
+                    if root is None:
+                        continue
+
+                    snippet_roots = [copy(root)]
+                    if root.tag in ('ol', 'ul'):
+                        snippet_roots = self._html_list_to_snippets(root)
+            else:
+                # Keep only a few whitelisted top-level elements within the
+                # body. This is not great as any content within, say,
+                # <blockquote> gets removed entirely, but it's good enough in
+                # most cases.
+                tree[0][:] = tree.cssselect('body > p, ol, ul')
+                snippet_roots = [tree]
+
             snippets_in_section = set()
+            for sr in snippet_roots:
+                # Some last-minute cleanup to shrink the snippet some more.
+                # Remove links and attributes, but make sure to keep the
+                # class in our marker elements, and that there is no space
+                # before it (which we need for the UI).
+                lxml.etree.strip_tags(sr, 'a')
+                markers_in_snippet = sr.cssselect(
+                    '.' + CITATION_NEEDED_MARKER_CLASS)
+                lxml.etree.strip_attributes(sr, 'id', 'class', 'style')
+                for marker in markers_in_snippet:
+                    marker.attrib['class'] = CITATION_NEEDED_MARKER_CLASS
+                    self._remove_space_before_element(marker)
+
+                length = len(sr.text_content().strip())
+                if minlen < length < maxlen:
+                    snippet = d(lxml.html.tostring(
+                        sr, encoding = 'utf-8', method = 'html'))
+                    snippets_in_section.add(snippet)
+
             sectitle = unicode(section.get(0).title.strip()) if i != 0 else ''
-            for marker in tree.cssselect('.' + CITATION_NEEDED_MARKER_CLASS):
-                assert marker.attrib['class'] == CITATION_NEEDED_MARKER_CLASS
-                root = marker.getparent()
-                while root is not None and root.tag not in ('p', 'ol', 'ul'):
-                    root = root.getparent()
-                if root is None:
-                    continue
-
-                snippet_roots = [copy(root)]
-                if root.tag in ('ol', 'ul'):
-                    snippet_roots = self._html_list_to_snippets(root)
-
-                for sr in snippet_roots:
-                    # Some last-minute cleanup to shrink the snippet some more.
-                    # Remove links and attributes, but make sure to keep the
-                    # class in our marker elements, and that there is no space
-                    # before it (which we need for the UI).
-                    lxml.etree.strip_tags(sr, 'a')
-                    markers_in_snippet = sr.cssselect(
-                        '.' + CITATION_NEEDED_MARKER_CLASS)
-                    lxml.etree.strip_attributes(sr, 'id', 'class', 'style')
-                    for marker in markers_in_snippet:
-                        marker.attrib['class'] = CITATION_NEEDED_MARKER_CLASS
-                        self._remove_space_before_element(marker)
-
-                    length = len(sr.text_content().strip())
-                    if minlen < length < maxlen:
-                        snippet = d(lxml.html.tostring(
-                            sr, encoding = 'utf-8', method = 'html'))
-                        snippets_in_section.add(snippet)
             snippets.append([sectitle, list(snippets_in_section)])
         return snippets
 
@@ -391,9 +401,7 @@ class SnippetParserBase(object):
         return template.name.lower().strip() in self._lowercase_cn_templates
 
     def extract(self, wikitext):
-        if self._cfg.extract == 'snippet':
-            return self.extract_html_snippets(wikitext)
-        return self.extract_sections(wikitext)
+        return self.extract_html_snippets(wikitext)
 
     def extract_snippets(self, wikitext):
         """Extracts snippets lacking citations.

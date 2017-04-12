@@ -56,6 +56,7 @@ _BASE_LANG_CONFIG = dict(
         '.notice',
         '.references',
         '.gallery',
+        'br',
         'gallery',
         'table',
     ],
@@ -64,6 +65,7 @@ _BASE_LANG_CONFIG = dict(
     # snippets to HTML, in addition to the snippet itself.
     html_parse_parameters = {
         'disabletoc': 'true',
+        'disableeditsection': 'true',
     },
 
     # What to extract for each citation needed template found in the wikitext,
@@ -469,10 +471,6 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Kategorie:Versteckt',
         extract = 'section',
-
-        # We use big chunks of sections for German, and convert them to
-        # HTML. The min/max sizes apply to the final HTML.
-        snippet_min_size = 200,
         snippet_max_size = 30000,
     ),
 
