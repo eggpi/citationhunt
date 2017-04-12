@@ -10,6 +10,18 @@
     font-size: 1px;
 }
 
+#snippet .ch-cn-marker {
+    /* Fix <sup> messing up the line-height of the snippet.
+     * The natural fix would be to apply this to the <sup> tags themselves
+     * (not all <sup> are under .ch-cn-marker), but that messes up the heights
+     * of lines below .ch-cn-marker for some reason.
+     * I won't pretend I understand why this works, but applying the style to
+     * .ch-cn-marker only seems to do the trick.
+     * Source: https://stackoverflow.com/q/1530685/
+     */
+    line-height: 0;
+}
+
 /* FIXME We apply this style to _any_ <sup>, because that's usually the
  * right thing to do for <sup> that come from any other template, but it does
  * cause false positives: for example, we also style inline <sup> tags that
@@ -21,10 +33,6 @@
     white-space: nowrap;
     font-size: small;
     color: #0645AD;
-    /* Fix <sup> messing up the line-height in Chrome and Safari.
-     * Source: https://stackoverflow.com/q/1530685/
-     */
-    line-height: 100%;
 }
 
 #snippet h3 {
