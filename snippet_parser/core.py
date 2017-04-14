@@ -214,6 +214,13 @@ class SnippetParser(object):
                         e.attrib.get('class') == CITATION_NEEDED_MARKER_CLASS
                         for e in element.iterancestors('span'))
                     if not inside_marker:
+                        if element.tail:
+                            if element.getprevious() is not None:
+                                element.getprevious().tail = (
+                                    element.getprevious().tail or '') + element.tail
+                            else:
+                                element.getparent().text = (
+                                    element.getparent().text or '') + element.tail
                         element.getparent().remove(element)
 
             if self._cfg.extract == 'snippet':
