@@ -316,8 +316,12 @@ class SnippetParser(object):
         return snippet_roots
 
     def _remove_space_before_element(self, element):
-        if element.getprevious() is not None and element.getprevious().tail:
-            element.getprevious().tail = element.getprevious().tail.rstrip()
+        # The text preceding the element is exposed by lxml as either the tail
+        # of the "previous" element, or, if there's no previous element, the
+        # text of the parent.
+        if element.getprevious() is not None:
+            if element.getprevious().tail:
+                element.getprevious().tail = element.getprevious().tail.rstrip()
         elif element.getparent() is not None and element.getparent().text:
             element.getparent().text = element.getparent().text.rstrip()
 
