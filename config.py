@@ -75,14 +75,6 @@ _BASE_LANG_CONFIG = dict(
     # Most (all?) Wikipedias support the English settings below in addition
     # to the localized ones, so make sure to handle them!
 
-    # Wikilinks having these prefixes will be omitted entirely from the output;
-    # others will get replaced by their titles.
-    wikilink_prefix_blacklist = [
-        'File:',
-        'Image:',
-        'Media:'
-    ],
-
     # The names of templates that mark statements lacking citations. The
     # first letter is case-insensitive. When adding a new language, this
     # may help: https://www.wikidata.org/wiki/Q5312535
@@ -90,19 +82,6 @@ _BASE_LANG_CONFIG = dict(
     # processed automatically, so there's no need to list them here.
     citation_needed_templates = [
         'Citation needed',
-    ],
-
-    # A set of tags that we know for sure we can't handle, so snippets
-    # containing them will be dropped.
-    tags_blacklist = [
-        'math',
-    ],
-
-    # A set of templates that we know for sure we can't handle, so
-    # snippets containing them will be dropped. Only applies when
-    # html_snippet is False.
-    templates_blacklist = [
-        'lang',
     ],
 
     # Citation Hunt will ignore categories if their names match one
