@@ -263,7 +263,7 @@ class SnippetParser(object):
                 length = len(sr.text_content().strip())
                 if minlen < length < maxlen:
                     snippet = d(lxml.html.tostring(
-                        sr, encoding = 'utf-8', method = 'html'))
+                        sr, encoding = 'utf-8', method = 'html')).strip()
                     snippets_in_section.add(snippet)
 
             sectitle = unicode(section.get(0).title.strip()) if i != 0 else ''
