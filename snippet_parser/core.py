@@ -188,7 +188,7 @@ class SnippetParser(object):
             # Note: we could gain a little speedup here by breaking the section
             # into paragraphs and taking only the paragraphs we want before
             # sending them for parsing, but that's trickier than it looks,
-            # since paragraph breaks can happen not just doe to '\n\n', and
+            # since paragraph breaks can happen not just due to '\n\n', and
             # even within template parameters!
 
             try:
