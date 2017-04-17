@@ -297,7 +297,7 @@ class SnippetParser(object):
         snippet_roots = []
         for li_with_marker in lis_with_marker:
             sr = lxml.html.Element('div')
-            sr.extend(preamble)
+            sr.extend(copy(p) for p in preamble)
             sr.append(lxml.html.Element(list_element.tag))
 
             # Try to take one <li> before and one after the one we want, but
