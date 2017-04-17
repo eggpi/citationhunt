@@ -10,7 +10,14 @@
 	"in_page": "Jndr'à pàgene %s:",
 	"button_wikilink": "'U tenghe!",
 	"button_next": "Prossime",
+	"lead_section_hint": "Stu teste face parte d'a sezione d'inizie d'a vôsce, e quinde le refereminde ce vuè le mitte. 'Ndruche %s pe cchiù 'mbormazziune.",
+	"category_filter_placeholder": "Cirche 'n'argomende.",
+	"github_link_title": "Uè! 'U sorgende mije ste sus a GitHub!",
+	"beginners_hint": "Non ge sè cumme a mettere le citazziune? 'Ndruche %s.",
 	"page_not_found": "Vôsce non acchiate!",
+	"page_not_found_text": "'A pàgene ca ste cercave non g'esiste cchiù - pò essere ca sta citazione ha state ggià acchiate? Tuérne sus a %s pe otre!",
+	"footer": "%s ga state fatte da volondarije, ospitate sus a %s e tradotte cu %s.",
 	"js-article-count": "$1 {{PLURAL:$1|vôsce}}",
+	"js-keyboard-shortcut": "Scorciatoje cu le taste: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citazzione|citazziune}} mise osce!"
 }
