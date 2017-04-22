@@ -43,12 +43,8 @@ _BASE_LANG_CONFIG = dict(
     # Approximate minimum length for a snippet
     snippet_min_size = 100,
 
-    # Whether or not snippets should be converted to HTML using the
-    # Wikipedia API before storing them in the database
-    html_snippet = True,
-
-    # When html_snippet is True, the elements identified by these CSS selectors
-    # are removed from the HTML returned by the Wikipedia API
+    # The elements identified by these CSS selectors are removed from the HTML
+    # returned by the Wikipedia API.
     html_css_selectors_to_strip = [
         '.hatnote',
         '.noexcerpt',
@@ -171,9 +167,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Référence souhaitée',
         ],
         citation_needed_template_name = 'réf. nécessaire',
-        wikilink_prefix_blacklist = [
-            'Fichier:',
-        ],
         hidden_category = 'Catégorie_cachée',
         html_css_selectors_to_strip = [
             '.bandeau-article',
@@ -278,9 +271,6 @@ _LANG_CODE_TO_CONFIG = dict(
         beginners_link_title = 'Introducción a las referencias con Editor Visual',
         lead_section_policy_link = 'https://es.wikipedia.org/wiki/Wikipedia:Secci%C3%B3n_introductoria#Referencias',
         lead_section_policy_link_title = 'Wikipedia:Sección introductoria',
-        wikilink_prefix_blacklist = [
-            'Archivo:',
-        ],
         citation_needed_category = 'Wikipedia:Artículos_con_pasajes_que_requieren_referencias',
         citation_needed_templates = [
             'Añadir referencias',
@@ -443,11 +433,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Belege fehlen',
         ],
         citation_needed_template_name = '',
-        wikilink_prefix_blacklist = [
-            'Datei:',
-            'Kategorie:',
-            'Bild:',
-        ],
         hidden_category = 'Kategorie:Versteckt',
         extract = 'section',
         snippet_max_size = 30000,
@@ -487,9 +472,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_category = 'Raksti,_kuru_apgalvojumiem_nepieciešamas_atsauces',
         citation_needed_templates = [
             'Nepieciešama atsauce',
-        ],
-        wikilink_prefix_blacklist = [
-            'Attēls',
         ],
         citation_needed_template_name = 'nepieciešama atsauce',
         hidden_category = 'Slēptās_kategorijas',
