@@ -3,18 +3,10 @@ import config
 from utils import *
 from common import *
 
-from snippet_parser import CITATION_NEEDED_MARKER, REF_MARKER
-
 import collections
 import datetime
 import urllib
 import urlparse
-
-# the markup we're going to use for [citation needed] and <ref> tags,
-# pre-marked as safe for jinja.
-SUPERSCRIPT_HTML = '<sup class="superscript">[%s]</sup>'
-SUPERSCRIPT_MARKUP = flask.Markup(SUPERSCRIPT_HTML)
-CITATION_NEEDED_MARKUP = flask.Markup(SUPERSCRIPT_HTML)
 
 Category = collections.namedtuple('Category', ['id', 'title'])
 CATEGORY_ALL = Category('all', '')
@@ -179,10 +171,6 @@ def citation_hunt(lang_code):
             article_url_path = article_url_path,
             article_title = atitle, current_category = cat,
             next_snippet_id = next_snippet_id,
-            cn_marker = CITATION_NEEDED_MARKER,
-            cn_html = CITATION_NEEDED_MARKUP,
-            ref_marker = REF_MARKER,
-            ref_html = SUPERSCRIPT_MARKUP,
             config = cfg,
             lang_tag = flask.g._lang_tag,
             lang_dir = lang_dir,
