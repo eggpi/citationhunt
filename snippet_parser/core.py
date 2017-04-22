@@ -10,6 +10,7 @@ if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 
 import config
+import lxml_utils
 from utils import *
 
 import mwparserfromhell
@@ -21,11 +22,12 @@ import cStringIO as StringIO
 import itertools
 from copy import copy
 
-REF_MARKER = 'ec5b89dc49c433a9521a139'
-CITATION_NEEDED_MARKER = '7b94863f3091b449e6ab04d4'
 CITATION_NEEDED_MARKER_CLASS = 'ch-cn-marker'
 _CITATION_NEEDED_MARKER_MARKUP = (
-    '<span class="%s">%%s</span>' % CITATION_NEEDED_MARKER_CLASS)
+    '<span class="%s">{tpl}</span>' % CITATION_NEEDED_MARKER_CLASS)
+
+_LIST_TAGS = set(['ol', 'ul'])
+_SNIPPET_ROOT_TAGS = set(['p']) | _LIST_TAGS
 
 class SnippetParser(object):
     '''A base class for snippet parsers in various languages.'''
@@ -46,9 +48,6 @@ class SnippetParser(object):
 
     def _resolve_redirects_to_templates(self, templates):
         templates = set(templates)
-        if self._wikipedia is None:
-            # Testing
-            return templates
         params = {
             'prop': 'redirects',
             'titles': '|'.join(
@@ -111,7 +110,6 @@ class SnippetParser(object):
         except mwparserfromhell.parser.ParserError:
             return None
 
-
     def extract(self, wikitext):
         """
         This is the main method for extracting HTML snippets out of wiki markup.
@@ -119,13 +117,13 @@ class SnippetParser(object):
         Broadly, the algorithm goes as follows:
             1) Find the sections that contain any of the citation needed
                templates.
-            2) Mark the templates with a <span> element in each section.
+            2) Mark the templates with a special element CITATION_NEEDED_MARKER.
             3) Use the Parse API to convert the sections to HTML.
             4) Cleanup the HTML by removing certain kinds of elements
                (such as tables) that we don't know how to handle.
             5) Find the markers inserted in step 2, then climb up the HTML tree
                starting at them until we find a suitable parent element to form
-               a snippet (usually a <p>)
+               a snippet (_SNIPPET_ROOT_TAGS)
             6) Check whether the final length of the (text content of the)
                snippet is within the bounds we're willing to accept, and if so,
                use it.
@@ -149,7 +147,8 @@ class SnippetParser(object):
         minlen, maxlen = self._cfg.snippet_min_size, self._cfg.snippet_max_size
         for i, section in enumerate(sections):
             # First, do a pass over the templates to check whether we have a
-            # citation needed template in this section.
+            # citation needed template in this section. This should always be true
+            # when _fast_parse succeeds above.
             has_citation_needed_template = False
             for tpl in section.filter_templates():
                 # Make sure to use index-named parameters for all templates.
@@ -168,7 +167,7 @@ class SnippetParser(object):
             # Now do another pass to actually insert our markers.
             for tpl in section.filter_templates():
                 if self._is_citation_needed(tpl):
-                    marked = _CITATION_NEEDED_MARKER_MARKUP % unicode(tpl)
+                    marked = _CITATION_NEEDED_MARKER_MARKUP.format(tpl = tpl)
                     try:
                         section.replace(tpl, marked)
                     except ValueError:
@@ -179,10 +178,10 @@ class SnippetParser(object):
                         # TODO Get some stats on how often this happens, log it
                         return []
 
+            # Reference groups can cause an error message to be
+            # generated directly in the output HTML, remove them.
             for ref in section.filter_tags('ref'):
                 if ref.has('group'):
-                    # Reference groups can cause an error message to be
-                    # generated directly in the output HTML, remove them.
                     ref.remove('group')
 
             # Note: we could gain a little speedup here by breaking the section
@@ -206,7 +205,7 @@ class SnippetParser(object):
 
             for strip_selector in self._html_css_selectors_to_strip:
                 for element in strip_selector(tree):
-                    # Make sure we dont' remove elements inside the markers.
+                    # Make sure we don't remove elements inside the markers.
                     # For a few Wikipedias (Chinese, Russian) the expansion of
                     # {{fact}} is marked as .noprint, which we otherwise want
                     # to remove.
@@ -214,14 +213,7 @@ class SnippetParser(object):
                         e.attrib.get('class') == CITATION_NEEDED_MARKER_CLASS
                         for e in element.iterancestors('span'))
                     if not inside_marker:
-                        if element.tail:
-                            if element.getprevious() is not None:
-                                element.getprevious().tail = (
-                                    element.getprevious().tail or '') + element.tail
-                            else:
-                                element.getparent().text = (
-                                    element.getparent().text or '') + element.tail
-                        element.getparent().remove(element)
+                        lxml_utils.remove_element(element)
 
             if self._cfg.extract == 'snippet':
                 # We climb up from each marker to the nearest antecessor element
@@ -230,21 +222,21 @@ class SnippetParser(object):
                 for marker in tree.cssselect('.' + CITATION_NEEDED_MARKER_CLASS):
                     assert marker.attrib['class'] == CITATION_NEEDED_MARKER_CLASS
                     root = marker.getparent()
-                    while root is not None and root.tag not in ('p', 'ol', 'ul'):
+                    while root is not None and root.tag not in _SNIPPET_ROOT_TAGS:
                         root = root.getparent()
                     if root is None:
                         continue
-
                     snippet_roots = [copy(root)]
-                    if root.tag in ('ol', 'ul'):
+                    if root.tag in _LIST_TAGS:
                         snippet_roots = self._html_list_to_snippets(root)
             else:
-                # Keep only a few whitelisted top-level elements within the
-                # body. This is not great as any content within, say,
-                # <blockquote> gets removed entirely, but it's good enough in
-                # most cases.
-                tree[0][:] = tree.cssselect('body > p, ol, ul')
-                snippet_roots = [tree]
+                # Keep only snippet root top-level elements within the body.
+                # This is not great as any content within, say, <blockquote>
+                # gets removed entirely, but it's good enough in most cases.
+                root = lxml.html.Element('div')
+                root[:] = tree.cssselect(
+                    'body > ' + ', '.join(_SNIPPET_ROOT_TAGS))
+                snippet_roots = [root]
 
             snippets_in_section = set()
             for sr in snippet_roots:
@@ -258,7 +250,7 @@ class SnippetParser(object):
                 lxml.etree.strip_attributes(sr, 'id', 'class', 'style')
                 for marker in markers_in_snippet:
                     marker.attrib['class'] = CITATION_NEEDED_MARKER_CLASS
-                    self._remove_space_before_element(marker)
+                    lxml_utils.strip_space_before_element(marker)
 
                 length = len(sr.text_content().strip())
                 if minlen < length < maxlen:
@@ -272,10 +264,9 @@ class SnippetParser(object):
 
     def _html_list_to_snippets(self, list_element):
         """
-        Given a <ol> or <ul> element containing a citation needed marker
-        in one of its <li>, extract a snippet by taking the <li> with the
-        marker plus a couple of other <li> for context, dropping all other
-        items.
+        Given a list element containing a citation needed marker in one of
+        its <li>, extract a snippet by taking the <li> with the marker plus
+        a couple of other <li> for context, dropping all other items.
 
         Returns a list of snippets extracted from the input list element.
         """
@@ -304,26 +295,16 @@ class SnippetParser(object):
             # don't if they have nested lists in them, as that typically makes
             # the snippet too large.
             for before in li_with_marker.itersiblings('li', preceding = True):
-                if not before.cssselect('ol, ul'):
+                if not before.cssselect(', '.join(_LIST_TAGS)):
                     sr[-1].append(copy(before))
                 break
             sr[-1].append(copy(li_with_marker))
             for after in li_with_marker.itersiblings('li'):
-                if not after.cssselect('ol, ul'):
+                if not after.cssselect(', '.join(_LIST_TAGS)):
                     sr[-1].append(copy(after))
                 break
             snippet_roots.append(sr)
         return snippet_roots
-
-    def _remove_space_before_element(self, element):
-        # The text preceding the element is exposed by lxml as either the tail
-        # of the "previous" element, or, if there's no previous element, the
-        # text of the parent.
-        if element.getprevious() is not None:
-            if element.getprevious().tail:
-                element.getprevious().tail = element.getprevious().tail.rstrip()
-        elif element.getparent() is not None and element.getparent().text:
-            element.getparent().text = element.getparent().text.rstrip()
 
     def _is_citation_needed(self, template):
         return template.name.lower().strip() in self._lowercase_cn_templates
