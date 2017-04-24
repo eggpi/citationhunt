@@ -69,7 +69,7 @@ if __name__ == '__main__':
         if not snippets: continue
         _print('Section: %s' % section)
         for snippet in snippets:
-            if cfg.html_snippet and arguments['--output'] != 'raw':
+            if arguments['--output'] != 'raw':
                 output = format_html(snippet)
             else:
                 output = '   ' + '\n   '.join(
