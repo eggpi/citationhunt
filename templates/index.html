@@ -19,6 +19,7 @@
     <script src="static/js/lib/jquery.i18n/jquery.i18n.emitter.js"defer ></script>
     <script src="static/js/lib/jquery.i18n/jquery.i18n.language.js" defer></script>
     <script src="static/js/lib/awesomplete/awesomplete.min.js" defer></script>
+    <script src="static/js/lib/spin.js/spin.js" defer></script>
 
     <script src="static/js/category_filter.js" defer></script>
     <script src="static/js/lang_selector.js" defer></script>
@@ -57,6 +58,7 @@
           <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
           <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
         </form>
+        <div id="spinner"></div>
         <noscript>
           <span id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</span>
         </noscript>
