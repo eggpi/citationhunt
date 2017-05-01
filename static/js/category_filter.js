@@ -27,36 +27,23 @@ function getScrollBarWidth () {
   return w1 - w2;
 };
 
-function getJSON(url, success, error) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("get", url, true);
-  xhr.responseType = "json";
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      success(xhr.response);
-    } else {
-      error && error(xhr);
-    }
-  };
-  xhr.send();
-}
-
 function initCategoryFilter() {
   var cin = document.getElementById("category-input");
   var chi = document.getElementById("hidden-category-input");
   var ihi = document.getElementById("hidden-id-input");
   var strings = document.getElementById("js-strings").dataset;
   var scrollBarWidth = getScrollBarWidth();
+  var xhr = null;  // Only one outstanding request at a time.
 
   function search() {
     var lang_code = document.documentElement.dataset.chLangCode;
     var url = lang_code + "/search/category?q=" + encodeURIComponent(cin.value);
-    getJSON(url, function(response) {
+
+    if (xhr) xhr.abort();
+    xhr = $.getJSON(url).done(function(response) {
       awc.list = response['results'];
       awc.maxItems = response['results'].length;
       awc.evaluate();
-    }, function() {
-      // What here?
     });
   }
 
