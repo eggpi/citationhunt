@@ -170,6 +170,27 @@ html[dir="rtl"] #lang-selector {
     display: inline-block;
 }
 
+#form-next {
+    display: inline-block;
+}
+
+#spinner {
+    width: 22px;
+    height: 22px;
+    position: relative;
+    display: inline-block;
+}
+
+html[dir="ltr"] #spinner {
+    float: right;
+    margin-left: 5px;
+}
+
+html[dir="rtl"] #spinner {
+    float: left;
+    margin-right: 5px;
+}
+
 #lead-hint {
     border-radius: 4px;
     font-size: small;

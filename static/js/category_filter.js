@@ -1,6 +1,25 @@
 // global for debugging
 var awc = null;
 
+// scheduleSpinnerStart({}) on the console to start it.
+var spinner = new Spinner({
+  scale: 0.5,
+  // Need this workaround for RTL
+  // (https://github.com/fgnass/spin.js/issues/57)
+  left: (document.dir === 'ltr') ? '50%' : '80%'
+});
+spinner.spinning = false;
+
+function scheduleSpinnerStart(xhr) {
+  setTimeout(function() {
+    if (spinner.spinning) return;
+    if (xhr.readyState !== XMLHttpRequest.DONE) {
+      spinner.spin(document.getElementById('spinner'));
+      spinner.spinning = true;
+    }
+  }, 100);
+}
+
 // http://stackoverflow.com/a/8079681
 function getScrollBarWidth () {
   var inner = document.createElement('p');
@@ -33,9 +52,11 @@ function initCategoryFilter() {
   var ihi = document.getElementById("hidden-id-input");
   var strings = document.getElementById("js-strings").dataset;
   var scrollBarWidth = getScrollBarWidth();
-  var xhr = null;  // Only one outstanding request at a time.
+  var xhr = null;  // only one outstanding request at a time.
+  var xhrCounter = 0;
 
   function search() {
+    var counter = ++xhrCounter;
     var lang_code = document.documentElement.dataset.chLangCode;
     var url = lang_code + "/search/category?q=" + encodeURIComponent(cin.value);
 
@@ -44,7 +65,15 @@ function initCategoryFilter() {
       awc.list = response['results'];
       awc.maxItems = response['results'].length;
       awc.evaluate();
+    }).always(function() {
+      // only stop the spinner when the last XHR returns,
+      // in a chain of aborted requests.
+      if (xhrCounter == counter) {
+        spinner.stop();
+        spinner.spinning = false;
+      }
     });
+    scheduleSpinnerStart(xhr);
   }
 
   function item(originalItem, suggestion, input) {
