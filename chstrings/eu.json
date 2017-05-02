@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sator",
-			"An13sa"
+			"An13sa",
+			"Subi"
 		]
 	},
 	"introduction": "Lagundu Wikipediako artikuluentzat aipamenak bilatzen!",
@@ -17,5 +18,7 @@
 	"beginners_hint": "Ez al dakizu aipuak gehitzen? Ikus %s.",
 	"page_not_found": "Ez da orrialdea aurkitu!",
 	"page_not_found_text": "Bilatzen ari zaren orrialdea dagoeneko ez dago - agian aipua aurkitu izan da? Joan atzera %sra gehiagorako!",
-	"js-article-count": "{{PLURAL:$1|artikulu $1|$1 artikulu}}"
+	"js-article-count": "{{PLURAL:$1|artikulu $1|$1 artikulu}}",
+	"js-keyboard-shortcut": "Teklatuko lasterbidea: %s",
+	"js-refs-added-today": "{{PLURAL:$1|Aipu bat gehitu da|$1 aipu gehitu dira}} gaur!"
 }

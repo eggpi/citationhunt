@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kippelboy"
+			"Kippelboy",
+			"Fitoschido"
 		]
 	},
 	"introduction": "Ajudar a trobar referències pels articles de la Viquipèdia",
@@ -11,5 +12,6 @@
 	"lead_section_hint": "Aquest text forma part de la capcelera de l'article. Vegeu %s per a més informació",
 	"category_filter_placeholder": "Què et fa prèmer?",
 	"github_link_title": "Ei! Podeu veure el codi font a GitHub!",
-	"beginners_hint": "No sabeu com afegir referències? Vegeu %s"
+	"beginners_hint": "No sabeu com afegir referències? Vegeu %s",
+	"js-article-count": "$1 {{PLURAL:$1|article|articles}}"
 }

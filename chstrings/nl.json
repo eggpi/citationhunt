@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Siebrand",
-			"Mainframe98"
+			"Mainframe98",
+			"SPQRobin"
 		]
 	},
 	"introduction": "Help referenties vinden voor Wikipediapagina's!",
-	"instructions_goal": "Het onderstaande fragment uit Wikipedia wordt niet onderbouwd met een betrouwbare bron. Kunt u er een vinden?",
+	"instructions_goal": "Het onderstaande fragment uit Wikipedia wordt niet onderbouwd met een {link_start}betrouwbare bron{link_end}. Kunt u er een vinden?",
 	"instructions_details": "Klik op \"%2\" om naar Wikipedia te gaan en het fragment aan te passen of %s om er nog een te bekijken. Kijk op %s als u vragen hebt. Succes!",
 	"in_page": "In pagina %s:",
 	"button_wikilink": "Dit gaat me lukken!",
@@ -16,8 +17,9 @@
 	"github_link_title": "De broncode staat op GitHub",
 	"beginners_hint": "Geen idee hoe referenties toe te voegen? Zie %s.",
 	"page_not_found": "Pagina niet gevonden",
-	"page_not_found_text": "De pagina die u zoekt bestaat niet meer. Misschien is het citaat al gevonden? Ga terug naar %s voor meer informatie.",
+	"page_not_found_text": "De pagina die u zoekt bestaat niet meer. Misschien is de referentie al gevonden? Ga terug naar %s voor meer informatie.",
 	"footer": "%st wordt gemaakt door vrijwilligers, gehost op %s en vertaald via %s.",
 	"js-article-count": "$1 {{PLURAL:$1|pagina|pagina's}}",
-	"js-keyboard-shortcut": "Sneltoets: %s"
+	"js-keyboard-shortcut": "Sneltoets: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|referentie|referenties}} toegevoegd vandaag!"
 }
