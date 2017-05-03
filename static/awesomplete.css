@@ -21,7 +21,7 @@ div.awesomplete > ul {
     overflow-x: hidden;
     list-style: none;
     margin-top: 0;
-    border: 1.8px solid #967A7A;
+    border: 2px solid #967A7A;
     border-top: none;
     border-radius: 0 0 2px 2px;
 }
@@ -68,7 +68,7 @@ html[dir="rtl"] div.awesomplete > ul > li > div.npages {
 div.awesomplete > input {
     width: 440px;
     padding: 4px;
-    border: 1.8px solid #967A7A;
+    border: 2px solid #967A7A;
     border-radius: 2px;
 }
 

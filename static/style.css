@@ -136,7 +136,7 @@ button:focus {
     position: absolute;
     font-size: 13px;
     top: 15px;
-    border: 1.8px solid #967A7A;
+    border: 2px solid #967A7A;
     border-radius: 2px;
 }
 
