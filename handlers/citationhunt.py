@@ -184,9 +184,14 @@ def citation_hunt(lang_code):
 
 @validate_lang_code
 def search_category(lang_code):
+    try:
+        max_results = int(flask.request.args.get('max_results'))
+    except:
+        max_results = float('inf')
     return flask.jsonify(
         results = Database.search_category(
-            lang_code, flask.request.args.get('q'), max_results = 400))
+            lang_code, flask.request.args.get('q'),
+            max_results = min(max_results, 400)))
 
 @validate_lang_code
 def fixed(lang_code):
