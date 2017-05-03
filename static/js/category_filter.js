@@ -1,24 +1,57 @@
-// global for debugging
-var awc = null;
+const MAX_RESULTS = 400;
+const SPINNER_START_DELAY_MS = 100;
 
-// scheduleSpinnerStart({}) on the console to start it.
-var spinner = new Spinner({
-  scale: 0.5,
-  // Need this workaround for RTL
-  // (https://github.com/fgnass/spin.js/issues/57)
-  left: (document.dir === 'ltr') ? '50%' : '80%'
-});
-spinner.spinning = false;
+// The tradeoff for this parameter is a little subtle.
+// We're always making a mixture of local searches through the existing list
+// of results in Awesomplete and remote searches in the server, so this
+// parameter ultimately controls how we do the mixing.
+// If SEARCH_THROTTLE_INTERVAL_MS is very low, we'll do a lot of queries to the
+// server, and hardly ever do local searches, so overall this won't feel very
+// responsive. If it's high, we'll do a lot of local searches, but if there are
+// no results client-side, the user will need to wait longer for us to fetch
+// results from the server, which can also feel unresponsive.
+// We stay on the high side under the assumption that most users are not fast
+// typists, so there will be plenty of time for performing server-side queries
+// while they type search terms, but this is really just a magic number.
+const SEARCH_THROTTLE_INTERVAL_MS = 800;
 
-function scheduleSpinnerStart(xhr) {
-  setTimeout(function() {
-    if (spinner.spinning) return;
-    if (xhr.readyState !== XMLHttpRequest.DONE) {
-      spinner.spin(document.getElementById('spinner'));
-      spinner.spinning = true;
+// http://stackoverflow.com/a/27078401
+// Returns a function, that, when invoked, will only be triggered at most once
+// during a given window of time. Normally, the throttled function will run
+// as much as it can, without ever going more than once per `wait` duration;
+// but if you'd like to disable the execution on the leading edge, pass
+// `{leading: false}`. To disable execution on the trailing edge, ditto.
+function throttle(func, wait, options) {
+  var context, args, result;
+  var timeout = null;
+  var previous = 0;
+  if (!options) options = {};
+  var later = function() {
+    previous = options.leading === false ? 0 : Date.now();
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
+  return function() {
+    var now = Date.now();
+    if (!previous && options.leading === false) previous = now;
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      previous = now;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    } else if (!timeout && options.trailing !== false) {
+      timeout = setTimeout(later, remaining);
     }
-  }, 100);
-}
+    return result;
+  };
+};
 
 // http://stackoverflow.com/a/8079681
 function getScrollBarWidth () {
@@ -46,35 +79,89 @@ function getScrollBarWidth () {
   return w1 - w2;
 };
 
-function initCategoryFilter() {
+// globals for debugging
+var awc = null;
+var cf = null;
+
+var spinner = new Spinner({
+  scale: 0.5,
+  // Need this workaround for RTL
+  // (https://github.com/fgnass/spin.js/issues/57)
+  left: (document.dir === 'ltr') ? '50%' : '80%'
+});
+spinner.spinning = false;
+
+function CategoryFilter() {
+  var self = this;
+  var lang_code = document.documentElement.dataset.chLangCode;
+  var strings = document.getElementById("js-strings").dataset;
+
   var cin = document.getElementById("category-input");
   var chi = document.getElementById("hidden-category-input");
   var ihi = document.getElementById("hidden-id-input");
-  var strings = document.getElementById("js-strings").dataset;
   var scrollBarWidth = getScrollBarWidth();
-  var xhr = null;  // only one outstanding request at a time.
+
+  var xhr = null;
   var xhrCounter = 0;
+  var xhrCompleted = 0;
 
-  function search() {
+  self._scheduleSpinnerStart = function(xhr) {
+    setTimeout(function() {
+      if (spinner.spinning) return;
+      if (xhr.readyState !== XMLHttpRequest.DONE) {
+        spinner.spin(document.getElementById('spinner'));
+        spinner.spinning = true;
+      }
+    }, SPINNER_START_DELAY_MS);
+  };
+
+  self._buildSearchURL = function(q) {
+    var url = lang_code + "/search/category?"
+    // We trim() because that matches Awesomplete's behavior client-side.
+    url += "q=" + encodeURIComponent(q.trim())
+    url += "&max_results=" + MAX_RESULTS;
+    return url;
+  };
+
+  self._forceSearch = function() {
+    var timeout = null;
     var counter = ++xhrCounter;
-    var lang_code = document.documentElement.dataset.chLangCode;
-    var url = lang_code + "/search/category?q=" + encodeURIComponent(cin.value);
+    var url = self._buildSearchURL(cin.value);
 
-    if (xhr) xhr.abort();
+    // Don't cancel the existing request: if a slightly older request returns
+    // before this one does, we can still autocomplete in the client side.
     xhr = $.getJSON(url).done(function(response) {
+      if (counter < xhrCompleted) {
+          // We've already populated the list with the results of a more recent
+          // query, so don't override it. This is a little uncommon, but could
+          // happen if we end up racing cached and non-cached requests.
+          return;
+      }
+      xhrCompleted = counter;
       awc.list = response['results'];
       awc.maxItems = response['results'].length;
-      awc.evaluate();
+      // We may have lost focus by the time the response arrives,
+      // don't open the dropdown if that's the case.
+      if (document.activeElement == cin) {
+        awc.evaluate();
+      }
     }).always(function() {
-      // only stop the spinner when the last XHR returns,
-      // in a chain of aborted requests.
+      // don't start the spinner after the request has returned,
+      // and only stop the spinner when the last XHR returns,
+      // in a chain of dropped requests.
+      clearTimeout(timeout);
       if (xhrCounter == counter) {
         spinner.stop();
         spinner.spinning = false;
       }
     });
-    scheduleSpinnerStart(xhr);
+    timeout = self._scheduleSpinnerStart(xhr);
   }
+
+  self._search = throttle(
+    self._forceSearch, SEARCH_THROTTLE_INTERVAL_MS);
+
+  // Functions that plug into Awesomplete
 
   function item(originalItem, suggestion, input) {
     var li;
@@ -107,8 +194,6 @@ function initCategoryFilter() {
     return li;
   }
 
-  cin.addEventListener("input", search);
-
   // Awesomplete allows us to have a `label` (the text that gets displayed in
   // the dropdown and matched against) and a `value` (the actual value that ends
   // up in the <input> when an option is selected) for each item.
@@ -131,6 +216,15 @@ function initCategoryFilter() {
     return sugg1.label.title.localeCompare(sugg2.label.title);
   }
 
+  function setHiddenCategoryAndNextId(formElem, nextCategoryId) {
+    if (chi.value !== nextCategoryId) {
+      formElem.removeChild(ihi);
+    }
+    chi.value = nextCategoryId;
+  }
+
+  // ...and now the actual Awesomplete integration:
+
   awc = new Awesomplete(cin);
   awc.minChars = 0; // open dropdown on focus
   awc.replace = replace;
@@ -139,8 +233,16 @@ function initCategoryFilter() {
   awc.sort = sort;
   awc.item = item.bind(null, awc.item); // handle empty cin
 
+  // Note that Awesomplete installs its own "input" handler that calls
+  // evaluate(). We do want Awesomplete to evaluate locally sometimes,
+  // so we don't bother working around that.
+  cin.addEventListener("input", self._search);
   cin.addEventListener("click", function() {
-    search();
+    if (!cin.value.trim()) {
+      self._search();  // populate dropdown if empty, then open
+    } else {
+      awc.evaluate();  // just open it
+    }
   });
 
   cin.addEventListener("awesomplete-open", function() {
@@ -162,13 +264,6 @@ function initCategoryFilter() {
     awc.ul.scrollTop += offset;
   });
 
-  function setHiddenCategoryAndNextId(formElem, nextCategoryId) {
-    if (chi.value !== nextCategoryId) {
-      formElem.removeChild(ihi);
-    }
-    chi.value = nextCategoryId;
-  }
-
   cin.addEventListener("awesomplete-selectcomplete", function(obj) {
     setHiddenCategoryAndNextId(this.form, obj.text.value);
     this.form.submit();
@@ -179,11 +274,14 @@ function initCategoryFilter() {
     return true;
   });
 
-  cin.style.visibility = '';
+  // We're ready, display the input!
+  cin.style.visibility = "";
   if (cin.autofocus) {
     // Force autofocus, looks like it doesn't work on Chrome sometimes
     cin.focus();
   }
 }
 
-$(initCategoryFilter);
+$(function() {
+  cf = new CategoryFilter();
+});
