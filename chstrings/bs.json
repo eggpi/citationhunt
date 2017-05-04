@@ -18,5 +18,7 @@
 	"page_not_found": "Stranica nije pronađena!",
 	"page_not_found_text": "Stranica koju ste tražili više ne postoji – možda je referenca za nju već pronađena. Vratite se na %s za još!",
 	"footer": "%s je djelo dobrovoljaca, omogućava ga %s i prevodi se na sajtu %s.",
-	"js-keyboard-shortcut": "Prečica na tastaturi: %s"
+	"js-article-count": "$1 {{PLURAL:$1|članak|članka|članaka}}",
+	"js-keyboard-shortcut": "Prečica na tastaturi: %s",
+	"js-refs-added-today": "Danas {{PLURAL:$1|je dodana $1 referenca|su dodane $1 reference|je dodano $1 referenci}}!"
 }
