@@ -106,10 +106,15 @@ function CategoryFilter() {
   var xhrCompleted = 0;
 
   self._scheduleSpinnerStart = function(xhr) {
+    // Whatever the final height of the form ends up being (which depends on
+    // things we don't want to care about here, such as the font-size cin), make
+    // sure the spinner appears next to it, vertically centered.
+    var spi = document.getElementById('spinner');
+    spi.style.height = cin.form.getBoundingClientRect().height + 'px';
     setTimeout(function() {
       if (spinner.spinning) return;
       if (xhr.readyState !== XMLHttpRequest.DONE) {
-        spinner.spin(document.getElementById('spinner'));
+        spinner.spin(spi);
         spinner.spinning = true;
       }
     }, SPINNER_START_DELAY_MS);
