@@ -4,7 +4,8 @@
 			"Incelemeelemani",
 			"Sayginer",
 			"Rapsar",
-			"Gambollar"
+			"Gambollar",
+			"By erdo can"
 		]
 	},
 	"introduction": "Vikipedi maddeleri için kaynak bulma konusunda yardımcı olun!",
@@ -14,7 +15,7 @@
 	"button_wikilink": "Bunu hallettim!",
 	"button_next": "Sonraki!",
 	"lead_section_hint": "Bu metin, maddenin giriş bölümünün parçasıdır ve bu nedenle kaynak eklenmesi isteğe bağlı olabilir. Lütfen daha fazla bilgi için %s bakınız.",
-	"category_filter_placeholder": "Doğrulama için ne yapabilirsiniz?",
+	"category_filter_placeholder": "Bir konu arayın.",
 	"github_link_title": "Hey! Benim kaynak kodum GitHub'da!",
 	"beginners_hint": "Nasıl kaynak ekleneceğini bilimiyor musunuz? Bkz %s.",
 	"page_not_found": "Sayfa bulunamadı!",
