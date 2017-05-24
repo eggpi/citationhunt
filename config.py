@@ -134,13 +134,6 @@ _LANG_CODE_TO_CONFIG = dict(
         # instead of spaces.
         citation_needed_category = 'All_articles_with_unsourced_statements',
 
-        # For consistency, we don't actually display each of the templates
-        # listed in `citation_needed_templates` in the user interface; instead
-        # we just replace them with one common name. For example, in the English
-        # Wikipedia, we use the iconic [citation needed]. This should basically
-        # match what the user would see on Wikipedia, minus the brackets.
-        citation_needed_template_name = 'citation needed',
-
         # The name of the category for hidden categories, without the
         # 'Category:' prefix and with underscores instead of spaces.
         # Categories belonging to this category are typically used for
@@ -195,7 +188,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Référence nécessaire',
             'Référence souhaitée',
         ],
-        citation_needed_template_name = 'réf. nécessaire',
         hidden_category = 'Catégorie_cachée',
         html_css_selectors_to_strip = [
             '.bandeau-article',
@@ -222,8 +214,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Citazione necessaria',
             'Senza fonte',
         ],
-        citation_needed_template_name = 'senza fonte',
-
         hidden_category = 'Categorie_nascoste',
     ),
 
@@ -241,8 +231,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             'fakt',
         ],
-        citation_needed_template_name = 'potrzebne źródło',
-
         hidden_category = 'Ukryte_kategorie',
     ),
 
@@ -262,8 +250,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'CC',
             'CN',
         ],
-        citation_needed_template_name = 'cal citació',
-
         hidden_category = 'Categories_ocultes',
 
         # Not fully translated
@@ -283,7 +269,6 @@ _LANG_CODE_TO_CONFIG = dict(
 
         citation_needed_category = 'ויקיפדיה:_ערכים_הדורשים_מקורות',
         citation_needed_templates = ['דרוש מקור'],
-        citation_needed_template_name = 'דרוש מקור',
         hidden_category = 'קטגוריות_מוסתרות',
         category_name_regexps_blacklist = [
             '^ויקיפדיה',
@@ -305,7 +290,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Añadir referencias',
             'Cita requerida'
         ],
-        citation_needed_template_name = 'cita requerida',
         hidden_category = 'Wikipedia:Categorías_ocultas',
     ),
 
@@ -333,7 +317,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Verification needed',
             'Verify source',
         ],
-        citation_needed_template_name = 'তথ্যসূত্র প্রয়োজন|',
         hidden_category = 'লুকায়িত_বিষয়শ্রেণীসমূহ',
         category_name_regexps_blacklist = [
             '.*[০১২৩৪৫৬৭৮৯].*',
@@ -359,7 +342,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Doplňte zdroj',
             'Fakt/dne',
         ],
-        citation_needed_template_name = 'zdroj?',
         hidden_category = 'Wikipedie:Skryté_kategorie',
     ),
 
@@ -380,7 +362,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Källa behövs',
             'Referens behövs',
         ],
-        citation_needed_template_name = 'källa behövs',
         hidden_category = 'Dolda_kategorier',
     ),
 
@@ -400,7 +381,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Trenger referanse',
             'Referanse',
         ],
-        citation_needed_template_name = 'trenger referanse',
         hidden_category = 'Skjulte_kategorier',
     ),
 
@@ -419,7 +399,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             'Treng kjelde',
         ],
-        citation_needed_template_name = 'treng kjelde',
         hidden_category = 'Gøymde_kategoriar',
     ),
 
@@ -440,7 +419,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Lähde tarkemmin',
             'Kenen mukaan',
         ],
-        citation_needed_template_name = 'lähde?',
         hidden_category = 'Piilotetut_luokat',
     ),
 
@@ -461,7 +439,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             'Belege fehlen',
         ],
-        citation_needed_template_name = '',
         hidden_category = 'Kategorie:Versteckt',
         extract = 'section',
         snippet_max_size = 30000,
@@ -482,7 +459,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             'Εκκρεμεί παραπομπή',
         ],
-        citation_needed_template_name = 'Εκκρεμεί παραπομπή',
         hidden_category = 'Κρυμμένες_κατηγορίες',
         snippet_max_size = 700,
     ),
@@ -502,7 +478,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             'Nepieciešama atsauce',
         ],
-        citation_needed_template_name = 'nepieciešama atsauce',
         hidden_category = 'Slēptās_kategorijas',
     ),
 
@@ -524,7 +499,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Нет АИ 2',
             'Нет источника',
         ],
-        citation_needed_template_name = 'источник?',
         hidden_category = 'Скрытые_категории',
     ),
 
@@ -543,7 +517,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             'Necesită citare',
         ],
-        citation_needed_template_name = 'necesită citare',
         hidden_category = 'Categorii_ascunse',
         snippet_max_size = 800,
     ),
@@ -563,7 +536,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             'തെളിവ്',
         ],
-        citation_needed_template_name = 'അവലംബം ആവശ്യമാണ്',
         hidden_category = 'മറഞ്ഞിരിക്കുന്ന_വർഗ്ഗങ്ങൾ',
         snippet_max_size = 1000,
     ),
@@ -586,7 +558,6 @@ _LANG_CODE_TO_CONFIG = dict(
             '出典の明記',
             '要出典',
         ],
-        citation_needed_template_name = '要出典',
         hidden_category = '隠しカテゴリ',
 
         snippet_max_size = 1000,
@@ -612,7 +583,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Unreferenced',
             'Fact',
         ],
-        citation_needed_template_name = '來源請求',
         hidden_category = '隐藏分类',
         html_parse_parameters = {
             'variant': 'zh-hant',
@@ -638,7 +608,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Unreferenced',
             'Fact',
         ],
-        citation_needed_template_name = '来源请求',
         hidden_category = '隐藏分类',
         html_parse_parameters = {
             'variant': 'zh-hans',
