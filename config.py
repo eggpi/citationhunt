@@ -153,11 +153,11 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'lpt',
         database = 'ptwiki_p',
         wikipedia_domain = 'pt.wikipedia.org',
-        citation_needed_category = '!Artigos_que_carecem_de_fonte',
+        citation_needed_category = '!Artigos_que_carecem_de_fontes',
         beginners_link = 'https://pt.wikipedia.org/wiki/ Ajuda:Tutorial/Referência',
         beginners_link_title = ' Ajuda:Tutorial/Referência',
         lead_section_policy_link = 'https://pt.wikipedia.org/wiki/WP:Wikipédia:Políticas_e_recomendações',
-        lead_section_policy_link_title = 'WP:Políticas e recomendações',
+        lead_section_policy_link_title = 'WP:Políticas_e_recomendações',
 
         citation_needed_templates = [
             'Carece de fontes',
