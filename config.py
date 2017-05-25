@@ -164,9 +164,9 @@ _LANG_CODE_TO_CONFIG = dict(
             'pt-BR',
         ],
 
-    category_name_regexps_blacklist = [
-        '^!',
-    ],
+        category_name_regexps_blacklist = [
+            '^!',
+        ],
 
         citation_needed_templates = [
             'Carece_de_fontes',
