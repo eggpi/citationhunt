@@ -147,7 +147,36 @@ _LANG_CODE_TO_CONFIG = dict(
         # maintenance and will not show up on Citation Hunt.
         hidden_category = 'Hidden_categories',
     ),
+    
+    pt = dict(
+        lang_name = 'Português',
+        lang_dir = 'ltr',
+        database = 'ptwiki_p',
+        wikipedia_domain = 'pt.wikipedia.org',
+        citation_needed_category = '!Artigos_que_carecem_de_fontes',
+        beginners_link = 'https://pt.wikipedia.org/wiki/ Ajuda:Tutorial/Referência',
+        beginners_link_title = ' Ajuda:Tutorial/Referência',
+        lead_section_policy_link = 'https://pt.wikipedia.org/wiki/Wikipedia:INTROREF',
+        lead_section_policy_link_title = 'WP:INTROREF',
 
+        accept_language = [
+            'pt',
+            'pt-BR',
+        ],
+
+        category_name_regexps_blacklist = [
+            '^!',
+        ],
+
+        citation_needed_templates = [
+            'Carece_de_fontes',
+            'Sem-fontes',
+            'Sem-fontes-bpv',
+            'Sem-fontes-sobre',
+        ],
+        hidden_category = '!Categorias_ocultas',
+    ),
+    
     fr = dict(
         lang_name = 'Français',
         lang_dir = 'ltr',
