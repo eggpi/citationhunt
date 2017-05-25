@@ -174,7 +174,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Sem-fontes-bpv',
             'Sem-fontes-sobre',
         ],
-        citation_needed_template_name = 'Carece de fontes',
         hidden_category = '!Categorias_ocultas',
     ),
     
