@@ -23,6 +23,12 @@ def _preprocess_variables(config, strings):
     else:
         strings['lead_section_hint'] = ''
 
+    reliable_sources_hint_link = _link(
+        config.reliable_sources_link,
+        config.reliable_sources_link_title)
+    strings['reliable_sources_hint'] = \
+        flask.Markup(strings['reliable_sources_hint']) % reliable_sources_hint_link
+        
     beginners_hint_link = _link(
         config.beginners_link,
         config.beginners_link_title)
