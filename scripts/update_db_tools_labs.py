@@ -33,7 +33,10 @@ def shell(cmdline):
     return status == 0
 
 def ensure_db_config(cfg):
-    xxwiki = cfg.lang_code + 'wiki'
+    # Get the project database name (and ultimately the database server's
+    # hostname) from the name of the database we want, as per:
+    # https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Database#Naming_conventions
+    xxwiki = cfg.database.replace('_p', '')
     replica_my_cnf = os.path.expanduser('~/replica.my.cnf')
 
     ch_my_cnf = 'ch.my.cnf'
