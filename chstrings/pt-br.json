@@ -15,15 +15,17 @@
 	"introduction": "Ajude a encontrar citações para os artigos da Wikipédia!",
 	"instructions_goal": "O trecho abaixo da Wikipédia não está referenciado em nenhuma {link_start}fonte confiável{link_end}. Consegue encontrar alguma?",
 	"instructions_details": "Clique em %s para ir à Wikipédia e corrigir o trecho, ou em %s para ver outro. Verifique %s se tiver dúvidas. Boa sorte!",
-	"in_page": "Na pagina %s:",
-	"button_wikilink": "Eu consigo!",
+	"in_page": "Na página %s:",
+	"button_wikilink": "Deixa comigo!",
 	"button_next": "Próximo!",
-	"lead_section_hint": "Esse texto faz parte da seção principal do artigo, por isso referencias podem ser opcionais. Veja %s para mais informações.",
+	"lead_section_hint": "Esse texto faz parte da seção principal do artigo, por isso referências podem ser opcionais. Veja %s para mais informações.",
 	"category_filter_placeholder": "Buscar por um tópico.",
 	"github_link_title": "Ei! O meu código-fonte está no GitHub!",
 	"beginners_hint": "Não sabe como adicionar citações? Veja %s.",
 	"page_not_found": "Página não encontrada!",
 	"page_not_found_text": "A página que você está procurado não existe mais — talvez esta citação já tenha sido encontrada? Volte a %s para mais!",
 	"footer": "%s é feito por voluntários e está hospedado em %s e traduzido via %s.",
-	"js-keyboard-shortcut": "Atalho de teclado: %s"
+	"js-article-count": "$1 {{PLURAL:$1|artigo|artigos}}",
+	"js-keyboard-shortcut": "Atalho de teclado: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|citação adicionada|citações adicionadas}} hoje!"
 }

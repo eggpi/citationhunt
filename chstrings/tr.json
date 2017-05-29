@@ -5,11 +5,12 @@
 			"Sayginer",
 			"Rapsar",
 			"Gambollar",
-			"By erdo can"
+			"By erdo can",
+			"Bulgu"
 		]
 	},
 	"introduction": "Vikipedi maddeleri için kaynak bulma konusunda yardımcı olun!",
-	"instructions_goal": "Aşağıdaki Vikipedi bölümü, güvenilir bir kaynak ile doğrulanmamıştır. Siz bir kaynak bulabilir misiniz?",
+	"instructions_goal": "Aşağıdaki Vikipedi bölümü, {link_start}güvenilir bir kaynak{link_end} ile doğrulanmamıştır. Siz bir kaynak bulabilir misiniz?",
 	"instructions_details": "Vikipedi'ye giderek bölümü düzeltmek için %s buraya tıklayın ya da bir diğerini %s görebilirsiniz. Sorularınız için %s kontrol edin. Bol şans!",
 	"in_page": "%s sayfasında:",
 	"button_wikilink": "Bunu hallettim!",
@@ -20,6 +21,8 @@
 	"beginners_hint": "Nasıl kaynak ekleneceğini bilimiyor musunuz? Bkz %s.",
 	"page_not_found": "Sayfa bulunamadı!",
 	"page_not_found_text": "Aradığınız sayfa artık bulunmuyor — muhtemelen bu kaynak zaten bulunmuş olabilir mi? Daha fazla bilgi için %s geriye dönün!",
-	"footer": "Citation Hunt gönüllülerden oluşuyor, barındırılan %s ve çevrilen %s.",
-	"js-keyboard-shortcut": "Tuş takımı kısayolları: %s"
+	"footer": "%s, %s sitesinde, gönüllüler tarafından oluşturuldu ve %3 aracılığıyla çevrildi.",
+	"js-article-count": "$1 madde",
+	"js-keyboard-shortcut": "Tuş takımı kısayolları: %s",
+	"js-refs-added-today": "Bugün $1 alıntı eklendi!"
 }
