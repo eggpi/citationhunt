@@ -3,11 +3,12 @@
 		"authors": [
 			"Sator",
 			"An13sa",
-			"Subi"
+			"Subi",
+			"Theklan"
 		]
 	},
 	"introduction": "Lagundu Wikipediako artikuluentzat aipamenak bilatzen!",
-	"instructions_goal": "Wikipediako azpiko adierazpen horrek ez du erreferentzia egiaztagarririk. Bilatuko al diozu zuk?",
+	"instructions_goal": "Azpian dagoen Wikipediako esaldia ez dago {link_start}iturri fidagarri{link_end} batez lagundua. Aurki zenezake bat?",
 	"instructions_details": "Klik egin %s Wikipediara joan eta adierazpena zuzentzeko, edo %s beste batetara pasatzeko. Klik egin %s galderarik baduzu. Zorte on!",
 	"in_page": "%s orrialdean:",
 	"button_wikilink": "Hau lortu dut!",
@@ -18,6 +19,7 @@
 	"beginners_hint": "Ez al dakizu aipuak gehitzen? Ikus %s.",
 	"page_not_found": "Ez da orrialdea aurkitu!",
 	"page_not_found_text": "Bilatzen ari zaren orrialdea dagoeneko ez dago - agian aipua aurkitu izan da? Joan atzera %sra gehiagorako!",
+	"footer": "%s boluntarioek egiten dute, %s-en du ostatu eta %s bidez itzultzen da.",
 	"js-article-count": "{{PLURAL:$1|artikulu $1|$1 artikulu}}",
 	"js-keyboard-shortcut": "Teklatuko lasterbidea: %s",
 	"js-refs-added-today": "{{PLURAL:$1|Aipu bat gehitu da|$1 aipu gehitu dira}} gaur!"
