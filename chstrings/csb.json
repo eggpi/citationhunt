@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kaszeba"
+		]
+	},
+	"introduction": "Pòmòżë dodac dopisënczi do artiklów Wikipediji!",
+	"instructions_goal": "Ùniższi dzél z Wikipediji nie je pòpiarti {link_start}wiarëgòdnym zdrojã{link_end}. Jes të w sztãdze taczé nalezc?",
+	"instructions_details": "Klëkni %s abë przejsc do Wikipediii ë pòprawic nen dzél, abò %s abë òbôczëc jinny. Òbôczë %s jeżlë môsz zapëtania. Wiele szczãsca ce!",
+	"in_page": "W artiklu %s:",
+	"button_wikilink": "Weznã sã za to!",
+	"button_next": "Nôslédny!",
+	"lead_section_hint": "Nen dzél je z tzw. główczi tekstu, dze nôczãszczi nie je nót dowôwac dopisënczi. Wicy wëdowiédzë: %s.",
+	"category_filter_placeholder": "Szëkba témë",
+	"github_link_title": "Hej! Mój zdrojowi kòd je na GitHubie!",
+	"beginners_hint": "Nie rozmiejesz dodôwac dopisënków? Òbôczë: %s.",
+	"page_not_found": "Felënk starnë!",
+	"page_not_found_text": "Felënk starnë za chtérną wëzérôsz — mòże nen zdrój òstôł ju nalazłi? Biéj nazôd do %s pò wicy!",
+	"footer": "%s je nôrządza ùsôdzonym dlô wòlontariuszów, je na serwerze %s ë dolmaczoné przez %s.",
+	"js-article-count": "$1 {{PLURAL:$1|artikel|artikle|artiklów}}",
+	"js-keyboard-shortcut": "Klawiaturowô skrodzëna: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|cytata|cytaów}} dodónych dzysô!"
+}
