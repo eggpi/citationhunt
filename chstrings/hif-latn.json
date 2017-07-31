@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Girmitya",
-			"Smcnarayan"
+			"Smcnarayan",
+			"Abdul Kadir"
 		]
 	},
 	"introduction": "Wikipedia articles me citation khoje ke madat karo!",
-	"instructions_goal": "Niche ke Wikipedia snippet ke koi reliable source backup nai karis hai. Aap ek ke paae saktaa hai?",
+	"instructions_goal": "Niche ke Wikipedia snippet ke ek {link_start}reliable source{link_end} se nai backed hai.\nAap ek ke paae saktaa hai?",
 	"instructions_details": "Wikipedia pe jaae ke snippet ke fix kar ke khaatir, nai to, duusra waala dekhe ke khatir %s pe click karo. Agar aap ke koi sawaal hae tab %s ke check karo. Good luck!",
 	"in_page": "%s panna me:",
 	"button_wikilink": "Ham iske samajh gayaa hai!",
@@ -18,5 +19,7 @@
 	"page_not_found": "Panna ke nai paawa gais hai!",
 	"page_not_found_text": "Jon panna ke aap khojtaa hae, abhi exist nai hoe hai - saait ii citation ke paae lewaa gais hai? Aur ke khaatir pichhe %s pe jaao !",
 	"footer": "%s ke volunteers banaain hai, jiske %s me host karaa gais hai aur %s se translate karaa gais hai.",
-	"js-keyboard-shortcut": "Keyboard ke shortcut: %s"
+	"js-article-count": "$1 {{PLURAL:$1|article}}",
+	"js-keyboard-shortcut": "Keyboard ke shortcut: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|citation}} aaj jorra gais hai!"
 }
