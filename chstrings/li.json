@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ooswesthoesbes"
+		]
+	},
+	"introduction": "Help mit 't vinje van rifferensies veur Wikipediapagina's!",
+	"instructions_goal": "'t Óngerstäöndj fragment oet Wikipedia wuuertj neet óngerboedj mit 'n {link_start}betroewbaar brón{link_end}. Kans doe ein vinje?",
+	"instructions_details": "Klik op \"%s\" veur nao Wikipedia te gaon en 't fragment aan te passe of %s veur nag ei te betrachte. Kiek op %s wen se vraoge höbs. Succes!",
+	"in_page": "In pagina %s:",
+	"button_wikilink": "Dit geit mich lökke!",
+	"button_next": "Volgendje!",
+	"lead_section_hint": "Dees teks is óngerdeil vanne äöpeningsparagraaf vanne pagina, dus rifferensies zeen optioneel. Zuuch %s veur mieë infermaasje.",
+	"category_filter_placeholder": "Zeuk nao 'n óngerwirp.",
+	"github_link_title": "Haj! Mien bróncode steit op GitHub!",
+	"beginners_hint": "Wèts se neet wie se rifferensies mós touveuge? Zuuch %s.",
+	"page_not_found": "Pagina neet gevónje!",
+	"page_not_found_text": "De pagina die se zeuks besteit neet mieë. Mesjiens is dees rifferensie al gevónje? Gank trögk nao %s veur mieë infermaasje.",
+	"footer": "%s wuuertj gemaak door vriewilligers, gesteundj door %s en euvergezatj via %s.",
+	"js-article-count": "$1 {{PLURAL:$1|pagina|pagina's}}",
+	"js-keyboard-shortcut": "Sjneltoets: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|rifferensie|rifferensies}} tougeveug dezen daag!"
+}
