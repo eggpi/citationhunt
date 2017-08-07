@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Belkacem77"
+		]
+	},
+	"introduction": "Mudd afus i tifin n temsisɣal i yimagraden n Wikipedia!",
+	"in_page": "Deg usebter %s",
+	"button_wikilink": "I nek!",
+	"button_next": "Ar zdat!",
+	"category_filter_placeholder": "Nadi asentel",
+	"github_link_title": "Azul! Aɣbalu-iw hatan di GitHub!",
+	"page_not_found": "Ulac asebter",
+	"js-article-count": "$1 {{PLURAL:$1|n umagrad|n imagraden}}",
+	"js-keyboard-shortcut": "Anegzum n unasiw: %s"
+}
