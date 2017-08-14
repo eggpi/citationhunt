@@ -12,5 +12,6 @@
 	"github_link_title": "Azul! Aɣbalu-iw hatan di GitHub!",
 	"page_not_found": "Ulac asebter",
 	"js-article-count": "$1 {{PLURAL:$1|n umagrad|n imagraden}}",
-	"js-keyboard-shortcut": "Anegzum n unasiw: %s"
+	"js-keyboard-shortcut": "Anegzum n unasiw: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|n tnebdurt|n tinebdurin}} yettwarnan ass-a!"
 }

@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fnielsen",
+			"Joedalton"
+		]
+	},
+	"introduction": "Hjælp til at finde citationer for Wikipediaartikler!",
+	"instructions_goal": "Wikipediastumpen nedenfor er ikke understøttet af en {link_start}reliable source{link_end}. Kan du finde en?",
+	"instructions_details": "Klik %s for at gå til Wikipedia og ret stumpen, eller %s for at se en anden. Kontroller %s hvis du har spørgsmål. Held og lykke!",
+	"in_page": "På side %s",
+	"button_wikilink": "Forstået!",
+	"button_next": "Næste!",
+	"lead_section_hint": "Denne tekst er en del af artiklens indledende afsnit, så en reference er valgfri. Se venligst %s for yderligere information.",
+	"category_filter_placeholder": "Søg efter et emne.",
+	"github_link_title": "Hej! Min kilde er på GitHub!",
+	"beginners_hint": "Ved du ikke hvordan citationer tilføjes? Se %s.",
+	"page_not_found": "Side ikke fundet!",
+	"page_not_found_text": "Den side du er på udkig efter findes ikke længere - måske er dette citat allerede fundet? Gå tilbage til %s for mere!",
+	"footer": "%s er lavet af frivillige, ligger på %s og ovresat via %s.",
+	"js-article-count": "$1 {{PLURAL:$1|artikel|artikler}}",
+	"js-keyboard-shortcut": "Genvejstast: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|citation|citationer}} tilføjet i dag!"
+}
