@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cekli829",
+			"Şeyx Şamil"
+		]
+	},
+	"introduction": "Vikipediya məqalələri üçün mənbə tapmağa kömək et!",
+	"button_wikilink": "Bunu anladım!",
+	"button_next": "Növbəti!",
+	"category_filter_placeholder": "Bir mövzu axtarın.",
+	"github_link_title": "Hey! Mənim mənbəm GitHub-dadır!",
+	"page_not_found": "Səhifə tapılmadı!",
+	"js-article-count": "$1 {{PLURAL:$1|məqalə|məqalələr}}",
+	"js-keyboard-shortcut": "Klaviatura qısayolları: %s"
+}
