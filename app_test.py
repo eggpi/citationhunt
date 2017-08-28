@@ -62,6 +62,11 @@ class CitationHuntTest(unittest.TestCase):
             self.assertEquals(response.status_code, 302)
             self.assertTrue(response.location.endswith('/en/favicon.ico'))
 
+    def test_trailing_slash(self):
+        response = self.app.get('/en/')
+        self.assertEquals(response.status_code, 302)
+        self.assertTrue('/en?' in response.location)
+
     def test_accept_language_redirect(self):
         headers = {'Accept-Language': 'ru'}
         with mock.patch.dict(

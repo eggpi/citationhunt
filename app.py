@@ -36,7 +36,8 @@ if not debug:
 def index(lang_code):
     pass # nothing to do but validate lang_code
 
-app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt)
+app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt,
+    strict_slashes = False)
 app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
 if 'stats' not in global_config.flagged_off:
     app.after_request(handlers.log_request)
