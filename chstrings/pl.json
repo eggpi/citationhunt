@@ -5,7 +5,8 @@
 			"Halibutt",
 			"Mateon1",
 			"Woytecr",
-			"InternerowyGołąb"
+			"InternerowyGołąb",
+			"Wojtas"
 		]
 	},
 	"introduction": "Pomóż dodać przypisy do artykułów Wikipedii!",
@@ -22,5 +23,6 @@
 	"page_not_found_text": "Strona, której szukasz już nie istnieje — być może to źródło zostało już znalezione? Przejdź z powrotem do %s po więcej!",
 	"footer": "Narzędzie %s jest tworzone przez wolontariuszy, znajduje się na serwerze %s, a jego tłumaczenie dostarcza %s.",
 	"js-article-count": "$1 {{PLURAL:$1|artykuł|artykuły|artykułów}}",
-	"js-keyboard-shortcut": "Skrót klawiaturowy:%s"
+	"js-keyboard-shortcut": "Skrót klawiaturowy:%s",
+	"js-refs-added-today": "Dzisiaj cytowano nas  $1 {{PLURAL:$1|time|times}}!"
 }
