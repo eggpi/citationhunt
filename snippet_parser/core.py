@@ -180,7 +180,7 @@ class SnippetParser(object):
 
             # Reference groups can cause an error message to be
             # generated directly in the output HTML, remove them.
-            for ref in section.filter_tags('ref'):
+            for ref in section.filter_tags(matches = lambda t: t.tag == 'ref'):
                 if ref.has('group'):
                     ref.remove('group')
 
