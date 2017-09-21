@@ -1,7 +1,7 @@
 {
 	"name" : "citationhunt",
-	"title" : "CitationHunt",
-	"description" : "Simple tool for finding unsourced statements in the English Wikipedia.",
+	"title" : "Citation Hunt",
+	"description" : "A fun tool for quickly browsing unsourced snippets on Wikipedia..",
 	"url" : "https://tools.wmflabs.org/citationhunt/",
 	"keywords" : "citations, Wikipedia",
 	"author" : "Guilherme P. Gonçalves",
