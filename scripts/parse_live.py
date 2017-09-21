@@ -26,7 +26,7 @@ if _upper_dir not in sys.path:
 
 import chdb
 import config
-import mwapi
+import yamwapi as mwapi
 import snippet_parser
 from utils import *
 

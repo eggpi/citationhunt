@@ -22,7 +22,7 @@ if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 
 import config
-import mwapi
+import yamwapi as mwapi
 import snippet_parser
 
 import docopt

@@ -24,7 +24,7 @@ import datetime
 import config
 import chdb
 from utils import *
-import mwapi
+import yamwapi as mwapi
 import snippet_parser
 
 import docopt
