@@ -32,24 +32,18 @@ def shell(cmdline):
     print >>sys.stderr, output
     return status == 0
 
-def ensure_db_config(cfg):
+def ensure_db_config(cfg, ch_my_cnf, wp_my_cnf):
     # Get the project database name (and ultimately the database server's
     # hostname) from the name of the database we want, as per:
     # https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Database#Naming_conventions
     xxwiki = cfg.database.replace('_p', '')
     replica_my_cnf = os.path.expanduser('~/replica.my.cnf')
 
-    ch_my_cnf = 'ch.my.cnf'
-    with open(ch_my_cnf, 'w') as f:
-        print >> f, file(replica_my_cnf).read(),
-        print >> f, 'host=tools-db',
+    print >> ch_my_cnf, file(replica_my_cnf).read(),
+    print >> ch_my_cnf, 'host=tools-db',
 
-    wp_my_cnf = 'wp.my.cnf'
-    with open(wp_my_cnf, 'w') as f:
-        print >> f, file(replica_my_cnf).read(),
-        print >> f, 'host=%s.labsdb' % xxwiki,
-
-    return ch_my_cnf, wp_my_cnf
+    print >> wp_my_cnf, file(replica_my_cnf).read(),
+    print >> wp_my_cnf, 'host=%s.labsdb' % xxwiki,
 
 def get_db_names_to_archive(lang_code):
     database_names = []
@@ -96,8 +90,14 @@ def expire_stats(cfg):
                 (cfg.stats_max_age_days,))
 
 def _update_db_tools_labs(cfg):
+    ch_my_cnf = tempfile.NamedTemporaryFile()
+    wp_my_cnf = tempfile.NamedTemporaryFile()
+    ensure_db_config(cfg, ch_my_cnf, wp_my_cnf)
+
     os.environ['CH_LANG'] = cfg.lang_code
-    ch_my_cnf, wp_my_cnf = ensure_db_config(cfg)
+    os.environ['CH_MY_CNF'] = ch_my_cnf.name
+    os.environ['WP_MY_CNF'] = wp_my_cnf.name
+
     if cfg.archive_dir and not archive_database(ch_my_cnf, cfg):
         # Log, but don't assert, this is not fatal
         print >>sys.stderr, 'Failed to archive database!'
@@ -118,6 +118,10 @@ def _update_db_tools_labs(cfg):
     run_script('parse_live.py', unsourced.name)
     run_script('assign_categories.py')
     run_script('install_new_database.py')
+
+    unsourced.close()
+    ch_my_cnf.close()
+    wp_my_cnf.close()
 
 def update_db_tools_labs(cfg):
     # Should match the job's name in crontab
