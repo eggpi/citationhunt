@@ -10,7 +10,7 @@ ch_my_cnf = os.path.abspath(
     os.getenv('CH_MY_CNF', os.path.join(
         os.path.dirname(os.path.realpath(__file__)), 'ch.my.cnf')))
 wp_my_cnf = os.path.abspath(
-    os.getenv('CH_MY_CNF', os.path.join(
+    os.getenv('WP_MY_CNF', os.path.join(
         os.path.dirname(os.path.realpath(__file__)), 'wp.my.cnf')))
 
 class RetryingConnection(object):
