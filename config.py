@@ -60,6 +60,7 @@ _BASE_LANG_CONFIG = dict(
     html_parse_parameters = {
         'disabletoc': 'true',
         'disableeditsection': 'true',
+        'wrapoutputclass': '',
     },
 
     # What to extract for each citation needed template found in the wikitext,
