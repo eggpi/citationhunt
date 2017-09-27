@@ -43,7 +43,7 @@ html[dir="rtl"] #preamble {
     line-height: 20px;
     text-align: justify;
     max-width: 80%;  /* slightly larger than #lead-hint */
-    margin: 20px auto 0 auto;
+    margin: 5px auto 0 auto;
     max-height: 200px;
 }
 
@@ -59,7 +59,7 @@ html[dir="rtl"] #preamble {
 
 #quotation {
     position: absolute;
-    top: 15px;
+    top: 30px;
     font-size: 100px;
     opacity: 0.1;
     font-family: Fondamento, cursive;
@@ -71,6 +71,11 @@ html[dir="ltr"] #quotation {
 
 html[dir="rtl"] #quotation {
     right: -30px;
+}
+
+.ch-snippet {
+    overflow: scroll;
+    max-height: inherit;
 }
 
 a {

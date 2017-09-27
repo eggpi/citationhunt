@@ -22,6 +22,8 @@ import cStringIO as StringIO
 import itertools
 from copy import copy
 
+SNIPPET_WRAPPER_CLASS = 'ch-snippet'
+
 CITATION_NEEDED_MARKER_CLASS = 'ch-cn-marker'
 _CITATION_NEEDED_MARKER_MARKUP = (
     '<span class="%s">{tpl}</span>' % CITATION_NEEDED_MARKER_CLASS)
@@ -248,6 +250,7 @@ class SnippetParser(object):
                 markers_in_snippet = sr.cssselect(
                     '.' + CITATION_NEEDED_MARKER_CLASS)
                 lxml.etree.strip_attributes(sr, 'id', 'class', 'style')
+                sr.attrib['class'] = SNIPPET_WRAPPER_CLASS
                 for marker in markers_in_snippet:
                     marker.attrib['class'] = CITATION_NEEDED_MARKER_CLASS
                     lxml_utils.strip_space_before_element(marker)
