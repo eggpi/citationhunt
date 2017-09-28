@@ -109,8 +109,8 @@ class SnippetParserTest(unittest.TestCase):
     def test_remove_space_before_marker(self):
         _, snippets = self._do_extract('''
             <p>This is some HTML  {citation_needed_tmpl} with space.</p>''')
-        expected = '<p class="%s">This is some HTML' % (
-            core.SNIPPET_WRAPPER_CLASS) + _CN_HTML + ' with space.</p>'
+        expected = '<div class="%s"><p>This is some HTML' % (
+            core.SNIPPET_WRAPPER_CLASS) + _CN_HTML + ' with space.</p></div>'
         self.assertEquals(snippets[0], expected)
 
     def test_drop_ref_groups(self):

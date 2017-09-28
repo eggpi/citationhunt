@@ -222,23 +222,23 @@ class SnippetParser(object):
                 # that we can use as a snippet.
                 snippet_roots = []
                 for marker in tree.cssselect('.' + CITATION_NEEDED_MARKER_CLASS):
-                    assert marker.attrib['class'] == CITATION_NEEDED_MARKER_CLASS
                     root = marker.getparent()
                     while root is not None and root.tag not in _SNIPPET_ROOT_TAGS:
                         root = root.getparent()
                     if root is None:
                         continue
-                    snippet_roots = [copy(root)]
                     if root.tag in _LIST_TAGS:
                         snippet_roots = self._html_list_to_snippets(root)
+                    else:
+                        snippet_roots = [self._make_snippet_root(root)]
             else:
                 # Keep only snippet root top-level elements within the body.
                 # This is not great as any content within, say, <blockquote>
                 # gets removed entirely, but it's good enough in most cases.
-                root = lxml.html.Element('div')
-                root[:] = tree.cssselect(
-                    'body > ' + ', '.join(_SNIPPET_ROOT_TAGS))
-                snippet_roots = [root]
+                snippet_roots = [
+                    self._make_snippet_root(*tree.cssselect(
+                        'body > ' + ', '.join(_SNIPPET_ROOT_TAGS)))
+                ]
 
             snippets_in_section = set()
             for sr in snippet_roots:
@@ -265,6 +265,11 @@ class SnippetParser(object):
             snippets.append([sectitle, list(snippets_in_section)])
         return snippets
 
+    def _make_snippet_root(self, *child_elements):
+        root = lxml.html.Element('div')
+        root.extend(copy(e) for e in child_elements)
+        return root
+
     def _html_list_to_snippets(self, list_element):
         """
         Given a list element containing a citation needed marker in one of
@@ -290,8 +295,7 @@ class SnippetParser(object):
                 CITATION_NEEDED_MARKER_CLASS)))
         snippet_roots = []
         for li_with_marker in lis_with_marker:
-            sr = lxml.html.Element('div')
-            sr.extend(copy(p) for p in preamble)
+            sr = self._make_snippet_root(*preamble)
             sr.append(lxml.html.Element(list_element.tag))
 
             # Try to take one <li> before and one after the one we want, but
