@@ -36,7 +36,7 @@ _GLOBAL_CONFIG = dict(
 # A base configuration that all languages "inherit" from.
 _BASE_LANG_CONFIG = dict(
     # Approximate maximum length for a snippet
-    snippet_max_size = 500,
+    snippet_max_size = 800,
 
     # Approximate minimum length for a snippet
     snippet_min_size = 100,
