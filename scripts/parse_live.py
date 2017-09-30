@@ -33,18 +33,19 @@ from utils import *
 import docopt
 import requests
 
-import re
 import cProfile
 import functools
 import glob
 import itertools
 import multiprocessing
 import pstats
+import re
 import shutil
 import tempfile
 import time
 import traceback
 import urllib
+import cPickle as pickle
 
 cfg = config.get_localized_config()
 WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
@@ -109,6 +110,9 @@ def finalizer():
     self.profiler.disable()
     profile_path = os.path.join(self.backdir, 'profile-%s' % os.getpid())
     pstats.Stats(self.profiler).dump_stats(profile_path)
+    stats_path = os.path.join(self.backdir, 'stats-%s' % os.getpid())
+    with open(stats_path, 'wb') as stats_f:
+        pickle.dump(self.parser.stats, stats_f)
 
 def with_max_exceptions(fn):
     @functools.wraps(fn)
@@ -209,6 +213,16 @@ def parse_live(pageids, timeout):
             profiles if profiles else [None])
         if stats is not None:
             stats.sort_stats('cumulative').print_stats(30)
+
+    parser_stats = snippet_parser.stats.merge_stats(
+        pickle.load(file(stats_file))
+        for stats_file in glob.glob(os.path.join(backdir, 'stats-*')))
+    lengths = parser_stats.snippet_lengths
+    log.info('percentiles for snippet lengths:')
+    log.info('50th: %d' % snippet_parser.stats.percentile(lengths, 50))
+    log.info('70th: %d' % snippet_parser.stats.percentile(lengths, 70))
+    log.info('90th: %d' % snippet_parser.stats.percentile(lengths, 90))
+    log.info('95th: %d' % snippet_parser.stats.percentile(lengths, 95))
 
     shutil.rmtree(backdir)
     return ret

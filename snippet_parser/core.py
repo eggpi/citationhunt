@@ -11,6 +11,7 @@ if _upper_dir not in sys.path:
 
 import config
 import lxml_utils
+import stats
 from utils import *
 
 import mwparserfromhell
@@ -47,6 +48,8 @@ class SnippetParser(object):
             lxml.cssselect.CSSSelector(css_selector)
             for css_selector in self._cfg.html_css_selectors_to_strip
         ]
+
+        self.stats = stats.SnippetParserStats()
 
     def _resolve_redirects_to_templates(self, templates):
         templates = set(templates)
@@ -256,6 +259,7 @@ class SnippetParser(object):
                     lxml_utils.strip_space_before_element(marker)
 
                 length = len(sr.text_content().strip())
+                self.stats.snippet_lengths[length] += 1
                 if minlen < length < maxlen:
                     snippet = d(lxml.html.tostring(
                         sr, encoding = 'utf-8', method = 'html')).strip()
