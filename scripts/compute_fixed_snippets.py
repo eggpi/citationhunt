@@ -20,6 +20,8 @@ if _upper_dir not in sys.path:
 import time
 import urlparse
 import datetime
+import dateutil.parser
+import dateutil.tz
 
 import config
 import chdb
@@ -30,6 +32,23 @@ import snippet_parser
 import docopt
 
 log = Logger()
+
+def get_page_contents_and_timestamp(wiki, title):
+    params = {
+        'prop': 'revisions',
+        'rvprop': 'content|timestamp',
+        'titles': title
+    }
+    contents = ''
+    for response in wiki.query(params):
+        for page in response['query']['pages'].values():
+            timestamp = page['revisions'][0]['timestamp']
+            contents += page['revisions'][0]['*']
+    local_tz = dateutil.tz.tzlocal()
+    timestamp = dateutil.parser.parse(timestamp)
+    # convert the timestamp to local time but make it 'naive', since that's
+    # what we get back from the database as well
+    return contents, timestamp.astimezone(local_tz).replace(tzinfo = None)
 
 def load_pages_and_snippets_to_process(cursor, lang_code, start_date, end_date):
     cursor.execute('''
@@ -83,7 +102,8 @@ def compute_fixed_snippets(cfg):
     parser = snippet_parser.create_snippet_parser(wiki, cfg)
 
     for page_title, snippet_to_ts in page_title_to_snippets.items():
-        snippets = parser.extract(wiki.get_page_contents(title = page_title))
+        contents, page_ts = get_page_contents_and_timestamp(wiki, page_title)
+        snippets = parser.extract(contents)
         # FIXME Duplicated logic with parse_live.py :(
         for sec, snips in snippets:
             for sni in snips:
@@ -91,10 +111,11 @@ def compute_fixed_snippets(cfg):
                 snippet_to_ts.pop(id, None)
 
         for snippet_id, clicked_ts in snippet_to_ts.items():
-            log.info(snippet_id)
-            stats_db.execute_with_retry_s(
-                'INSERT IGNORE INTO fixed VALUES (%s, %s, %s)',
-                clicked_ts, snippet_id, cfg.lang_code)
+            if clicked_ts < page_ts:
+                log.info(snippet_id)
+                stats_db.execute_with_retry_s(
+                    'INSERT IGNORE INTO fixed VALUES (%s, %s, %s)',
+                    clicked_ts, snippet_id, cfg.lang_code)
 
     live_db.close()
     stats_db.close()
