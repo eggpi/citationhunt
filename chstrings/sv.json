@@ -6,7 +6,8 @@
 			"Josve05a",
 			"PeterKz",
 			"Ainali",
-			"Jkl"
+			"Jkl",
+			"Bengtsson96"
 		]
 	},
 	"introduction": "Hjälp till att hitta referenser till Wikipediaartiklar!",
@@ -20,7 +21,7 @@
 	"github_link_title": "Hallå! Min källkod finns på GitHub!",
 	"beginners_hint": "Vet du inte hur man lägger till referenser? Se %s.",
 	"page_not_found": "Sidan kunde inte hittas!",
-	"page_not_found_text": "Sidan du letar efter finns inte längre — kanske denna referens har redan hittats? Gå tillbaka till %s för mer!",
+	"page_not_found_text": "Sidan finns inte längre – referensen har kanske redan hittats? Gå tillbaka till %s för mer!",
 	"footer": "%s skapas av volontärer, körs på %s och översätts via %s.",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artiklar}}",
 	"js-keyboard-shortcut": "Kortkommando: %s",
