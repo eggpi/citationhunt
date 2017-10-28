@@ -1,5 +1,15 @@
 ## Contributing to Citation Hunt
 
+### Adding a language to Citation Hunt
+
+In order to add a new language to Citation Hunt, two steps are necessary:
+
+- [The interface needs to be translated](#Translating_the_interface)
+- Some configuration needs to be added in the code for the new language
+
+Please check the [Meta page on Citation Hunt](https://meta.wikimedia.org/wiki/Citation_Hunt#Adding_support_to_a_new_language) to see the information
+we'll need to configure the new language, and also have a look at [Setting up a local Citation Hunt](#setting-up-a-local-citation-hunt) if you'd like to try doing it yourself!
+
 ### Translating the interface
 
 The first step to bringing Citation Hunt to a new language is to translate its
@@ -59,44 +69,9 @@ to get the dependencies to install properly.
 You're nearly ready to run the server, but you will need a database for it to
 work. At this point, make sure you have a working local MySQL installation —
 it can be something as simple as a MySQL server listening on `localhost` that
-you can access as root.
+you can access as root. Then, please proceed to [Generating the database locally](https://github.com/eggpi/citationhunt/tree/master/scripts#generating-the-database-locally), which will allow you to try Citation Hunt locally with any language.
 
-You could
-[generate your own database](https://github.com/eggpi/citationhunt/blob/master/scripts/README.md),
-which will let you try out Citation Hunt in any language, but for now, let's
-kickstart the process by importing a database dump from the English Citation
-Hunt.
-
-```
-$ wget https://tools.wmflabs.org/citationhunt/static/exports/en.sql.gz
-$ gunzip en.sql.gz
-```
-
-The `en.sql` file we just downloaded and extracted can be imported into MySQL:
-
-```
-$ mysql -u root
-mysql> create database root__citationhunt_en;
-mysql> use root__citationhunt_en;
-mysql> source en.sql
-```
-
-The name of the database should follow the format above, that is,
-`USER__citationhunt_LANG`.
-
-You will now need to tell the Citation Hunt server where to find this database.
-For that, write a config file called `ch.my.cnf` in the root of this repository,
-where `chdb.py` is. It just needs to contain the location of the MySQL server
-and the credentials to use:
-
-```
-$ cat ch.my.cnf
-[client]
-user='root'
-host='localhost'
-```
-
-You're all set! Finally, just run `app.py` and point your browser to
+Once the database has been generated, you're all set! Just run `app.py` and point your browser to
 `localhost:5000`:
 
 ```
