@@ -4,7 +4,7 @@
 
 In order to add a new language to Citation Hunt, two steps are necessary:
 
-- [The interface needs to be translated](#Translating_the_interface)
+- The interface needs to be translated (see below)
 - Some configuration needs to be added in the code for the new language
 
 Please check the [Meta page on Citation Hunt](https://meta.wikimedia.org/wiki/Citation_Hunt#Adding_support_to_a_new_language) to see the information
