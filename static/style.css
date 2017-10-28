@@ -74,7 +74,7 @@ html[dir="rtl"] #quotation {
 }
 
 .ch-snippet {
-    overflow-x: scroll;
+    overflow-y: scroll;
     max-height: inherit;
 }
 
