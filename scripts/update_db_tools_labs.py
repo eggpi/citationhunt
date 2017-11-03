@@ -48,7 +48,7 @@ def ensure_db_config(cfg):
 
     with wp_my_cnf:
         print >> wp_my_cnf, file(replica_my_cnf).read(),
-        print >> wp_my_cnf, 'host=%s.labsdb' % xxwiki,
+        print >> wp_my_cnf, 'host=%s.analytics.db.svc.eqiad.wmflabs' % xxwiki,
 
     return ch_my_cnf.name, wp_my_cnf.name
 
