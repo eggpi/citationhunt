@@ -169,6 +169,25 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = '!Categorias_ocultas',
     ),
 
+    fa = dict(
+        lang_name = 'فارسی',
+        lang_dir = 'rtl',
+        database = 'fawiki_p',
+        wikipedia_domain = 'fa.wikipedia.org',
+        citation_needed_category = 'همه_مقاله‌های_دارای_عبارت‌های_بدون_منبع',
+        beginners_link = 'https://fa.wikipedia.org/wiki/ویکی‌پدیا:شیوه_ارجاع_به_منابع',
+        beginners_link_title = 'ویکی‌پدیا:شیوه ارجاع به منابع',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        # Looks like there are many other interesting templates:
+        # https://fr.wikipedia.org/wiki/Aide:Référence_nécessaire
+        citation_needed_templates = [
+            'مدرک',
+        ],
+        hidden_category = 'رده‌های_پنهان',
+    ),
+
     fr = dict(
         lang_name = 'Français',
         lang_dir = 'ltr',
