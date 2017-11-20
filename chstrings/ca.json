@@ -2,16 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Kippelboy",
-			"Fitoschido"
+			"Fitoschido",
+			"Toniher"
 		]
 	},
 	"introduction": "Ajudar a trobar referències pels articles de la Viquipèdia",
 	"in_page": "En la pàgina %s:",
 	"button_wikilink": "Meu!",
-	"button_next": "Vés al següent",
+	"button_next": "Següent!",
 	"lead_section_hint": "Aquest text forma part de la capcelera de l'article. Vegeu %s per a més informació",
-	"category_filter_placeholder": "Què et fa prèmer?",
+	"category_filter_placeholder": "Cerca per tema.",
 	"github_link_title": "Ei! Podeu veure el codi font a GitHub!",
 	"beginners_hint": "No sabeu com afegir referències? Vegeu %s",
+	"page_not_found": "No s'ha trobat la pàgina!",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}"
 }
