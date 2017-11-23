@@ -180,8 +180,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        # Looks like there are many other interesting templates:
-        # https://fr.wikipedia.org/wiki/Aide:Référence_nécessaire
         citation_needed_templates = [
             'مدرک',
         ],
