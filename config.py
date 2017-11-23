@@ -401,6 +401,24 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Skjulte_kategorier',
     ),
+    
+    nl = dict(
+        lang_name = 'Nederlands',
+        lang_dir = 'ltr',
+        database = 'nlwiki_p',
+        wikipedia_domain = 'nl.wikipedia.org',
+
+        beginners_link = 'https://nl.wikipedia.org/wiki/Wikipedia:Bronvermelding',
+        beginners_link_title = 'Wikipedia:Bronvermelding',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Wikipedia:Artikel_mist_referentie',
+        citation_needed_templates = [
+            'Bron?',
+        ],
+        hidden_category = 'Wikipedia:Verborgen_categorie',
+    ),
 
     nn = dict(
         lang_name = 'Norsk (nynorsk)',
