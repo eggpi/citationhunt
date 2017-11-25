@@ -399,7 +399,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Skjulte_kategorier',
     ),
-    
+
     nl = dict(
         lang_name = 'Nederlands',
         lang_dir = 'ltr',

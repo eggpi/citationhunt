@@ -8,7 +8,7 @@
 	},
 	"introduction": "Help referenties vinden voor Wikipediapagina's!",
 	"instructions_goal": "Het onderstaande fragment uit Wikipedia wordt niet onderbouwd met een {link_start}betrouwbare bron{link_end}. Kunt u er een vinden?",
-	"instructions_details": "Klik op \"%2\" om naar Wikipedia te gaan en het fragment aan te passen of %s om er nog een te bekijken. Kijk op %s als u vragen hebt. Succes!",
+	"instructions_details": "Klik op %s om naar Wikipedia te gaan en het fragment aan te passen of %s om er nog een te bekijken. Kijk op %s als u vragen hebt. Succes!",
 	"in_page": "In pagina %s:",
 	"button_wikilink": "Dit gaat me lukken!",
 	"button_next": "Volgende!",
