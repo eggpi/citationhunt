@@ -4,6 +4,7 @@
 			"Saraiki"
 		]
 	},
+	"introduction": "مدد وکی پیڈیا دے مضموناں کیتے حوالے لبھو!",
 	"in_page": "ورقہ %s وچ",
 	"button_wikilink": "میں ایہ گھن گھدے!",
 	"button_next": "اڳلا!",
@@ -11,6 +12,8 @@
 	"github_link_title": "ہے! میݙا سورس ڳٹ ہب تے ہے!",
 	"beginners_hint": "جے تہاکوں حوالہ شامل کرݨ دا طریقہ نی آندا تاں %s ݙیکھو۔",
 	"page_not_found": "ورقہ کائنی لبھیا!",
+	"footer": "%s رضا کاراں بݨائے، %s ہوسٹ تھیا تے %s دے ذریعے ترجمہ تھئے۔",
 	"js-article-count": "$1 {{جمع:$1|مضمون|مقالے}}",
-	"js-keyboard-shortcut": "کی بورڈ شارٹ کٹ:%s"
+	"js-keyboard-shortcut": "کی بورڈ شارٹ کٹ:%s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|حوالہ|حوالے}} اڄ شامل تھئے!"
 }

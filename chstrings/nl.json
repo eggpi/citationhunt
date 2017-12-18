@@ -4,7 +4,8 @@
 			"Siebrand",
 			"Mainframe98",
 			"SPQRobin",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Woodcutterty"
 		]
 	},
 	"introduction": "Help referenties te vinden voor Wikipedia-pagina's!",
@@ -13,13 +14,13 @@
 	"in_page": "Op pagina %s:",
 	"button_wikilink": "Dit gaat mij lukken!",
 	"button_next": "Volgende!",
-	"lead_section_hint": "Deze tekst is onderdeel van de openingsparagraaf van de pagina, dus referenties zijn optioneel. Zee %s voor mee informatie.",
+	"lead_section_hint": "Deze tekst is onderdeel van de openingsparagraaf van de pagina, dus referenties zijn optioneel. Kijk op %s voor meer informatie.",
 	"category_filter_placeholder": "Zoeken naar een onderwerp.",
 	"github_link_title": "De broncode staat op GitHub",
-	"beginners_hint": "Geen idee hoe referenties toe te voegen? Zie %s.",
+	"beginners_hint": "Weet je niet hoe je referenties toe kan voegen? Kijk op %s.",
 	"page_not_found": "Pagina niet gevonden",
 	"page_not_found_text": "De pagina die u zoekt bestaat niet meer. Misschien is de referentie al gevonden? Ga terug naar %s voor meer informatie.",
-	"footer": "%st wordt gemaakt door vrijwilligers, gehost op %s en vertaald via %s.",
+	"footer": "%s wordt gemaakt door vrijwilligers, gehost op %s en vertaald via %s.",
 	"js-article-count": "$1 {{PLURAL:$1|pagina|pagina's}}",
 	"js-keyboard-shortcut": "Sneltoets: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referentie|referenties}} toegevoegd vandaag!"
