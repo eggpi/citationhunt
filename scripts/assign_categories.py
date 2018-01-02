@@ -243,7 +243,8 @@ def assign_categories(mysql_default_cnf):
         if p in unsourced_pageids:
             category_to_page_ids.setdefault(c, []).append(p)
     for c in ichunk(unsourced_pageids, 10000):
-        for c, p in wpdb.execute_with_retry(load_categories_for_pages, c):
+        for c, p in wpdb.execute_with_retry(
+            load_categories_for_pages, tuple(c)):
             if category_is_usable(cfg, c, hidden_categories):
                 category_to_page_ids.setdefault(c, []).append(p)
 
