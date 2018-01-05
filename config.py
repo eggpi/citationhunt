@@ -267,9 +267,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'CN',
         ],
         hidden_category = 'Categories_ocultes',
-
-        # Not fully translated
-        flagged_off = ['404'],
     ),
 
     he = dict(
