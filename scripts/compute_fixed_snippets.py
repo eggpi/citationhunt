@@ -33,22 +33,37 @@ import docopt
 
 log = Logger()
 
-def get_page_contents_and_timestamp(wiki, title):
+def datetime_naive_local_to_naive_utc(d):
+    # Given a naive datetime object, assume it represents local time,
+    # convert it to UTC, and return another naive datetime. We need
+    # this because our database gives naive datetimes in local time, but
+    # the MW API expects UTC.
+    return d.replace(tzinfo = dateutil.tz.tzlocal()).astimezone(
+        dateutil.tz.tzutc()).replace(tzinfo = None)
+
+def datetime_utc_to_naive_local(d):
+    assert d.tzinfo == dateutil.tz.tzutc()
+    return d.astimezone(dateutil.tz.tzlocal()).replace(tzinfo = None)
+
+def get_page_revisions(wiki, title, start):
     params = {
         'prop': 'revisions',
-        'rvprop': 'content|timestamp',
+        'rvprop': 'content|timestamp|ids',
+        'rvstart': datetime_naive_local_to_naive_utc(start).isoformat(),
+        'rvdir': 'newer',
         'titles': title
     }
-    contents = ''
+    revisions = []  # oldest to newest
     for response in wiki.query(params):
-        for page in response['query']['pages'].values():
-            timestamp = page['revisions'][0]['timestamp']
-            contents += page['revisions'][0]['*']
-    local_tz = dateutil.tz.tzlocal()
-    timestamp = dateutil.parser.parse(timestamp)
-    # convert the timestamp to local time but make it 'naive', since that's
-    # what we get back from the database as well
-    return contents, timestamp.astimezone(local_tz).replace(tzinfo = None)
+        for p in response['query']['pages'].values():
+            for r in p.get('revisions', []):
+                revisions.append({
+                    'rev_id': r['revid'],
+                    'timestamp': datetime_utc_to_naive_local(
+                        dateutil.parser.parse(r['timestamp'])),
+                    'contents': r['*'],
+                })
+    return revisions
 
 def load_pages_and_snippets_to_process(cursor, lang_code, start_date, end_date):
     cursor.execute('''
@@ -102,20 +117,24 @@ def compute_fixed_snippets(cfg):
     parser = snippet_parser.create_snippet_parser(wiki, cfg)
 
     for page_title, snippet_to_ts in page_title_to_snippets.items():
-        contents, page_ts = get_page_contents_and_timestamp(wiki, page_title)
-        snippets = parser.extract(contents)
-        # FIXME Duplicated logic with parse_live.py :(
-        for sec, snips in snippets:
-            for sni in snips:
-                id = mkid(d(page_title) + sni)
-                snippet_to_ts.pop(id, None)
-
-        for snippet_id, clicked_ts in snippet_to_ts.items():
-            if clicked_ts < page_ts:
-                log.info(snippet_id)
-                stats_db.execute_with_retry_s(
-                    'INSERT IGNORE INTO fixed VALUES (%s, %s, %s)',
-                    clicked_ts, snippet_id, cfg.lang_code)
+        start_ts = min(snippet_to_ts.values())
+        revisions = get_page_revisions(wiki, page_title, start_ts)
+        for rev in revisions:
+            snippets = parser.extract(rev['contents'])
+            gone_in_this_revision = dict(snippet_to_ts)
+            # FIXME Duplicated logic with parse_live.py :(
+            for sec, snips in snippets:
+                for sni in snips:
+                    id = mkid(d(page_title) + sni)
+                    gone_in_this_revision.pop(id, None)
+            for snippet_id, clicked_ts in gone_in_this_revision.items():
+                if clicked_ts < rev['timestamp']:
+                    log.info('%s fixed at revision %s' % (
+                        snippet_id, rev['rev_id']))
+                    del snippet_to_ts[snippet_id]
+                    stats_db.execute_with_retry_s(
+                        'INSERT IGNORE INTO fixed VALUES (%s, %s, %s, %s)',
+                        clicked_ts, snippet_id, cfg.lang_code, rev['rev_id'])
 
     live_db.close()
     stats_db.close()
