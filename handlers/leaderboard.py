@@ -23,7 +23,7 @@ def leaderboard(lang_code):
         users = [
             row[0] for row in wpdb.execute_with_retry_s('''
             SELECT rev_user_text FROM revision_userindex
-            WHERE rev_id IN (%s)''' % ','.join(rev_ids))]
+            WHERE rev_user != 0 AND rev_id IN (%s)''' % ','.join(rev_ids))]
         leaderboard = [
             LeaderboardEntry(*e) for e in
             collections.Counter(users).most_common(50)]
