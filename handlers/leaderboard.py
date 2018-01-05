@@ -1,4 +1,3 @@
-import chdb
 import database
 from utils import *
 from common import *
@@ -12,9 +11,8 @@ LeaderboardEntry = collections.namedtuple(
 
 @validate_lang_code
 def leaderboard(lang_code):
-    wpdb = chdb.init_wp_replica_db(lang_code)
-
-    rev_ids = database.query_fixed_revisions(lang_code, 30)
+    ndays = 30
+    rev_ids = database.query_fixed_revisions(lang_code, ndays)
     leaderboard = []
     if rev_ids:
         users = database.query_rev_users(lang_code, rev_ids)
@@ -24,6 +22,7 @@ def leaderboard(lang_code):
     return flask.render_template(
         'leaderboard.html',
         leaderboard = leaderboard,
+        ndays = ndays,
         strings = flask.g._strings,
         config = flask.g._cfg,
         lang_tag = flask.g._lang_tag,
