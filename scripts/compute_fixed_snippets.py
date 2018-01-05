@@ -42,7 +42,12 @@ def datetime_naive_local_to_naive_utc(d):
         dateutil.tz.tzutc()).replace(tzinfo = None)
 
 def datetime_utc_to_naive_local(d):
-    assert d.tzinfo == dateutil.tz.tzutc()
+    # We would have liked to assert that:
+    #   assert d.tzinfo == dateutil.tz.tzutc()
+    # but a bug in dateutil makes it actually use tzlocal even when there's
+    # an explicit 'Z' suffiz in the timestamp string, as is the case for the
+    # MW API. So this is actually a UTC date, with tzinfo = tzlocal.
+    # https://github.com/dateutil/dateutil/issues/349
     return d.astimezone(dateutil.tz.tzlocal()).replace(tzinfo = None)
 
 def get_page_revisions(wiki, title, start):
