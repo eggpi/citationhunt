@@ -8,3 +8,4 @@ if _upper_dir not in sys.path:
 from common import *
 from citationhunt import *
 from stats import *
+from leaderboard import *

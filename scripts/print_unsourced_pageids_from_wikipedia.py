@@ -12,7 +12,7 @@ import config
 
 def print_unsourced_ids_from_wikipedia():
     cfg = config.get_localized_config()
-    db = chdb.init_wp_replica_db()
+    db = chdb.init_wp_replica_db(cfg.lang_code)
     cursor = db.cursor()
     categories = set([cfg.citation_needed_category])
     while True:

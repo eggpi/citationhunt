@@ -246,3 +246,34 @@ html[dir="rtl"] #spinner {
     margin-bottom: 3px;
     font-size: 18px;
 }
+
+#leaderboard {
+    margin: 20px auto;
+    width: 50%;
+}
+
+html[dir="ltr"] #leaderboard {
+    text-align: left;
+}
+
+html[dir="rtl"] #leaderboard {
+    text-align: right;
+}
+
+#leaderboard td {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+html[dir="ltr"] #leaderboard td {
+    padding-left: 10px;
+}
+
+html[dir="rtl"] #leaderboard td {
+    padding-right: 10px;
+}
+
+#leaderboard th {
+    font-weight: bold;
+    font-size: 18px;
+}

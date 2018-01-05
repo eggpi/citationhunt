@@ -220,7 +220,7 @@ def assign_categories(mysql_default_cnf):
     start = time.time()
 
     chdb = chdb_.init_scratch_db()
-    wpdb = chdb_.init_wp_replica_db()
+    wpdb = chdb_.init_wp_replica_db(cfg.lang_code)
 
     chdb.execute_with_retry(reset_chdb_tables)
     unsourced_pageids = load_unsourced_pageids(chdb)

@@ -128,8 +128,8 @@ def init_stats_db():
         return db
     return RetryingConnection(connect_and_initialize)
 
-def init_wp_replica_db():
-    cfg = config.get_localized_config()
+def init_wp_replica_db(lang_code):
+    cfg = config.get_localized_config(lang_code)
     def connect_and_initialize():
         db = _connect(wp_my_cnf)
         with db as cursor:
