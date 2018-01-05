@@ -1,5 +1,6 @@
 import chdb
 import config
+import database
 from utils import *
 from common import *
 
@@ -11,91 +12,16 @@ import urlparse
 Category = collections.namedtuple('Category', ['id', 'title'])
 CATEGORY_ALL = Category('all', '')
 
-# A class wrapping database access functions so they're easier to
-# mock when testing.
-class Database(object):
-    @staticmethod
-    def query_category_by_id(lang_code, cat_id):
-        cursor = get_db(lang_code).cursor()
-        with log_time('get category by id'):
-            cursor.execute('''
-                SELECT id, title FROM categories WHERE id = %s
-            ''', (cat_id,))
-            return cursor.fetchone()
-
-    @staticmethod
-    def query_snippet_by_id(lang_code, id):
-        cursor = get_db(lang_code).cursor()
-        with log_time('select snippet by id'):
-            cursor.execute('''
-                SELECT snippets.snippet, snippets.section, articles.url,
-                articles.title FROM snippets, articles WHERE snippets.id = %s
-                AND snippets.article_id = articles.page_id;''', (id,))
-            return cursor.fetchone()
-
-    @staticmethod
-    def query_snippet_by_category(lang_code, cat_id):
-        cursor = get_db(lang_code).cursor()
-        with log_time('select with category'):
-            cursor.execute('''
-                SELECT snippets.id FROM snippets, articles_categories
-                WHERE snippets.article_id = articles_categories.article_id AND
-                articles_categories.category_id = %s ORDER BY RAND()
-                LIMIT 1;''', (cat_id,))
-            return cursor.fetchone()
-
-    @staticmethod
-    def query_random_snippet(lang_code):
-        cursor = get_db(lang_code).cursor()
-        cursor.execute(
-            'SELECT id FROM snippets WHERE RAND() < 1e-4 LIMIT 1;')
-        return cursor.fetchone()
-
-    @staticmethod
-    def query_next_id(lang_code, curr_id, cat_id):
-        cursor = get_db(lang_code).cursor()
-
-        with log_time('select next id'):
-            cursor.execute('''
-                SELECT next FROM snippets_links WHERE prev = %s
-                AND cat_id = %s''', (curr_id, cat_id))
-            return cursor.fetchone()
-
-    @staticmethod
-    def search_category(lang_code, needle, max_results):
-        cursor = get_db(lang_code).cursor()
-        needle = '%' + needle + '%'
-        with log_time('search category & page count'):
-            cursor.execute('''
-                SELECT category_id, title, article_count
-                FROM categories, category_article_count
-                WHERE title LIKE %s
-                AND category_article_count.category_id = categories.id
-                LIMIT %s''', (needle, max_results))
-        return [{
-            'id': row[0], 'title': row[1], 'npages': row[2]
-        } for row in cursor]
-
-    @staticmethod
-    def query_fixed_snippets(lang_code, from_ts):
-        with get_stats_db() as cursor:
-            cursor.execute(
-                'SELECT COUNT(*) FROM fixed_%s '
-                'WHERE clicked_ts BETWEEN %%s AND NOW()' % lang_code,
-                (from_ts,))
-        nfixed = cursor.fetchone()
-        return nfixed[0] if nfixed else 0
-
 def get_category_by_id(lang_code, cat_id):
     if cat_id == CATEGORY_ALL.id:
         return CATEGORY_ALL
-    c = Database.query_category_by_id(lang_code, cat_id)
+    c = database.query_category_by_id(lang_code, cat_id)
     return Category(*c) if c is not None else None
 
 def select_random_id(lang_code, cat = CATEGORY_ALL):
     ret = None
     if cat is not CATEGORY_ALL:
-        ret = Database.query_snippet_by_category(lang_code, cat.id)
+        ret = database.query_snippet_by_category(lang_code, cat.id)
 
     if ret is None:
         # Try to pick one id at random. For small datasets, the probability
@@ -103,7 +29,7 @@ def select_random_id(lang_code, cat = CATEGORY_ALL):
         # bunch of times as needed.
         with log_time('select without category'):
             for retry in range(1000):
-                ret = Database.query_random_snippet(lang_code)
+                ret = database.query_random_snippet(lang_code)
                 if ret: break
 
     assert ret and len(ret) == 1
@@ -111,7 +37,7 @@ def select_random_id(lang_code, cat = CATEGORY_ALL):
 
 def select_next_id(lang_code, curr_id, cat = CATEGORY_ALL):
     if cat is not CATEGORY_ALL:
-        ret = Database.query_next_id(lang_code, curr_id, cat.id)
+        ret = database.query_next_id(lang_code, curr_id, cat.id)
         if ret is None:
             # curr_id doesn't belong to the category
             return None
@@ -148,7 +74,7 @@ def citation_hunt(lang_code):
         cat = CATEGORY_ALL
 
     if id is not None:
-        sinfo = Database.query_snippet_by_id(lang_code, id)
+        sinfo = database.query_snippet_by_id(lang_code, id)
         if sinfo is None:
             # invalid id
             flask.abort(404)
@@ -189,7 +115,7 @@ def search_category(lang_code):
     except:
         max_results = float('inf')
     return flask.jsonify(
-        results = Database.search_category(
+        results = database.search_category(
             lang_code, flask.request.args.get('q'),
             max_results = min(max_results, 400)))
 
@@ -207,4 +133,4 @@ def fixed(lang_code):
     if from_ts is None or abs(now - from_ts) > max_delta:
         from_ts = now - max_delta
     return flask.make_response(
-        str(Database.query_fixed_snippets(lang_code, from_ts)), 200)
+        str(database.query_fixed_snippets(lang_code, from_ts)), 200)

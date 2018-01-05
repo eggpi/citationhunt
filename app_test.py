@@ -31,14 +31,14 @@ class CitationHuntTest(unittest.TestCase):
         ]
 
         self.patchers = [
-            mock.patch('app.handlers.Database.' + m, return_value = rv)
+            mock.patch('app.handlers.database.' + m, return_value = rv)
             for m, rv in methods_and_return_values
         ]
         self.patchers.append(
-            mock.patch('app.handlers.Database.query_category_by_id', wraps = (
+            mock.patch('app.handlers.database.query_category_by_id', wraps = (
                 lambda _, id: (self.cat, 'C') if id == self.cat else None)))
         self.patchers.append(
-            mock.patch('app.handlers.Database.query_snippet_by_id',wraps = (
+            mock.patch('app.handlers.database.query_snippet_by_id',wraps = (
                 lambda _, id: self.fake_snippet_info if id == self.sid else None)
         ))
         for patcher in self.patchers:
@@ -187,7 +187,7 @@ class CitationHuntTest(unittest.TestCase):
         # only 6 hours ago, pass the date through
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.get_data(), '6')
-        app.handlers.Database.query_fixed_snippets.assert_called_once_with(
+        app.handlers.database.query_fixed_snippets.assert_called_once_with(
             'en', datetime.datetime.fromtimestamp(from_ts))
 
     def test_fixed_garbage_ts(self):
@@ -196,7 +196,7 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(response.get_data(), '6')
 
         now = datetime.datetime.today()
-        normalized = app.handlers.Database.query_fixed_snippets.call_args[0][1]
+        normalized = app.handlers.database.query_fixed_snippets.call_args[0][1]
         self.assertTrue((now - normalized) > datetime.timedelta(hours = 23))
         self.assertTrue((now - normalized) < datetime.timedelta(hours = 25))
 
@@ -206,7 +206,7 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(response.get_data(), '6')
 
         now = datetime.datetime.today()
-        normalized = app.handlers.Database.query_fixed_snippets.call_args[0][1]
+        normalized = app.handlers.database.query_fixed_snippets.call_args[0][1]
         self.assertTrue((now - normalized) > datetime.timedelta(hours = 23))
         self.assertTrue((now - normalized) < datetime.timedelta(hours = 25))
 
@@ -218,9 +218,26 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.get_data(), '6')
 
-        normalized = app.handlers.Database.query_fixed_snippets.call_args[0][1]
+        normalized = app.handlers.database.query_fixed_snippets.call_args[0][1]
         self.assertTrue((now - normalized) > datetime.timedelta(hours = 23))
         self.assertTrue((now - normalized) < datetime.timedelta(hours = 25))
+
+    @mock.patch('app.handlers.database.query_fixed_revisions',
+        return_value = [])
+    def test_leaderboard_empty(self, _):
+        response = self.app.get('/en/leaderboard.html')
+        self.assertEquals(response.status_code, 200)
+
+    @mock.patch('app.handlers.database.query_fixed_revisions',
+        return_value = range(10))
+    @mock.patch('app.handlers.database.query_rev_users',
+        return_value = ['Alice'] * 4 + ['Bob'] * 6)
+    def test_leaderboard(self, *mocks):
+        response = self.app.get('/en/leaderboard.html')
+        self.assertIn('Alice', response.get_data())
+        self.assertIn('4', response.get_data())
+        self.assertIn('Bob', response.get_data())
+        self.assertIn('6', response.get_data())
 
 if __name__ == '__main__':
     unittest.main()

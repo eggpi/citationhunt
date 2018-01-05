@@ -5,6 +5,8 @@ _upper_dir = os.path.abspath(
 if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 
+import database
+
 from common import *
 from citationhunt import *
 from stats import *

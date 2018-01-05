@@ -1,4 +1,5 @@
 import chdb
+import database
 from utils import *
 from common import *
 
@@ -12,18 +13,11 @@ LeaderboardEntry = collections.namedtuple(
 @validate_lang_code
 def leaderboard(lang_code):
     wpdb = chdb.init_wp_replica_db(lang_code)
-    statsdb = chdb.init_stats_db()
 
-    rev_ids = [
-        str(row[0]) for row in statsdb.execute_with_retry_s(
-        '''SELECT rev_id FROM fixed_''' + lang_code +
-        ''' WHERE DATEDIFF(NOW(), clicked_ts) < 30''')]
+    rev_ids = database.query_fixed_revisions(lang_code, 30)
     leaderboard = []
     if rev_ids:
-        users = [
-            row[0] for row in wpdb.execute_with_retry_s('''
-            SELECT rev_user_text FROM revision_userindex
-            WHERE rev_user != 0 AND rev_id IN (%s)''' % ','.join(rev_ids))]
+        users = database.query_rev_users(lang_code, rev_ids)
         leaderboard = [
             LeaderboardEntry(*e) for e in
             collections.Counter(users).most_common(50)]
