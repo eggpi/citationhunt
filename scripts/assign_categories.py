@@ -4,10 +4,7 @@
 Assign categories to the pages in the CitationHunt database.
 
 Usage:
-    assign_categories.py [--mysql_config=<FILE>]
-
-Options:
-    --mysql_config=<FILE>  MySQL config file [default: ./ch.my.cnf].
+    assign_categories.py
 '''
 
 from __future__ import unicode_literals
@@ -212,7 +209,7 @@ def reset_chdb_tables(cursor):
     log.info('resetting snippets_links table...')
     cursor.execute('DELETE FROM snippets_links')
 
-def assign_categories(mysql_default_cnf):
+def assign_categories():
     cfg = config.get_localized_config()
     profiler = cProfile.Profile()
     if cfg.profile:
@@ -276,6 +273,5 @@ def assign_categories(mysql_default_cnf):
 
 if __name__ == '__main__':
     args = docopt.docopt(__doc__)
-    mysql_default_cnf = args['--mysql_config']
-    ret = assign_categories(mysql_default_cnf)
+    ret = assign_categories()
     sys.exit(ret)

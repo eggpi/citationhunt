@@ -1,4 +1,5 @@
 import config
+import utils
 
 import MySQLdb
 
@@ -6,12 +7,9 @@ import contextlib
 import os
 import warnings
 
-ch_my_cnf = os.path.abspath(
-    os.getenv('CH_MY_CNF', os.path.join(
-        os.path.dirname(os.path.realpath(__file__)), 'ch.my.cnf')))
-wp_my_cnf = os.path.abspath(
-    os.getenv('WP_MY_CNF', os.path.join(
-        os.path.dirname(os.path.realpath(__file__)), 'wp.my.cnf')))
+REPLICA_MY_CNF = os.getenv(
+    'REPLICA_MY_CNF', os.path.expanduser('~/replica.my.cnf'))
+TOOLS_LABS_CH_MYSQL_HOST = 'tools.db.svc.eqiad.wmflabs'
 
 class RetryingConnection(object):
     '''
@@ -64,8 +62,24 @@ def ignore_warnings():
     yield
     warnings.resetwarnings()
 
-def _connect(config_file):
-    return MySQLdb.connect(charset = 'utf8mb4', read_default_file = config_file)
+def _connect(**kwds):
+    return MySQLdb.connect(charset = 'utf8mb4', **kwds)
+
+def _connect_to_ch_mysql():
+    kwds = {'read_default_file': REPLICA_MY_CNF}
+    if utils.running_in_tools_labs():
+        kwds['host'] = TOOLS_LABS_CH_MYSQL_HOST
+    return _connect(**kwds)
+
+def _connect_to_wp_mysql(cfg):
+    kwds = {'read_default_file': REPLICA_MY_CNF}
+    if utils.running_in_tools_labs():
+        # Get the project database name (and ultimately the database server's
+        # hostname) from the name of the database we want, as per:
+        # https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Database#Naming_conventions
+        xxwiki = cfg.database.replace('_p', '')
+        kwds['host'] = '%s.analytics.db.svc.eqiad.wmflabs' % xxwiki
+    return _connect(**kwds)
 
 def _make_tools_labs_dbname(db, database, lang_code):
     cursor = db.cursor()
@@ -84,7 +98,7 @@ def _ensure_database(db, database, lang_code):
 
 def init_db(lang_code):
     def connect_and_initialize():
-        db = _connect(ch_my_cnf)
+        db = _connect_to_ch_mysql()
         _ensure_database(db, 'citationhunt', lang_code)
         return db
     return RetryingConnection(connect_and_initialize)
@@ -92,14 +106,14 @@ def init_db(lang_code):
 def init_scratch_db():
     cfg = config.get_localized_config()
     def connect_and_initialize():
-        db = _connect(ch_my_cnf)
+        db = _connect_to_ch_mysql()
         _ensure_database(db, 'scratch', cfg.lang_code)
         return db
     return RetryingConnection(connect_and_initialize)
 
 def init_stats_db():
     def connect_and_initialize():
-        db = _connect(ch_my_cnf)
+        db = _connect_to_ch_mysql()
         _ensure_database(db, 'stats', 'global')
         with db as cursor, ignore_warnings():
             cursor.execute('''
@@ -131,7 +145,7 @@ def init_stats_db():
 def init_wp_replica_db(lang_code):
     cfg = config.get_localized_config(lang_code)
     def connect_and_initialize():
-        db = _connect(wp_my_cnf)
+        db = _connect_to_wp_mysql(cfg)
         with db as cursor:
             cursor.execute('USE ' + cfg.database)
         return db
@@ -139,7 +153,7 @@ def init_wp_replica_db(lang_code):
 
 def init_projectindex_db():
     def connect_and_initialize():
-        db = _connect(ch_my_cnf)
+        db = _connect_to_ch_mysql()
         with db as cursor:
             cursor.execute('USE s52475__wpx_p')
         return db

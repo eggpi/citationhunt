@@ -32,26 +32,6 @@ def shell(cmdline):
     print >>sys.stderr, output
     return status == 0
 
-def ensure_db_config(cfg):
-    # Get the project database name (and ultimately the database server's
-    # hostname) from the name of the database we want, as per:
-    # https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Database#Naming_conventions
-    xxwiki = cfg.database.replace('_p', '')
-    replica_my_cnf = os.path.expanduser('~/replica.my.cnf')
-
-    ch_my_cnf = tempfile.NamedTemporaryFile(delete = False)
-    wp_my_cnf = tempfile.NamedTemporaryFile(delete = False)
-
-    with ch_my_cnf:
-        print >> ch_my_cnf, file(replica_my_cnf).read(),
-        print >> ch_my_cnf, 'host=tools-db',
-
-    with wp_my_cnf:
-        print >> wp_my_cnf, file(replica_my_cnf).read(),
-        print >> wp_my_cnf, 'host=%s.analytics.db.svc.eqiad.wmflabs' % xxwiki,
-
-    return ch_my_cnf.name, wp_my_cnf.name
-
 def get_db_names_to_archive(lang_code):
     database_names = []
     for db in [chdb.init_db(lang_code), chdb.init_stats_db()]:
@@ -75,7 +55,7 @@ def delete_old_archives(archive_dir, archive_duration_days):
             print >>sys.stderr, 'Archive %s is %d days old, deleting' % (a, age)
             os.remove(os.path.join(archive_dir, a))
 
-def archive_database(ch_my_cnf, cfg):
+def archive_database(cfg):
     dbs_to_archive = get_db_names_to_archive(cfg.lang_code)
     archive_dir = os.path.join(cfg.archive_dir, cfg.lang_code)
     if cfg.archive_duration_days > 0:
@@ -87,8 +67,9 @@ def archive_database(ch_my_cnf, cfg):
 
     print >>sys.stderr, 'Archiving the current database'
     return shell(
-        'mysqldump --defaults-file="%s" --databases %s | '
-        'gzip > %s' % (ch_my_cnf, ' '.join(dbs_to_archive), output))
+        'mysqldump --defaults-file="%s" --host=%s --databases %s | '
+        'gzip > %s' % (chdb.REPLICA_MY_CNF, chdb.TOOLS_LABS_CH_MYSQL_HOST,
+            ' '.join(dbs_to_archive), output))
 
 def expire_stats(cfg):
     stats_db = chdb.init_stats_db()
@@ -97,12 +78,9 @@ def expire_stats(cfg):
                 (cfg.stats_max_age_days,))
 
 def _update_db_tools_labs(cfg):
-    ch_my_cnf, wp_my_cnf = ensure_db_config(cfg)
     os.environ['CH_LANG'] = cfg.lang_code
-    os.environ['CH_MY_CNF'] = ch_my_cnf
-    os.environ['WP_MY_CNF'] = wp_my_cnf
 
-    if cfg.archive_dir and not archive_database(ch_my_cnf, cfg):
+    if cfg.archive_dir and not archive_database(cfg):
         # Log, but don't assert, this is not fatal
         print >>sys.stderr, 'Failed to archive database!'
 
@@ -123,8 +101,6 @@ def _update_db_tools_labs(cfg):
     run_script('install_new_database.py')
 
     unsourced.close()  # deletes the file
-    os.remove(ch_my_cnf)
-    os.remove(wp_my_cnf)
 
 def update_db_tools_labs(cfg):
     # Should match the job's name in crontab

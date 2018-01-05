@@ -46,20 +46,16 @@ named 'categorylinks' and 'page'. This will take a few hours. You'll want to use
 [../config.py](https://github.com/eggpi/citationhunt/blob/master/config.py).
 
 We should now make sure these scripts know how to find and log in to the databases
-they will use. In order to do that, you'll need two MySQL config files: `wp.my.cnf`
-tells CitationHunt where to find the database with Wikipedia dumps, and `ch.my.cnf`
-tells it where to write its own database.
+they will use. In order to do that, you'll need a MySQL config file that gets
+passed to Citation Hunt via the `REPLICA_MY_CNF` environment variable (the
+default path is conveniently `~/replica.my.cnf`, for running on Toolforge).
 
-For example, in a local setting, you could use:
+In a local setting, you could just use something like:
 
-    $ cat wp.my.cnf
+    $ cat ~/replica.my.cnf
     [client]
     user='root'
     host='localhost'
-
-and have `ch.my.cnf` be a symlink to `wp.my.cnf`. Put these two files in the
-root directory of this repository, where `chdb.py` is. Please refer to the
-MySQL documentation for the other options you can specify on this file.
 
 From now on, the commands we'll be typing depend on the language you're
 generating a database for. They expect an environment variable `CH_LANG` to be

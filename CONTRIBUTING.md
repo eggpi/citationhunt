@@ -69,13 +69,14 @@ to get the dependencies to install properly.
 You're nearly ready to run the server, but you will need a database for it to
 work. At this point, make sure you have a working local MySQL installation —
 it can be something as simple as a MySQL server listening on `localhost` that
-you can access as root. Then, please proceed to [Generating the database locally](https://github.com/eggpi/citationhunt/tree/master/scripts#generating-the-database-locally), which will allow you to try Citation Hunt locally with any language.
+you can access as root. Then, please proceed to [Generating the database locally](https://github.com/eggpi/citationhunt/tree/master/scripts#generating-the-database-locally),
+which will allow you to try Citation Hunt locally with any language.
 
 Once the database has been generated, you're all set! Just run `app.py` and point your browser to
 `localhost:5000`:
 
 ```
-$ DEBUG=1 python app.py
+$ DEBUG=1 REPLICA_MY_CNF=/path/to/replica.my.cnf python app.py
 ```
 
 Adding `DEBUG=1` to the environment will run the server in [Flask's debug
