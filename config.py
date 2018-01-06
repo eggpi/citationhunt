@@ -167,6 +167,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Sem-fontes-sobre',
         ],
         hidden_category = '!Categorias_ocultas',
+        flagged_off = ['leaderboard'],
     ),
 
     fa = dict(
@@ -184,6 +185,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'مدرک',
         ],
         hidden_category = 'رده‌های_پنهان',
+        flagged_off = ['leaderboard'],
     ),
 
     fr = dict(
@@ -213,6 +215,7 @@ _LANG_CODE_TO_CONFIG = dict(
             '.homonymie',
         ],
         snippet_max_size = 600,
+        flagged_off = ['leaderboard'],
     ),
 
     it = dict(
@@ -248,6 +251,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'fakt',
         ],
         hidden_category = 'Ukryte_kategorie',
+        flagged_off = ['leaderboard'],
     ),
 
     ca = dict(
@@ -267,6 +271,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'CN',
         ],
         hidden_category = 'Categories_ocultes',
+        flagged_off = ['leaderboard'],
     ),
 
     he = dict(
@@ -304,6 +309,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Cita requerida'
         ],
         hidden_category = 'Wikipedia:Categorías_ocultas',
+        flagged_off = ['leaderboard'],
     ),
 
     bn = dict(
@@ -336,6 +342,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
 
         snippet_min_size = 20,
+        flagged_off = ['leaderboard'],
     ),
 
     cs = dict(
@@ -356,6 +363,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Fakt/dne',
         ],
         hidden_category = 'Wikipedie:Skryté_kategorie',
+        flagged_off = ['leaderboard'],
     ),
 
     sv = dict(
@@ -376,6 +384,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Referens behövs',
         ],
         hidden_category = 'Dolda_kategorier',
+        flagged_off = ['leaderboard'],
     ),
 
     nb = dict(
@@ -395,6 +404,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Referanse',
         ],
         hidden_category = 'Skjulte_kategorier',
+        flagged_off = ['leaderboard'],
     ),
 
     nl = dict(
@@ -413,6 +423,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Bron?',
         ],
         hidden_category = 'Wikipedia:Verborgen_categorie',
+        flagged_off = ['leaderboard'],
     ),
 
     nn = dict(
@@ -431,6 +442,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Treng kjelde',
         ],
         hidden_category = 'Gøymde_kategoriar',
+        flagged_off = ['leaderboard'],
     ),
 
     fi = dict(
@@ -451,6 +463,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Kenen mukaan',
         ],
         hidden_category = 'Piilotetut_luokat',
+        flagged_off = ['leaderboard'],
     ),
 
     de = dict(
@@ -473,6 +486,7 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Kategorie:Versteckt',
         extract = 'section',
         snippet_max_size = 30000,
+        flagged_off = ['leaderboard'],
     ),
 
     el = dict(
@@ -492,6 +506,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Κρυμμένες_κατηγορίες',
         snippet_max_size = 700,
+        flagged_off = ['leaderboard'],
     ),
 
     lv = dict(
@@ -510,6 +525,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Nepieciešama atsauce',
         ],
         hidden_category = 'Slēptās_kategorijas',
+        flagged_off = ['leaderboard'],
     ),
 
     ru = dict(
@@ -531,6 +547,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Нет источника',
         ],
         hidden_category = 'Скрытые_категории',
+        flagged_off = ['leaderboard'],
     ),
 
     ro = dict(
@@ -550,6 +567,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Categorii_ascunse',
         snippet_max_size = 800,
+        flagged_off = ['leaderboard'],
     ),
 
     ml = dict(
@@ -569,6 +587,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'മറഞ്ഞിരിക്കുന്ന_വർഗ്ഗങ്ങൾ',
         snippet_max_size = 1000,
+        flagged_off = ['leaderboard'],
     ),
 
     ja = dict(
@@ -592,6 +611,7 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = '隠しカテゴリ',
 
         snippet_max_size = 1000,
+        flagged_off = ['leaderboard'],
     ),
 
     zh_hant = dict(
@@ -618,6 +638,7 @@ _LANG_CODE_TO_CONFIG = dict(
         html_parse_parameters = {
             'variant': 'zh-hant',
         },
+        flagged_off = ['leaderboard'],
     ),
 
     zh_hans = dict(
@@ -643,6 +664,7 @@ _LANG_CODE_TO_CONFIG = dict(
         html_parse_parameters = {
             'variant': 'zh-hans',
         },
+        flagged_off = ['leaderboard'],
     )
 )
 
