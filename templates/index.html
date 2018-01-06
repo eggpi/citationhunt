@@ -74,11 +74,16 @@
       <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">{{ strings.github_link_title }}</a>
       <p>{{ strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if strings.footer else '' }}</p>
     </div>
-    <select id="lang-selector">
-      {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
-      <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
-      {% endfor %}
-    </select>
+    <div id="controls">
+      {% if strings.leaderboard_link_title %}
+      <a target="_blank" id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a>
+      {% endif %}
+      <select id="lang-selector">
+        {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
+        <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
+        {% endfor %}
+      </select>
+    </div>
     <div id="js-strings"
       {% for k, v in js_strings.items() | sort %}
         data-{{ k }}="{{ v }}"

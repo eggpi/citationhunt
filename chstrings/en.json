@@ -15,6 +15,7 @@
   "footer": "%s is made by volunteers, hosted on %s and translated via %s.",
   "user": "User",
   "edits": "Edits",
+  "leaderboard_link_title": "Leaderboard",
   "leaderboard_title": "%s Leaderboard",
   "leaderboard_description": "These are users that fixed the most snippets through %s in the past %s days. Well done!",
   "js-article-count": "$1 {{PLURAL:$1|article|articles}}",

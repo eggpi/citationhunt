@@ -127,22 +127,33 @@ button:focus {
     color: crimson;
 }
 
-#lang-selector {
+#controls {
     position: absolute;
-    font-size: 13px;
     top: 15px;
-    border: 2px solid #967A7A;
-    border-radius: 2px;
 }
 
-html[dir="ltr"] #lang-selector {
+html[dir="ltr"] #controls {
     left: auto;
     right: 30px;
 }
 
-html[dir="rtl"] #lang-selector {
+html[dir="rtl"] #controls {
     right: auto;
     left: 30px;
+}
+
+#lang-selector {
+    font-size: 13px;
+    border: 2px solid #967A7A;
+    border-radius: 2px;
+}
+
+html[dir="ltr"] #leaderboard-link {
+    margin-right: 10px;
+}
+
+html[dir="rtl"] #leaderboard-link {
+    margin-left: 10px;
 }
 
 #bottom {
