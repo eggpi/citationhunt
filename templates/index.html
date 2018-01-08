@@ -71,12 +71,12 @@
     <link href="https://tools-static.wmflabs.org/fontcdn/css?family=Fondamento" rel="stylesheet" type="text/css">
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
     <div id="footer" class="info">
-      <a target="_blank" id="github-link" href="https://github.com/eggpi/citationhunt">{{ strings.github_link_title }}</a>
+      <a id="github-link" href="https://github.com/eggpi/citationhunt">{{ strings.github_link_title }}</a>
       <p>{{ strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if strings.footer else '' }}</p>
     </div>
     <div id="controls">
       {% if strings.leaderboard_link_title and 'leaderboard' not in config.flagged_off %}
-      <a target="_blank" id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a>
+      <a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a>
       {% endif %}
       <select id="lang-selector">
         {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
