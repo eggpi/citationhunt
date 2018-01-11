@@ -20,6 +20,8 @@
 	"page_not_found": "Page non trouvée",
 	"page_not_found_text": "La page que vous regardez n’existe plus — peut-être que cette citation a déjà été trouvée ? Revenez à %s pour en savoir plus !",
 	"footer": "%s est fait par des bénévoles, est hébergé sur %s et traduit via %s.",
+	"user": "Utilisateur",
+	"edits": "Modifications",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
 	"js-keyboard-shortcut": "Raccourci clavier : %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation ajoutée|citations ajoutées}} aujourd’hui !"

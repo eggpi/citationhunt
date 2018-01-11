@@ -3,7 +3,8 @@
 		"authors": [
 			"Elisardojm",
 			"Banjo",
-			"Fitoschido"
+			"Fitoschido",
+			"Athena in Wonderland"
 		]
 	},
 	"introduction": "Axuda a atopar citas para artigos de Wikipedia!",
@@ -19,6 +20,11 @@
 	"page_not_found": "Páxina non atopada!",
 	"page_not_found_text": "A páxina que está a buscar xa non existe - tal vez esta cita xa se atopou? Volva a %s para máis!",
 	"footer": "%s está feito por voluntarios, está albergado en %s e traducido vía %s.",
+	"user": "Usuario",
+	"edits": "Edicións",
+	"leaderboard_link_title": "Os máis activos",
+	"leaderboard_title": "Os máis activos de %s",
+	"leaderboard_description": "Estes son os usuarios que corrixiron a maior parte dos fragmentos de código de %s nos últimos %s días. Excelente traballo!",
 	"js-article-count": "$1 {{PLURAL:$1|artigo|artigos}}",
 	"js-keyboard-shortcut": "Atallo de teclado: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|cita engadida|citas engadidas}} hoxe!"

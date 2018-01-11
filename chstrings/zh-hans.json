@@ -19,6 +19,11 @@
 	"page_not_found": "找不到页面！",
 	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已被找到？返回%s解决更多引用！",
 	"footer": "%s由志愿者制作，托管于%s，并由%s提供翻译。",
+	"user": "用户",
+	"edits": "编辑",
+	"leaderboard_link_title": "排行榜",
+	"leaderboard_title": "%s排行榜",
+	"leaderboard_description": "这些是在过去%s天内，通过%s修复了最多片段的用户。恭喜他们！",
 	"js-article-count": "$1个条目",
 	"js-keyboard-shortcut": "键盘快捷键：%s",
 	"js-refs-added-today": "今天一共添加了$1个{{PLURAL:$1|引用}}！"

@@ -18,6 +18,8 @@
 	"beginners_hint": "Introduces a link to begginner-friendly documentation about adding references. The %s gets replaced with the link itself.",
 	"page_not_found": "{{Identical|Page not found}}",
 	"footer": "The text at the bottom of the page. The %s get replaced with the tool name, and links to Tools Labs and translatewiki.net, respectively.",
+	"user": "{{Identical|User}}",
+	"edits": "{{Identical|Edit}}",
 	"leaderboard_title": "Title for the leaderboard page. The placeholder gets replaced with the name of the tool.",
 	"leaderboard_description": "Description for the leaderboard page. The placeholder gets replaced with the name of the tool and a number of days.",
 	"js-article-count": "{{Identical|Article}}",

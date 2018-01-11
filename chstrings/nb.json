@@ -21,6 +21,11 @@
 	"page_not_found": "Siden ble ikke funnet!",
 	"page_not_found_text": "Siden du leter etter finnes ikke lenger – kanskje noen allerede har funnet en kilde? Gå tilbake til %s for mer!",
 	"footer": "%s er lagd av frivillige, ligger på %s og oversettes på %s.",
+	"user": "Bruker",
+	"edits": "Redigeringer",
+	"leaderboard_link_title": "Toppliste",
+	"leaderboard_title": "Toppliste for %s",
+	"leaderboard_description": "Dette er brukerne som har fikset flest utdrag via %s de siste %s dagene. Godt gjort!",
 	"js-article-count": "$1 {{PLURAL:$1|artikkel|artikler}}",
 	"js-keyboard-shortcut": "Hurtigtast: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referanse|referanser}} lagt til i dag!"

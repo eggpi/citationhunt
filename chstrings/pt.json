@@ -6,7 +6,8 @@
 			"Diniscoelho",
 			"Mansil",
 			"Hamilton Abreu",
-			"Fitoschido"
+			"Fitoschido",
+			"Athena in Wonderland"
 		]
 	},
 	"introduction": "Ajude a encontrar referências para artigos da Wikipédia!",
@@ -22,6 +23,11 @@
 	"page_not_found": "Página não encontrada!",
 	"page_not_found_text": "A página que está a procurar não existe — talvez esta referência já tenha sido encontrada? Volte a %s para mais!",
 	"footer": "%s é feito por voluntários, alojado em %s e traduzido via %s.",
+	"user": "Utilizador(a)",
+	"edits": "Edições",
+	"leaderboard_link_title": "Colaboradores mais ativos",
+	"leaderboard_title": "Tabela classificativa de %s",
+	"leaderboard_description": "Estes são os utilizadores que corrigiram a maioria dos fragmentos de código de %s nos últimos %s dias. Ótimo trabalho!",
 	"js-article-count": "$1 {{PLURAL:$1|artigo|artigos}}",
 	"js-keyboard-shortcut": "Atalho de teclado: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referência adicionada|referências adicionadas}} hoje!"

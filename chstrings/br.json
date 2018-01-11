@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gwenn-Ael",
-			"Fulup"
+			"Fulup",
+			"Dishual"
 		]
 	},
 	"introduction": "Skoazellit da gavout daveennoù evit ar pennadoù Wikipedia !",
@@ -18,6 +19,10 @@
 	"page_not_found": "N'eo ket bet kavet ar bajenn !",
 	"page_not_found_text": "N'eus ket mui eus ar bajenn emaoc'h o sellet outi - Kavet eo bet an arroudenn-se dija marteze ? Distroit da %s evit gouzout hiroc'h !",
 	"footer": "Gant tud a-youl vat ez a %s en-dro, herberc'hiet war %s ha troet dre %s.",
+	"user": "Implijer",
+	"edits": "Kemmoù",
+	"leaderboard_link_title": "Renkadur",
+	"leaderboard_title": "%s Renkadur",
 	"js-article-count": "$1 {{PLURAL:$1|pennad|pennad}}",
 	"js-keyboard-shortcut": "Berradenn klavier : %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|arroud|arroud}} bet ouzhpennet hiziv !"
