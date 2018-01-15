@@ -9,9 +9,11 @@
 			"Iagocds",
 			"Eduardo Addad de Oliveira",
 			"HenriqueCrang",
-			"Fitoschido"
+			"Fitoschido",
+			"Trigonometria87"
 		]
 	},
+	"tooltitle": "Citação Hunt",
 	"introduction": "Ajude a encontrar citações para os artigos da Wikipédia!",
 	"instructions_goal": "O trecho abaixo da Wikipédia não está referenciado em nenhuma {link_start}fonte confiável{link_end}. Consegue encontrar alguma?",
 	"instructions_details": "Clique em %s para ir à Wikipédia e corrigir o trecho, ou em %s para ver outro. Verifique %s se tiver dúvidas. Boa sorte!",
@@ -25,6 +27,11 @@
 	"page_not_found": "Página não encontrada!",
 	"page_not_found_text": "A página que você está procurado não existe mais — talvez esta citação já tenha sido encontrada? Volte a %s para mais!",
 	"footer": "%s é feito por voluntários e está hospedado em %s e traduzido via %s.",
+	"user": "Usuário",
+	"edits": "Edições",
+	"leaderboard_link_title": "Colaboradores mais ativos",
+	"leaderboard_title": "Tabela classificativa de %s",
+	"leaderboard_description": "Estes são os usuários que corrigiram a maioria dos fragmentos de código de %s nos últimos %s dias. Ótimo trabalho!",
 	"js-article-count": "$1 {{PLURAL:$1|artigo|artigos}}",
 	"js-keyboard-shortcut": "Atalho de teclado: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citação adicionada|citações adicionadas}} hoje!"

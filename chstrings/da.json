@@ -18,6 +18,11 @@
 	"page_not_found": "Side ikke fundet!",
 	"page_not_found_text": "Den side du er på udkig efter findes ikke længere - måske er dette citat allerede fundet? Gå tilbage til %s for mere!",
 	"footer": "%s er lavet af frivillige, ligger på %s og ovresat via %s.",
+	"user": "Bruger",
+	"edits": "Redigeringer",
+	"leaderboard_link_title": "Topliste",
+	"leaderboard_title": "Topliste for %s",
+	"leaderboard_description": "Dette er brugere som har rettet flest stumper via %s i de sidste %s dage. Godt gjort!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artikler}}",
 	"js-keyboard-shortcut": "Genvejstast: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation|citationer}} tilføjet i dag!"

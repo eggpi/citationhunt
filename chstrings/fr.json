@@ -3,7 +3,8 @@
 		"authors": [
 			"Wladek92",
 			"Gomoko",
-			"Trial"
+			"Trial",
+			"Oupsa"
 		]
 	},
 	"tooltitle": "Chasse à la citation",
@@ -22,6 +23,9 @@
 	"footer": "%s est fait par des bénévoles, est hébergé sur %s et traduit via %s.",
 	"user": "Utilisateur",
 	"edits": "Modifications",
+	"leaderboard_link_title": "Classement",
+	"leaderboard_title": "%s Classement",
+	"leaderboard_description": "Voici les utilisateurs qui ont corrigé le plus de code dans %s durant ces %s derniers jours.",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
 	"js-keyboard-shortcut": "Raccourci clavier : %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation ajoutée|citations ajoutées}} aujourd’hui !"

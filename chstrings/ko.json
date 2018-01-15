@@ -22,6 +22,8 @@
 	"footer": "%s는 자발적인 사용자들에 의해서 만들어지고, %s에서 호스팅되며, %s를 통해 번역되었습니다.",
 	"user": "사용자",
 	"edits": "편집",
+	"leaderboard_link_title": "리더보드",
+	"leaderboard_title": "%s 리더보드",
 	"js-article-count": "$1개의 {{PLURAL:$1|문서|문서}}",
 	"js-keyboard-shortcut": "단축 키: %s",
 	"js-refs-added-today": "$1개의 {{PLURAL:$1|인용|인용}}이 오늘 추가되었습니다!"

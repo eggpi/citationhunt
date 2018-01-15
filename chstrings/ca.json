@@ -20,6 +20,7 @@
 	"page_not_found": "No s'ha trobat la pàgina!",
 	"page_not_found_text": "La pàgina que cerqueu ja no existeix — pot ser que la referència ja s'hagi trobada ? Torneu a %s per a més !",
 	"footer": "%s és fet per voluntaris, allotjat a %s i traduït via %s.",
+	"user": "Usuari",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
 	"js-keyboard-shortcut": "Drecera de teclat: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referència afegida|referències afegides}} avui!"
