@@ -23,6 +23,11 @@
 	"page_not_found": "Sidan kunde inte hittas!",
 	"page_not_found_text": "Sidan finns inte längre – referensen har kanske redan hittats? Gå tillbaka till %s för mer!",
 	"footer": "%s skapas av volontärer, körs på %s och översätts via %s.",
+	"user": "Användare",
+	"edits": "Redigeringar",
+	"leaderboard_link_title": "Topplista",
+	"leaderboard_title": "Topplista för %s",
+	"leaderboard_description": "Dessa är användare som fixade de flesta stubbarna via %s de senaste %s dagarna. Bra jobbat!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artiklar}}",
 	"js-keyboard-shortcut": "Kortkommando: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referens|referenser}} lades till idag!"

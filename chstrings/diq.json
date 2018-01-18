@@ -21,6 +21,10 @@
 	"page_not_found": "Pele nêvêniye!",
 	"page_not_found_text": "Pela ke tı cı geyrena, endi çıniya. Beno ke no vate rew ra vêniyayo. Seba zewbina melumat ra peyser şo %s!",
 	"footer": "% hetê merdımanê waşteyan ra vıraziyay, %s wayirê keyi kerdo ro u %s sero çarniyay.",
+	"user": "Karber",
+	"edits": "Vurnayışi",
+	"leaderboard_link_title": "Lista lideran",
+	"leaderboard_title": "%s Lista lideran",
 	"js-article-count": "$1 {{PLURAL:$1|meqale|meqaley}}",
 	"js-keyboard-shortcut": "Kılmekiya klavye: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|hewarnameyo ewro biyo |hewarnameyê ke ewro biyê}} cı!"

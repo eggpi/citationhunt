@@ -5,7 +5,8 @@
 			"Mainframe98",
 			"SPQRobin",
 			"Sjoerddebruin",
-			"Woodcutterty"
+			"Woodcutterty",
+			"Mar(c)"
 		]
 	},
 	"introduction": "Help referenties te vinden voor Wikipedia-pagina's!",
@@ -17,7 +18,7 @@
 	"lead_section_hint": "Deze tekst is onderdeel van de openingsparagraaf van de pagina, dus referenties zijn optioneel. Kijk op %s voor meer informatie.",
 	"category_filter_placeholder": "Zoeken naar een onderwerp.",
 	"github_link_title": "De broncode staat op GitHub",
-	"beginners_hint": "Weet je niet hoe je referenties toe kan voegen? Kijk op %s.",
+	"beginners_hint": "Weet u niet hoe u referenties kunt toevoegen? Kijk op %s.",
 	"page_not_found": "Pagina niet gevonden",
 	"page_not_found_text": "De pagina die u zoekt bestaat niet meer. Misschien is de referentie al gevonden? Ga terug naar %s voor meer informatie.",
 	"footer": "%s wordt gemaakt door vrijwilligers, gehost op %s en vertaald via %s.",

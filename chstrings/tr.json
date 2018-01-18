@@ -6,7 +6,8 @@
 			"Rapsar",
 			"Gambollar",
 			"By erdo can",
-			"Bulgu"
+			"Bulgu",
+			"Hedda"
 		]
 	},
 	"introduction": "Vikipedi maddeleri için kaynak bulma konusunda yardımcı olun!",
@@ -18,10 +19,15 @@
 	"lead_section_hint": "Bu metin, maddenin giriş bölümünün parçasıdır ve bu nedenle kaynak eklenmesi isteğe bağlı olabilir. Lütfen daha fazla bilgi için %s bakınız.",
 	"category_filter_placeholder": "Bir konu arayın.",
 	"github_link_title": "Hey! Benim kaynak kodum GitHub'da!",
-	"beginners_hint": "Nasıl kaynak ekleneceğini bilimiyor musunuz? Bkz %s.",
+	"beginners_hint": "Nasıl kaynak ekleneceğini bilmiyor musunuz? Bkz. %s.",
 	"page_not_found": "Sayfa bulunamadı!",
 	"page_not_found_text": "Aradığınız sayfa artık bulunmuyor — muhtemelen bu kaynak zaten bulunmuş olabilir mi? Daha fazla bilgi için %s geriye dönün!",
-	"footer": "%s, %s sitesinde, gönüllüler tarafından oluşturuldu ve %3 aracılığıyla çevrildi.",
+	"footer": "%s, %s sitesinde, gönüllüler tarafından oluşturuldu ve %s aracılığıyla çevrildi.",
+	"user": "Kullanıcı",
+	"edits": "Düzenlemeler",
+	"leaderboard_link_title": "Liderlik Sıralaması",
+	"leaderboard_title": "%s Liderlik Sıralaması",
+	"leaderboard_description": "Bunlar, son %s gün içinde %s ile en ufak parçaları düzenleyen kullanıcılar. Helal size!",
 	"js-article-count": "$1 madde",
 	"js-keyboard-shortcut": "Tuş takımı kısayolları: %s",
 	"js-refs-added-today": "Bugün $1 alıntı eklendi!"

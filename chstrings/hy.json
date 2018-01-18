@@ -10,5 +10,7 @@
 	"button_next": "Հաջորդ",
 	"github_link_title": "Հեյ! Իմ կոդը կա GitHub-ում!",
 	"beginners_hint": "Չգիտեք, թե ինչպես ավելացնել աղբյուրները? Տես %s",
-	"page_not_found": "Էջը չի գտնվել!"
+	"page_not_found": "Էջը չի գտնվել!",
+	"user": "Մասնակից",
+	"edits": "Խմբագրումներ"
 }
