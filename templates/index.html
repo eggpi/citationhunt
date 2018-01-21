@@ -75,7 +75,7 @@
       <p>{{ strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if strings.footer else '' }}</p>
     </div>
     <div id="controls">
-      {% if strings.leaderboard_link_title and 'leaderboard' not in config.flagged_off %}
+      {% if strings.leaderboard_link_title %}
       <a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a>
       {% endif %}
       <select id="lang-selector">

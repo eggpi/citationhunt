@@ -11,10 +11,6 @@ LeaderboardEntry = collections.namedtuple(
 
 @validate_lang_code
 def leaderboard(lang_code):
-    if 'leaderboard' in flask.g._cfg.flagged_off:
-        return flask.render_template('404.html',
-            strings = flask.g._strings)
-
     ndays = 30
     rev_ids = database.query_fixed_revisions(lang_code, ndays)
     leaderboard = []
