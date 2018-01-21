@@ -1,3 +1,6 @@
+#-*- encoding: utf-8 -*-
+from __future__ import unicode_literals
+
 import os
 os.environ['DEBUG'] = '1' # disable https redirects
 
@@ -107,7 +110,7 @@ class CitationHuntTest(unittest.TestCase):
         # Again using the new config, request zh_hans and make sure the
         # language attribute is set correctly in the response
         response = self.app.get('/zh_hans?id=' + self.sid)
-        self.assertIn('lang="zh-Hans"', response.data)
+        self.assertIn('lang="zh-Hans"', response.data.decode('utf-8'))
 
     def test_no_id_no_category(self):
         response = self.app.get('/en')
@@ -231,13 +234,14 @@ class CitationHuntTest(unittest.TestCase):
     @mock.patch('app.handlers.database.query_fixed_revisions',
         return_value = range(10))
     @mock.patch('app.handlers.database.query_rev_users',
-        return_value = ['Alice'] * 4 + ['Bob'] * 6)
+        return_value = ['Aliçe'] * 4 + ['Bob'] * 6)
     def test_leaderboard(self, *mocks):
-        response = self.app.get('/en/leaderboard.html')
-        self.assertIn('Alice', response.get_data())
-        self.assertIn('4', response.get_data())
-        self.assertIn('Bob', response.get_data())
-        self.assertIn('6', response.get_data())
+        response = self.app.get('/en/leaderboard.html').get_data().decode(
+            'utf-8')
+        self.assertIn('Aliçe', response)
+        self.assertIn('4', response)
+        self.assertIn('Bob', response)
+        self.assertIn('6', response)
 
 if __name__ == '__main__':
     unittest.main()

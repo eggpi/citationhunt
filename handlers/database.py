@@ -87,4 +87,4 @@ def query_rev_users(lang_code, rev_ids):
         cursor.execute(
             'SELECT rev_user_text FROM revision_userindex '
             'WHERE rev_user != 0 AND rev_id IN %s', (tuple(rev_ids),))
-    return [row[0] for row in cursor.fetchall()]
+    return [row[0].decode('utf-8') for row in cursor.fetchall()]
