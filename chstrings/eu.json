@@ -4,7 +4,8 @@
 			"Sator",
 			"An13sa",
 			"Subi",
-			"Theklan"
+			"Theklan",
+			"Mikel Ibaiba"
 		]
 	},
 	"introduction": "Lagundu Wikipediako artikuluentzat aipamenak bilatzen!",
@@ -20,6 +21,11 @@
 	"page_not_found": "Ez da orrialdea aurkitu!",
 	"page_not_found_text": "Bilatzen ari zaren orrialdea dagoeneko ez dago - agian aipua aurkitu izan da? Joan atzera %sra gehiagorako!",
 	"footer": "%s boluntarioek egiten dute, %s-en du ostatu eta %s bidez itzultzen da.",
+	"user": "Erabiltzailea",
+	"edits": "Aldaketak",
+	"leaderboard_link_title": "Aktiboenak",
+	"leaderboard_title": "Aktiboenak %s",
+	"leaderboard_description": "Hauek dira %s bidez mozkinak %s egunetan gehien konpondu dituzten erabiltzaileak. Ongi egina!",
 	"js-article-count": "{{PLURAL:$1|artikulu $1|$1 artikulu}}",
 	"js-keyboard-shortcut": "Teklatuko lasterbidea: %s",
 	"js-refs-added-today": "{{PLURAL:$1|Aipu bat gehitu da|$1 aipu gehitu dira}} gaur!"

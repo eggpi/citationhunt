@@ -20,6 +20,8 @@
 	"footer": "%s gëtt vu Fräiwëllege gemaach, vu(n) %s gehost an op %s iwwersat.",
 	"user": "Benotzer",
 	"edits": "Ännerungen",
+	"leaderboard_link_title": "Klassement",
+	"leaderboard_title": "%s Klassement",
 	"js-article-count": "{{PLURAL:$1|Een Artikel|$1 Artikelen}}",
 	"js-keyboard-shortcut": "Tastatur-Ofkierzung: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|Zitat gouf|Zitater goufen}} haut dobäigesat!"
