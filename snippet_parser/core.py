@@ -220,10 +220,10 @@ class SnippetParser(object):
                     if not inside_marker:
                         lxml_utils.remove_element(element)
 
+            snippet_roots = []
             if self._cfg.extract == 'snippet':
                 # We climb up from each marker to the nearest antecessor element
                 # that we can use as a snippet.
-                snippet_roots = []
                 for marker in tree.cssselect('.' + CITATION_NEEDED_MARKER_CLASS):
                     root = marker.getparent()
                     while root is not None and root.tag not in _SNIPPET_ROOT_TAGS:
@@ -235,12 +235,20 @@ class SnippetParser(object):
                     else:
                         snippet_roots = [self._make_snippet_root(root)]
             else:
-                # Keep only snippet root top-level elements within the body.
-                # This is not great as any content within, say, <blockquote>
-                # gets removed entirely, but it's good enough in most cases.
+                # Throw away the actual template, we don't need it.
+                for marker in tree.cssselect('.' + CITATION_NEEDED_MARKER_CLASS):
+                    lxml_utils.remove_element(marker)
+
+                # Keep only snippet root top-level elements within the body
+                # that have any text content (we may have created empty elements
+                # above during cleanup). This is not great as any content within,
+                # say, <blockquote> gets removed entirely, but it's good enough
+                # in most cases.
                 snippet_roots = [
-                    self._make_snippet_root(*tree.cssselect(
-                        'body > ' + ', '.join(_SNIPPET_ROOT_TAGS)))
+                    self._make_snippet_root(*(
+                        e for e in tree.cssselect(
+                            'body > ' + ', '.join(_SNIPPET_ROOT_TAGS))
+                        if e.text_content() and not e.text_content().isspace()))
                 ]
 
             snippets_in_section = set()

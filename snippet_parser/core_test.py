@@ -134,7 +134,7 @@ class SnippetParserTest(unittest.TestCase):
     def test_extract_section(self):
         self._cfg.extract = 'section'
         _, snippets = self._do_extract(
-            '{citation_needed_tmpl}<p>Full</p><p>Section</p>',
+            '<p>{citation_needed_tmpl}<p><p>Full</p><p>Section</p>',
             '{{cn}}\n\nFull\n\nSection')
         expected = '<div class="%s"><p>Full</p><p>Section</p></div>' % (
             core.SNIPPET_WRAPPER_CLASS)
