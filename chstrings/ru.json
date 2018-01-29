@@ -5,7 +5,8 @@
 			"Irus",
 			"Kareyac",
 			"Ctac",
-			"Kaganer"
+			"Kaganer",
+			"Movses"
 		]
 	},
 	"tooltitle": "Citation Hunt",
@@ -24,6 +25,9 @@
 	"footer": "%s создан добровольцами, размещён на %s и переведён с помощью %s.",
 	"user": "Участник",
 	"edits": "Правки",
+	"leaderboard_link_title": "Таблица лидеров",
+	"leaderboard_title": "Таблица лидеров %s",
+	"leaderboard_description": "Список участников, исправивших наибольшее количество фрагментов с помощью %s в последние %s дней. Так держать!",
 	"js-article-count": "$1 {{PLURAL:$1|статья|статьи|статей}}",
 	"js-keyboard-shortcut": "Сочетание клавиш: %s",
 	"js-refs-added-today": "Сегодня {{PLURAL:$1|добавлена|добавлены|добавлено}} $1 {{PLURAL:$1|ссылка на источник|ссылки на источники|ссылок на источники}}!"

@@ -11,8 +11,8 @@
 	"tooltitle": "Citation Hunt",
 	"introduction": "幫忙找找維基百科條目引用來源！",
 	"instructions_goal": "下方的維基百科段落裡沒有{link_start}可靠來源{link_end}來證明內容，您可以幫忙找找嗎？",
-	"instructions_details": "點擊%s前往維基百科來修正段落內容，或以%s來檢視下一筆。如果有問題您可查看%s。祝順心！",
-	"in_page": "「%s」頁面中：",
+	"instructions_details": "點擊%s前往維基百科來修正段落內容，或以%s來檢視下一筆。如果有問題您可查看 %s。祝順心！",
+	"in_page": "在「%s」頁面中：",
 	"button_wikilink": "這個我知道！",
 	"button_next": "下一個！",
 	"lead_section_hint": "此段文字位於條目的序言章節，可能不需引用來源。請查看 %s 獲得更多資訊。",
@@ -21,7 +21,7 @@
 	"beginners_hint": "不清楚如何新增引用文獻嗎？請參閱%s",
 	"page_not_found": "找不到頁面！",
 	"page_not_found_text": "您找尋的頁面已不存在——或許這筆引用已由別人找到？返回 %s 尋找更多頁面！",
-	"footer": "%s 是由志工們所開發、托管於 %s，並由 %s 提供翻譯。",
+	"footer": "%s 是由志工們所開發，托管於 %s，並由 %s 提供翻譯。",
 	"user": "使用者",
 	"edits": "編輯次數",
 	"leaderboard_link_title": "排行榜",
@@ -29,5 +29,5 @@
 	"leaderboard_description": "這些是透過 %s，在過去 %s 天裡做過最多次片斷修正的使用者們。做得好！",
 	"js-article-count": "$1 {{PLURAL:$1|個條目}}",
 	"js-keyboard-shortcut": "鍵盤快速鍵：%s",
-	"js-refs-added-today": "今日共添加了$1{{PLURAL:$1|個引用}}！"
+	"js-refs-added-today": "今日共添加了 $1 {{PLURAL:$1|個引用}}！"
 }

@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Sfic",
-			"Sachinkatiyar"
+			"Sachinkatiyar",
+			"Innocentbunny",
+			"Suyash.dwivedi"
 		]
 	},
 	"introduction": "विकिपीडिया के लेखों के लिए सन्दर्भ ढूंढने में सहायता करें!",
@@ -18,6 +20,11 @@
 	"page_not_found": "पृष्ठ नहीं मिला!",
 	"page_not_found_text": "आप जिस पन्ने को देखना चाहते हैं, वह उपलब्ध नहीं है — हो सकता है कि सन्दर्भ पहले ही मिल गया हो? और पन्नों के लिए %s पर वापस आयें।",
 	"footer": "%s स्वयंसेवकों द्वारा बनाया गया है, जिसे %s ने होस्ट किया है और %s से अनुवाद किया जाता है।",
+	"user": "उपयोक्ता",
+	"edits": "सम्पादन सूचि",
+	"leaderboard_link_title": "लीडरबोर्ड",
+	"leaderboard_title": "%s लीडरबोर्ड",
+	"leaderboard_description": "ये ऐसे उपयोगकर्ता हैं जो पिछले %s दिनों में %s के माध्यम से सबसे अधिक स्निपेट तय कर चुके हैं। बहुत बढ़िया!",
 	"js-article-count": "$1 {{PLURAL:$1|लेख}}",
 	"js-keyboard-shortcut": "कीबोर्ड शॉर्टकट : %s",
 	"js-refs-added-today": "आज $1 {{PLURAL:$1|सन्दर्भ}} जोड़ा गया"
