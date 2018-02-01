@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Uzdil"
+			"Uzdil",
+			"HushBeg"
 		]
 	},
 	"introduction": "ۋېكىپىدىيە قامۇسى ئۈچۈن نەقىللەرنى تېپىپ بېرىڭ!",
@@ -13,5 +14,10 @@
 	"github_link_title": "ھەي! مېنىڭ ئەسلى كودۇم GitHub تا!",
 	"beginners_hint": "نەقىلنى قانداق قوشۇشنى بىلەلمىدىڭىزمۇ؟ %s نى كۆرۈڭ.",
 	"page_not_found": "بەت تېپىلمىدى!",
+	"user": "ئىشلەتكۈچى",
+	"edits": "تەھرىرلەش",
+	"leaderboard_link_title": "شەرەپ تاختىسى",
+	"leaderboard_title": "%s شەرەپ تاختىسى",
+	"js-article-count": "$1كۈندە",
 	"js-keyboard-shortcut": "كۇنۇپكا تاختىسى قولاي كۇنۇپكىسى: %s"
 }

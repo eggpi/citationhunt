@@ -19,6 +19,11 @@
 	"page_not_found": "Nun s'alcontró la páxina",
 	"page_not_found_text": "La páxina que tas buscando yá nun esiste. ¿Seique alcontraríen yá esta cita? Vuelve a %s a por más.",
 	"footer": "%s ta fechu por voluntarios, agospiáu en %s y traducíu en %s.",
+	"user": "Usuariu",
+	"edits": "Ediciones",
+	"leaderboard_link_title": "Tableru de clasificación",
+	"leaderboard_title": "Tableru de clasificación de %s",
+	"leaderboard_description": "Estos son los usuarios que correxeron más fragmentos de códigu con %s nos últimos %s días. ¡Bien fecho!",
 	"js-article-count": "$1 {{PLURAL:$1|artículu|artículos}}",
 	"js-keyboard-shortcut": "Atayu de tecláu: %s",
 	"js-refs-added-today": "¡$1 {{PLURAL:$1|cita añadida|citas añadíes}} güei!"

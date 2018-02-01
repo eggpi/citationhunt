@@ -21,6 +21,10 @@
 	"page_not_found": "הערך לא נמצא!",
 	"page_not_found_text": "הערך שחיפשת לא קיים כבר - האם ייתכן שהמקור כבר הוכנס? חזרו ל-%s להמשך!",
 	"footer": "%s פותחה ע\"י מתנדבים, נמצאת באירוח %s ותורגמה באמצעות %s",
+	"user": "משתמש",
+	"edits": "עריכות",
+	"leaderboard_link_title": "לוח מובילים",
+	"leaderboard_title": "לוח מובילים של %s",
 	"js-article-count": "{{PLURAL:$1|ערך אחד|$1 ערכים}}",
 	"js-keyboard-shortcut": "קיצור דרך בהקלדה: %s",
 	"js-refs-added-today": "{{PLURAL:$1|מקור אחד נוסף|$1 מקורות נוספו}} היום!"
