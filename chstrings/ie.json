@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Assoc"
+		]
+	},
+	"in_page": "In pagina %s:",
+	"page_not_found": "Pagina nos found!",
+	"page_not_found_text": "The pagina tu are looking for no longer exists — perhaps this citation has already been found? Go back to %s for more!",
+	"footer": "%s is made by volunteers, hosted on %s e translated via %s.",
+	"user": "Usator",
+	"edits": "Redactj",
+	"leaderboard_description": "These are usators that fixed the most snippets through %s in the past %s days. Well done!",
+	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
+	"js-keyboard-shortcut": "Keyboard shortcut: %s"
+}

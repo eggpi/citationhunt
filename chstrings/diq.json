@@ -8,7 +8,7 @@
 		]
 	},
 	"tooltitle": "Citation Hunt",
-	"introduction": "Meqalanê Wikipedia vinayış rê peşti bıdê.",
+	"introduction": "Meqalanê Wikipediya vênayış rê peşti bıdê.",
 	"instructions_goal": "Letey Wikipediyayo cêrên be {link_start}yew çımeyo bawerdar{link_end} ra raşt nêbiyo.  Şıma şenê yew çıme bıvênê?",
 	"instructions_details": "Wikipedia de lete vurnayışi kerdışi rê %s tiyay bıploğnê yana yewnay %s bıvinê. Qandé persan %s tiyay kontrol kerê. Sıhudê şıma zaf bo!",
 	"in_page": "Pele de %s:",
@@ -25,6 +25,7 @@
 	"edits": "Vurnayışi",
 	"leaderboard_link_title": "Lista lideran",
 	"leaderboard_title": "%s Lista lideran",
+	"leaderboard_description": "Nê karberê ke %s rocanê peyênan de ebe %s ra pırtleyê tewr qıci vurnay. Şıma rê helal bo!",
 	"js-article-count": "$1 {{PLURAL:$1|meqale|meqaley}}",
 	"js-keyboard-shortcut": "Kılmekiya klavye: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|hewarnameyo ewro biyo |hewarnameyê ke ewro biyê}} cı!"

@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"LeGuyanaisPure"
+		]
+	},
+	"introduction": "Édé à trouvé dé référans pou dé artik Wikipedja !",
+	"instructions_goal": "Ègstrè-a di kod Wikipédja ki anba pa validé pa roun {link_start}sours fyab{link_end}. Ès zòt pé trouvé roun ?",
+	"instructions_details": "Kliké asou %s pou alé asou Wikipédja é korijé fragman-an di kod ou %s pou wè rounòt. Gadé %s si zòt gen dé kèstyon. Bonn chans !",
+	"in_page": "Asou paj-a %s :",
+	"button_wikilink": "A pou mo !",
+	"button_next": "Swivan !",
+	"lead_section_hint": "Sa tèks sa roun ègstrè di antèt di artik-a : si byen ki ajouté dé référans sa fakiltatif. Konsilté %s pou plis di enfòrmasyon.",
+	"category_filter_placeholder": "Sasé di oun sijè.",
+	"github_link_title": "É ! Mo kod sours asou GitHub !",
+	"beginners_hint": "Zòt pa savé kouman ajouté dé référans ? Konsilté %s.",
+	"page_not_found": "Paj pa trouvé",
+	"page_not_found_text": "Paj-a ki zòt ka gadé pa ka ègzisté òkò — pitèt ki sa sitasyon té déja trouvé ? Rouvini à %s pou an savé plis !",
+	"footer": "%s fè pa dé bénévòl, sa ébèrjé asou %s é tradjwi via %s.",
+	"user": "Itilizatò",
+	"edits": "Modifikasyon",
+	"leaderboard_link_title": "Klasman",
+	"leaderboard_title": "%s Klasman",
+	"leaderboard_description": "Men itilizatò-ya ki korijé plis di kod annan %s douran sa %s dannyé jou.",
+	"js-article-count": "$1 {{PLURAL:$1|artik}}",
+	"js-keyboard-shortcut": "Rakoursi klavyé : %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|sitasyon ajouté}} jòdla !"
+}
