@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"ArslanX"
+		]
+	},
+	"in_page": "%s макъаладан:",
+	"button_wikilink": "Тапдым!",
+	"button_next": "Гелеген!",
+	"page_not_found": "Макъала табылмагъан!",
+	"user": "Къоллавчу",
+	"edits": "Тюзлевлер",
+	"js-article-count": "$1 {{PLURAL:$1|макъала}}"
+}
