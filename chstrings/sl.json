@@ -18,5 +18,7 @@
 	"beginners_hint": "Težave pri dodajanju navedkov? Poglej na %s.",
 	"page_not_found": "Strani ni bilo mogoče najti!",
 	"page_not_found_text": "Stran, ki jo iščete, ne obstaja več. Morda je navedek že najden? Preveri na %s!",
+	"user": "Uporabnik",
+	"edits": "Urejanja",
 	"js-keyboard-shortcut": "Bližnjica na tipkovnici: %s"
 }

@@ -7,7 +7,11 @@
 	"in_page": "%s макъаладан:",
 	"button_wikilink": "Тапдым!",
 	"button_next": "Гелеген!",
+	"category_filter_placeholder": "Бу темагъа излемек.",
+	"github_link_title": "Гьей! Мени эник кодум мунда бар GitHub!",
+	"beginners_hint": "Эниклер нечик къошагъанны билмеймисен? Къара %s.",
 	"page_not_found": "Макъала табылмагъан!",
+	"page_not_found_text": "Дагъы энди ёкъ сагьифаны излейсен. Балики буну эниги табылгъанмыкен энди? Мунда %s дагъы да бар!",
 	"user": "Къоллавчу",
 	"edits": "Тюзлевлер",
 	"js-article-count": "$1 {{PLURAL:$1|макъала}}"
