@@ -19,6 +19,11 @@
 	"page_not_found": "Pagina nu a fost găsită!",
 	"page_not_found_text": "Pagina pe care o căutați nu mai există — poate că acest citat a fost găsit deja? Reveniți la %s pentru mai multe!",
 	"footer": "%s e realizat de voluntari, găzduit pe %s și tradus via %s.",
+	"user": "Utilizator",
+	"edits": "Editări",
+	"leaderboard_link_title": "Clasament",
+	"leaderboard_title": "Clasament %s",
+	"leaderboard_description": "Aceștia sunt utilizatorii care au rezolvat cele mai multe probleme din %s în ultimele %s zile. Felicitări!",
 	"js-article-count": "$1 {{PLURAL:$1|articol|articole|de articole}}",
 	"js-keyboard-shortcut": "Combinație de taste: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|sursă adăugată|surse adăugate|de surse adăugate}} astăzi!"
