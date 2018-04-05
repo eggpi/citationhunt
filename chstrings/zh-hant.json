@@ -5,7 +5,8 @@
 			"Shangkuanlc",
 			"LNDDYL",
 			"Arthur2e5",
-			"Wwycheuk"
+			"Wwycheuk",
+			"Sanmosa"
 		]
 	},
 	"tooltitle": "Citation Hunt",
@@ -22,7 +23,7 @@
 	"page_not_found": "找不到頁面！",
 	"page_not_found_text": "您找尋的頁面已不存在——或許這筆引用已由別人找到？返回 %s 尋找更多頁面！",
 	"footer": "%s 是由志工們所開發，托管於 %s，並由 %s 提供翻譯。",
-	"user": "使用者",
+	"user": "用戶",
 	"edits": "編輯次數",
 	"leaderboard_link_title": "排行榜",
 	"leaderboard_title": "%s 排行榜",
