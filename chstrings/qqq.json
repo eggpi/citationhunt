@@ -4,7 +4,8 @@
 			"Liuxinyu970226",
 			"Robby",
 			"Siebrand",
-			"Nike"
+			"Nike",
+			"Revi"
 		]
 	},
 	"introduction": "The message that appears below 'Citation Hunt' on the tool.",
@@ -21,7 +22,7 @@
 	"user": "{{Identical|User}}",
 	"edits": "{{Identical|Edit}}",
 	"leaderboard_title": "Title for the leaderboard page. The placeholder gets replaced with the name of the tool.",
-	"leaderboard_description": "Description for the leaderboard page. The placeholder gets replaced with the name of the tool and a number of days.",
+	"leaderboard_description": "Description for the leaderboard page. The first placeholder gets replaced with the name of the tool and second placeholder with the number of days.",
 	"js-article-count": "{{Identical|Article}}",
 	"js-refs-added-today": "How many citations were added today. See https://github.com/wikimedia/jquery.i18n#plurals for the syntax."
 }
