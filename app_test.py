@@ -113,12 +113,22 @@ class CitationHuntTest(unittest.TestCase):
         self.assertIn('lang="zh-Hans"', response.data.decode('utf-8'))
 
     def test_kea_redirect(self):
+        # Accept-Language: kea should redirect to pt with no snippet.
         response = self.app.get('/', headers = {'Accept-Language': 'kea,pt'})
         self.assertEquals(response.status_code, 302)
         self.assertTrue(response.location.endswith('/pt'))
 
-        response = self.app.get('/pt?id=' + self.sid)
+        # Also with snippet, but the UI should show kea strings.
+        response = self.app.get('/pt?id=' + self.sid,
+            headers = {'Accept-Language': 'kea,pt'})
         self.assertIn('lang="kea"', response.data.decode('utf-8'))
+
+    def test_pt_fallback(self):
+        # Fallback to pt-BR for ptwiki if no matching Accept-Language header
+        # is used.
+        response = self.app.get('/pt?id=' + self.sid,
+            headers = {'Accept-Language': 'en'})
+        self.assertIn('lang="pt-BR"', response.data.decode('utf-8'))
 
     def test_no_id_no_category(self):
         response = self.app.get('/en')
