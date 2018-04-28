@@ -112,6 +112,14 @@ class CitationHuntTest(unittest.TestCase):
         response = self.app.get('/zh_hans?id=' + self.sid)
         self.assertIn('lang="zh-Hans"', response.data.decode('utf-8'))
 
+    def test_kea_redirect(self):
+        response = self.app.get('/', headers = {'Accept-Language': 'kea,pt'})
+        self.assertEquals(response.status_code, 302)
+        self.assertTrue(response.location.endswith('/pt'))
+
+        response = self.app.get('/pt?id=' + self.sid)
+        self.assertIn('lang="kea"', response.data.decode('utf-8'))
+
     def test_no_id_no_category(self):
         response = self.app.get('/en')
         args = self.get_url_args(response.location)

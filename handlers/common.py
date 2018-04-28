@@ -95,7 +95,7 @@ def validate_lang_code(handler):
         flask.g._cfg = config.get_localized_config(lang_code)
         if flask.current_app.debug and 'locale' in flask.request.args:
             flask.g._strings = chstrings.get_localized_strings(
-                cfg, flask.request.args['locale'])
+                flask.g._cfg, flask.request.args['locale'])
         else:
             flask.g._lang_tag, flask.g._strings = load_strings_for_request(
                 lang_code, flask.g._cfg, accept_language_hdr)

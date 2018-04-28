@@ -154,6 +154,7 @@ _LANG_CODE_TO_CONFIG = dict(
         accept_language = [
             'pt',
             'pt-BR',
+            'kea',
         ],
 
         category_name_regexps_blacklist = [
