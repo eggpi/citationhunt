@@ -3,24 +3,21 @@
 }
 
 div.awesomplete * {
-    font-size: 14px;
+    font-size: 15px;
     font-family: inherit;
-}
-
-div.awesomplete {
-    /* should be equal to the width of the input, including border */
-    width: 450px;
     text-align: initial;
 }
 
 div.awesomplete > ul {
+    /* The two rules below make the list of articles cover the content below,
+     * rather than pushing it down the page. */
+    z-index: 255;
     position: absolute;
-    width: 444px;
+    width: 100%;
     max-height: 255px;
     overflow-y: scroll;
     overflow-x: hidden;
     list-style: none;
-    margin-top: 0;
     border: 2px solid #967A7A;
     border-top: none;
     border-radius: 0 0 2px 2px;
@@ -35,9 +32,9 @@ html[dir="rtl"] div.awesomplete > ul {
 }
 
 div.awesomplete > ul > li {
-    width: 440px;
-    padding: 3px;
+    display: flex;
     cursor: default;
+    padding: 2px 3px;
 }
 
 div.awesomplete > ul > li > div {
@@ -45,31 +42,36 @@ div.awesomplete > ul > li > div {
     text-overflow: ellipsis;
     overflow: hidden;
     background: transparent;
-    display: table-cell;
 }
 
 div.awesomplete > ul > li > div.label {
-    width: 100%;
-    max-width: 0;
+    /* This tries to be as large as it can (100:1 ratio with .npages). */
+    flex-grow: 100;
 }
 
 div.awesomplete > ul > li > div.npages {
+    /* Don't shrink */
+    flex-shrink: 0;
     color: #5f5f54;
 }
 
-html[dir="ltr"] div.awesomplete > ul > li > div.npages {
+html[dir="ltr"] div.npages {
     padding-left: 5px;
 }
 
-html[dir="rtl"] div.awesomplete > ul > li > div.npages {
+html[dir="ltr"] div.npages {
     padding-right: 5px;
 }
 
+div.awesomplete {
+    width: 100%;
+}
+
 div.awesomplete > input {
-    width: 440px;
-    padding: 4px;
-    border: 2px solid #967A7A;
-    border-radius: 2px;
+    width: 100%;
+    border: 3px solid #937E7E;
+    border-radius: 4px;
+    padding: 3px;
 }
 
 div.awesomplete > input:focus {
@@ -77,8 +79,7 @@ div.awesomplete > input:focus {
 }
 
 div.awesomplete > input.open {
-    border-bottom-color: rgba(240, 228, 236, 0.5);
-    border-radius: 2px 2px 0 0;
+    border-bottom-color: #937E7E4D;
 }
 
 div.awesomplete > ul[hidden],
@@ -95,13 +96,10 @@ div.awesomplete > ul > li[aria-selected="true"] {
 div.awesomplete mark {
     background: none;
     font-weight: bold;
+    padding: 0;
 }
 
 div.awesomplete li:hover mark {
     background: none;
     font-weight: bold;
-}
-
-.visually-hidden {
-    display: none;
 }

@@ -3,26 +3,36 @@
 <html lang="{{ lang_tag }}" dir="{{ config.lang_dir }}" data-ch-lang-code="{{ lang_code }}">
   <head>
     <title>{{ strings.leaderboard_title }}</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet"
+      href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../static/css/style.css">
   </head>
   <body>
-    <h1>{{ strings.leaderboard_title }}</h1>
-    <p class="info">{{ strings.leaderboard_description % ndays }}</p>
-    <table id="leaderboard">
-      <tr>
-        <th>{{ strings.user }}</th>
-        <th>{{ strings.edits }}</th>
-      </tr>
-    {% for user, count in leaderboard %}
-      <tr>
-        <td>
-          <a href="https://{{ config.wikipedia_domain }}/wiki/User:{{ user }}">
-            {{ user }}
-          </a>
-        </td>
-        <td class="edits">{{ count }}</td>
-      </tr>
-    {% endfor %}
-    </table>
+    <div class="container-fluid py-2">
+      <h1>{{ strings.leaderboard_title }}</h1>
+      <p class="info">{{ strings.leaderboard_description % ndays }}</p>
+      <table id="leaderboard">
+        <tr>
+          <th>{{ strings.user }}</th>
+          <th>{{ strings.edits }}</th>
+        </tr>
+      {% for user, count in leaderboard %}
+        <tr>
+          <td>
+            <a href="https://{{ config.wikipedia_domain }}/wiki/User:{{ user }}">
+              {{ user }}
+            </a>
+          </td>
+          <td class="edits">{{ count }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
   </body>
 </html>

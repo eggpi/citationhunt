@@ -1,0 +1,26 @@
+.pure-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.pure-modal-wrap {
+    background-color: #FCFCFC !important;
+    padding: 20px 20px 0 20px !important;
+}
+
+.pure-modal .pure-modal-overlay .close {
+    position: static;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    padding: 5px 0;
+    border-top: 2px solid #12120F;
+    color: #12120F;
+    line-height: 30px;
+    margin: 0;
+}
+
+.pure-modal .pure-modal-overlay .close:hover {
+    color: #362929;
+    border-top-color: #362929;
+}

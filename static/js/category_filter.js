@@ -53,32 +53,6 @@ function throttle(func, wait, options) {
   };
 };
 
-// http://stackoverflow.com/a/8079681
-function getScrollBarWidth () {
-  var inner = document.createElement('p');
-  inner.style.width = "100%";
-  inner.style.height = "200px";
-
-  var outer = document.createElement('div');
-  outer.style.position = "absolute";
-  outer.style.top = "0px";
-  outer.style.left = "0px";
-  outer.style.visibility = "hidden";
-  outer.style.width = "200px";
-  outer.style.height = "150px";
-  outer.style.overflow = "hidden";
-  outer.appendChild(inner);
-
-  document.body.appendChild(outer);
-  var w1 = inner.offsetWidth;
-  outer.style.overflow = 'scroll';
-  var w2 = inner.offsetWidth;
-  if (w1 == w2) w2 = outer.clientWidth;
-  document.body.removeChild(outer);
-
-  return w1 - w2;
-};
-
 // globals for debugging
 var awc = null;
 var cf = null;
@@ -87,7 +61,8 @@ var spinner = new Spinner({
   scale: 0.5,
   // Need this workaround for RTL
   // (https://github.com/fgnass/spin.js/issues/57)
-  left: (document.dir === 'ltr') ? '50%' : '80%'
+  left: (document.dir === 'ltr') ? '50%' : '80%',
+  position: 'absolute',
 });
 spinner.spinning = false;
 
@@ -99,18 +74,17 @@ function CategoryFilter() {
   var cin = document.getElementById("category-input");
   var chi = document.getElementById("hidden-category-input");
   var ihi = document.getElementById("hidden-id-input");
-  var scrollBarWidth = getScrollBarWidth();
 
   var xhr = null;
   var xhrCounter = 0;
   var xhrCompleted = 0;
 
   self._scheduleSpinnerStart = function(xhr) {
-    // Whatever the final height of the form ends up being (which depends on
-    // things we don't want to care about here, such as the font-size cin), make
+    // Whatever the final height of the input ends up being (which depends on
+    // things we don't want to care about here, such as the font-size), make
     // sure the spinner appears next to it, vertically centered.
     var spi = document.getElementById('spinner');
-    spi.style.height = cin.form.getBoundingClientRect().height + 'px';
+    spi.style.height = cin.getBoundingClientRect().height + 'px';
     setTimeout(function() {
       if (spinner.spinning) return;
       if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -177,7 +151,7 @@ function CategoryFilter() {
       li.innerHTML = suggestion.label.title;
     }
 
-    var ldiv = document.createElement("div");
+    var ldiv = document.createElement('div');
     ldiv.innerHTML = li.innerHTML;
     ldiv.classList.add('label');
 
@@ -185,11 +159,6 @@ function CategoryFilter() {
     var npages = suggestion.label.npages;
     if (strings.articleCount) {
       pdiv.innerText = $.i18n(strings.articleCount, npages);
-      if (document.dir === 'rtl') {
-        pdiv.style.paddingLeft = scrollBarWidth + 'px';
-      } else {
-        pdiv.style.paddingRight = scrollBarWidth + 'px';
-      }
     }
     pdiv.classList.add("npages");
 
@@ -280,7 +249,7 @@ function CategoryFilter() {
   });
 
   // We're ready, display the input!
-  cin.style.visibility = "";
+  cin.form.hidden = false;
   if (cin.autofocus) {
     // Force autofocus, looks like it doesn't work on Chrome sometimes
     cin.focus();

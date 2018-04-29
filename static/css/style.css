@@ -3,10 +3,8 @@
 }
 
 body {
-    margin: 0;
-    padding: 10px 15px;
     font-family: Helvetica, sans-serif;
-    font-size: medium;
+    font-size: 16px;
     background-color: #FCFCFC;
 }
 
@@ -14,77 +12,22 @@ body * {
     background-color: inherit;
 }
 
+/* Apparently Bootstrap's reboot.css set text-align: left unconditionally! */
+html[dir="rtl"] body {
+    text-align: right;
+}
+
 h1 {
+    font-weight: bold;
     font-family: Georgia, serif;
-    font-size: xx-large;
+    font-size: 34px;
     margin-bottom: 15px;
-}
-
-#preamble {
-    margin-top: 40px;
-}
-
-html[dir="ltr"] #preamble {
-    margin-left: 20px;
-}
-
-html[dir="rtl"] #preamble {
-    margin-right: 20px;
-}
-
-#snippet-wrapper {
-    text-align: center;
-    min-height: 64px;
-    overflow-y: hidden;
-}
-
-#snippet {
-    position: relative;
-    line-height: 20px;
-    text-align: justify;
-    max-width: 80%;  /* slightly larger than #lead-hint */
-    margin: 5px auto 0 auto;
-    max-height: 200px;
-    min-height: 110px;
-}
-
-#quotation {
-    position: absolute;
-    top: 35px;
-    font-size: 100px;
-    opacity: 0.1;
-    font-family: Fondamento, cursive;
-}
-
-html[dir="ltr"] #quotation {
-    left: -30px;
-}
-
-html[dir="rtl"] #quotation {
-    right: -30px;
-}
-
-.ch-snippet {
-    overflow-y: scroll;
-    max-height: inherit;
-}
-
-html[dir="ltr"] .ch-snippet {
-    padding-right: 5px;
-}
-
-html[dir="rtl"] .ch-snippet {
-    padding-left: 5px;
-}
-
-.ch-snippet ul, ol {
-    /* Don't indent lists */
-    list-style: inside;
-    padding: 0;
 }
 
 a {
     color: #0645AD;
+    /* Why would bootstrap unset this? :( */
+    text-decoration: underline;
 }
 
 a:focus {
@@ -99,15 +42,66 @@ button:focus {
     outline: none;
 }
 
+#in-page {
+    font-size: 17px;
+}
+
+#snippet {
+    position: relative;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: justify;
+    margin: 5px auto 0 auto;
+    max-height: 200px;
+    min-height: 110px;
+}
+
+/* text-align: justify looks ugly on very narrow screens, so we just revert back
+ * to left/right (depending on ltr/rtl) in small screens.
+ * https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints
+*/
+@media (max-width: 575.98px) {
+    #snippet {
+        text-align: unset;
+    }
+}
+
+#quotation {
+    position: absolute;
+    top: 24px;
+    font-size: 100px;
+    opacity: 0.1;
+    font-family: Fondamento, cursive;
+}
+
+html[dir="ltr"] #quotation {
+    left: -24px;
+}
+
+html[dir="rtl"] #quotation {
+    right: -24px;
+}
+
+.ch-snippet {
+    padding: 5px;
+    overflow-y: scroll;
+    max-height: inherit;
+}
+
+.ch-snippet ul, ol {
+    /* Don't indent lists */
+    list-style: inside;
+    padding: 0;
+}
+
 .button {
-    margin: 0 5px;
-    padding: 9px;
     border-radius: 4px;
     text-decoration: none;
     color: black;
     font-weight: bold;
     cursor: pointer;
-    min-width: 140px;
+    width: 100%;
+    height: 50px;
     transition: box-shadow 0.1s ease-in-out, opacity 0.1s ease-in-out;
 }
 
@@ -140,51 +134,16 @@ button:focus {
 
 #js-disabled-category-warning {
     color: crimson;
-}
-
-#controls {
-    position: absolute;
-    top: 15px;
-}
-
-html[dir="ltr"] #controls {
-    left: auto;
-    right: 30px;
-}
-
-html[dir="rtl"] #controls {
-    right: auto;
-    left: 30px;
+    text-align: center;
 }
 
 #lang-selector {
-    font-size: 13px;
-    border: 2px solid #967A7A;
+    border: 2px solid #937E7E;
     border-radius: 2px;
-}
-
-html[dir="ltr"] #leaderboard-link {
-    margin-right: 10px;
-}
-
-html[dir="rtl"] #leaderboard-link {
-    margin-left: 10px;
 }
 
 #bottom {
     margin: 0 20px;
-}
-
-/* Use text-align: center as a hack to center the contents of
- * #after-snippet, but don't propagate that to descendants.
- */
-#after-snippet {
-    margin-top: 35px;
-    text-align: center;
-}
-
-#after-snippet > div {
-    margin: 10px 10px;
 }
 
 #category-filter-wrapper {
@@ -192,53 +151,26 @@ html[dir="rtl"] #leaderboard-link {
 }
 
 #form-next {
-    display: inline-block;
-}
-
-/* Padding should be equal to the width + margin of the spinner element
- * so the input box is centered even while the spinner is hidden.
- */
-html[dir="ltr"] #form-next {
-    padding-left: 27px;
-}
-
-html[dir="rtl"] #form-next {
-    padding-right: 27px;
+    width: 100%;
 }
 
 #spinner {
-    width: 22px;
-    height: 22px;
+    /* required by spin.js */
     position: relative;
-    display: inline-block;
+    height: 22px;
+    width: 27px;
 }
 
 html[dir="ltr"] #spinner {
-    float: right;
     margin-left: 5px;
 }
 
 html[dir="rtl"] #spinner {
-    float: left;
     margin-right: 5px;
-}
-
-#lead-hint {
-    border-radius: 4px;
-    font-size: small;
-    padding: 8px;
-    background-color: #EEE2EA;
-    display: inline-block;
-    margin-top: 10px;
-    max-width: 75%; /* slightly smaller than that of #snippet */
 }
 
 .info {
     color: #5f5f54;
-}
-
-#instructions {
-    font-size: 15.5px;
 }
 
 #instructions p {
@@ -246,18 +178,13 @@ html[dir="rtl"] #spinner {
     margin: 10px 0;
 }
 
-#fixed-count-container {
-    margin-top: 20px;
-}
-
 #nfixed {
     font-weight: bold;
 }
 
 #footer {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 17px;
-    margin-top: 40px;
     text-align: center;
 }
 
@@ -271,6 +198,10 @@ html[dir="rtl"] #spinner {
     display: block;
     margin-bottom: 3px;
     font-size: 18px;
+}
+
+#leaderboard-link {
+    text-align: end;
 }
 
 #leaderboard {
@@ -302,4 +233,23 @@ html[dir="rtl"] #leaderboard td {
 #leaderboard th {
     font-weight: bold;
     font-size: 18px;
+}
+
+.snippet-notice {
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    border: 2px solid black;
+    text-align: center;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.snippet-notice:before {
+    content: "!";
+    font-size: 15px;
+}
+
+.lead-hint {
+    background-color: #EEF31A;
 }

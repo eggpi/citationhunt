@@ -3,9 +3,21 @@
 <html lang="{{ lang_tag }}" dir="{{ lang_dir }}" data-ch-lang-code="{{ lang_code }}">
   <head>
     <title>{{ strings.tooltitle }}</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="stylesheet" href="static/snippet.css">
-    <link rel="stylesheet" href="static/awesomplete.css">
+    <meta charset"utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="nofollow, noodp">
+    <meta name="description" content="{{ strings.tooltitle }} - {{ strings.introduction }}">
+
+    <link rel="stylesheet"
+      href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/css/lib/modal.css/modal.css">
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/snippet.css">
+    <link rel="stylesheet" href="static/css/modal.css">
+    <link rel="stylesheet" href="static/css/awesomplete.css">
 
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.1.1/jquery.min.js"
             integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
@@ -25,65 +37,86 @@
     <script src="static/js/lang_selector.js" defer></script>
     <script src="static/js/fixed.js" defer></script>
     <script src="static/js/shortcuts.js" defer></script>
-    <meta name="robots" content="nofollow, noodp">
-    <meta name="description" content="{{ strings.tooltitle }} - {{ strings.introduction }}">
   </head>
   <body>
-    <h1>{{ strings.tooltitle }}</h1>
-    {% if strings.instructions_goal %}
-    <div id=instructions class="info">
+    <div class="container-fluid py-2">
+      <div id="controls" class="row justify-content-end align-items-center px-3 px-sm-1 py-2 py-sm-1">
+        {% if strings.leaderboard_link_title %}
+        <div><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
+        {% endif %}
+        <select id="lang-selector" class="mx-2">
+          {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
+          <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <h1>{{ strings.tooltitle }}</h1>
+      <div id=instructions class="info">
         <p>{{ strings.instructions_goal }}</p>
         <p>{{ strings.instructions_details }}</p>
-    </div>
-    {% else %}
-    <p id="intro">{{ strings.introduction }}</p>
-    {% endif %}
-    <p id="preamble"><span id="page-title-text">{{ strings.in_page % (article_url, article_title) }}</span></p>
-    <div id="snippet-wrapper">
-        <blockquote id="snippet">
-            <div id="quotation">"</div>
-            {{ snippet }}
-        </blockquote>
-        {% if not section and strings.lead_section_hint %}<div id="lead-hint">{{ strings.lead_section_hint }}</div>{% endif %}
-    </div>
-    <div id="after-snippet">
-      <div>
-        <a href="{{ config.lang_code }}/redirect?id={{ snippet_id }}&to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
-          target="_blank"><button class="button" id="button-wikilink">{{ strings.button_wikilink }}</button></a>
-        <button form="form-next" type="submit" id="button-next" class="button">{{ strings.button_next }}</button>
       </div>
-      <div id="category-filter-wrapper">
-        <form method="GET" action="" id="form-next">
-          <input type="text" id="category-input" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ strings.category_filter_placeholder }}" style="visibility: hidden;">
-          <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
-          <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
-        </form>
-        <div id="spinner"></div>
-        <noscript>
-          <span id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</span>
-        </noscript>
-        {% if not strings.instructions_details %}
-        <p id="beginners-link-text">{{ strings.beginners_hint }}</p>
+      <div class="row ml-1 mr-1 mt-4">
+        <p id="in-page" class="col">{{ strings.in_page % (article_url, article_title) }}</p>
+        {% if not section and strings.lead_section_hint %}
+        <label for="lead-hint-modal-trigger" class="snippet-notice lead-hint"></label>
+        <div class="pure-modal">
+          <input id="lead-hint-modal-trigger" class="checkbox" type="checkbox">
+          <div class="pure-modal-overlay">
+            <label for="lead-hint-modal-trigger" class="o-close"></label>
+            <div class="pure-modal-wrap a-center">
+              <p>{{ strings.lead_section_hint }}</p>
+              <label for="lead-hint-modal-trigger" class="close">&#x2714;</label>
+            </div>
+          </div>
+        </div>
         {% endif %}
+        <div class="col-1"></div> <!-- Padding to make this align with the top right of the snippet. -->
       </div>
-      <div id="fixed-count-container" class="info" hidden></div>
+      <div class="row justify-content-center no-gutters">
+        <blockquote id="snippet" class="col-10">
+          <div id="quotation">"</div>
+          {{ snippet }}
+        </blockquote>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <div class="col-5 col-sm-4 col-lg-2">
+          <a href="{{ config.lang_code }}/redirect?id={{ snippet_id }}&to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
+            target="_blank"><button class="button" id="button-wikilink">{{ strings.button_wikilink }}</button></a>
+        </div>
+        <div class="col-5 col-sm-4 col-lg-2">
+          <button form="form-next" type="submit" id="button-next" class="button">{{ strings.button_next }}</button>
+        </div>
+      </div>
+      <div class="row mt-4 no-gutters justify-content-center">
+        <div class="col-1"></div>  <!-- Padding the same size as the spinner to keep the form centered. -->
+        <div class="col-10 col-lg-5">
+          <form method="GET" action="" id="form-next" hidden>
+            <input type="text" id="category-input" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ strings.category_filter_placeholder }}">
+            <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
+            <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
+          </form>
+          <noscript>
+            <div id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</div>
+          </noscript>
+        </div>
+        <div class="col-1">
+          <div id="spinner"></div>
+        </div>
+      </div>
+      <div id="fixed-count-container" class="info row justify-content-center mt-3" hidden></div>
+      <div class="row mt-5 justify-content-center">
+        <div class="col-10">
+          <div id="footer" class="info">
+            <a id="github-link" href="https://github.com/eggpi/citationhunt">{{ strings.github_link_title }}</a>
+            <p>{{ strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if strings.footer else '' }}</p>
+          </div>
+        </div>
+      </div>
     </div>
+
     <link href="https://tools-static.wmflabs.org/fontcdn/css?family=Fondamento" rel="stylesheet" type="text/css">
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
-    <div id="footer" class="info">
-      <a id="github-link" href="https://github.com/eggpi/citationhunt">{{ strings.github_link_title }}</a>
-      <p>{{ strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net") if strings.footer else '' }}</p>
-    </div>
-    <div id="controls">
-      {% if strings.leaderboard_link_title %}
-      <a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a>
-      {% endif %}
-      <select id="lang-selector">
-        {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
-        <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
-        {% endfor %}
-      </select>
-    </div>
+
     <div id="js-strings"
       {% for k, v in js_strings.items() | sort %}
         data-{{ k }}="{{ v }}"
