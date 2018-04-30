@@ -76,6 +76,12 @@ html[dir="rtl"] .ch-snippet {
     padding-left: 5px;
 }
 
+.ch-snippet ul, ol {
+    /* Don't indent lists */
+    list-style: inside;
+    padding: 0;
+}
+
 a {
     color: #0645AD;
 }
