@@ -1,7 +1,3 @@
-[hidden] {
-    display: none;
-}
-
 body {
     font-family: Helvetica, sans-serif;
     font-size: 16px;
@@ -176,6 +172,10 @@ html[dir="rtl"] #spinner {
 #instructions p {
     line-height: 20px;
     margin: 10px 0;
+}
+
+#fixed-count-container {
+    text-align: center;
 }
 
 #nfixed {

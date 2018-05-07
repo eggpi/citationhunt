@@ -29,7 +29,7 @@ function initFixedCounter() {
     var markup = '<span id="nfixed">' + fixed + "</span>";
     $container.html(
         $.i18n(strings.refsAddedToday, fixed).replace(fixed, markup));
-    if (fixed) $container.show();
+    if (fixed) $container.removeAttr('hidden');
   }
 
   function update() {
