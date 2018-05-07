@@ -247,7 +247,11 @@ html[dir="rtl"] #leaderboard td {
 
 .snippet-notice:before {
     content: "!";
-    font-size: 15px;
+    font-size: 16px;
+    /* line-height should match the height of .snippet-notice so
+     * this is centered.
+     */
+    line-height: 30px;
 }
 
 .lead-hint {
