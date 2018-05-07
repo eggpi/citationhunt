@@ -19,9 +19,11 @@ interface. If you want to help with that, please head over to
 ### Code changes
 
 Code changes are more than welcome too! Take a look at the
-[issues](https://github.com/eggpi/citationhunt/issues), or file your own!
+[issues](https://github.com/eggpi/citationhunt/issues), or file your own.
 
 #### Running the tests
+
+[![Build Status](https://travis-ci.org/eggpi/citationhunt.svg?branch=master)](https://travis-ci.org/eggpi/citationhunt)
 
 The `run-tests.sh` script will run all tests for you. You may want to install it
 as a pre-push hook on git:
@@ -30,7 +32,7 @@ as a pre-push hook on git:
 ln -s ../../run-tests.sh .git/hooks/pre-push
 ```
 
-Please make sure you run the tests before submitting pull requests.
+The tests are also run by Travis-CI for pull requests.
 
 #### Setting up a local Citation Hunt
 
