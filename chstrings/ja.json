@@ -6,6 +6,7 @@
 			"Omotecho"
 		]
 	},
+	"tooltitle": "Citation Hunt",
 	"introduction": "ウィキペディアの記事に出典をつけましょう！",
 	"instructions_goal": "以下はウィキペディアの記事の一部分ですが、{link_start}信頼できる情報源{link_end}が不足しています。出典をご存知ないですか？",
 	"instructions_details": "%s ボタンを押すとウィキペディアに飛び、その文を直せます。%s を押すと別の文が読み込まれます。出典の付け方に質問があれば %s をチェックしてみてください。グッドラック！",
