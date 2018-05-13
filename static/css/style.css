@@ -240,18 +240,10 @@ html[dir="rtl"] #leaderboard td {
     width: 30px;
     border-radius: 30px;
     border: 2px solid black;
+    padding: 2px 0;  /* must be equal to border */
     text-align: center;
     font-weight: bolder;
     cursor: pointer;
-}
-
-.snippet-notice:before {
-    content: "!";
-    font-size: 16px;
-    /* line-height should match the height of .snippet-notice so
-     * this is centered.
-     */
-    line-height: 30px;
 }
 
 .lead-hint {

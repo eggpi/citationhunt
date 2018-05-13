@@ -58,7 +58,7 @@
       <div class="row ml-1 mr-1 mt-4">
         <p id="in-page" class="col">{{ strings.in_page % (article_url, article_title) }}</p>
         {% if not section and strings.lead_section_hint %}
-        <label for="lead-hint-modal-trigger" class="snippet-notice lead-hint"></label>
+        <label for="lead-hint-modal-trigger" class="snippet-notice lead-hint">!</label>
         <div class="pure-modal">
           <input id="lead-hint-modal-trigger" class="checkbox" type="checkbox">
           <div class="pure-modal-overlay">
