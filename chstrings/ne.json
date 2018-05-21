@@ -23,7 +23,7 @@
 	"edits": "सम्पादनहरू",
 	"leaderboard_link_title": "अग्रतासूची",
 	"leaderboard_title": "%s अग्रतासूची",
-	"leaderboard_description": " गएको %s दिनमा यी प्रयोगकर्ताहरूले %s बाट सबै भन्दा धेरै स्निपेटहरू बनाउनु भयो!",
+	"leaderboard_description": "गएको %s दिनमा यी प्रयोगकर्ताहरूले %s बाट सबै भन्दा धेरै स्निपेटहरू बनाउनु भयो!",
 	"js-article-count": "$1 {{PLURAL:$1|लेख|लेखहरू}}",
 	"js-keyboard-shortcut": "किबोर्ड  छोटकरी: %s",
 	"js-refs-added-today": "आज $1 {{PLURAL:$1|साइटेसन|साइटेसनहरू}} थपियो!"
