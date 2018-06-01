@@ -495,6 +495,28 @@ _LANG_CODE_TO_CONFIG = dict(
         snippet_max_size = 700,
     ),
 
+    hu = dict(
+        lang_name = 'Magyar',
+        lang_dir = 'ltr',
+        database = 'huwiki_p',
+        wikipedia_domain = 'hu.wikipedia.org',
+
+        beginners_link = 'https://hu.wikipedia.org/wiki/Wikipédia:Jegyzetelés',
+        beginners_link_title = 'Wikipédia:Jegyzetelés',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Forrással_nem_rendelkező_lapok',
+        citation_needed_templates = [
+            'nincs forrás',
+            'forráskérő',
+            'Részben nincs forrás',
+            'rossz forrás',
+            'vitatott forrás',
+        ],
+        hidden_category = 'Rejtett_kategóriák',
+    ),
+
     lv = dict(
         lang_name = 'Latviešu',
         lang_dir = 'ltr',
