@@ -21,7 +21,7 @@
 	"edits": "Modifikasyon",
 	"leaderboard_link_title": "Klasman",
 	"leaderboard_title": "%s Klasman",
-	"leaderboard_description": "Men itilizatò-ya ki korijé plis di kod annan %s douran sa %s dannyé jou.",
+	"leaderboard_description": "Men itilizatò-ya ki korijé plis di kod annan {tooltitle} douran sa {days} dannyé jou.",
 	"js-article-count": "$1 {{PLURAL:$1|artik}}",
 	"js-keyboard-shortcut": "Rakoursi klavyé : %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|sitasyon ajouté}} jòdla !"

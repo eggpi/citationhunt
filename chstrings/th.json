@@ -23,7 +23,7 @@
 	"edits": "การแก้ไข",
 	"leaderboard_link_title": "ลีดเดอร์บอร์ด",
 	"leaderboard_title": "ลีดเดอร์บอร์ด %s",
-	"leaderboard_description": "มีผู้ใช้ที่แก้ไขข้อมูลชิ้นเล็กชิ้นน้อยส่วนใหญ่ผ่านทาง %s ใน %s วันที่ผ่านมา ทำได้ดีมาก!",
+	"leaderboard_description": "มีผู้ใช้ที่แก้ไขข้อมูลชิ้นเล็กชิ้นน้อยส่วนใหญ่ผ่านทาง {tooltitle} ใน {days} วันที่ผ่านมา ทำได้ดีมาก!",
 	"js-article-count": "$1 {{PLURAL:$1|บทความ}}",
 	"js-keyboard-shortcut": "แป้นลัดคีย์บอร์ด: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|การอ้างอิง}}ถูกเพิ่มแล้ววันนี้!"

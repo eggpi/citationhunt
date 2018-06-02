@@ -22,7 +22,7 @@
 	"edits": "Уредувања",
 	"leaderboard_link_title": "Предводници",
 	"leaderboard_title": "Предводници на %s",
-	"leaderboard_description": "Ова се корисниците што исправиле највеќе извадоци преку %s во изминатите %s дена. Секоја чест!",
+	"leaderboard_description": "Ова се корисниците што исправиле највеќе извадоци преку {tooltitle} во изминатите {days} дена. Секоја чест!",
 	"js-article-count": "$1 {{PLURAL:$1|статија|статии}}",
 	"js-keyboard-shortcut": "Тастатурна кратенка: %s",
 	"js-refs-added-today": "Денес {{PLURAL:$1|е додаден $1 навод|се додадени $1 наводи}}!"

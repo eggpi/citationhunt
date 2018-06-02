@@ -25,7 +25,7 @@
 	"edits": "Modifications",
 	"leaderboard_link_title": "Classement",
 	"leaderboard_title": "%s Classement",
-	"leaderboard_description": "Voici les utilisateurs qui ont corrigé le plus de code dans %s durant ces %s derniers jours.",
+	"leaderboard_description": "Voici les utilisateurs qui ont corrigé le plus de code dans {tooltitle} durant ces {days} derniers jours.",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
 	"js-keyboard-shortcut": "Raccourci clavier : %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation ajoutée|citations ajoutées}} aujourd’hui !"

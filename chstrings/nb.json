@@ -25,7 +25,7 @@
 	"edits": "Redigeringer",
 	"leaderboard_link_title": "Toppliste",
 	"leaderboard_title": "Toppliste for %s",
-	"leaderboard_description": "Dette er brukerne som har fikset flest utdrag via %s de siste %s dagene. Godt gjort!",
+	"leaderboard_description": "Dette er brukerne som har fikset flest utdrag via {tooltitle} de siste {days} dagene. Godt gjort!",
 	"js-article-count": "$1 {{PLURAL:$1|artikkel|artikler}}",
 	"js-keyboard-shortcut": "Hurtigtast: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referanse|referanser}} lagt til i dag!"

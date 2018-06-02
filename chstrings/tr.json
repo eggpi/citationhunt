@@ -27,7 +27,7 @@
 	"edits": "Düzenlemeler",
 	"leaderboard_link_title": "Liderlik Sıralaması",
 	"leaderboard_title": "%s Liderlik Sıralaması",
-	"leaderboard_description": "Bunlar, son %s gün içinde %s ile en ufak parçaları düzenleyen kullanıcılar. Helal size!",
+	"leaderboard_description": "Bunlar, son {tooltitle} gün içinde {days} ile en ufak parçaları düzenleyen kullanıcılar. Helal size!",
 	"js-article-count": "$1 madde",
 	"js-keyboard-shortcut": "Tuş takımı kısayolları: %s",
 	"js-refs-added-today": "Bugün $1 alıntı eklendi!"

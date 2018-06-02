@@ -22,7 +22,7 @@
 	"edits": "Bearbeitungen",
 	"leaderboard_link_title": "Bestenliste",
 	"leaderboard_title": "%s Bestenliste",
-	"leaderboard_description": "Dies sind Benutzer, die die meisten Schnipsel mit %s in den letzten %s Tagen behoben haben. Gut gemacht!",
+	"leaderboard_description": "Dies sind Benutzer, die die meisten Schnipsel mit {tooltitle} in den letzten {days} Tagen behoben haben. Gut gemacht!",
 	"js-article-count": "{{PLURAL:$1|Ein|$1}} Artikel",
 	"js-keyboard-shortcut": "Tastaturkürzel: %s",
 	"js-refs-added-today": "Es {{PLURAL:$1|wurde heute ein Zitat|wurden heute $1 Zitate}} hinzugefügt!"

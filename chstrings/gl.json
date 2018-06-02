@@ -24,7 +24,7 @@
 	"edits": "Edicións",
 	"leaderboard_link_title": "Os máis activos",
 	"leaderboard_title": "Os máis activos de %s",
-	"leaderboard_description": "Estes son os usuarios que corrixiron a maior parte dos fragmentos de código de %s nos últimos %s días. Excelente traballo!",
+	"leaderboard_description": "Estes son os usuarios que corrixiron a maior parte dos fragmentos de código de {tooltitle} nos últimos {days} días. Excelente traballo!",
 	"js-article-count": "$1 {{PLURAL:$1|artigo|artigos}}",
 	"js-keyboard-shortcut": "Atallo de teclado: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|cita engadida|citas engadidas}} hoxe!"

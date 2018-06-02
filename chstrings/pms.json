@@ -22,7 +22,7 @@
 	"edits": "Modìfiche",
 	"leaderboard_link_title": "Cruscòt",
 	"leaderboard_title": "%s Cruscòt",
-	"leaderboard_description": "Costi-sì a son j'utent ch'a l'han rangià pi che tuti ël còdes a travers %s ant ij %s di passà. Bin fàit!",
+	"leaderboard_description": "Costi-sì a son j'utent ch'a l'han rangià pi che tuti ël còdes a travers {tooltitle} ant ij {days} di passà. Bin fàit!",
 	"js-article-count": "$1 {{PLURAL:$1|artìcol|artìcoj}}",
 	"js-keyboard-shortcut": "Scursa për la tastadura: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|sitassion}} giontà ancheuj!"

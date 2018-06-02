@@ -24,7 +24,7 @@
 	"edits": "Muokkaukset",
 	"leaderboard_link_title": "Leaderboard",
 	"leaderboard_title": "%s Leaderboard",
-	"leaderboard_description": "Nämä ovat käyttäjiä, jotka ovat korjanneet eniten kappaleita %s avulla viimeisenä %s päivänä. Hyvin tehty!",
+	"leaderboard_description": "Nämä ovat käyttäjiä, jotka ovat korjanneet eniten kappaleita {tooltitle} avulla viimeisenä {days} päivänä. Hyvin tehty!",
 	"js-article-count": "$1 {{PLURAL:$1|artikkeli|artikkelit}}",
 	"js-keyboard-shortcut": "Pikanäppäin: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|lähdeviite|lähdeviitettä}} lisätty tänään!"

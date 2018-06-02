@@ -24,7 +24,7 @@
 	"edits": "सम्पादन सूचि",
 	"leaderboard_link_title": "लीडरबोर्ड",
 	"leaderboard_title": "%s लीडरबोर्ड",
-	"leaderboard_description": "ये ऐसे उपयोगकर्ता हैं जो पिछले %s दिनों में %s के माध्यम से सबसे अधिक स्निपेट तय कर चुके हैं। बहुत बढ़िया!",
+	"leaderboard_description": "ये ऐसे उपयोगकर्ता हैं जो पिछले {tooltitle} दिनों में {days} के माध्यम से सबसे अधिक स्निपेट तय कर चुके हैं। बहुत बढ़िया!",
 	"js-article-count": "$1 {{PLURAL:$1|लेख}}",
 	"js-keyboard-shortcut": "कीबोर्ड शॉर्टकट : %s",
 	"js-refs-added-today": "आज $1 {{PLURAL:$1|सन्दर्भ}} जोड़ा गया"

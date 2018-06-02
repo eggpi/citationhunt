@@ -25,7 +25,7 @@
 	"edits": "Aldaketak",
 	"leaderboard_link_title": "Aktiboenak",
 	"leaderboard_title": "Aktiboenak %s",
-	"leaderboard_description": "Hauek dira %s bidez mozkinak %s egunetan gehien konpondu dituzten erabiltzaileak. Ongi egina!",
+	"leaderboard_description": "Hauek dira {tooltitle} bidez mozkinak {days} egunetan gehien konpondu dituzten erabiltzaileak. Ongi egina!",
 	"js-article-count": "{{PLURAL:$1|artikulu $1|$1 artikulu}}",
 	"js-keyboard-shortcut": "Teklatuko lasterbidea: %s",
 	"js-refs-added-today": "{{PLURAL:$1|Aipu bat gehitu da|$1 aipu gehitu dira}} gaur!"

@@ -24,7 +24,7 @@
 	"edits": "Modifiche",
 	"leaderboard_link_title": "Classifica",
 	"leaderboard_title": "Classifica %s",
-	"leaderboard_description": "Questi sono utenti che hanno corretto il maggior numero di frasi tramite %s negli ultimi %s giorni. Ben fatto!",
+	"leaderboard_description": "Questi sono utenti che hanno corretto il maggior numero di frasi tramite {tooltitle} negli ultimi {days} giorni. Ben fatto!",
 	"js-article-count": "$1 {{PLURAL:$1|voce|voci}}",
 	"js-keyboard-shortcut": "Scorciatoia da tastiera: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|nota aggiunta|note aggiunte}} oggi!"

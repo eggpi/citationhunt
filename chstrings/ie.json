@@ -10,7 +10,7 @@
 	"footer": "%s is made by volunteers, hosted on %s e translated via %s.",
 	"user": "Usator",
 	"edits": "Redactj",
-	"leaderboard_description": "These are usators that fixed the most snippets through %s in the past %s days. Well done!",
+	"leaderboard_description": "These are usators that fixed the most snippets through {tooltitle} in the past {days} days. Well done!",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
 	"js-keyboard-shortcut": "Keyboard shortcut: %s"
 }

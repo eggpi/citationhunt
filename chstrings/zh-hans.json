@@ -23,7 +23,7 @@
 	"edits": "编辑",
 	"leaderboard_link_title": "排行榜",
 	"leaderboard_title": "%s排行榜",
-	"leaderboard_description": "这些是在过去%s天内，通过%s修复了最多片段的用户。恭喜他们！",
+	"leaderboard_description": "这些是在过去{tooltitle}天内，通过{days}修复了最多片段的用户。恭喜他们！",
 	"js-article-count": "$1个条目",
 	"js-keyboard-shortcut": "键盘快捷键：%s",
 	"js-refs-added-today": "今天一共添加了$1个{{PLURAL:$1|引用}}！"

@@ -24,7 +24,7 @@
 	"edits": "編集",
 	"leaderboard_link_title": "ランキング",
 	"leaderboard_title": "%sランキング",
-	"leaderboard_description": "以下は、%s を利用して過去%s日間に最も多くのスニペットを解決したユーザーです。おめでとうございます!",
+	"leaderboard_description": "以下は、{tooltitle} を利用して過去{days}日間に最も多くのスニペットを解決したユーザーです。おめでとうございます!",
 	"js-article-count": "$1 {{PLURAL:$1|記事|記事}}",
 	"js-keyboard-shortcut": "ショートカットキー: %s",
 	"js-refs-added-today": "今日は出典が$1か所追加されました！"

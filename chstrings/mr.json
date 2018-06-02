@@ -23,7 +23,7 @@
 	"edits": "संपादने",
 	"leaderboard_link_title": "पुढारीतक्ता",
 	"leaderboard_title": "%s पुढारीतक्ता",
-	"leaderboard_description": "हे ते सदस्य आहेत ज्यांनी %s वापरून अनेक स्निपेट्स गेल्या %s दिवसात दुरुस्त केली आहेत. आपल्या योगदानाबद्दल धन्यवाद!",
+	"leaderboard_description": "हे ते सदस्य आहेत ज्यांनी {tooltitle} वापरून अनेक स्निपेट्स गेल्या {days} दिवसात दुरुस्त केली आहेत. आपल्या योगदानाबद्दल धन्यवाद!",
 	"js-article-count": "$1 {{PLURAL:$1|लेख|लेख}}",
 	"js-keyboard-shortcut": "कळफलक लघुपथ:%s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|उद्धरण|उद्धरणे}} आज टाकली गेली!"

@@ -72,8 +72,9 @@ def _preprocess_variables(config, strings):
         strings['leaderboard_title'] = strings['leaderboard_title'] % (
             strings['tooltitle'])
         strings['leaderboard_description'] = (
-            strings['leaderboard_description'] % (
-                strings['tooltitle'], '%s'))
+            strings['leaderboard_description'].format(
+                tooltitle = strings['tooltitle'],
+                days = '%s'))  # The template swaps in the actual number.
 
     return strings
 

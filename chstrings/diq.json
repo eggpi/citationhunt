@@ -25,7 +25,7 @@
 	"edits": "Vurnayışi",
 	"leaderboard_link_title": "Lista lideran",
 	"leaderboard_title": "%s Lista lideran",
-	"leaderboard_description": "Nê karberê ke %s rocanê peyênan de ebe %s ra pırtleyê tewr qıci vurnay. Şıma rê helal bo!",
+	"leaderboard_description": "Nê karberê ke {tooltitle} rocanê peyênan de ebe {days} ra pırtleyê tewr qıci vurnay. Şıma rê helal bo!",
 	"js-article-count": "$1 {{PLURAL:$1|meqale|meqaley}}",
 	"js-keyboard-shortcut": "Kılmekiya klavye: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|hewarnameyo ewro biyo |hewarnameyê ke ewro biyê}} cı!"

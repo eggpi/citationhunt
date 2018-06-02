@@ -22,7 +22,7 @@
 	"edits": "دَییشدیرمه‌لر",
 	"leaderboard_link_title": "لیدرلیک سیرالاماسی",
 	"leaderboard_title": "%s لیدرلیک سیرالاماسی",
-	"leaderboard_description": "بونلار، سون %s گون ایچینده %s ایله ان چوخ پارچالاری دۆزلدن ایشلدنلردیرلر. ساغ اۆلون!",
+	"leaderboard_description": "بونلار، سون {tooltitle} گون ایچینده {days} ایله ان چوخ پارچالاری دۆزلدن ایشلدنلردیرلر. ساغ اۆلون!",
 	"js-article-count": "$1 {{PLURAL:$1|مقاله|مقاله لر}}",
 	"js-keyboard-shortcut": "کیبورد قیسایولو: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|قایناقلاما|قایناقلامالار}} بوگون آرتیریلدی!"

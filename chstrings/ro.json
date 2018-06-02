@@ -23,7 +23,7 @@
 	"edits": "Editări",
 	"leaderboard_link_title": "Clasament",
 	"leaderboard_title": "Clasament %s",
-	"leaderboard_description": "Aceștia sunt utilizatorii care au rezolvat cele mai multe probleme din %s în ultimele %s zile. Felicitări!",
+	"leaderboard_description": "Aceștia sunt utilizatorii care au rezolvat cele mai multe probleme din {tooltitle} în ultimele {days} zile. Felicitări!",
 	"js-article-count": "$1 {{PLURAL:$1|articol|articole|de articole}}",
 	"js-keyboard-shortcut": "Combinație de taste: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|sursă adăugată|surse adăugate|de surse adăugate}} astăzi!"

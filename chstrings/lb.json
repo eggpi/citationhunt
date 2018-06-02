@@ -22,7 +22,7 @@
 	"edits": "Ännerungen",
 	"leaderboard_link_title": "Klassement",
 	"leaderboard_title": "%s Klassement",
-	"leaderboard_description": "Dës Benotzer hunn déi meescht Code-Stécker an de leschte(n) %s Deeg gefléckt. Villmools Merci!",
+	"leaderboard_description": "Dës Benotzer hunn déi meescht Code-Stécker an de leschte(n) {tooltitle} Deeg gefléckt. Villmools Merci!",
 	"js-article-count": "{{PLURAL:$1|Een Artikel|$1 Artikelen}}",
 	"js-keyboard-shortcut": "Tastatur-Ofkierzung: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|Zitat gouf|Zitater goufen}} haut dobäigesat!"

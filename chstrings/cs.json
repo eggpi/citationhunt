@@ -28,7 +28,7 @@
 	"edits": "Editace",
 	"leaderboard_link_title": "Nejlepší výsledky",
 	"leaderboard_title": "%s Nejlepších výsledků",
-	"leaderboard_description": "Jedná se o uživatele, kteří opravili nejvíce úryvků pomocí %s v minulých %s dnech. Výborně!",
+	"leaderboard_description": "Jedná se o uživatele, kteří opravili nejvíce úryvků pomocí {tooltitle} v minulých {days} dnech. Výborně!",
 	"js-article-count": "$1 {{PLURAL:$1|článek|články}}",
 	"js-keyboard-shortcut": "Klávesová zkratka: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citace|citace}} byla přidána dnes!"

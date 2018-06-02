@@ -27,7 +27,7 @@
 	"edits": "編輯次數",
 	"leaderboard_link_title": "排行榜",
 	"leaderboard_title": "%s 排行榜",
-	"leaderboard_description": "這些是透過 %s，在過去 %s 天裡做過最多次片斷修正的使用者們。做得好！",
+	"leaderboard_description": "這些是透過 {tooltitle}，在過去 {days} 天裡做過最多次片斷修正的使用者們。做得好！",
 	"js-article-count": "$1 {{PLURAL:$1|個條目}}",
 	"js-keyboard-shortcut": "鍵盤快速鍵：%s",
 	"js-refs-added-today": "今日共添加了 $1 {{PLURAL:$1|個引用}}！"

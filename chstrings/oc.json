@@ -21,7 +21,7 @@
 	"edits": "Modificacions",
 	"leaderboard_link_title": "Classament",
 	"leaderboard_title": "%s Classament",
-	"leaderboard_description": "Aquí los utilizaires qu'an corregit lo mai de còdi dins %s pendent aquestes %s darrièrs jorns.",
+	"leaderboard_description": "Aquí los utilizaires qu'an corregit lo mai de còdi dins {tooltitle} pendent aquestes {days} darrièrs jorns.",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
 	"js-keyboard-shortcut": "Acorchi de clavièr : %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citacion aponduda|citacions apondudas}} uèi !"

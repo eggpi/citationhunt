@@ -27,7 +27,7 @@
 	"edits": "Redigeringar",
 	"leaderboard_link_title": "Topplista",
 	"leaderboard_title": "Topplista för %s",
-	"leaderboard_description": "Dessa är användare som fixade de flesta stubbarna via %s de senaste %s dagarna. Bra jobbat!",
+	"leaderboard_description": "Dessa är användare som fixade de flesta stubbarna via {tooltitle} de senaste {days} dagarna. Bra jobbat!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artiklar}}",
 	"js-keyboard-shortcut": "Kortkommando: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referens|referenser}} lades till idag!"

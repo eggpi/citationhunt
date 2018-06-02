@@ -21,7 +21,7 @@
 	"edits": "Mudansas",
 	"leaderboard_link_title": "Kolaboradores más ativus",
 	"leaderboard_title": "Tabela di klasifikason di %s",
-	"leaderboard_description": "Kes uzuárius li é ki koriji quasi tudu kes partis di kódigu de %s nes %s últimus dias. Bom trabadju!",
+	"leaderboard_description": "Kes uzuárius li é ki koriji quasi tudu kes partis di kódigu de {tooltitle} nes {days} últimus dias. Bom trabadju!",
 	"js-article-count": "$1 {{PLURAL:$1|artigu|artigus}}",
 	"js-keyboard-shortcut": "Atalhu di tekladu: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referensia adisionadu|referensias adisionadus}} hoji!"

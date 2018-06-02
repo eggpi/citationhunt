@@ -23,7 +23,7 @@
 	"edits": "Kemmoù",
 	"leaderboard_link_title": "Renkadur",
 	"leaderboard_title": "%s Renkadur",
-	"leaderboard_description": "Setu an implijerien o deus reizhet an niver brasañ a godoù e %s e-pad an %s deiz diwezhañ.",
+	"leaderboard_description": "Setu an implijerien o deus reizhet an niver brasañ a godoù e {tooltitle} e-pad an {days} deiz diwezhañ.",
 	"js-article-count": "$1 {{PLURAL:$1|pennad|pennad}}",
 	"js-keyboard-shortcut": "Berradenn klavier : %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|arroud|arroud}} bet ouzhpennet hiziv !"

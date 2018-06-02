@@ -24,7 +24,7 @@
 	"edits": "Edits",
 	"leaderboard_link_title": "Leaderboard",
 	"leaderboard_title": "%s Leaderboard",
-	"leaderboard_description": "These are users that fixed the most snippets through %s in the past %s days. Well done!",
+	"leaderboard_description": "These are users that fixed the most snippets through {tooltitle} in the past {days} days. Well done!",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
 	"js-keyboard-shortcut": "Keyboard shortcut: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation|citations}} added today!"

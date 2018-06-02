@@ -21,7 +21,7 @@
 	"edits": "Bewirkinge",
 	"leaderboard_link_title": "Leiderbraed",
 	"leaderboard_title": "%s Leiderbraed",
-	"leaderboard_description": "Dit zint de gebroekers die de meiste snitte höbbe gemaak gedoerendje %s in de aafgeloupe %s daag. Good gedaon!",
+	"leaderboard_description": "Dit zint de gebroekers die de meiste snitte höbbe gemaak gedoerendje {tooltitle} in de aafgeloupe {days} daag. Good gedaon!",
 	"js-article-count": "$1 {{PLURAL:$1|pagina|pagina's}}",
 	"js-keyboard-shortcut": "Sjneltoets: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|rifferensie|rifferensies}} tougeveug dezen daag!"

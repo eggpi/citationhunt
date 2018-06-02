@@ -21,7 +21,7 @@
 	"edits": "Edit",
 	"leaderboard_link_title": "Judul utamo",
 	"leaderboard_title": "%s Judul utamo",
-	"leaderboard_description": "On ma pangguna na pature ampir sude cuplikan lewat %s piga ari nalewat %s. Madung salose ibaen dohot denggan!",
+	"leaderboard_description": "On ma pangguna na pature ampir sude cuplikan lewat {tooltitle} piga ari nalewat {days}. Madung salose ibaen dohot denggan!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|sude artikel}}",
 	"js-keyboard-shortcut": "Pintasan keyboard: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation|side rujukan}} ibaen sadarion!"

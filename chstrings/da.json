@@ -22,7 +22,7 @@
 	"edits": "Redigeringer",
 	"leaderboard_link_title": "Topliste",
 	"leaderboard_title": "Topliste for %s",
-	"leaderboard_description": "Dette er brugere som har rettet flest stumper via %s i de sidste %s dage. Godt gjort!",
+	"leaderboard_description": "Dette er brugere som har rettet flest stumper via {tooltitle} i de sidste {days} dage. Godt gjort!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artikler}}",
 	"js-keyboard-shortcut": "Genvejstast: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation|citationer}} tilføjet i dag!"
