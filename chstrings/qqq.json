@@ -22,7 +22,7 @@
 	"user": "{{Identical|User}}",
 	"edits": "{{Identical|Edit}}",
 	"leaderboard_title": "Title for the leaderboard page. The placeholder gets replaced with the name of the tool.",
-	"leaderboard_description": "Description for the leaderboard page. {tooltitle} gets replaced with the name of the tool and {days} with the number of days corresponding to the leaderboard.",
+	"leaderboard_description": "{{doc-important|Do not translate \"{tooltitle}\" and \"{days}\"}}\nDescription for the leaderboard page. {tooltitle} gets replaced with the name of the tool and {days} with the number of days corresponding to the leaderboard.",
 	"js-article-count": "{{Identical|Article}}",
 	"js-refs-added-today": "How many citations were added today. See https://github.com/wikimedia/jquery.i18n#plurals for the syntax."
 }

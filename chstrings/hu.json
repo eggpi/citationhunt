@@ -5,9 +5,11 @@
 			"Tacsipacsi",
 			"BanKris",
 			"Máté",
-			"Notramo"
+			"Notramo",
+			"Adam Harangozó"
 		]
 	},
+	"tooltitle": "Forrásvadász",
 	"introduction": "Segíts forrásokat találni a Wikipédia szócikkeihez!",
 	"instructions_goal": "Az alábbi Wikipédia-részlet nincs alátámasztva egy {link_start}megbízható forrással{link_end}. Tudsz találni egyet?",
 	"instructions_details": "Kattints a(z) %s gombra, hogy eljuss a Wikipédiára és kijavíthasd a részletet vagy a(z) %s gombra egy másikért. További információkért lásd a(z) %s lapot. Sok szerencsét!",
@@ -21,6 +23,11 @@
 	"page_not_found": "A lap nem található!",
 	"page_not_found_text": "Az általad keresett oldal már nem létezik — valószínűleg már találtak hozzá forrást? Menj vissza a(z) %s oldalra többért!",
 	"footer": "%s önkéntesek által lettek létrehozva, a %s-n vannak hosztolva, és a %s használatával lett lefordítva.",
+	"user": "Felhasználó",
+	"edits": "Szerkesztések",
+	"leaderboard_link_title": "Eredményjelző",
+	"leaderboard_title": "%s Eredményjelző",
+	"leaderboard_description": "Az alábbi felhasználók adták hozzá a legtöbb forrást a {tooltitle} használatával az utóbbi {days} napban. Hajrá!",
 	"js-article-count": "$1 {{PLURAL:$1|cikk|cikkek}}",
 	"js-keyboard-shortcut": "Gyorsbillentyű: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|idézet|idézetek}} tegnap lettek hozzáadva!"
