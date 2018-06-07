@@ -28,6 +28,6 @@
 	"leaderboard_title": "Tablica liderów %s",
 	"leaderboard_description": "Ci użytkownicy poprawili najwięcej fragmentów narzędziem {tooltitle} w ciągu ostatnich {days} dni. Dobra robota!",
 	"js-article-count": "$1 {{PLURAL:$1|artykuł|artykuły|artykułów}}",
-	"js-keyboard-shortcut": "Skrót klawiaturowy:%s",
-	"js-refs-added-today": "Dzisiaj cytowano nas  $1 {{PLURAL:$1|time|times}}!"
+	"js-keyboard-shortcut": "Skrót klawiaturowy: %s",
+	"js-refs-added-today": "Dzisiaj dodano $1 {{PLURAL:$1|przypis|przypisów}}!"
 }
