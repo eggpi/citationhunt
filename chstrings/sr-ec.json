@@ -25,7 +25,7 @@
 	"edits": "Измене",
 	"leaderboard_link_title": "Поредак",
 	"leaderboard_title": "%s поретка",
-	"leaderboard_description": "Ови корисници су исправили највише исечка кроз {tooltitle} у {{PLURAL: {days}|%s прошлом дану|%s прошла дана|%s прошлих дана}}. Браво!",
+	"leaderboard_description": "Ови корисници су исправили највише исечака кроз {tooltitle} у {{PLURAL: {days}|{days} прошлом дану|{days} прошла дана|{days} прошлих дана}}. Браво!",
 	"js-article-count": "$1 {{PLURAL:$1|чланак|чланка|чланака}}",
 	"js-keyboard-shortcut": "Пречица на тастатури: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|извор је додат|извора су додата|извора је додато}} данас!"
