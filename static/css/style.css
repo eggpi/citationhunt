@@ -68,6 +68,7 @@ button:focus {
     font-size: 100px;
     opacity: 0.1;
     font-family: Fondamento, cursive;
+    z-index: 0;  /* or the top of this element may cover part of #in-page. */
 }
 
 html[dir="ltr"] #quotation {
