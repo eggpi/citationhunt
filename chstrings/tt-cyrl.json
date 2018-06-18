@@ -12,6 +12,10 @@
 	"github_link_title": "Әй! Миным чыганак код GitHub та бар!",
 	"beginners_hint": "Чыганакларны ничек куярга белмисезме? Кара моннан: %s.",
 	"page_not_found": "Бит табылмады!",
+	"user": "Кулланучы",
+	"edits": "Үзгәртүләр",
+	"leaderboard_link_title": "Алдынгылар исемлеге",
+	"leaderboard_title": "%s алдынгылар исемлеге",
 	"js-article-count": "$1 {{PLURAL:$1|мәкалә}}",
 	"js-keyboard-shortcut": "Төймәләр җыелмасы: %s",
 	"js-refs-added-today": "Бүген $1 чыганакка {{PLURAL:$1|сылтама|сылтамалар}} {{PLURAL:$1|өстәлде}}!"

@@ -19,6 +19,10 @@
 	"page_not_found": "Puslapis nerastas!",
 	"page_not_found_text": "Puslapio, kurio ieškote nebėra, galbūt citata jau buvo rasta? Grįžkite į %s!",
 	"footer": "Citation Hunt yra sukurtas savanorių, talpinamas %s ir išverstas per %s.",
+	"user": "Naudotojas",
+	"edits": "Keitimai",
+	"leaderboard_link_title": "Lyderių sąrašas",
+	"leaderboard_title": "%s Lyderių sąrašas",
 	"js-article-count": "$1 {{PLURAL:$1|straipsnis|straipsniai}}",
 	"js-keyboard-shortcut": "Spartieji klavišai: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citata|citatos}} pridėta šiandien!"
