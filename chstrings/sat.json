@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Manik Soren",
+			"Ramjit Tudu"
+		]
+	},
+	"introduction": "ᱣᱤᱠᱤᱯᱤᱰᱤᱭᱟ ᱚᱱᱚᱞᱠᱚ ᱨᱮᱱᱟᱜ ᱛᱩᱢᱟᱹᱞᱠᱚ ᱧᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱜᱚᱲᱚ!",
+	"in_page": "%s ᱥᱟᱦᱴᱟ ᱨᱮ",
+	"button_wikilink": "ᱤᱧ ᱫᱚ ᱱᱚᱣᱟᱧ ᱧᱟᱢᱠᱮᱫᱟ!",
+	"button_next": "ᱛᱟᱭᱚᱢ ᱨᱮᱱᱟᱜ!",
+	"category_filter_placeholder": "ᱥᱟᱛᱟᱢ ᱥᱮᱸᱫᱽᱨᱟᱭ ᱢᱮ",
+	"github_link_title": "ᱡᱚᱦᱟᱨ! ᱤᱧᱟᱜ ᱡᱟᱭ ᱫᱚ ᱜᱤᱴᱦᱚᱵᱽ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ !",
+	"beginners_hint": "ᱛᱩᱢᱟᱹᱞ ᱠᱟᱛᱷᱟ ᱚᱠᱟᱞᱮᱠᱟ ᱥᱮᱞᱮᱫ ᱦᱩᱭᱩᱜᱼᱟ ᱵᱟᱢ ᱵᱟᱰᱟᱭᱟ? ᱧᱮᱞᱢᱮ %s",
+	"page_not_found": "ᱥᱟᱦᱴᱟ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱟᱱᱟ!",
+	"user": "ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ",
+	"edits": "ᱥᱟᱯᱲᱟᱣᱠᱚ",
+	"js-article-count": "$1 {{PLURAL:$1|ᱚᱱᱚᱞ|ᱚᱱᱚᱞᱠᱚ}}",
+	"js-keyboard-shortcut": "ᱠᱤᱵᱳᱨᱰ ᱥᱚᱴᱠᱚᱴᱺ %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|ᱛᱩᱢᱟᱹᱞ|ᱛᱩᱢᱟᱹᱞᱠᱚ}} ᱥᱮᱞᱮᱫ ᱟᱠᱟᱱᱟ ᱛᱮᱦᱮᱧ!"
+}
