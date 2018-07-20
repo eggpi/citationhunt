@@ -224,6 +224,9 @@ function CategoryFilter() {
   })
 
   cin.addEventListener("awesomplete-close", function() {
+    if (cin.value === '') {
+      setHiddenCategoryAndNextId(this.form, cin.value);
+    }
     this.classList.remove("open");
   })
 
