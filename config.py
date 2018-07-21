@@ -140,6 +140,35 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Hidden_categories',
     ),
 
+    ar = dict(
+        lang_name = 'العربية',
+        lang_dir = 'rtl',
+        database = 'arwiki_p',
+        wikipedia_domain = 'ar.wikipedia.org',
+
+        beginners_link = 'https://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D9%87%D8%A7%D8%AF_%D8%A8%D9%85%D8%B5%D8%A7%D8%AF%D8%B1',
+        beginners_link_title = 'ويكيبيديا:الاستشهاد بمصادر',
+
+        reliable_sources_link = 'https://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D9%85%D8%B5%D8%A7%D8%AF%D8%B1_%D9%85%D9%88%D8%AB%D9%88%D9%82_%D8%A8%D9%87%D8%A7',
+
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'مقالات_ذات_عبارات_بحاجة_لمصادر',
+
+        hidden_category = 'تصنيفات_مخفية',
+
+        citation_needed_templates = [
+            'بحاجة_لمصدر',
+            'تأكيد_رأي',
+            'تأكيد_مصدر',
+            'غير_موثق',
+            'فشل_التوثيق',
+            'مصدر_ناقص',
+            'وثق_المصدر',
+        ],
+    ),
+
     pt = dict(
         lang_name = 'Português',
         lang_dir = 'ltr',
