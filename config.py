@@ -154,13 +154,19 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'مقالات ذات عبارات بحاجة لمصادر',
+        citation_needed_category = 'مقالات_ذات_عبارات_بحاجة_لمصادر',
 
-        # The name of the category for hidden categories, without the
-        # 'Category:' prefix and with underscores instead of spaces.
-        # Categories belonging to this category are typically used for
-        # maintenance and will not show up on Citation Hunt.
-        hidden_category = 'تصنيفات مخفية',
+        hidden_category = 'تصنيفات_مخفية',
+
+        citation_needed_templates = [
+            'بحاجة_لمصدر',
+            'تأكيد_رأي',
+            'تأكيد_مصدر',
+            'غير_موثق',
+            'فشل_التوثيق',
+            'مصدر_ناقص',
+            'وثق_المصدر',
+        ],
     ),
 
     pt = dict(
