@@ -57,8 +57,7 @@ class SnippetParser(object):
             'prop': 'redirects',
             'titles': '|'.join(
                 # The API resolves Template: to the relevant per-language prefix
-                'Template:' + tplname
-                for tplname in self._cfg.citation_needed_templates
+                'Template:' + tplname for tplname in templates
             ),
             'rnamespace': 10,
         }
