@@ -140,6 +140,29 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Hidden_categories',
     ),
 
+    ar = dict(
+        lang_name = 'العربية',
+        lang_dir = 'rtl',
+        database = 'arwiki_p',
+        wikipedia_domain = 'ar.wikipedia.org',
+
+        beginners_link = 'https://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D9%87%D8%A7%D8%AF_%D8%A8%D9%85%D8%B5%D8%A7%D8%AF%D8%B1',
+        beginners_link_title = 'ويكيبيديا:الاستشهاد بمصادر',
+
+        reliable_sources_link = 'https://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D9%85%D8%B5%D8%A7%D8%AF%D8%B1_%D9%85%D9%88%D8%AB%D9%88%D9%82_%D8%A8%D9%87%D8%A7',
+
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'مقالات ذات عبارات بحاجة لمصادر',
+
+        # The name of the category for hidden categories, without the
+        # 'Category:' prefix and with underscores instead of spaces.
+        # Categories belonging to this category are typically used for
+        # maintenance and will not show up on Citation Hunt.
+        hidden_category = 'تصنيفات مخفية',
+    ),
+
     pt = dict(
         lang_name = 'Português',
         lang_dir = 'ltr',
