@@ -159,13 +159,13 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'تصنيفات_مخفية',
 
         citation_needed_templates = [
-            'بحاجة_لمصدر',
-            'تأكيد_رأي',
-            'تأكيد_مصدر',
-            'غير_موثق',
-            'فشل_التوثيق',
-            'مصدر_ناقص',
-            'وثق_المصدر',
+            'بحاجة لمصدر',
+            'تأكيد رأي',
+            'تأكيد مصدر',
+            'غير موثق',
+            'فشل التوثيق',
+            'مصدر ناقص',
+            'وثق المصدر',
         ],
     ),
 
@@ -191,7 +191,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
 
         citation_needed_templates = [
-            'Carece_de_fontes',
+            'Carece de fontes',
             'Sem-fontes',
             'Sem-fontes-bpv',
             'Sem-fontes-sobre',
