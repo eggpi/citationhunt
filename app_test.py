@@ -49,6 +49,8 @@ class CitationHuntTest(unittest.TestCase):
             self.addCleanup(patcher.stop)
 
     def get_url_args(self, url):
+        if '?' not in url:
+            return {}
         return dict(kv.split('=') for kv in url[url.rfind('?')+1:].split('&'))
 
     def test_default_en_redirect_no_accept_language(self):
@@ -136,7 +138,7 @@ class CitationHuntTest(unittest.TestCase):
 
         self.assertEquals(response.status_code, 302)
         self.assertEquals(args['id'], self.sid)
-        self.assertEquals(args['cat'], app.handlers.CATEGORY_ALL.id)
+        self.assertNotIn('cat', args)
 
     def test_id_no_category(self):
         response = self.app.get('/en?id=' + self.sid)
@@ -159,8 +161,7 @@ class CitationHuntTest(unittest.TestCase):
         args = self.get_url_args(response.location)
 
         self.assertEquals(response.status_code, 302)
-        self.assertTrue('id' not in args)
-        self.assertEquals(args['cat'], app.handlers.CATEGORY_ALL.id)
+        self.assertEquals(args, {})
 
     def test_no_id_valid_category(self):
         response = self.app.get('/en?cat=' + self.cat)
@@ -175,13 +176,22 @@ class CitationHuntTest(unittest.TestCase):
             '/en?id=%s&cat=%s' % (args['id'], args['cat']))
         self.assertEquals(response.status_code, 200)
 
-    def test_id_invalid_category(self):
-        response = self.app.get('/en?id=' + self.sid + '&cat=invalid')
+    def test_no_id_empty_category(self):
+        response = self.app.get('/en?cat=')
         args = self.get_url_args(response.location)
 
         self.assertEquals(response.status_code, 302)
         self.assertEquals(args['id'], self.sid)
-        self.assertEquals(args['cat'], app.handlers.CATEGORY_ALL.id)
+        self.assertNotIn('cat', args)
+
+    def test_id_invalid_category(self):
+        response = self.app.get('/en?id=' + self.sid + '&cat=invalid')
+        args = self.get_url_args(response.location)
+
+        # Strip the invalid category
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(args['id'], self.sid)
+        self.assertNotIn('cat', args)
 
     def test_cache_control(self):
         response = self.app.get('/en?id=%s&cat=all' % self.sid)

@@ -13,9 +13,10 @@ Category = collections.namedtuple('Category', ['id', 'title'])
 CATEGORY_ALL = Category('all', '')
 
 def get_category_by_id(lang_code, cat_id):
-    if cat_id == CATEGORY_ALL.id:
+    if cat_id in ('', None) or cat_id == CATEGORY_ALL.id:
         return CATEGORY_ALL
     c = database.query_category_by_id(lang_code, cat_id)
+    # Normalize invalid categories to 'all'
     return Category(*c) if c is not None else None
 
 def select_random_id(lang_code, cat = CATEGORY_ALL):
@@ -62,16 +63,11 @@ def citation_hunt(lang_code):
     if flask.current_app.debug:
         lang_dir = flask.request.args.get('dir', lang_dir)
 
-    if cat is not None:
-        cat = get_category_by_id(lang_code, cat)
-        if cat is None:
-            # invalid category, normalize to "all" and try again by id
-            cat = CATEGORY_ALL
-            return flask.redirect(
-                flask.url_for('citation_hunt',
-                    lang_code = lang_code, id = id, cat = cat.id))
-    else:
-        cat = CATEGORY_ALL
+    cat = get_category_by_id(lang_code, cat)
+    if cat is None:
+        # Invalid category, try again by id.
+        return flask.redirect(
+            flask.url_for('citation_hunt', id = id, lang_code = lang_code))
 
     if id is not None:
         sinfo = database.query_snippet_by_id(lang_code, id)
@@ -86,8 +82,7 @@ def citation_hunt(lang_code):
             assert cat is not CATEGORY_ALL
             return flask.redirect(
                 flask.url_for('citation_hunt',
-                    id = id, cat = CATEGORY_ALL.id,
-                    lang_code = lang_code))
+                    id = id, lang_code = lang_code))
         article_url_path = urllib.quote(
             e(urlparse.urlparse(aurl).path.lstrip('/')))
         return flask.render_template('index.html',
@@ -104,9 +99,11 @@ def citation_hunt(lang_code):
             js_strings = strings['js'])
 
     id = select_random_id(lang_code, cat)
+    redirect_params = {'id': id, 'lang_code': lang_code}
+    if cat is not CATEGORY_ALL:
+        redirect_params['cat'] = cat.id
     return flask.redirect(
-        flask.url_for('citation_hunt',
-            id = id, cat = cat.id, lang_code = lang_code))
+        flask.url_for('citation_hunt', **redirect_params))
 
 @validate_lang_code
 def search_category(lang_code):
