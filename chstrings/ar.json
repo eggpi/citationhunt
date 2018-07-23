@@ -8,11 +8,12 @@
 			"UpDownUp",
 			"Meno25",
 			"Mido",
-			"Bekmaw"
+			"Bekmaw",
+			"Amire80"
 		]
 	},
 	"introduction": "ساعد في العثور على استشهادات لمقالات ويكيبيديا!",
-	"instructions_goal": "مقتطف ويكيبيديا أدناه لا يتضمّن مصدرًا موثوقًا {link_start}reliable source{link_end} هل بإمكانك العثور على مصدر واحد؟",
+	"instructions_goal": "مقتطف ويكيبيديا أدناه لا يتضمّن مصدرًا موثوقًا {link_start}مصدر موثوق{link_end} هل بإمكانك العثور على مصدر واحد؟",
 	"instructions_details": "إضغط(ي) على %s للتّوجّه إلى ويكيبيديا و تصليح المقتطف، أو على %s لمعاينة مقتطف آخر. راجع(ي) %s إذا كانت لديك أسئلة. بالتّوفيق!",
 	"in_page": "في الصّفحة التّالية %s:",
 	"button_wikilink": "أعرف مصدرًا مناسبًا!",
@@ -29,7 +30,7 @@
 	"leaderboard_link_title": "المتصدّرون",
 	"leaderboard_title": "%s المتصدّرون",
 	"leaderboard_description": "هنا قائمة بالمستخدمين الذين عدّلوا المقاطع بواسطة {tooltitle} خلال الأيّام الأخيرة. كلّ الاحترام!",
-	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
+	"js-article-count": "$1 {{PLURAL:$1|مقالة|مقالات}}",
 	"js-keyboard-shortcut": "اختصار لوحة المفاتيح: %s",
 	"js-refs-added-today": "\n$1 {{PLURAL:$1|citation|citations}} أُضيفت اليوم!"
 }
