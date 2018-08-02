@@ -73,7 +73,6 @@ function CategoryFilter() {
 
   var cin = document.getElementById("category-input");
   var chi = document.getElementById("hidden-category-input");
-  var ihi = document.getElementById("hidden-id-input");
 
   var xhr = null;
   var xhrCounter = 0;
@@ -191,7 +190,8 @@ function CategoryFilter() {
   }
 
   function setHiddenCategoryAndNextId(formElem, nextCategoryId) {
-    if (chi.value !== nextCategoryId) {
+    var ihi = document.getElementById("hidden-id-input");
+    if (ihi !== null && chi.value !== nextCategoryId) {
       formElem.removeChild(ihi);
     }
     chi.value = nextCategoryId;
