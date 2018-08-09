@@ -695,6 +695,24 @@ _LANG_CODE_TO_CONFIG = dict(
         html_parse_parameters = {
             'variant': 'zh-hans',
         },
+    ),
+
+    ko = dict(
+        lang_name = '한국어',
+        lang_dir = 'ltr',
+
+        database = 'kowiki_p',
+        wikipedia_domain = 'ko.wikipedia.org',
+        beginners_link = 'https://ko.wikipedia.org/wiki/위키백과:길라잡이',
+        beginners_link_title = '위키백과:길라잡이',
+        reliable_sources_link = 'https://ko.wikipedia.org/wiki/위키백과:신뢰할 수 있는 출처',
+        lead_section_policy_link = 'https://ko.wikipedia.org/wiki/위키백과:편집 지침/도입부',
+        lead_section_policy_link_title = '도입부 편집 지침',
+        hidden_category = '숨은_분류',
+        citation_needed_category = '문장에_출처가_필요한_글',
+        citation_needed_templates = [
+            '출처'
+        ],
     )
 )
 
