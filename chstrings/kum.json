@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"ArslanX"
+			"ArslanX",
+			"Arsenekoumyk"
 		]
 	},
 	"in_page": "%s макъаладан:",
 	"button_wikilink": "Тапдым!",
-	"button_next": "Гелеген!",
+	"button_next": "Сонггъу!",
 	"category_filter_placeholder": "Бу темагъа излемек.",
 	"github_link_title": "Гьей! Мени эник кодум мунда бар GitHub!",
 	"beginners_hint": "Эниклер нечик къошагъанны билмеймисен? Къара %s.",
