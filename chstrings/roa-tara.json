@@ -17,6 +17,11 @@
 	"page_not_found": "Vôsce non acchiate!",
 	"page_not_found_text": "'A pàgene ca ste cercave non g'esiste cchiù - pò essere ca sta citazione ha state ggià acchiate? Tuérne sus a %s pe otre!",
 	"footer": "%s ga state fatte da volondarije, ospitate sus a %s e tradotte cu %s.",
+	"user": "Utende",
+	"edits": "Cangiaminde",
+	"leaderboard_link_title": "Classifeche",
+	"leaderboard_title": "Classifeche %s",
+	"leaderboard_description": "Chiste so utinde ca onne corrette 'u numere cchiù ierte de frase ausanne {tooltitle} jndr'à l'urteme {days} sciurne. Bella cose!",
 	"js-article-count": "$1 {{PLURAL:$1|vôsce}}",
 	"js-keyboard-shortcut": "Scorciatoje cu le taste: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citazzione|citazziune}} mise osce!"
