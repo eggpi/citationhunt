@@ -29,11 +29,10 @@ def _preprocess_variables(config, strings):
     strings['beginners_hint'] = \
         flask.Markup(strings['beginners_hint']) % beginners_hint_link
 
-    if '404' not in config.flagged_off:
-        strings['page_not_found_text'] = \
-            flask.Markup(strings['page_not_found_text']) % _link(
-                'https://tools.wmflabs.org/citationhunt/' + config.lang_code,
-                'Citation Hunt', "_self")
+    strings['page_not_found_text'] = \
+        flask.Markup(strings['page_not_found_text']) % _link(
+            'https://tools.wmflabs.org/citationhunt/' + config.lang_code,
+            'Citation Hunt', "_self")
 
     strings.setdefault('instructions_goal', '')
     strings.setdefault('instructions_details', '')
