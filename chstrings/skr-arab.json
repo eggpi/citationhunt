@@ -19,6 +19,9 @@
 	"footer": "%s رضا کاراں بݨائے، %s ہوسٹ تھیا تے %s دے ذریعے ترجمہ تھئے۔",
 	"user": "ورتݨ آلا",
 	"edits": "تبدیلیاں",
+	"leaderboard_link_title": "لیڈربورڈ",
+	"leaderboard_title": "%s لیڈربورڈ",
+	"leaderboard_description": "انہاں ورتݨ آلیاں پچھلے ݙیہاں{days}وچ {tooltitle} دے ذریعے ٻہوں سارے سنیپِٹ ٹھیک کیتے ہن۔",
 	"js-article-count": "$1 {{جمع:$1|مضمون|مقالے}}",
 	"js-keyboard-shortcut": "کی بورڈ شارٹ کٹ:%s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|حوالہ|حوالے}} اڄ شامل تھئے!"
