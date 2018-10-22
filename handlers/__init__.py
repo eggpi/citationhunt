@@ -11,3 +11,4 @@ from common import *
 from citationhunt import *
 from stats import *
 from leaderboard import *
+from intersections import *

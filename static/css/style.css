@@ -151,18 +151,16 @@ html[dir="rtl"] #quotation {
     width: 100%;
 }
 
-#spinner {
+.spinner {
     /* required by spin.js */
     position: relative;
-    height: 22px;
-    width: 27px;
 }
 
-html[dir="ltr"] #spinner {
+html[dir="ltr"] #category-filter-spinner {
     margin-left: 5px;
 }
 
-html[dir="rtl"] #spinner {
+html[dir="rtl"] #category-filter-spinner {
     margin-right: 5px;
 }
 

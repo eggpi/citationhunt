@@ -12,8 +12,11 @@ config.get_global_config().flagged_off.append('stats')
 import app
 import mock
 
+import requests
+
 import time
 import datetime
+import json
 import unittest
 
 class CitationHuntTest(unittest.TestCase):
@@ -22,14 +25,17 @@ class CitationHuntTest(unittest.TestCase):
 
         self.sid = '93b6f3cf'
         self.cat = 'b5e1a25d'
+        self.inter = 'c4a1e27d'
         self.fake_snippet_info = (
             'Some snippet', 'Some section',
             'https://en.wikipedia.org/wiki/A', 'Some title')
 
         methods_and_return_values = [
             ('query_snippet_by_category', (self.sid,)),
+            ('query_snippet_by_intersection', (self.sid,)),
             ('query_random_snippet', (self.sid,)),
-            ('query_next_id', (self.sid[::-1],)),
+            ('query_next_id_in_category', (self.sid[::-1],)),
+            ('query_next_id_in_intersection', (self.sid[::-1],)),
             ('query_fixed_snippets', 6)
         ]
 
@@ -193,6 +199,29 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEquals(args['id'], self.sid)
         self.assertNotIn('cat', args)
 
+    def test_no_id_valid_intersection(self):
+        response = self.app.get('/en?custom=' + self.inter)
+        args = self.get_url_args(response.location)
+
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(args['id'], self.sid)
+        self.assertEquals(args['custom'], self.inter)
+
+        # Now request the snippet, should be a 200
+        response = self.app.get(
+            '/en?id=%s&custom=%s' % (args['id'], args['custom']))
+        self.assertEquals(response.status_code, 200)
+
+    # Shouldn't really happen, just make sure we don't crash or anything.
+    def test_category_and_intersection(self):
+        response = self.app.get('/en?custom=' + self.inter + '&cat=' + self.cat)
+        args = self.get_url_args(response.location)
+
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(args['id'], self.sid)
+        self.assertEquals(args['cat'], self.cat)
+        self.assertNotIn('custom', args)
+
     def test_cache_control(self):
         response = self.app.get('/en?id=%s&cat=all' % self.sid)
         self.assertEquals(response.status_code, 200)
@@ -270,6 +299,82 @@ class CitationHuntTest(unittest.TestCase):
         self.assertIn('4', response)
         self.assertIn('Bob', response)
         self.assertIn('6', response)
+
+    def test_broken_intersection_input(self):
+        broken_inputs = [
+            '',
+            {'page_ids': ''},
+            {'page_titles': ''},
+            {'petscan_id': ''},
+            {'page_ids': []},
+            {'page_titles': []},
+            {'psid': []},
+            {'psid': 'invalid'},
+        ]
+        for bi in broken_inputs:
+            response = json.loads(
+                self.app.post('/en/intersection',
+                    data = json.dumps(bi),
+                    headers = {'Content-Type': 'application/json'}).data)
+            self.assertEquals(response, {'error': 'Invalid request'})
+
+    @mock.patch('app.handlers.intersections.requests.get')
+    @mock.patch('app.handlers.database.create_intersection')
+    def test_petscan_ok(self, mock_create_intersection, mock_get):
+        mock_response = mock_get()
+        mock_response.json.return_value = {
+            '*': [{'a': {'*': [{'id': i} for i in range(10)]}}]}
+        mock_create_intersection.return_value = (self.inter, range(5))
+        response = json.loads(
+            self.app.post('/en/intersection',
+                data = json.dumps({'psid': '123456'}),
+                headers = {'Content-Type': 'application/json'}).data)
+        self.assertEquals(response['id'], self.inter)
+        self.assertEquals(response['page_ids'], range(5))
+        self.assertEquals(response['ttl_days'],
+            config.get_global_config().intersection_expiration_days)
+
+    @mock.patch('app.handlers.intersections.requests.get')
+    def test_petscan_timeout(self, mock_get):
+        mock_get.side_effect = requests.exceptions.Timeout
+        response = json.loads(
+            self.app.post('/en/intersection',
+                data = json.dumps({'psid': '123456'}),
+                headers = {'Content-Type': 'application/json'}).data)
+        self.assertEquals(response['id'], '')
+        self.assertEquals(response['page_ids'], [])
+        self.assertEquals(response['ttl_days'],
+            config.get_global_config().intersection_expiration_days)
+
+    @mock.patch('app.handlers.intersections.requests.get')
+    def test_petscan_no_articles(self, mock_get):
+        mock_response = mock_get()
+        mock_response.json.return_value = {'*': [{'a': {'*': []}}]}
+        response = json.loads(
+            self.app.post('/en/intersection',
+                data = json.dumps({'psid': '123456'}),
+                headers = {'Content-Type': 'application/json'}).data)
+        self.assertEquals(response['id'], '')
+        self.assertEquals(response['page_ids'], [])
+        self.assertEquals(response['ttl_days'],
+            config.get_global_config().intersection_expiration_days)
+
+    @mock.patch('app.handlers.intersections.requests.get')
+    @mock.patch('app.handlers.database.create_intersection')
+    def test_petscan_no_known_articles(
+        self, mock_create_intersection, mock_get):
+        mock_response = mock_get()
+        mock_response.json.return_value = {
+            '*': [{'a': {'*': [{'id': i} for i in range(10)]}}]}
+        mock_create_intersection.return_value = ('', [])
+        response = json.loads(
+            self.app.post('/en/intersection',
+                data = json.dumps({'psid': '123456'}),
+                headers = {'Content-Type': 'application/json'}).data)
+        self.assertEquals(response['id'], '')
+        self.assertEquals(response['page_ids'], [])
+        self.assertEquals(response['ttl_days'],
+            config.get_global_config().intersection_expiration_days)
 
 if __name__ == '__main__':
     unittest.main()

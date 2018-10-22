@@ -31,6 +31,18 @@ _GLOBAL_CONFIG = dict(
     stats_max_age_days = 90,
 
     user_agent = 'citationhunt (https://tools.wmflabs.org/citationhunt)',
+
+    petscan_url = 'https://petscan.wmflabs.org',
+
+    petscan_timeout_s = 180,
+
+    petscan_depth = 10,
+
+    # The maximum number of articles to import into an intersection.
+    intersection_max_size = 4096,
+
+    # How long before an intersection is deleted from the database.
+    intersection_expiration_days = 30,
 )
 
 # A base configuration that all languages "inherit" from.
@@ -747,6 +759,13 @@ LANG_CODES_TO_ACCEPT_LANGUAGE = {
 assert len(
     set.union(set(), *LANG_CODES_TO_ACCEPT_LANGUAGE.values())
 ) == sum(map(len, LANG_CODES_TO_ACCEPT_LANGUAGE.values()))
+
+def make_petscan_url(cfg):
+    language = cfg.wikipedia_domain.replace('.wikipedia.org', '')
+    return (cfg.petscan_url +
+        '?language=' + language +
+        '&depth=' + str(cfg.petscan_depth) +
+        '&category=' + cfg.citation_needed_category)
 
 def get_global_config():
     return Config(**_GLOBAL_CONFIG)

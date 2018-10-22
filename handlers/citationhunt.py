@@ -19,10 +19,12 @@ def get_category_by_id(lang_code, cat_id):
     # Normalize invalid categories to 'all'
     return Category(*c) if c is not None else None
 
-def select_random_id(lang_code, cat = CATEGORY_ALL):
+def select_random_id(lang_code, category, intersection):
     ret = None
-    if cat is not CATEGORY_ALL:
-        ret = database.query_snippet_by_category(lang_code, cat.id)
+    if category is not CATEGORY_ALL:
+        ret = database.query_snippet_by_category(lang_code, category.id)
+    elif intersection:
+        ret = database.query_snippet_by_intersection(lang_code, intersection)
 
     if ret is None:
         # Try to pick one id at random. For small datasets, the probability
@@ -36,32 +38,41 @@ def select_random_id(lang_code, cat = CATEGORY_ALL):
     assert ret and len(ret) == 1
     return ret[0]
 
-def select_next_id(lang_code, curr_id, cat = CATEGORY_ALL):
-    if cat is not CATEGORY_ALL:
-        ret = database.query_next_id(lang_code, curr_id, cat.id)
-        if ret is None:
-            # curr_id doesn't belong to the category
-            return None
-        assert ret and len(ret) == 1
-        next_id = ret[0]
-    else:
+def select_next_id(lang_code, curr_id, category, intersection):
+    if category is CATEGORY_ALL and not intersection:
         next_id = curr_id
         for i in range(3): # super paranoid :)
-            next_id = select_random_id(lang_code, cat)
+            next_id = select_random_id(lang_code, category, intersection)
             if next_id != curr_id:
                 break
-    return next_id
+        return next_id
+    if category is not CATEGORY_ALL:
+        ret = database.query_next_id_in_category(
+            lang_code, curr_id, category.id)
+    else:
+        assert intersection
+        ret = database.query_next_id_in_intersection(
+            lang_code, curr_id, intersection)
+    if ret is None:
+        # curr_id doesn't belong to the category or intersection
+        return None
+    assert ret and len(ret) == 1
+    return ret[0]
 
 @validate_lang_code
 def citation_hunt(lang_code):
     id = flask.request.args.get('id')
     cat = flask.request.args.get('cat')
+    inter = flask.request.args.get('custom', '')
     cfg = flask.g._cfg
     strings = flask.g._strings
 
     lang_dir = cfg.lang_dir
     if flask.current_app.debug:
         lang_dir = flask.request.args.get('dir', lang_dir)
+
+    if inter and cat:
+        inter = ''
 
     cat = get_category_by_id(lang_code, cat)
     if cat is None:
@@ -76,10 +87,10 @@ def citation_hunt(lang_code):
             flask.abort(404)
         snippet, section, aurl, atitle = sinfo
         snippet = flask.Markup(snippet)
-        next_snippet_id = select_next_id(lang_code, id, cat)
+        next_snippet_id = select_next_id(lang_code, id, cat, inter)
         if next_snippet_id is None:
-            # the snippet doesn't belong to the category!
-            assert cat is not CATEGORY_ALL
+            # snippet doesn't belong to the category or intersection!
+            assert inter or cat is not CATEGORY_ALL
             return flask.redirect(
                 flask.url_for('citation_hunt',
                     id = id, lang_code = lang_code))
@@ -90,6 +101,7 @@ def citation_hunt(lang_code):
             section = section, article_url = aurl,
             article_url_path = article_url_path,
             article_title = atitle, current_category = cat,
+            current_custom = inter,
             next_snippet_id = next_snippet_id,
             config = cfg,
             lang_tag = flask.g._lang_tag,
@@ -98,10 +110,12 @@ def citation_hunt(lang_code):
             strings = strings,
             js_strings = strings['js'])
 
-    id = select_random_id(lang_code, cat)
+    id = select_random_id(lang_code, cat, inter)
     redirect_params = {'id': id, 'lang_code': lang_code}
     if cat is not CATEGORY_ALL:
         redirect_params['cat'] = cat.id
+    elif inter:
+        redirect_params['custom'] = inter
     return flask.redirect(
         flask.url_for('citation_hunt', **redirect_params))
 

@@ -57,16 +57,16 @@ function throttle(func, wait, options) {
 var awc = null;
 var cf = null;
 
-var spinner = new Spinner({
+var categoryFilterSpinner = new Spinner({
   scale: 0.5,
   // Need this workaround for RTL
   // (https://github.com/fgnass/spin.js/issues/57)
   left: (document.dir === 'ltr') ? '50%' : '80%',
   position: 'absolute',
 });
-spinner.spinning = false;
+categoryFilterSpinner.spinning = false;
 
-function CategoryFilter() {
+function CategoryFilter(spinner) {
   var self = this;
   var lang_code = document.documentElement.dataset.chLangCode;
   var strings = document.getElementById("js-strings").dataset;
@@ -82,8 +82,9 @@ function CategoryFilter() {
     // Whatever the final height of the input ends up being (which depends on
     // things we don't want to care about here, such as the font-size), make
     // sure the spinner appears next to it, vertically centered.
-    var spi = document.getElementById('spinner');
+    var spi = document.getElementById('category-filter-spinner');
     spi.style.height = cin.getBoundingClientRect().height + 'px';
+    spi.style.width = spi.style.height;
     setTimeout(function() {
       if (spinner.spinning) return;
       if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -189,12 +190,31 @@ function CategoryFilter() {
     return sugg1.label.title.localeCompare(sugg2.label.title);
   }
 
+  function confirmBeforeLeavingCustom(nextCategoryId) {
+    var customhi = document.getElementById("hidden-custom-input");
+    var leaving = true;
+    if (nextCategoryId != 'all') {
+      if (customhi.value) {
+        leaving = window.confirm(strings.leavingCustom);
+      }
+      if (leaving) {
+        // Disable the hidden input so we don't end up with a &custom= in the
+        // URL. This is purely for cosmetic reasons as the backend gives
+        // precedence to a category id if it's present. We want to disable
+        // not remove because removing breaks the back button.
+        custom.disabled = true;
+      }
+    }
+    return leaving;
+  }
+
   function setHiddenCategoryAndNextId(formElem, nextCategoryId) {
     var ihi = document.getElementById("hidden-id-input");
     if (ihi !== null && chi.value !== nextCategoryId) {
       formElem.removeChild(ihi);
     }
     chi.value = nextCategoryId;
+    chi.disabled = (nextCategoryId == 'all');
   }
 
   // ...and now the actual Awesomplete integration:
@@ -225,7 +245,7 @@ function CategoryFilter() {
 
   cin.addEventListener("awesomplete-close", function() {
     if (cin.value === '') {
-      setHiddenCategoryAndNextId(this.form, cin.value);
+      setHiddenCategoryAndNextId(this.form, 'all');
     }
     this.classList.remove("open");
   })
@@ -242,13 +262,19 @@ function CategoryFilter() {
   });
 
   cin.addEventListener("awesomplete-selectcomplete", function(obj) {
+    if (!confirmBeforeLeavingCustom(obj.text.value)) {
+      cin.value = '';
+      return;
+    }
     setHiddenCategoryAndNextId(this.form, obj.text.value);
     this.form.submit();
   });
 
-  cin.form.addEventListener("submit", function() {
+  cin.form.addEventListener("submit", function(e) {
+    if (!confirmBeforeLeavingCustom(chi.value)) {
+      e.preventDefault();
+    }
     setHiddenCategoryAndNextId(this, chi.value);
-    return true;
   });
 
   // We're ready, display the input!
@@ -260,5 +286,5 @@ function CategoryFilter() {
 }
 
 $(function() {
-  cf = new CategoryFilter();
+  cf = new CategoryFilter(categoryFilterSpinner);
 });
