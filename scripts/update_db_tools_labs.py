@@ -98,6 +98,7 @@ def _update_db_tools_labs(cfg):
         'print_unsourced_pageids_from_wikipedia.py', '> ' + unsourced.name)
     run_script('parse_live.py', unsourced.name)
     run_script('assign_categories.py')
+    run_script('update_intersections.py')
     run_script('install_new_database.py')
 
     unsourced.close()  # deletes the file

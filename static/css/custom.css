@@ -1,0 +1,61 @@
+#custom-notice {
+    background-color: #EEF31A;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    border-bottom: 3px solid;
+}
+
+#custom-controls .o-open {
+    /* Fighting bootstrap, which sets margin-bottom. */
+    margin: 0;
+
+    /* Make it look like a link. */
+    color: #0645AD;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#custom-modal-wrapper {
+    padding: 5px;
+}
+
+#custom-card-container textarea {
+    resize: none;
+    border: 2px solid #937E7E;
+    width: 100%;
+    padding: 2px;
+}
+
+#custom-created-link-wrapper {
+    text-align: center;
+}
+
+#custom-card-end * {
+    /* Reset margin for <p> elements around #custom-created-link */
+    margin: 0;
+}
+
+#custom-created-link {
+    font-size: large;
+    border: 2px solid #937E7E;
+    margin: 1rem 0;
+    padding: 2px;
+}
+
+#custom-buttons-container {
+    margin: 5px;
+}
+
+#import-petscan-card input {
+    margin: 10px auto;
+    display: block;
+    border: 2px solid #937E7E;
+    width: 50%;
+    padding: 3px;
+}
+
+#custom-spinner {
+  /* Make it less likely for the text to run into the spinner */
+  height: 10px;
+}

@@ -2,6 +2,7 @@ import flask
 
 import os
 import json
+from config import make_petscan_url
 
 def _link_start(url, target = '_blank'):
     return flask.Markup('<a target="%s" href="%s">' % (target, url))
@@ -74,6 +75,79 @@ def _preprocess_variables(config, strings):
             strings['leaderboard_description'].format(
                 tooltitle = strings['tooltitle'],
                 days = '%s'))  # The template swaps in the actual number.
+
+    strings.setdefault('custom_intro', '')
+    if strings['custom_intro']:
+        strings['custom_intro'] = strings['custom_intro'].format(
+            tooltitle = strings['tooltitle'])
+
+    strings.setdefault('import_articles_prompt', '')
+    if strings['import_articles_prompt']:
+        strings['import_articles_prompt'] = flask.Markup(
+            strings['import_articles_prompt'].format(
+                em_start = '<b>',
+                em_end = '</b>'))
+
+    strings.setdefault('import_petscan_intro', '')
+    if strings['import_petscan_intro']:
+        strings['import_petscan_intro'] = flask.Markup(
+            strings['import_petscan_intro'].format(
+                em_start = '<b>',
+                em_end = '</b>'))
+
+    strings.setdefault('import_petscan_prompt', '')
+    if strings['import_petscan_prompt']:
+        strings['import_petscan_prompt'] = flask.Markup(
+            strings['import_petscan_prompt'].format(
+                link_start = _link_start(make_petscan_url(config)),
+                link_end = '</a>'))
+
+    strings.setdefault('import_petscan_category_tip', '')
+    if strings['import_petscan_category_tip']:
+        strings['import_petscan_category_tip'] = flask.Markup(
+            strings['import_petscan_category_tip'].format(
+                tooltitle = strings['tooltitle'],
+                category = '<i>' + config.citation_needed_category + '</i>'))
+
+    strings.setdefault('back_to_cancel', '')
+    if strings['back_to_cancel'] and strings['back']:
+        strings['back_to_cancel'] = flask.Markup(
+            strings['back_to_cancel'].format(
+                em_start = '<b>', back = strings['back'],
+                em_end = '</b>'))
+
+    strings['custom_please_wait'] = flask.Markup(
+        strings.get('custom_please_wait', '').format(
+            tooltitle = strings['tooltitle']))
+
+    strings['custom_failed'] = flask.Markup(
+        strings.get('custom_failed', '').format(
+            tooltitle = strings['tooltitle']))
+
+    strings.setdefault('custom_notice', '')
+    if strings['custom_notice']:
+        strings['custom_notice'] = flask.Markup(
+            strings['custom_notice'].format(
+                tooltitle = strings['tooltitle'],
+                link_start = _link_start(config.lang_code, ''),
+                link_end = '</a>'))
+
+    strings['custom_created'] = strings.get(
+        'custom_created', '').format(
+            tooltitle = strings['tooltitle'])
+
+    strings.setdefault('js-leaving-custom', '')
+    if strings['js-leaving-custom']:
+        strings['js-leaving-custom'] = (
+            strings['js-leaving-custom'].format(
+                tooltitle = strings['tooltitle']))
+
+    strings.setdefault('custom_end_copy_link', '')
+    if strings['custom_end_copy_link']:
+        strings['custom_end_copy_link'] = flask.Markup(
+            strings['custom_end_copy_link'].format(
+                link_start = _link_start('', ''),
+                link_end = '</a>'))
 
     return strings
 

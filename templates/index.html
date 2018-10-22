@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="static/css/snippet.css">
     <link rel="stylesheet" href="static/css/modal.css">
     <link rel="stylesheet" href="static/css/awesomplete.css">
+    <link rel="stylesheet" href="static/css/custom.css">
 
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.1.1/jquery.min.js"
             integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
@@ -37,14 +38,39 @@
     <script src="static/js/lang_selector.js" defer></script>
     <script src="static/js/fixed.js" defer></script>
     <script src="static/js/shortcuts.js" defer></script>
+    <script src="static/js/custom.js" defer></script>
   </head>
   <body>
+    {% if current_custom and strings.custom_notice %}
+    <div id="custom-notice">
+        <span>{{ strings.custom_notice }}</span>
+    </div>
+    {% endif %}
     <div class="container-fluid py-2">
       <div id="controls" class="row justify-content-end align-items-center px-3 px-sm-1 py-2 py-sm-1">
-        {% if strings.leaderboard_link_title %}
-        <div><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
+        {% if config.lang_code == 'en' %}
+        <div id="custom-controls" class="mx-1" hidden>
+          <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
+          <div class="pure-modal">
+            <input id="custom-modal-trigger" class="checkbox" type="checkbox">
+            <div id="custom-modal-wrapper" class="pure-modal-overlay">
+              <label for="custom-modal-trigger" class="o-close"></label>
+              <div class="pure-modal-wrap a-center">
+                  <div id="custom-card-container"></div>
+                  <div id="custom-buttons-container" class="row justify-content-center">
+                      <a id="custom-button-back" class="col-1" href="">{{ strings.back }}</a>
+                      <div class="col-1"></div> <!-- direction-independent spacing -->
+                      <a id="custom-button-submit" class="col-1" href="">{{ strings.submit }}</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
         {% endif %}
-        <select id="lang-selector" class="mx-2">
+        {% if strings.leaderboard_link_title %}
+        <div class="mx-1"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
+        {% endif %}
+        <select id="lang-selector" class="mx-1">
           {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
           <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
           {% endfor %}
@@ -94,13 +120,14 @@
             <input type="text" id="category-input" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ strings.category_filter_placeholder }}">
             <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
             <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
+            <input type="text" id="hidden-custom-input" name="custom" value="{{ current_custom }}" hidden>
           </form>
           <noscript>
             <div id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</div>
           </noscript>
         </div>
         <div class="col-1">
-          <div id="spinner"></div>
+          <div id="category-filter-spinner" class="spinner"></div>
         </div>
       </div>
       <div id="fixed-count-container" class="info mt-3" hidden></div>
@@ -122,6 +149,48 @@
         data-{{ k }}="{{ v }}"
       {% endfor %}
     >
+    </div>
+
+    <div id="custom-wizard-cards" hidden>
+      <div id="custom-landing-card" class="custom-card">
+        <p>{{ strings.custom_intro }}</p>
+        <p>{{ strings.custom_import_prompt }}</p>
+        <ul>
+          <li><a id="import-article-titles-link" href="">{{ strings.import_article_titles }}</a></li>
+          <li><a id="import-petscan-link" href="">{{ strings.import_petscan }}</a></li>
+        </ul>
+      </div>
+      <div id="import-article-titles-card" class="custom-card">
+        <p>{{ strings.import_articles_prompt }}</p>
+        <textarea rows=5></textarea>
+      </div>
+      <div id="import-petscan-card" class="custom-card">
+        <p>{{ strings.import_petscan_intro }}</p>
+        <p>{{ strings.import_petscan_prompt }}</p>
+        <input type="text" placeholder="3316252">
+        <p>{{ strings.import_petscan_category_tip }}</p>
+      </div>
+      <div id="progress-card" class="custom-card">
+        <div id="custom-spinner" class="spinner"></div>
+        <p>{{ strings.custom_please_wait }}</p>
+        <p>{{ strings.back_to_cancel }}</p>
+      </div>
+      <div id="custom-card-end" class="custom-card">
+        <p>{{ strings.custom_created }}</p>
+        <p id="custom-numbers"></p>
+        <div id="custom-created-link-wrapper">
+          <input id="custom-created-link" readonly="true" type="text"/>
+        </div>
+        <p id="copy-link-text">{{ strings.custom_end_copy_link }}</p>
+      </div>
+      <div id="custom-card-failed" class="custom-card">
+          <p>{{ strings.custom_failed }}</p>
+          <p>{{ strings.try_again_hints_header }}</p>
+          <ul>
+              <li>{{ strings.article_titles_hint }}</li>
+              <li>{{ strings.petscan_hint }}</li>
+          </ul>
+      </div>
     </div>
   </body>
 </html>

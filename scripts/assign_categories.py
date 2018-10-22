@@ -18,25 +18,18 @@ if _upper_dir not in sys.path:
 
 import config
 import chdb as chdb_
+import handlers.database as database
 from utils import *
 
 import docopt
 
 import cProfile
-import itertools as it
 import re
 import collections
 import pstats
 import time
 
 log = Logger()
-
-def ichunk(iterable, chunk_size):
-    it0 = iter(iterable)
-    while True:
-        it1, it2 = it.tee(it.islice(it0, chunk_size))
-        next(it2)  # raises StopIteration if it0 is exhausted
-        yield it1
 
 class CategoryName(unicode):
     '''
@@ -142,44 +135,6 @@ def category_is_usable(cfg, catname, hidden_categories):
             return False
     return True
 
-def build_snippets_links_for_category(cursor, category_ids):
-    def pair_with_next(iterator):
-        """
-        Given an iterator (..., x, y, z, w, ...), returns another iterator of
-        tuples that pair each element to its successor, that is
-        (..., (x, y), (y, z), (z, w), ...).
-
-        The iterator "wraps around" at the end, that is, the last element is
-        paired with the first.
-        """
-
-        i1, i2 = it.tee(iterator)
-        return it.izip(i1, it.chain(i2, [next(i2)]))
-
-    # Populate the snippets_links table with pairs of snippets in the same
-    # category, so each article "points" to the next one in that category.
-    # The snippets are sorted by the title of their corresponding article.
-
-    # First, query all categories and snippets, in the proper order
-    cursor.execute('''
-        SELECT articles_categories.category_id, snippets.id
-        FROM snippets, articles_categories, articles
-        WHERE snippets.article_id = articles_categories.article_id AND
-        articles.page_id = articles_categories.article_id AND
-        articles_categories.category_id IN %s
-        ORDER BY articles_categories.category_id, articles.title;''',
-        (tuple(category_ids),))
-
-    # Now we indulge in some itertools magic to produce the pairs (or rather,
-    # triplets, as they also include the category id) that we want to insert.
-    # We want to use executemany for performance; the use of iterators saves
-    # some memory, but really I just wanted to look cool.
-    cursor.executemany('''
-        INSERT INTO snippets_links VALUES (%s, %s, %s)
-    ''', ((p, n, category_id)
-        for category_id, group in it.groupby(cursor, lambda (cid, sid): cid)
-        for p, n in pair_with_next(snippet_id for (_, snippet_id) in group)))
-
 def update_citationhunt_db(chdb, category_name_id_and_page_ids):
     def insert(cursor, chunk):
         cursor.executemany('''
@@ -190,8 +145,8 @@ def update_citationhunt_db(chdb, category_name_id_and_page_ids):
             INSERT INTO articles_categories VALUES (%s, %s)
         ''', ((pageid, catid)
             for _, catid, pageids in chunk for pageid in pageids))
-        build_snippets_links_for_category(cursor,
-            (cid for (_, cid, _) in chunk))
+        database.populate_snippets_links(cursor,
+            category_ids = (cid for (_, cid, _) in chunk))
 
     for c in ichunk(category_name_id_and_page_ids, 4096):
         chdb.execute_with_retry(insert, list(c))
