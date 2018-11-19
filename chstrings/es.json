@@ -6,7 +6,8 @@
 			"Zpizza",
 			"Dgstranz",
 			"Tusca",
-			"La Mantis"
+			"La Mantis",
+			"Laura Ospina"
 		]
 	},
 	"tooltitle": "Citation Hunt",
@@ -27,6 +28,7 @@
 	"edits": "Ediciones",
 	"leaderboard_link_title": "Tabla de posiciones",
 	"leaderboard_title": "Tabla de posiciones de %s",
+	"leaderboard_description": "Estos son los usuarios que han arreglado a mayor número de fragmentos utilizando {tooltilte} en los {days} últimos días. ¡Felicitaciones!",
 	"js-article-count": "$1 {{PLURAL:$1|artículo|artículos}}",
 	"js-keyboard-shortcut": "Atajo de teclado: %s",
 	"js-refs-added-today": "¡$1 {{PLURAL:$1|cita añadida|citas añadidas}} hoy!"
