@@ -713,6 +713,24 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             '출처'
         ],
+    ),
+    
+    ur = dict(
+        lang_name = 'اردو',
+        lang_dir = 'rtl',
+        database = 'urwiki_p',
+        
+        wikipedia_domain = 'ur.wikipedia.org',
+        citation_needed_category = 'ماخذ_میں_نامکمل_اندراجات',
+        beginners_link = 'https://ur.m.wikipedia.org/wiki/ویکیپیڈیا:حوالہ_دہی',
+        beginners_link_title = 'ویکیپیڈیا:حوالہ دہی',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+        citation_needed_templates = [
+            'حوالہ_درکار',
+        ],
+        hidden_category = 'پوشیدہ_زمرہ_جات',
+
     )
 )
 
