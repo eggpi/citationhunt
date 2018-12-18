@@ -3,7 +3,7 @@
 <html lang="{{ lang_tag }}" dir="{{ lang_dir }}" data-ch-lang-code="{{ lang_code }}">
   <head>
     <title>{{ strings.tooltitle }}</title>
-    <meta charset"utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="nofollow, noodp">
     <meta name="description" content="{{ strings.tooltitle }} - {{ strings.introduction }}">
@@ -11,7 +11,7 @@
     <link rel="stylesheet"
       href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css"
       integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/lib/modal.css/modal.css">
 
     <link rel="stylesheet" href="static/css/style.css">
@@ -27,7 +27,7 @@
     <script src="static/js/lib/jquery.i18n/jquery.i18n.messagestore.js" defer></script>
     <script src="static/js/lib/jquery.i18n/jquery.i18n.fallbacks.js" defer></script>
     <script src="static/js/lib/jquery.i18n/jquery.i18n.parser.js" defer></script>
-    <script src="static/js/lib/jquery.i18n/jquery.i18n.emitter.js"defer ></script>
+    <script src="static/js/lib/jquery.i18n/jquery.i18n.emitter.js" defer></script>
     <script src="static/js/lib/jquery.i18n/jquery.i18n.language.js" defer></script>
 
     <script src="static/js/lib/awesomplete/awesomplete.min.js" defer></script>
@@ -121,6 +121,7 @@
       {% for k, v in js_strings.items() | sort %}
         data-{{ k }}="{{ v }}"
       {% endfor %}
+    >
     </div>
   </body>
 </html>
