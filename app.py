@@ -6,7 +6,7 @@ import utils
 
 import flask
 import flask_sslify
-from flask.ext.compress import Compress
+import flask_compress
 
 import os
 import urllib
@@ -26,7 +26,7 @@ CACHE_DURATION_SNIPPET = 30
 global_config = config.get_global_config()
 
 app = flask.Flask(__name__)
-Compress(app)
+flask_compress.Compress(app)
 debug = 'DEBUG' in os.environ
 if not debug:
     flask_sslify.SSLify(app, permanent = True)
