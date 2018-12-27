@@ -6,7 +6,9 @@
 			"SPQRobin",
 			"Sjoerddebruin",
 			"Woodcutterty",
-			"Mar(c)"
+			"Mar(c)",
+			"Marcelhospers",
+			"Optilete"
 		]
 	},
 	"introduction": "Help referenties te vinden voor Wikipedia-pagina's!",
@@ -22,6 +24,11 @@
 	"page_not_found": "Pagina niet gevonden",
 	"page_not_found_text": "De pagina die u zoekt bestaat niet meer. Misschien is de referentie al gevonden? Ga terug naar %s voor meer informatie.",
 	"footer": "%s wordt gemaakt door vrijwilligers, gehost op %s en vertaald via %s.",
+	"user": "Gebruiker",
+	"edits": "Bewerkingen",
+	"leaderboard_link_title": "Rangschikking",
+	"leaderboard_title": "%s Rangschikking",
+	"leaderboard_description": "Dit zijn gebruikers die in de afgelopen {days} dagen de meeste fragmenten hebben gerepareerd via {tooltitle}. Goed gedaan!",
 	"js-article-count": "$1 {{PLURAL:$1|pagina|pagina's}}",
 	"js-keyboard-shortcut": "Sneltoets: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referentie|referenties}} toegevoegd vandaag!"
