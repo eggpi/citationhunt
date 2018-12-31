@@ -4,20 +4,20 @@
 			"Jagwar"
 		]
 	},
-	"introduction": "Hanampy amin'ny fanampiana tsiahy amin'ny lahatsoratr'i Wikipedia!",
-	"instructions_goal": "Ny tsongan-kaody Wikipedia eo ambany eo dia tsy norohizina tamin'ny {link_start}loharano azo antoka{link_end}. Afaka mahita iray ve ianao?",
-	"instructions_details": "Tsindrio %s raha handeha any amin'i Wikipedia hanitsy ilay singan-kaody, na %s raha te-hijery hafa. Jereo %s raha manam-panontaniana. Mazotoa!",
-	"in_page": "Amin'ny pejy %s:",
-	"button_wikilink": "Azoko ilay izy!",
-	"button_next": "Manaraka!",
-	"lead_section_hint": "Avy amin'ny lohasoratry ny lahatsoratra izy ity, ka mety tsy voatery atao ny manampy tsiahy. Jereo %s ho an'ny fampahalalana fanampiny.",
-	"category_filter_placeholder": "Hitady lohahevitra.",
-	"github_link_title": "E! GitHub ny loharanoko!",
 	"beginners_hint": "Tsy hainao ve ny nanampy tsiahy? Jereo %s.",
-	"page_not_found": "Tsy hita ilay pejy!",
-	"page_not_found_text": "Efa tsy misy intsony ilay pejy tadiavinao — mety efa hita angamba ilay tsiahy? Miverena ny amin'i %s ho an'ny fanazavana fanampiny!",
+	"button_next": "Manaraka!",
+	"button_wikilink": "Azoko ilay izy!",
+	"category_filter_placeholder": "Hitady lohahevitra.",
 	"footer": "%s no nataon'ny mpilatsaka an-tsitrapo, apetraka eo amin'i %s ary nodikaina tamin'ny alalan'i %s.",
+	"github_link_title": "E! GitHub ny loharanoko!",
+	"in_page": "Amin'ny pejy %s:",
+	"instructions_details": "Tsindrio %s raha handeha any amin'i Wikipedia hanitsy ilay singan-kaody, na %s raha te-hijery hafa. Jereo %s raha manam-panontaniana. Mazotoa!",
+	"instructions_goal": "Ny tsongan-kaody Wikipedia eo ambany eo dia tsy norohizina tamin'ny {link_start}loharano azo antoka{link_end}. Afaka mahita iray ve ianao?",
+	"introduction": "Hanampy amin'ny fanampiana tsiahy amin'ny lahatsoratr'i Wikipedia!",
 	"js-article-count": "Lahatsoratra $1",
 	"js-keyboard-shortcut": "Fanivahana amin'ny fitendry: %s",
-	"js-refs-added-today": "Tsiahy $1 no nampiana androany!"
+	"js-refs-added-today": "Tsiahy $1 no nampiana androany!",
+	"lead_section_hint": "Avy amin'ny lohasoratry ny lahatsoratra izy ity, ka mety tsy voatery atao ny manampy tsiahy. Jereo %s ho an'ny fampahalalana fanampiny.",
+	"page_not_found": "Tsy hita ilay pejy!",
+	"page_not_found_text": "Efa tsy misy intsony ilay pejy tadiavinao — mety efa hita angamba ilay tsiahy? Miverena ny amin'i %s ho an'ny fanazavana fanampiny!"
 }

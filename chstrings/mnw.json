@@ -4,15 +4,15 @@
 			"Aue Nai"
 		]
 	},
-	"in_page": "ပ္ဍမုက်လိက် %s:",
-	"button_wikilink": "အဲဂွံယျ!",
-	"button_next": "ဂတ!",
-	"category_filter_placeholder": " ဂၠာဲသွက်က္ဍိုပ်လိက်ဇကု",
-	"github_link_title": "ဟေ! တမ်ရိုဟ်အဲဂှ်နွံပ္ဍဲ GitHub!",
 	"beginners_hint": "မၞးတီမံၚ်ကီုဟာ ဗီုလဵုဂွံစုတ် နိဿဲဂမၠိုၚ် ? ရံၚ် %s.",
-	"page_not_found": "ဟွံဆဵုပုဟ် မုက်လိက်!",
-	"user": "ညးလွပ်",
+	"button_next": "ဂတ!",
+	"button_wikilink": "အဲဂွံယျ!",
+	"category_filter_placeholder": " ဂၠာဲသွက်က္ဍိုပ်လိက်ဇကု",
 	"edits": "ပလေဝ်ဒါန်",
+	"github_link_title": "ဟေ! တမ်ရိုဟ်အဲဂှ်နွံပ္ဍဲ GitHub!",
+	"in_page": "ပ္ဍမုက်လိက် %s:",
 	"js-article-count": "$1 {{PLURAL:$1|လိက်ပရေင်|လိက်ပရေင်ဂမၠိုင်}}",
-	"js-keyboard-shortcut": "Keyboard Shortcuts: %s"
+	"js-keyboard-shortcut": "Keyboard Shortcuts: %s",
+	"page_not_found": "ဟွံဆဵုပုဟ် မုက်လိက်!",
+	"user": "ညးလွပ်"
 }

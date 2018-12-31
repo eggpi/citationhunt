@@ -5,19 +5,19 @@
 			"HushBeg"
 		]
 	},
-	"introduction": "ۋېكىپىدىيە قامۇسى ئۈچۈن نەقىللەرنى تېپىپ بېرىڭ!",
-	"instructions_goal": "تۆۋەندىكى ۋېكىپىدىيە قامۇسى پارچىلىرىنىڭ {link_start}ئىشەنچلىك مەنبە{link_end} قوللىشى يوق. سىز بىرنى تېپىپ باقامسىز؟",
-	"in_page": "بەت %s ئىچىدە:",
-	"button_wikilink": "بۇنى قىلالايمەن!",
-	"button_next": "كېيىنكىسى!",
-	"category_filter_placeholder": "بىر تېما ئىزدەش.",
-	"github_link_title": "ھەي! مېنىڭ ئەسلى كودۇم GitHub تا!",
 	"beginners_hint": "نەقىلنى قانداق قوشۇشنى بىلەلمىدىڭىزمۇ؟ %s نى كۆرۈڭ.",
-	"page_not_found": "بەت تېپىلمىدى!",
-	"user": "ئىشلەتكۈچى",
+	"button_next": "كېيىنكىسى!",
+	"button_wikilink": "بۇنى قىلالايمەن!",
+	"category_filter_placeholder": "بىر تېما ئىزدەش.",
 	"edits": "تەھرىرلەش",
+	"github_link_title": "ھەي! مېنىڭ ئەسلى كودۇم GitHub تا!",
+	"in_page": "بەت %s ئىچىدە:",
+	"instructions_goal": "تۆۋەندىكى ۋېكىپىدىيە قامۇسى پارچىلىرىنىڭ {link_start}ئىشەنچلىك مەنبە{link_end} قوللىشى يوق. سىز بىرنى تېپىپ باقامسىز؟",
+	"introduction": "ۋېكىپىدىيە قامۇسى ئۈچۈن نەقىللەرنى تېپىپ بېرىڭ!",
+	"js-article-count": "$1كۈندە",
+	"js-keyboard-shortcut": "كۇنۇپكا تاختىسى قولاي كۇنۇپكىسى: %s",
 	"leaderboard_link_title": "شەرەپ تاختىسى",
 	"leaderboard_title": "%s شەرەپ تاختىسى",
-	"js-article-count": "$1كۈندە",
-	"js-keyboard-shortcut": "كۇنۇپكا تاختىسى قولاي كۇنۇپكىسى: %s"
+	"page_not_found": "بەت تېپىلمىدى!",
+	"user": "ئىشلەتكۈچى"
 }

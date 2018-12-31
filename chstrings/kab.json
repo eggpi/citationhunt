@@ -4,20 +4,20 @@
 			"Belkacem77"
 		]
 	},
-	"introduction": "Mudd afus i tifin n temsisɣal i yimagraden n Wikipedia!",
-	"instructions_goal": "Tukkist n tengalt Wikipedia ddaw-a ur tettwaɣbel ara sɣuṛ {link_start}aɣbalu aɣelsan{link_end}. Tzemreḍ ad tafeḍ yiwet?",
-	"instructions_details": "Sit ɣef %s akken ad tedduḍ ar Wikipedia sakin ad tseɣtiḍ aḥric n tengalt neɣ %s akken ad walin wayeḍ. Wali %s ma yella ɣur-k isteqsiyen. Afud igarrzen!",
-	"in_page": "Deg usebter %s",
-	"button_wikilink": "I nek!",
-	"button_next": "Ar zdat!",
-	"lead_section_hint": "Aḍris-agi d tukkist n uqeṛṛu n umagrad : ɣas akken ma terniḍ timsisɣal d afrayan. Wali %s u wugar n telɣut.",
-	"category_filter_placeholder": "Nadi asentel",
-	"github_link_title": "Azul! Aɣbalu-iw hatan di GitHub!",
 	"beginners_hint": "Ur teẓriḍ ara amek ara ternuḍ tanebdurt? Wali %s.",
-	"page_not_found": "Ulac asebter",
-	"page_not_found_text": "Asebter i tettwaliḍ ur yezgi yella — ahat tanebdurt-agi tettwaf yakan ? Uɣal ar %s akken ad teẓreḍ ugar!",
+	"button_next": "Ar zdat!",
+	"button_wikilink": "I nek!",
+	"category_filter_placeholder": "Nadi asentel",
 	"footer": "%s yettwag sɣuṛ iwiziwen, yezdeɣ di %s udiɣ yettwasuqel s %s.",
+	"github_link_title": "Azul! Aɣbalu-iw hatan di GitHub!",
+	"in_page": "Deg usebter %s",
+	"instructions_details": "Sit ɣef %s akken ad tedduḍ ar Wikipedia sakin ad tseɣtiḍ aḥric n tengalt neɣ %s akken ad walin wayeḍ. Wali %s ma yella ɣur-k isteqsiyen. Afud igarrzen!",
+	"instructions_goal": "Tukkist n tengalt Wikipedia ddaw-a ur tettwaɣbel ara sɣuṛ {link_start}aɣbalu aɣelsan{link_end}. Tzemreḍ ad tafeḍ yiwet?",
+	"introduction": "Mudd afus i tifin n temsisɣal i yimagraden n Wikipedia!",
 	"js-article-count": "$1 {{PLURAL:$1|n umagrad|n imagraden}}",
 	"js-keyboard-shortcut": "Anegzum n unasiw: %s",
-	"js-refs-added-today": "$1 {{PLURAL:$1|n tnebdurt|n tinebdurin}} yettwarnan ass-a!"
+	"js-refs-added-today": "$1 {{PLURAL:$1|n tnebdurt|n tinebdurin}} yettwarnan ass-a!",
+	"lead_section_hint": "Aḍris-agi d tukkist n uqeṛṛu n umagrad : ɣas akken ma terniḍ timsisɣal d afrayan. Wali %s u wugar n telɣut.",
+	"page_not_found": "Ulac asebter",
+	"page_not_found_text": "Asebter i tettwaliḍ ur yezgi yella — ahat tanebdurt-agi tettwaf yakan ? Uɣal ar %s akken ad teẓreḍ ugar!"
 }

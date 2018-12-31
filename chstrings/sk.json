@@ -4,17 +4,17 @@
 			"TomášPolonec"
 		]
 	},
-	"introduction": "Pomôžte nájsť zdroje pre články Wikipédie!",
-	"instructions_goal": "Nasledujúca časť článku Wikipédie nie je podložená {link_start}dôveryhodným zdrojom{link_end}. Skúsite nejaký nájsť?",
-	"instructions_details": "Stlačte %s, aby ste sa dostali na Wikipédiu a mohli opraviť článok, alebo stlačte %s, čím zobrazíte iný úryvok. Prečítajte si stránku %s, ak máte ďalšie otázky. Veľa šťastia!",
-	"in_page": "V článku %s:",
-	"button_wikilink": "Pochopil som!",
+	"beginners_hint": "Neviete ako pridať referenciu? Pozrite %s.",
 	"button_next": "Ďalej!",
-	"lead_section_hint": "Tento text je súčasťou úvodného odseku článku, takže odkazovanie naň môže byť voliteľné. Prečítajte si %s pre viac informácií.",
+	"button_wikilink": "Pochopil som!",
 	"category_filter_placeholder": "Vyhľadať tému.",
 	"github_link_title": "Môj zdrojový kód je na GitHube!",
-	"beginners_hint": "Neviete ako pridať referenciu? Pozrite %s.",
-	"page_not_found": "Stránka nenájdená!",
+	"in_page": "V článku %s:",
+	"instructions_details": "Stlačte %s, aby ste sa dostali na Wikipédiu a mohli opraviť článok, alebo stlačte %s, čím zobrazíte iný úryvok. Prečítajte si stránku %s, ak máte ďalšie otázky. Veľa šťastia!",
+	"instructions_goal": "Nasledujúca časť článku Wikipédie nie je podložená {link_start}dôveryhodným zdrojom{link_end}. Skúsite nejaký nájsť?",
+	"introduction": "Pomôžte nájsť zdroje pre články Wikipédie!",
 	"js-article-count": "$1 {{PLURAL:$1|článok|články}}",
-	"js-keyboard-shortcut": "Klávesová skratka: %s"
+	"js-keyboard-shortcut": "Klávesová skratka: %s",
+	"lead_section_hint": "Tento text je súčasťou úvodného odseku článku, takže odkazovanie naň môže byť voliteľné. Prečítajte si %s pre viac informácií.",
+	"page_not_found": "Stránka nenájdená!"
 }

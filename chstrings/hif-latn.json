@@ -6,20 +6,20 @@
 			"Abdul Kadir"
 		]
 	},
-	"introduction": "Wikipedia articles me citation khoje ke madat karo!",
-	"instructions_goal": "Niche ke Wikipedia snippet ke ek {link_start}reliable source{link_end} se nai backed hai.\nAap ek ke paae saktaa hai?",
-	"instructions_details": "Wikipedia pe jaae ke snippet ke fix kar ke khaatir, nai to, duusra waala dekhe ke khatir %s pe click karo. Agar aap ke koi sawaal hae tab %s ke check karo. Good luck!",
-	"in_page": "%s panna me:",
-	"button_wikilink": "Ham iske samajh gayaa hai!",
-	"button_next": "Duusra!",
-	"lead_section_hint": "Ii text article ke lead section ke hissa hai, tab iske reference kare ke jaruuri nai hai. Meharbaani kar ke, aur jaan kari ke khaatir %s ke dekho.",
-	"category_filter_placeholder": "Ek topic ke khojo",
-	"github_link_title": "Hey! Hamaar source GitHub me hai!",
 	"beginners_hint": "Citation jorre nai jantaa hai? %s ke dekho.",
-	"page_not_found": "Panna ke nai paawa gais hai!",
-	"page_not_found_text": "Jon panna ke aap khojtaa hae, abhi exist nai hoe hai - saait ii citation ke paae lewaa gais hai? Aur ke khaatir pichhe %s pe jaao !",
+	"button_next": "Duusra!",
+	"button_wikilink": "Ham iske samajh gayaa hai!",
+	"category_filter_placeholder": "Ek topic ke khojo",
 	"footer": "%s ke volunteers banaain hai, jiske %s me host karaa gais hai aur %s se translate karaa gais hai.",
+	"github_link_title": "Hey! Hamaar source GitHub me hai!",
+	"in_page": "%s panna me:",
+	"instructions_details": "Wikipedia pe jaae ke snippet ke fix kar ke khaatir, nai to, duusra waala dekhe ke khatir %s pe click karo. Agar aap ke koi sawaal hae tab %s ke check karo. Good luck!",
+	"instructions_goal": "Niche ke Wikipedia snippet ke ek {link_start}reliable source{link_end} se nai backed hai.\nAap ek ke paae saktaa hai?",
+	"introduction": "Wikipedia articles me citation khoje ke madat karo!",
 	"js-article-count": "$1 {{PLURAL:$1|article}}",
 	"js-keyboard-shortcut": "Keyboard ke shortcut: %s",
-	"js-refs-added-today": "$1 {{PLURAL:$1|citation}} aaj jorra gais hai!"
+	"js-refs-added-today": "$1 {{PLURAL:$1|citation}} aaj jorra gais hai!",
+	"lead_section_hint": "Ii text article ke lead section ke hissa hai, tab iske reference kare ke jaruuri nai hai. Meharbaani kar ke, aur jaan kari ke khaatir %s ke dekho.",
+	"page_not_found": "Panna ke nai paawa gais hai!",
+	"page_not_found_text": "Jon panna ke aap khojtaa hae, abhi exist nai hoe hai - saait ii citation ke paae lewaa gais hai? Aur ke khaatir pichhe %s pe jaao !"
 }

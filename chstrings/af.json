@@ -4,20 +4,20 @@
 			"Puvircho"
 		]
 	},
-	"introduction": "Help om aanhalings vir Wikipedia-artikels te vind!",
-	"instructions_goal": "Die Wikipedia-knipsel hieronder het nie ’n {link_start}betroubare bron{link_end} nie. Kan u een vind?",
-	"instructions_details": "Klik op %s om na Wikipedia te gaan en die knipsel te vind, of %s om ’n ander een te sien. Kyk na %s indien u vrae het. Sterkte!",
-	"in_page": "In blad %s:",
-	"button_wikilink": "Ek het dit!",
-	"button_next": "Volgende",
-	"lead_section_hint": "Hierdie teks is deel van die artikel se openingsparagraaf, daarom is aanhalings opsioneel. Sien %s vir meer inligting.",
-	"category_filter_placeholder": "Soek na ’n onderwerp.",
-	"github_link_title": "Dag! My bronkode is op GitHub!",
 	"beginners_hint": "Weet nie hoe om aanhalings toe te voeg nie? Sien %s.",
-	"page_not_found": "Blad nie gevind!",
-	"page_not_found_text": "Die blad waarna u soek bestaan nie meer nie — hierdie aanhaling is dalk reeds gevind. Gaan terug na %s vir meer!",
+	"button_next": "Volgende",
+	"button_wikilink": "Ek het dit!",
+	"category_filter_placeholder": "Soek na ’n onderwerp.",
 	"footer": "%s word deur vrywilligers gemaak, op %s gehuisves en vertaal d.m.v. %s.",
+	"github_link_title": "Dag! My bronkode is op GitHub!",
+	"in_page": "In blad %s:",
+	"instructions_details": "Klik op %s om na Wikipedia te gaan en die knipsel te vind, of %s om ’n ander een te sien. Kyk na %s indien u vrae het. Sterkte!",
+	"instructions_goal": "Die Wikipedia-knipsel hieronder het nie ’n {link_start}betroubare bron{link_end} nie. Kan u een vind?",
+	"introduction": "Help om aanhalings vir Wikipedia-artikels te vind!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artikels}}",
 	"js-keyboard-shortcut": "Snelsleutel: %s",
-	"js-refs-added-today": "$1 {{PLURAL:$1|aanhaling|aanhalings}} vandag toegevoeg!"
+	"js-refs-added-today": "$1 {{PLURAL:$1|aanhaling|aanhalings}} vandag toegevoeg!",
+	"lead_section_hint": "Hierdie teks is deel van die artikel se openingsparagraaf, daarom is aanhalings opsioneel. Sien %s vir meer inligting.",
+	"page_not_found": "Blad nie gevind!",
+	"page_not_found_text": "Die blad waarna u soek bestaan nie meer nie — hierdie aanhaling is dalk reeds gevind. Gaan terug na %s vir meer!"
 }

@@ -5,17 +5,17 @@
 			"Épine"
 		]
 	},
-	"introduction": "یارمەتی دۆزینەوەی ژێدەرەکان بدە بۆ وتارەکانی ویکیپیدیا!",
-	"in_page": "لە ناو پەڕەی %s:",
-	"button_wikilink": "ئەمەم لەژێر دەسدایە!",
-	"button_next": "دواتر!",
-	"category_filter_placeholder": "گەڕان بەدوای بابەتێکدا.",
-	"github_link_title": "سڵاو! سەرچاوەکەم لەسەر گیت ھەبە!",
 	"beginners_hint": "نازانیت چۆن ژێدەرەکان زیاد بکەیت؟ سەیری %s بکە.",
-	"page_not_found": "پەڕەکە نەدۆزرایەوە!",
-	"user": "بەکارھێنەر",
+	"button_next": "دواتر!",
+	"button_wikilink": "ئەمەم لەژێر دەسدایە!",
+	"category_filter_placeholder": "گەڕان بەدوای بابەتێکدا.",
 	"edits": "دەستکارییەکان",
+	"github_link_title": "سڵاو! سەرچاوەکەم لەسەر گیت ھەبە!",
+	"in_page": "لە ناو پەڕەی %s:",
+	"introduction": "یارمەتی دۆزینەوەی ژێدەرەکان بدە بۆ وتارەکانی ویکیپیدیا!",
 	"js-article-count": "$1 {{PLURAL:$1|وتار|وتار}}",
 	"js-keyboard-shortcut": "کورتکراوەکانی تەختەکلیل: %s",
-	"js-refs-added-today": "ئەمڕۆ $1 {{PLURAL:$1|ژێدەر|ژێدەر}} زیادکرا!"
+	"js-refs-added-today": "ئەمڕۆ $1 {{PLURAL:$1|ژێدەر|ژێدەر}} زیادکرا!",
+	"page_not_found": "پەڕەکە نەدۆزرایەوە!",
+	"user": "بەکارھێنەر"
 }
