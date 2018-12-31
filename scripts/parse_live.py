@@ -181,6 +181,9 @@ def parse_live(pageids, timeout):
     chdb.reset_scratch_db()
     backdir = tempfile.mkdtemp(prefix = 'citationhunt_parse_live_')
     pool = multiprocessing.Pool(
+        # The number of processes per CPU is pretty much made up. The processes
+        # are I/O bound as most of the time is spent querying the Wikipedia API.
+        processes = multiprocessing.cpu_count() * 8,
         initializer = initializer, initargs = (backdir,))
 
     # Make sure we query the API 32 pageids at a time
