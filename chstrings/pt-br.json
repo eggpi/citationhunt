@@ -28,7 +28,7 @@
 	"import_petscan": "Uma consulta de PetScan",
 	"import_petscan_category_tip": "Dica: {tooltitle} contém apenas artigos dentro da categoria {category}. Para melhores resultados, você pode usar o PetScan para recuperar apenas artigos dentro dessa categoria.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} é uma ferramenta para consultar a Wikipedia e definir listas de artigos. O PetScan atribui IDs a consultas para que seus resultados possam ser importados para outras ferramentas.",
-	"import_petscan_prompt": "{Link start}Crie sua consulta no Pet Scan{link end} e cole seu ID abaixo:",
+	"import_petscan_prompt": "{link_start}Crie sua consulta no Pet Scan{link_end} e cole seu ID abaixo:",
 	"in_page": "Na página %s:",
 	"instructions_details": "Clique em %s para ir à Wikipédia e corrigir o trecho, ou em %s para ver outro. Verifique %s se tiver dúvidas. Boa sorte!",
 	"instructions_goal": "O trecho abaixo da Wikipédia não está referenciado em nenhuma {link_start}fonte confiável{link_end}. Consegue encontrar alguma?",
