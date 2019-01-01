@@ -726,7 +726,7 @@ _LANG_CODE_TO_CONFIG = dict(
             '출처'
         ],
     ),
-    
+
     uk = dict(
         lang_name = 'Українська',
         lang_dir = 'ltr',
