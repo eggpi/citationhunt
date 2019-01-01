@@ -193,7 +193,7 @@ function CategoryFilter(spinner) {
   function confirmBeforeLeavingCustom(nextCategoryId) {
     var customhi = document.getElementById("hidden-custom-input");
     var leaving = true;
-    if (nextCategoryId != 'all') {
+    if (customhi !== null && nextCategoryId != 'all') {
       if (customhi.value) {
         leaving = window.confirm(strings.leavingCustom);
       }
@@ -202,7 +202,7 @@ function CategoryFilter(spinner) {
         // URL. This is purely for cosmetic reasons as the backend gives
         // precedence to a category id if it's present. We want to disable
         // not remove because removing breaks the back button.
-        custom.disabled = true;
+        customhi.disabled = true;
       }
     }
     return leaving;
