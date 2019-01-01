@@ -725,6 +725,26 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             '출처'
         ],
+    ),
+    
+    uk = dict(
+        lang_name = 'Українська',
+        lang_dir = 'ltr',
+        database = 'ukwiki_p',
+        wikipedia_domain = 'uk.wikipedia.org',
+        beginners_link = 'https://uk.wikipedia.org/wiki/Вікіпедія:Посилання_на_джерела/Візуальний_редактор',
+        beginners_link_title = 'Як посилатись на джерела у Візуальному редакторі',
+        lead_section_policy_link = 'https://uk.wikipedia.org/wiki/Вікіпедія:Посилання_на_джерела',
+        lead_section_policy_link_title = 'Вікіпедія:Посилання_на_джерела',
+        citation_needed_category = 'Статті_з_твердженнями_без_джерел',
+        citation_needed_templates = [
+            'Потрібне джерело',
+            'Fact',
+            'Fact2',
+ 	        'Немає АД',
+ 	        'Немає АД 2',
+        ],
+        hidden_category = 'Приховані_категорії',
     )
 )
 
