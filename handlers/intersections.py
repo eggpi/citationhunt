@@ -56,9 +56,9 @@ def intersect_with_psid(cfg, psid):
             articles = response.json()['*'][0]['a']['*']
             page_ids = [article['id'] for article in articles]
     except Exception as e:
-        flask.current_app.logger.error(
+        flask.current_app.logger.warning(
             'PetScan request failed: ' + repr(e) + ', ' +
-            repr(response.text) if response is not None else '[no response]')
+            (repr(response.text) if response is not None else '[no response]'))
         page_ids = []
     if not page_ids:
         return '', []
