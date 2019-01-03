@@ -8,6 +8,7 @@
 			"Revi"
 		]
 	},
+	"back": "{{Identical|Back}}",
 	"beginners_hint": "Introduces a link to begginner-friendly documentation about adding references. The %s gets replaced with the link itself.",
 	"button_next": "Label on the button that browses to the next article.\n{{Identical|Next}}",
 	"button_wikilink": "Label on the button that links to the article so the user can add a reference.",

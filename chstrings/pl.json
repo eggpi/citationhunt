@@ -19,6 +19,7 @@
 	"edits": "Edycji",
 	"footer": "Narzędzie %s jest tworzone przez wolontariuszy, znajduje się na serwerze %s, a jego tłumaczenie dostarcza %s.",
 	"github_link_title": "Hej! Mój kod źródłowy jest na GitHubie!",
+	"import_article_titles": "Lista tytułów artykułów",
 	"in_page": "W artykule %s:",
 	"instructions_details": "Kliknij %s aby przejść do Wikipedii i poprawić ten fragment, lub %s aby zobaczyć inny. Zobacz %s jeżeli masz pytania. Powodzenia!",
 	"instructions_goal": "Poniższy fragment z Wikipedii nie jest poparty {link_start}wiarygodnym źródłem{link_end}. Czy możesz takowe znaleźć?",

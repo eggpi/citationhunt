@@ -10,18 +10,26 @@
 			"Bengtsson96"
 		]
 	},
+	"back": "Tillbaka",
+	"back_to_cancel": "Du kan trycka på {em_start}{back}{em_end} eller stänga denna dialogruta för att avbryta.",
 	"beginners_hint": "Vet du inte hur man lägger till referenser? Se %s.",
 	"button_next": "Nästa!",
 	"button_wikilink": "Jag fixar den!",
+	"customize": "Anpassa",
 	"category_filter_placeholder": "Sök efter ett ämne.",
 	"edits": "Redigeringar",
 	"footer": "%s skapas av volontärer, körs på %s och översätts via %s.",
 	"github_link_title": "Hallå! Min källkod finns på GitHub!",
+	"import_article_titles": "En lista över artikeltitlar",
 	"in_page": "På sidan %s:",
 	"instructions_details": "Klicka på %s för att gå till Wikipedia och fixa delen eller %s för att se en annan. Gå in på %s om du har frågor. Lycka till!",
 	"instructions_goal": "Texten från Wikipedia nedan saknar {link_start}källhänvisning{link_end}. Kan du hitta en?",
+	"custom_created": "Din anpassade {tooltitle} har skapats!",
+	"custom_import_prompt": "Var vill du importera artiklar från?",
+	"custom_please_wait": "Var god vänta, din anpassade {tooltitle} bearbetas. Detta kan ta några minuter&#x2026;",
 	"introduction": "Hjälp till att hitta referenser till Wikipediaartiklar!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artiklar}}",
+	"js-custom-numbers": "Den innehåller bitar från $1 {{PLURAL:$1|artikel|artiklar}} och är giltig i $2 {{PLURAL:$2|dag|dagar}}:",
 	"js-keyboard-shortcut": "Kortkommando: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referens|referenser}} lades till idag!",
 	"lead_section_hint": "Denna text är en del av artikelns inledande avsnitt, så det är valfritt att lägga till referenser. Se %s för mer information.",
@@ -30,5 +38,6 @@
 	"leaderboard_title": "Topplista för %s",
 	"page_not_found": "Sidan kunde inte hittas!",
 	"page_not_found_text": "Sidan finns inte längre – referensen har kanske redan hittats? Gå tillbaka till %s för mer!",
+	"submit": "Skicka",
 	"user": "Användare"
 }

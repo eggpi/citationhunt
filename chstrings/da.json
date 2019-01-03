@@ -15,6 +15,7 @@
 	"footer": "%s er lavet af frivillige, ligger på %s og ovresat via %s.",
 	"github_link_title": "Hej! Min kilde er på GitHub!",
 	"import_article_titles": "En liste over artikeltitler",
+	"import_petscan": "En PetScan forespørgsel",
 	"in_page": "På side %s",
 	"instructions_details": "Klik %s for at gå til Wikipedia og ret stumpen, eller %s for at se en anden. Kontroller %s hvis du har spørgsmål. Held og lykke!",
 	"instructions_goal": "Wikipediastumpen nedenfor er ikke understøttet af en {link_start}reliable source{link_end}. Kan du finde en?",
@@ -28,5 +29,6 @@
 	"leaderboard_title": "Topliste for %s",
 	"page_not_found": "Side ikke fundet!",
 	"page_not_found_text": "Den side du er på udkig efter findes ikke længere - måske er dette citat allerede fundet? Gå tilbage til %s for mere!",
+	"submit": "Indsend",
 	"user": "Bruger"
 }

@@ -9,10 +9,12 @@
 	"beginners_hint": "Non sai come aggiungere una nota? Vedi %s.",
 	"button_next": "Il prossimo!",
 	"button_wikilink": "Ci penso io!",
+	"customize": "Personalizza",
 	"category_filter_placeholder": "Cerca un argomento.",
 	"edits": "Modifiche",
 	"footer": "%s è creato da volontari, ospitato su %s e tradotto tramite %s.",
 	"github_link_title": "Ehi! Il mio codice sorgente è su GitHub!",
+	"import_article_titles": "Un elenco di titoli di voci",
 	"in_page": "Nella voce %s:",
 	"instructions_details": "Clicca %s per andare su Wikipedia e correggere la frase o clicca %s per passare alla prossima frase. Clicca su %s se hai domande. Buona fortuna!",
 	"instructions_goal": "La seguente frase non ha una {link_start}fonte affidabile{link_end}. Riesci a trovarne una?",
@@ -26,6 +28,7 @@
 	"leaderboard_title": "Classifica %s",
 	"page_not_found": "Pagina non trovata!",
 	"page_not_found_text": "La pagina che stavi cercando non esiste più — forse hanno già aggiunto questa nota... torna a %s per inserirne un'altra!",
+	"submit": "Invia",
 	"tooltitle": "Citation Hunt",
 	"user": "Utente"
 }

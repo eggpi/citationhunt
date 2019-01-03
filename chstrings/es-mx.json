@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Laura Ospina"
+		]
+	},
+	"article_titles_hint": "Al importar artículos por título, verifique que los títulos sean correctos y que haya proporcionado uno por línea.",
+	"back": "Regresar",
+	"back_to_cancel": "Puede pulsar {em_start}{back}{em_end} o cerrar este cuadro de diálogo para cancelar.",
+	"beginners_hint": "¿No sabes cómo añadir citas? Consulta %s.",
+	"button_next": "¡Siguiente!",
+	"button_wikilink": "¡Lo tengo!",
+	"customize": "Personalizar",
+	"category_filter_placeholder": "Buscar un tema.",
+	"edits": "Modificaciones",
+	"footer": "%s es obra de voluntarios, está alojado en %s y se traduce por medio de %s.",
+	"github_link_title": "¡Ey! ¡Mi fuente está en GitHub!",
+	"import_article_titles": "Una lista de títulos de artículos",
+	"import_articles_prompt": "Por favor, introduzca títulos de artículos{em_end} de Wikipedia {em_start} para importar, uno por línea, en el área de abajo:",
+	"import_petscan": "Una búsqueda PetScan",
+	"import_petscan_category_tip": "consejo: {tooltitle} sólo contiene artículos dentro de la categoría {category}. Para obtener mejores resultados, puede utilizar PetScan para listar sólo artículos dentro de esa categoría.",
+	"import_petscan_intro": "{em_start}PetScan{em_end} es una herramienta para consultar Wikipedia y definir listas de artículos. PetScan asigna IDs a las consultas para que sus resultados puedan ser importados a otras herramientas.",
+	"import_petscan_prompt": "Por favor {link_start}cree su consulta en PetScan{link_end} y pegue su ID abajo:",
+	"in_page": "En la página %s:",
+	"instructions_details": "Haz clic en %s para ir a Wikipedia y corregir el fragmento, o %s para ver otro. Comprueba %s si tienes preguntas. ¡Buena suerte!",
+	"instructions_goal": "El siguiente fragmento de Wikipedia no está respaldado por una {link_start}fuente confiable{link_end}. ¿Puedes encontrar una?",
+	"custom_created": "¡Tu {tooltitle} personalizada ha sido creada!",
+	"custom_end_copy_link": "¡Puedes copiar y compartir el enlace anterior para permitir que otras personas lo usen, o {link_start}comenzar a navegarlo ahora{finalizar_enlace}!",
+	"custom_failed": "¡Lo sentimos, tu {tooltilte} personalizada no se ha creado o ha aparecido vacía!",
+	"custom_import_prompt": "¿De dónde te gustaría importar artículos?",
+	"custom_intro": "Puedes personalizar {tooltitle} importando una lista de artículos a ella. Esto te da un enlace que puedes compartir con otros para que naveguen {tooltitle} limitándose a los artículos que has proporcionado.",
+	"custom_notice": "Estás navegando una {tooltitle} personalizada con una lista limitada de artículos. Has clic aquí para ir a una {tooltitle} sin restricciones."
+}

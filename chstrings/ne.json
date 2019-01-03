@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Nirajan pant",
-			"सरोज कुमार ढकाल"
+			"सरोज कुमार ढकाल",
+			"Parbat subedi"
 		]
 	},
+	"back": "पछाडि",
 	"beginners_hint": "साइटेसन कसरी थप्ने थाह छ? %s हेर्नुहोस्।",
 	"button_next": "अर्को!",
 	"button_wikilink": "मैले यो भेटाएँ!",

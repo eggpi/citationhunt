@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Arthur2e5"
+			"Arthur2e5",
+			"A Chinese Wikipedian"
 		]
 	},
+	"back": "上一步",
 	"beginners_hint": "不了解如何添加引用？请参见%s。",
 	"button_next": "下一个！",
 	"button_wikilink": "这个我行！",
@@ -12,6 +14,7 @@
 	"edits": "编辑",
 	"footer": "%s由志愿者制作，托管于%s，并由%s提供翻译。",
 	"github_link_title": "嘿！我的源代码在GitHub上！",
+	"import_article_titles": "条目标题列表",
 	"in_page": "页面%s中：",
 	"instructions_details": "点击%s前往维基百科并修复片段，或%s查看另一个。如果您有问题请先查看%s。祝好运！",
 	"instructions_goal": "下方的维基百科片段没有{link_start}可靠来源{link_end}支持。您可以找到一个么？",
