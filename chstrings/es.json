@@ -10,9 +10,12 @@
 			"Laura Ospina"
 		]
 	},
+	"back": "Atrás",
+	"back_to_cancel": "Puedes pulsar en {em_start}{back}{em_end} o cerrar este cuadro de diálogo para cancelar.",
 	"beginners_hint": "¿No sabes cómo añadir citas? Consulta %s.",
 	"button_next": "Siguiente",
 	"button_wikilink": "¡Lo tengo!",
+	"customize": "Personalizar",
 	"category_filter_placeholder": "Búsqueda por tema.",
 	"edits": "Ediciones",
 	"footer": "%s es obra de voluntarios, está alojado en %s y se traduce por medio de %s.",
@@ -30,6 +33,7 @@
 	"leaderboard_title": "Tabla de posiciones de %s",
 	"page_not_found": "Página no encontrada",
 	"page_not_found_text": "La página que estás buscando ya no existe. Tal vez esta cita ya se ha encontrado. ¡Vuelve a %s para más!",
+	"submit": "Enviar",
 	"tooltitle": "Citation Hunt",
 	"user": "Usuario"
 }
