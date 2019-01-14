@@ -38,5 +38,6 @@
 	"page_not_found_text": "La página que estás buscando ya no existe. Tal vez esta cita ya se ha encontrado. ¡Vuelve a %s para más!",
 	"submit": "Enviar",
 	"tooltitle": "Citation Hunt",
+	"try_again_hints_header": "Inténtalo de nuevo con estos consejos en mente:",
 	"user": "Usuario"
 }
