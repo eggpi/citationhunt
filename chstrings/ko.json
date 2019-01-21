@@ -22,6 +22,7 @@
 	"in_page": "%s 문서에서:",
 	"instructions_details": "위키백과로 가서 문서를 고치려면 %s를 클릭하시고, 다른 부분을 보려면 %s을 눌러주세요. 질문이 있다면 %s를 누르세요. 좋은 시간 되세요!",
 	"instructions_goal": "이 위키백과 문서의 일부 부분은 {link_start}신뢰할 수 있는 출처{link_end}가 없습니다. 하나 찾아 보시겠어요?",
+	"custom_created": "사용자 지정 {tooltitle}이(가) 만들어졌습니다!",
 	"custom_import_prompt": "어디에서 문서를 가져오시겠습니까?",
 	"introduction": "위키백과 문서를 위해 출처를 찾는 것을 도와주세요!",
 	"js-article-count": "$1개의 {{PLURAL:$1|문서|문서}}",

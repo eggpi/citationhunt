@@ -3,7 +3,8 @@
 		"authors": [
 			"Nirajan pant",
 			"सरोज कुमार ढकाल",
-			"Parbat subedi"
+			"Parbat subedi",
+			"पर्वत सुबेदी"
 		]
 	},
 	"back": "पछाडि",
@@ -27,6 +28,7 @@
 	"leaderboard_title": "%s अग्रतासूची",
 	"page_not_found": "पृष्ठ फेला परेन!",
 	"page_not_found_text": "The page you are looking for no longer exists — perhaps this citation has already been found? थपको लागि %s मा जानुहोस्!",
+	"submit": "पेश गर्नु",
 	"tooltitle": "साइटेसन हन्ट",
 	"user": "प्रयोगकर्ता"
 }
