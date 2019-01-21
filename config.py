@@ -254,7 +254,6 @@ _LANG_CODE_TO_CONFIG = dict(
             '.bandeau-niveau-modere',
             '.homonymie',
         ],
-        snippet_max_size = 600,
     ),
 
     it = dict(
@@ -533,7 +532,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Εκκρεμεί παραπομπή',
         ],
         hidden_category = 'Κρυμμένες_κατηγορίες',
-        snippet_max_size = 700,
     ),
 
     hu = dict(
@@ -613,7 +611,6 @@ _LANG_CODE_TO_CONFIG = dict(
             'Necesită citare',
         ],
         hidden_category = 'Categorii_ascunse',
-        snippet_max_size = 800,
     ),
 
     ml = dict(
@@ -741,6 +738,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'حوالہ درکار',
         ],
         hidden_category = 'پوشیدہ_زمرہ_جات',
+        snippet_max_size = 1200,
     ),
 
     uk = dict(
