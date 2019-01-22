@@ -25,8 +25,8 @@ def update_intersections():
     db.execute_with_retry_s('DELETE FROM articles_intersections')
     db.execute_with_retry_s('''
         INSERT INTO articles_intersections SELECT * FROM %s
-        WHERE article_id IN (
-            SELECT page_id FROM articles)''' % chdb.get_table_name(
+        WHERE article_id IN (SELECT page_id FROM articles)
+        AND inter_id IN (SELECT id FROM intersections)''' % chdb.get_table_name(
             db, 'citationhunt', 'articles_intersections'))
 
     def update_snippets_links(cursor):
