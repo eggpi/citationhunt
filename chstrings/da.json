@@ -19,6 +19,7 @@
 	"in_page": "På side %s",
 	"instructions_details": "Klik %s for at gå til Wikipedia og ret stumpen, eller %s for at se en anden. Kontroller %s hvis du har spørgsmål. Held og lykke!",
 	"instructions_goal": "Wikipediastumpen nedenfor er ikke understøttet af en {link_start}reliable source{link_end}. Kan du finde en?",
+	"custom_import_prompt": "Hvor ønsker du at importere artikler fra?",
 	"introduction": "Hjælp til at finde citationer for Wikipediaartikler!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artikler}}",
 	"js-keyboard-shortcut": "Genvejstast: %s",

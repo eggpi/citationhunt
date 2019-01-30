@@ -10,6 +10,7 @@
 			"Bengtsson96"
 		]
 	},
+	"article_titles_hint": "När du importerar artiklar efter titel, dubbelkolla att titlarna är korrekta och se till att du har en per rad.",
 	"back": "Tillbaka",
 	"back_to_cancel": "Du kan trycka på {em_start}{back}{em_end} eller stänga denna dialogruta för att avbryta.",
 	"beginners_hint": "Vet du inte hur man lägger till referenser? Se %s.",

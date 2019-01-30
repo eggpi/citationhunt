@@ -4,14 +4,20 @@
 			"Joetaras"
 		]
 	},
+	"article_titles_hint": "Quanne ste 'mborte le vôsce pe titole, doppie condrolle ca le titole so corrette e ca ne stonne une pe linèe.",
 	"back": "Rrete",
+	"back_to_cancel": "Puè cazzà {em_start}{back}{em_end} o achiudere stu dialoghe pe annullà.",
 	"beginners_hint": "Non ge sè cumme a mettere le citazziune? 'Ndruche %s.",
 	"button_next": "Prossime",
 	"button_wikilink": "'U tenghe!",
+	"customize": "Personalizze",
 	"category_filter_placeholder": "Cirche 'n'argomende.",
 	"edits": "Cangiaminde",
 	"footer": "%s ga state fatte da volondarije, ospitate sus a %s e tradotte cu %s.",
 	"github_link_title": "Uè! 'U sorgende mije ste sus a GitHub!",
+	"import_article_titles": "'N'elenghe de titole de vôsce",
+	"import_articles_prompt": "Pe piacere sckaffe le {em_start}titole de vôsce{em_end} de Uicchipèdie da 'mbortà, une pe linèe, jndr'à l'arèe aqquà sotte:",
+	"import_petscan": "'N'inderrogazione PetScan",
 	"in_page": "Jndr'à pàgene %s:",
 	"instructions_details": "Cazze %s pe scè sus a Uicchipèdie pe correggere 'u stuézze, o %s pe 'ndrucarne 'n'otre. Condrolle %s ce tìne dumande da ffà. Fatta calà!",
 	"instructions_goal": "'U stuézze de Uicchipèdie non g'avéne supportate da 'na {link_start}fonde secure{link_end}. Ne puè cercà une?",
@@ -25,5 +31,6 @@
 	"leaderboard_title": "Classifeche %s",
 	"page_not_found": "Vôsce non acchiate!",
 	"page_not_found_text": "'A pàgene ca ste cercave non g'esiste cchiù - pò essere ca sta citazione ha state ggià acchiate? Tuérne sus a %s pe otre!",
+	"submit": "Conferme",
 	"user": "Utende"
 }

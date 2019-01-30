@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nizil Shah"
+		]
+	},
+	"article_titles_hint": "જ્યારે શીર્ષક વડે લેખની યાદી અહીં લાવતા હોવ ત્યારે બે વાર તપાસો કે શીર્ષક સાચા છે અને એક લીટીમાં એક જ શીર્ષક છે.",
+	"back": "પાછાં જાવ",
+	"back_to_cancel": "તમે {em_start}{back}{em_end} બટન દબાવી શકો છો અથવા આ બોક્સ બંધ કરી શકો છો.",
+	"beginners_hint": "તમે જાણો છો કે કેવી રીતે સંદર્ભ ઉમેરવા? %s જુઓ.",
+	"button_next": "આગળ!",
+	"button_wikilink": "મારી પાસે આ છે!",
+	"customize": "જરૂરિયાત મુજબનું કરો",
+	"category_filter_placeholder": "આ વિષય અંતર્ગત શોધો.",
+	"edits": "યોગદાન",
+	"footer": "%sને સ્વયંસેવકો દ્વારા બનાવવામાં આવેલ છે, %s પર હોસ્ટ કરવામાં આવે છે અને %s દ્વારા અનુવાદિત કરવામાં આવેલ છે.",
+	"github_link_title": "કેમ છો? મારો સ્ત્રોત ગિટહબ પર છે!",
+	"import_article_titles": "લેખના શીર્ષાકોની યાદી",
+	"import_articles_prompt": "મહેરબાની કરીને નીચે વિકિપીડિયા {em_start}article titles{em_end} ને આયાત કરો. જુઓ કે એક લીટીમાં એક શીર્ષક જ હોય:",
+	"import_petscan": "પેટસ્કેન યાદી",
+	"custom_import_prompt": "તમે ક્યાંથી લેખો લાવવા માંગો છો?",
+	"js-invalid-petscan-input": "PetScan IDનો નંબર નાખો.",
+	"js-keyboard-shortcut": "કી બોર્ડ શોર્ટકટ: %s",
+	"js-leaving-custom": "તમે પરવાનગી વગરના {tooltitle} પર પાછા જાવ છો. પાક્કું?",
+	"js-refs-added-today": "આજે $1 {{PLURAL:$1|citation|citations}} સંદર્ભો ઉમેરવામાં આવ્યા!",
+	"lead_section_hint": "આ લેખના શરૂઆતી ફકરાનો ભાગ છે એટલે ત્યાં કદાચ સંદર્ભની જરૂરિયાત ન પણ હોય. વધુ માહિતી માટે %s જુઓ.",
+	"leaderboard_description": "આ સભ્યો એ પાછળ {days} દિવસોમાં {tooltitle} વડે સૌથી વધુ લેખ અંશ તપસ્યા છે. સરસ!",
+	"leaderboard_link_title": "લીડરબોર્ડ",
+	"leaderboard_title": "%s લીડરબોર્ડ",
+	"page_not_found": "પાનું ન મળ્યું!",
+	"page_not_found_text": "તમે જે પાનું શોધો છો તે હાજર નથી — કદાચ તેને સંદર્ભ મળી ગયેલ હોય? વધુ માટે %s પર જાઓ.",
+	"petscan_hint": "પેટસ્કેન યાદી લાવતા પૂર્વે એ ધ્યાન રાખો કે યાદી બહુ લાંબી ન હોય જેથી પેટસ્કેનને લાવતા ખૂબ વાર લાગે અને તમે આપેલ URL કે PSID સાચો હોય.",
+	"submit": "સબમિટ",
+	"try_again_hints_header": "ફરી પ્રયત્ન કરો અને નીચેની વાત ધ્યાનમાં રાખો:",
+	"user": "સભ્ય"
+}
