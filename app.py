@@ -5,7 +5,6 @@ import handlers
 import utils
 
 import flask
-import flask_sslify
 import flask_compress
 
 import os
@@ -28,8 +27,6 @@ global_config = config.get_global_config()
 app = flask.Flask(__name__)
 flask_compress.Compress(app)
 debug = 'DEBUG' in os.environ
-if not debug:
-    flask_sslify.SSLify(app, permanent = True)
 
 @app.route('/')
 @handlers.validate_lang_code

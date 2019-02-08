@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 import os
-os.environ['DEBUG'] = '1' # disable https redirects
+os.environ['DEBUG'] = '1'
 
 # Disable stats since it requires a database, and we're not
 # testing it anyway
