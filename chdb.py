@@ -5,6 +5,7 @@ import MySQLdb
 
 import contextlib
 import os
+import time
 import warnings
 
 REPLICA_MY_CNF = os.getenv(
@@ -16,8 +17,9 @@ class _RetryingConnection(object):
     Wraps a MySQLdb connection, handling retries as needed.
     '''
 
-    def __init__(self, connect):
+    def __init__(self, connect, sleep = time.sleep):
         self._connect = connect
+        self._sleep = sleep
         self._do_connect()
 
     def _do_connect(self):
@@ -34,6 +36,7 @@ class _RetryingConnection(object):
                 if retry == max_retries - 1:
                     raise
                 else:
+                    self._sleep(2 ** retry)
                     self._do_connect()
             else:
                 break
