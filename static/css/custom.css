@@ -45,6 +45,7 @@
 
 #custom-buttons-container {
     margin: 5px;
+    padding-bottom: 10px;
 }
 
 #import-petscan-card input {
