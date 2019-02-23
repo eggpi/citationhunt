@@ -68,6 +68,12 @@ accordingly:
 $ export CH_LANG=en
 ```
 
+Now, let's create all necessary databases and tables:
+
+```
+$ (cd ..; python -c 'import chdb; chdb.initialize_all_databases()')
+```
+
 Next, let's generate the list of ids of pages with unsourced statements with
 `print_unsourced_pageids_from_wikipedia.py`:
 

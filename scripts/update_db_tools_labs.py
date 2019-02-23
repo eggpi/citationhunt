@@ -79,6 +79,7 @@ def expire_stats(cfg):
 
 def _update_db_tools_labs(cfg):
     os.environ['CH_LANG'] = cfg.lang_code
+    chdb.initialize_all_databases()
 
     if cfg.archive_dir and not archive_database(cfg):
         # Log, but don't assert, this is not fatal

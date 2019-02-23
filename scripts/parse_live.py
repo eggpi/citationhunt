@@ -178,7 +178,6 @@ def work(pageids):
         self.chdb.execute_with_retry(insert, r)
 
 def parse_live(pageids, timeout):
-    chdb.reset_scratch_db()
     backdir = tempfile.mkdtemp(prefix = 'citationhunt_parse_live_')
     pool = multiprocessing.Pool(
         # The number of processes per CPU is pretty much made up. The processes

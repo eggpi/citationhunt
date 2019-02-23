@@ -156,14 +156,6 @@ def update_citationhunt_db(chdb, category_name_id_and_page_ids):
         SELECT category_id, COUNT(*) AS article_count
         FROM articles_categories GROUP BY category_id''')
 
-def reset_chdb_tables(cursor):
-    log.info('resetting articles_categories table...')
-    cursor.execute('DELETE FROM articles_categories')
-    log.info('resetting categories table...')
-    cursor.execute('DELETE FROM categories')
-    log.info('resetting snippets_links table...')
-    cursor.execute('DELETE FROM snippets_links')
-
 def assign_categories():
     cfg = config.get_localized_config()
     profiler = cProfile.Profile()
@@ -174,7 +166,6 @@ def assign_categories():
     chdb = chdb_.init_scratch_db()
     wpdb = chdb_.init_wp_replica_db(cfg.lang_code)
 
-    chdb.execute_with_retry(reset_chdb_tables)
     unsourced_pageids = load_unsourced_pageids(chdb)
 
     # Load a list of (wikiproject, page ids), if applicable
