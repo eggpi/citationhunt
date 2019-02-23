@@ -97,7 +97,6 @@ def initializer(backdir):
 
     self.wiki = mwapi.MediaWikiAPI(WIKIPEDIA_API_URL, cfg.user_agent)
     self.parser = snippet_parser.create_snippet_parser(self.wiki, cfg)
-    self.chdb = chdb.init_scratch_db()
     self.exception_count = 0
 
     if cfg.profile:
@@ -174,8 +173,11 @@ def work(pageids):
             # Every single snippet was truncated, remove the article itself
             cursor.execute('''DELETE FROM articles WHERE page_id = %s''',
                 (r['article'][0],))
+    # Open a short-lived connection to try to avoid the limit of 20 per user:
+    # https://phabricator.wikimedia.org/T216170
+    db = chdb.init_scratch_db()
     for r in rows:
-        self.chdb.execute_with_retry(insert, r)
+        db.execute_with_retry(insert, r)
 
 def parse_live(pageids, timeout):
     backdir = tempfile.mkdtemp(prefix = 'citationhunt_parse_live_')
