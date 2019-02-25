@@ -6,9 +6,11 @@
 			"BanKris",
 			"Máté",
 			"Notramo",
-			"Adam Harangozó"
+			"Adam Harangozó",
+			"Pasztilla"
 		]
 	},
+	"back": "Vissza",
 	"beginners_hint": "Nem tudod, hogy kell hozzáadni forrásokat? Lásd itt:%s",
 	"button_next": "Következő!",
 	"button_wikilink": "Megvan!",
