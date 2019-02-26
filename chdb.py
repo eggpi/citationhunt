@@ -133,13 +133,8 @@ def init_wp_replica_db(lang_code):
         return db
     return _RetryingConnection(connect_and_initialize)
 
-def init_projectindex_db():
-    def connect_and_initialize():
-        db = _connect_to_ch_mysql()
-        with db as cursor:
-            cursor.execute('USE s52475__wpx_p')
-        return db
-    return _RetryingConnection(connect_and_initialize)
+def get_en_projectindex_database_name():
+    return 's52475__wpx_p'
 
 # Methods for use in batch scripts, not the serving frontend. These set up the
 # databases, help populate the scratch database and swap it with the serving

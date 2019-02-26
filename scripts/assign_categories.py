@@ -103,25 +103,26 @@ def count_snippets_for_pages(chcursor):
         '''FROM snippets GROUP BY article_id''')
     return {row[0]: row[1] for row in chcursor}
 
-def load_projectindex(cfg):
+def load_projectindex(cfg, toolsdb):
     if not running_in_tools_labs() or cfg.lang_code != 'en':
         return []
-    tldb = chdb_.init_projectindex_db()
-    tlcursor = tldb.cursor()
-
     # We use a special table on Tools Labs to map page IDs to projects,
     # which will hopefully be more broadly available soon
     # (https://phabricator.wikimedia.org/T131578)
-    query = """
-    SELECT project_title, page_id
-    FROM enwiki_index
-    JOIN enwiki_page ON index_page = page_id
-    JOIN enwiki_project ON index_project = project_id
-    WHERE page_ns = 0 AND page_is_redirect = 0
-    """
-    tlcursor.execute(query)
-
-    ret = [(CategoryName.from_tl_projectindex(r[0]), r[1]) for r in tlcursor]
+    pi_db = chdb_.get_en_projectindex_database_name()
+    ch_articles_tbl = chdb_.get_table_name(toolsdb, 'scratch', 'articles')
+    query = '''
+        SELECT project_title, index_page
+        FROM {pi_db}.enwiki_index
+        JOIN {pi_db}.enwiki_page ON index_page = page_id
+        JOIN {pi_db}.enwiki_project ON index_project = project_id
+        JOIN {ch_articles_tbl} ON index_page = {ch_articles_tbl}.page_id
+        WHERE page_ns = 0 AND page_is_redirect = 0
+    '''.format(pi_db=pi_db, ch_articles_tbl=ch_articles_tbl)
+    def query_projectindex(cursor, query):
+        cursor.execute(query)
+        return [(CategoryName.from_tl_projectindex(r[0]), r[1]) for r in cursor]
+    ret = toolsdb.execute_with_retry(query_projectindex, query)
     log.info('loaded %d entries from projectinfo (%s...)' % \
         (len(ret), ret[0][0]))
     return ret
@@ -169,10 +170,7 @@ def assign_categories():
     unsourced_pageids = load_unsourced_pageids(chdb)
 
     # Load a list of (wikiproject, page ids), if applicable
-    # FIXME: We load all category -> page id mappings for all projects, then
-    # filter out the ones with no unsourced snippets. It's likely better to just
-    # query the projects of the pages we know of instead.
-    projectindex = load_projectindex(cfg)
+    projectindex = load_projectindex(cfg, chdb)
 
     # Load a set() of hidden categories
     hidden_categories = wpdb.execute_with_retry(
