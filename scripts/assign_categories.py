@@ -105,7 +105,7 @@ def count_snippets_for_pages(chcursor):
 
 def load_projectindex(cfg, toolsdb):
     if not running_in_tools_labs() or cfg.lang_code != 'en':
-        return []
+        return {}
     # We use a special table on Tools Labs to map page IDs to projects,
     # which will hopefully be more broadly available soon
     # (https://phabricator.wikimedia.org/T131578)
@@ -121,10 +121,13 @@ def load_projectindex(cfg, toolsdb):
     '''.format(pi_db=pi_db, ch_articles_tbl=ch_articles_tbl)
     def query_projectindex(cursor, query):
         cursor.execute(query)
-        return [(CategoryName.from_tl_projectindex(r[0]), r[1]) for r in cursor]
+        project_to_pageids = {}
+        for r in cursor:
+            project_to_pageids.setdefault(
+                CategoryName.from_tl_projectindex(r[0]), []).append(r[1])
+        return project_to_pageids
     ret = toolsdb.execute_with_retry(query_projectindex, query)
-    log.info('loaded %d entries from projectinfo (%s...)' % \
-        (len(ret), ret[0][0]))
+    log.info('loaded %d entries from projectinfo' % len(ret))
     return ret
 
 def category_is_usable(cfg, catname, hidden_categories):
@@ -169,8 +172,8 @@ def assign_categories():
 
     unsourced_pageids = load_unsourced_pageids(chdb)
 
-    # Load a list of (wikiproject, page ids), if applicable
-    projectindex = load_projectindex(cfg, chdb)
+    # Load an initial {wikiproject -> [page ids]} dict, if applicable
+    category_to_page_ids = load_projectindex(cfg, chdb)
 
     # Load a set() of hidden categories
     hidden_categories = wpdb.execute_with_retry(
@@ -178,11 +181,7 @@ def assign_categories():
     log.info('loaded %d hidden categories (%s...)' % \
         (len(hidden_categories), next(iter(hidden_categories))))
 
-    # Load all usable categories into a dict category -> [page ids]
-    category_to_page_ids = {}
-    for c, p in projectindex:
-        if p in unsourced_pageids:
-            category_to_page_ids.setdefault(c, []).append(p)
+    # Load all usable categories and page ids
     for c in ichunk(unsourced_pageids, 10000):
         for c, p in wpdb.execute_with_retry(
             load_categories_for_pages, tuple(c)):
