@@ -40,6 +40,6 @@
 }
 
 /* Fighting Bootstrap, which sets this to white. */
-#snippet kdb {
+#snippet kbd {
     color: unset !important;
 }
