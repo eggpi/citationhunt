@@ -38,3 +38,8 @@
 #snippet h3 {
     font-size: 16px;
 }
+
+/* Fighting Bootstrap, which sets this to white. */
+#snippet kdb {
+    color: unset !important;
+}
