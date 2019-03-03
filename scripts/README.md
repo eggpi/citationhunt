@@ -1,6 +1,6 @@
-## CitationHunt scripts and tools
+## Citation Hunt scripts and tools
 
-The scripts in this directory are used to generate the CitationHunt database.
+The scripts in this directory are used to generate the Citation Hunt database.
 
 ### Generating the database on Tools Labs
 
@@ -94,7 +94,7 @@ impatient, you can also pass it a maximum running time in seconds using the
 `--timeout` command line option.
 
 The next thing to do is to pick which categories will get to be displayed in
-CitationHunt, thus filling up the `articles_categories` table in the database.
+Citation Hunt, thus filling up the `articles_categories` table in the database.
 This is done with the `assign_categories.py` script:
 
 ```
@@ -102,7 +102,7 @@ $ ./assign_categories.py
 ```
 
 At the end of this step, your MySQL installation should contain a database named
-`root__scratch_en` with all the tables CitationHunt needs. The
+`root__scratch_en` with all the tables Citation Hunt needs. The
 `install_new_database.py` script will atomically move these tables to a new
 database named `root__citationhunt_en`, which is where the app actually expects
 to find them:
@@ -113,4 +113,4 @@ $ ./install_new_database.py
 
 And that's it! If everything went well, you can refer to the instructions in
 [../README.md](https://github.com/eggpi/citationhunt/blob/master/README.md)
-to run CitationHunt using your new database.
+to run Citation Hunt using your new database.
