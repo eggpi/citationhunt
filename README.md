@@ -1,6 +1,6 @@
 ## Citation Hunt
 
-CitationHunt is a simple tool for finding unsourced statements on
+Citation Hunt is a simple tool for finding unsourced statements on
 Wikipedia in different languages. It is hosted at
 [https://tools.wmflabs.org/citationhunt/](https://tools.wmflabs.org/citationhunt/).
 
@@ -17,7 +17,7 @@ for guidelines and instructions.
 
 #### Installing on Tools Labs
 
-CitationHunt can be installed on Wikimedia's Tools Labs using its [specialized
+Citation Hunt can be installed on Wikimedia's Tools Labs using its [specialized
 support for Python uwsgi
 applications](https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Web#Python_.28uwsgi.29).
 
