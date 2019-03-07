@@ -3,18 +3,24 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Arthur2e5",
-			"A Chinese Wikipedian"
+			"A Chinese Wikipedian",
+			"佛壁灯"
 		]
 	},
+	"article_titles_hint": "当根据标题导入文章时，请再次确认您每一行的标题是否均正确。",
 	"back": "上一步",
+	"back_to_cancel": "您可点击{em_start}{back}{em_end}或关闭此对话框以取消。",
 	"beginners_hint": "不了解如何添加引用？请参见%s。",
 	"button_next": "下一个！",
 	"button_wikilink": "这个我行！",
+	"customize": "自定义",
 	"category_filter_placeholder": "搜索一个话题。",
 	"edits": "编辑",
 	"footer": "%s由志愿者制作，托管于%s，并由%s提供翻译。",
 	"github_link_title": "嘿！我的源代码在GitHub上！",
 	"import_article_titles": "条目标题列表",
+	"import_articles_prompt": "请在下方输入要导入的维基百科{em_start}条目名称{em_end}（一行一个）：",
+	"import_petscan": "PetScan 查询",
 	"in_page": "页面%s中：",
 	"instructions_details": "点击%s前往维基百科并修复片段，或%s查看另一个。如果您有问题请先查看%s。祝好运！",
 	"instructions_goal": "下方的维基百科片段没有{link_start}可靠来源{link_end}支持。您可以找到一个么？",
