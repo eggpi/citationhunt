@@ -10,7 +10,9 @@
 			"Strayblues"
 		]
 	},
+	"article_titles_hint": "בעת ייבוא ערכים לפי כותרת, יש לבדוק היטב שהכותרות נכונות ושציינת רק אחת בכל שורה.",
 	"back": "חזרה",
+	"back_to_cancel": "ניתן ללחוץ על {em_start}{back}{em_end} או לסגור את תיבת הדו־שיח הזו לביטול.",
 	"beginners_hint": "לא יודעים איך להוסיף מקורות? ר׳ %s.",
 	"button_next": "הלאה!",
 	"button_wikilink": "יש לי!",
@@ -22,10 +24,12 @@
 	"import_article_titles": "רשימת כותרות ערכים",
 	"import_articles_prompt": "נא להקליד {em_start}כותרות ערכים{em_end} בוויקיפדיה לייבוא, כל ערך בשורה נפרדת, במתחם שלהלן:",
 	"import_petscan": "שאילתת PetScan",
+	"import_petscan_intro": "{em_start}PetScan{em_end} הוא כלי לתשאול ויקיפדיה והגדרת רשימות ערכים. PetScan מקצה מספרי זיהוי לשאילתות כדי שניתן יהיה לייבא את התוצאות שהן לכלים אחרים.",
 	"in_page": "בדף %s:",
 	"instructions_details": "נא ללחוץ על %s כדי לעבור לוויקיפדיה ולתקן את הקטע, או על %s כדי לראות קטע אחר. נא לקרוא את %s אם יש לך שאלות. בהצלחה!",
 	"instructions_goal": "הקטע הבא מוויקיפדיה אינו מגובה ב{link_start}מקור אמין{link_end}. אפשר להיעזר בך למצוא מקור כזה?",
 	"custom_import_prompt": "מהיכן לייבא מאמרים?",
+	"custom_please_wait": "נא להמתין, {tooltitle} המותאם לך מחושב. פעולה זו עשויה לארוך כמה דקות&#x2026;",
 	"introduction": "עזרו בחיפוש מקורות לערכי ויקיפדיה!",
 	"js-article-count": "{{PLURAL:$1|ערך אחד|$1 ערכים}}",
 	"js-keyboard-shortcut": "קיצור מקשים: %s",
