@@ -1,5 +1,8 @@
+import config
+
 import errno
 import itertools as it
+import logging.handlers
 import os
 import sys
 import hashlib
@@ -74,3 +77,15 @@ def ichunk(iterable, chunk_size):
         it1, it2 = it.tee(it.islice(it0, chunk_size))
         next(it2)  # raises StopIteration if it0 is exhausted
         yield it1
+
+def setup_logger_to_logfile(logger, logfile):
+    log_dir = config.get_global_config().log_dir
+    mkdir_p(log_dir)
+    log_file = os.path.join(log_dir, logfile)
+    log_handler = logging.handlers.RotatingFileHandler(
+        log_file, maxBytes = 1024 * 1024, encoding = 'utf-8')
+    log_handler.setFormatter(logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'))
+    log_handler.setLevel(logging.INFO)
+    logger.addHandler(log_handler)
+    logger.setLevel(logging.INFO)

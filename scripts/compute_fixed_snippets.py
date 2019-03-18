@@ -22,6 +22,7 @@ import urlparse
 import datetime
 import dateutil.parser
 import dateutil.tz
+import logging.handlers
 
 import config
 import chdb
@@ -31,7 +32,8 @@ import snippet_parser
 
 import docopt
 
-log = Logger()
+logger = logging.getLogger('compute_fixed_snippets')
+setup_logger_to_logfile(logger, 'compute_fixed_snippets')
 
 def datetime_naive_local_to_naive_utc(d):
     # Given a naive datetime object, assume it represents local time,
@@ -87,20 +89,20 @@ def load_pages_and_snippets_to_process(cursor, lang_code, start_date, end_date):
     for ts, _, url in cursor:
         query_dict = urlparse.parse_qs(urlparse.urlparse(url).query)
         if not 'id' in query_dict or not 'to' in query_dict:
-            log.info('malformed redirect url: %r' % url)
+            logger.info('malformed redirect url: %r' % url)
             continue
 
         snippet_id = query_dict['id'][0]
         page_title = query_dict['to'][0]
         if not page_title.startswith('wiki/'):
-            log.info('malformed redirect url: %r' % url)
+            logger.info('malformed redirect url: %r' % url)
             continue
         page_title = page_title.split('/', 1)[1].replace('_', ' ')
         page_title_to_snippets.setdefault(page_title, {})[snippet_id] = ts
     return page_title_to_snippets
 
 def compute_fixed_snippets(cfg):
-    log.info('computing fixed snippets for %s' % cfg.lang_code)
+    logger.info('computing fixed snippets for %s' % cfg.lang_code)
 
     live_db = chdb.init_db(cfg.lang_code)
     stats_db = chdb.init_stats_db()
@@ -112,9 +114,9 @@ def compute_fixed_snippets(cfg):
         load_pages_and_snippets_to_process, cfg.lang_code, from_ts, to_ts)
 
     if not page_title_to_snippets:
-        log.info('No pages to process!')
+        logger.info('No pages to process!')
         return
-    log.info('Will reparse pages: %r' % page_title_to_snippets.keys())
+    logger.info('Will reparse pages: %r' % page_title_to_snippets.keys())
 
     # Now fetch and parse the pages and check which snippets are gone
     wiki = mwapi.MediaWikiAPI(
@@ -134,7 +136,7 @@ def compute_fixed_snippets(cfg):
                     gone_in_this_revision.pop(id, None)
             for snippet_id, clicked_ts in gone_in_this_revision.items():
                 if clicked_ts < rev['timestamp']:
-                    log.info('%s fixed at revision %s' % (
+                    logger.info('%s fixed at revision %s' % (
                         snippet_id, rev['rev_id']))
                     del snippet_to_ts[snippet_id]
                     stats_db.execute_with_retry_s(
@@ -158,5 +160,5 @@ if __name__ == '__main__':
             cfg = config.get_localized_config(lang_code)
             if cfg.extract == 'snippet':
                 compute_fixed_snippets(cfg)
-        log.info('all done in %d seconds.' % (time.time() - start))
+        logger.info('all done in %d seconds.' % (time.time() - start))
         time.sleep(5 * 60)

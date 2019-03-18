@@ -47,17 +47,7 @@ app.add_url_rule('/<lang_code>/intersection',
     view_func = handlers.create_intersection, methods = ['POST'])
 
 if not debug:
-    log_dir = global_config.log_dir
-    utils.mkdir_p(log_dir)
-    log_file = os.path.join(log_dir, 'ch.log')
-    log_handler = logging.handlers.RotatingFileHandler(
-        log_file, maxBytes = 1024 * 1024, encoding = 'utf-8')
-    log_handler.setFormatter(logging.Formatter(
-        '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'))
-    log_handler.setLevel(logging.INFO)
-    app.logger.addHandler(log_handler)
-    app.logger.setLevel(logging.INFO)
-    print 'writing server logs to %s' % log_file
+    setup_logger_to_logfile(app.logger, 'ch.log')
 
 @app.before_first_request
 def log_hello():
