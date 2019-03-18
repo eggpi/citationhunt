@@ -47,7 +47,7 @@ app.add_url_rule('/<lang_code>/intersection',
     view_func = handlers.create_intersection, methods = ['POST'])
 
 if not debug:
-    setup_logger_to_logfile(app.logger, 'ch.log')
+    utils.setup_logger_to_logfile(app.logger, 'ch.log')
 
 @app.before_first_request
 def log_hello():
