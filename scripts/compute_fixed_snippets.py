@@ -146,15 +146,17 @@ def compute_fixed_snippets(cfg):
     return 0
 
 if __name__ == '__main__':
-    start = time.time()
-    args = docopt.docopt(__doc__)
-    lang_codes = (
-        config.LANG_CODES_TO_LANG_NAMES.keys()
-        if args['<lang-code>'] == 'global'
-        else [args['<lang-code>']])
+    while True:
+        start = time.time()
+        args = docopt.docopt(__doc__)
+        lang_codes = (
+            config.LANG_CODES_TO_LANG_NAMES.keys()
+            if args['<lang-code>'] == 'global'
+            else [args['<lang-code>']])
 
-    for lang_code in lang_codes:
-        cfg = config.get_localized_config(lang_code)
-        if cfg.extract == 'snippet':
-            compute_fixed_snippets(cfg)
-    log.info('all done in %d seconds.' % (time.time() - start))
+        for lang_code in lang_codes:
+            cfg = config.get_localized_config(lang_code)
+            if cfg.extract == 'snippet':
+                compute_fixed_snippets(cfg)
+        log.info('all done in %d seconds.' % (time.time() - start))
+        time.sleep(5 * 60)

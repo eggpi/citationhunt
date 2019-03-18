@@ -44,7 +44,14 @@ and start the webservice:
 $ webservice2 uwsgi-python start
 ```
 
-You will also want to schedule a cron job to automatically update the database
+In order to gather statistics on snippets fixed through Citation Hunt, also
+submit `scripts/compute_fixed_snippets.py` as a job:
+
+```
+$ jstart $PWD/www/python/venv/bin/python2 $PWD/www/python/src/scripts/compute_fixed_snippets.py global
+```
+
+You will also want to schedule cron jobs to automatically update the database
 regularly. See
 [scripts/README.md](https://github.com/eggpi/citationhunt/blob/master/scripts/README.md)
 for more information.

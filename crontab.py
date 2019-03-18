@@ -30,8 +30,3 @@ for lc in sorted(config.LANG_CODES_TO_LANG_NAMES):
     print spec_template.format(
         h=(h % 24), dom=1 + (h / 24), command=command, freq=freq)
     h += duration
-
-# print entry for compute_fixed_snippets
-print '*/5 * * * * ' + command_template.format(
-    jobname = 'compute_fixed_snippets', lc = 'global',
-    scriptname = 'compute_fixed_snippets.py')
