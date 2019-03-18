@@ -33,7 +33,7 @@ import snippet_parser
 import docopt
 
 logger = logging.getLogger('compute_fixed_snippets')
-setup_logger_to_logfile(logger, 'compute_fixed_snippets')
+setup_logger_to_logfile(logger, 'compute_fixed_snippets.log')
 
 def datetime_naive_local_to_naive_utc(d):
     # Given a naive datetime object, assume it represents local time,
