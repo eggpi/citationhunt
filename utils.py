@@ -36,28 +36,6 @@ def mkdir_p(path):
         else:
             raise
 
-class Logger(object):
-    def __init__(self):
-        self._mode = 'INFO'
-
-    def progress(self, message):
-        message = e(message)
-        if not sys.stderr.isatty():
-            return
-
-        if self._mode == 'PROGRESS':
-            print >>sys.stderr, '\r',
-        print >>sys.stderr, message,
-        self._mode = 'PROGRESS'
-
-    def info(self, message):
-        message = e(message)
-        if self._mode == 'PROGRESS':
-            print >>sys.stderr
-
-        print >>sys.stderr, message
-        self._mode = 'INFO'
-
 def pair_with_next(iterator):
     """
     Given an iterator (..., x, y, z, w, ...), returns another iterator of
@@ -78,14 +56,20 @@ def ichunk(iterable, chunk_size):
         next(it2)  # raises StopIteration if it0 is exhausted
         yield it1
 
-def setup_logger_to_logfile(logger, logfile):
+def _setup_log_handler(logger, handler):
+    handler.setFormatter(logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'))
+    handler.setLevel(logging.INFO)
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
+
+def setup_logger_to_logfile(logger, log_file):
     log_dir = config.get_global_config().log_dir
     mkdir_p(log_dir)
-    log_file = os.path.join(log_dir, logfile)
-    log_handler = logging.handlers.RotatingFileHandler(
-        log_file, maxBytes = 1024 * 1024, encoding = 'utf-8')
-    log_handler.setFormatter(logging.Formatter(
-        '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'))
-    log_handler.setLevel(logging.INFO)
-    logger.addHandler(log_handler)
-    logger.setLevel(logging.INFO)
+    log_path = os.path.join(log_dir, log_file)
+    handler = logging.handlers.RotatingFileHandler(
+        log_path, maxBytes = 1024 * 1024, encoding = 'utf-8')
+    _setup_log_handler(logger, handler)
+
+def setup_logger_to_stderr(logger):
+    _setup_log_handler(logger, logging.StreamHandler())

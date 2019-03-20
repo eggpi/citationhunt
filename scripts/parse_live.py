@@ -37,6 +37,7 @@ import cProfile
 import functools
 import glob
 import itertools
+import logging
 import multiprocessing
 import pstats
 import re
@@ -57,7 +58,8 @@ MAX_EXCEPTIONS_PER_SUBPROCESS = 5
 DATA_TRUNCATED_WARNING_RE = re.compile(
     'Data truncated for column .* at row (\d+)')
 
-log = Logger()
+logger = logging.getLogger('parse_live')
+setup_logger_to_stderr(logger)
 
 def section_name_to_anchor(section):
     # See Sanitizer::escapeId
@@ -122,7 +124,7 @@ def with_max_exceptions(fn):
             traceback.print_exc()
             self.exception_count += 1
             if self.exception_count > MAX_EXCEPTIONS_PER_SUBPROCESS:
-                log.info('Too many exceptions, quitting!')
+                logger.error('Too many exceptions, quitting!')
                 raise
     return wrapper
 
@@ -199,14 +201,14 @@ def parse_live(pageids, timeout):
 
     result.wait(timeout)
     if not result.ready():
-        log.info('timeout, canceling the process pool!')
+        logger.info('timeout, canceling the process pool!')
         pool.terminate()
     pool.join()
     try:
         result.get()
         ret = 0
     except Exception:
-        log.info('Too many exceptions, failed!')
+        logger.error('Too many exceptions, failed!')
         ret = 1
 
     if cfg.profile:
@@ -222,11 +224,11 @@ def parse_live(pageids, timeout):
         pickle.load(file(stats_file))
         for stats_file in glob.glob(os.path.join(backdir, 'stats-*')))
     lengths = parser_stats.snippet_lengths
-    log.info('percentiles for snippet lengths:')
-    log.info('50th: %d' % snippet_parser.stats.percentile(lengths, 50))
-    log.info('70th: %d' % snippet_parser.stats.percentile(lengths, 70))
-    log.info('90th: %d' % snippet_parser.stats.percentile(lengths, 90))
-    log.info('95th: %d' % snippet_parser.stats.percentile(lengths, 95))
+    logger.info('percentiles for snippet lengths:')
+    logger.info('50th: %d' % snippet_parser.stats.percentile(lengths, 50))
+    logger.info('70th: %d' % snippet_parser.stats.percentile(lengths, 70))
+    logger.info('90th: %d' % snippet_parser.stats.percentile(lengths, 90))
+    logger.info('95th: %d' % snippet_parser.stats.percentile(lengths, 95))
 
     shutil.rmtree(backdir)
     return ret
@@ -239,5 +241,5 @@ if __name__ == '__main__':
     with open(pageids_file) as pf:
         pageids = set(itertools.imap(str.strip, pf))
     ret = parse_live(pageids, timeout)
-    log.info('all done in %d seconds.' % (time.time() - start))
+    logger.info('all done in %d seconds.' % (time.time() - start))
     sys.exit(ret)

@@ -26,10 +26,12 @@ import docopt
 import cProfile
 import re
 import collections
+import logging
 import pstats
 import time
 
-log = Logger()
+logger = logging.getLogger('assign_categories')
+setup_logger_to_stderr(logger)
 
 class CategoryName(unicode):
     '''
@@ -127,7 +129,7 @@ def load_projectindex(cfg, toolsdb):
                 CategoryName.from_tl_projectindex(r[0]), []).append(r[1])
         return project_to_pageids
     ret = toolsdb.execute_with_retry(query_projectindex, query)
-    log.info('loaded %d entries from projectinfo' % len(ret))
+    logger.info('loaded %d entries from projectinfo' % len(ret))
     return ret
 
 def category_is_usable(cfg, catname, hidden_categories):
@@ -178,7 +180,7 @@ def assign_categories():
     # Load a set() of hidden categories
     hidden_categories = wpdb.execute_with_retry(
         load_hidden_categories, cfg)
-    log.info('loaded %d hidden categories (%s...)' % \
+    logger.info('loaded %d hidden categories (%s...)' % \
         (len(hidden_categories), next(iter(hidden_categories))))
 
     # Load all usable categories and page ids
@@ -201,12 +203,13 @@ def assign_categories():
         for category, page_ids in category_to_page_ids.iteritems()
         if category_to_snippet_count[category] >= 2
     ]
-    log.info('finished with %d categories' % len(category_name_id_and_page_ids))
+    logger.info('finished with %d categories' % len(
+        category_name_id_and_page_ids))
 
     update_citationhunt_db(chdb, category_name_id_and_page_ids)
     wpdb.close()
     chdb.close()
-    log.info('all done in %d seconds.' % (time.time() - start))
+    logger.info('all done in %d seconds.' % (time.time() - start))
 
     if cfg.profile:
         profiler.disable()
