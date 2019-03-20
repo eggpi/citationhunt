@@ -786,7 +786,7 @@ _LANG_CODE_TO_CONFIG = dict(
        lead_section_policy_link = 'https://en.wikipedia.org/wiki/Wikipedia:CITELEAD',
        lead_section_policy_link_title = 'WP:CITELEAD',
        citation_needed_category = 'ಉಲ್ಲೇಖಗಳು_ಬೇಕಾಗಿರುವ_ಲೇಖನಗಳು',
-       hidden_category = 'ಮರೆಮಾಡಲಾಗಿರುವ_ವರ್ಗಗಳು', # <-- here
+       hidden_category = 'ಮರೆಮಾಡಲಾಗಿರುವ_ವರ್ಗಗಳು',
    )  
 )
 
