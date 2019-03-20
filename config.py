@@ -759,7 +759,73 @@ _LANG_CODE_TO_CONFIG = dict(
  	        'Немає АД 2',
         ],
         hidden_category = 'Приховані_категорії',
-    )
+    ),
+    hi = dict(
+       # A friendly name for the language
+       lang_name = 'Hindi',
+       # The direction of the language, either ltr or rtl
+       lang_dir = 'ltr',
+       # The database to use on Tools Labs
+       database = 'hiwiki_p',
+       # The domain for Wikipedia in this language
+       wikipedia_domain = 'hi.wikipedia.org',
+       # A link to an introductory article about adding citations
+       beginners_link = 'https://hi.wikipedia.org/s/egmz', # <-- here
+       # A human-readable title for the article specified above. This gets
+       # interpolated into the localizable string 'beginners_hint'
+       beginners_link_title = 'यथादृश्य संपादिका के साथ संदर्भ देने के लिए परिचय', # <-- here
+       # A link to an introductory article about identifying reliable sources.
+       # Optional.
+       reliable_sources_link = 'https://hi.wikipedia.org/s/egqm', # <-- here
+       # Some Wikipedias have specific policies for adding citations to the
+       # lead section of an article. This should be a link to that policy.
+       lead_section_policy_link = 'https://en.wikipedia.org/wiki/Wikipedia:CITELEAD',
+       # A human-readable title for the link above. This gets interpolated
+       # into the localizable string 'lead_section_hint'
+       lead_section_policy_link_title = 'w:en:WP:CITELEAD', # <-- here
+       # The name of the category containing articles lacking
+       # citations, without the 'Category:' prefix and with underscores
+       # instead of spaces.
+       citation_needed_category = 'स्रोतहीन कथनों वाले सभी लेख', # <-- here
+       # The name of the category for hidden categories, without the
+       # 'Category:' prefix and with underscores instead of spaces.
+       # Categories belonging to this category are typically used for
+       # maintenance and will not show up on Citation Hunt.
+       hidden_category = 'छुपाई हुई श्रेणियाँ', # <-- here
+   ),
+   kn = dict(
+       # A friendly name for the language
+       lang_name = 'Kannada',
+       # The direction of the language, either ltr or rtl
+       lang_dir = 'ltr',
+       # The database to use on Tools Labs
+       database = 'knwiki_p',
+       # The domain for Wikipedia in this language
+       wikipedia_domain = 'kn.wikipedia.org',
+       # A link to an introductory article about adding citations
+       beginners_link = 'https://kn.wikipedia.org/s/sm', # <-- here
+       # A human-readable title for the article specified above. This gets
+       # interpolated into the localizable string 'beginners_hint'
+       beginners_link_title = 'VisualEditorನೊಂದಿಗೆ ಉಲ್ಲೇಖ ಸೇರಿಸುವುದು', # <-- here
+       # A link to an introductory article about identifying reliable sources.
+       # Optional.
+       reliable_sources_link = 'https://kn.wikipedia.org/s/4u6', # <-- here
+       # Some Wikipedias have specific policies for adding citations to the
+       # lead section of an article. This should be a link to that policy.
+       lead_section_policy_link = 'https://en.wikipedia.org/wiki/Wikipedia:CITELEAD',
+       # A human-readable title for the link above. This gets interpolated
+       # into the localizable string 'lead_section_hint'
+       lead_section_policy_link_title = 'WP:CITELEAD', # <-- here
+       # The name of the category containing articles lacking
+       # citations, without the 'Category:' prefix and with underscores
+       # instead of spaces.
+       citation_needed_category = 'ಉಲ್ಲೇಖಗಳು ಬೇಕಾಗಿರುವ ಲೇಖನಗಳು', # <-- here
+       # The name of the category for hidden categories, without the
+       # 'Category:' prefix and with underscores instead of spaces.
+       # Categories belonging to this category are typically used for
+       # maintenance and will not show up on Citation Hunt.
+       hidden_category = 'ಮರೆಮಾಡಲಾಗಿರುವ ವರ್ಗಗಳು', # <-- here
+   )  
 )
 
 # In py3: types.SimpleNamespace
