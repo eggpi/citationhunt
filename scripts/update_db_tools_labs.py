@@ -119,7 +119,6 @@ def update_db_tools_labs(cfg):
         traceback.print_exc(file = sys.stderr)
         email('Failed to build database for %s' % cfg.lang_code, logfiles)
         sys.exit(1)
-    email('All done for %s!' % cfg.lang_code, logfiles)
     utils.mkdir_p(cfg.log_dir)
     for logfile in logfiles:
         os.rename(logfile, os.path.join(cfg.log_dir, logfile))
