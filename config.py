@@ -786,12 +786,12 @@ _LANG_CODE_TO_CONFIG = dict(
        # The name of the category containing articles lacking
        # citations, without the 'Category:' prefix and with underscores
        # instead of spaces.
-       citation_needed_category = 'स्रोतहीन कथनों वाले सभी लेख', # <-- here
+       citation_needed_category = 'स्रोतहीन_कथनों_वाले_सभी_लेख', # <-- here
        # The name of the category for hidden categories, without the
        # 'Category:' prefix and with underscores instead of spaces.
        # Categories belonging to this category are typically used for
        # maintenance and will not show up on Citation Hunt.
-       hidden_category = 'छुपाई हुई श्रेणियाँ', # <-- here
+       hidden_category = 'छुपाई_हुई_श्रेणियाँ', # <-- here
    ),
    kn = dict(
        # A friendly name for the language
@@ -819,12 +819,12 @@ _LANG_CODE_TO_CONFIG = dict(
        # The name of the category containing articles lacking
        # citations, without the 'Category:' prefix and with underscores
        # instead of spaces.
-       citation_needed_category = 'ಉಲ್ಲೇಖಗಳು ಬೇಕಾಗಿರುವ ಲೇಖನಗಳು', # <-- here
+       citation_needed_category = 'ಉಲ್ಲೇಖಗಳು_ಬೇಕಾಗಿರುವ_ಲೇಖನಗಳು', # <-- here
        # The name of the category for hidden categories, without the
        # 'Category:' prefix and with underscores instead of spaces.
        # Categories belonging to this category are typically used for
        # maintenance and will not show up on Citation Hunt.
-       hidden_category = 'ಮರೆಮಾಡಲಾಗಿರುವ ವರ್ಗಗಳು', # <-- here
+       hidden_category = 'ಮರೆಮಾಡಲಾಗಿರುವ_ವರ್ಗಗಳು', # <-- here
    )  
 )
 
