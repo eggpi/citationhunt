@@ -21,6 +21,7 @@
 	"in_page": "Jndr'à pàgene %s:",
 	"instructions_details": "Cazze %s pe scè sus a Uicchipèdie pe correggere 'u stuézze, o %s pe 'ndrucarne 'n'otre. Condrolle %s ce tìne dumande da ffà. Fatta calà!",
 	"instructions_goal": "'U stuézze de Uicchipèdie non g'avéne supportate da 'na {link_start}fonde secure{link_end}. Ne puè cercà une?",
+	"custom_created": "'U {tooltitle} personalizzate ha state ccrejate!",
 	"introduction": "Danne 'na màne a circà le citazziune pe le vôsce de Uicchipedie!",
 	"js-article-count": "$1 {{PLURAL:$1|vôsce}}",
 	"js-keyboard-shortcut": "Scorciatoje cu le taste: %s",
