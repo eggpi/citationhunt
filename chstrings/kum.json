@@ -5,9 +5,11 @@
 			"Arsenekoumyk"
 		]
 	},
+	"back": "Артгъа",
 	"beginners_hint": "Эниклер нечик къошагъанны билмеймисен? Къара %s.",
 	"button_next": "Сонггъу!",
 	"button_wikilink": "Тапдым!",
+	"customize": "Кюйлемек",
 	"category_filter_placeholder": "Бу темагъа излемек.",
 	"edits": "Тюзлевлер",
 	"github_link_title": "Гьей! Мени эник кодум мунда бар GitHub!",
@@ -15,5 +17,6 @@
 	"js-article-count": "$1 {{PLURAL:$1|макъала}}",
 	"page_not_found": "Макъала табылмагъан!",
 	"page_not_found_text": "Дагъы энди ёкъ сагьифаны излейсен. Балики буну эниги табылгъанмыкен энди? Мунда %s дагъы да бар!",
+	"submit": "Йибермек",
 	"user": "Къоллавчу"
 }

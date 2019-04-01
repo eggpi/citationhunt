@@ -1,16 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"LeGuyanaisPure"
+			"LeGuyanaisPure",
+			"Léon973"
 		]
 	},
 	"beginners_hint": "Zòt pa savé kouman ajouté dé référans ? Konsilté %s.",
 	"button_next": "Swivan !",
 	"button_wikilink": "A pou mo !",
+	"customize": "Pésonnalizé",
 	"category_filter_placeholder": "Sasé di oun sijè.",
 	"edits": "Modifikasyon",
 	"footer": "%s fè pa dé bénévòl, sa ébèrjé asou %s é tradjwi via %s.",
 	"github_link_title": "É ! Mo kod sours asou GitHub !",
+	"import_article_titles": "Oun lis di tit di artik",
 	"in_page": "Asou paj-a %s :",
 	"instructions_details": "Kliké asou %s pou alé asou Wikipédja é korijé fragman-an di kod oben %s pou wè rounòt. Gadé %s si zòt gen dé kèsyon. Bon chans !",
 	"instructions_goal": "Ègstrè-a di kod Wikipédja ki anba pa validé pa roun {link_start}sours fyab{link_end}. Ès zòt pouvé trouvé roun ?",
