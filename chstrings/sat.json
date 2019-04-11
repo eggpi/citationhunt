@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Manik Soren",
-			"Ramjit Tudu"
+			"Ramjit Tudu",
+			"Rocky 734"
 		]
 	},
+	"back": "ᱛᱟᱭᱚᱢ",
 	"beginners_hint": "ᱛᱩᱢᱟᱹᱞ ᱠᱟᱛᱷᱟ ᱚᱠᱟᱞᱮᱠᱟ ᱥᱮᱞᱮᱫ ᱦᱩᱭᱩᱜᱼᱟ ᱵᱟᱢ ᱵᱟᱰᱟᱭᱟ? ᱧᱮᱞᱢᱮ %s",
 	"button_next": "ᱛᱟᱭᱚᱢ ᱨᱮᱱᱟᱜ!",
 	"button_wikilink": "ᱤᱧ ᱫᱚ ᱱᱚᱣᱟᱧ ᱧᱟᱢᱠᱮᱫᱟ!",
@@ -17,5 +19,6 @@
 	"js-keyboard-shortcut": "ᱠᱤᱵᱳᱨᱰ ᱥᱚᱴᱠᱚᱴᱺ %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|ᱛᱩᱢᱟᱹᱞ|ᱛᱩᱢᱟᱹᱞᱠᱚ}} ᱥᱮᱞᱮᱫ ᱟᱠᱟᱱᱟ ᱛᱮᱦᱮᱧ!",
 	"page_not_found": "ᱥᱟᱦᱴᱟ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱟᱱᱟ!",
+	"submit": "ᱮᱢ",
 	"user": "ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ"
 }
