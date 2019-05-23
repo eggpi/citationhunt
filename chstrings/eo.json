@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mirin",
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"Ingweren"
 		]
 	},
 	"article_titles_hint": "Por enporti artikolojn laŭ titoloj, rekontrolu ĉu la titoloj estas ĝustaj kaj ĉu po unu en ĉiu linio.",
@@ -45,7 +46,7 @@
 	"leaderboard_title": "Ĉampionejo je %s",
 	"page_not_found": "La paĝo ne troviĝis!",
 	"page_not_found_text": "La paĝo serĉata ne plu ekzistas — eble la citaĵo jam troviĝis? Reen al %s por pli!",
-	"petscan_hint": "Dum enportado de PetScan-informetoj, evitu informpetojn bezonantajn longegan daŭron por evaluado far PetScan, kaj certigu la la provizotaj retadreso kaj PSID estas validaj.",
+	"petscan_hint": "Dum enportado de PetScan-informetoj, evitu informpetojn bezonantajn longegan daŭron por evaluado far PetScan, kaj certigu ke la provizotaj retadreso kaj PSID estas validaj.",
 	"submit": "Sendi",
 	"try_again_hints_header": "Bonvolu reprovi; ni konsilas la jenon:",
 	"user": "Uzanto"
