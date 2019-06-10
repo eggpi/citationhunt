@@ -102,8 +102,9 @@ def query_rev_users(lang_code, rev_ids):
     wpdb = chdb.init_wp_replica_db(lang_code)
     with wpdb as cursor:
         cursor.execute(
-            'SELECT rev_user_text FROM revision_userindex '
-            'WHERE rev_user != 0 AND rev_id IN %s', (tuple(rev_ids),))
+            'SELECT actor_name FROM actor '
+            'JOIN revision_userindex ON actor_id = rev_actor '
+            'WHERE NOT ISNULL(actor_user) AND rev_id IN %s', (tuple(rev_ids),))
     return [row[0].decode('utf-8') for row in cursor.fetchall()]
 
 def populate_snippets_links(cursor,
