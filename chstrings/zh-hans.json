@@ -4,7 +4,8 @@
 			"Liuxinyu970226",
 			"Arthur2e5",
 			"A Chinese Wikipedian",
-			"佛壁灯"
+			"佛壁灯",
+			"神樂坂秀吉"
 		]
 	},
 	"article_titles_hint": "当根据标题导入文章时，请再次确认您每一行的标题是否均正确。",
@@ -34,6 +35,7 @@
 	"leaderboard_title": "%s排行榜",
 	"page_not_found": "找不到页面！",
 	"page_not_found_text": "您要查找的页面不再存在——也许这个引用已被找到？返回%s解决更多引用！",
+	"submit": "提交",
 	"tooltitle": "Citation Hunt",
 	"user": "用户"
 }
