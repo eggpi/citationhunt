@@ -1,6 +1,6 @@
-import database
+from . import database
 from utils import *
-from common import *
+from .common import *
 
 import flask
 

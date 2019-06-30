@@ -1,8 +1,8 @@
 import chdb
 import config
-import database
+from . import database
 from utils import *
-from common import *
+from .common import *
 
 import requests
 import yamwapi as mwapi
@@ -23,7 +23,7 @@ def validate_request_json(request):
                 raise TypeError
     if 'psid' in request:
         psid = request['psid']
-        if not isinstance(psid, basestring) or not psid.isdigit():
+        if not isinstance(psid, str) or not psid.isdigit():
             raise TypeError
 
 def intersect_with_page_titles(cfg, page_titles):
@@ -34,7 +34,7 @@ def intersect_with_page_titles(cfg, page_titles):
         params = {'titles': '|'.join(chunk)}
         for response in wiki.query(params):
             if 'query' in response and 'pages' in response['query']:
-                page_ids.extend(response['query']['pages'].keys())
+                page_ids.extend(list(response['query']['pages'].keys()))
     if not page_ids:
         return '', []
     return intersect_with_page_ids(cfg, page_ids)

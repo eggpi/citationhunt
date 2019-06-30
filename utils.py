@@ -8,14 +8,14 @@ import sys
 import hashlib
 
 def e(s):
-    if type(s) == str:
+    if type(s) == bytes:
         return s
     return s.encode('utf-8')
 
 def d(s):
-    if type(s) == unicode:
+    if type(s) == str:
         return s
-    return unicode(s, 'utf-8')
+    return str(s, 'utf-8')
 
 def mkid(s):
     return hashlib.sha1(e(s)).hexdigest()[:2*4]
@@ -47,13 +47,16 @@ def pair_with_next(iterator):
     """
 
     i1, i2 = it.tee(iterator)
-    return it.izip(i1, it.chain(i2, [next(i2)]))
+    return zip(i1, it.chain(i2, [next(i2)]))
 
 def ichunk(iterable, chunk_size):
     it0 = iter(iterable)
     while True:
         it1, it2 = it.tee(it.islice(it0, chunk_size))
-        next(it2)  # raises StopIteration if it0 is exhausted
+        try:
+            next(it2)  # raises StopIteration if it0 is exhausted
+        except StopIteration:
+            return
         yield it1
 
 def _setup_log_handler(logger, handler):

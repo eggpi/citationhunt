@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''
 Compute some statistics on how many snippets have been fixed across databases.
@@ -9,7 +9,7 @@ Usage:
 Use 'global' for lang-code to go over all languages.
 '''
 
-from __future__ import unicode_literals
+
 
 import os
 import sys
@@ -18,7 +18,7 @@ _upper_dir = os.path.abspath(
 if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 import time
-import urlparse
+import urllib.parse
 import datetime
 import dateutil.parser
 import dateutil.tz
@@ -62,7 +62,7 @@ def get_page_revisions(wiki, title, start):
     }
     revisions = []  # oldest to newest
     for response in wiki.query(params):
-        for p in response['query']['pages'].values():
+        for p in list(response['query']['pages'].values()):
             for r in p.get('revisions', []):
                 revisions.append({
                     'rev_id': r['revid'],
@@ -87,7 +87,7 @@ def load_pages_and_snippets_to_process(cursor, lang_code, start_date, end_date):
     # in the database as a separate column, but get it from the url anyway.
     page_title_to_snippets = {}
     for ts, _, url in cursor:
-        query_dict = urlparse.parse_qs(urlparse.urlparse(url).query)
+        query_dict = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
         if not 'id' in query_dict or not 'to' in query_dict:
             logger.info('malformed redirect url: %r' % url)
             continue
@@ -116,14 +116,14 @@ def compute_fixed_snippets(cfg):
     if not page_title_to_snippets:
         logger.info('No pages to process!')
         return
-    logger.info('Will reparse pages: %r' % page_title_to_snippets.keys())
+    logger.info('Will reparse pages: %r' % list(page_title_to_snippets.keys()))
 
     # Now fetch and parse the pages and check which snippets are gone
     wiki = mwapi.MediaWikiAPI(
         'https://' + cfg.wikipedia_domain + '/w/api.php', cfg.user_agent)
     parser = snippet_parser.create_snippet_parser(wiki, cfg)
 
-    for page_title, snippet_to_ts in page_title_to_snippets.items():
+    for page_title, snippet_to_ts in list(page_title_to_snippets.items()):
         start_ts = min(snippet_to_ts.values())
         revisions = get_page_revisions(wiki, page_title, start_ts)
         for rev in revisions:
@@ -134,7 +134,7 @@ def compute_fixed_snippets(cfg):
                 for sni in snips:
                     id = mkid(d(page_title) + sni)
                     gone_in_this_revision.pop(id, None)
-            for snippet_id, clicked_ts in gone_in_this_revision.items():
+            for snippet_id, clicked_ts in list(gone_in_this_revision.items()):
                 if clicked_ts < rev['timestamp']:
                     logger.info('%s fixed at revision %s' % (
                         snippet_id, rev['rev_id']))
@@ -152,7 +152,7 @@ if __name__ == '__main__':
         start = time.time()
         args = docopt.docopt(__doc__)
         lang_codes = (
-            config.LANG_CODES_TO_LANG_NAMES.keys()
+            list(config.LANG_CODES_TO_LANG_NAMES.keys())
             if args['<lang-code>'] == 'global'
             else [args['<lang-code>']])
 

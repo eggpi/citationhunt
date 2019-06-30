@@ -1,6 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-from __future__ import unicode_literals
 import os
 import sys
 
@@ -10,8 +9,8 @@ if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 
 import config
-import lxml_utils
-import stats
+from . import lxml_utils
+from . import stats
 from utils import *
 
 import mwparserfromhell
@@ -19,7 +18,7 @@ import lxml.html
 import lxml.etree
 import lxml.cssselect
 
-import cStringIO as StringIO
+import io as StringIO
 import itertools
 from copy import copy
 
@@ -64,7 +63,7 @@ class SnippetParser(object):
         for result in self._wikipedia.query(params):
             # We could fall back to just using self._cfg.citation_needed_templates
             # if the API request fails, but for now let's just crash
-            for page in result['query']['pages'].values():
+            for page in list(result['query']['pages'].values()):
                 for redirect in page.get('redirects', []):
                     # TODO We technically only need to keep the templates that
                     # mwparserfromhell will consider different from one another
@@ -196,13 +195,13 @@ class SnippetParser(object):
 
             try:
                 params = dict(
-                    text = unicode(section), **self._cfg.html_parse_parameters)
+                    text = str(section), **self._cfg.html_parse_parameters)
                 html = self._wikipedia.parse(params)['parse']['text']['*']
             except:
                 continue
 
             tree = lxml.html.parse(
-                StringIO.StringIO(e(html)),
+                StringIO.StringIO(html),
                 parser = lxml.html.HTMLParser(
                     encoding = 'utf-8', remove_comments = True)).getroot()
             if tree is None: continue
@@ -272,7 +271,7 @@ class SnippetParser(object):
                         sr, encoding = 'utf-8', method = 'html')).strip()
                     snippets_in_section.add(snippet)
 
-            sectitle = unicode(section.get(0).title.strip()) if i != 0 else ''
+            sectitle = str(section.get(0).title.strip()) if i != 0 else ''
             snippets.append([sectitle, list(snippets_in_section)])
         return snippets
 

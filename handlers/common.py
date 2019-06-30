@@ -44,7 +44,7 @@ def find_default_lang_code_for_request(accept_language_hdr):
         for l in accept_language_hdr.split(',')
     ] # en-GB, en;q=0.5, es-AR;q=0.3 -> [en-GB, en, es-AR]
     for lang_tag in lang_tags_in_header:
-        for lcode, ltags in config.LANG_CODES_TO_ACCEPT_LANGUAGE.items():
+        for lcode, ltags in list(config.LANG_CODES_TO_ACCEPT_LANGUAGE.items()):
             if lang_tag in ltags or lcode == lang_tag:
                 return lcode
     return 'en'

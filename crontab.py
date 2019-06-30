@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''Crontab generator for Citation Hunt.
 
@@ -27,6 +27,6 @@ for lc in sorted(config.LANG_CODES_TO_LANG_NAMES):
     command = command_template.format(
         jobname = 'citationhunt_update', lc = lc,
         scriptname = 'update_db_tools_labs.py')
-    print spec_template.format(
-        h=(h % 24), dom=1 + (h / 24), command=command, freq=freq)
+    print(spec_template.format(
+        h=(h % 24), dom=1 + (h / 24), command=command, freq=freq))
     h += duration

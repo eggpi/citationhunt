@@ -6,7 +6,7 @@ These are here for ease of mocking during testing only.
 # TODO: CREATE TEMPORARY TABLE and test based on those instead?
 
 import chdb
-from common import *
+from .common import *
 from utils import *
 
 def query_category_by_id(lang_code, cat_id):
@@ -133,7 +133,7 @@ def populate_snippets_links(cursor,
         insert_tuple = '(%s, %s, %s, NULL)'
     cursor.executemany('INSERT INTO snippets_links VALUES ' + insert_tuple,
         ((p, n, id)
-        for id, group in it.groupby(cursor, lambda (id, sid): id)
+        for id, group in it.groupby(cursor, lambda id_sid: id_sid[0])
         for p, n in pair_with_next(snippet_id for (_, snippet_id) in group)))
 
 def create_intersection(lang_code, page_ids, max_pages, expiration_days):

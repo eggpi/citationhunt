@@ -1,4 +1,4 @@
-import core
+from . import core
 
 import mock
 
@@ -52,7 +52,7 @@ class SnippetParserTest(unittest.TestCase):
                 <li>Element 5</li>
             </ul>
         ''')
-        self.assertEquals(len(snippets), 1)
+        self.assertEqual(len(snippets), 1)
 
         # Should drop elements 1 and 5
         s = snippets[0]
@@ -75,16 +75,16 @@ class SnippetParserTest(unittest.TestCase):
                 <li>Element 5{citation_needed_tmpl}</li>
             </ul>
         ''')
-        self.assertEquals(len(snippets), 2)
-        # FIXME No idea why the snippet containing Element 5 comes first,
-        # hopefully this is deterministic!
+        snippets.sort()
+        self.assertEqual(len(snippets), 2)
+
         self.assertIn('<p>The following', snippets[0])
-        self.assertIn('<li>Element 5' + _CN_HTML + '</li>', snippets[0])
-        self.assertNotIn('<li>Element 3' + _CN_HTML + '</li>', snippets[0])
+        self.assertIn('<li>Element 3' + _CN_HTML + '</li>', snippets[0])
+        self.assertNotIn('<li>Element 5' + _CN_HTML + '</li>', snippets[0])
 
         self.assertIn('<p>The following', snippets[1])
-        self.assertIn('<li>Element 3' + _CN_HTML + '</li>', snippets[1])
-        self.assertNotIn('<li>Element 5' + _CN_HTML + '</li>', snippets[1])
+        self.assertIn('<li>Element 5' + _CN_HTML + '</li>', snippets[1])
+        self.assertNotIn('<li>Element 3' + _CN_HTML + '</li>', snippets[1])
 
     def test_no_nested_lists(self):
         _, snippets = self._do_extract('''
@@ -99,7 +99,7 @@ class SnippetParserTest(unittest.TestCase):
                 <li>Element 5</li>
             </ul>
         ''')
-        self.assertEquals(len(snippets), 1)
+        self.assertEqual(len(snippets), 1)
         self.assertIn('<li>Element 2', snippets[0])
         self.assertIn('<li>Element 3', snippets[0])
         self.assertIn(core.CITATION_NEEDED_MARKER_CLASS, snippets[0])
@@ -111,7 +111,7 @@ class SnippetParserTest(unittest.TestCase):
             <p>This is some HTML  {citation_needed_tmpl} with space.</p>''')
         expected = '<div class="%s"><p>This is some HTML' % (
             core.SNIPPET_WRAPPER_CLASS) + _CN_HTML + ' with space.</p></div>'
-        self.assertEquals(snippets[0], expected)
+        self.assertEqual(snippets[0], expected)
 
     def test_drop_ref_groups(self):
         wikitext, _ = self._do_extract('html', '{{ cn }}<ref group="g"/>')
@@ -138,7 +138,7 @@ class SnippetParserTest(unittest.TestCase):
             '{{cn}}\n\nFull\n\nSection')
         expected = '<div class="%s"><p>Full</p><p>Section</p></div>' % (
             core.SNIPPET_WRAPPER_CLASS)
-        self.assertEquals(expected, snippets[0])
+        self.assertEqual(expected, snippets[0])
 
 if __name__ == '__main__':
     unittest.main()

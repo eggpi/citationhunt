@@ -1,7 +1,8 @@
 #-*- encoding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import os
+from functools import reduce
 
 # The configuration for a language is a set of key/value pairs, where the
 # values may be True/False, strings or lists/dicts of strings. It is computed
@@ -769,7 +770,7 @@ class Config(object):
 
 def _inherit(base, child):
     ret = dict(base)  # shallow copy
-    for k, v in child.iteritems():
+    for k, v in child.items():
         if k in ret:
             if isinstance(v, list):
                 v = ret[k] + v
@@ -791,8 +792,8 @@ LANG_CODES_TO_ACCEPT_LANGUAGE = {
 # disjoint, since we depend on that to redirect the user to the right
 # config if no lang_code is provided in the URL.
 assert len(
-    set.union(set(), *LANG_CODES_TO_ACCEPT_LANGUAGE.values())
-) == sum(map(len, LANG_CODES_TO_ACCEPT_LANGUAGE.values()))
+    set.union(set(), *list(LANG_CODES_TO_ACCEPT_LANGUAGE.values()))
+) == sum(map(len, list(LANG_CODES_TO_ACCEPT_LANGUAGE.values())))
 
 def make_petscan_url(cfg):
     language = cfg.wikipedia_domain.replace('.wikipedia.org', '')

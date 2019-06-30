@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''
 Parse a single page and display the snippets found in it.
@@ -12,7 +12,7 @@ Options:
     output    'raw' or 'html' (inferred from the config if not passed)
 '''
 
-from __future__ import unicode_literals
+
 
 import os
 import sys
@@ -33,7 +33,7 @@ import sys
 import textwrap
 
 def _print(str):
-    print str.encode('utf-8')
+    print(str.encode('utf-8'))
 
 def format_html(html):
     lynx = subprocess.Popen(
@@ -42,7 +42,7 @@ def format_html(html):
         stdin = subprocess.PIPE, stdout = subprocess.PIPE)
     stdout, _ = lynx.communicate(html.encode('utf-8'))
     if lynx.returncode:
-        print >> sys.stderr, 'Failed to render HTML! Do you have lynx?'
+        print('Failed to render HTML! Do you have lynx?', file=sys.stderr)
         return html
     return stdout.decode('utf-8').strip('\n')
 

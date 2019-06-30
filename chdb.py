@@ -30,7 +30,7 @@ class _RetryingConnection(object):
         max_retries = 5
         for retry in range(max_retries):
             try:
-                with self.conn as cursor:
+                with self.conn.cursor() as cursor:
                     return operations(cursor, *args, **kwds)
             except MySQLdb.OperationalError:
                 if retry == max_retries - 1:
@@ -49,13 +49,6 @@ class _RetryingConnection(object):
             return None
         return self.execute_with_retry(operations, sql, *args)
 
-    # https://stackoverflow.com/questions/4146095/ (sigh)
-    def __enter__(self):
-        return self.conn.__enter__()
-
-    def __exit__(self, *args):
-        return self.conn.__exit__(*args)
-
     def __getattr__(self, name):
         return getattr(self.conn, name)
 
@@ -66,7 +59,7 @@ def ignore_warnings():
     warnings.resetwarnings()
 
 def _connect(**kwds):
-    return MySQLdb.connect(charset = 'utf8mb4', **kwds)
+    return MySQLdb.connect(charset = 'utf8mb4', autocommit = True, **kwds)
 
 def _connect_to_ch_mysql():
     kwds = {'read_default_file': REPLICA_MY_CNF}
@@ -128,7 +121,7 @@ def init_wp_replica_db(lang_code):
     cfg = config.get_localized_config(lang_code)
     def connect_and_initialize():
         db = _connect_to_wp_mysql(cfg)
-        with db as cursor:
+        with db.cursor() as cursor:
             cursor.execute('USE ' + cfg.database)
         return db
     return _RetryingConnection(connect_and_initialize)
@@ -232,7 +225,7 @@ def initialize_all_databases():
             'CHARACTER SET utf8mb4' % dbname)
     cfg = config.get_localized_config()
     db = _RetryingConnection(_connect_to_ch_mysql)
-    with db as cursor, ignore_warnings():
+    with db.cursor() as cursor, ignore_warnings():
         cursor.execute('DROP DATABASE IF EXISTS ' + _make_tools_labs_dbname(
             cursor, 'scratch', cfg.lang_code))
         for database in ['citationhunt', 'scratch', 'stats']:
@@ -247,7 +240,7 @@ def initialize_all_databases():
 
 def install_scratch_db():
     cfg = config.get_localized_config()
-    with init_db(cfg.lang_code) as cursor:
+    with init_db(cfg.lang_code).cursor() as cursor:
         chname = _make_tools_labs_dbname(cursor, 'citationhunt', cfg.lang_code)
         scname = _make_tools_labs_dbname(cursor, 'scratch', cfg.lang_code)
         # generate a sql query that will atomically swap tables in

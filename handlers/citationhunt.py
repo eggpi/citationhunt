@@ -1,13 +1,13 @@
 import chdb
 import config
-import database
+from . import database
 from utils import *
-from common import *
+from .common import *
 
 import collections
 import datetime
-import urllib
-import urlparse
+import urllib.request, urllib.parse, urllib.error
+import urllib.parse
 
 Category = collections.namedtuple('Category', ['id', 'title'])
 CATEGORY_ALL = Category('all', '')
@@ -94,8 +94,8 @@ def citation_hunt(lang_code):
             return flask.redirect(
                 flask.url_for('citation_hunt',
                     id = id, lang_code = lang_code))
-        article_url_path = urllib.quote(
-            e(urlparse.urlparse(aurl).path.lstrip('/')))
+        article_url_path = urllib.parse.quote(
+            e(urllib.parse.urlparse(aurl).path.lstrip('/')))
         return flask.render_template('index.html',
             snippet_id = id, snippet = snippet,
             section = section, article_url = aurl,

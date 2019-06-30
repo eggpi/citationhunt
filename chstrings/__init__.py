@@ -155,7 +155,7 @@ def _partition_js_strings(strings):
     # Separate js- strings into its own sub-key. These are meant for
     # client-side use.
     strings['js'] = {}
-    for k, v in strings.items():
+    for k, v in list(strings.items()):
         if k.startswith('js-'):
             strings['js'][k[3:]] = strings.pop(k)
 
@@ -163,7 +163,8 @@ def get_localized_strings(config, lang_tag):
     strings_dir = os.path.dirname(__file__)
     json_path = os.path.join(strings_dir, lang_tag.lower() + '.json')
     try:
-        strings = json.load(file(json_path))
+        with open(json_path) as json_fp:
+            strings = json.load(json_fp)
     except:
         return {}
     strings = _preprocess_variables(config, strings)

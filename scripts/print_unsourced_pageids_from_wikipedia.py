@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -21,8 +21,8 @@ def print_unsourced_ids_from_wikipedia():
             ' OR '.join(['cl_to = %s'] * len(categories)) + ')', categories)
         subcategories = set()
         for page_id, type in cursor:
-            if type == 'page':
-                print page_id
+            if type == b'page':
+                print(page_id)
             elif type == 'subcat':
                 subcategories.add(page_id)
         if not subcategories:

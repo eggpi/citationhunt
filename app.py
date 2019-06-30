@@ -8,8 +8,8 @@ import flask
 import flask_compress
 
 import os
-import urllib
-import urlparse
+import urllib.request, urllib.parse, urllib.error
+import urllib.parse
 import traceback
 import logging.handlers
 
@@ -56,10 +56,10 @@ def log_hello():
 @app.route('/<lang_code>/redirect')
 @handlers.validate_lang_code
 def redirect(lang_code):
-    to = urllib.unquote(flask.request.args.get('to', ''))
+    to = urllib.parse.unquote(flask.request.args.get('to', ''))
     cfg = config.get_localized_config(lang_code)
     return flask.redirect(
-        urlparse.urljoin('https://' + cfg.wikipedia_domain, to))
+        urllib.parse.urljoin('https://' + cfg.wikipedia_domain, to))
 
 @app.after_request
 def add_cache_header(response):

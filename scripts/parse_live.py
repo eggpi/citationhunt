@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''
 Parser for articles retrieved from the Wikipedia API for CitationHunt.
@@ -15,10 +15,9 @@ Options:
     --timeout=<n>    Maximum time in seconds to run for [default: inf].
 '''
 
-from __future__ import unicode_literals
-
 import os
 import sys
+from functools import reduce
 _upper_dir = os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..'))
 if _upper_dir not in sys.path:
@@ -45,8 +44,8 @@ import shutil
 import tempfile
 import time
 import traceback
-import urllib
-import cPickle as pickle
+import urllib.request, urllib.parse, urllib.error
+import pickle as pickle
 
 cfg = config.get_localized_config()
 WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
@@ -67,7 +66,7 @@ def section_name_to_anchor(section):
     section = section.replace(' ', '_')
     # urllib.quote interacts really weirdly with unicode in Python2:
     # https://bugs.python.org/issue23885
-    section = urllib.quote(e(section), safe = e(''))
+    section = urllib.parse.quote(e(section), safe = e(''))
     section = section.replace('%3A', ':')
     section = section.replace('%', '.')
     return section
@@ -79,7 +78,7 @@ def query_pageids(wiki, pageids):
         'rvprop': 'content'
     }
     for response in self.wiki.query(params):
-        for id, page in response['query']['pages'].items():
+        for id, page in list(response['query']['pages'].items()):
             if 'title' not in page:
                 continue
             title = d(page['title'])
@@ -199,7 +198,10 @@ def parse_live(pageids, timeout):
     result = pool.map_async(work, tasks)
     pool.close()
 
-    result.wait(timeout)
+    if timeout is not None:
+        result.wait(timeout)
+    else:
+        result.wait()
     if not result.ready():
         logger.info('timeout, canceling the process pool!')
         pool.terminate()
@@ -212,8 +214,8 @@ def parse_live(pageids, timeout):
         ret = 1
 
     if cfg.profile:
-        profiles = map(pstats.Stats,
-            glob.glob(os.path.join(backdir, 'profile-*')))
+        profiles = list(map(pstats.Stats,
+            glob.glob(os.path.join(backdir, 'profile-*'))))
         stats = reduce(
             lambda stats, other: (stats.add(other), stats)[1],
             profiles if profiles else [None])
@@ -221,7 +223,7 @@ def parse_live(pageids, timeout):
             stats.sort_stats('cumulative').print_stats(30)
 
     parser_stats = snippet_parser.stats.merge_stats(
-        pickle.load(file(stats_file))
+        pickle.load(open(stats_file))
         for stats_file in glob.glob(os.path.join(backdir, 'stats-*')))
     lengths = parser_stats.snippet_lengths
     logger.info('percentiles for snippet lengths:')
@@ -237,9 +239,11 @@ if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
     pageids_file = arguments['<pageid-file>']
     timeout = float(arguments['--timeout'])
+    if timeout == float('inf'):
+        timeout = None
     start = time.time()
     with open(pageids_file) as pf:
-        pageids = set(itertools.imap(str.strip, pf))
+        pageids = set(map(str.strip, pf))
     ret = parse_live(pageids, timeout)
     logger.info('all done in %d seconds.' % (time.time() - start))
     sys.exit(ret)

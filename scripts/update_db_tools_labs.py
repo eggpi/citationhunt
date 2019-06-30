@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -12,7 +12,7 @@ import config
 import utils
 
 import time
-import commands
+import subprocess
 import argparse
 import tempfile
 import dateutil.parser
@@ -20,22 +20,22 @@ import datetime
 import traceback
 
 def email(message, attachments):
-    commands.getoutput(
+    subprocess.getoutput(
         '/usr/bin/mail -s "%s" ' % message +
         ' '.join('-a ' + a for a in attachments) +
         ' citationhunt.update@tools.wmflabs.org')
     time.sleep(2*60)
 
 def shell(cmdline):
-    print >>sys.stderr, 'Running %s' % cmdline
-    status, output = commands.getstatusoutput(cmdline)
-    print >>sys.stderr, output
+    print('Running %s' % cmdline, file=sys.stderr)
+    status, output = subprocess.getstatusoutput(cmdline)
+    print(output, file=sys.stderr)
     return status == 0
 
 def get_db_names_to_archive(lang_code):
     database_names = []
     for db in [chdb.init_db(lang_code), chdb.init_stats_db()]:
-        with db as cursor:
+        with db.cursor() as cursor:
             cursor.execute('SELECT DATABASE()')
             database_names.append(cursor.fetchone()[0])
     return database_names
@@ -44,7 +44,7 @@ def delete_old_archives(archive_dir, archive_duration_days):
     try:
         all_archives = os.listdir(archive_dir)
     except OSError:
-        print >>sys.stderr, 'No archives to delete!'
+        print('No archives to delete!', file=sys.stderr)
         return
 
     for a in all_archives:
@@ -52,7 +52,7 @@ def delete_old_archives(archive_dir, archive_duration_days):
         when = dateutil.parser.parse(a.split('.', 1)[0])
         age = (datetime.datetime.today() - when).days
         if age > archive_duration_days:
-            print >>sys.stderr, 'Archive %s is %d days old, deleting' % (a, age)
+            print('Archive %s is %d days old, deleting' % (a, age), file=sys.stderr)
             os.remove(os.path.join(archive_dir, a))
 
 def archive_database(cfg):
@@ -65,7 +65,7 @@ def archive_database(cfg):
     now = datetime.datetime.now()
     output = os.path.join(archive_dir, now.strftime('%Y%m%d-%H%M.sql.gz'))
 
-    print >>sys.stderr, 'Archiving the current database'
+    print('Archiving the current database', file=sys.stderr)
     return shell(
         'mysqldump --defaults-file="%s" --host=%s --databases %s | '
         'gzip > %s' % (chdb.REPLICA_MY_CNF, chdb.TOOLS_LABS_CH_MYSQL_HOST,
@@ -73,7 +73,7 @@ def archive_database(cfg):
 
 def expire_stats(cfg):
     stats_db = chdb.init_stats_db()
-    with chdb.init_stats_db() as cursor, chdb.ignore_warnings():
+    with chdb.init_stats_db().cursor() as cursor, chdb.ignore_warnings():
         cursor.execute('DELETE FROM requests WHERE DATEDIFF(NOW(), ts) > %s',
                 (cfg.stats_max_age_days,))
 
@@ -83,7 +83,7 @@ def _update_db_tools_labs(cfg):
 
     if cfg.archive_dir and not archive_database(cfg):
         # Log, but don't assert, this is not fatal
-        print >>sys.stderr, 'Failed to archive database!'
+        print('Failed to archive database!', file=sys.stderr)
 
     expire_stats(cfg)
 
@@ -115,7 +115,7 @@ def update_db_tools_labs(cfg):
 
     try:
         _update_db_tools_labs(cfg)
-    except Exception, e:
+    except Exception as e:
         traceback.print_exc(file = sys.stderr)
         email('Failed to build database for %s' % cfg.lang_code, logfiles)
         sys.exit(1)
@@ -131,12 +131,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if not (utils.running_in_tools_labs() and utils.running_in_virtualenv()):
-        print >>sys.stderr, 'Not running in a virtualenv in Tools Labs!'
+        print('Not running in a virtualenv in Tools Labs!', file=sys.stderr)
         sys.exit(1)
 
     if args.lang_code not in config.LANG_CODES_TO_LANG_NAMES:
-        print >>sys.stderr, 'Invalid lang code! Use one of: ',
-        print >>sys.stderr, config.LANG_CODES_TO_LANG_NAMES.keys()
+        print('Invalid lang code! Use one of: ', end=' ', file=sys.stderr)
+        print(list(config.LANG_CODES_TO_LANG_NAMES.keys()), file=sys.stderr)
         parser.print_usage()
         sys.exit(1)
 

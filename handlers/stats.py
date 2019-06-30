@@ -1,7 +1,7 @@
 import flask
 
 import chdb
-from common import *
+from .common import *
 
 import datetime
 import os
@@ -12,13 +12,13 @@ import itertools
 crawler_user_agents_regexps = [
     re.compile(obj['pattern'], re.IGNORECASE)
     for obj in json.load(
-        file(os.path.join(os.path.dirname(__file__),
+        open(os.path.join(os.path.dirname(__file__),
             'crawler-user-agents', 'crawler-user-agents.json')))
 ]
 
 referrer_spam_regexps = [
-    re.compile(domain.decode('utf-8').strip(), re.IGNORECASE)
-    for domain in file(
+    re.compile(domain.strip(), re.IGNORECASE)
+    for domain in open(
         os.path.join(os.path.dirname(__file__),
             'referrer-spam-blacklist', 'spammers.txt'))
 ]

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''
 Assign categories to the pages in the CitationHunt database.
@@ -6,8 +6,6 @@ Assign categories to the pages in the CitationHunt database.
 Usage:
     assign_categories.py
 '''
-
-from __future__ import unicode_literals
 
 import os
 import sys
@@ -33,14 +31,14 @@ import time
 logger = logging.getLogger('assign_categories')
 setup_logger_to_stderr(logger)
 
-class CategoryName(unicode):
+class CategoryName(str):
     '''
     The canonical format for categories, which is the one we'll use
     in the CitationHunt database: no Category: prefix and spaces instead
     of underscores.
     '''
     def __new__(klass, ustr):
-        assert isinstance(ustr, unicode)
+        assert isinstance(ustr, str)
         assert not ustr.startswith('Category:'), ustr
         assert '_' not in ustr, ustr
         return super(CategoryName, klass).__new__(klass, ustr)
@@ -193,14 +191,14 @@ def assign_categories():
     # Now find out how many snippets each category has
     category_to_snippet_count = {}
     page_id_to_snippet_count = chdb.execute_with_retry(count_snippets_for_pages)
-    for category, page_ids in category_to_page_ids.iteritems():
+    for category, page_ids in category_to_page_ids.items():
         category_to_snippet_count[category] = sum(
             page_id_to_snippet_count.get(p, 0) for p in page_ids)
 
     # And keep only the ones with at least two.
     category_name_id_and_page_ids = [
-        (unicode(category), category_name_to_id(category), page_ids)
-        for category, page_ids in category_to_page_ids.iteritems()
+        (str(category), category_name_to_id(category), page_ids)
+        for category, page_ids in category_to_page_ids.items()
         if category_to_snippet_count[category] >= 2
     ]
     logger.info('finished with %d categories' % len(

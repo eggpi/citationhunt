@@ -1,5 +1,5 @@
 #-*- encoding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import os
 os.environ['DEBUG'] = '1'
@@ -65,18 +65,18 @@ class CitationHuntTest(unittest.TestCase):
                 'en': [], 'ru': []
             }, True):
             response = self.app.get('/')
-            self.assertEquals(response.status_code, 302)
+            self.assertEqual(response.status_code, 302)
             self.assertTrue(response.location.endswith('/en'))
 
             # Must preserve path
             response = self.app.get('/favicon.ico')
-            self.assertEquals(response.status_code, 302)
+            self.assertEqual(response.status_code, 302)
             self.assertTrue(response.location.endswith('/en/favicon.ico'))
 
     def test_trailing_slash(self):
         response = self.app.get('/en/')
-        self.assertEquals(response.status_code, 302)
-        self.assertTrue('/en?' in response.location)
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/en?', response.location)
 
     def test_accept_language_redirect(self):
         headers = {'Accept-Language': 'ru'}
@@ -85,13 +85,13 @@ class CitationHuntTest(unittest.TestCase):
                 'en': '', 'ru': ''
             }, True):
             response = self.app.get('/', headers = headers)
-            self.assertEquals(response.status_code, 302)
+            self.assertEqual(response.status_code, 302)
             self.assertTrue(response.location.endswith('/ru'))
 
             # We don't really bother telling apart a path and an invalid lang
             # code, so this just redirects to /en, not /ru
             response = self.app.get('/favicon.ico', headers = headers)
-            self.assertEquals(response.status_code, 302)
+            self.assertEqual(response.status_code, 302)
             self.assertTrue(response.location.endswith('/en/favicon.ico'))
 
     def test_default_en_redirect_unsupported_language(self):
@@ -100,18 +100,18 @@ class CitationHuntTest(unittest.TestCase):
         with mock.patch.dict(config.LANG_CODES_TO_ACCEPT_LANGUAGE,
                 {'en': ''}, True):
             response = self.app.get('/', headers = headers)
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
         self.assertTrue(response.location.endswith('/en'))
 
     def test_zh_redirects(self):
         # Just use the real config for these, make sure we properly
         # match Chinese headers with the lang code
         response = self.app.get('/', headers = {'Accept-Language': 'zh-TW'})
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
         self.assertTrue(response.location.endswith('/zh_hant'))
 
         response = self.app.get('/', headers = {'Accept-Language': 'zh-CN'})
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
         self.assertTrue(response.location.endswith('/zh_hans'))
 
     def test_zh_html_lang(self):
@@ -123,7 +123,7 @@ class CitationHuntTest(unittest.TestCase):
     def test_kea_redirect(self):
         # Accept-Language: kea should redirect to pt with no snippet.
         response = self.app.get('/', headers = {'Accept-Language': 'kea,pt'})
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
         self.assertTrue(response.location.endswith('/pt'))
 
         # Also with snippet, but the UI should show kea strings.
@@ -142,52 +142,52 @@ class CitationHuntTest(unittest.TestCase):
         response = self.app.get('/en')
         args = self.get_url_args(response.location)
 
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(args['id'], self.sid)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(args['id'], self.sid)
         self.assertNotIn('cat', args)
 
     def test_id_no_category(self):
         response = self.app.get('/en?id=' + self.sid)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_invalid_id_no_category(self):
         response = self.app.get('/en?id=invalid')
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
     def test_invalid_id_valid_category(self):
         response = self.app.get('/en?id=invalid&cat=' + self.cat)
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
     def test_id_valid_category(self):
         response = self.app.get('/en?id=' + self.sid + '&cat=' + self.cat)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_no_id_invalid_category(self):
         response = self.app.get('/en?cat=invalid')
         args = self.get_url_args(response.location)
 
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(args, {})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(args, {})
 
     def test_no_id_valid_category(self):
         response = self.app.get('/en?cat=' + self.cat)
         args = self.get_url_args(response.location)
 
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(args['id'], self.sid)
-        self.assertEquals(args['cat'], self.cat)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(args['id'], self.sid)
+        self.assertEqual(args['cat'], self.cat)
 
         # Now request the snippet, should be a 200
         response = self.app.get(
             '/en?id=%s&cat=%s' % (args['id'], args['cat']))
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_no_id_empty_category(self):
         response = self.app.get('/en?cat=')
         args = self.get_url_args(response.location)
 
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(args['id'], self.sid)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(args['id'], self.sid)
         self.assertNotIn('cat', args)
 
     def test_id_invalid_category(self):
@@ -195,48 +195,48 @@ class CitationHuntTest(unittest.TestCase):
         args = self.get_url_args(response.location)
 
         # Strip the invalid category
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(args['id'], self.sid)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(args['id'], self.sid)
         self.assertNotIn('cat', args)
 
     def test_no_id_valid_intersection(self):
         response = self.app.get('/en?custom=' + self.inter)
         args = self.get_url_args(response.location)
 
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(args['id'], self.sid)
-        self.assertEquals(args['custom'], self.inter)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(args['id'], self.sid)
+        self.assertEqual(args['custom'], self.inter)
 
         # Now request the snippet, should be a 200
         response = self.app.get(
             '/en?id=%s&custom=%s' % (args['id'], args['custom']))
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     # Shouldn't really happen, just make sure we don't crash or anything.
     def test_category_and_intersection(self):
         response = self.app.get('/en?custom=' + self.inter + '&cat=' + self.cat)
         args = self.get_url_args(response.location)
 
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(args['id'], self.sid)
-        self.assertEquals(args['cat'], self.cat)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(args['id'], self.sid)
+        self.assertEqual(args['cat'], self.cat)
         self.assertNotIn('custom', args)
 
     def test_cache_control(self):
         response = self.app.get('/en?id=%s&cat=all' % self.sid)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue('public' in response.cache_control)
-        self.assertEquals(
+        self.assertEqual(
             response.cache_control.max_age, app.CACHE_DURATION_SNIPPET)
 
         response = self.app.get('/')
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(response.cache_control.max_age, None)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.cache_control.max_age, None)
 
     def test_redirect(self):
         response = self.app.get('/en/redirect?to=wiki/AT%26T#History')
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(response.headers['Location'],
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.headers['Location'],
             'https://en.wikipedia.org/wiki/AT&T#History')
 
     def test_fixed_small_time_window(self):
@@ -245,15 +245,15 @@ class CitationHuntTest(unittest.TestCase):
         response = self.app.get('/en/fixed?from_ts=' + str(from_ts))
 
         # only 6 hours ago, pass the date through
-        self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.get_data(), '6')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_data(), b'6')
         app.handlers.database.query_fixed_snippets.assert_called_once_with(
             'en', datetime.datetime.fromtimestamp(from_ts))
 
     def test_fixed_garbage_ts(self):
         response = self.app.get('/en/fixed?from_ts=garbage')
-        self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.get_data(), '6')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_data(), b'6')
 
         now = datetime.datetime.today()
         normalized = app.handlers.database.query_fixed_snippets.call_args[0][1]
@@ -262,8 +262,8 @@ class CitationHuntTest(unittest.TestCase):
 
     def test_fixed_ts_not_provided(self):
         response = self.app.get('/en/fixed')
-        self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.get_data(), '6')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_data(), b'6')
 
         now = datetime.datetime.today()
         normalized = app.handlers.database.query_fixed_snippets.call_args[0][1]
@@ -275,8 +275,8 @@ class CitationHuntTest(unittest.TestCase):
         from_ts = int(now - 48 * 3600)
         now = datetime.datetime.fromtimestamp(now)
         response = self.app.get('/en/fixed?from_ts=' + str(from_ts))
-        self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.get_data(), '6')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_data(), b'6')
 
         normalized = app.handlers.database.query_fixed_snippets.call_args[0][1]
         self.assertTrue((now - normalized) > datetime.timedelta(hours = 23))
@@ -286,10 +286,10 @@ class CitationHuntTest(unittest.TestCase):
         return_value = [])
     def test_leaderboard_empty(self, _):
         response = self.app.get('/en/leaderboard.html')
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     @mock.patch('app.handlers.database.query_fixed_revisions',
-        return_value = range(10))
+        return_value = list(range(10)))
     @mock.patch('app.handlers.database.query_rev_users',
         return_value = ['Aliçe'] * 4 + ['Bob'] * 6)
     def test_leaderboard(self, *mocks):
@@ -316,7 +316,7 @@ class CitationHuntTest(unittest.TestCase):
                 self.app.post('/en/intersection',
                     data = json.dumps(bi),
                     headers = {'Content-Type': 'application/json'}).data)
-            self.assertEquals(response, {'error': 'Invalid request'})
+            self.assertEqual(response, {'error': 'Invalid request'})
 
     @mock.patch('app.handlers.intersections.requests.get')
     @mock.patch('app.handlers.database.create_intersection')
@@ -324,14 +324,14 @@ class CitationHuntTest(unittest.TestCase):
         mock_response = mock_get()
         mock_response.json.return_value = {
             '*': [{'a': {'*': [{'id': i} for i in range(10)]}}]}
-        mock_create_intersection.return_value = (self.inter, range(5))
+        mock_create_intersection.return_value = (self.inter, list(range(5)))
         response = json.loads(
             self.app.post('/en/intersection',
                 data = json.dumps({'psid': '123456'}),
                 headers = {'Content-Type': 'application/json'}).data)
-        self.assertEquals(response['id'], self.inter)
-        self.assertEquals(response['page_ids'], range(5))
-        self.assertEquals(response['ttl_days'],
+        self.assertEqual(response['id'], self.inter)
+        self.assertEqual(response['page_ids'], list(range(5)))
+        self.assertEqual(response['ttl_days'],
             config.get_global_config().intersection_expiration_days)
 
     @mock.patch('app.handlers.intersections.requests.get')
@@ -341,9 +341,9 @@ class CitationHuntTest(unittest.TestCase):
             self.app.post('/en/intersection',
                 data = json.dumps({'psid': '123456'}),
                 headers = {'Content-Type': 'application/json'}).data)
-        self.assertEquals(response['id'], '')
-        self.assertEquals(response['page_ids'], [])
-        self.assertEquals(response['ttl_days'],
+        self.assertEqual(response['id'], '')
+        self.assertEqual(response['page_ids'], [])
+        self.assertEqual(response['ttl_days'],
             config.get_global_config().intersection_expiration_days)
 
     @mock.patch('app.handlers.intersections.requests.get')
@@ -354,9 +354,9 @@ class CitationHuntTest(unittest.TestCase):
             self.app.post('/en/intersection',
                 data = json.dumps({'psid': '123456'}),
                 headers = {'Content-Type': 'application/json'}).data)
-        self.assertEquals(response['id'], '')
-        self.assertEquals(response['page_ids'], [])
-        self.assertEquals(response['ttl_days'],
+        self.assertEqual(response['id'], '')
+        self.assertEqual(response['page_ids'], [])
+        self.assertEqual(response['ttl_days'],
             config.get_global_config().intersection_expiration_days)
 
     @mock.patch('app.handlers.intersections.requests.get')
@@ -371,9 +371,9 @@ class CitationHuntTest(unittest.TestCase):
             self.app.post('/en/intersection',
                 data = json.dumps({'psid': '123456'}),
                 headers = {'Content-Type': 'application/json'}).data)
-        self.assertEquals(response['id'], '')
-        self.assertEquals(response['page_ids'], [])
-        self.assertEquals(response['ttl_days'],
+        self.assertEqual(response['id'], '')
+        self.assertEqual(response['page_ids'], [])
+        self.assertEqual(response['ttl_days'],
             config.get_global_config().intersection_expiration_days)
 
 if __name__ == '__main__':
