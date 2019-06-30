@@ -83,7 +83,7 @@ def search_category(lang_code, needle, max_results):
     } for row in cursor]
 
 def query_fixed_snippets(lang_code, from_ts):
-    with get_stats_db() as cursor:
+    with get_stats_db().cursor() as cursor:
         cursor.execute(
             'SELECT COUNT(*) FROM fixed_%s '
             'WHERE clicked_ts BETWEEN %%s AND NOW()' % lang_code,
@@ -92,7 +92,7 @@ def query_fixed_snippets(lang_code, from_ts):
     return nfixed[0] if nfixed else 0
 
 def query_fixed_revisions(lang_code, start_days):
-    with get_stats_db() as cursor:
+    with get_stats_db().cursor() as cursor:
         cursor.execute(
             'SELECT rev_id FROM fixed_' + lang_code +
             ' WHERE DATEDIFF(NOW(), clicked_ts) < %s', (start_days,))
@@ -100,7 +100,7 @@ def query_fixed_revisions(lang_code, start_days):
 
 def query_rev_users(lang_code, rev_ids):
     wpdb = chdb.init_wp_replica_db(lang_code)
-    with wpdb as cursor:
+    with wpdb.cursor() as cursor:
         cursor.execute(
             'SELECT actor_name FROM actor '
             'JOIN revision_userindex ON actor_id = rev_actor '

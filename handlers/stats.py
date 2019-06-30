@@ -44,7 +44,7 @@ def log_request(response):
                 flask.request.headers.get('X-Moz') == 'prefetch')
     status_code = response.status_code
 
-    with get_stats_db() as cursor, chdb.ignore_warnings():
+    with get_stats_db().cursor() as cursor, chdb.ignore_warnings():
         cursor.execute('INSERT INTO requests VALUES '
             '(NOW(), %s, %s, %s, %s, %s, %s, %s)',
             (lang_code, id, cat, url, prefetch, status_code, referrer))
