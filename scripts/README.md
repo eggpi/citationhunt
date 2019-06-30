@@ -10,7 +10,7 @@ virtualenv.
 
 ```
 /usr/bin/jsub -mem 20g -N citationhunt_update_en -once -l release=trusty \
-  /data/project/citationhunt/www/python/venv/bin/python2 \
+  /data/project/citationhunt/www/python/venv/bin/python3 \
   /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py en
 ```
 

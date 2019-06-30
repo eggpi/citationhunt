@@ -17,7 +17,7 @@ duration = 4  # how many hours between runs within a single day
 spec_template = '0 {h} {dom}-31/{freq} * * {command}'
 command_template = ' '.join([
     '/usr/bin/jsub -mem 10g -N {jobname}_{lc} -once',
-    '/data/project/citationhunt/www/python/venv/bin/python2',
+    '/data/project/citationhunt/www/python/venv/bin/python3',
     '/data/project/citationhunt/citationhunt/scripts/{scriptname}',
     '{lc}'
 ])

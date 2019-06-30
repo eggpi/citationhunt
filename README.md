@@ -26,7 +26,7 @@ create the directory structure and enter the virtualenv:
 
 ```
 $ mkdir www/python/
-$ virtualenv www/python/venv/
+$ virtualenv --python python3 www/python/venv/
 $ . www/python/venv/bin/activate
 ```
 
@@ -48,7 +48,7 @@ In order to gather statistics on snippets fixed through Citation Hunt, also
 submit `scripts/compute_fixed_snippets.py` as a job:
 
 ```
-$ jstart -N compute_fixed_snippets $PWD/www/python/venv/bin/python2 $PWD/www/python/src/scripts/compute_fixed_snippets.py global
+$ jstart -N compute_fixed_snippets $PWD/www/python/venv/bin/python3 $PWD/www/python/src/scripts/compute_fixed_snippets.py global
 ```
 
 You will also want to schedule cron jobs to automatically update the database
