@@ -1,7 +1,7 @@
 #-*- encoding: utf-8 -*-
 
-
 import os
+import types
 from functools import reduce
 
 # The configuration for a language is a set of key/value pairs, where the
@@ -763,10 +763,7 @@ _LANG_CODE_TO_CONFIG = dict(
     )
 )
 
-# In py3: types.SimpleNamespace
-class Config(object):
-    def __init__(self, **kwargs):
-        self.__dict__.update(kwargs)
+Config = types.SimpleNamespace
 
 def _inherit(base, child):
     ret = dict(base)  # shallow copy

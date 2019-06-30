@@ -44,6 +44,7 @@ import shutil
 import tempfile
 import time
 import traceback
+import types
 import urllib.request, urllib.parse, urllib.error
 import pickle as pickle
 
@@ -88,10 +89,7 @@ def query_pageids(wiki, pageids):
             text = d(text)
             yield (id, title, text)
 
-# In py3: types.SimpleNamespace
-class State(object):
-    pass
-self = State() # Per-process state
+self = types.SimpleNamespace() # Per-process state
 
 def initializer(backdir):
     self.backdir = backdir
