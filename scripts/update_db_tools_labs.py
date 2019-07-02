@@ -111,7 +111,7 @@ def update_db_tools_labs(cfg):
         for ext in ('out', 'err')
     ]
     for logfile in logfiles:
-        file(logfile, 'w').close()  # truncate
+        open(logfile, 'w').close()  # truncate
 
     try:
         _update_db_tools_labs(cfg)
