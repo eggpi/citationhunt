@@ -24,7 +24,8 @@ def running_in_virtualenv():
     return hasattr(sys, 'real_prefix')
 
 def running_in_tools_labs():
-    return os.path.exists('/etc/wmflabs-project')
+    return (os.path.exists('/etc/wmflabs-project') or
+        os.path.exists('/etc/wmcs-project'))
 
 # Thanks, StackOverflow! https://stackoverflow.com/questions/600268
 def mkdir_p(path):
