@@ -88,7 +88,7 @@ def query_fixed_snippets(lang_code, from_ts):
             'SELECT COUNT(*) FROM fixed_%s '
             'WHERE clicked_ts BETWEEN %%s AND NOW()' % lang_code,
             (from_ts,))
-    nfixed = cursor.fetchone()
+        nfixed = cursor.fetchone()
     return nfixed[0] if nfixed else 0
 
 def query_fixed_revisions(lang_code, start_days):
@@ -96,7 +96,7 @@ def query_fixed_revisions(lang_code, start_days):
         cursor.execute(
             'SELECT rev_id FROM fixed_' + lang_code +
             ' WHERE DATEDIFF(NOW(), clicked_ts) < %s', (start_days,))
-    return [row[0] for row in cursor.fetchall()]
+        return [row[0] for row in cursor.fetchall()]
 
 def query_rev_users(lang_code, rev_ids):
     wpdb = chdb.init_wp_replica_db(lang_code)
@@ -105,7 +105,7 @@ def query_rev_users(lang_code, rev_ids):
             'SELECT actor_name FROM actor '
             'JOIN revision_userindex ON actor_id = rev_actor '
             'WHERE NOT ISNULL(actor_user) AND rev_id IN %s', (tuple(rev_ids),))
-    return [row[0].decode('utf-8') for row in cursor.fetchall()]
+        return [row[0].decode('utf-8') for row in cursor.fetchall()]
 
 def populate_snippets_links(cursor,
         intersection_ids = None, category_ids = None):
