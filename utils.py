@@ -20,9 +20,6 @@ def d(s):
 def mkid(s):
     return hashlib.sha1(e(s)).hexdigest()[:2*4]
 
-def running_in_virtualenv():
-    return hasattr(sys, 'real_prefix')
-
 def running_in_tools_labs():
     return (os.path.exists('/etc/wmflabs-project') or
         os.path.exists('/etc/wmcs-project'))

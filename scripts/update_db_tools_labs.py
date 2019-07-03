@@ -130,8 +130,8 @@ if __name__ == '__main__':
         help='One of the language codes in ../config.py')
     args = parser.parse_args()
 
-    if not (utils.running_in_tools_labs() and utils.running_in_virtualenv()):
-        print('Not running in a virtualenv in Tools Labs!', file=sys.stderr)
+    if not utils.running_in_tools_labs():
+        print('Not running in Tools Labs!', file=sys.stderr)
         sys.exit(1)
 
     if args.lang_code not in config.LANG_CODES_TO_LANG_NAMES:
