@@ -1,16 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Quintino Lopes Castro Tavares"
+			"Quintino Lopes Castro Tavares",
+			"Waldyrious"
 		]
 	},
+	"back": "Volta",
 	"beginners_hint": "Bu ka sabi poi sitasons? Odja %s.",
 	"button_next": "Prósimu!",
 	"button_wikilink": "Dexa cu mi!",
+	"customize": "Personaliza",
 	"category_filter_placeholder": "Buska pur asunto.",
 	"edits": "Mudansas",
 	"footer": "%s e fetu pa voluntárius, ki sta na %s i traduzidu via %s.",
-	"github_link_title": "Oi! Nha kódigu-fonte sta na GitHub!",
+	"github_link_title": "Oi! Nha kódigu-fonti sta na GitHub!",
 	"in_page": "Na pájina %s:",
 	"instructions_details": "Klika na %s po bai pa Wikipédia e coriji parti di textu, o na %s po odja otos. Da un odjada na %s si bu tiver dúvidas. Boa sorti!",
 	"instructions_goal": "Es parti di textu di Wikipédia abáxu ka ten ninhum referensia pa {link_start}fonti kunfiável{link_end}. Bu ta consigi atxa algun?",
@@ -20,9 +23,10 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|referensia adisionadu|referensias adisionadus}} hoji!",
 	"lead_section_hint": "Es testu ta fazi parti di sekson prinsipal di artigu, pur iso ki referensias podi ser opsional. Odja %s pa más informason.",
 	"leaderboard_description": "Kes uzuárius li é ki koriji quasi tudu kes partis di kódigu de {tooltitle} nes {days} últimus dias. Bom trabadju!",
-	"leaderboard_link_title": "Kolaboradores más ativus",
+	"leaderboard_link_title": "Kolaboradoris más ativus",
 	"leaderboard_title": "Tabela di klasifikason di %s",
 	"page_not_found": "Pájina ka foi atxadu!",
 	"page_not_found_text": "Es pájina ki bu sta djobi ka izisti — talbes es referencia dja foi atxadu? Volta pa %s pa más!",
+	"submit": "Invia",
 	"user": "Uzuáriu"
 }
