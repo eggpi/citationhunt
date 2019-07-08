@@ -27,6 +27,7 @@
 	"instructions_goal": "下方的维基百科片段没有{link_start}可靠来源{link_end}支持。您可以找到一个么？",
 	"introduction": "帮维基百科条目找找引用吧！",
 	"js-article-count": "$1个条目",
+	"js-invalid-petscan-input": "请使用数字的PetScan ID。",
 	"js-keyboard-shortcut": "键盘快捷键：%s",
 	"js-refs-added-today": "今天一共添加了$1个{{PLURAL:$1|引用}}！",
 	"lead_section_hint": "此段文字位于条目的导言章节，可能不需加引用。详见%s。",
