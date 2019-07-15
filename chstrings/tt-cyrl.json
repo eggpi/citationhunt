@@ -1,16 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ильнар"
+			"Ильнар",
+			"Ерней"
 		]
 	},
+	"back": "Кирегә",
+	"back_to_cancel": "Үткәрмәү өчен сез {em_start}{back}{em_end} баса аласыз яки бу диалогны яба аласыз.",
 	"beginners_hint": "Чыганакларны ничек куярга белмисезме? Кара моннан: %s.",
 	"button_next": "Алга!",
 	"button_wikilink": "Миндә бар!",
+	"customize": "Җайлау",
 	"category_filter_placeholder": "Тематикада эзләү.",
 	"edits": "Үзгәртүләр",
 	"github_link_title": "Әй! Миным чыганак код GitHub та бар!",
+	"import_article_titles": "Мәкаләләр исемнәре исемлеге",
+	"import_petscan": "PetScan нан сорату",
 	"in_page": "Биттә %s:",
+	"custom_created": "{tooltitle} җайлау коралыгыз булдырылган!",
+	"custom_failed": "Гафу итегез, {tooltitle} җайлау коралыгыз булдырылмаган яки буш!",
+	"custom_import_prompt": "Сезнең мәкаләләрне кайдан кертәсегез килә?",
 	"introduction": "Википедиядәге мәкаләләргә чыганаклар табарга ярдәм итегез!",
 	"js-article-count": "$1 {{PLURAL:$1|мәкалә}}",
 	"js-keyboard-shortcut": "Төймәләр җыелмасы: %s",
@@ -18,5 +27,6 @@
 	"leaderboard_link_title": "Алдынгылар исемлеге",
 	"leaderboard_title": "%s алдынгылар исемлеге",
 	"page_not_found": "Бит табылмады!",
+	"submit": "Җибәрү",
 	"user": "Кулланучы"
 }
