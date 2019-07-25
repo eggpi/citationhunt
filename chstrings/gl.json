@@ -4,16 +4,25 @@
 			"Elisardojm",
 			"Banjo",
 			"Fitoschido",
-			"Athena in Wonderland"
+			"Athena in Wonderland",
+			"Maria zaos"
 		]
 	},
+	"article_titles_hint": "Cando importe artigos por título, revise dúas veces que os títulos son os correctos e que vostede achegou un por liña.",
+	"back": "Volver",
+	"back_to_cancel": "Pode premer {em_start}{back}{em_end} ou pechar esta ventana de diálogo para cancelar.",
 	"beginners_hint": "Non sabe como engadir citas? Consulte %s.",
 	"button_next": "Seguinte!",
 	"button_wikilink": "Collo esta!",
+	"customize": "Personalizar",
 	"category_filter_placeholder": "Procurar un tema.",
 	"edits": "Edicións",
 	"footer": "%s está feito por voluntarios, está albergado en %s e traducido vía %s.",
 	"github_link_title": "Eh! O meu código fonte está en GitHub!",
+	"import_article_titles": "Unha lista de títulos de artigos.",
+	"import_articles_prompt": "Por favor insira  os {em_start}artigos da Wikipedia {em_end} a importar, un por liña, na parte inferior:",
+	"import_petscan": "Unha consulta en PetScan",
+	"import_petscan_category_tip": "Consello: {tooltitle} só contén artigo dentro da {category} categoría. Para mellorar os resultados vostede pode usar PetScan unicamente para recuperar artigos dentro desa categoría.",
 	"in_page": "Na páxina %s:",
 	"instructions_details": "Prema %s para ir á Wikipedia e amañar o fragmento, ou %s para ver outro. Marque %s se ten preguntas. Boa sorteǃ",
 	"instructions_goal": "O extracto de texto da Wikipedia de abaixo non está baseado nunha {link_start}fonte fiable{link_end}. Pode atopar unha?",
@@ -27,5 +36,7 @@
 	"leaderboard_title": "Os máis activos de %s",
 	"page_not_found": "Páxina non atopada!",
 	"page_not_found_text": "A páxina que está a buscar xa non existe - tal vez esta cita xa se atopou? Volva a %s para máis!",
+	"submit": "Enviar",
+	"try_again_hints_header": "Por favor, ténteo de novo e lembre estes consellos:",
 	"user": "Usuario"
 }
