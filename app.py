@@ -33,6 +33,7 @@ debug = 'DEBUG' in os.environ
 def index(lang_code):
     pass # nothing to do but validate lang_code
 
+# Main web UI methods
 app.add_url_rule('/<lang_code>', view_func = handlers.citation_hunt,
     strict_slashes = False)
 app.add_url_rule('/<lang_code>/stats.html', view_func = handlers.stats)
@@ -45,6 +46,10 @@ app.add_url_rule('/<lang_code>/leaderboard.html',
     view_func = handlers.leaderboard)
 app.add_url_rule('/<lang_code>/intersection',
     view_func = handlers.create_intersection, methods = ['POST'])
+
+# API methods
+app.add_url_rule('/api/<lang_code>/snippets_in_articles',
+    view_func = handlers.api.snippets_in_articles)
 
 if not debug:
     utils.setup_logger_to_logfile(app.logger, 'ch.log')

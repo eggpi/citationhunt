@@ -1,13 +1,11 @@
 """Functions that access the databases in the Flask app.
-
-These are here for ease of mocking during testing only.
 """
-
-# TODO: CREATE TEMPORARY TABLE and test based on those instead?
 
 import chdb
 from .common import *
 from utils import *
+
+import itertools
 
 def query_category_by_id(lang_code, cat_id):
     cursor = get_db(lang_code).cursor()
@@ -171,3 +169,18 @@ def create_intersection(lang_code, page_ids, max_pages, expiration_days):
             populate_snippets_links(cursor, intersection_ids = [inter_id])
         return inter_id, page_ids
     return db.execute_with_retry(insert_intersection)
+
+def get_snippets_in_articles(lang_code, page_ids, max_snippets):
+    db = get_db(lang_code)
+    rows = db.execute_with_retry_s('''
+        SELECT articles.page_id, snippets.id
+        FROM articles, snippets
+        WHERE articles.page_id = snippets.article_id
+        AND articles.page_id IN %s
+        ORDER BY articles.title
+        LIMIT %s''', tuple(page_ids), max_snippets)
+    if rows is None:
+        return {}
+    return {title: [r[1] for r in rows]
+            for title, rows in itertools.groupby(
+                rows, key = lambda r: r[0])}

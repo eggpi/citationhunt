@@ -44,6 +44,11 @@ _GLOBAL_CONFIG = dict(
 
     # How long before an intersection is deleted from the database.
     intersection_expiration_days = 30,
+
+    api = types.SimpleNamespace(
+        # Maximum number of snippets to return from our API methods.
+        max_returned_snippets = 200,
+    ),
 )
 
 # A base configuration that all languages "inherit" from.

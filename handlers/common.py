@@ -32,8 +32,8 @@ def get_stats_db():
 
 def redirect_to_lang_code(lang_code):
     response = flask.redirect(
-    flask.url_for('citation_hunt', lang_code = lang_code,
-        **flask.request.args))
+        flask.url_for('citation_hunt', lang_code = lang_code,
+            **flask.request.args))
     if flask.request.path != '/':
         response.headers['Location'] += flask.request.path
     return response
