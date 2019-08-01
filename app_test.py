@@ -234,7 +234,7 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEqual(response.cache_control.max_age, None)
 
     def test_redirect(self):
-        response = self.app.get('/en/redirect?to=wiki/AT%26T#History')
+        response = self.app.get('/en/redirect?to=wiki/AT%26T%23History')
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.headers['Location'],
             'https://en.wikipedia.org/wiki/AT&T#History')
