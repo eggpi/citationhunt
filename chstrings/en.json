@@ -23,7 +23,7 @@
   "custom_failed": "Sorry, your custom {tooltitle} failed to be created or came up empty!",
   "custom_import_prompt": "Where would you like to import articles from?",
   "custom_intro": "You can customize {tooltitle} by importing a list of articles into it. This gives you a link that you can share with others so they browse {tooltitle} limited to the articles you provided.",
-  "custom_notice": "You are browsing a custom {tooltitle} with a limited list of articles. {link_start}Click here{link_end} to go to unrestricted {tooltitle}.",
+  "custom_notice": "You are browsing a custom {tooltitle} with a limited list of articles. {link_start}Go back to unrestricted {tooltitle}{link_end}.",
   "custom_please_wait": "Please wait, your custom {tooltitle} is being computed. This may take a few minutes&#x2026;",
   "introduction": "Help find citations for Wikipedia articles!",
   "js-article-count": "$1 {{PLURAL:$1|article|articles}}",
