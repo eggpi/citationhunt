@@ -13,7 +13,6 @@
   "article_titles_hint": "Instructions for importing a list of articles into a custom Citation Hunt",
   "back": "{{Identical|Back}}",
   "back_to_cancel": "Instructions for canceling the creation of a custom Citation Hunt. {em_start}/{em_end} get replaced with HTML by the tool. {back} is the translatable string 'back'",
-  "beginners_hint": "Introduces a link to begginner-friendly documentation about adding references. The %s gets replaced with the link itself.",
   "edits": "{{Identical|Edit}}",
   "footer": "The footer text. The %s are replaced, respectively, by the localized title of the tool and links to where it is hosted and where it is translated (that's you, TranslateWiki <3!)",
   "import_articles_prompt": "Prompt for providing a list of article names for a custom Citation Hunt. {em_start}/{em_end} are replaced with HTML for formatting.",

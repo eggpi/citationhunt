@@ -24,19 +24,12 @@ def _preprocess_variables(config, strings):
     else:
         strings['lead_section_hint'] = ''
 
-    beginners_hint_link = _link(
-        config.beginners_link,
-        config.beginners_link_title)
-    strings['beginners_hint'] = \
-        flask.Markup(strings['beginners_hint']) % beginners_hint_link
-
     strings['page_not_found_text'] = \
         flask.Markup(strings['page_not_found_text']) % _link(
             'https://tools.wmflabs.org/citationhunt/' + config.lang_code,
             'Citation Hunt', "_self")
 
     strings.setdefault('instructions_goal', '')
-    strings.setdefault('instructions_details', '')
     if strings['instructions_goal']:
         if hasattr(config, 'reliable_sources_link'):
             link_start, link_end = (
@@ -51,12 +44,22 @@ def _preprocess_variables(config, strings):
             strings['instructions_goal'].format(
                 link_start = link_start, link_end = link_end))
 
-    if strings['instructions_details']:
+    strings.setdefault('instructions_details', '')
+    if strings['instructions_details'].count('%s') == 3:
+        beginners_hint_link = _link(
+            config.beginners_link,
+            config.beginners_link_title)
+        # Support the extra link pre-#129.
         strings['instructions_details'] = flask.Markup(
                 strings['instructions_details']) % (
                     flask.Markup('<b>' + strings['button_wikilink'] + '</b>'),
                     flask.Markup('<b>' + strings['button_next'] + '</b>'),
                     beginners_hint_link)
+    else:
+        strings['instructions_details'] = flask.Markup(
+                strings['instructions_details']) % (
+                    flask.Markup('<b>' + strings['button_wikilink'] + '</b>'),
+                    flask.Markup('<b>' + strings['button_next'] + '</b>'))
 
     strings.setdefault('footer', '')
     if strings['footer']:
