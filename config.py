@@ -448,9 +448,9 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = '',
+        citation_needed_category = 'स्रोत नखुलेका सामग्रीहरू भएका लेखहरू',
         citation_needed_templates = [
-            'Citation_needed',
+            'Citation needed','cn'
         ],
     ),
 
