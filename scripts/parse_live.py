@@ -221,7 +221,7 @@ def parse_live(pageids, timeout):
             stats.sort_stats('cumulative').print_stats(30)
 
     parser_stats = snippet_parser.stats.merge_stats(
-        pickle.load(open(stats_file))
+        pickle.load(open(stats_file, 'rb'))
         for stats_file in glob.glob(os.path.join(backdir, 'stats-*')))
     lengths = parser_stats.snippet_lengths
     logger.info('percentiles for snippet lengths:')
