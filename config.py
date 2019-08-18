@@ -443,6 +443,23 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Skjulte_kategorier',
     ),
+    ne = dict(
+        lang_name = 'नेपाली',
+        lang_dir = 'ltr',
+        database = 'newiki_p',
+        wikipedia_domain = 'ne.wikipedia.org',
+
+        beginners_link = 'https://ne.wikipedia.org/wiki/विकिपिडिया:स्रोत_उल्लेख',
+        beginners_link_title = 'विकिपिडिया:स्रोत_उल्लेख',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'स्रोत_नखुलेका_सामग्रीहरू_भएका_लेखहरू',
+        citation_needed_templates = [
+            'Citation needed','cn'
+        ],
+        hidden_category = '',
+    ),
 
     nl = dict(
         lang_name = 'Nederlands',
