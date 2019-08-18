@@ -84,6 +84,8 @@ def load_unsourced_pageids(chdb):
     return set(r[0] for r in cursor)
 
 def load_hidden_categories(wpcursor, cfg):
+    if not cfg.hidden_category:
+        return set()
     wpcursor.execute('''
         SELECT cl_from FROM categorylinks WHERE
         cl_to = %s''', (cfg.hidden_category,))
@@ -178,8 +180,7 @@ def assign_categories():
     # Load a set() of hidden categories
     hidden_categories = wpdb.execute_with_retry(
         load_hidden_categories, cfg)
-    logger.info('loaded %d hidden categories (%s...)' % \
-        (len(hidden_categories), next(iter(hidden_categories))))
+    logger.info('loaded %d hidden categories' % (len(hidden_categories),))
 
     # Load all usable categories and page ids
     for c in ichunk(unsourced_pageids, 10000):
