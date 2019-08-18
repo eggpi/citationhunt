@@ -452,6 +452,7 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_templates = [
             'Citation needed','cn'
         ],
+        hidden_category = '',
     ),
 
     nl = dict(
