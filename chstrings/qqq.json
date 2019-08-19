@@ -1,41 +1,26 @@
 {
-  "@metadata": {
-    "authors": [
-      "Liuxinyu970226",
-      "Robby",
-      "Siebrand",
-      "Nike",
-      "Revi"
-    ]
-  },
-  "button_next": "Label on the button that browses to the next article.\n{{Identical|Next}}",
-  "user": "{{Identical|User}}"
-  "article_titles_hint": "Instructions for importing a list of articles into a custom Citation Hunt",
-  "back": "{{Identical|Back}}",
-  "back_to_cancel": "Instructions for canceling the creation of a custom Citation Hunt. {em_start}/{em_end} get replaced with HTML by the tool. {back} is the translatable string 'back'",
-  "edits": "{{Identical|Edit}}",
-  "footer": "The footer text. The %s are replaced, respectively, by the localized title of the tool and links to where it is hosted and where it is translated (that's you, TranslateWiki <3!)",
-  "import_articles_prompt": "Prompt for providing a list of article names for a custom Citation Hunt. {em_start}/{em_end} are replaced with HTML for formatting.",
-  "import_petscan_category_tip": "{tooltitle} will be replaced with the localized tool title. {category} will be replaced with the name of a Wikipedia category.",
-  "import_petscan_intro": "{em_start}/{em_end} get replaced with HTML for formatting.",
-  "import_petscan_prompt": "{link_start}/{link_end} are replaced with HTML by the tool and are not meant for translation.",
-  "in_page": "Text that links to the article that needs a citation. %s gets replaced with the article's name.",
-  "instructions_details": "Instructions. The %s are replaced with the labels for the buttons, which are other translatable strings.",
-  "instructions_goal": "{link_start}/{link_end} are replaced with HTML and are not translatable.",
-  "custom_created": "{tooltitle} is replaced with the localized name of the tool.",
-  "custom_end_copy_link": "{link_start}/{link_end} are replaced with HTML by the tool and are not meant for translation.",
-  "custom_failed": "{tooltitle} is replaced with the localized name of the tool.",
-  "custom_intro": "{tooltitle} is replaced with the localized name of the tool.",
-  "custom_notice": "{link_start}/{link_end} are replaced with HTML and are not translatable. {tooltitle} is replaced with the localized title of the tool.",
-  "custom_please_wait": "{tooltitle} is replaced with the localized name of the tool.",
-  "js-article-count": "{{Identical|Article}}",
-  "js-custom-numbers": "Placeholders are number of articles and number of days, shown after creating a custom Citation Hunt.",
-  "js-keyboard-shortcut": "%s is replaced with a key by the tool.",
-  "js-leaving-custom": "{tooltitle} is replaced with the localized name of the tool.",
-  "js-refs-added-today": "How many citations were added today. See https://github.com/wikimedia/jquery.i18n#plurals for the syntax.",
-  "lead_section_hint": "Some Wikipedias have special rules for adding references to the introduction section of the article. In this message, %s is replaced with a link explaining those rules if applicable; otherwise, it is omitted entirely.",
-  "leaderboard_description": "{{doc-important|Do not translate \"{tooltitle}\" and \"{days}\"}}\nDescription for the leaderboard page. {tooltitle} gets replaced with the name of the tool and {days} with the number of days corresponding to the leaderboard.",
-  "leaderboard_title": "%s is replaced with the localized title of the tool.",
-  "page_not_found": "{{Identical|Page not found}}",
-  "page_not_found_text": "%s gets replaced with the localized title of the tool.",
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Nike",
+			"Robby"
+		]
+	},
+	"back": "{{Identical|Back}}",
+	"button_next": "Label on the button that browses to the next article.\n{{Identical|Next}}",
+	"button_wikilink": "Label on the button that links to the article so the user can add a reference.",
+	"category_filter_placeholder": "The placeholder text in the input box for filtering articles by category.",
+	"edits": "{{Identical|Edit}}",
+	"footer": "The text at the bottom of the page. The %s get replaced with the tool name, and links to Tools Labs and translatewiki.net, respectively.",
+	"github_link_title": "The label of a link to the source code of this tool (https://github.com/eggpi/citationhunt)",
+	"in_page": "Text that links to the article that needs a citation. %s gets replaced with the article's name.",
+	"instructions_goal": "The text between {link_start} and {link_end} may be turned into a link to documentation that helps identify reliable sources, depending on the language's configuration.",
+	"introduction": "The message that appears below 'Citation Hunt' on the tool.",
+	"js-article-count": "{{Identical|Article}}",
+	"js-refs-added-today": "How many citations were added today. See https://github.com/wikimedia/jquery.i18n#plurals for the syntax.",
+	"lead_section_hint": "Some Wikipedias have special rules for adding references to the introduction section of the article. In this message, %s is replaced with a link explaining those rules if applicable; otherwise, it is omitted entirely.",
+	"leaderboard_description": "{{doc-important|Do not translate \"{tooltitle}\" and \"{days}\"}}\nDescription for the leaderboard page. {tooltitle} gets replaced with the name of the tool and {days} with the number of days corresponding to the leaderboard.",
+	"leaderboard_title": "Title for the leaderboard page. The placeholder gets replaced with the name of the tool.",
+	"page_not_found": "{{Identical|Page not found}}",
+	"user": "{{Identical|User}}"
 }

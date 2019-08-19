@@ -10,7 +10,6 @@
 	},
 	"back": "뒤로",
 	"back_to_cancel": "취소하려면 {em_start}{back}{em_end}를 누르거나 이 대화상자를 닫으십시오.",
-	"beginners_hint": "인용을 추가하는 방법을 알지 못하나요? %s를 보세요.",
 	"button_next": "다음!",
 	"button_wikilink": "찾았습니다!",
 	"customize": "사용자 지정",

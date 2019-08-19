@@ -11,7 +11,6 @@
 	"article_titles_hint": "当根据标题导入文章时，请再次确认您每一行的标题是否均正确。",
 	"back": "上一步",
 	"back_to_cancel": "您可点击{em_start}{back}{em_end}或关闭此对话框以取消。",
-	"beginners_hint": "不了解如何添加引用？请参见%s。",
 	"button_next": "下一个！",
 	"button_wikilink": "这个我行！",
 	"customize": "自定义",
