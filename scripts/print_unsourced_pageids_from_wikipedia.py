@@ -23,7 +23,7 @@ def print_unsourced_ids_from_wikipedia():
         for page_id, type in cursor:
             if type == b'page':
                 print(page_id)
-            elif type == 'subcat':
+            elif type == b'subcat':
                 subcategories.add(page_id)
         if not subcategories:
             break
