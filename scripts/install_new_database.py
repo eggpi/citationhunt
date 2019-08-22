@@ -12,11 +12,11 @@ import chdb
 def sanity_check():
     sdb = chdb.init_scratch_db()
     snippet_count = sdb.execute_with_retry_s(
-        '''SELECT COUNT(*) FROM snippets''')[0]
+        '''SELECT COUNT(*) FROM snippets''')[0][0]
     assert snippet_count > 100
 
     article_count = sdb.execute_with_retry_s(
-        '''SELECT COUNT(*) FROM articles''')[0]
+        '''SELECT COUNT(*) FROM articles''')[0][0]
     assert article_count > 100
 
 if __name__ == '__main__':
