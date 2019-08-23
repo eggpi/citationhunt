@@ -32,7 +32,7 @@
 	"custom_failed": "Désolé, votre {tooltitle} personnalisé a échoué lors de sa création ou s'est créé vide !",
 	"custom_import_prompt": "D'où voulez-vous importer les articles?",
 	"custom_intro": "Vous pouvez personnaliser {tooltitle} en y important une liste d’articles. Cela vous fournira un lien que vous pourrez partager avec d’autres pour qu’ils puissent naviguer dans {tooltitle} en étant limités aux articles que vous avez fournis.",
-	"custom_notice": "Vous naviguez dans un {tooltitle} personnalisé avec une liste limitée d’articles. {link_start}Cliquez ici{link_end} pour aller sur un {tooltitle} non restreint.",
+	"custom_notice": "Vous naviguez dans un {tooltitle} personnalisé avec une liste limitée d’articles. {link_start}Revenez à un {tooltitle} non restreint{link_end}.",
 	"custom_please_wait": "Veuillez patienter, votre {tooltitle} personnalisé est en train d’être calculé. Cela peut prendre quelques minutes&#x2026;",
 	"introduction": "Aidez à trouver des références pour des articles Wikipedia !",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",

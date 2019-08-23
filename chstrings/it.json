@@ -15,7 +15,7 @@
 	"github_link_title": "Ehi! Il mio codice sorgente è su GitHub!",
 	"import_article_titles": "Un elenco di titoli di voci",
 	"in_page": "Nella voce %s:",
-	"instructions_details": "Clicca %s per andare su Wikipedia e correggere la frase o clicca %s per passare alla prossima frase. Clicca su %s se hai domande. Buona fortuna!",
+	"instructions_details": "Clicca %s per andare su Wikipedia e correggere la frase o clicca %s per passare alla prossima frase. Buona fortuna!",
 	"instructions_goal": "La seguente frase non ha una {link_start}fonte affidabile{link_end}. Riesci a trovarne una?",
 	"introduction": "Aiutaci a trovare fonti affidabili per le voci di Wikipedia!",
 	"js-article-count": "$1 {{PLURAL:$1|voce|voci}}",
