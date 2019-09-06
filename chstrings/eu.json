@@ -8,8 +8,10 @@
 			"Mikel Ibaiba"
 		]
 	},
+	"back": "Atzera",
 	"button_next": "Hurrengoa!",
 	"button_wikilink": "Hau lortu dut!",
+	"customize": "Pertsonalizatu",
 	"category_filter_placeholder": "Gai bat bilatu.",
 	"edits": "Aldaketak",
 	"footer": "%s boluntarioek egiten dute, %s-en du ostatu eta %s bidez itzultzen da.",
@@ -27,5 +29,6 @@
 	"leaderboard_title": "Aktiboenak %s",
 	"page_not_found": "Ez da orrialdea aurkitu!",
 	"page_not_found_text": "Bilatzen ari zaren orrialdea dagoeneko ez dago - agian aipua aurkitu izan da? Joan atzera %sra gehiagorako!",
+	"submit": "Bidali",
 	"user": "Erabiltzailea"
 }
