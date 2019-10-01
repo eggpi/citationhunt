@@ -14,7 +14,7 @@ we'll need to configure the new language, and also have a look at [Setting up a 
 
 The first step to bringing Citation Hunt to a new language is to translate its
 interface. If you want to help with that, please head over to
-[Translate Wiki](https://translatewiki.net/w/i.php?title=Special:Translate&group=citationhunt).
+[Translate Wiki](https://translatewiki.net/wiki/Translating:CitationHunt).
 
 ### Code changes
 
