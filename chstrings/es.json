@@ -8,7 +8,8 @@
 			"Tusca",
 			"La Mantis",
 			"Laura Ospina",
-			"Tiberius1701"
+			"Tiberius1701",
+			"Madamebiblio"
 		]
 	},
 	"article_titles_hint": "Al importar artículos por título, comprueba dos veces que los títulos son correctos y que has proporcionado uno por línea.",
@@ -28,7 +29,7 @@
 	"import_petscan_intro": "{em_start}PetScan{em_end} es una herramienta para consultar Wikipedia y definir listas de artículos. PetScan asigna identificadores a las consultas de tal manera que los resultados puedan ser importados a otras herramientas.",
 	"import_petscan_prompt": "Por favor {link_start}crea tu consulta en PetScan{link_end} y copia el identificador abajo:",
 	"in_page": "En la página %s:",
-	"instructions_details": "Haz clic en %s para ir a la Wikipedia y corregir el fragmento, o %s para ver otro. Comprueba %s si tienes preguntas. ¡Buena suerte!",
+	"instructions_details": "Haz clic en %s para ir a la Wikipedia y corregir el fragmento, o %s para ver otro. ¡Buena suerte!",
 	"instructions_goal": "El siguiente fragmento de Wikipedia no está respaldado por una {link_start}fuente confiable{link_end}. ¿Puedes encontrar una?",
 	"custom_created": "Tu {tooltitle} personalizada ¡ha sido creada!",
 	"custom_end_copy_link": "Puedes copiar y compartir el enlace superior para que otras personas lo usen ¡o {link_start}consultarlo ahora{link_end}!",
