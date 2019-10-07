@@ -21,7 +21,7 @@
 	"category_filter_placeholder": "Шукати за темою.",
 	"edits": "Редагування",
 	"footer": "%s створено волонтерами, розміщено на %s, і перекладено за допомогою %s.",
-	"github_link_title": "Агов! Мої сирці є на GitHub!",
+	"github_link_title": "Агов! Моє джерело є на GitHub!",
 	"import_article_titles": "Список назв статей",
 	"import_articles_prompt": "Будь ласка, введіть у поле нижче {em_start}назви статей{em_end} з Вікіпедії, які хочете імпортувати, по одній на рядок:",
 	"import_petscan": "Запит з PetScan",
