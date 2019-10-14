@@ -8,12 +8,13 @@
 			"By erdo can",
 			"Bulgu",
 			"Hedda",
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Grkn gll"
 		]
 	},
-	"article_titles_hint": "Makaleleri başlığa göre içe aktarırken, başlıkların doğruluğundan ve satır başına bir tane sağladığınızdan emin olun.",
+	"article_titles_hint": "Makaleleri başlığa göre içe aktarırken, başlıkların doğruluğundan ve satır başına bir tane başlık gelecek şekilde sağladığınızdan emin olun.",
 	"back": "Geri",
-	"back_to_cancel": "{em_start}{back}{em_end} tuşuna basabilir veya iptal etmek için bu iletişim kutusunu kapatabilirsiniz.",
+	"back_to_cancel": "İptal etmek için {em_start}{back}{em_end} tuşuna basabilir veya bu iletişim kutusunu kapatabilirsiniz.",
 	"button_next": "Sonraki!",
 	"button_wikilink": "Bunu hallettim!",
 	"customize": "Özelleştir",
