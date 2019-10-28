@@ -6,6 +6,7 @@
 			"Pyscowicz"
 		]
 	},
+	"back": "Takaisin",
 	"button_next": "Ehei, seuraava!",
 	"button_wikilink": "Korjaan tämän!",
 	"category_filter_placeholder": "Mikä saa sinut syttymään?",
@@ -13,7 +14,7 @@
 	"footer": "%s on vapaaehtoisten tekemä, isännöi %s ja\nkäännetty sivustolla %s.",
 	"github_link_title": "Hoi! Lähdekoodini on GitHubissa!",
 	"in_page": "Sivulla %s:",
-	"instructions_details": "Klikkaa %s, niin pääset Wikipediaan korjaamaan puutteellisen lähdemerkinnän, tai %s nähdäksesi uuden otteen. Jos sinulla on kysyttävää, katso %s.",
+	"instructions_details": "Klikkaa %s, niin pääset Wikipediaan korjaamaan puutteellisen lähdemerkinnän, tai %s nähdäksesi uuden otteen. Onnea!",
 	"instructions_goal": "Seuraavaa otetta Wikipediasta ei ole lähteistetty {link_start}luotettavalla lähteellä{link_end}. Voitko sinä lähteistää tämän?",
 	"introduction": "Auta löytämään lähdeviitteitä Wikipedia-artikkeleihin!",
 	"js-article-count": "$1 {{PLURAL:$1|artikkeli|artikkelit}}",
