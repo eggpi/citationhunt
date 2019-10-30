@@ -341,10 +341,9 @@ class CitationHuntTest(unittest.TestCase):
         mock_response.json.return_value = {
             '*': [{'a': {'*': [{'id': i} for i in range(10)]}}]}
         mock_create_intersection.return_value = (self.inter, list(range(5)))
-        response = json.loads(
-            self.app.post('/es/intersection',
-                data = json.dumps({'psid': '123456'}),
-                headers = {'Content-Type': 'application/json'}).data)
+        self.app.post('/es/intersection',
+            data = json.dumps({'psid': '123456'}),
+            headers = {'Content-Type': 'application/json'})
         petscan_args = self.get_url_args(mock_get.call_args[0][0])
         self.assertEqual(petscan_args['common_wiki'], 'other')
         self.assertEqual(petscan_args['common_wiki_other'], 'eswiki')
