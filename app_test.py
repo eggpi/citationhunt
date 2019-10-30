@@ -335,6 +335,21 @@ class CitationHuntTest(unittest.TestCase):
             config.get_global_config().intersection_expiration_days)
 
     @mock.patch('app.handlers.intersections.requests.get')
+    @mock.patch('app.handlers.database.create_intersection')
+    def test_petscan_wiki_conversion(self, mock_create_intersection, mock_get):
+        mock_response = mock_get()
+        mock_response.json.return_value = {
+            '*': [{'a': {'*': [{'id': i} for i in range(10)]}}]}
+        mock_create_intersection.return_value = (self.inter, list(range(5)))
+        response = json.loads(
+            self.app.post('/es/intersection',
+                data = json.dumps({'psid': '123456'}),
+                headers = {'Content-Type': 'application/json'}).data)
+        petscan_args = self.get_url_args(mock_get.call_args[0][0])
+        self.assertEqual(petscan_args['common_wiki'], 'other')
+        self.assertEqual(petscan_args['common_wiki_other'], 'eswiki')
+
+    @mock.patch('app.handlers.intersections.requests.get')
     def test_petscan_timeout(self, mock_get):
         mock_get.side_effect = requests.exceptions.Timeout
         response = json.loads(

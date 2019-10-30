@@ -49,9 +49,14 @@ def intersect_with_page_ids(cfg, page_ids):
 def intersect_with_psid(cfg, psid):
     response = None
     try:
+        wiki_name = cfg.database.rstrip('_p')
         with log_time('querying psid ' + psid):
             response = requests.get(
-                cfg.petscan_url + '?format=json&psid=' + psid,
+                cfg.petscan_url + '?format=json&psid=' + psid +
+                    # Ask PetScan to give us results in the Wiki we're serving
+                    # from, even if the original query related to a different
+                    # Wiki.
+                    '&common_wiki=other&common_wiki_other=' + wiki_name,
                 timeout = cfg.petscan_timeout_s)
             articles = response.json()['*'][0]['a']['*']
             page_ids = [article['id'] for article in articles]
