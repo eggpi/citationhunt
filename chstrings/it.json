@@ -35,7 +35,7 @@
 	"custom_please_wait": "Attendi, la tua modifica {tooltitle} è stata calcolata. Potrebbe richiedere alcuni minuti&#x2026;",
 	"introduction": "Aiutaci a trovare fonti affidabili per le voci di Wikipedia!",
 	"js-article-count": "$1 {{PLURAL:$1|voce|voci}}",
-	"js-custom-numbers": "Contiene frammenti da $1 {{PLURAL:$1|article|articles}} ed è valido per $2 {{PLURAL:$2|day|days}}:",
+	"js-custom-numbers": "Contiene frammenti da $1 {{PLURAL:$1|voce|voci}} ed è valido per $2 {{PLURAL:$2|giorno|giorni}}:",
 	"js-invalid-petscan-input": "Un ID numerico PetScan.",
 	"js-keyboard-shortcut": "Scorciatoia da tastiera: %s",
 	"js-leaving-custom": "Stai tornando a illimitato {tooltitle}. Sei sicuro?",
