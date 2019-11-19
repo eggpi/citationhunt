@@ -801,7 +801,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Citation needed',
             'cn'
         ],
-        hidden_category = 'छुपाई हुई श्रेणियाँ',
+        hidden_category = 'छुपाई_हुई_श्रेणियाँ',
     )
 )
 
