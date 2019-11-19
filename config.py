@@ -797,7 +797,7 @@ _LANG_CODE_TO_CONFIG = dict(
 
         citation_needed_category = 'सभी लेख जिनमें स्रोतहीन कथन हैं',
         citation_needed_templates = [
-            'उद्धरण_आवश्यक',
+            'उद्धरण आवश्यक',
             'Citation needed',
             'cn'
         ],
