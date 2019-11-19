@@ -795,7 +795,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'सभी लेख जिनमें स्रोतहीन कथन हैं',
+        citation_needed_category = 'सभी_लेख_जिनमें_स्रोतहीन_कथन_हैं',
         citation_needed_templates = [
             'उद्धरण आवश्यक',
             'Citation needed',
