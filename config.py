@@ -798,8 +798,6 @@ _LANG_CODE_TO_CONFIG = dict(
         citation_needed_category = 'सभी_लेख_जिनमें_स्रोतहीन_कथन_हैं',
         citation_needed_templates = [
             'उद्धरण आवश्यक',
-            'Citation needed',
-            'cn'
         ],
         hidden_category = 'छुपाई_हुई_श्रेणियाँ',
     )
