@@ -782,6 +782,24 @@ _LANG_CODE_TO_CONFIG = dict(
  	        'Немає АД 2',
         ],
         hidden_category = 'Приховані_категорії',
+    ),
+    
+     hi = dict(
+        lang_name = 'हिन्दी',
+        lang_dir = 'ltr',
+        database = 'hiwiki_p',
+        wikipedia_domain = 'hi.wikipedia.org',
+
+        beginners_link = 'https://hi.wikipedia.org/wiki/सहायता:यथादृश्य_संपादिका_के_साथ_संदर्भ_देने_के_लिए_परिचय/१',
+        beginners_link_title = 'यथादृश्य संपादिका के साथ संदर्भ देने के लिए परिचय',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'सभी_लेख_जिनमें_स्रोतहीन_कथन_हैं',
+        citation_needed_templates = [
+            'उद्धरण आवश्यक',
+        ],
+        hidden_category = 'छुपाई_हुई_श्रेणियाँ',
     )
 )
 
