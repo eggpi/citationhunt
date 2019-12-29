@@ -32,9 +32,6 @@ import subprocess
 import sys
 import textwrap
 
-def _print(str):
-    print(str.encode('utf-8'))
-
 def format_html(html):
     lynx = subprocess.Popen(
         'lynx -dump -stdin -assume_charset UTF-8 '
@@ -67,12 +64,12 @@ if __name__ == '__main__':
 
     for section, snippets in parser.extract(wikitext):
         if not snippets: continue
-        _print('Section: %s' % section)
+        print('Section: %s' % section)
         for snippet in snippets:
             if arguments['--output'] != 'raw':
                 output = format_html(snippet)
             else:
                 output = '   ' + '\n   '.join(
                     textwrap.wrap(snippet, 80, break_long_words = False))
-            _print(output)
-            _print('.')
+            print(output)
+            print('.')
