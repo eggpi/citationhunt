@@ -57,8 +57,9 @@ $ pip install -r requirements.txt
 ```
 
 Note: we depend on the [lxml](http://lxml.de/) package, which may require
-additional dependencies that are not listed in the requirements file. For
-instance, if you are using **Ubuntu** (or some derived system), you may
+additional dependencies that are not listed in the requirements file.
+
+If you are using **Ubuntu** (or some derived system), you may
 also need to run:
 
 ```
@@ -67,6 +68,17 @@ $ apt-get install libxml2-dev libxslt1-dev python-dev
 ```
 
 to get the dependencies to install properly.
+
+For **OSX**, you may need to install openssl separately and ensure the MySQL
+dependencies can link to it by [setting an environment variable](https://github.com/brianmario/mysql2/issues/795)
+while installing requirements:
+
+```
+$ # OSX only!
+$ brew install openssl
+$ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib
+$ pip install -r requirements.txt
+```
 
 You're nearly ready to run the server, but you will need a database for it to
 work. At this point, make sure you have a working local MySQL installation —
