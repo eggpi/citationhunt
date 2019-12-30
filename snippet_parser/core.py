@@ -271,7 +271,7 @@ class SnippetParser(object):
                         sr, encoding = 'utf-8', method = 'html')).strip()
                     snippets_in_section.add(snippet)
 
-            sectitle = str(section.get(0).title.strip()) if i != 0 else ''
+            sectitle = str(section.get(0).title.strip_code().strip()) if i != 0 else ''
             snippets.append([sectitle, list(snippets_in_section)])
         return snippets
 
