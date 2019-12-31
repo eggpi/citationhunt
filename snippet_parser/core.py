@@ -149,9 +149,10 @@ class SnippetParser(object):
         snippets = []
         minlen, maxlen = self._cfg.snippet_min_size, self._cfg.snippet_max_size
         for i, section in enumerate(sections):
-            # First, do a pass over the templates to check whether we have a
-            # citation needed template in this section. This should always be true
-            # when _fast_parse succeeds above.
+            # First, do a pass over the templates to check whether we have
+            # citation needed templates in this section (this should always be
+            # true when _fast_parse succeeds above), and replace them with our
+            # markers.
             has_citation_needed_template = False
             for tpl in section.filter_templates():
                 # Make sure to use index-named parameters for all templates.
@@ -165,11 +166,6 @@ class SnippetParser(object):
                     param.showkey = True
                 if self._is_citation_needed(tpl):
                     has_citation_needed_template = True
-            if not has_citation_needed_template: continue
-
-            # Now do another pass to actually insert our markers.
-            for tpl in section.filter_templates():
-                if self._is_citation_needed(tpl):
                     marked = _CITATION_NEEDED_MARKER_MARKUP.format(tpl = tpl)
                     try:
                         section.replace(tpl, marked)
@@ -178,8 +174,9 @@ class SnippetParser(object):
                         # inside the parameters of other citation needed
                         # templates. Since this doesn't look particularly
                         # frequent, just swallow the error here.
-                        # TODO Get some stats on how often this happens, log it
+                        # TODO: Get some stats on how often this happens, log it
                         return []
+            if not has_citation_needed_template: continue
 
             # Reference groups can cause an error message to be
             # generated directly in the output HTML, remove them.
