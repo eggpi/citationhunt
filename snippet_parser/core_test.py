@@ -145,5 +145,6 @@ class SnippetParserTest(unittest.TestCase):
             '<p>Irrelevant HTML content{citation_needed_tmpl}</p>',
             "## Section title ''with Wikicode''\n\nIrrelevant content{{ cn }}")
         self.assertEqual(section, 'Section title with Wikicode')
+
 if __name__ == '__main__':
     unittest.main()
