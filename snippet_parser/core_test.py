@@ -38,11 +38,11 @@ class SnippetParserTest(unittest.TestCase):
         call_args = None
         if self._wp.parse.call_count:
             call_args = self._wp.parse.call_args[0][0]
-        ret = ret[0][1] if ret else []
+        ret = ret[0] if ret else []
         return call_args, ret
 
     def test_simple_snippet_from_list(self):
-        _, snippets = self._do_extract('''
+        _, [_, snippets] = self._do_extract('''
             <p>The following is a list of elements:</p>
             <ul>
                 <li>Element 1</li>
@@ -65,7 +65,7 @@ class SnippetParserTest(unittest.TestCase):
         self.assertNotIn('<li>Element 5', s)
 
     def test_multiple_snippets_from_list(self):
-        _, snippets = self._do_extract('''
+        _, [_, snippets] = self._do_extract('''
             <p>The following is a list of elements:</p>
             <ul>
                 <li>Element 1</li>
@@ -87,7 +87,7 @@ class SnippetParserTest(unittest.TestCase):
         self.assertNotIn('<li>Element 3' + _CN_HTML + '</li>', snippets[1])
 
     def test_no_nested_lists(self):
-        _, snippets = self._do_extract('''
+        _, [_, snippets] = self._do_extract('''
             <p>The following is a list of elements:</p>
             <ul>
                 <li>Element 1</li>
@@ -107,7 +107,7 @@ class SnippetParserTest(unittest.TestCase):
         self.assertNotIn('<li>Element 4', snippets[0])
 
     def test_remove_space_before_marker(self):
-        _, snippets = self._do_extract('''
+        _, [_, snippets] = self._do_extract('''
             <p>This is some HTML  {citation_needed_tmpl} with space.</p>''')
         expected = '<div class="%s"><p>This is some HTML' % (
             core.SNIPPET_WRAPPER_CLASS) + _CN_HTML + ' with space.</p></div>'
@@ -118,7 +118,7 @@ class SnippetParserTest(unittest.TestCase):
         self.assertNotIn('group', wikitext)
 
     def test_strip_css_selectors(self):
-        _, snippets = self._do_extract(
+        _, [_, snippets] = self._do_extract(
             '<p><span class="noprint">Non-important</span> '
             'Stuff {citation_needed_tmpl}</p>',
             '{{ cn }}', '<span class="noprint">Important stuff!</span>')
@@ -127,18 +127,24 @@ class SnippetParserTest(unittest.TestCase):
         self.assertIn('Important stuff!', snippets[0])
 
     def test_strip_attributes(self):
-        _, snippets = self._do_extract(
+        _, [_, snippets] = self._do_extract(
             '<p><span class="theclass">Stuff</span>{citation_needed_tmpl}</p>')
         self.assertNotIn('theclass', snippets[0])
 
     def test_extract_section(self):
         self._cfg.extract = 'section'
-        _, snippets = self._do_extract(
+        _, [_, snippets] = self._do_extract(
             '<p>{citation_needed_tmpl}<p><p>Full</p><p>Section</p>',
             '{{cn}}\n\nFull\n\nSection')
         expected = '<div class="%s"><p>Full</p><p>Section</p></div>' % (
             core.SNIPPET_WRAPPER_CLASS)
         self.assertEqual(expected, snippets[0])
+
+    def test_no_wikicode_in_section_titles(self):
+        _, [section, snippets] = self._do_extract(
+            '<p>Irrelevant HTML content{citation_needed_tmpl}</p>',
+            "== Section title ''with Wikicode'' == \n\nIrrelevant content{{cn}}")
+        self.assertEqual(section, 'Section title with Wikicode')
 
 if __name__ == '__main__':
     unittest.main()
