@@ -143,7 +143,7 @@ class SnippetParserTest(unittest.TestCase):
     def test_no_wikicode_in_section_titles(self):
         _, [section, snippets] = self._do_extract(
             '<p>Irrelevant HTML content{citation_needed_tmpl}</p>',
-            "## Section title ''with Wikicode''\n\nIrrelevant content{{ cn }}")
+            "== Section title ''with Wikicode'' == \n\nIrrelevant content{{cn}}")
         self.assertEqual(section, 'Section title with Wikicode')
 
 if __name__ == '__main__':
