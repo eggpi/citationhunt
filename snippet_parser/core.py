@@ -271,7 +271,14 @@ class SnippetParser(object):
                         sr, encoding = 'utf-8', method = 'html')).strip()
                     snippets_in_section.add(snippet)
 
-            sectitle = str(section.get(0).title.strip_code().strip()) if i != 0 else ''
+            sectitle = ''
+            if i != 0:
+                # Re-parse the section title because fast_parse is
+                # configured to ignore style tags (see above and 
+                # https://github.com/earwig/mwparserfromhell/issues/40),
+                # but we do want to remove them now with strip_code().
+                sectitle = mwparserfromhell.parse(
+                    str(section.get(0).title).strip()).strip_code()
             snippets.append([sectitle, list(snippets_in_section)])
         return snippets
 
