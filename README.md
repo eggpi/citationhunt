@@ -26,7 +26,7 @@ slightly different ways in
 * The job that identifies snippets that were fixed runs continuously on the
   grid.
 
-Moving everything to Kubernetes is tracked in issue #134.
+Moving everything to Kubernetes is tracked in [issue #134](https://github.com/eggpi/citationhunt/issues/134).
 
 After logging in to `login.tools.wmflabs.org`, run the following commands to
 create the directory structure and enter the virtualenv:
