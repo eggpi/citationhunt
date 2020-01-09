@@ -15,11 +15,18 @@ That's great! There are many ways you can help. Please take a look at
 [CONTRIBUTING.md](https://github.com/eggpi/citationhunt/blob/master/CONTRIBUTING.md)
 for guidelines and instructions.
 
-#### Installing on Tools Labs
+#### Running in Toolforge
 
-Citation Hunt can be installed on Wikimedia's Tools Labs using its [specialized
-support for Python uwsgi
-applications](https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Web#Python_.28uwsgi.29).
+There are three major components to Citation Hunt and they are each set up in
+slightly different ways in
+[Toolforge](https://wikitech.wikimedia.org/wiki/Help:Toolforge):
+
+* The HTTP serving job runs on Kubernetes.
+* The jobs that update the database run on the job grid via Cron.
+* The job that identifies snippets that were fixed runs continuously on the
+  grid.
+
+Moving everything to Kubernetes is tracked in issue #134.
 
 After logging in to `login.tools.wmflabs.org`, run the following commands to
 create the directory structure and enter the virtualenv:
@@ -41,17 +48,22 @@ $ pip install -r citationhunt/requirements.txt
 and start the webservice:
 
 ```
-$ webservice2 uwsgi-python start
+$ webservice --backend=kubernetes python3.5 start
 ```
 
-In order to gather statistics on snippets fixed through Citation Hunt, also
-submit `scripts/compute_fixed_snippets.py` as a job:
+Then, install the crontab to launch database update jobs:
+
+```
+$ (cd citationhunt; ./crontab.py | crontab)
+$ crontab -l  # verify it
+```
+
+See [scripts/README.md](https://github.com/eggpi/citationhunt/blob/master/scripts/README.md)
+for more information about those jobs.
+
+Finally, submit `scripts/compute_fixed_snippets.py` as a job on the grid to
+detect snippets that were fixed:
 
 ```
 $ jstart -N compute_fixed_snippets $PWD/www/python/venv/bin/python3 $PWD/www/python/src/scripts/compute_fixed_snippets.py global
 ```
-
-You will also want to schedule cron jobs to automatically update the database
-regularly. See
-[scripts/README.md](https://github.com/eggpi/citationhunt/blob/master/scripts/README.md)
-for more information.
