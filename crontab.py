@@ -28,5 +28,5 @@ for lc in sorted(config.LANG_CODES_TO_LANG_NAMES):
         jobname = 'citationhunt_update', lc = lc,
         scriptname = 'update_db_tools_labs.py')
     print(spec_template.format(
-        h=(h % 24), dom=1 + (h / 24), command=command, freq=freq))
+        h=(h % 24), dom=1 + (h // 24), command=command, freq=freq))
     h += duration
