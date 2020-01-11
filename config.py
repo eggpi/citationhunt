@@ -783,7 +783,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Приховані_категорії',
     ),
-    
+
      hi = dict(
         lang_name = 'हिन्दी',
         lang_dir = 'ltr',
