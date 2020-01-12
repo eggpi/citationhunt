@@ -55,11 +55,18 @@ def _preprocess_variables(config, strings):
                     flask.Markup('<b>' + strings['button_wikilink'] + '</b>'),
                     flask.Markup('<b>' + strings['button_next'] + '</b>'),
                     beginners_hint_link)
+
     else:
+        # Support beginner's link, optionally.
+        if hasattr(config, 'beginners_link'):
+            link_start, link_end = (_link_start(config.beginners_link), '</a>')
+        else:
+            link_start = link_end = ''
         strings['instructions_details'] = flask.Markup(
-                strings['instructions_details']) % (
-                    flask.Markup('<b>' + strings['button_wikilink'] + '</b>'),
-                    flask.Markup('<b>' + strings['button_next'] + '</b>'))
+                strings['instructions_details'].format(
+                    link_start = link_start, link_end = link_end) % (
+                        flask.Markup('<b>' + strings['button_wikilink'] + '</b>'),
+                        flask.Markup('<b>' + strings['button_next'] + '</b>')))
 
     strings.setdefault('footer', '')
     if strings['footer']:
