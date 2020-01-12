@@ -47,34 +47,40 @@
     </div>
     {% endif %}
     <div class="container-fluid py-2">
-      <div id="controls" class="row justify-content-end align-items-center px-3 px-sm-1 py-2 py-sm-1">
-        <div id="custom-controls" class="mx-1" hidden>
-          <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
-          <div class="pure-modal">
-            <input id="custom-modal-trigger" class="checkbox" type="checkbox">
-            <div id="custom-modal-wrapper" class="pure-modal-overlay">
-              <label for="custom-modal-trigger" class="o-close"></label>
-              <div class="pure-modal-wrap a-center">
-                  <div id="custom-card-container"></div>
-                  <div id="custom-buttons-container" class="row justify-content-center">
-                      <a id="custom-button-back" href="">{{ strings.back }}</a>
-                      <div class="col-1"></div> <!-- direction-independent spacing -->
-                      <a id="custom-button-submit" href="">{{ strings.submit }}</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% if strings.leaderboard_link_title %}
-        <div class="mx-1"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
-        {% endif %}
+      <div class="row m-0 justify-content-between">
+        <h1>{{ strings.tooltitle }}</h1>
+        <div class="col-1"></div>
+        <label id="hamburguer-label" for="hamburguer-menu-trigger"></label>
+        </nav>
+      </div>
+      <input id="hamburguer-menu-trigger" type="checkbox"/>
+      <div id="hamburguer-menu" class="col col-auto col-md-3">
         <select id="lang-selector" class="mx-1">
           {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
           <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
           {% endfor %}
         </select>
+        {% if strings.leaderboard_link_title %}
+        <div class="mx-1"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
+        {% endif %}
+        <div id="custom-controls" class="mx-1" hidden>
+          <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
+        </div>
       </div>
-      <h1>{{ strings.tooltitle }}</h1>
+      <div class="pure-modal">
+        <input id="custom-modal-trigger" class="checkbox" type="checkbox">
+        <div id="custom-modal-wrapper" class="pure-modal-overlay">
+          <label for="custom-modal-trigger" class="o-close"></label>
+          <div class="pure-modal-wrap a-center">
+            <div id="custom-card-container"></div>
+            <div id="custom-buttons-container" class="row justify-content-center">
+              <a id="custom-button-back" href="">{{ strings.back }}</a>
+              <div class="col-1"></div>
+              <a id="custom-button-submit" href="">{{ strings.submit }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div id=instructions class="info">
         <p>{{ strings.instructions_goal }}</p>
         <p>{{ strings.instructions_details }}</p>
@@ -139,7 +145,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>  <!-- main page container -->
 
     <link href="https://tools-static.wmflabs.org/fontcdn/css?family=Fondamento" rel="stylesheet" type="text/css">
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">

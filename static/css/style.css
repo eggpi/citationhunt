@@ -17,7 +17,6 @@ h1 {
     font-weight: bold;
     font-family: Georgia, serif;
     font-size: 34px;
-    margin-bottom: 15px;
 }
 
 a {
@@ -247,4 +246,34 @@ html[dir="rtl"] #leaderboard td {
 
 .lead-hint {
     background-color: #EEF31A;
+}
+
+#hamburguer-label {
+    z-index: 4;  /* cover the menu itself */
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;  /* must be smaller than the padding-top of #hamburguer-menu */
+    background: purple;
+}
+
+#hamburguer-menu-trigger {
+    display: none;
+}
+
+#hamburguer-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: 3;  /* cover the snippet */
+    transform-origin: 0% 0%;
+    transform: translate(100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    text-align: right;
+    padding-top: 50px;  /* must be greater than the height of #hamburguer-label */
+}
+
+input:checked ~ #hamburguer-menu {
+    transform: none;
 }
