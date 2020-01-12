@@ -443,6 +443,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Skjulte_kategorier',
     ),
+
     ne = dict(
         lang_name = 'नेपाली',
         lang_dir = 'ltr',
@@ -456,7 +457,8 @@ _LANG_CODE_TO_CONFIG = dict(
 
         citation_needed_category = 'स्रोत_नखुलेका_सामग्रीहरू_भएका_लेखहरू',
         citation_needed_templates = [
-            'Citation needed','cn'
+            'Citation needed',
+            'cn'
         ],
         hidden_category = '',
     ),
@@ -778,8 +780,8 @@ _LANG_CODE_TO_CONFIG = dict(
             'Потрібне джерело',
             'Fact',
             'Fact2',
- 	        'Немає АД',
- 	        'Немає АД 2',
+            'Немає АД',
+            'Немає АД 2',
         ],
         hidden_category = 'Приховані_категорії',
     ),
