@@ -24,7 +24,7 @@
 	"import_petscan_intro": "{em_start}PetScan{em_end} è uno strumento di ricerca Wikipedia e definisce liste di articoli. PetScan assegna ID alle ricerche così i risultati possono essere importanti in altri strumenti.",
 	"import_petscan_prompt": "{link_start}Crea la tua ricerca in PetScan{link_end} e incolla l'ID qui sotto:",
 	"in_page": "Nella voce %s:",
-	"instructions_details": "Clicca %s per andare su Wikipedia e correggere la frase o clicca %s per passare alla prossima frase. Buona fortuna!",
+	"instructions_details": "Clicca %s per andare su Wikipedia e {link_start}correggere la frase{link_end} o clicca %s per passare alla prossima frase. Buona fortuna!",
 	"instructions_goal": "La seguente frase non ha una {link_start}fonte affidabile{link_end}. Riesci a trovarne una?",
 	"custom_created": "La tua modifica {tooltitle} è stata creata!",
 	"custom_end_copy_link": "Puoi copiare e condividere il link sopra per permettere ad altre persone di usarlo {link_start}inizia a sfogliarlo{link_end}!",
