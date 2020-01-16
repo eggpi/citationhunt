@@ -26,7 +26,7 @@
 	"import_petscan_intro": "{em_start}PetScan{em_end} 是一個用來查詢維基百科和定義條目清單的工具。PetScan 會為查詢分配 ID，因此結果可以匯入到其它工具。",
 	"import_petscan_prompt": "請{link_start}在 PetScan 建立您的查詢{link_end}，並在下方貼上該 ID：",
 	"in_page": "在「%s」頁面中：",
-	"instructions_details": "點擊%s前往維基百科來修正段落內容，或以%s來檢視下一筆。祝順心！",
+	"instructions_details": "點擊%s前往維基百科來{link_start}修正段落內容{link_end}，或以%s來檢視下一筆。祝順心！",
 	"instructions_goal": "下方的維基百科段落裡沒有{link_start}可靠來源{link_end}來證明內容，您可以幫忙找找嗎？",
 	"custom_created": "您自定的{tooltitle}已創建！",
 	"custom_end_copy_link": "您可以複製並分享以上連結來允許其他人使用，或是{link_start}現在就開始瀏覽{link_end}！",
