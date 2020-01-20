@@ -23,7 +23,7 @@
 	"import_petscan_intro": "{em_start}PetScan{em_end}はウィキペディアに検索をかけるツールで、記事の一覧の絞り込みに使います。PetScanがクエリに付ける識別IDを利用すると、他のツールに抽出結果をインポートできます。",
 	"import_petscan_prompt": "{link_start}PetScanを使ってクエリを実行し{link_end}、生成されたIDを以下の欄に入力してください。",
 	"in_page": "%s の記事にはこうあります。",
-	"instructions_details": "%s ボタンを押すとウィキペディアに飛び、その文を直せます。%s を押すと別の文が読み込まれます。出典の付け方に質問があれば %s をチェックしてみてください。がんばって！",
+	"instructions_details": "%s ボタンを押してウィキペディアに飛び{link_start}その文を修正する{link_end}、あるいは%sを押して別の文を読み込みます。出典の付け方に質問があれば %s をチェックしてみてください。がんばって！",
 	"instructions_goal": "以下はウィキペディアの記事の一部分ですが、{link_start}信頼できる情報源{link_end}が不足しています。出典をご存知ないですか？",
 	"custom_created": "あなた専用の{tooltitle}が作成されました！",
 	"custom_end_copy_link": "上記のリンクをコピーして他の人と共用するためにシェアしたり、\n{link_start}このまま続きを見ることもできます{link_end}！",
