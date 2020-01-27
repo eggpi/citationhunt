@@ -17,7 +17,7 @@
 	"import_article_titles": "Saraksts ar rakstu nosaukumiem",
 	"import_petscan": "PetScan vaicājums",
 	"in_page": "Lapā %s:",
-	"instructions_details": "Klikšķini uz %s, lai dotos uz Vikipēdiju un salabotu šo fragmentu, vai uz %s, lai apskatītu citu. Veiksmi!",
+	"instructions_details": "Klikšķini uz %s, lai dotos uz Vikipēdiju un {link_start}salabotu šo fragmentu{link_end}, vai uz %s, lai apskatītu citu. Veiksmi!",
 	"instructions_goal": "Šis fragments no Vikipēdijas nav pamatots ar {link_start}uzticamu avotu{link_end}. Vai vari tādu atrast?",
 	"introduction": "Palīdzēt atrast atsauces Vikipēdijas rakstiem!",
 	"js-article-count": "$1 {{PLURAL:$1|raksti|raksts|raksti}}",
