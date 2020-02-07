@@ -170,8 +170,12 @@ class SnippetParser(object):
                     try:
                         section.replace(tpl, marked)
                         try:
-                            self.date = tpl.get('date')
-                        except ValueError:
+                            class Snippet(object):
+                                def __init__(self, html, section, date):
+                                    self.html = html
+                                    self.section = section
+                                    self.date = date
+                        except Exception:
                             pass
 
                     except ValueError:
