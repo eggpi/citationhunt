@@ -272,6 +272,8 @@ html[dir="rtl"] #leaderboard td {
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
     text-align: right;
     padding-top: 50px;  /* must be greater than the height of #hamburguer-label */
+    background-color: #F6F6F6;
+    border-left: 2px solid #F0F0F0;
 }
 
 input:checked ~ #hamburguer-menu {
