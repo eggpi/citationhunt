@@ -21,12 +21,15 @@
 	"import_article_titles": "Yew lista sernameyanê meqalan",
 	"import_petscan": "Yew tetqiqê PetScani",
 	"in_page": "Pele de %s:",
-	"instructions_details": "Wikipedia de lete vurnayışi kerdışi rê %s tiyay bıploğnê yana yewnay %s bıvinê. Qandé persan %s tiyay kontrol kerê. Sıhudê şıma zaf bo!",
+	"instructions_details": "Wikipedia de {link_start} lete vurnayışi {link_end} kerdışi rê tiyay bıploğnê %s ya na yewnay %s bıvinê. Qandé persan %s tiyay kontrol kerê. Sıhudê şıma zaf bo!",
 	"instructions_goal": "Letey Wikipediyayo cêrên be {link_start}yew çımeyo bawerdar{link_end} ra raşt nêbiyo.  Şıma şenê yew çıme bıvênê?",
 	"custom_created": "{tooltitle} şımayo xısusi vıraziyayo!",
+	"custom_failed": "Qısur mewni, xısusi {tooltitle} nêvıraziya ya zi veng mende!",
 	"custom_import_prompt": "Şıma qayılê kamci ca ra meqaleyi miyan kerê?",
+	"custom_please_wait": "Tay bıpawê, xısusi {tooltitle} adresê şımayo beno hesab. No çend deqey do bıgiro&#x2026;",
 	"introduction": "Meqalanê Wikipediya vênayış rê peşti bıdê.",
 	"js-article-count": "$1 {{PLURAL:$1|meqale|meqaley}}",
+	"js-custom-numbers": "$1 {{PLURAL:$1|meqale|meqaley}} pasaci ihtiwa kenê ı u seba $2 {{PLURAL:$2|roce|rocan}} rê raverdiya:",
 	"js-invalid-petscan-input": "Kerem ke, yew kamiya PetScaniya amarki bıbo.",
 	"js-keyboard-shortcut": "Kılmekiya klavye: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|hewarnameyo ewro biyo |hewarnameyê ke ewro biyê}} cı!",
@@ -38,5 +41,6 @@
 	"page_not_found_text": "Pela ke tı cı geyrena, endi çıniya. Beno ke no vate rew ra vêniyayo. Seba zewbina melumat ra peyser şo %s!",
 	"submit": "Bırışe",
 	"tooltitle": "Citation Hunt",
+	"try_again_hints_header": "Kerem ke reyna bıcerrebnê u serlayanê cêrênan ho virra mekerê:",
 	"user": "Karber"
 }
