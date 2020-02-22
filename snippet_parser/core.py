@@ -228,7 +228,7 @@ class SnippetParser(object):
                     if root.tag in _LIST_TAGS:
                         snippet_roots = self._html_list_to_snippets(root)
                     else:
-                        snippet_roots = [self._make_snippet_root(root)]
+                        snippet_roots.append(self._make_snippet_root(root))
             else:
                 # Throw away the actual template, we don't need it.
                 for marker in tree.cssselect('.' + CITATION_NEEDED_MARKER_CLASS):
@@ -271,7 +271,7 @@ class SnippetParser(object):
             sectitle = ''
             if i != 0:
                 # Re-parse the section title because fast_parse is
-                # configured to ignore style tags (see above and 
+                # configured to ignore style tags (see above and
                 # https://github.com/earwig/mwparserfromhell/issues/40),
                 # but we do want to remove them now with strip_code().
                 sectitle = mwparserfromhell.parse(
