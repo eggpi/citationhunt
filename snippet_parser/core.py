@@ -226,7 +226,7 @@ class SnippetParser(object):
                     if root is None:
                         continue
                     if root.tag in _LIST_TAGS:
-                        snippet_roots = self._html_list_to_snippets(root)
+                        snippet_roots.extend(self._html_list_to_snippets(root))
                     else:
                         snippet_roots.append(self._make_snippet_root(root))
             else:

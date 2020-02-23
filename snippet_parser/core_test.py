@@ -149,14 +149,22 @@ class SnippetParserTest(unittest.TestCase):
     def test_multiple_snippets_in_section(self):
         _, [_, snippets] = self._do_extract(
             '<p>This needs a reference{citation_needed_tmpl}</p>'
-            '<p>So does this{citation_needed_tmpl}</p>',
-            'This needs a reference{{cn}}\n\nSo does this{{cn}}')
-        self.assertEqual(sorted([
-            '<div class="%s"><p>This needs a reference%s</p></div>' % (
-                core.SNIPPET_WRAPPER_CLASS, _CN_HTML),
+            '<p>So does this{citation_needed_tmpl}</p>'
+            '''<p>The following is a list of elements:</p>
+            <ul>
+                <li>Element 1</li>
+                <li>Element 2{citation_needed_tmpl}</li>
+                <li>Element 3</li>
+            </ul>''')
+        snippets.sort()
+        self.assertEqual(3, len(snippets))
+        self.assertEqual(
             '<div class="%s"><p>So does this%s</p></div>' % (
-                core.SNIPPET_WRAPPER_CLASS, _CN_HTML),
-            ]), sorted(snippets))
+                core.SNIPPET_WRAPPER_CLASS, _CN_HTML), snippets[0])
+        self.assertIn('Element 2%s' % _CN_HTML, snippets[1])
+        self.assertEqual(
+            '<div class="%s"><p>This needs a reference%s</p></div>' % (
+                core.SNIPPET_WRAPPER_CLASS, _CN_HTML), snippets[2])
 
     def test_no_duplicate_snippet(self):
         _, [_, snippets] = self._do_extract(
