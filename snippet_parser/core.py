@@ -32,7 +32,7 @@ _LIST_TAGS = set(['ol', 'ul'])
 _SNIPPET_ROOT_TAGS = set(['p']) | _LIST_TAGS
 
 class SnippetParser(object):
-    '''A base class for snippet parsers in various languages.'''
+    '''Turn wikitext into HTML snippets for Citation Hunt.'''
 
     def __init__(self, wikipedia, cfg):
         self._cfg = cfg
