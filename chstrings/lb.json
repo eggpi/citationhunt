@@ -16,7 +16,7 @@
 	"import_article_titles": "Eng Lëscht vun Titele vun Artikelen",
 	"import_petscan": "Eng PetScan-Ufro",
 	"in_page": "Op der Säit %s:",
-	"instructions_details": "Klickt op %s fir op Wikipedia ze goen an den Extrait ze reparéieren, oder %s fir een Anere gewisen ze kréien. Vill Gléck!",
+	"instructions_details": "Klickt op %s fir op Wikipedia ze goen an {link_start}den Extrait ze reparéieren{link_end}, oder %s fir een Anere gewisen ze kréien. Vill Gléck!",
 	"instructions_goal": "Den Extrait aus Wikipedia hei drënner huet keng  {link_start}zouverlässeg Quell{link_end}. Kënnt Dir eng fannen?",
 	"custom_end_copy_link": "Du kannst den Link oben kopieren und teilen, um anderen Menschen zu erlauben, ihn zu verwenden oder {link_start}fänkt elo mat der Kosultatioun un{link_end}!",
 	"custom_import_prompt": "Vu wou wëllt Dir Artikelen importéieren?",
