@@ -80,6 +80,21 @@ def search_category(lang_code, needle, max_results):
         'id': row[0], 'title': row[1], 'npages': row[2]
     } for row in cursor]
 
+def search_article_title(lang_code, needle, max_results):
+    cursor = get_db(lang_code).cursor()
+    needle = '%' + needle + '%'
+    with log_time('search title & snippets'):
+        cursor.execute('''
+            SELECT articles.page_id, articles.title, GROUP_CONCAT(snippets.id)
+            FROM articles, snippets
+            WHERE articles.title LIKE %s
+            AND snippets.article_id = articles.page_id
+            GROUP BY articles.page_id, articles.title
+            LIMIT %s''', (needle, max_results))
+    return [{
+        'page_id': row[0], 'title': row[1], 'snippets': row[1].split(',')
+    } for row in cursor]
+
 def query_fixed_snippets(lang_code, from_ts):
     with get_stats_db().cursor() as cursor:
         cursor.execute(

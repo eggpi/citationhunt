@@ -41,6 +41,8 @@ if 'stats' not in global_config.flagged_off:
     app.after_request(handlers.log_request)
 app.add_url_rule('/<lang_code>/search/category',
     view_func = handlers.search_category)
+app.add_url_rule('/<lang_code>/search/article',
+    view_func = handlers.search_article_title)
 app.add_url_rule('/<lang_code>/fixed', view_func = handlers.fixed)
 app.add_url_rule('/<lang_code>/leaderboard.html',
     view_func = handlers.leaderboard)

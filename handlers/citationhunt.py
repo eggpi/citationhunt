@@ -119,16 +119,25 @@ def citation_hunt(lang_code):
     return flask.redirect(
         flask.url_for('citation_hunt', **redirect_params))
 
-@validate_lang_code
-def search_category(lang_code):
+def do_search(search_function, lang_code):
     try:
         max_results = int(flask.request.args.get('max_results'))
     except:
         max_results = float('inf')
     return flask.jsonify(
-        results = database.search_category(
+        results = search_function(
             lang_code, flask.request.args.get('q'),
             max_results = min(max_results, 400)))
+
+@validate_lang_code
+def search_category(lang_code):
+    return do_search(
+        database.search_category, lang_code)
+
+@validate_lang_code
+def search_article_title(lang_code):
+    return do_search(
+        database.search_article_title, lang_code)
 
 @validate_lang_code
 def fixed(lang_code):
