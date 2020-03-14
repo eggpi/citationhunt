@@ -2,6 +2,14 @@
     display: none;
 }
 
+/* Taken from awesomplete:
+ * https://github.com/LeaVerou/awesomplete/blob/ed99eae/awesomplete.css#L5
+ */
+div.awesomplete .visually-hidden {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
 div.awesomplete * {
     font-size: 15px;
     font-family: inherit;
