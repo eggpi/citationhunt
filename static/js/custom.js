@@ -44,6 +44,10 @@ $(function() {
     this.getId = () => id;
 
     var $html = $('#' + id).detach();
+    $html.find('#select-articles-link').click((e) => {
+      e.preventDefault();
+      wizard.advanceToCard('select-articles-card');
+    });
     $html.find('#import-article-titles-link').click((e) => {
       e.preventDefault();
       wizard.advanceToCard('import-article-titles-card');
@@ -104,10 +108,14 @@ $(function() {
     this.submit = function() {
       var inputElem = $html.find('input')[0];
       var psid = extractPetScanID(inputElem.value);
-      if (psid === null && 'setCustomValidity' in inputElem) {
-        inputElem.setCustomValidity(
-          wizard.getStrings().invalidPetscanInput);
-        return null;
+      if ('setCustomValidity' in inputElem) {
+        if (psid === null) {
+          inputElem.setCustomValidity(
+            wizard.getStrings().invalidPetscanInput);
+          return null;
+        }
+        // Clear pre-existing errors.
+        inputElem.setCustomValidity('');
       }
       var payload = JSON.stringify({
         psid: psid,
@@ -130,6 +138,46 @@ $(function() {
     };
   }
   ImportPetScanCard.prototype = Card;
+
+  function SelectArticlesCard(wizard) {
+    let id = 'select-articles-card';
+    this.getId = () => id;
+    let $html = $('#' + id).detach();
+    let inputElement = $html.find('input').get(0);
+    let articleSelector = null;
+
+    this.start = function($container) {
+      $container.append($html);
+      inputElement.focus();
+      articleSelector = new ArticleSelector(
+        inputElement, $html.find('.spinner').get(0),
+        $html.find('#selected-articles').get(0),
+        $html.find('summary').get(0));
+    };
+
+    this.end = function($container) {
+      articleSelector.removeEventListeners();
+      $html.detach();
+    };
+
+    this.submit = function() {
+      let pageIds = articleSelector.getSelectedArticles();
+      if ('setCustomValidity' in inputElement) {
+        if (pageIds.length === 0) {
+          inputElement.setCustomValidity(
+            wizard.getStrings().customNoArticlesSelected);
+          return null;
+        }
+        // Clear pre-existing errors.
+        inputElement.setCustomValidity('');
+      }
+      let payload = JSON.stringify({
+        page_ids: pageIds,
+      });
+      return sendCreationRequest(payload);
+    }
+  }
+  SelectArticlesCard.prototype = Card;
 
   function ProgressCard(wizard) {
     var self = this;
@@ -294,6 +342,7 @@ $(function() {
     this.$container = $container;
     this.cards = [
       LandingCard,
+      SelectArticlesCard,
       ImportArticlesCard,
       ImportPetScanCard,
       ProgressCard,

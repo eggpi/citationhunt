@@ -92,7 +92,7 @@ def search_article_title(lang_code, needle, max_results):
             GROUP BY articles.page_id, articles.title
             LIMIT %s''', (needle, max_results))
     return [{
-        'page_id': row[0], 'title': row[1], 'snippets': row[1].split(',')
+        'page_id': row[0], 'title': row[1], 'snippets': row[2].split(',')
     } for row in cursor]
 
 def query_fixed_snippets(lang_code, from_ts):

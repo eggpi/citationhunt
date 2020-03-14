@@ -56,7 +56,35 @@
     padding: 3px;
 }
 
+#select-articles-card .selected {
+    opacity: 0.6;
+}
+
+#select-articles-card details {
+    margin-bottom: 10px;
+}
+
+#selected-articles {
+    list-style: none;
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+#selected-articles:empty {
+    display: none;
+}
+
+#selected-articles .remove-button  {
+    cursor: pointer;
+    background-image: url("../icon/ic_remove.svg");
+    background-repeat: no-repeat;
+    background-position-y: 2px;
+    display: inline-block;
+    height: 20px;
+    width: 27px;
+}
+
 #custom-spinner {
-  /* Make it less likely for the text to run into the spinner */
-  height: 10px;
+    /* Make it less likely for the text to run into the spinner */
+    height: 10px;
 }

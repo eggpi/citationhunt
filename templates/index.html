@@ -34,7 +34,9 @@
     <script src="static/js/lib/awesomplete/awesomplete.js" defer></script>
     <script src="static/js/lib/spin.js/spin.js" defer></script>
 
+    <script src="static/js/search_bar.js" defer></script>
     <script src="static/js/category_filter.js" defer></script>
+    <script src="static/js/article_selector.js" defer></script>
     <script src="static/js/lang_selector.js" defer></script>
     <script src="static/js/fixed.js" defer></script>
     <script src="static/js/shortcuts.js" defer></script>
@@ -156,9 +158,25 @@
         <p>{{ strings.custom_intro }}</p>
         <p>{{ strings.custom_import_prompt }}</p>
         <ul>
+          <li><a id="select-articles-link" href="">{{ strings.select_articles }}</a></li>
           <li><a id="import-article-titles-link" href="">{{ strings.import_article_titles }}</a></li>
           <li><a id="import-petscan-link" href="">{{ strings.import_petscan }}</a></li>
         </ul>
+      </div>
+      <div id="select-articles-card" class="custom-card">
+        <p>{{ strings.select_articles_prompt }}</p>
+        <details>
+        <summary></summary>
+        <ol id="selected-articles"></ol>
+        </details>
+        <div class="row no-gutters">
+            <div class="col-10">
+                <input type="text" placeholder="{{ strings.select_articles_placeholder }}"></input>
+            </div>
+            <div class="col-1">
+                <div class="spinner"></div>
+            </div>
+        </div>
       </div>
       <div id="import-article-titles-card" class="custom-card">
         <p>{{ strings.import_articles_prompt }}</p>

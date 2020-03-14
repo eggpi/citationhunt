@@ -158,6 +158,24 @@ def _preprocess_variables(config, strings):
                 link_start = _link_start('', ''),
                 link_end = '</a>'))
 
+    strings.setdefault('select_articles', '')
+    if strings['select_articles']:
+        strings['select_articles'] = strings['select_articles'].format(
+                tooltitle = strings['tooltitle'])
+
+    strings.setdefault('select_articles_prompt', '')
+    if strings['select_articles_prompt']:
+        strings['select_articles_prompt'] = flask.Markup(
+            strings['select_articles_prompt'].format(
+                em_start = '<b>', em_end = '</b>',
+                tooltitle = strings['tooltitle']))
+
+    strings.setdefault('custom_import_prompt', '')
+    if strings['custom_import_prompt']:
+        strings['custom_import_prompt'] = (
+            strings['custom_import_prompt'].format(
+                tooltitle = strings['tooltitle']))
+
     return strings
 
 def _partition_js_strings(strings):

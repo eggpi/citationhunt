@@ -124,10 +124,12 @@ def do_search(search_function, lang_code):
         max_results = int(flask.request.args.get('max_results'))
     except:
         max_results = float('inf')
+    q = flask.request.args.get('q')
+    if q is None:
+        return flask.jsonify(error = 'missing query')
     return flask.jsonify(
         results = search_function(
-            lang_code, flask.request.args.get('q'),
-            max_results = min(max_results, 400)))
+            lang_code, q, max_results = min(max_results, 400)))
 
 @validate_lang_code
 def search_category(lang_code):
