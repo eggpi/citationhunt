@@ -48,8 +48,9 @@ button:focus {
     line-height: 22px;
     text-align: justify;
     margin: 5px auto 0 auto;
-    max-height: 200px;
-    min-height: 110px;
+    /* Apparently I need to set both for overflow to work! */
+    min-height: 140px;
+    max-height: 140px;
 }
 
 /* text-align: justify looks ugly on very narrow screens, so we just revert back
