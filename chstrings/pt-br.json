@@ -30,7 +30,7 @@
 	"import_petscan_intro": "{em_start}PetScan{em_end} é uma ferramenta para consultar a Wikipedia e definir listas de artigos. O PetScan atribui IDs a consultas para que seus resultados possam ser importados para outras ferramentas.",
 	"import_petscan_prompt": "{link_start}Crie sua consulta no PetScan{link_end} e cole seu ID abaixo:",
 	"in_page": "Na página %s:",
-	"instructions_details": "Clique em % s para acessar a Wikipedia e {link_start} corrigir o snippet {link_end} ou %s para ver outro. Boa sorte!",
+	"instructions_details": "Clique em %s para acessar a Wikipedia e {link_start}corrigir o snippet{link_end} ou %s para ver outro. Boa sorte!",
 	"instructions_goal": "O trecho abaixo da Wikipédia não está referenciado em nenhuma {link_start}fonte confiável{link_end}. Consegue encontrar alguma?",
 	"custom_created": "Seu {tooltitle} personalizado foi criado.",
 	"custom_end_copy_link": "Você pode copiar e compartilhar o link acima para permitir que outras pessoas o usem, ou {link_start}comece a navegar agora{link_end}!",
