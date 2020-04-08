@@ -65,7 +65,7 @@ function SearchBar(
     // sure the spinner appears next to it, vertically centered.
     spinnerElement.style.height = ie.getBoundingClientRect().height + 'px';
     spinnerElement.style.width = spinnerElement.style.height;
-    setTimeout(function() {
+    return setTimeout(function() {
       if (spinner.spinning) return;
       if (xhr.readyState !== XMLHttpRequest.DONE) {
         spinner.spin(spinnerElement);
@@ -101,7 +101,7 @@ function SearchBar(
         self.awesomplete.evaluate();
       }
     }).always(function() {
-      // don't start the spinner after the request has returned,
+      // Don't start the spinner after the request has returned,
       // and only stop the spinner when the last XHR returns,
       // in a chain of dropped requests.
       clearTimeout(timeout);
@@ -110,7 +110,9 @@ function SearchBar(
         spinner.spinning = false;
       }
     });
-    timeout = self._scheduleSpinnerStart(xhr);
+    if (ie.value.length >= self.awesomplete.minChars) {
+      timeout = self._scheduleSpinnerStart(xhr);
+    }
   }
 
   self._search = throttle(
