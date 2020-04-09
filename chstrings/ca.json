@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kippelboy",
 			"Fitoschido",
-			"Toniher",
-			"Ssola"
+			"Kippelboy",
+			"Ssola",
+			"Toniher"
 		]
 	},
 	"back": "Enrere",
@@ -26,12 +26,14 @@
 	"custom_import_prompt": "D'on voldríeu importar articles?",
 	"introduction": "Ajudar a trobar referències pels articles de la Viquipèdia",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
+	"js-custom-no-articles-selected": "Seleccioneu alguns articles.",
 	"js-invalid-petscan-input": "Un ID de PetScan numèric.",
 	"js-keyboard-shortcut": "Drecera de teclat: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referència afegida|referències afegides}} avui!",
 	"lead_section_hint": "Aquest text forma part de la capcelera de l'article. Vegeu %s per a més informació",
 	"page_not_found": "No s'ha trobat la pàgina!",
 	"page_not_found_text": "La pàgina que cerqueu ja no existeix — pot ser que la referència ja s'hagi trobada ? Torneu a %s per a més !",
+	"select_articles_placeholder": "Cerqueu un article.",
 	"submit": "Envia",
 	"try_again_hints_header": "Torneu-ho a provar i tingueu en compte els consells següents:",
 	"user": "Usuari"

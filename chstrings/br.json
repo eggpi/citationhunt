@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gwenn-Ael",
+			"Dishual",
 			"Fulup",
-			"Dishual"
+			"Gwenn-Ael"
 		]
 	},
 	"article_titles_hint": "Pa vez pellgarget pennadoù dre zitl, gwirit div wech hag-eñ eo reizh an titloù hag ho peus pourchaset unan dre linenn.",
@@ -23,7 +23,7 @@
 	"import_petscan_intro": "{em_start}PetScan{em_end}zo ur benveg evit goulennata Wikipedia ha dielfennañ ar rolloù pennadoù. Deverkañ a a ra PetScan anaouderioù (ID) d'ar rekedoù evit ma c'hallo o disoc'hoù bezañ enporzhiet gant binvioù all.",
 	"import_petscan_prompt": "{link_start} Krouit ho reked e  PetScan{link_end}, mar plij, ha pegit anezhañ en e ID amañ dindan :",
 	"in_page": "Er bajenn %s",
-	"instructions_details": "Klikit war %s evit mont e Wikimedia ha reizhañ an tamm kod pe %s evit kaout unan all. Chañs vat deoc'h !",
+	"instructions_details": "Klikit war %s evit mont e Wikimedia ha {link_start}reizhañ an tamm kod{link_end} pe %s evit gwelet unan all. Chañs vat deoc'h !",
 	"instructions_goal": "N'eo ket diazezet an tamm kod amañ dindan gant {link_start}ur vammenn fizius{link_end}. Ha gallout a rit kavout unan ?",
 	"custom_created": "Krouet eo bet ho {tooltitle} personelaet !",
 	"custom_end_copy_link": "Gallout a reot eilañ ha rannañ al liamm amañ dindan evit ma c'hallo tud all implijout anezhañ, pe {link_start} gwelet anezhañ bremañ {link_end}!",

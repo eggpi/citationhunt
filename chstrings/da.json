@@ -3,8 +3,8 @@
 		"authors": [
 			"Fnielsen",
 			"Joedalton",
-			"Saederup92",
-			"JonNPoulsen"
+			"JonNPoulsen",
+			"Saederup92"
 		]
 	},
 	"back": "Tilbage",
@@ -30,6 +30,7 @@
 	"leaderboard_title": "Topliste for %s",
 	"page_not_found": "Side ikke fundet!",
 	"page_not_found_text": "Den side du er på udkig efter findes ikke længere - måske er dette citat allerede fundet? Gå tilbage til %s for mere!",
+	"select_articles_placeholder": "Søg efter en artikel",
 	"submit": "Indsend",
 	"try_again_hints_header": "Prøv igen, og husk de følgende tips:",
 	"user": "Bruger"

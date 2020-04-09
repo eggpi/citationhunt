@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sfic",
-			"Sachinkatiyar",
 			"Innocentbunny",
-			"Suyash.dwivedi",
-			"Shypoetess",
 			"RaoSahil88",
-			"SatyamMishra"
+			"Sachinkatiyar",
+			"SatyamMishra",
+			"Sfic",
+			"Shypoetess",
+			"Suyash.dwivedi"
 		]
 	},
 	"article_titles_hint": "शीर्षक द्वारा लेख आयात करते समय, यह जाँचें कि शीर्षक सही हैं और आपने प्रति पंक्ति एक प्रदान की है।",

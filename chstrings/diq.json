@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirzali",
-			"Kumkumuk",
 			"1917 Ekim Devrimi",
 			"Gırd",
+			"Kumkumuk",
+			"Mirzali",
 			"Orbot707"
 		]
 	},
@@ -18,9 +18,9 @@
 	"edits": "Vurnayışi",
 	"footer": "% hetê merdımanê waşteyan ra vıraziyay, %s wayirê keyi kerdo ro u %s sero çarniyay.",
 	"github_link_title": "Hey! Çımey kodê mı GitHub de yo!",
-	"import_article_titles": "Yew lista meqaleyi cıkere",
+	"import_article_titles": "Yew lista meqaleyi cı kerê",
 	"import_articles_prompt": "Kerem kerên, cêr de serey herg yew satıt yew tene birayışiya Wikipedia de {em_start}sereya meqaley {em_end} bınusne :",
-	"import_petscan": "Yew tetkikê PetScani azere kerê",
+	"import_petscan": "Yew tedqiqê PetScani azere kerê",
 	"import_petscan_category_tip": "Şık: {tooltitle} teyna Kategoriya {category} tede dê meqaleya muhtewa kena. Deha raşt neticeyan rê, PetScan'i teyna na meqaleyanê na kategoriye gırotışi rê bıkarnê .",
 	"import_petscan_intro": "{em_start}PetScan{em_end}, Wikipedia de persayış u lista meqaleya şınastuş de karniyaye yew haceta. PetScan, persa erzeno kamiya miyan, neticey şenê çebiyê hacetanê binan.",
 	"import_petscan_prompt": "Kerem kerê {link_start}persayışê ho PetScan de vırazê {link_end} u kamiyer prone cêri rê:",
@@ -30,7 +30,7 @@
 	"custom_created": "{tooltitle} şımayo xısusi vıraziyayo!",
 	"custom_end_copy_link": "Merdumanê binan rê icazetê karniyayıii dayışi rê gırey cori şenê kopya kerê u pare bıkerê ya zi {link_start}enewke dest bê terenayışi bıkerê {link_end}!",
 	"custom_failed": "Qısur mewni, xısusi {tooltitle} nêvıraziya ya zi veng mende!",
-	"custom_import_prompt": "Şıma qayılê seni {tooltitle} vıraze?",
+	"custom_import_prompt": "Şıma qayılê senê {tooltitle} vırazê?",
 	"custom_intro": "Tede ra yew lista meqaleyi obcey {tooltitle} şenê xısusi bıkerê . Buno, şıma rê kılm Zeman de ariyaye meqaleyanê {tooltitle} rê çımeştışi rê u vıla kerdışi rê yew gıre dano.",
 	"custom_notice": "Amoriyaye amar de meqale ihtiwa kerden xısusi çımerzenê yew dosyay {tooltitle}. {link_start}Nêkemeyaya {tooltitle}{link_end} ravere peyser.",
 	"custom_please_wait": "Tay bıpawê, xısusi {tooltitle} adresê şımayo beno hesab. No çend deqey do bıgiro&#x2026;",

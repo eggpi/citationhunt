@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"아라",
-			"Ykhwong",
-			"Revi",
 			"Jerrykim306",
-			"관인생략"
+			"Revi",
+			"Ykhwong",
+			"관인생략",
+			"아라"
 		]
 	},
 	"back": "뒤로",
@@ -17,7 +17,7 @@
 	"edits": "편집",
 	"footer": "%s는 자발적인 사용자들에 의해서 만들어지고, %s에서 호스팅되며, %s를 통해 번역되었습니다.",
 	"github_link_title": "이봐요! 제 소스는 GitHub에 있어요!",
-	"import_article_titles": "문서 제목 목록",
+	"import_article_titles": "문서 목록 목록",
 	"import_articles_prompt": "가져올 위키백과 {em_start}문서 제목{em_end}을 아래의 영역에 각 줄마다 입력해 주십시오:",
 	"in_page": "%s 문서에서:",
 	"instructions_details": "위키백과로 가서 문서를 고치려면 %s를 클릭하시고, 다른 부분을 보려면 %s을 눌러주세요. 질문이 있다면 %s를 누르세요. 좋은 시간 되세요!",
@@ -35,6 +35,7 @@
 	"leaderboard_title": "%s 리더보드",
 	"page_not_found": "문서를 찾을 수 없습니다!",
 	"page_not_found_text": "찾으려는 문서가 더 이상 존재하지 않으며, 이 문구에 대한 출처가 이미 발견되었을 수도 있습니다. %s로 돌아가면 더 많은 정보를 볼 수 있습니다.",
+	"select_articles_placeholder": "문서를 검색합니다.",
 	"submit": "제출",
 	"try_again_hints_header": "다시 시도한 다음 아래의 팁을 염두에 두십시오:",
 	"user": "사용자"

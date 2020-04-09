@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Siebrand",
 			"Mainframe98",
-			"SPQRobin",
-			"Sjoerddebruin",
-			"Woodcutterty",
 			"Mar(c)",
 			"Marcelhospers",
-			"Optilete"
+			"Optilete",
+			"SPQRobin",
+			"Siebrand",
+			"Sjoerddebruin",
+			"Woodcutterty"
 		]
 	},
 	"article_titles_hint": "Controleer bij het importeren op titel of de titels correct zijn en dat u er één per regel hebt opgegeven.",

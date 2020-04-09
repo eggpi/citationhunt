@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu",
-			"Fitoschido"
+			"Fitoschido",
+			"Xuacu"
 		]
 	},
 	"article_titles_hint": "Al importar artículos per títulu, comprueba dos vegaes que los títulos son correctos y que disti unu per llinia.",
@@ -34,6 +34,7 @@
 	"introduction": "Ayuda a alcontrar cites p'artículos de Wikipedia",
 	"js-article-count": "$1 {{PLURAL:$1|artículu|artículos}}",
 	"js-custom-numbers": "Contien fragmentos de $1 {{PLURAL:$1|artículu|artículos}} y ye válidu mientres $2 {{PLURAL:$2|día|díes}}:",
+	"js-custom-no-articles-selected": "Seleiciona dellos artículos.",
 	"js-invalid-petscan-input": "Um númberu d'identificador de PetScan.",
 	"js-keyboard-shortcut": "Atayu de tecláu: %s",
 	"js-leaving-custom": "Tas volviendo a {tooltitle} ensin llendes. ¿Tas seguru?",
