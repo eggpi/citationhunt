@@ -34,7 +34,7 @@
 	"js-article-count": "$1 {{PLURAL:$1|voxe}}",
 	"js-custom-numbers": "El ga tochi da $1 {{PLURAL:$1|voxe}} e el xé bon par $2 {{PLURAL:$2|dì}}:",
 	"js-invalid-petscan-input": "On ID numerego PetScan.",
-	"js-keyboard-shortcut": "Scursatoie par tastiera: %s",
+	"js-keyboard-shortcut": "Scursatoie par botonjiera: %s",
 	"js-leaving-custom": "Te si drio tornar a iłimità {tooltitle}. Sito seguro?",
 	"js-refs-added-today": "$1 {{PLURAL:$1|notasion xontà|notasion xontae}} uncò!",
 	"lead_section_hint": "Sto testo el fa parte de l'incipit de ła voxe, de conseguensa xontar de łe notasion el xé opsionałe.  Varda %s par saverghine de pì.",
