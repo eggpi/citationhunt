@@ -2,7 +2,7 @@
 
 Citation Hunt is a simple tool for finding unsourced statements on
 Wikipedia in different languages. It is hosted at
-[https://tools.wmflabs.org/citationhunt/](https://tools.wmflabs.org/citationhunt/).
+[https://citationhunt.toolforge.org](https://citationhunt.toolforge.org).
 
 This repository contains the full server and client code. The
 [scripts/](https://github.com/eggpi/citationhunt/tree/master/scripts)
