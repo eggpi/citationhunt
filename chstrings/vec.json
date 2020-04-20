@@ -33,6 +33,7 @@
 	"introduction": "Jutane a catar fonti fidabiłi par łe voxe de Wikipedia!",
 	"js-article-count": "$1 {{PLURAL:$1|voxe}}",
 	"js-custom-numbers": "El ga tochi da $1 {{PLURAL:$1|voxe}} e el xé bon par $2 {{PLURAL:$2|dì}}:",
+	"js-custom-no-articles-selected": "Sełesiona calche articuło",
 	"js-invalid-petscan-input": "On ID numerego PetScan.",
 	"js-keyboard-shortcut": "Scursatoie par botonjiera: %s",
 	"js-leaving-custom": "Te si drio tornar a iłimità {tooltitle}. Sito seguro?",
@@ -44,6 +45,7 @@
 	"page_not_found": "Pajina no catada!",
 	"page_not_found_text": "La pajina che te jeri drio ndar inserca no ła ghe xé pì -- forse i ga xontà sta notasion... torna a %s par metarghine n'altra.",
 	"petscan_hint": "Co te inporti riserche PetScan, evita riserche che łe ciapa tanto tenpo a PetScan par esare vałutae e asegurate de ver dato on URL o PSID justo.",
+	"select_articles_placeholder": "Çerca on articuło",
 	"submit": "Envia",
 	"try_again_hints_header": "Prova oncora e tien in a mente sti sujerimenti:",
 	"user": "Uxuario"
