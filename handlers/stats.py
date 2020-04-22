@@ -104,6 +104,7 @@ def stats(lang_code):
         SELECT referrer, COUNT(*) FROM requests_''' + lang_code + '''
         WHERE status_code = 200 AND DATEDIFF(NOW(), ts) < %s
         AND referrer NOT LIKE "%%tools.wmflabs.org/citationhunt%%"
+        AND referrer NOT LIKE "%%citationhunt.toolforge.org%%"
         AND referrer IS NOT NULL
         GROUP BY referrer ORDER BY COUNT(*) DESC LIMIT 30
     ''', (days,))
