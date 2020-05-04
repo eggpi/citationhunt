@@ -6,6 +6,7 @@
 			"Guycn2",
 			"Or",
 			"Shdror",
+			"Steeve815",
 			"Strayblues",
 			"YaronSh"
 		]
@@ -41,6 +42,7 @@
 	"leaderboard_title": "לוח מובילים של %s",
 	"page_not_found": "הדף לא נמצא!",
 	"page_not_found_text": "הדף שחיפשת לא קיים כבר – האם ייתכן שהמקור כבר נמצא? נחזור אל %s כדי להמשיך!",
+	"select_articles_placeholder": "חיפוש אחר ערך.",
 	"submit": "שליחה",
 	"try_again_hints_header": "אנא נסו שנית והביאו בחשבון את הטיפים הבאים:",
 	"user": "משתמש"
