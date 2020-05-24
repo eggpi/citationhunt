@@ -62,14 +62,13 @@ if __name__ == '__main__':
         wikitext = wikipedia.get_page_contents(
             title = arguments['<title_or_pageid>'])
 
-    for section, snippets in parser.extract(wikitext):
-        if not snippets: continue
-        print('Section: %s' % section)
-        for snippet in snippets:
-            if arguments['--output'] != 'raw':
-                output = format_html(snippet)
-            else:
-                output = '   ' + '\n   '.join(
-                    textwrap.wrap(snippet, 80, break_long_words = False))
-            print(output)
-            print('.')
+    for snippet in parser.extract(wikitext):
+        print('Section: %s' % snippet.section)
+        if arguments['--output'] != 'raw':
+            output = format_html(snippet.snippet)
+        else:
+            output = '   ' + '\n   '.join(
+                textwrap.wrap(snippet.snippet, 80, break_long_words = False))
+        print(output)
+        print('. dates = {}'.format(
+            [d.strftime('%B %Y') for d in snippet.dates]))

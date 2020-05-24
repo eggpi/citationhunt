@@ -18,6 +18,7 @@ import lxml.html
 import lxml.etree
 import lxml.cssselect
 
+import datetime
 import io as StringIO
 import itertools
 from copy import copy
@@ -25,13 +26,37 @@ from copy import copy
 SNIPPET_WRAPPER_CLASS = 'ch-snippet'
 
 CITATION_NEEDED_MARKER_CLASS = 'ch-cn-marker'
+_TEMPLATE_ID_ATTR = 'data-id'
 _CITATION_NEEDED_MARKER_MARKUP = (
-    '<span class="%s">{tpl}</span>' % CITATION_NEEDED_MARKER_CLASS)
+    '<span class="%s" %s="{tpl_id}">{tpl}</span>' % \
+        (CITATION_NEEDED_MARKER_CLASS, _TEMPLATE_ID_ATTR))
 
 _LIST_TAGS = set(['ol', 'ul'])
 _SNIPPET_ROOT_TAGS = set(['p']) | _LIST_TAGS
 
-class SnippetParser(object):
+class Snippet:
+    '''Holder object for a snippet.
+
+    section (str) is the title of the section where the snippet is.
+    text (str) is the HTML string for the snippet.
+    dates (datetime.datetime) are the dates in the citation needed templates
+          found in the snippet, sorted ascending.
+    '''
+
+    __slots__ = ('section', 'snippet', 'dates')
+
+    def __init__(self):
+        self.section = None
+        self.snippet = None
+        self.dates = []
+
+    def __eq__(self, other):
+        return self.section == other.section and self.snippet == other.snippet
+
+    def __hash__(self):
+        return hash((self.section, self.snippet))
+
+class SnippetParser:
     '''Turn wikitext into HTML snippets for Citation Hunt.'''
 
     def __init__(self, wikipedia, cfg):
@@ -74,6 +99,19 @@ class SnippetParser(object):
                     tplname = redirect['title'].split(':', 1)[1]
                     templates.add(tplname)
         return templates
+
+    def _get_date_from_template(self, tpl):
+        if self._cfg.lang_code != 'en':
+            return None
+        try:
+            return datetime.datetime.strptime(
+                tpl.get('date').split('=', 1)[1], '%B %Y')
+        except ValueError:
+            return None
+
+    # Separate method for testing.
+    def _make_template_id(self, section, template):
+        return f'section-{section}-template-{template}'
 
     def _fast_parse(self, wikitext):
         tokenizer = mwparserfromhell.parser.CTokenizer()
@@ -131,12 +169,7 @@ class SnippetParser(object):
                snippet is within the bounds we're willing to accept, and if so,
                use it.
 
-        The return value is a list of lists of the form:
-            [
-                [<section1>, [<snippet1>, <snippet2>, ...]],
-                [<section2>, [<snippet1>, ...]],
-                ...
-            ]
+        The return value is a list of lists of Snippet objects.
         """
 
         wikicode = self._fast_parse(wikitext)
@@ -146,6 +179,13 @@ class SnippetParser(object):
         sections = wikicode.get_sections(
             include_lead = True, include_headings = True, flat = True)
 
+        # Whatever data we want to extract from the templates as wikitext and
+        # use once they are (potentially) turned into snippets after HTML
+        # expansion. We tag templates with a key into this dict before
+        # converting to HTML, then we can extract the key from the HTML that
+        # is returned.
+        template_data = {}
+
         snippets = []
         minlen, maxlen = self._cfg.snippet_min_size, self._cfg.snippet_max_size
         for i, section in enumerate(sections):
@@ -154,7 +194,7 @@ class SnippetParser(object):
             # true when _fast_parse succeeds above), and replace them with our
             # markers.
             has_citation_needed_template = False
-            for tpl in section.filter_templates():
+            for j, tpl in enumerate(section.filter_templates()):
                 # Make sure to use index-named parameters for all templates.
                 # That's because later on we'll insert a marker tag around citation
                 # needed templates, and that marker contains a '=', which can
@@ -166,7 +206,10 @@ class SnippetParser(object):
                     param.showkey = True
                 if self._is_citation_needed(tpl):
                     has_citation_needed_template = True
-                    marked = _CITATION_NEEDED_MARKER_MARKUP.format(tpl = tpl)
+                    tpl_id = self._make_template_id(i, j)
+                    template_data[tpl_id] = self._get_date_from_template(tpl)
+                    marked = _CITATION_NEEDED_MARKER_MARKUP.format(
+                        tpl_id = tpl_id, tpl = tpl)
                     try:
                         section.replace(tpl, marked)
                     except ValueError:
@@ -248,6 +291,8 @@ class SnippetParser(object):
 
             snippets_in_section = set()
             for sr in snippet_roots:
+                snippet = Snippet()
+
                 # Some last-minute cleanup to shrink the snippet some more.
                 # Remove links and attributes, but make sure to keep the
                 # class in our marker elements, and that there is no space
@@ -259,12 +304,17 @@ class SnippetParser(object):
                 sr.attrib['class'] = SNIPPET_WRAPPER_CLASS
                 for marker in markers_in_snippet:
                     marker.attrib['class'] = CITATION_NEEDED_MARKER_CLASS
+                    tpl_id = marker.attrib[_TEMPLATE_ID_ATTR]
+                    if template_data.get(tpl_id) is not None:
+                        snippet.dates = sorted(snippet.dates +
+                            [template_data[tpl_id]])
+                    del marker.attrib[_TEMPLATE_ID_ATTR]
                     lxml_utils.strip_space_before_element(marker)
 
                 length = len(sr.text_content().strip())
                 self.stats.snippet_lengths[length] += 1
                 if minlen < length < maxlen:
-                    snippet = d(lxml.html.tostring(
+                    snippet.snippet = d(lxml.html.tostring(
                         sr, encoding = 'utf-8', method = 'html')).strip()
                     snippets_in_section.add(snippet)
 
@@ -276,7 +326,9 @@ class SnippetParser(object):
                 # but we do want to remove them now with strip_code().
                 sectitle = mwparserfromhell.parse(
                     str(section.get(0).title).strip()).strip_code()
-            snippets.append([sectitle, list(snippets_in_section)])
+            for snippet in snippets_in_section:
+                snippet.section = sectitle
+                snippets.append(snippet)
         return snippets
 
     def _make_snippet_root(self, *child_elements):

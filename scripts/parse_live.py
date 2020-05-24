@@ -134,12 +134,12 @@ def work(pageids):
 
         snippets_rows = []
         snippets = self.parser.extract(wikitext)
-        for sec, snips in snippets:
-            sec = section_name_to_anchor(sec)
-            for sni in snips:
-                id = mkid(title + sni)
-                row = (id, sni, sec, pageid)
-                snippets_rows.append(row)
+        for snippet in snippets:
+            sec = section_name_to_anchor(snippet.section)
+            id = mkid(title + snippet.snippet)
+            oldest_template_date = snippet.dates[-1] if snippet.dates else None
+            row = (id, snippet.snippet, sec, pageid, oldest_template_date)
+            snippets_rows.append(row)
 
         if snippets_rows:
             article_row = (pageid, url, title)
@@ -149,7 +149,7 @@ def work(pageids):
         cursor.execute('''
             INSERT INTO articles VALUES(%s, %s, %s)''', r['article'])
         cursor.executemany('''
-            INSERT IGNORE INTO snippets VALUES(%s, %s, %s, %s)''',
+            INSERT IGNORE INTO snippets VALUES(%s, %s, %s, %s, %s)''',
             r['snippets'])
 
         # We can't allow data to be truncated for HTML snippets, as that can
