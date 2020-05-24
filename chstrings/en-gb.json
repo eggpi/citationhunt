@@ -47,6 +47,7 @@
 	"leaderboard_description": "These are users that fixed the most snippets through {tooltitle} in the past {days} days. Well done!",
 	"leaderboard_link_title": "Leaderboard",
 	"leaderboard_title": "%s Leaderboard",
+	"old_snippet_hint": "This text has been unreferenced on Wikipedia for a very long time. If you can't find a source, be bold and remove it!",
 	"page_not_found": "Page not found!",
 	"page_not_found_text": "The page you are looking for no longer exists — perhaps this citation has already been found? Go back to %s for more!",
 	"petscan_hint": "When importing PetScan queries, avoid queries that take very long for PetScan to evaluate and make sure your provided URL or PSID is valid.",

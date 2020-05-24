@@ -244,8 +244,17 @@ html[dir="rtl"] #leaderboard td {
     text-align: center;
     font-weight: bolder;
     cursor: pointer;
+    margin: 0 2px;
 }
 
 .lead-hint {
     background-color: #EEF31A;
+}
+
+.old-hint {
+    background-color: #71B6FF;
+    background-image: url("../icon/ic_clock.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
 }

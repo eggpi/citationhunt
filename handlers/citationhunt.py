@@ -9,6 +9,8 @@ import datetime
 import urllib.request, urllib.parse, urllib.error
 import urllib.parse
 
+now = datetime.datetime.now
+
 Category = collections.namedtuple('Category', ['id', 'title'])
 CATEGORY_ALL = Category('all', '')
 
@@ -85,7 +87,7 @@ def citation_hunt(lang_code):
         if sinfo is None:
             # invalid id
             flask.abort(404)
-        snippet, section, aurl, atitle = sinfo
+        snippet, section, aurl, atitle, date = sinfo
         snippet = flask.Markup(snippet)
         next_snippet_id = select_next_id(lang_code, id, cat, inter)
         if next_snippet_id is None:
@@ -96,6 +98,9 @@ def citation_hunt(lang_code):
                     id = id, lang_code = lang_code))
         article_url_path = urllib.parse.quote(
             e(urllib.parse.urlparse(aurl).path.lstrip('/')))
+        old_snippet = False
+        if date is not None and cfg.old_snippet_threshold is not None:
+            old_snippet = (now() - date) > cfg.old_snippet_threshold
         return flask.render_template('index.html',
             snippet_id = id, snippet = snippet,
             section = section, article_url = aurl,
@@ -103,6 +108,7 @@ def citation_hunt(lang_code):
             article_title = atitle, current_category = cat,
             current_custom = inter,
             next_snippet_id = next_snippet_id,
+            old_snippet = old_snippet,
             config = cfg,
             lang_tag = flask.g._lang_tag,
             lang_dir = lang_dir,

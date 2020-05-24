@@ -1,5 +1,6 @@
 #-*- encoding: utf-8 -*-
 
+import datetime
 import os
 import types
 from functools import reduce
@@ -115,6 +116,10 @@ _BASE_LANG_CONFIG = dict(
     # code itself. Whatever the fallback is, it MUST match the name of some
     # file inside the chstrings/ directory.
     accept_language = [],
+
+    # Snippets whose citation needed template is older than this get a notice
+    # in the UI to nudge the user to delete the snippet. Set to None to disable.
+    old_snippet_threshold = datetime.timedelta(weeks = 52 * 4)
 )
 
 # Language-specific config, inheriting from the base config above.

@@ -28,7 +28,7 @@ class CitationHuntTest(unittest.TestCase):
         self.inter = 'c4a1e27d'
         self.fake_snippet_info = (
             'Some snippet', 'Some section',
-            'https://en.wikipedia.org/wiki/A', 'Some title')
+            'https://en.wikipedia.org/wiki/A', 'Some title', None)
 
         methods_and_return_values = [
             ('query_snippet_by_category', (self.sid,)),
@@ -47,7 +47,7 @@ class CitationHuntTest(unittest.TestCase):
             mock.patch('app.handlers.database.query_category_by_id', wraps = (
                 lambda _, id: (self.cat, 'C') if id == self.cat else None)))
         self.patchers.append(
-            mock.patch('app.handlers.database.query_snippet_by_id',wraps = (
+            mock.patch('app.handlers.database.query_snippet_by_id', wraps = (
                 lambda _, id: self.fake_snippet_info if id == self.sid else None)
         ))
         for patcher in self.patchers:
@@ -389,6 +389,26 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEqual(response['page_ids'], [])
         self.assertEqual(response['ttl_days'],
             config.get_global_config().intersection_expiration_days)
+
+    def test_template_with_no_date_is_not_old(self):
+        response = self.app.get('/en?id=' + self.sid)
+        html = response.get_data().decode('utf-8')
+        self.assertNotIn('old-snippet', html)
+
+    def test_template_with_date_but_not_old(self):
+        self.fake_snippet_info = tuple([
+            *self.fake_snippet_info[:-1], datetime.datetime.now()])
+        response = self.app.get('/en?id=' + self.sid)
+        html = response.get_data().decode('utf-8')
+        self.assertNotIn('old-snippet', html)
+
+    def test_template_with_date_and_old(self):
+        old_time = datetime.datetime(year = 1991, month = 4, day = 8)
+        self.fake_snippet_info = tuple([
+            *self.fake_snippet_info[:-1], old_time])
+        response = self.app.get('/en?id=' + self.sid)
+        html = response.get_data().decode('utf-8')
+        self.assertIn('old-snippet', html)
 
 if __name__ == '__main__':
     unittest.main()

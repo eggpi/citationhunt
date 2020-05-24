@@ -20,7 +20,8 @@ def query_snippet_by_id(lang_code, id):
     with log_time('select snippet by id'):
         cursor.execute('''
             SELECT snippets.snippet, snippets.section, articles.url,
-            articles.title FROM snippets, articles WHERE snippets.id = %s
+            articles.title, snippets.oldest_template_date
+            FROM snippets, articles WHERE snippets.id = %s
             AND snippets.article_id = articles.page_id;''', (id,))
         return cursor.fetchone()
 
