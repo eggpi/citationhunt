@@ -20,6 +20,12 @@
     margin: 0;
 }
 
+@media (min-width: 768px) {
+    .snippet-notice-modal .pure-modal-wrap {
+        width: 45% !important;
+    }
+}
+
 .pure-modal .pure-modal-overlay .close:hover {
     color: #362929;
     border-top-color: #362929;

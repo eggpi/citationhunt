@@ -85,7 +85,7 @@
         <p id="in-page" class="col">{{ strings.in_page % (article_url, article_title) }}</p>
         {% if old_snippet and strings.old_snippet_hint %}
         <label for="old-snippet-hint-modal-trigger" class="snippet-notice old-hint"></label>
-        <div class="pure-modal">
+        <div class="pure-modal snippet-notice-modal">
           <input id="old-snippet-hint-modal-trigger" class="checkbox" type="checkbox">
           <div class="pure-modal-overlay">
             <label for="old-snippet-hint-modal-trigger" class="o-close"></label>
@@ -98,7 +98,7 @@
         {% endif %}
         {% if not section and strings.lead_section_hint %}
         <label for="lead-hint-modal-trigger" class="snippet-notice lead-hint">!</label>
-        <div class="pure-modal">
+        <div class="pure-modal snippet-notice-modal">
           <input id="lead-hint-modal-trigger" class="checkbox" type="checkbox">
           <div class="pure-modal-overlay">
             <label for="lead-hint-modal-trigger" class="o-close"></label>
