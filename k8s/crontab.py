@@ -54,7 +54,7 @@ spec:
               limits:
                 memory: "4Gi"
               requests:
-                memory: "4Gi"
+                memory: "1Gi"
           restartPolicy: Never
   concurrencyPolicy: Replace
 '''
