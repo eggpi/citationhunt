@@ -48,7 +48,7 @@ $ pip install -r citationhunt/requirements.txt
 and start the webservice:
 
 ```
-$ webservice --backend=kubernetes python3.5 start
+$ webservice --backend=kubernetes python3.7 start
 ```
 
 Then, install the crontab to launch database update jobs:
