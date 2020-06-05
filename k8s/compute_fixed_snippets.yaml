@@ -1,0 +1,36 @@
+---
+# NOTE: this deployment works with the "toolforge" Kubernetes cluster, and not the legacy "default" cluster.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: citationhunt.compute-fixed-snippets
+  namespace: tool-citationhunt
+  labels:
+    name: citationhunt.compute-fixed-snippets
+    # The toolforge=tool label will cause $HOME and other paths to be mounted from Toolforge
+    toolforge: tool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: citationhunt.compute-fixed-snippets
+      toolforge: tool
+  template:
+    metadata:
+      labels:
+        name: citationhunt.compute-fixed-snippets
+        toolforge: tool
+    spec:
+      containers:
+        - name: ch
+          image: docker-registry.tools.wmflabs.org/toolforge-python37-sssd-base:latest
+          args: [
+            /data/project/citationhunt/www/python/venv/bin/python3,
+            /data/project/citationhunt/citationhunt/scripts/compute_fixed_snippets.py,
+            global
+          ]
+          workingDir: /data/project/citationhunt
+          env:
+            - name: HOME
+              value: /data/project/citationhunt
+          imagePullPolicy: Always

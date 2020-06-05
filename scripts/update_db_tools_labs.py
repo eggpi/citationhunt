@@ -19,10 +19,9 @@ import dateutil.parser
 import datetime
 import traceback
 
-def email(message, attachments):
+def email(message):
     subprocess.getoutput(
         '/usr/bin/mail -s "%s" ' % message +
-        ' '.join('-a ' + a for a in attachments) +
         ' citationhunt.update@tools.wmflabs.org')
     time.sleep(2*60)
 
@@ -105,23 +104,12 @@ def _update_db_tools_labs(cfg):
     unsourced.close()  # deletes the file
 
 def update_db_tools_labs(cfg):
-    # Should match the job's name in crontab
-    logfiles = [
-        'citationhunt_update_' + cfg.lang_code + '.' + ext
-        for ext in ('out', 'err')
-    ]
-    for logfile in logfiles:
-        open(logfile, 'w').close()  # truncate
-
     try:
         _update_db_tools_labs(cfg)
     except Exception as e:
         traceback.print_exc(file = sys.stderr)
-        email('Failed to build database for %s' % cfg.lang_code, logfiles)
+        email('Failed to build database for %s' % cfg.lang_codes)
         sys.exit(1)
-    utils.mkdir_p(cfg.log_dir)
-    for logfile in logfiles:
-        os.rename(logfile, os.path.join(cfg.log_dir, logfile))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(

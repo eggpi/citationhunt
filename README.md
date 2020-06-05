@@ -21,19 +21,21 @@ There are three major components to Citation Hunt and they are each set up in
 slightly different ways in
 [Toolforge](https://wikitech.wikimedia.org/wiki/Help:Toolforge):
 
-* The HTTP serving job runs on Kubernetes.
-* The jobs that update the database run on the job grid via Cron.
-* The job that identifies snippets that were fixed runs continuously on the
-  grid.
+* The HTTP serving job.
+* The periodic jobs that update the database.
+* The continuous job that identifies snippets that were fixed.
 
-Moving everything to Kubernetes is tracked in [issue #134](https://github.com/eggpi/citationhunt/issues/134).
+All of them run on
+[Kubernetes](https://wikitech.wikimedia.org/wiki/Help:Toolforge/Kubernetes). The
+Kubernetes configuration is in the `k8s` directory.
 
 After logging in to `login.tools.wmflabs.org`, run the following commands to
 create the directory structure and enter the virtualenv:
 
 ```
 $ mkdir www/python/
-$ virtualenv --python python3 www/python/venv/
+$ webservice --backend=kubernetes python3.7 shell
+$ python3 -m venv www/python/venv/
 $ . www/python/venv/bin/activate
 ```
 
@@ -51,19 +53,19 @@ and start the webservice:
 $ webservice --backend=kubernetes python3.7 start
 ```
 
-Then, install the crontab to launch database update jobs:
+Then, generate the Cron jobs for Kubernetes:
 
 ```
-$ (cd citationhunt; ./crontab.py | crontab)
-$ crontab -l  # verify it
+$ (cd citationhunt; ./crontab.py | kubectl apply -f -)
+$ kubectl get cronjobs # verify it
 ```
 
 See [scripts/README.md](https://github.com/eggpi/citationhunt/blob/master/scripts/README.md)
 for more information about those jobs.
 
-Finally, submit `scripts/compute_fixed_snippets.py` as a job on the grid to
-detect snippets that were fixed:
+Finally, use `k8s/compute_fixed_snippets.yaml` to launch `scripts/compute_fixed_snippets.py`
+to detect snippets that get fixed:
 
 ```
-$ jstart -N compute_fixed_snippets $PWD/www/python/venv/bin/python3 $PWD/www/python/src/scripts/compute_fixed_snippets.py global
+$ kubectl create --validate=true -f k8s/compute_fixed_snippets.yaml
 ```
