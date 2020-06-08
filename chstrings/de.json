@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BaRaN6161 TURK",
 			"FF11",
 			"Metalhead64"
 		]
@@ -34,6 +35,7 @@
 	"introduction": "Hilf, Zitate für Wikipedia-Artikel zu finden!",
 	"js-article-count": "{{PLURAL:$1|Ein|$1}} Artikel",
 	"js-custom-numbers": "Es enthält Schnipsel von {{PLURAL:$1|einem Artikel|$1 Artikeln}} und ist für {{PLURAL:$2|einen Tag|$2 Tage}} gültig:",
+	"js-custom-no-articles-selected": "Bitte wählen Sie einige Artikel aus.",
 	"js-invalid-petscan-input": "Bitte eine numerische PetScan-Kennung.",
 	"js-keyboard-shortcut": "Tastaturkürzel: %s",
 	"js-leaving-custom": "Du navigierst zurück zum unbegrenzten {tooltitle}. Bist du sicher?",
