@@ -51,6 +51,7 @@
 	"leaderboard_description": "Voici les utilisateurs qui ont corrigé le plus de code dans {tooltitle} lors des {days} derniers jours. Félicitations !",
 	"leaderboard_link_title": "Palmarès",
 	"leaderboard_title": "Palmarès %s",
+	"old_snippet_hint": "Ce texte a été déréférencé sur Wikipédia depuis très longtemps. Si vous ne pouvez pas trouver de source, soyez courageux et supprimez-le !",
 	"page_not_found": "Page non trouvée",
 	"page_not_found_text": "La page que vous regardez n’existe plus — peut-être que cette citation a déjà été trouvée ? Revenez à %s pour en savoir plus !",
 	"petscan_hint": "En important des requêtes PetScan, évitez les requêtes qui prennent beaucoup de temps à être évaluées par PetScan et assurez-vous que l’URL ou le PSID fourni est valide.",

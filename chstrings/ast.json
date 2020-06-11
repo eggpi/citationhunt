@@ -45,6 +45,7 @@
 	"leaderboard_description": "Estos son los usuarios que correxeron más fragmentos de códigu con {tooltitle} nos últimos {days} días. ¡Bien fecho!",
 	"leaderboard_link_title": "Tableru de clasificación",
 	"leaderboard_title": "Tableru de clasificación de %s",
+	"old_snippet_hint": "Esti testu ta cuantayá en Wikipedia ensin referencies. Si nun pues alcontrar una fonte, ¡atrévete a desanicialu!",
 	"page_not_found": "Nun s'alcontró la páxina",
 	"page_not_found_text": "La páxina que tas buscando yá nun esiste. ¿Seique alcontraríen yá esta cita? Vuelve a %s a por más.",
 	"petscan_hint": "Al importar consultes de PetScan, evita busques en tarden enforma tiempu pa que PetScan les evalúe y asegúrate que la URL o PSID qu'apurristi sía válidu.",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AlimOmar",
 			"HushBeg",
 			"Uzdil"
 		]
@@ -17,6 +18,7 @@
 	"js-keyboard-shortcut": "كۇنۇپكا تاختىسى قولاي كۇنۇپكىسى: %s",
 	"leaderboard_link_title": "شەرەپ تاختىسى",
 	"leaderboard_title": "%s شەرەپ تاختىسى",
+	"old_snippet_hint": "بۇ تېكىست ۋىكىپېدىيەدە ناھايىتى ئۇزۇن ۋاقىت پايدىلانمىغان. ئەگەر مەنبە تاپالمىسىڭىز ، دادىل بولۇڭ ۋە ئۇنى يۇيۇۋىتىڭ!",
 	"page_not_found": "بەت تېپىلمىدى!",
 	"user": "ئىشلەتكۈچى"
 }

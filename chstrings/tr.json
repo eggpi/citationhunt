@@ -52,6 +52,7 @@
 	"leaderboard_description": "Bunlar, son {days} gün içinde en çok parçacığı {tooltitle} üzerinden düzelten kullanıcılardır. Aferin!",
 	"leaderboard_link_title": "Liderlik sıralaması",
 	"leaderboard_title": "%s Liderlik Sıralaması",
+	"old_snippet_hint": "Bu metin Vikipedi'de çok uzun süredir kullanılmıyor. Bir kaynak bulamazsanız, cesur olun ve kaldırın!",
 	"page_not_found": "Sayfa bulunamadı!",
 	"page_not_found_text": "Aradığınız sayfa artık mevcut değil — belki de bu alıntı zaten bulundu? Daha fazla bilgi için %s sayfasına geri dönün!",
 	"petscan_hint": "Pet Tarama sorgularını alırken, Pet Tarama'nın değerlendirilmesi uzun süren sorgulardan kaçının ve sağlanan URL veya PSID'nizin geçerli olduğundan emin olun.",
