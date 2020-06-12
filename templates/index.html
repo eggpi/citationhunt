@@ -130,7 +130,7 @@
         <div class="col-1"></div>  <!-- Padding the same size as the spinner to keep the form centered. -->
         <div class="col-10 col-lg-5">
           <form method="GET" action="" id="form-next" hidden>
-            <input type="text" id="category-input" value = "{{ current_category.title }}" autocomplete="off" placeholder="{{ strings.category_filter_placeholder }}">
+            <input type="text" id="category-input" value="{{ current_category.title }}" autocomplete="off" placeholder="{{ strings.category_filter_placeholder }}">
             <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
             <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
             {% if current_custom %}
@@ -157,7 +157,20 @@
     </div>
 
     <link href="https://tools-static.wmflabs.org/fontcdn/css?family=Fondamento" rel="stylesheet" type="text/css">
+
+    <!-- Try to prefetch the next snippet. This needs to match the URLs formed
+        by #form-next above. -->
+    {% if current_category.id != 'all' %}
     <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&cat={{ current_category.id }}">
+    {% elif current_custom %}
+    <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}&custom={{ current_custom }}">
+    {% else %}
+    <!-- In random browsing mode, we omit (with JS) the &cat=all suffix from
+        URLs when #form-next is submitted, even though the form initially has
+        that parameter. Assuming the user has JS enabled, we also omit &cat=
+        from here. -->
+    <link rel="prefetch" href="{{ config.lang_code }}?id={{ next_snippet_id }}">
+    {% endif %}
 
     <div id="js-strings"
       {% for k, v in js_strings.items() | sort %}
