@@ -53,6 +53,7 @@
 	"leaderboard_description": "Estes são os usuários que fizeram o maior número de contribuições em {tooltitle} nos últimos {days} dias. Ótimo trabalho!",
 	"leaderboard_link_title": "Colaboradores mais ativos",
 	"leaderboard_title": "Tabela classificativa de %s",
+	"old_snippet_hint": "Este texto não está referenciado na Wikipédia há muito tempo. Se não encontrar uma fonte, seja ousado e remova-o!",
 	"page_not_found": "Página não encontrada!",
 	"page_not_found_text": "A página que você está procurado não existe mais — talvez esta citação já tenha sido encontrada? Volte a %s para mais!",
 	"petscan_hint": "Ao importar consultas do PetScan, evite consultas que demorem muito para que o PetScan avalie e garanta que seu URL ou PSID fornecido seja válido.",
