@@ -5,7 +5,8 @@
 			"GhotuoIncubator",
 			"Gts-tg",
 			"KATRINE1993",
-			"Nikosgranturismogt"
+			"Nikosgranturismogt",
+			"Norhorn"
 		]
 	},
 	"article_titles_hint": "Όταν εισάγετε άρθρα ανά τίτλο,τσεκάρετε δύο φορές αν οι τίτλοι είναι σωστοί και ότι θα σας δώσουν έναν ανά σειρά.",
@@ -37,7 +38,7 @@
 	"introduction": "Βοηθήστε στην εύρεση παραπομπών για τα λήμματα της Βικιπαιδείας!",
 	"js-article-count": "$1 {{PLURAL:$1|λήμμα|λήμματα}}",
 	"js-custom-numbers": "Περιέχει snippets από $1 {{PLURAL:$1|article|articles}} και ισχύει για $2 {{PLURAL:$2|day|days}}:",
-	"js-custom-no-articles-selected": "Παρακαλώ επιλέξετε άρθρα",
+	"js-custom-no-articles-selected": "Παρακαλούμε επιλέξτε μερικά άρθρα.",
 	"js-invalid-petscan-input": "Παρακαλώ ορίστε έναν αριθμό PetScan ID.",
 	"js-keyboard-shortcut": "Συντόμευση πληκτρολογίου: %s",
 	"js-leaving-custom": "Πλοηγήστε  πάλι στον απεριόριστο αριθμό άρθρων {tooltitle}. Είναι εντάξει?",
@@ -52,7 +53,7 @@
 	"page_not_found_text": "Η σελίδα που ψάχνετε δεν υπάρχει πια — ίσως αυτή η παραπομπή έχει ήδη βρεθεί; Πηγαίνετε πίσω στο %s για περισσότερες!",
 	"petscan_hint": "Κατά την εισαγωγή των ερωτημάτων PetScan, αποφύγετε ερωτήματα που χρειάζονται πολύ χρόνο για το PetScan για να τα αξιολογήσει και βεβαιωθείτε ότι η παρεχόμενη διεύθυνση URL ή το PSID είναι έγκυρο.",
 	"select_articles": "Αναζήτηση άρθρων σε {tooltitle}",
-	"select_articles_placeholder": "Αναζήτηση άρθρου",
+	"select_articles_placeholder": "Αναζήτηση άρθρου.",
 	"select_articles_prompt": "Χρησιμοποιήστε το κουτί της αναζήτησης κάτω {em_start}για να βρείτε και να προσθέσετε άρθρα {em_end} επιλογής σας {tooltitle}. Μπορείτε να αφαιρέσετε ένα άρθρο κάνοντας κλικ στο εικονίδιο επιλογής κάτω.",
 	"submit": "Υποβολή",
 	"tooltitle": "Κυνήγι Παραπομπών",
