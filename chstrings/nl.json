@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dutchy45",
 			"Mainframe98",
 			"Mar(c)",
 			"Marcelhospers",
@@ -52,6 +53,7 @@
 	"leaderboard_description": "Dit zijn gebruikers die in de afgelopen {days} dagen de meeste fragmenten hebben gerepareerd via {tooltitle}. Goed gedaan!",
 	"leaderboard_link_title": "Rangschikking",
 	"leaderboard_title": "%s Rangschikking",
+	"old_snippet_hint": "Referenties voor deze tekst staan al heel lang niet meer op Wikipedia. Als je geen bron kunt vinden, voel je vrij om hem te verwijderen!",
 	"page_not_found": "Pagina niet gevonden",
 	"page_not_found_text": "De pagina die u zoekt bestaat niet meer. Misschien is de referentie al gevonden? Ga terug naar %s voor meer informatie.",
 	"petscan_hint": "Als u zoekopdrachten van Petscan importeert, voorkom dan dat u zoekopdrachten gebuikt die lang duren om uit te voeren, en zorg ervoor dat u een URL of PSID gebruikt dat geldig is.",
