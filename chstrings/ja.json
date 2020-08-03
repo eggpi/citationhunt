@@ -46,6 +46,7 @@
 	"leaderboard_description": "以下は、{tooltitle}を利用して過去{days}日間に最も多くの要出典を解決したユーザーです。おめでとうございます!",
 	"leaderboard_link_title": "ランキング",
 	"leaderboard_title": "%sランキング",
+	"old_snippet_hint": "この文章はかなり長期にわたりウィキペディアで出典のない状態が続いています。もし典拠が見つからない場合は、思い切って文章ごと削除してください！",
 	"page_not_found": "ページが見つかりません！",
 	"page_not_found_text": "お探しのページは見つかりませんでした―もしかすると誰かがもう出典を見つけたのかも？　%s に戻って次に進みましょう！",
 	"petscan_hint": "PetScan クエリをインポートする場合は、PetScan が評価するのに長時間かかるクエリは避けてください。入力した URL もしくは PSID に間違いがないか、確認してください。",

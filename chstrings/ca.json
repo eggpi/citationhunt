@@ -3,6 +3,7 @@
 		"authors": [
 			"Fitoschido",
 			"Kippelboy",
+			"Mguix",
 			"Ssola",
 			"Toniher"
 		]
@@ -15,15 +16,15 @@
 	"edits": "Edicions",
 	"footer": "%s és fet per voluntaris, allotjat a %s i traduït via %s.",
 	"github_link_title": "Ei! Podeu veure el codi font a GitHub!",
-	"import_article_titles": "Una llista de títols d'articles",
+	"import_article_titles": "Entri una llista  d'articles",
 	"import_articles_prompt": "Introduïu els {em_start}títols d'article{em_end} per importar, un per línia, en l'àrea a continuació:",
-	"import_petscan": "Una consulta de PetScan",
+	"import_petscan": "Importa des d'una consulta de PetScan",
 	"in_page": "En la pàgina %s:",
 	"instructions_details": "Feu clic a %s per a anar a la Viquipèdia i {link_start}corregir el fragment{link_end} o %s per a veure'n un altre. Molta sort!",
 	"instructions_goal": "El següent fragment de text de la Viquipèdia no està referenciat amb una {link_start}font fiable{link_end}. En podeu trobar alguna?",
 	"custom_created": "S'ha creat el vostre {tooltitle} personalitzat!",
 	"custom_end_copy_link": "Podeu copiar i compartir l'enllaç de sobre per a permetre que altres persones l'utilitzin o {link_start}comenceu a navegar-hi{link_end}!",
-	"custom_import_prompt": "D'on voldríeu importar articles?",
+	"custom_import_prompt": "Com t'agradaria crear un {tooltitle} personalitzat?",
 	"introduction": "Ajudar a trobar referències pels articles de la Viquipèdia",
 	"js-article-count": "$1 {{PLURAL:$1|article|articles}}",
 	"js-custom-no-articles-selected": "Seleccioneu alguns articles.",
