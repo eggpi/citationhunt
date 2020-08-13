@@ -8,6 +8,7 @@
 			"Jopparn",
 			"Josve05a",
 			"PeterKz",
+			"Sabelöga",
 			"WikiPhoenix"
 		]
 	},
@@ -15,7 +16,7 @@
 	"back": "Tillbaka",
 	"back_to_cancel": "Du kan trycka på {em_start}{back}{em_end} eller stänga denna dialogruta för att avbryta.",
 	"button_next": "Nästa!",
-	"button_wikilink": "Jag fixar den!",
+	"button_wikilink": "Jag fixar det!",
 	"customize": "Anpassa",
 	"category_filter_placeholder": "Sök efter ett ämne.",
 	"edits": "Redigeringar",
@@ -51,6 +52,7 @@
 	"leaderboard_description": "Dessa är användare som fixade de flesta stubbarna via {tooltitle} de senaste {days} dagarna. Bra jobbat!",
 	"leaderboard_link_title": "Topplista",
 	"leaderboard_title": "Topplista för %s",
+	"old_snippet_hint": "Denna text har varit utan referenser på Wikipedia ganska länge nu. Kan du inte hitta en källa är det kanske bäst att ta bort det.",
 	"page_not_found": "Sidan kunde inte hittas!",
 	"page_not_found_text": "Sidan finns inte längre – referensen har kanske redan hittats? Gå tillbaka till %s för mer!",
 	"petscan_hint": "När du importerar PetScan-frågor, undvik frågor som tar väldigt lång tid för PetScan att genomföra och säkerställ att URL eller PSID fungerar.",
