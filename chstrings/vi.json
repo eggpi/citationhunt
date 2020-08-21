@@ -1,12 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"Minh Nguyen"
+			"Minh Nguyen",
+			"Nguyễn Mạnh An"
 		]
 	},
-	"introduction": "Giúp tìm nguồn gốc cho bài Wikipedia!",
-	"in_page": "Trong trang %s:",
+	"article_titles_hint": "Khi nhập các bài báo theo tiêu đề, hãy kiểm tra kỹ xem các tiêu đề đó có đúng không và bạn đã cung cấp một tiêu đề trên mỗi dòng.",
+	"back": "Lùi",
+	"back_to_cancel": "Bạn có thể nhấn {em_start} {back} {em_end} hoặc đóng hộp thoại này để hủy.",
+	"button_next": "Kế tiếp!",
+	"button_wikilink": "Tôi hiểu rồi!",
+	"customize": "Tùy chỉnh",
+	"category_filter_placeholder": "Tìm kiếm một chủ đề.",
+	"edits": "Chỉnh sửa",
+	"footer": "%s do các tình nguyện viên thực hiện, được lưu trữ trên %s và được dịch qua %s.",
 	"github_link_title": "Này, mã nguồn của tôi nằm trên GitHub!",
-	"beginners_hint": "Không biết cách chú thích nguồn gốc? Xem %s.",
+	"import_article_titles": "Nhập danh sách các bài báo",
+	"import_articles_prompt": "Vui lòng nhập tiêu đề bài viết {em_start} {em_end} trên Wikipedia để nhập, mỗi tiêu đề trên mỗi dòng, vào khu vực bên dưới:",
+	"import_petscan": "Nhập từ truy vấn PetScan",
+	"import_petscan_category_tip": "Mẹo: {tooltitle} chỉ chứa các bài viết trong danh mục {category}. Để có kết quả tốt hơn, bạn có thể sử dụng PetScan để chỉ lấy các bài báo bên trong danh mục đó.",
+	"import_petscan_intro": "{em_start} PetScan {em_end} là một công cụ để truy vấn Wikipedia và xác định danh sách các bài báo. PetScan chỉ định ID cho các truy vấn để kết quả của chúng có thể được nhập vào các công cụ khác.",
+	"import_petscan_prompt": "Vui lòng {link_start} tạo truy vấn của bạn trong PetScan {link_end} và dán ID của nó bên dưới:",
+	"in_page": "Trong trang %s:",
+	"introduction": "Giúp tìm nguồn gốc cho bài Wikipedia!",
 	"page_not_found": "Không tìm thấy trang!"
 }
