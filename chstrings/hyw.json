@@ -1,18 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Armeniki"
+			"Armeniki",
+			"Շահէն"
 		]
 	},
+	"back": "Ետ",
 	"button_next": "Յաջորդ՜:",
 	"button_wikilink": "Ես կնեմ ասիկա:",
 	"category_filter_placeholder": "Որոնել նիւթի համար:",
 	"edits": "Խմբագրումներ",
 	"github_link_title": "Նայէ՛, իմ համակարգչային օրինագիրը GitHub-ի վրան է!",
+	"import_article_titles": "Մուտքագրել յօդուածներու ցանկ մը",
 	"in_page": "%s էջին մէջ",
 	"instructions_goal": "Այս Ուիքիփետիա-ի փոքրիկ յօդուածը {link_start}աղբիւր{link_end} կամ ուժեղ փաստ չ'ունի: Կրնա՞ս աղբիւր մը փնտռել:",
 	"introduction": "Օգնէք գտնել աղբիւրներ Ուիքիփետիայի յօդուածներու համար:",
 	"js-article-count": "$1 {{PLURAL:$1|յօդուած|յօդուածներ}}",
+	"js-custom-no-articles-selected": "Հաճեցէք ընտրել յօդուածներ:",
 	"js-keyboard-shortcut": "Ստեղնաշարի կարճուղի. %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation|citations}} աւելացուած այսօր:",
 	"lead_section_hint": "Այս բնաբանը յօդուածին առաջին մասը կը կազմէ ուրեմն պարտաւոր չէք աղբիւր նշանակելու:  Հաճեցէք նայիլ %s եթէ աւելի տեղեկութիւններ կուզէք:",
