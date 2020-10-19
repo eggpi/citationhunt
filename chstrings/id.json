@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Akmaie Ajam",
 			"Hidayatsrf",
 			"William Surya Permana"
 		]
@@ -34,17 +35,24 @@
 	"introduction": "Bantu temukan kutipan untuk artikel Wikipedia!",
 	"js-article-count": "$1 {{PLURAL:$1|article|artikel}}",
 	"js-custom-numbers": "Halaman ini memuat pintasan dari $1 {{PLURAL:$1|artikel|artikel}} dan berlaku selama $2 {{PLURAL:$2|hari|hari}}:",
+	"js-custom-no-articles-selected": "Mohon pilih sebuah artikel.",
 	"js-invalid-petscan-input": "Gunakan ID PetScan numerik.",
 	"js-keyboard-shortcut": "Pintasan papan tombol: %s",
 	"js-leaving-custom": "Anda bernavigasi kembali ke {tooltitle} yang tidak dibatasi. Apakah Anda yakin?",
 	"js-refs-added-today": "$1 {{PLURAL:$1|kutipan|kutipan}} ditambahkan hari ini!",
+	"js-select-articles-summary": "Klik untuk pratinjau ($1 artikel and $2 potongan ditambahkan)",
+	"js-snippet-count": "$1 potongan",
 	"lead_section_hint": "Teks ini merupakan bagian dari bagian awal artikel ini, sehingga penambahan referensi mungkin opsional. Silakan lihat %s untuk informasi lebih lanjut.",
 	"leaderboard_description": "Pengguna inilah yang memperbaiki kebanyakan pintasan melalui {tooltitle} dalam {days} hari terakhir. Luar biasa!",
 	"leaderboard_link_title": "Papan peringkat",
 	"leaderboard_title": "Papan peringkat %s",
+	"old_snippet_hint": "Teks ini belum direferensikan di Wikipedia untuk waktu yang sangat lama. Jika anda tidak bisa mencari asalnya, hapus teksnya!",
 	"page_not_found": "Halaman tidak ditemukan!",
 	"page_not_found_text": "Halaman yang Anda cari tidak lagi tersedia — mungkin kutipan ini telah disediakan? Kembali ke %s untuk melihat yang lain!",
 	"petscan_hint": "Saat mengimpor kueri PetScan, hindari kueri yang memerlukan waktu yang lama untuk dievaluasi oleh PetScan. Pastikan juga Anda telah menyediakan URL atau PSID yang sah.",
+	"select_articles": "Cari untuk artikel di {tooltitle}",
+	"select_articles_placeholder": "Cari artikel",
+	"select_articles_prompt": "Gunakan kotak telusur di bawah ini untuk {em_start}menemukan dan menambahkan artikel{em_end} ke {tooltitle} kustom Anda. Anda dapat menghapus artikel dengan mengkliknya pada pratinjau di bawah.",
 	"submit": "Kirim",
 	"try_again_hints_header": "Silakan coba lagi dan tetap ikuti kiat ini di benak:",
 	"user": "Pengguna"
