@@ -8,6 +8,8 @@ find . -name '*_test.py' |
     xargs -I{} -n1 python -m {}
 [ $? -ne 0 ] && ret=1
 
+[[ ${BASH_ARGV[0]} == "--skip-import-checks" ]] && exit $ret
+
 LANGS=$(python -c 'import config; print(" ".join(config.LANG_CODES_TO_LANG_NAMES))')
 for l in $LANGS; do
     # I'm too lazy to write tests for most of the scripts,
