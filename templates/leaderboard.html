@@ -12,8 +12,14 @@
       crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/custom.css">
   </head>
   <body>
+    {% if current_custom and strings.custom_notice %}
+    <div id="custom-notice">
+        <span>{{ strings.custom_notice }}</span>
+    </div>
+    {% endif %}
     <div class="container-fluid py-2">
       <h1>{{ strings.leaderboard_title }}</h1>
       <p class="info">{{ strings.leaderboard_description % ndays }}</p>

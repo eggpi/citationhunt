@@ -138,7 +138,7 @@ def _preprocess_variables(config, strings):
         strings['custom_notice'] = flask.Markup(
             strings['custom_notice'].format(
                 tooltitle = strings['tooltitle'],
-                link_start = _link_start(config.lang_code, ''),
+                link_start = _link_start('/' + config.lang_code, ''),
                 link_end = '</a>'))
 
     strings['custom_created'] = strings.get(

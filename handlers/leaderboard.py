@@ -12,7 +12,8 @@ LeaderboardEntry = collections.namedtuple(
 @validate_lang_code
 def leaderboard(lang_code):
     ndays = 30
-    rev_ids = database.query_fixed_revisions(lang_code, ndays)
+    inter_id = flask.request.args.get('custom')
+    rev_ids = database.query_fixed_revisions(lang_code, ndays, inter_id)
     leaderboard = []
     if rev_ids:
         users = database.query_rev_users(lang_code, rev_ids)
@@ -23,6 +24,7 @@ def leaderboard(lang_code):
         'leaderboard.html',
         leaderboard = leaderboard,
         ndays = ndays,
+        current_custom = inter_id,
         strings = flask.g._strings,
         config = flask.g._cfg,
         lang_tag = flask.g._lang_tag,

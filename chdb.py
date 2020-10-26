@@ -193,17 +193,20 @@ def _create_citationhunt_tables(cfg, cursor):
     ''')
 
 def _create_stats_tables(cfg, cursor):
+    # No FOREIGN KEY for inter_id because we want to keep the stats even when
+    # the intersection expires.
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS requests (
         ts DATETIME, lang_code VARCHAR(10), snippet_id VARCHAR(128),
         category_id VARCHAR(128), url VARCHAR(768), prefetch BOOLEAN,
-        status_code INTEGER, referrer VARCHAR(128))
+        status_code INTEGER, referrer VARCHAR(128), inter_id VARCHAR(128))
         ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     ''')
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS fixed (
         clicked_ts DATETIME, snippet_id VARCHAR(128) UNIQUE,
-        lang_code VARCHAR(10), rev_id INT(8) DEFAULT -1)
+        lang_code VARCHAR(10), rev_id INT(8) DEFAULT -1,
+        inter_id VARCHAR(128))
         ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     ''')
     # Create per-language views for convenience

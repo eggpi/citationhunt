@@ -68,7 +68,7 @@
           </div>
         </div>
         {% if strings.leaderboard_link_title %}
-        <div class="mx-1"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
+        <div class="mx-1"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html{% if current_custom %}?custom={{ current_custom }}{% endif %}">{{ strings.leaderboard_link_title }}</a></div>
         {% endif %}
         <select id="lang-selector" class="mx-1">
           {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
@@ -119,7 +119,7 @@
       </div>
       <div class="row justify-content-center mt-4">
         <div class="col-5 col-sm-4 col-lg-2">
-          <a href="{{ config.lang_code }}/redirect?id={{ snippet_id }}&to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
+            <a href="{{ config.lang_code }}/redirect?id={{ snippet_id }}&custom={{ current_custom }}&to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
             target="_blank"><button class="button" id="button-wikilink">{{ strings.button_wikilink }}</button></a>
         </div>
         <div class="col-5 col-sm-4 col-lg-2">

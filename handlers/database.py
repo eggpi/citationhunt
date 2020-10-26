@@ -105,11 +105,17 @@ def query_fixed_snippets(lang_code, from_ts):
         nfixed = cursor.fetchone()
     return nfixed[0] if nfixed else 0
 
-def query_fixed_revisions(lang_code, start_days):
+def query_fixed_revisions(lang_code, start_days, inter_id = None):
     with get_stats_db().cursor() as cursor:
-        cursor.execute(
-            'SELECT rev_id FROM fixed_' + lang_code +
-            ' WHERE DATEDIFF(NOW(), clicked_ts) < %s', (start_days,))
+        if inter_id is not None:
+            cursor.execute(
+                'SELECT rev_id FROM fixed '
+                'WHERE DATEDIFF(NOW(), clicked_ts) < %s '
+                'AND inter_id = %s', (start_days, inter_id))
+        else:
+            cursor.execute(
+                'SELECT rev_id FROM fixed_' + lang_code + ' '
+                'WHERE DATEDIFF(NOW(), clicked_ts) < %s', (start_days,))
         return [row[0] for row in cursor.fetchall()]
 
 def query_rev_users(lang_code, rev_ids):
