@@ -3,6 +3,7 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"FF11",
+			"ManuelFranz",
 			"Metalhead64"
 		]
 	},
@@ -51,6 +52,6 @@
 	"select_articles_prompt": "Benutze das Suchfeld unten, um {em_start}Artikel zu finden{em_end} und zu deinem benutzerdefinierten {tooltitle} {em_start}hinzuzufügen.{em_end} Du kannst einen Artikel entfernen, indem du ihn in der Vorschau unten anklickst.",
 	"submit": "Absenden",
 	"tooltitle": "Citation Hunt",
-	"try_again_hints_header": "Bitte erneut versuchen und behalte die folgenden Tipps im Kopf:",
+	"try_again_hints_header": "Bitte erneut versuchen und die folgenden Tipps im Kopf behalten:",
 	"user": "Benutzer"
 }
