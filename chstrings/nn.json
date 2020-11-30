@@ -1,19 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jon Harald Søby",
 			"Jon Harald Søby (WMNO)",
-			"Jon Harald Søby"
+			"Ranveig"
 		]
 	},
-	"beginners_hint": "Veit di ikkje korleis du legg til referansar? Sjå %s.",
 	"button_next": "Neste!",
 	"button_wikilink": "Denne fiksar eg!",
-	"category_filter_placeholder": "Kva interesserer deg?",
+	"category_filter_placeholder": "Søk etter eit emne.",
+	"edits": "Endringar",
 	"footer": "%s er skapt av frivillige, ligg på %s og omsetjast på %s.",
 	"github_link_title": "Hei! Kjelda mi er på GitHub!",
+	"import_article_titles": "Skriv inn ei liste med artiklar",
+	"import_articles_prompt": "Skriv inn {em_start}titlane{em_end} på Wikipedia-artiklane som skal importerast, ein per rekkje, i området under:",
 	"in_page": "På sida «%s»:",
-	"instructions_details": "Klikk på %s for å gå til Wikipedia og fikse utdraget, eller på %s for å sjå eit anna utdrag. Sjekk %s om du har nokre spørsmål. Lukke til!",
-	"instructions_goal": "Wikipedia-utdraget nedanfor manglar ei påliteleg kjelde. Kan du finne éi?",
+	"instructions_details": "Klikk på %s for å gå til Wikipedia og {link_start}fikse utdraget{link_end}, eller på %s for å sjå eit anna utdrag. Sjekk %s om du har nokre spørsmål. Lukke til!",
+	"instructions_goal": "Wikipedia-utdraget nedanfor manglar ei {link_start}påliteleg kjelde{link_end}. Kan du finne ei?",
+	"custom_created": "Din tilpassa {tooltitle} har vorte laga!",
 	"introduction": "Hjelp til å finne referansar til Wikipedia-artiklar!",
 	"lead_section_hint": "Denne teksta er del av ingressen til artikkelen, så det kan vere valgfritt å nytte referansar. Sjå %s for meir informasjon.",
 	"page_not_found": "Sida vart ikkje funnen!",
