@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ArenaL5",
 			"Athena in Wonderland",
 			"Banjo",
 			"Elisardojm",
@@ -19,9 +20,9 @@
 	"edits": "Edicións",
 	"footer": "%s está feito por voluntarios, está albergado en %s e traducido vía %s.",
 	"github_link_title": "Eh! O meu código fonte está en GitHub!",
-	"import_article_titles": "Unha lista de títulos de artigos",
+	"import_article_titles": "Introduza unha lista de artigos",
 	"import_articles_prompt": "Por favor engada os {em_start}artigos da Wikipedia {em_end} a importar, un por liña, na parte inferior:",
-	"import_petscan": "Consulta en PetScan",
+	"import_petscan": "Importar dunha consulta en PetScan",
 	"import_petscan_category_tip": "Consello: {tooltitle} só inclúe artigos dentro da categoría {category}. Para mellorar os resultados podes usar PetScan para obter só artigos dentro desa categoría.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} é unha ferramenta para facer buscas na Wikipedia e definir listas de artigos. Petscan asigna identificadores ás buscas de xeito que os resultados poidan ser importados por outras ferramentas.",
 	"import_petscan_prompt": "Por favor {link_start}, defina a súa busca en PetScan {link_end} e pegue o seu identificador (ID) aquí embaixo:",
@@ -31,8 +32,8 @@
 	"custom_created": "O seu {tooltitle} personalizado foi creado!",
 	"custom_end_copy_link": "Pode copiar e compartir a ligazón superior para que outras persoas poidan usala ou {link_start}comezar a explorala agora{link_end}!",
 	"custom_failed": "Sentímolo, a súa {tooltitle} non puido xerarse ou resultou estar baleira!",
-	"custom_import_prompt": "De onde quere importar os artigos?",
-	"custom_intro": "Pode personalizar {tooltitle} importando unha lista de artigos nela. Isto proporciona unha ligazón que pode compartir con outras persoas para que {tooltitle} exploren ó os artigos que vostede indicou.",
+	"custom_import_prompt": "Como lle gustaría crear un {tooltitle} personalizado?",
+	"custom_intro": "Pode personalizar {tooltitle} provendo unha lista de artigos nela. Isto proporciona unha ligazón que pode compartir con outras persoas para que exploren en {tooltitle} só os artigos que vostede indicou.",
 	"custom_notice": "Está vostede a navegar por un {tooltitle} personalizado cunha lista limitada de artigos. {link_start}Volva atrás para acceder a un {tooltitle} sen restricións{link_end}.",
 	"custom_please_wait": "Por favor, agarde; o seu {tooltitle} personalizado está sendo procesado. Isto pode levar uns minutos&#x2026;",
 	"introduction": "Axuda a atopar citas para os artigos da Wikipedia!",
