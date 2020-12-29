@@ -45,7 +45,7 @@
 	"js-select-articles-summary": "Clicar per a previsualitzar ($1 {{PLURAL:$1|article|articles}} i $2 {{PLURAL:$2|extret|extrets}} afegits)",
 	"js-snippet-count": "$1 {{PLURAL:$1|extret|extrets}}",
 	"lead_section_hint": "Aquest text forma part de la capcelera de l'article. Vegeu %s per a més informació",
-	"leaderboard_description": "Aquests són els usuaris que han arreglat el major nombre de fragments utilitzant {tooltitle} en els {days} últims dies. Felicitacions!",
+	"leaderboard_description": "Aquests són els usuaris que han arreglat la majoria de fragments utilitzant {tooltitle} en els {days} últims dies. Felicitacions!",
 	"leaderboard_link_title": "Tauler de classificacions",
 	"leaderboard_title": "%s Tauler de classificacions",
 	"old_snippet_hint": "Aquest text ha estat desreferenciat de la Viquipèdia des de fa molt de temps. Si no trobeu cap font, sigueu valents i suprimiu-la.",

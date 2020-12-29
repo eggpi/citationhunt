@@ -2,17 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Jaakkoh",
+			"Maantietäjä",
 			"Olimar",
 			"Pyscowicz"
 		]
 	},
+	"article_titles_hint": "Kun tuot artikkelia otsikon mukaan, tarkista, että otsikot ovat oikein ja että olet antanut yhden kullekin riville.",
 	"back": "Takaisin",
 	"button_next": "Ehei, seuraava!",
 	"button_wikilink": "Korjaan tämän!",
+	"customize": "Mukauta",
 	"category_filter_placeholder": "Mikä saa sinut syttymään?",
 	"edits": "Muokkaukset",
 	"footer": "%s on vapaaehtoisten tekemä, isännöi %s ja\nkäännetty sivustolla %s.",
 	"github_link_title": "Hoi! Lähdekoodini on GitHubissa!",
+	"import_article_titles": "Syötä luettelo artikkeleista",
 	"in_page": "Sivulla %s:",
 	"instructions_details": "Klikkaa %s, niin pääset Wikipediaan {link_start}korjaamaan puutteellisen lähdemerkinnän{link_end}, tai %s nähdäksesi uuden otteen. Onnea!",
 	"instructions_goal": "Seuraavaa otetta Wikipediasta ei ole lähteistetty {link_start}luotettavalla lähteellä{link_end}. Voitko sinä lähteistää tämän?",
