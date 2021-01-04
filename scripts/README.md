@@ -4,20 +4,18 @@ The scripts in this directory are used to generate the Citation Hunt database.
 
 ### Generating the database on Tools Labs
 
-The `update_db_tools_labs.py` script automates the generation of the database
-on Tools Labs. It is run regularly as as a cron job and needs to run from a
-virtualenv.
+See the [top-level README](https://github.com/eggpi/citationhunt#running-in-toolforge) for how to set up Kubernetes cron jobs to generate the database, and refer to the [Kubernetes cronjob](https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/) documentation for more general information.
 
-```
-/usr/bin/jsub -mem 20g -N citationhunt_update_en -once -l release=trusty \
-  /data/project/citationhunt/www/python/venv/bin/python3 \
-  /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py en
-```
+Below are some more handy commands for manually operating and troubleshooting those cronjobs.
 
-This will automatically find and use the MySQL credentials in `~/replica.my.cnf`.
+#### Manually launch a job
+    $ kubectl create job --from=cronjob/citationhunt-update-it citationhunt-update-it-manual
 
-Please refer to the following section for a more detailed explanation of how the
-database is generated.
+#### Get pods for running jobs
+    $ kubectl get pods --field-selector=status.phase=Running
+
+#### Get logs from a pod
+    $ kubectl logs ${POD?}
 
 ### Generating the database locally
 
