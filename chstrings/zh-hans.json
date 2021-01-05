@@ -25,7 +25,7 @@
 	"import_articles_prompt": "请在下方输入要导入的维基百科{em_start}条目名称{em_end}（一行一个）：",
 	"import_petscan": "来自 PetScan 查询的接口",
 	"in_page": "页面%s中：",
-	"instructions_details": "点击%s前往维基百科并{link_start}修复片段{link_end}。祝好运！",
+	"instructions_details": "點擊%s前往維基百科來{link_start}修正片段內容{link_end}，或以%s來檢視下一筆。祝順心！",
 	"instructions_goal": "下方的维基百科片段没有{link_start}可靠来源{link_end}支持。您可以找到一个么？",
 	"introduction": "帮维基百科条目找找引用吧！",
 	"js-article-count": "$1个条目",
