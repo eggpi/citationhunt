@@ -135,10 +135,9 @@ def compute_fixed_snippets(cfg):
             gone_in_this_revision = {
                 cs.snippet_id: cs for cs in clicked_snippets}
             # FIXME Duplicated logic with parse_live.py :(
-            for sec, snips in snippets:
-                for sni in snips:
-                    id = mkid(d(page_title) + sni)
-                    gone_in_this_revision.pop(id, None)
+            for sni in snippets:
+                id = mkid(d(page_title) + sni.snippet)
+                gone_in_this_revision.pop(id, None)
             for snippet_id, clicked_snippet in gone_in_this_revision.items():
                 if clicked_snippet.ts < rev['timestamp']:
                     logger.info('%s fixed at revision %s' % (

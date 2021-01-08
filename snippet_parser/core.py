@@ -169,7 +169,7 @@ class SnippetParser:
                snippet is within the bounds we're willing to accept, and if so,
                use it.
 
-        The return value is a list of lists of Snippet objects.
+        The return value is a list of Snippet objects.
         """
 
         wikicode = self._fast_parse(wikitext)
