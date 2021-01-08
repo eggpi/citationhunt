@@ -807,6 +807,27 @@ _LANG_CODE_TO_CONFIG = dict(
             'उद्धरण आवश्यक',
         ],
         hidden_category = 'छुपाई_हुई_श्रेणियाँ',
+    ),
+    
+    hr = dict(
+        lang_name = 'Hrvatski',
+        lang_dir = 'ltr',
+        database = 'hrwiki_p',
+        wikipedia_domain = 'hr.wikipedia.org',
+        beginners_link = 'https://hr.wikipedia.org/wiki/Wikipedija:Navođenje_izvora#Kako_navesti_izvor',
+        beginners_link_title = 'Kako navesti izvor',
+        reliable_sources_link = 'https://hr.wikipedia.org/wiki/Wikipedija:Provjerljivost',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+        citation_needed_category = 'Članci_kojima_nedostaje_izvor',
+        citation_needed_templates = [
+            'Nedostaje izvor',
+            'Bolji izvor',
+            'Izvor',
+            'Potrebna verifikacija',
+            'Dodatno razjasniti'
+        ],
+        hidden_category = 'Skrivene_kategorije',
     )
 )
 
