@@ -29,13 +29,14 @@ kind: CronJob
 metadata:
   name: citationhunt-update-{name}
   labels:
-    name: citationhunt.update-en
+    name: citationhunt.update-{name}
     # The toolforge=tool label will cause $HOME and other paths to be mounted from Toolforge
     toolforge: tool
 spec:
   schedule: "0 {h} {dom}-31/{freq} * *"
   jobTemplate:
     spec:
+      activeDeadlineSeconds: 86400
       template:
         metadata:
           labels:
