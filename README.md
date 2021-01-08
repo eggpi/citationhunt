@@ -56,7 +56,7 @@ $ webservice --backend=kubernetes python3.7 start
 Then, generate the Cron jobs for Kubernetes:
 
 ```
-$ (cd citationhunt; ./crontab.py | kubectl apply -f -)
+$ (cd citationhunt; k8s/crontab.py | kubectl apply -f -)
 $ kubectl get cronjobs # verify it
 ```
 
