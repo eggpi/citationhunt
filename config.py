@@ -808,7 +808,7 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'छुपाई_हुई_श्रेणियाँ',
     ),
-    
+
     hr = dict(
         lang_name = 'Hrvatski',
         lang_dir = 'ltr',
@@ -828,6 +828,21 @@ _LANG_CODE_TO_CONFIG = dict(
             'Dodatno razjasniti'
         ],
         hidden_category = 'Skrivene_kategorije',
+    ),
+
+    mk = dict(
+        lang_name = 'Македонски',
+        lang_dir = 'ltr',
+        database = 'mkwiki_p',
+        wikipedia_domain = 'mk.wikipedia.org',
+        reliable_sources_link = 'https://mk.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%98%D0%B0:%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+        citation_needed_category = 'Сите_статии_со_непотврдени_изјави',
+        citation_needed_templates = [
+            'Се бара извор',
+        ],
+        hidden_category = 'Скриени_категории',
     )
 )
 
