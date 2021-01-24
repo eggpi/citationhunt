@@ -852,18 +852,16 @@ _LANG_CODE_TO_CONFIG = dict(
         database = 'eowiki_p',
         wikipedia_domain = 'eo.wikipedia.org',
 
-        beginners_link = 'https://eo.wikipedia.org/wiki/Vikipedio:Citi_fontojn',
-        beginners_link_title = 'Vikipedio:Citi fontojn',
         reliable_sources_link = 'https://eo.wikipedia.org/wiki/Vikipedio:Kontrolebleco',
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Vikipediaj artikoloj bezonantaj faktan konfirmon',
+        citation_needed_category = 'Vikipediaj_artikoloj_bezonantaj_faktan_konfirmon',
         citation_needed_templates = [
             'Mankas fonto',
             'Konfirmon'
         ],
-        hidden_category = 'Kaŝitaj kategorioj',
+        hidden_category = 'Kaŝitaj_kategorioj',
     ),
 )
 
