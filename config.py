@@ -844,7 +844,27 @@ _LANG_CODE_TO_CONFIG = dict(
             'Без извори',
         ],
         hidden_category = 'Скриени_категории',
-    )
+    ),
+
+    eo = dict(
+        lang_name = 'Esperanto',
+        lang_dir = 'ltr',
+        database = 'eowiki_p',
+        wikipedia_domain = 'eo.wikipedia.org',
+
+        beginners_link = 'https://eo.wikipedia.org/wiki/Vikipedio:Citi_fontojn',
+        beginners_link_title = 'Vikipedio:Citi fontojn',
+        reliable_sources_link = 'https://eo.wikipedia.org/wiki/Vikipedio:Kontrolebleco',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_category = 'Vikipediaj artikoloj bezonantaj faktan konfirmon',
+        citation_needed_templates = [
+            'Mankas fonto',
+            'Konfirmon'
+        ],
+        hidden_category = 'Kaŝitaj kategorioj',
+    ),
 )
 
 Config = types.SimpleNamespace
