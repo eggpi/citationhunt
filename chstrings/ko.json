@@ -5,9 +5,11 @@
 			"Revi",
 			"Ykhwong",
 			"관인생략",
+			"그냥기여자",
 			"아라"
 		]
 	},
+	"article_titles_hint": "제목을 기반으로 기사를 가져올 때 한 줄에 하나씩 정확한 제목을 썼는지 다시 확인하십시오.",
 	"back": "뒤로",
 	"back_to_cancel": "취소하려면 {em_start}{back}{em_end}를 누르거나 이 대화상자를 닫으십시오.",
 	"button_next": "다음!",
@@ -19,6 +21,7 @@
 	"github_link_title": "이봐요! 제 소스는 GitHub에 있어요!",
 	"import_article_titles": "문서 목록 목록",
 	"import_articles_prompt": "가져올 위키백과 {em_start}문서 제목{em_end}을 아래의 영역에 각 줄마다 입력해 주십시오:",
+	"import_petscan": "PetScan 쿼리 기반으로 가져오기",
 	"in_page": "%s 문서에서:",
 	"instructions_details": "위키백과로 가서 문서를 고치려면 %s를 클릭하시고, 다른 부분을 보려면 %s을 눌러주세요. 질문이 있다면 %s를 누르세요. 좋은 시간 되세요!",
 	"instructions_goal": "이 위키백과 문서의 일부 부분은 {link_start}신뢰할 수 있는 출처{link_end}가 없습니다. 하나 찾아 보시겠어요?",
