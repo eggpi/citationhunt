@@ -10,7 +10,7 @@
 	},
 	"article_titles_hint": "Por enporti artikolojn laŭ titoloj, rekontrolu ĉu la titoloj estas ĝustaj kaj ĉu po unu en ĉiu linio.",
 	"back": "Reen",
-	"back_to_cancel": "Vi povas alklaki la butonon {em_start}{reen}{em_end} aŭ fermi ĉi tiun dialogon por nuligi.",
+	"back_to_cancel": "Vi povas alklaki la butonon {em_start}{back}{em_end} aŭ fermi ĉi tiun dialogon por nuligi.",
 	"button_next": "Sekva!",
 	"button_wikilink": "Mi komprenis!",
 	"customize": "Tajlori",
