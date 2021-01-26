@@ -60,6 +60,10 @@ _BASE_LANG_CONFIG = dict(
     # Approximate minimum length for a snippet
     snippet_min_size = 100,
 
+    # Don't publish an update to the database if it has too little data
+    min_snippets_sanity_check = 100,
+    min_articles_sanity_check = 100,
+
     # The elements identified by these CSS selectors are removed from the HTML
     # returned by the Wikipedia API.
     html_css_selectors_to_strip = [
@@ -862,6 +866,10 @@ _LANG_CODE_TO_CONFIG = dict(
             'Konfirmon'
         ],
         hidden_category = 'Kaŝitaj_kategorioj',
+        # Looks like we get very few articles and snippets for eowiki, disable
+        # the sanity check.
+        min_snippets_sanity_check = 0,
+        min_articles_sanity_check = 0,
     ),
 )
 
