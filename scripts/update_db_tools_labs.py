@@ -108,7 +108,7 @@ def update_db_tools_labs(cfg):
         _update_db_tools_labs(cfg)
     except Exception as e:
         traceback.print_exc(file = sys.stderr)
-        email('Failed to build database for %s' % cfg.lang_codes)
+        email('Failed to build database for %s' % cfg.lang_code)
         sys.exit(1)
 
 if __name__ == '__main__':
