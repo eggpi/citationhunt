@@ -2,22 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"Eleassar",
-			"Pickle12",
-			"HairyFotr"
+			"HairyFotr",
+			"Pickle12"
 		]
 	},
-	"button_next": "Naslednji!",
+	"button_next": "Naprej!",
 	"button_wikilink": "Razumem!",
 	"category_filter_placeholder": "Kaj te zanima?",
 	"edits": "Urejanja",
 	"github_link_title": "Hej! Moj vir je na GitHub-u!",
 	"in_page": "Na strani %s:",
-	"instructions_details": "Klikni %s, da popraviš odstavek, ali %s za ogled drugega. Če imaš še kakšno vprašanje, klikni %s. Srečno!",
+	"instructions_details": "Kliknite %s, da popravite odstavek, ali %s za prikaz drugega. Če imate še kakšno vprašanje, kliknite %s. Srečno!",
 	"instructions_goal": "Spodnji odstavek ni podprt z {link_start}zanesljivim virom{link_end}. Ga lahko poiščeš?",
 	"introduction": "Pomagaj pri iskanju navedkov za Wikipedijine članke!",
+	"js-article-count": "$1 {{PLURAL:$1|članek|članka|članki|člankov}}",
 	"js-keyboard-shortcut": "Bližnjica na tipkovnici: %s",
-	"lead_section_hint": "To besedilo se nahaja v glavnem delu članka, zato ga morda ni potrebno dodati pod opombe. Za več informacij klikni na %s.",
+	"lead_section_hint": "To besedilo je del uvodnega razdelka članka, zato sklicev ne potrebuje nujno. Za več o tem kliknite %s.",
 	"page_not_found": "Strani ni bilo mogoče najti!",
-	"page_not_found_text": "Stran, ki jo iščete, ne obstaja več. Morda je navedek že najden? Preveri na %s!",
+	"page_not_found_text": "Stran, ki jo iščete, ne obstaja več. Ali je morda ta navedek že najden? Preverite na %s!",
 	"user": "Uporabnik"
 }
