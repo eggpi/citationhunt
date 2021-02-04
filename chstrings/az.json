@@ -5,12 +5,16 @@
 			"Şeyx Şamil"
 		]
 	},
-	"introduction": "Vikipediya məqalələri üçün mənbə tapmağa kömək et!",
-	"button_wikilink": "Bunu anladım!",
 	"button_next": "Növbəti!",
+	"button_wikilink": "Bunu anladım!",
 	"category_filter_placeholder": "Bir mövzu axtarın.",
+	"edits": "Redaktələr",
 	"github_link_title": "Hey! Mənim mənbəm GitHub-dadır!",
-	"page_not_found": "Səhifə tapılmadı!",
+	"import_article_titles": "Məqalə siyahısı daxil et",
+	"introduction": "Vikipediya məqalələri üçün mənbə tapmağa kömək et!",
 	"js-article-count": "$1 {{PLURAL:$1|məqalə|məqalələr}}",
-	"js-keyboard-shortcut": "Klaviatura qısayolları: %s"
+	"js-keyboard-shortcut": "Klaviatura qısayolları: %s",
+	"js-snippet-count": "$1 fraqment",
+	"page_not_found": "Səhifə tapılmadı!",
+	"user": "İstifadəçi"
 }

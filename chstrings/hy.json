@@ -4,13 +4,15 @@
 			"Kareyac"
 		]
 	},
-	"introduction": "Օգնեք գտնել աղբյուրներ Վիքիպեդիա հոդվածների համար",
-	"in_page": "%s էջում",
-	"button_wikilink": "Ես ունեմ",
+	"back": "Հետ",
 	"button_next": "Հաջորդ",
+	"button_wikilink": "Ես ունեմ",
+	"edits": "Խմբագրումներ",
 	"github_link_title": "Հեյ! Իմ կոդը կա GitHub-ում!",
-	"beginners_hint": "Չգիտեք, թե ինչպես ավելացնել աղբյուրները? Տես %s",
+	"in_page": "%s էջում",
+	"introduction": "Օգնեք գտնել աղբյուրներ Վիքիպեդիա հոդվածների համար",
+	"js-article-count": "$1 {{PLURAL:$1|հոդված|հոդվածներ}}",
 	"page_not_found": "Էջը չի գտնվել!",
-	"user": "Մասնակից",
-	"edits": "Խմբագրումներ"
+	"submit": "Ուղարկել",
+	"user": "Մասնակից"
 }

@@ -4,11 +4,9 @@
 			"ElangoRamanujam"
 		]
 	},
-	"in_page": "பக்கம் %sல்:",
-	"button_wikilink": "நான் இதைப் பெற்றேன்!",
 	"button_next": "அடுத்து!",
+	"button_wikilink": "நான் இதைப் பெற்றேன்!",
 	"category_filter_placeholder": "ஒரு தலைப்பினைத் தேடுக.",
-	"page_not_found": "பக்கத்தைக் காணவில்லை!",
-	"js-article-count-singular": "%s கட்டுரை",
-	"js-article-count-plural": "%s கட்டுரைகள்"
+	"in_page": "பக்கம் %sல்:",
+	"page_not_found": "பக்கத்தைக் காணவில்லை!"
 }

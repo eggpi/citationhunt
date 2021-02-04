@@ -4,16 +4,15 @@
 			"Purodha"
 		]
 	},
-	"introduction": "Helf Zettahte för Atikelle en de Wikkipehdiaj ze fenge.",
-	"instructions_goal": "Dat Schtögg uß de Wikkipehdija weed nit vun ene zohverläßeje Quäll jeschtöz. Künnd_Er ein fenge?",
-	"instructions_details": "Kleggd op %s, öm noh de Wikkipehdija ze jonn un dat Schtök ze verbäßere, udder %s, öm en annder Schtöck vörjeaat ze krjje. Loord op %s, wann_Er Frohre hat. Lohd et joht jelenge!",
-	"in_page": "En dä Sigg %s:",
-	"button_wikilink": "Jefonge!",
 	"button_next": "Nä, dä nit. Wigger jonn.",
-	"lead_section_hint": "Dä äx is en de Einleijdong för dä Atikel. Et künnt allsu sinn, dat ene Verwieß drop nit nühdesch es. Lohr op dä Sigg %s, doh jidd_et mih Aanjahbe.",
+	"button_wikilink": "Jefonge!",
 	"category_filter_placeholder": "Woh noh söhke?",
 	"github_link_title": "Der Quälle för heh di Äpp sin op GitHub.",
-	"beginners_hint": "Wann de nit weiß, wi me Zetahte derbei deiht, loor op %s.",
+	"in_page": "En dä Sigg %s:",
+	"instructions_details": "Kleggd op %s, öm noh de Wikkipehdija ze jonn un dat Schtök ze verbäßere, udder %s, öm en annder Schtöck vörjeaat ze krjje. Loord op %s, wann_Er Frohre hat. Lohd et joht jelenge!",
+	"instructions_goal": "Dat Schtögg uß de Wikkipehdija weed nit vun ene zohverläßeje Quäll jeschtöz. Künnd_Er ein fenge?",
+	"introduction": "Helf Zettahte för Atikelle en de Wikkipehdiaj ze fenge.",
+	"lead_section_hint": "Dä äx is en de Einleijdong för dä Atikel. Et künnt allsu sinn, dat ene Verwieß drop nit nühdesch es. Lohr op dä Sigg %s, doh jidd_et mih Aanjahbe.",
 	"page_not_found": "Sigg nit jefonge!",
 	"page_not_found_text": "Di Sigg woh mer noh aam lohre sin, es fott — velleijsch es dat Zettaht joh ald jefonge woode? Jangk retuhr op %s, öm mih ze lässe!"
 }

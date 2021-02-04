@@ -6,14 +6,13 @@
 			"Varvana"
 		]
 	},
-	"introduction": "Auta löytämäh lainauššanoja Wikipedija-artikkeliloih!",
-	"in_page": "Šivulla %s:",
-	"button_wikilink": "Miula on!",
 	"button_next": "Ei, ielläh!",
-	"lead_section_hint": "Tämä teksti on artikkelin alkušanojen oša, šentäh lähtehien kirjuttamini ei ole pakollini. Olkua hyvä, tutuštukkua %s kera lisätietojen šuamisekši.",
+	"button_wikilink": "Miula on!",
 	"category_filter_placeholder": "Mi šilma kiinnoštau?",
 	"github_link_title": "Hoi! Miun lähtehkoodi on GitHubissa!",
-	"beginners_hint": "Et tiijä, mitein lainauššana lisätäh? Kačo %s.",
+	"in_page": "Šivulla %s:",
+	"introduction": "Auta löytämäh lainauššanoja Wikipedija-artikkeliloih!",
+	"lead_section_hint": "Tämä teksti on artikkelin alkušanojen oša, šentäh lähtehien kirjuttamini ei ole pakollini. Olkua hyvä, tutuštukkua %s kera lisätietojen šuamisekši.",
 	"page_not_found": "Šivu ei löytyn!",
 	"page_not_found_text": "Šivu, kumpaista ečit, ei ole enyä olomašša. Voit olla, jotta šen lähteh on jo löytyn? Šiirry %s lisätietoja varoin!"
 }

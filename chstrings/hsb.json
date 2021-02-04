@@ -4,16 +4,15 @@
 			"Michawiki"
 		]
 	},
-	"introduction": "Pomhaj, citaty za nastawki Wikipedije namakać!",
-	"instructions_goal": "Za šlipku Wikipedije deleka njeje spušćomne žórło podate. Móžeš jedne namakać?",
-	"instructions_details": "Klikń na %s, zo by k Wikipediji šoł a šlipku porjedźił abo %s, zo byšće druhu widźał. Wopytaj %s, jeli maš prašenja. Wjele zboža!",
-	"in_page": "Na stronje %s:",
-	"button_wikilink": "Sym to zrozumił!",
 	"button_next": "Ně,  přichodna!",
-	"lead_section_hint": "Tutón tekst je dźěl zawodneho wotrězka nastawka, tohodla referencowanje móže opcionalne być. Prošu hlejće %s za dalše informacije.",
+	"button_wikilink": "Sym to zrozumił!",
 	"category_filter_placeholder": "Što će zajimuje?",
 	"github_link_title": "Hej! Moja žórło je na GitHub!",
-	"beginners_hint": "Njewěš, kak móžeš citaty přidać? Hlej %s.",
+	"in_page": "Na stronje %s:",
+	"instructions_details": "Klikń na %s, zo by k Wikipediji šoł a šlipku porjedźił abo %s, zo byšće druhu widźał. Wopytaj %s, jeli maš prašenja. Wjele zboža!",
+	"instructions_goal": "Za šlipku Wikipedije deleka njeje spušćomne žórło podate. Móžeš jedne namakać?",
+	"introduction": "Pomhaj, citaty za nastawki Wikipedije namakać!",
+	"lead_section_hint": "Tutón tekst je dźěl zawodneho wotrězka nastawka, tohodla referencowanje móže opcionalne być. Prošu hlejće %s za dalše informacije.",
 	"page_not_found": "Strona njeje so namakała!",
 	"page_not_found_text": "Strona, kotruž pytaš, hižo njeeksistuje - snano je so tutón citat hižo namakał? Dźi wróćo k %s za dalše informacije?"
 }
