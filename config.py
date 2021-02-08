@@ -871,6 +871,28 @@ _LANG_CODE_TO_CONFIG = dict(
         min_snippets_sanity_check = 0,
         min_articles_sanity_check = 0,
     ),
+    
+    id = dict(
+        lang_name = 'bahasa Indonesia',
+        lang_dir = 'ltr',
+        database = 'idwiki_p',
+        wikipedia_domain = 'id.wikipedia.org',
+
+        beginners_link = 'https://id.wikipedia.org/wiki/Wikipedia:Kutip_sumber_tulisan',
+        beginners_link_title = 'Cara untuk menulis sumber kutipan dalam artikel',
+
+        reliable_sources_link = 'https://id.wikipedia.org/wiki/Wikipedia:Sumber_tepercaya',
+
+        lead_section_policy_link = 'https://id.wikipedia.org/wiki/WP:REFERENSIPEMBUKA',
+        lead_section_policy_link_title = 'WP:REFERENSIPEMBUKA',
+
+        citation_needed_category = 'Artikel_dengan_pernyataan_yang_tidak_disertai_rujukan',
+        citation_needed_templates = [
+            'Butuh rujukan'
+        ],
+
+        hidden_category = 'Kategori_tersembunyi',
+    ),
 )
 
 Config = types.SimpleNamespace
