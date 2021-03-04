@@ -38,6 +38,21 @@
 	"js-invalid-petscan-input": "Prosím číselné ID PetScan",
 	"js-keyboard-shortcut": "Klávesová skratka: %s",
 	"js-leaving-custom": "Vraciate sa späť na neobmedzený {tooltitle}. Ste si istý?",
+	"js-refs-added-today": "Počet dnes pridaných citácií {{PLURAL:$1}}$1!",
+	"js-select-articles-summary": "Kliknite na prezretie (pridaných $1 {{PLURAL:$1|artiklu|artiklov}} a $2 {{PLURAL:$2|úryvku|úryvkov}})",
+	"js-snippet-count": "{{PLURAL:$1|úryvok|úryvkov}}$1",
 	"lead_section_hint": "Tento text je súčasťou úvodného odseku článku, takže odkazovanie naň môže byť voliteľné. Prečítajte si %s pre viac informácií.",
-	"page_not_found": "Stránka nenájdená!"
+	"leaderboard_description": "Títo používatelia opravili najviac úryvkov cez {tooltitle} v posledných {days} dňoch. Výborne!",
+	"leaderboard_link_title": "Výsledková tabuľka",
+	"leaderboard_title": "Výsledková tabuľka %s",
+	"old_snippet_hint": "Tento text bol na Wikipédii bez referencií veľmi dlho. Ak nenájdete zdroj, buďte odvážny a odstráňte ho!",
+	"page_not_found": "Stránka nebola nájdená!",
+	"page_not_found_text": "Stránka, ktorú hľadáte už neexistuje - možno táto citácia už bola vyhľadaná? Choďte späť na %s!",
+	"petscan_hint": "Pri importe dopytov PetScan sa vyhnite dopytom, ktoré trvajú veľmi dlho než ich PetScan vyhodnotí a uistite sa, že ste zadali platnú URL alebo PSID.",
+	"select_articles": "Hľadanie artiklov v {tooltitle}",
+	"select_articles_placeholder": "Hľadanie artikla.",
+	"select_articles_prompt": "Použite vyhľadávacie okienko nižšie na {em_start}vyhľadanie artikla{em_end} do vášho {tooltitle}. Artikel odstránite kliknutím naň v náhľade nižšie.",
+	"submit": "Odoslať",
+	"try_again_hints_header": "Prosím skúste znova a použite nasledovné rady:",
+	"user": "Používateľ"
 }
