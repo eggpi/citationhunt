@@ -33,7 +33,7 @@
 	"custom_notice": "Prehľadávanie s {tooltitle} má obmedzený počet artiklov. {link_start}Vrátiť sa na neobmedzený{tooltitle}{link_end}.",
 	"custom_please_wait": "Prebieha vytváranie vášho {tooltitle}. To môže trvať niekoľko minút;",
 	"introduction": "Pomôžte nájsť zdroje pre články Wikipédie!",
-	"js-article-count": "$1 {{PLURAL:$1|počet článkov: $1}}",
+	"js-article-count": "{{PLURAL:$1|počet článkov: $1}}",
 	"js-custom-numbers": "Obsahuje úryvky z $1{{PLURAL:$1|artikla|artiklov}} a platí $2 {{PLURAL:$2|deň|dní}}:",
 	"js-custom-no-articles-selected": "Prosím, vyberte niekoľko artiklov.",
 	"js-invalid-petscan-input": "Prosím číselné ID PetScan",
