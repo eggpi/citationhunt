@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tofeiku"
+		]
+	},
+	"article_titles_hint": "Apabila mengimport rencana mengikut tajuk, periksa semula tajuknya betul dan anda telah memberi satu setiap baris.",
+	"back": "Kembali",
+	"back_to_cancel": "Anda boleh tekan {em_start}{back}{em_end} atau tutup dialog ini untuk batalkan.",
+	"button_next": "Seterusnya!",
+	"button_wikilink": "Saya faham!",
+	"customize": "Ubah suai",
+	"edits": "Suntingan",
+	"github_link_title": "Hei! Sumber saya di GitHub!",
+	"import_article_titles": "Masukkan senarai rencana",
+	"import_petscan": "Import dari pertanyaan PetScan",
+	"in_page": "Di laman %s:",
+	"introduction": "Bantu cari petikan untuk rencana Wikipedia!",
+	"js-article-count": "$1 {{PLURAL:$1|rencana}}",
+	"js-custom-no-articles-selected": "Sila pilih beberapa rencana.",
+	"page_not_found": "Laman tidak dijumpai!",
+	"select_articles_placeholder": "Cari rencana.",
+	"submit": "Serahkan",
+	"try_again_hints_header": "Sila cuba lagi dan cuba ingat petua berikut:",
+	"user": "Pengguna"
+}

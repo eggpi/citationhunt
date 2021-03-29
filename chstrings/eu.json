@@ -6,7 +6,8 @@
 			"Mikel Ibaiba",
 			"Sator",
 			"Subi",
-			"Theklan"
+			"Theklan",
+			"Xabier Armendaritz"
 		]
 	},
 	"back": "Atzera",
@@ -22,7 +23,7 @@
 	"instructions_details": "Klik egin %s Wikipediara joan eta adierazpena zuzentzeko, edo %s beste batetara pasatzeko. Klik egin %s galderarik baduzu. Zorte on!",
 	"instructions_goal": "Azpian dagoen Wikipediako esaldia ez dago {link_start}iturri fidagarri{link_end} batez lagundua. Aurki zenezake bat?",
 	"introduction": "Lagundu Wikipediako artikuluentzat aipamenak bilatzen!",
-	"js-article-count": "{{PLURAL:$1|artikulu $1|$1 artikulu}}",
+	"js-article-count": "{{PLURAL:$1|artikulu bat|$1 artikulu}}",
 	"js-custom-no-articles-selected": "Mesedez aukeratu artikulu batzuk",
 	"js-keyboard-shortcut": "Teklatuko lasterbidea: %s",
 	"js-refs-added-today": "{{PLURAL:$1|Aipu bat gehitu da|$1 aipu gehitu dira}} gaur!",
