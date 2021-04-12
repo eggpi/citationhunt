@@ -20,7 +20,7 @@
 	"github_link_title": "Aizu! Ni iturria GitHuben dago!",
 	"import_article_titles": "Sartu artikuluen zerrenda",
 	"in_page": "%s orrialdean:",
-	"instructions_details": "Klik egin %s Wikipediara joan eta adierazpena zuzentzeko, edo %s beste batetara pasatzeko. Klik egin %s galderarik baduzu. Zorte on!",
+	"instructions_details": "Klik egin %s Wikipediara joan eta {link_start}adierazpena zzuentzeko{link_end}, edo %s beste batetara pasatzeko. Zorte on!",
 	"instructions_goal": "Azpian dagoen Wikipediako esaldia ez dago {link_start}iturri fidagarri{link_end} batez lagundua. Aurki zenezake bat?",
 	"introduction": "Lagundu Wikipediako artikuluentzat aipamenak bilatzen!",
 	"js-article-count": "{{PLURAL:$1|artikulu bat|$1 artikulu}}",
