@@ -17,6 +17,8 @@
 	"footer": "%s ji aliyê dilxwazan ve hatiye çêkirin, li ser %s tê hewandin û ji aliyê %s ve hatiye wergerandin.",
 	"github_link_title": "Hey! Çavkaniya min li ser Gîthubê ye!",
 	"import_article_titles": "Lîsteyeke gotaran têkeve",
+	"import_articles_prompt": "Ji kerema xwe li qada jêrîn ji bo împortkirinê, {em_start}sernavên gotarên{em_end} Wîkîpediyayê binivîsîne, her rêzikekê yek hebî:",
+	"import_petscan": "Ji jêpirsîneke PetScan-ê împort bike",
 	"page_not_found": "Rûpel nehat dîtin!",
 	"submit": "Bişîne",
 	"try_again_hints_header": "Ji kerema xwe cardin biceribîne û van pêşniyaran bi bîra xwe bixe:",
