@@ -5,12 +5,12 @@
 			"McDutchie"
 		]
 	},
-	"button_next": "No, sequente!",
+	"button_next": "Sequente!",
 	"button_wikilink": "Io prende isto!",
-	"category_filter_placeholder": "Que te interessa?",
+	"category_filter_placeholder": "Cerca un topico.",
 	"github_link_title": "Mi codice-fonte es sur GitHub.",
 	"in_page": "In pagina %s:",
-	"instructions_details": "Clicca sur %s pro ir a Wikipedia e corriger le fragmento, o sur %s pro vider un altere. Lege %s si tu ha questiones. Bon fortuna!",
+	"instructions_details": "Clicca sur %s pro ir a Wikipedia e {link_start}corriger le fragmento{link_end}, o sur %s pro vider un altere. Bon fortuna!",
 	"instructions_goal": "Le sequente fragmento de Wikipedia non es validate per un {link_start}fonte digne de fide{link_end}. Pote tu trovar un?",
 	"introduction": "Adjuta a trovar referentias pro articulos de Wikipedia!",
 	"lead_section_hint": "Iste texto face parte del introduction del articulo, e referentiar lo pote esser optional. Vide %s pro plus information.",
