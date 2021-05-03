@@ -893,6 +893,24 @@ _LANG_CODE_TO_CONFIG = dict(
 
         hidden_category = 'Kategori_tersembunyi',
     ),
+
+    eu = dict(
+        lang_name = 'Euskara',
+        lang_dir = 'ltr',
+        database = 'euwiki_p',
+        wikipedia_domain = 'eu.wikipedia.org',
+        citation_needed_category = 'Erreferentzia behar duten adierazpenak dauzkaten artikuluak',
+        beginners_link = 'https://eu.wikipedia.org/wiki/Laguntza:Erreferentziak',
+        beginners_link_title = 'Laguntza:Erreferentziak',
+        lead_section_policy_link = 'https://eu.wikipedia.org/wiki/Wikipedia:Estilo_gida/Artikuluaren_sarrera',
+        lead_section_policy_link_title = 'Wikipedia:Estilo gida/Artikuluaren sarrera',
+
+        citation_needed_templates = [
+            'Erref behar',
+            'Erreferentzia behar ',
+        ],
+        hidden_category = 'Ezkutuko_kategoriak',
+    ),
 )
 
 Config = types.SimpleNamespace
