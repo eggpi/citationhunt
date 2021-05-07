@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tofeiku"
+		]
+	},
+	"back": "کمبالي",
+	"button_next": "ستروسڽ!",
+	"edits": "سونتيڠن",
+	"import_article_titles": "ماسوقکن سناراي رنچان",
+	"in_page": "دالم لامن %s:",
+	"introduction": "بنتو چاري ڤتيقن اونتوق رنچان ويکيڤيديا!",
+	"js-article-count": "$1 {{PLURAL:$1|رنچان}}",
+	"js-custom-no-articles-selected": "سيلا ڤيليه ببراڤ رنچان.",
+	"js-keyboard-shortcut": "ڤينتس ڤاڤن ککونچي: %s",
+	"js-refs-added-today": "$1 {{PLURAL:$1|ڤتيقن}} دتمبه هاري اين!",
+	"leaderboard_link_title": "چرتا کدودوقن",
+	"leaderboard_title": "چرتا کدودوقن %s",
+	"page_not_found": "لامن تيدق دجومڤاءي!",
+	"user": "ڤڠݢونا"
+}
