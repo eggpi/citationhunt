@@ -5,10 +5,17 @@
 			"McDutchie"
 		]
 	},
+	"article_titles_hint": "Quando se importa articulos per titulo, verifica que le titulos es correcte e que tu ha fornite un per linea.",
+	"back": "Retro",
+	"back_to_cancel": "Tu pote premer {em_start}{back}{em_end} o clauder iste dialogo pro cancellar.",
 	"button_next": "Sequente!",
 	"button_wikilink": "Io prende isto!",
+	"customize": "Personalisar",
 	"category_filter_placeholder": "Cerca un topico.",
+	"edits": "Modificationes",
+	"footer": "%s es facite per voluntarios, albergate sur %s e traducite via %s.",
 	"github_link_title": "Mi codice-fonte es sur GitHub.",
+	"import_article_titles": "Insere un lista de articulos",
 	"in_page": "In pagina %s:",
 	"instructions_details": "Clicca sur %s pro ir a Wikipedia e {link_start}corriger le fragmento{link_end}, o sur %s pro vider un altere. Bon fortuna!",
 	"instructions_goal": "Le sequente fragmento de Wikipedia non es validate per un {link_start}fonte digne de fide{link_end}. Pote tu trovar un?",
