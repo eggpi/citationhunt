@@ -23,12 +23,35 @@ Prerequisites:
 
 - A local installation of MySQL;
 - A working Internet connection;
-- The page and categorylinks SQL dumps of Wikipedia. You can find the latest
-versions these for the English Wikipedia [here](https://dumps.wikimedia.org/enwiki/latest/);
 - A few hours, or potentially a rainy Sunday;
 
-The first thing to do is to import the categorylinks and page databases to MySQL. This
-can be done from the MySQL console:
+The commands we'll be typing depend on the language you're
+generating a database for. They expect an environment variable `CH_LANG` to be
+set to a language code taken from
+[../config.py](https://github.com/eggpi/citationhunt/blob/master/config.py).
+Since we're dealing with English in this document, let's set the variable
+accordingly:
+
+```
+$ export CH_LANG=en
+```
+
+First, we need to get access to (a copy of) the
+[page](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:page_table) and
+[categorylinks](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:categorylinks_table)
+database tables for the Wikipedia we're using.
+
+There are two alternatives for that:
+
+#### Option 1: Using a SQL dump imported locally
+
+<details>
+  <summary>Click here to expand instructions.</summary>
+
+Download the page.sql and categorylinks.sql dumps. You can find the latest
+versions these for the English Wikipedia [here](https://dumps.wikimedia.org/enwiki/latest/).
+
+From the MySQL console connected to your local database, import them:
 
 ```
 $ mysql -u root
@@ -43,28 +66,52 @@ named 'categorylinks' and 'page'. This will take a few hours. You'll want to use
 'enwiki_p' for simplicity, but that's configurable in
 [../config.py](https://github.com/eggpi/citationhunt/blob/master/config.py).
 
-We should now make sure these scripts know how to find and log in to the databases
-they will use. In order to do that, you'll need a MySQL config file that gets
-passed to Citation Hunt via the `REPLICA_MY_CNF` environment variable (the
-default path is conveniently `~/replica.my.cnf`, for running on Toolforge).
-
-In a local setting, you could just use something like:
-
-    $ cat ~/replica.my.cnf
-    [client]
-    user='root'
-    host='localhost'
-
-From now on, the commands we'll be typing depend on the language you're
-generating a database for. They expect an environment variable `CH_LANG` to be
-set to a language code taken from
-[../config.py](https://github.com/eggpi/citationhunt/blob/master/config.py).
-Since we're dealing with English in this document, let's set the variable
-accordingly:
+Then, to ensure these scripts can find the database, create a local config file
+at ~/replica.my.cnf:
 
 ```
-$ export CH_LANG=en
+$ cat ~/replica.my.cnf
+[client]
+user='root'
+host='localhost'
 ```
+
+</details>
+
+#### Option 2: Connecting to live replicas using SSH local forwarding
+
+<details>
+  <summary>Click here to expand instructions.</summary>
+
+Alternatively, you can connect from your local computer to the real database
+replicas. The [Toolforge documentation](https://wikitech.wikimedia.org/wiki/Help:Toolforge/Database#Connecting_to_the_database_replicas_from_your_own_computer)
+has more details on this option.
+
+You'll need an existing [Toolforge account](https://wikitech.wikimedia.org/wiki/Portal:Toolforge/Quickstart)
+for this method.
+
+First, copy your Toolforge replica.my.cnf locally, to ~/replica.my.cnf, and
+create another mysql config that points to your local database. For example:
+
+```
+$ cat ~/ch.my.cnf
+[client]
+user='root'
+host='localhost'
+```
+
+Then, establish a port forward to the database you're trying to access:
+
+```
+ssh -L 4711:enwiki.analytics.db.svc.wikimedia.cloud:3306 login.tools.wmflabs.org
+```
+
+Finally, set two environment variables:
+
+- `CH_LOCAL_SSH_PORT` to the forwarded port (4711, in the example above).
+- `CH_MY_CNF` to the local MySQL config (~/ch.my.cnf, in the example above).
+
+</details>
 
 Now, let's create all necessary databases and tables:
 

@@ -8,8 +8,11 @@ import os
 import time
 import warnings
 
+# The config file to use for connecting to database replicas.
 REPLICA_MY_CNF = os.getenv(
     'REPLICA_MY_CNF', os.path.expanduser('~/replica.my.cnf'))
+# The config file to use for connecting to our own database.
+CH_MY_CNF = os.getenv('CH_MY_CNF', REPLICA_MY_CNF)
 TOOLS_LABS_CH_MYSQL_HOST = 'tools.db.svc.eqiad.wmflabs'
 
 class _RetryingConnection(object):
@@ -62,7 +65,7 @@ def _connect(**kwds):
     return MySQLdb.connect(charset = 'utf8mb4', autocommit = True, **kwds)
 
 def _connect_to_ch_mysql():
-    kwds = {'read_default_file': REPLICA_MY_CNF}
+    kwds = {'read_default_file': CH_MY_CNF}
     if utils.running_in_tools_labs():
         kwds['host'] = TOOLS_LABS_CH_MYSQL_HOST
     return _connect(**kwds)
@@ -75,6 +78,10 @@ def _connect_to_wp_mysql(cfg):
         # https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Database#Naming_conventions
         xxwiki = cfg.database.replace('_p', '')
         kwds['host'] = '%s.analytics.db.svc.eqiad.wmflabs' % xxwiki
+    elif os.getenv('CH_LOCAL_SSH_PORT') is not None:
+        # Local development with SSH port forwarding.
+        kwds.update({
+            'port': int(os.getenv('CH_LOCAL_SSH_PORT')), 'host': '127.0.0.1'})
     return _connect(**kwds)
 
 def _make_tools_labs_dbname(cursor, database, lang_code):
