@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"Dgstranz",
 			"Fitoschido",
 			"Jack30",
@@ -60,6 +61,7 @@
 	"petscan_hint": "Al importar búsquedas de PetScan, evita búsquedas en las le toma mucho tiempo a PetScan evaluar y asegúrate que el URL o PSID que has proporcionado sea válido.",
 	"select_articles": "Busca artículos en {tooltitle}",
 	"select_articles_placeholder": "Buscar un artículo.",
+	"select_articles_prompt": "Utiliza el cuadro de búsqueda a continuación para {em_start}buscar y añadir artículos{em_end} a tu {tooltitle} personalizado. Puedes eliminar un artículo haciendo clic en él en la vista previa a continuación.",
 	"submit": "Enviar",
 	"tooltitle": "Citation Hunt",
 	"try_again_hints_header": "Inténtalo de nuevo con estos consejos en mente:",
