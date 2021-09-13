@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aue Nai"
+			"Aue Nai",
+			"咽頭べさ"
 		]
 	},
 	"button_next": "ဂတ!",
@@ -13,5 +14,6 @@
 	"js-article-count": "$1 {{PLURAL:$1|လိက်ပရေင်|လိက်ပရေင်ဂမၠိုင်}}",
 	"js-keyboard-shortcut": "Keyboard Shortcuts: %s",
 	"page_not_found": "ဟွံဆဵုပုဟ် မုက်လိက်!",
+	"submit": "ဗပေင်စုတ်",
 	"user": "ညးလွပ်"
 }
