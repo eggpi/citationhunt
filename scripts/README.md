@@ -11,11 +11,17 @@ Below are some more handy commands for manually operating and troubleshooting th
 #### Manually launch a job
     $ kubectl create job --from=cronjob/citationhunt-update-it citationhunt-update-it-manual
 
+#### Clean up the manual job
+    $ kubectl delete job citationhunt-update-it-manual
+
 #### Get pods for running jobs
     $ kubectl get pods --field-selector=status.phase=Running
 
 #### Get logs from a pod
     $ kubectl logs ${POD?}
+
+#### Open a shell in a running pod
+    $ kubectl exec -it ${POD?} -- bash
 
 ### Generating the database locally
 
