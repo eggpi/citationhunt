@@ -18,6 +18,7 @@ import tempfile
 import dateutil.parser
 import datetime
 import traceback
+import logging
 
 def email(message):
     subprocess.getoutput(
@@ -25,10 +26,11 @@ def email(message):
         ' citationhunt.update@tools.wmflabs.org')
     time.sleep(2*60)
 
-def shell(cmdline):
-    print('Running %s' % cmdline, file=sys.stderr)
+def shell(logger, cmdline):
+    logger.info('Running %s' % cmdline)
     status, output = subprocess.getstatusoutput(cmdline)
-    print(output, file=sys.stderr)
+    for l in output.splitlines():
+        logger.info(l)
     return status == 0
 
 def get_db_names_to_archive(lang_code):
@@ -39,11 +41,11 @@ def get_db_names_to_archive(lang_code):
             database_names.append(cursor.fetchone()[0])
     return database_names
 
-def delete_old_archives(archive_dir, archive_duration_days):
+def delete_old_archives(logger, archive_dir, archive_duration_days):
     try:
         all_archives = os.listdir(archive_dir)
     except OSError:
-        print('No archives to delete!', file=sys.stderr)
+        logger.info('No archives to delete!')
         return
 
     for a in all_archives:
@@ -51,21 +53,22 @@ def delete_old_archives(archive_dir, archive_duration_days):
         when = dateutil.parser.parse(a.split('.', 1)[0])
         age = (datetime.datetime.today() - when).days
         if age > archive_duration_days:
-            print('Archive %s is %d days old, deleting' % (a, age), file=sys.stderr)
+            logger.info('Archive %s is %d days old, deleting' % (a, age))
             os.remove(os.path.join(archive_dir, a))
 
-def archive_database(cfg):
+def archive_database(logger, cfg):
     dbs_to_archive = get_db_names_to_archive(cfg.lang_code)
     archive_dir = os.path.join(cfg.archive_dir, cfg.lang_code)
     if cfg.archive_duration_days > 0:
-        delete_old_archives(archive_dir, cfg.archive_duration_days)
+        delete_old_archives(logger, archive_dir, cfg.archive_duration_days)
 
     utils.mkdir_p(archive_dir)
     now = datetime.datetime.now()
     output = os.path.join(archive_dir, now.strftime('%Y%m%d-%H%M.sql.gz'))
 
-    print('Archiving the current database', file=sys.stderr)
+    logger.info('Archiving the current database')
     return shell(
+        logger,
         'mysqldump --defaults-file="%s" --host=%s --databases %s | '
         'gzip > %s' % (chdb.REPLICA_MY_CNF, chdb.TOOLS_LABS_CH_MYSQL_HOST,
             ' '.join(dbs_to_archive), output))
@@ -76,13 +79,13 @@ def expire_stats(cfg):
         cursor.execute('DELETE FROM requests WHERE DATEDIFF(NOW(), ts) > %s',
                 (cfg.stats_max_age_days,))
 
-def _update_db_tools_labs(cfg):
+def _update_db_tools_labs(logger, cfg):
     os.environ['CH_LANG'] = cfg.lang_code
     chdb.initialize_all_databases()
 
-    if cfg.archive_dir and not archive_database(cfg):
+    if cfg.archive_dir and not archive_database(logger, cfg):
         # Log, but don't assert, this is not fatal
-        print('Failed to archive database!', file=sys.stderr)
+        logger.warning('Failed to archive database!')
 
     expire_stats(cfg)
 
@@ -91,7 +94,7 @@ def _update_db_tools_labs(cfg):
         scripts_dir = os.path.dirname(os.path.realpath(__file__))
         script_path = os.path.join(scripts_dir, script)
         cmdline = ' '.join([sys.executable, script_path, cmdline])
-        assert shell(cmdline) == True or optional, 'Failed at %s' % script
+        assert shell(logger, cmdline) == True or optional
 
     unsourced = tempfile.NamedTemporaryFile()
     run_script(
@@ -103,9 +106,9 @@ def _update_db_tools_labs(cfg):
 
     unsourced.close()  # deletes the file
 
-def update_db_tools_labs(cfg):
+def update_db_tools_labs(logger, cfg):
     try:
-        _update_db_tools_labs(cfg)
+        _update_db_tools_labs(logger, cfg)
     except Exception as e:
         traceback.print_exc(file = sys.stderr)
         email('Failed to build database for %s' % cfg.lang_code)
@@ -118,15 +121,17 @@ if __name__ == '__main__':
         help='One of the language codes in ../config.py')
     args = parser.parse_args()
 
+    logname = 'citationhunt_update_' + args.lang_code
+    logger = logging.getLogger(logname)
+    utils.setup_logger_to_logfile(logger, logname + '.log')
+
     if not utils.running_in_tools_labs():
-        print('Not running in Tools Labs!', file=sys.stderr)
+        logger.error('Not running in Tools Labs!')
         sys.exit(1)
 
     if args.lang_code not in config.LANG_CODES_TO_LANG_NAMES:
-        print('Invalid lang code! Use one of: ', end=' ', file=sys.stderr)
-        print(list(config.LANG_CODES_TO_LANG_NAMES.keys()), file=sys.stderr)
-        parser.print_usage()
+        logger.error('Invalid lang code {}!'.format(args.lang_code))
         sys.exit(1)
 
     cfg = config.get_localized_config(args.lang_code)
-    update_db_tools_labs(cfg)
+    update_db_tools_labs(logger, cfg)
