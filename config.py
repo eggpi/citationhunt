@@ -821,8 +821,8 @@ _LANG_CODE_TO_CONFIG = dict(
         beginners_link = 'https://hr.wikipedia.org/wiki/Wikipedija:Navođenje_izvora#Kako_navesti_izvor',
         beginners_link_title = 'Kako navesti izvor',
         reliable_sources_link = 'https://hr.wikipedia.org/wiki/Wikipedija:Provjerljivost',
-        lead_section_policy_link = '',
-        lead_section_policy_link_title = '',
+        lead_section_policy_link = 'https://hr.wikipedia.org/wiki/WP:NI',
+        lead_section_policy_link_title = 'Wikipedija:Navođenje izvora',
         citation_needed_category = 'Članci_kojima_nedostaje_izvor',
         citation_needed_templates = [
             'Nedostaje izvor',
@@ -840,8 +840,8 @@ _LANG_CODE_TO_CONFIG = dict(
         database = 'mkwiki_p',
         wikipedia_domain = 'mk.wikipedia.org',
         reliable_sources_link = 'https://mk.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%98%D0%B0:%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82',
-        lead_section_policy_link = '',
-        lead_section_policy_link_title = '',
+        lead_section_policy_link = 'https://mk.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%98%D0%B0:%D0%9D%D0%B0%D0%B2%D0%B5%D0%B4%D1%83%D0%B2%D0%B0%D1%9A%D0%B5_%D0%BD%D0%B0_%D0%B8%D0%B7%D0%B2%D0%BE%D1%80%D0%B8',
+        lead_section_policy_link_title = 'Википедија:Наведување на извори',
         citation_needed_category = 'Сите_статии_без_извори',
         citation_needed_templates = [
             'Се бара извор',
