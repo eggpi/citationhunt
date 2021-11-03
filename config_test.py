@@ -24,7 +24,7 @@ class ConfigTest(unittest.TestCase):
     @classmethod
     def add_validate_wikipedia_domain_test(cls, cfg):
         def test(self):
-            self.assertTrue(re.match('^[a-z]+.wikipedia.org$',
+            self.assertTrue(re.match('^[-a-z]+.wikipedia.org$',
                 cfg.wikipedia_domain))
         setattr(cls, 'test_' + cfg.lang_code + '_wikipedia_domain', test)
 

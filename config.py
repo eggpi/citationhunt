@@ -871,7 +871,7 @@ _LANG_CODE_TO_CONFIG = dict(
         min_snippets_sanity_check = 0,
         min_articles_sanity_check = 0,
     ),
-    
+
     id = dict(
         lang_name = 'bahasa Indonesia',
         lang_dir = 'ltr',
@@ -910,6 +910,135 @@ _LANG_CODE_TO_CONFIG = dict(
             'Erreferentzia behar ',
         ],
         hidden_category = 'Ezkutuko_kategoriak',
+    ),
+
+    sr = dict(
+        lang_name = 'Српски',
+        accept_language = [
+            'sr-ec',
+        ],
+        lang_dir = 'ltr',
+        database = 'srwiki_p',
+        wikipedia_domain = 'sr.wikipedia.org',
+        citation_needed_category = 'Сви_чланци_са_непотврђеним_изјавама',
+        beginners_link = 'https://sr.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%98%D0%B0:%D0%9D%D0%B0%D0%B2%D0%BE%D1%92%D0%B5%D1%9A%D0%B5_%D0%B8%D0%B7%D0%B2%D0%BE%D1%80%D0%B0',
+        beginners_link_title = 'Википедија:Навођење извора',
+        lead_section_policy_link = 'https://sr.wikipedia.org/wiki/ВП:ИНЛАЈН',
+        lead_section_policy_link_title = 'ВП:ИНЛАЈН',
+
+        citation_needed_templates = [
+            'Чињеница',
+            'без извора',
+        ],
+        hidden_category = 'Скривене_категорије',
+    ),
+
+    tr = dict(
+        lang_name = 'Türkçe',
+        lang_dir = 'ltr',
+        database = 'trwiki_p',
+        wikipedia_domain = 'tr.wikipedia.org',
+        citation_needed_category = 'Kaynaksız_anlatımlar_içeren_maddeler',
+        beginners_link = 'https://tr.wikipedia.org/wiki/Vikipedi:Kaynak_g%C3%B6sterme',
+        beginners_link_title = 'Vikipedi:Kaynak gösterme',
+        lead_section_policy_link = 'https://tr.wikipedia.org/wiki/VP:KG',
+        lead_section_policy_link_title = 'VP:KG',
+
+        citation_needed_templates = [
+            # FIXME
+        ],
+        hidden_category = 'Gizli_kategoriler',
+    ),
+
+    sk = dict(
+        lang_name = 'Slovenčina',
+        lang_dir = 'ltr',
+        database = 'skwiki_p',
+        wikipedia_domain = 'sk.wikipedia.org',
+        citation_needed_category = 'Wikipédia:Chýbajúce_referencie',
+        beginners_link = 'https://sk.wikipedia.org/wiki/Wikip%C3%A9dia:Spo%C4%BEahliv%C3%A9_zdroje',
+        beginners_link_title = 'Wikipédia:Spoľahlivé zdroje',
+        lead_section_policy_link = 'https://sk.wikipedia.org/wiki/WP:OVER',
+        lead_section_policy_link_title = 'WP:OVER',
+
+        citation_needed_templates = [
+            'Bez citácie',
+        ],
+        hidden_category = 'Skryté_kategórie',
+    ),
+
+    sl = dict(
+        lang_name = 'Slovenščina',
+        lang_dir = 'ltr',
+        database = 'slwiki_p',
+        wikipedia_domain = 'sl.wikipedia.org',
+        citation_needed_category = 'Z_viri_nezadostno_podprti_članki',
+        beginners_link = 'https://sl.wikipedia.org/wiki/Wikipedija:Navajanje_virov',
+        beginners_link_title = 'Wikipedija:Navajanje virov',
+        lead_section_policy_link = 'https://sl.wikipedia.org/wiki/WP:NV',
+        lead_section_policy_link_title = 'WP:NV',
+
+        citation_needed_templates = [
+            'nereferencirano',
+        ],
+        hidden_category = 'Skrite_kategorije',
+    ),
+
+    bg = dict(
+        lang_name = 'Български',
+        lang_dir = 'ltr',
+        database = 'bgwiki_p',
+        wikipedia_domain = 'bg.wikipedia.org',
+        citation_needed_category = 'Статии_без_посочени_източници',
+        beginners_link = 'https://bg.wikipedia.org/wiki/%D0%A3%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A6%D0%B8%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%B5_%D0%BD%D0%B0_%D0%B8%D0%B7%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D1%86%D0%B8',
+        beginners_link_title = 'Уикипедия:Цитиране на източници',
+        lead_section_policy_link = 'https://bg.wikipedia.org/wiki/У:ПИ',
+        lead_section_policy_link_title = 'У:ПИ',
+
+        citation_needed_templates = [
+            'без източници',
+        ],
+        hidden_category = 'Скрити_категории',
+    ),
+
+    be = dict(
+        lang_name = 'Беларуская',
+        lang_dir = 'ltr',
+        database = 'bewiki_p',
+        wikipedia_domain = 'be.wikipedia.org',
+        citation_needed_category = 'Вікіпедыя:Артыкулы_без_спасылак_на_крыніцы',
+        beginners_link = 'https://be.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D0%B5%D0%B4%D1%8B%D1%8F:%D0%A1%D0%BF%D0%B0%D1%81%D1%8B%D0%BB%D0%BA%D1%96_%D0%BD%D0%B0_%D0%BA%D1%80%D1%8B%D0%BD%D1%96%D1%86%D1%8B',
+        beginners_link_title = 'Вікіпедыя:Спасылкі на крыніцы',
+        lead_section_policy_link = 'https://be.wikipedia.org/wiki/ВП:СНК',
+        lead_section_policy_link_title = 'ВП:СНК',
+
+        citation_needed_templates = [
+            'НК',
+        ],
+        hidden_category = 'Схаваныя_катэгорыі',
+    ),
+
+    be_tarask = dict(
+        lang_name = 'Беларуская (тарашкевіца)',
+        accept_language = [
+            'be-tarask',
+        ],
+        lang_dir = 'ltr',
+        database = 'be_x_oldwiki_p',
+        wikipedia_domain = 'be-tarask.wikipedia.org',
+        citation_needed_category = 'Вікіпэдыя:Артыкулы_без_крыніц',
+        beginners_link = 'https://be-tarask.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D1%8D%D0%B4%D1%8B%D1%8F:%D0%A1%D0%BF%D0%B0%D1%81%D1%8B%D0%BB%D0%BA%D1%96_%D0%BD%D0%B0_%D0%BA%D1%80%D1%8B%D0%BD%D1%96%D1%86%D1%8B',
+        beginners_link_title = 'Вікіпэдыя:Спасылкі на крыніцы',
+        lead_section_policy_link = 'https://be-tarask.wikipedia.org/wiki/ВП:СНК',
+        lead_section_policy_link_title = 'ВП:СНК',
+
+        citation_needed_templates = [
+            'Парады артыкулу',
+            'кароткі артыкул',
+            'няма выяваў',
+            'няма крыніцаў',
+        ],
+        hidden_category = 'Схаваныя_катэгорыі',
     ),
 )
 
