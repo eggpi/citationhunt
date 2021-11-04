@@ -1040,6 +1040,23 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Схаваныя_катэгорыі',
     ),
+
+    hy = dict(
+        lang_name = 'Հայերեն',
+        lang_dir = 'ltr',
+        database = 'hywiki_p',
+        wikipedia_domain = 'hy.wikipedia.org',
+        citation_needed_category = 'Չվավերացված_պնդումներով_հոդվածներ',
+        beginners_link = 'https://hy.wikipedia.org/wiki/%D5%8E%D5%AB%D6%84%D5%AB%D5%BA%D5%A5%D5%A4%D5%AB%D5%A1:%D5%80%D5%B2%D5%B8%D6%82%D5%B4_%D5%A1%D5%B2%D5%A2%D5%B5%D5%B8%D6%82%D6%80%D5%B6%D5%A5%D6%80%D5%AB%D5%B6',
+        beginners_link_title = 'Վիքիպեդիա:Հղում աղբյուրներին',
+        lead_section_policy_link = 'https://hy.wikipedia.org/wiki/ՎՊ:ՎԱ',
+        lead_section_policy_link_title = 'ՎՊ:ՎԱ',
+
+        citation_needed_templates = [
+            # FIXME
+        ],
+        hidden_category = 'Թաքցված_կատեգորիաներ',
+    ),
 )
 
 Config = types.SimpleNamespace
