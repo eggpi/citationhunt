@@ -1053,7 +1053,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link_title = 'ՎՊ:ՎԱ',
 
         citation_needed_templates = [
-            # FIXME
+            'ստուգել փաստերը'
         ],
         hidden_category = 'Թաքցված_կատեգորիաներ',
     ),
