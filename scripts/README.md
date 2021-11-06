@@ -112,6 +112,8 @@ Then, establish a port forward to the database you're trying to access:
 ssh -L 4711:enwiki.analytics.db.svc.wikimedia.cloud:3306 login.tools.wmflabs.org
 ```
 
+Note the **hostname** in the command above: replace `enwiki` with whatever wiki you are working with.
+
 Finally, set two environment variables:
 
 - `CH_LOCAL_SSH_PORT` to the forwarded port (4711, in the example above).
