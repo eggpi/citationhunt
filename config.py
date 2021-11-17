@@ -938,14 +938,15 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'trwiki_p',
         wikipedia_domain = 'tr.wikipedia.org',
-        citation_needed_category = 'Kaynaksız_anlatımlar_içeren_maddeler',
+        citation_needed_category = 'Kaynakları_olmayan_maddeler',
         beginners_link = 'https://tr.wikipedia.org/wiki/Vikipedi:Kaynak_g%C3%B6sterme',
         beginners_link_title = 'Vikipedi:Kaynak gösterme',
         lead_section_policy_link = 'https://tr.wikipedia.org/wiki/VP:KG',
         lead_section_policy_link_title = 'VP:KG',
 
+        extract = 'section',
         citation_needed_templates = [
-            # FIXME
+            'Kaynaksız',
         ],
         hidden_category = 'Gizli_kategoriler',
     ),
