@@ -78,6 +78,11 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertIn('/en?', response.location)
 
+    def test_lang_code_case(self):
+        response = self.app.get('/EN')
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/en?', response.location)
+
     def test_accept_language_redirect(self):
         headers = {'Accept-Language': 'ru'}
         with mock.patch.dict(

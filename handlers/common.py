@@ -84,6 +84,7 @@ def validate_lang_code(handler):
     @functools.wraps(handler)
     def wrapper(lang_code = '', *args, **kwds):
         accept_language_hdr = flask.request.headers.get('Accept-Language', '')
+        lang_code = lang_code.lower()
         if not lang_code:
             return redirect_to_lang_code(
                 find_default_lang_code_for_request(accept_language_hdr))
