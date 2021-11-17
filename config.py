@@ -996,6 +996,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://bg.wikipedia.org/wiki/У:ПИ',
         lead_section_policy_link_title = 'У:ПИ',
 
+        extract = 'section',
         citation_needed_templates = [
             'без източници',
         ],
