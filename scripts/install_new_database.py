@@ -11,7 +11,7 @@ import chdb
 import config
 
 def sanity_check():
-    cfg = config.get_localized_config()
+    cfg = config.get_localized_config(api = False)
     sdb = chdb.init_scratch_db()
     snippet_count = sdb.execute_with_retry_s(
         '''SELECT COUNT(*) FROM snippets''')[0][0]
