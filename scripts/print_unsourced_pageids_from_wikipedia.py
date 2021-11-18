@@ -25,7 +25,7 @@ def print_unsourced_ids_from_wikipedia():
         'SELECT tl_from FROM templatelinks WHERE ' +
         'tl_from_namespace = 0 AND tl_namespace = 10 AND ' +
         or_clause, templates)
-    for page_id in cursor:
+    for (page_id,) in cursor:
         print(page_id)
 
 if __name__ == '__main__':
