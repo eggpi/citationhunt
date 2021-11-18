@@ -19,6 +19,6 @@ class CHStringsTest(unittest.TestCase):
 
 if __name__ == '__main__':
     for lc in config.LANG_CODES_TO_LANG_NAMES:
-        cfg = config.get_localized_config(lc)
+        cfg = config.get_localized_config(lc, api = False)
         CHStringsTest.add_smoke_test(cfg)
     unittest.main()

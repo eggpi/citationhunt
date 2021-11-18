@@ -26,7 +26,6 @@ import logging.handlers
 import config
 import chdb
 from utils import *
-import yamwapi as mwapi
 import snippet_parser
 
 import docopt
@@ -123,13 +122,11 @@ def compute_fixed_snippets(cfg):
     logger.info('Will reparse pages: %r' % list(page_title_to_snippets.keys()))
 
     # Now fetch and parse the pages and check which snippets are gone
-    wiki = mwapi.MediaWikiAPI(
-        'https://' + cfg.wikipedia_domain + '/w/api.php', cfg.user_agent)
-    parser = snippet_parser.create_snippet_parser(wiki, cfg)
+    parser = snippet_parser.create_snippet_parser(cfg.wikipedia, cfg)
 
     for page_title, clicked_snippets in page_title_to_snippets.items():
         start_ts = min(cs.ts for cs in clicked_snippets)
-        revisions = get_page_revisions(wiki, page_title, start_ts)
+        revisions = get_page_revisions(cfg.wikipedia, page_title, start_ts)
         for rev in revisions:
             snippets = parser.extract(rev['contents'])
             gone_in_this_revision = {

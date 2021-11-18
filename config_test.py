@@ -9,7 +9,6 @@ class ConfigTest(unittest.TestCase):
         def test(self):
             # Categories must have underscores instead of spaces.
             self.assertNotIn(' ', cfg.hidden_category)
-            self.assertNotIn(' ', cfg.citation_needed_category)
         name = 'test_' + cfg.lang_code + '_category_names_underscores'
         setattr(cls, name, test)
 
@@ -30,7 +29,7 @@ class ConfigTest(unittest.TestCase):
 
 if __name__ == '__main__':
     for lc in config.LANG_CODES_TO_LANG_NAMES:
-        cfg = config.get_localized_config(lc)
+        cfg = config.get_localized_config(lc, api = False)
         ConfigTest.add_validate_categories_test(cfg)
         ConfigTest.add_validate_templates_test(cfg)
         ConfigTest.add_validate_wikipedia_domain_test(cfg)

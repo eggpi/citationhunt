@@ -54,8 +54,8 @@ There are two alternatives for that:
 <details>
   <summary>Click here to expand instructions.</summary>
 
-Download the page.sql and categorylinks.sql dumps. You can find the latest
-versions these for the English Wikipedia [here](https://dumps.wikimedia.org/enwiki/latest/).
+Download the page.sql, categorylinks.sql and templatelinks.sql dumps. You can find the
+latest versions these for the English Wikipedia [here](https://dumps.wikimedia.org/enwiki/latest/).
 
 From the MySQL console connected to your local database, import them:
 
@@ -65,11 +65,12 @@ mysql> create database enwiki_p;
 mysql> use enwiki_p;
 mysql> source path/to/categorylinks.sql
 mysql> source path/to/page.sql
+mysql> source path/to/templatelinks.sql
 ```
 
 This will create a new database named 'enwiki_p' and populate it with tables
-named 'categorylinks' and 'page'. This will take a few hours. You'll want to use
-'enwiki_p' for simplicity, but that's configurable in
+named 'categorylinks', 'page' and 'templatelinks'. This will take a few hours.
+You'll want to use 'enwiki_p' for simplicity, but that's configurable in
 [../config.py](https://github.com/eggpi/citationhunt/blob/master/config.py).
 
 Then, to ensure these scripts can find the database, create a local config file

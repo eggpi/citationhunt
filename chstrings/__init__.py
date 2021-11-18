@@ -7,8 +7,7 @@ def _make_petscan_url(cfg):
     language = cfg.wikipedia_domain.replace('.wikipedia.org', '')
     return (cfg.petscan_url +
         '?language=' + language +
-        '&depth=' + str(cfg.petscan_depth) +
-        '&category=' + cfg.citation_needed_category)
+        '&depth=' + str(cfg.petscan_depth))
 
 def _link_start(url, target = '_blank'):
     return flask.Markup('<a target="%s" href="%s">' % (target, url))
@@ -116,13 +115,6 @@ def _preprocess_variables(config, strings):
             strings['import_petscan_prompt'].format(
                 link_start = _link_start(_make_petscan_url(config)),
                 link_end = '</a>'))
-
-    strings.setdefault('import_petscan_category_tip', '')
-    if strings['import_petscan_category_tip']:
-        strings['import_petscan_category_tip'] = flask.Markup(
-            strings['import_petscan_category_tip'].format(
-                tooltitle = strings['tooltitle'],
-                category = '<i>' + config.citation_needed_category + '</i>'))
 
     strings.setdefault('back_to_cancel', '')
     if strings['back_to_cancel'] and strings['back']:

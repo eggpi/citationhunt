@@ -5,6 +5,8 @@ import os
 import types
 from functools import reduce
 
+import yamwapi as mwapi
+
 # The configuration for a language is a set of key/value pairs, where the
 # values may be True/False, strings or lists/dicts of strings. It is computed
 # by inheriting from the global config, base config, and language-specific
@@ -155,11 +157,6 @@ _LANG_CODE_TO_CONFIG = dict(
         # into the localizable string 'lead_section_hint'
         lead_section_policy_link_title = 'WP:CITELEAD',
 
-        # The name of the category containing articles lacking
-        # citations, without the 'Category:' prefix and with underscores
-        # instead of spaces.
-        citation_needed_category = 'All_articles_with_unsourced_statements',
-
         # The name of the category for hidden categories, without the
         # 'Category:' prefix and with underscores instead of spaces.
         # Categories belonging to this category are typically used for
@@ -181,8 +178,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'مقالات_ذات_عبارات_بحاجة_لمصادر',
-
         hidden_category = 'تصنيفات_مخفية',
 
         citation_needed_templates = [
@@ -201,7 +196,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'ptwiki_p',
         wikipedia_domain = 'pt.wikipedia.org',
-        citation_needed_category = '!Artigos_que_carecem_de_fontes',
         beginners_link = 'https://pt.wikipedia.org/wiki/ Ajuda:Tutorial/Referência',
         beginners_link_title = ' Ajuda:Tutorial/Referência',
         lead_section_policy_link = 'https://pt.wikipedia.org/wiki/Wikipedia:INTROREF',
@@ -231,7 +225,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'rtl',
         database = 'fawiki_p',
         wikipedia_domain = 'fa.wikipedia.org',
-        citation_needed_category = 'همه_مقاله‌های_دارای_عبارت‌های_بدون_منبع',
         beginners_link = 'https://fa.wikipedia.org/wiki/ویکی‌پدیا:شیوه_ارجاع_به_منابع',
         beginners_link_title = 'ویکی‌پدیا:شیوه ارجاع به منابع',
         lead_section_policy_link = '',
@@ -248,7 +241,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'frwiki_p',
         wikipedia_domain = 'fr.wikipedia.org',
-        citation_needed_category = 'Article_à_référence_nécessaire',
         beginners_link = 'https://fr.wikipedia.org/wiki/Aide:Pr%C3%A9sentez_vos_sources',
         beginners_link_title = 'Aide:Source',
         lead_section_policy_link = 'https://fr.wikipedia.org/wiki/WP:INTRO',
@@ -276,7 +268,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'itwiki_p',
         wikipedia_domain = 'it.wikipedia.org',
-        citation_needed_category = 'Informazioni_senza_fonte',
         beginners_link = 'https://it.wikipedia.org/wiki/Aiuto:Uso_delle_fonti',
         beginners_link_title = 'Aiuto:Uso_delle_fonti',
         lead_section_policy_link = '',
@@ -294,7 +285,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'plwiki_p',
         wikipedia_domain = 'pl.wikipedia.org',
-        citation_needed_category = 'Artykuły_wymagające_uzupełnienia_źródeł',
         beginners_link = 'https://pl.wikipedia.org/wiki/Pomoc:Przypisy',
         beginners_link_title = 'Pomoc:Przypisy',
         lead_section_policy_link = '',
@@ -311,7 +301,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'cawiki_p',
         wikipedia_domain = 'ca.wikipedia.org',
-        citation_needed_category = 'Articles_amb_referències_puntuals_demanades',
         beginners_link = 'https://ca.wikipedia.org/wiki/Viquip%C3%A8dia:Guia_per_referenciar',
         beginners_link_title = 'Viquipèdia:Guia per referenciar',
         lead_section_policy_link = '',
@@ -336,7 +325,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'ויקיפדיה:_ערכים_הדורשים_מקורות',
         citation_needed_templates = ['דרוש מקור'],
         hidden_category = 'קטגוריות_מוסתרות',
         category_name_regexps_blacklist = [
@@ -354,7 +342,6 @@ _LANG_CODE_TO_CONFIG = dict(
         beginners_link_title = 'Introducción a las referencias con Editor Visual',
         lead_section_policy_link = 'https://es.wikipedia.org/wiki/Wikipedia:Secci%C3%B3n_introductoria#Referencias',
         lead_section_policy_link_title = 'Wikipedia:Sección introductoria',
-        citation_needed_category = 'Wikipedia:Artículos_con_pasajes_que_requieren_referencias',
         citation_needed_templates = [
             'Añadir referencias',
             'Cita requerida'
@@ -375,7 +362,6 @@ _LANG_CODE_TO_CONFIG = dict(
         'https://bn.wikipedia.org/wiki/%E0%A6%89%E0%A6%87%E0%A6%95%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE:%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%82%E0%A6%B6_%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE#.E0.A6.A4.E0.A6.A5.E0.A7.8D.E0.A6.AF.E0.A6.B8.E0.A7.82.E0.A6.A4.E0.A7.8D.E0.A6.B0',
         lead_section_policy_link_title = 'WP:CITELEAD',
 
-        citation_needed_category = 'উৎসবিহীন_তথ্যসহ_সকল_নিবন্ধ',
         # Some of these are not exactly [citation needed] but bnwiki is quite
         # small, so they help.
         citation_needed_templates = [
@@ -405,7 +391,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Údržba:Články_obsahující_nedoložená_tvrzení',
         citation_needed_templates = [
             'Není ve zdroji',
             'Doplňte zdroj',
@@ -425,7 +410,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://sv.wikipedia.org/wiki/Wikipedia:K%C3%A4llh%C3%A4nvisningar#N.C3.A4r_beh.C3.B6ver_man_inte_ange_en_k.C3.A4lla.3F',
         lead_section_policy_link_title = 'Wikipedia:Källhänvisningar',
 
-        citation_needed_category = 'Alla_artiklar_som_behöver_enstaka_källor',
         citation_needed_templates = [
             'kb',
             'Källa behövs',
@@ -445,7 +429,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://no.wikipedia.org/wiki/Wikipedia:Bruk_av_kilder#Hvorfor_siterer_vi_kilder',
         lead_section_policy_link_title = 'Wikipedia:Bruk_av_kilder',
 
-        citation_needed_category = 'Artikler_som_trenger_referanser',
         citation_needed_templates = [
             'Trenger referanse',
             'Referanse',
@@ -464,7 +447,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'स्रोत_नखुलेका_सामग्रीहरू_भएका_लेखहरू',
         citation_needed_templates = [
             'Citation needed',
             'cn'
@@ -483,7 +465,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Wikipedia:Artikel_mist_referentie',
         citation_needed_templates = [
             'Bron?',
         ],
@@ -501,7 +482,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://nn.wikipedia.org/wiki/Wikipedia:Kjelder#Korleis_oppgje_kjelder',
         lead_section_policy_link_title = 'Wikipedia:Kjelder',
 
-        citation_needed_category = 'Artiklar_som_manglar_kjelder',
         citation_needed_templates = [
             'Treng kjelde',
         ],
@@ -519,7 +499,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Puutteelliset_lähdemerkinnät',
         citation_needed_templates = [
             'Lähde',
             'Lähde tarkemmin',
@@ -541,7 +520,6 @@ _LANG_CODE_TO_CONFIG = dict(
 
         # For German, we just display the lead section of the article, so
         # some of these keys don't apply
-        citation_needed_category = 'Wikipedia:Belege_fehlen',
         citation_needed_templates = [
             'Belege fehlen',
         ],
@@ -561,7 +539,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Λήμματα_που_χρειάζονται_παραπομπές_με_επισήμανση',
         citation_needed_templates = [
             'Εκκρεμεί παραπομπή',
         ],
@@ -579,7 +556,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Forrással_nem_rendelkező_lapok',
         citation_needed_templates = [
             'nincs forrás',
             'forráskérő',
@@ -601,7 +577,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Raksti,_kuru_apgalvojumiem_nepieciešamas_atsauces',
         citation_needed_templates = [
             'Nepieciešama atsauce',
         ],
@@ -620,7 +595,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Википедия:Статьи_с_утверждениями_без_источников',
         citation_needed_templates = [
             'Нет АИ',
             'Нет АИ 2',
@@ -640,7 +614,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Articole_care_necesită_citări_suplimentare',
         citation_needed_templates = [
             'Necesită citare',
         ],
@@ -658,7 +631,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'അവലംബം_ചേർക്കേണ്ട_വാചകങ്ങളുള്ള_ലേഖനങ്ങൾ',
         citation_needed_templates = [
             'തെളിവ്',
         ],
@@ -679,7 +651,6 @@ _LANG_CODE_TO_CONFIG = dict(
 
         lead_section_policy_link_title = '導入部の出典',
 
-        citation_needed_category = '出典を必要とする記述のある記事',
         citation_needed_templates = [
             '出典の明記',
             '要出典',
@@ -704,7 +675,6 @@ _LANG_CODE_TO_CONFIG = dict(
         beginners_link_title = 'Wikipedia:列明來源',
         lead_section_policy_link = 'https://zh.wikipedia.org/wiki/Wikipedia:LEADCITE',
         lead_section_policy_link_title = '序言章節的引用',
-        citation_needed_category = '有未列明来源语句的条目',
         citation_needed_templates = [
             'Unreferenced',
             'Fact',
@@ -729,7 +699,6 @@ _LANG_CODE_TO_CONFIG = dict(
         beginners_link_title = 'Wikipedia:列明来源',
         lead_section_policy_link = 'https://zh.wikipedia.org/wiki/Wikipedia:LEADCITE',
         lead_section_policy_link_title = '序言章节的引用',
-        citation_needed_category = '有未列明来源语句的条目',
         citation_needed_templates = [
             'Unreferenced',
             'Fact',
@@ -752,7 +721,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://ko.wikipedia.org/wiki/위키백과:편집 지침/도입부',
         lead_section_policy_link_title = '도입부 편집 지침',
         hidden_category = '숨은_분류',
-        citation_needed_category = '출처가_필요한_글',
         citation_needed_templates = [
             '출처'
         ],
@@ -763,7 +731,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'rtl',
         database = 'urwiki_p',
         wikipedia_domain = 'ur.wikipedia.org',
-        citation_needed_category = 'ماخذ_میں_نامکمل_اندراجات',
         beginners_link = 'https://ur.wikipedia.org/wiki/ویکیپیڈیا:حوالہ_دہی',
         beginners_link_title = 'ویکیپیڈیا:حوالہ دہی',
         lead_section_policy_link = '',
@@ -784,7 +751,6 @@ _LANG_CODE_TO_CONFIG = dict(
         beginners_link_title = 'Як посилатись на джерела у Візуальному редакторі',
         lead_section_policy_link = 'https://uk.wikipedia.org/wiki/Вікіпедія:Посилання_на_джерела',
         lead_section_policy_link_title = 'Вікіпедія:Посилання_на_джерела',
-        citation_needed_category = 'Статті_з_твердженнями_без_джерел',
         citation_needed_templates = [
             'Потрібне джерело',
             'Fact',
@@ -806,7 +772,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'सभी_लेख_जिनमें_स्रोतहीन_कथन_हैं',
         citation_needed_templates = [
             'उद्धरण आवश्यक',
         ],
@@ -823,7 +788,6 @@ _LANG_CODE_TO_CONFIG = dict(
         reliable_sources_link = 'https://hr.wikipedia.org/wiki/Wikipedija:Provjerljivost',
         lead_section_policy_link = 'https://hr.wikipedia.org/wiki/WP:NI',
         lead_section_policy_link_title = 'Wikipedija:Navođenje izvora',
-        citation_needed_category = 'Članci_kojima_nedostaje_izvor',
         citation_needed_templates = [
             'Nedostaje izvor',
             'Bolji izvor',
@@ -842,7 +806,6 @@ _LANG_CODE_TO_CONFIG = dict(
         reliable_sources_link = 'https://mk.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%98%D0%B0:%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82',
         lead_section_policy_link = 'https://mk.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%98%D0%B0:%D0%9D%D0%B0%D0%B2%D0%B5%D0%B4%D1%83%D0%B2%D0%B0%D1%9A%D0%B5_%D0%BD%D0%B0_%D0%B8%D0%B7%D0%B2%D0%BE%D1%80%D0%B8',
         lead_section_policy_link_title = 'Википедија:Наведување на извори',
-        citation_needed_category = 'Сите_статии_без_извори',
         citation_needed_templates = [
             'Се бара извор',
             'Без извори',
@@ -860,7 +823,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = '',
         lead_section_policy_link_title = '',
 
-        citation_needed_category = 'Vikipediaj_artikoloj_bezonantaj_faktan_konfirmon',
         citation_needed_templates = [
             'Mankas fonto',
             'Konfirmon'
@@ -886,7 +848,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://id.wikipedia.org/wiki/WP:REFERENSIPEMBUKA',
         lead_section_policy_link_title = 'WP:REFERENSIPEMBUKA',
 
-        citation_needed_category = 'Artikel_dengan_pernyataan_yang_tidak_disertai_rujukan',
         citation_needed_templates = [
             'Butuh rujukan'
         ],
@@ -899,7 +860,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'euwiki_p',
         wikipedia_domain = 'eu.wikipedia.org',
-        citation_needed_category = 'Erreferentzia_behar_duten_adierazpenak_dauzkaten_artikuluak',
         beginners_link = 'https://eu.wikipedia.org/wiki/Laguntza:Erreferentziak',
         beginners_link_title = 'Laguntza:Erreferentziak',
         lead_section_policy_link = 'https://eu.wikipedia.org/wiki/Wikipedia:Estilo_gida/Artikuluaren_sarrera',
@@ -920,7 +880,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'srwiki_p',
         wikipedia_domain = 'sr.wikipedia.org',
-        citation_needed_category = 'Сви_чланци_са_непотврђеним_изјавама',
         beginners_link = 'https://sr.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%98%D0%B0:%D0%9D%D0%B0%D0%B2%D0%BE%D1%92%D0%B5%D1%9A%D0%B5_%D0%B8%D0%B7%D0%B2%D0%BE%D1%80%D0%B0',
         beginners_link_title = 'Википедија:Навођење извора',
         lead_section_policy_link = 'https://sr.wikipedia.org/wiki/ВП:ИНЛАЈН',
@@ -938,7 +897,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'trwiki_p',
         wikipedia_domain = 'tr.wikipedia.org',
-        citation_needed_category = 'Kaynakları_olmayan_maddeler',
         beginners_link = 'https://tr.wikipedia.org/wiki/Vikipedi:Kaynak_g%C3%B6sterme',
         beginners_link_title = 'Vikipedi:Kaynak gösterme',
         lead_section_policy_link = 'https://tr.wikipedia.org/wiki/VP:KG',
@@ -956,7 +914,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'skwiki_p',
         wikipedia_domain = 'sk.wikipedia.org',
-        citation_needed_category = 'Wikipédia:Články_s_chýbajúcou_citáciou',
         beginners_link = 'https://sk.wikipedia.org/wiki/Wikip%C3%A9dia:Spo%C4%BEahliv%C3%A9_zdroje',
         beginners_link_title = 'Wikipédia:Spoľahlivé zdroje',
         lead_section_policy_link = 'https://sk.wikipedia.org/wiki/WP:OVER',
@@ -973,7 +930,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'slwiki_p',
         wikipedia_domain = 'sl.wikipedia.org',
-        citation_needed_category = 'Z_viri_nezadostno_podprti_članki',
         beginners_link = 'https://sl.wikipedia.org/wiki/Wikipedija:Navajanje_virov',
         beginners_link_title = 'Wikipedija:Navajanje virov',
         lead_section_policy_link = 'https://sl.wikipedia.org/wiki/WP:NV',
@@ -990,7 +946,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'bgwiki_p',
         wikipedia_domain = 'bg.wikipedia.org',
-        citation_needed_category = 'Статии_без_посочени_източници',
         beginners_link = 'https://bg.wikipedia.org/wiki/%D0%A3%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A6%D0%B8%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%B5_%D0%BD%D0%B0_%D0%B8%D0%B7%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D1%86%D0%B8',
         beginners_link_title = 'Уикипедия:Цитиране на източници',
         lead_section_policy_link = 'https://bg.wikipedia.org/wiki/У:ПИ',
@@ -1008,7 +963,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'bewiki_p',
         wikipedia_domain = 'be.wikipedia.org',
-        citation_needed_category = 'Вікіпедыя:Артыкулы_без_спасылак_на_крыніцы',
         beginners_link = 'https://be.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D0%B5%D0%B4%D1%8B%D1%8F:%D0%A1%D0%BF%D0%B0%D1%81%D1%8B%D0%BB%D0%BA%D1%96_%D0%BD%D0%B0_%D0%BA%D1%80%D1%8B%D0%BD%D1%96%D1%86%D1%8B',
         beginners_link_title = 'Вікіпедыя:Спасылкі на крыніцы',
         lead_section_policy_link = 'https://be.wikipedia.org/wiki/ВП:СНК',
@@ -1028,7 +982,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'be_x_oldwiki_p',
         wikipedia_domain = 'be-tarask.wikipedia.org',
-        citation_needed_category = 'Вікіпэдыя:Артыкулы_без_крыніц',
         beginners_link = 'https://be-tarask.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D1%8D%D0%B4%D1%8B%D1%8F:%D0%A1%D0%BF%D0%B0%D1%81%D1%8B%D0%BB%D0%BA%D1%96_%D0%BD%D0%B0_%D0%BA%D1%80%D1%8B%D0%BD%D1%96%D1%86%D1%8B',
         beginners_link_title = 'Вікіпэдыя:Спасылкі на крыніцы',
         lead_section_policy_link = 'https://be-tarask.wikipedia.org/wiki/ВП:СНК',
@@ -1048,7 +1001,6 @@ _LANG_CODE_TO_CONFIG = dict(
         lang_dir = 'ltr',
         database = 'hywiki_p',
         wikipedia_domain = 'hy.wikipedia.org',
-        citation_needed_category = 'Չվավերացված_պնդումներով_հոդվածներ',
         beginners_link = 'https://hy.wikipedia.org/wiki/%D5%8E%D5%AB%D6%84%D5%AB%D5%BA%D5%A5%D5%A4%D5%AB%D5%A1:%D5%80%D5%B2%D5%B8%D6%82%D5%B4_%D5%A1%D5%B2%D5%A2%D5%B5%D5%B8%D6%82%D6%80%D5%B6%D5%A5%D6%80%D5%AB%D5%B6',
         beginners_link_title = 'Վիքիպեդիա:Հղում աղբյուրներին',
         lead_section_policy_link = 'https://hy.wikipedia.org/wiki/ՎՊ:ՎԱ',
@@ -1090,14 +1042,42 @@ assert len(
     set.union(set(), *list(LANG_CODES_TO_ACCEPT_LANGUAGE.values()))
 ) == sum(map(len, list(LANG_CODES_TO_ACCEPT_LANGUAGE.values())))
 
+def _resolve_redirects_to_templates(wikipedia, templates):
+    '''Given a set of templates, return all templates that redirect to them.'''
+    templates = set(templates)
+    params = {
+        'prop': 'redirects',
+        'titles': '|'.join(
+            # The API resolves Template: to the relevant per-language prefix
+            'Template:' + tplname for tplname in templates
+        ),
+        'rnamespace': 10,
+    }
+    for result in wikipedia.query(params):
+        for page in list(result['query']['pages'].values()):
+            for redirect in page.get('redirects', []):
+                if ':' not in redirect['title']:
+                    # Not a template?
+                    continue
+                tplname = redirect['title'].split(':', 1)[1]
+                templates.add(tplname)
+    return templates
+
 def get_global_config():
     return Config(**_GLOBAL_CONFIG)
 
-def get_localized_config(lang_code = None):
+def get_localized_config(lang_code = None, api = True):
     if lang_code is None:
         lang_code = os.getenv('CH_LANG')
     lang_config = _LANG_CODE_TO_CONFIG[lang_code]
     cfg = Config(lang_code = lang_code, **reduce(
         _inherit, [_GLOBAL_CONFIG, _BASE_LANG_CONFIG, lang_config]))
     cfg.lang_codes_to_lang_names = LANG_CODES_TO_LANG_NAMES
+
+    cfg.wikipedia = None
+    if api:
+        cfg.wikipedia = mwapi.MediaWikiAPI(
+            'https://' + cfg.wikipedia_domain + '/w/api.php', cfg.user_agent)
+        cfg.citation_needed_templates = _resolve_redirects_to_templates(
+            cfg.wikipedia, cfg.citation_needed_templates)
     return cfg

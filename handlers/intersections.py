@@ -5,7 +5,6 @@ from utils import *
 from .common import *
 
 import requests
-import yamwapi as mwapi
 
 # https://www.mediawiki.org/wiki/API:Query#Specifying_pages
 PAGE_TITLES_PER_API_REQUEST = 50
@@ -27,12 +26,10 @@ def validate_request_json(request):
             raise TypeError
 
 def intersect_with_page_titles(cfg, page_titles):
-    wiki = mwapi.MediaWikiAPI(
-        'https://' + cfg.wikipedia_domain + '/w/api.php', cfg.user_agent)
     page_ids = []
     for chunk in ichunk(page_titles, PAGE_TITLES_PER_API_REQUEST):
         params = {'titles': '|'.join(chunk)}
-        for response in wiki.query(params):
+        for response in cfg.wikipedia.query(params):
             if 'query' in response and 'pages' in response['query']:
                 page_ids.extend(list(response['query']['pages'].keys()))
     if not page_ids:

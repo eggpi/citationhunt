@@ -12,29 +12,21 @@ import config
 
 def print_unsourced_ids_from_wikipedia():
     cfg = config.get_localized_config()
+    templates = [t.replace(' ', '_') for t in cfg.citation_needed_templates]
+
     db = chdb.init_wp_replica_db(cfg.lang_code)
     cursor = db.cursor()
-    categories = set([cfg.citation_needed_category])
-    while True:
-        cursor.execute(
-            'SELECT cl_from, cl_type FROM categorylinks WHERE (' +
-            ' OR '.join(['cl_to = %s'] * len(categories)) + ')', categories)
-        subcategories = set()
-        for page_id, type in cursor:
-            if type == b'page':
-                print(page_id)
-            elif type == b'subcat':
-                subcategories.add(page_id)
-        if not subcategories:
-            break
 
-        # need to convert the page ids of subcategories into page
-        # titles so we can query recursively
-        cursor.execute(
-            'SELECT page_title FROM page WHERE (' +
-            ' OR '.join(['page_id = %s'] * len(subcategories)) + ')',
-            subcategories)
-        categories = set([r[0] for r in cursor])
+    or_clause = (
+        '(' + 'OR '.join(['tl_title = %s'] * len(templates)) + ')'
+    )
+    # https://www.mediawiki.org/wiki/Help:Namespaces
+    cursor.execute(
+        'SELECT tl_from FROM templatelinks WHERE ' +
+        'tl_from_namespace = 0 AND tl_namespace = 10 AND ' +
+        or_clause, templates)
+    for page_id in cursor:
+        print(page_id)
 
 if __name__ == '__main__':
     print_unsourced_ids_from_wikipedia()

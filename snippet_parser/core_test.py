@@ -23,10 +23,7 @@ class SnippetParserTest(unittest.TestCase):
     def setUp(self):
         self._cfg = TestConfig()
         self._wp = mock.Mock()
-        with mock.patch.object(
-            core.SnippetParser, '_resolve_redirects_to_templates',
-            side_effect = lambda x: x):
-            self._sp = core.create_snippet_parser(self._wp, self._cfg)
+        self._sp = core.create_snippet_parser(self._wp, self._cfg)
 
     def _set_wikipedia_parse_response(self, html):
         self._wp.parse.return_value = {'parse': {'text': {'*': html}}}

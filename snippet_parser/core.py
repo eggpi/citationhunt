@@ -64,8 +64,7 @@ class SnippetParser:
         self._wikipedia = wikipedia
 
         self._lowercase_cn_templates = set(
-            t.lower() for t in self._resolve_redirects_to_templates(
-                self._cfg.citation_needed_templates))
+            t.lower() for t in self._cfg.citation_needed_templates)
         assert len(self._lowercase_cn_templates) > 0
 
         self._html_css_selectors_to_strip = [
@@ -74,31 +73,6 @@ class SnippetParser:
         ]
 
         self.stats = stats.SnippetParserStats()
-
-    def _resolve_redirects_to_templates(self, templates):
-        templates = set(templates)
-        params = {
-            'prop': 'redirects',
-            'titles': '|'.join(
-                # The API resolves Template: to the relevant per-language prefix
-                'Template:' + tplname for tplname in templates
-            ),
-            'rnamespace': 10,
-        }
-        for result in self._wikipedia.query(params):
-            # We could fall back to just using self._cfg.citation_needed_templates
-            # if the API request fails, but for now let's just crash
-            for page in list(result['query']['pages'].values()):
-                for redirect in page.get('redirects', []):
-                    # TODO We technically only need to keep the templates that
-                    # mwparserfromhell will consider different from one another
-                    # (e.g., no need to have both Cn and CN)
-                    if ':' not in redirect['title']:
-                        # Not a template?
-                        continue
-                    tplname = redirect['title'].split(':', 1)[1]
-                    templates.add(tplname)
-        return templates
 
     def _get_date_from_template(self, tpl):
         if self._cfg.lang_code != 'en':

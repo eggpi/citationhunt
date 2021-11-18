@@ -51,7 +51,6 @@ import pickle as pickle
 cfg = config.get_localized_config()
 WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
-WIKIPEDIA_API_URL = WIKIPEDIA_BASE_URL + '/w/api.php'
 
 MAX_EXCEPTIONS_PER_SUBPROCESS = 5
 
@@ -94,7 +93,7 @@ self = types.SimpleNamespace() # Per-process state
 def initializer(backdir):
     self.backdir = backdir
 
-    self.wiki = mwapi.MediaWikiAPI(WIKIPEDIA_API_URL, cfg.user_agent)
+    self.wiki = cfg.wikipedia
     self.parser = snippet_parser.create_snippet_parser(self.wiki, cfg)
     self.exception_count = 0
 

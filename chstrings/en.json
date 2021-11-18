@@ -12,7 +12,6 @@
   "import_article_titles": "Enter a list of articles",
   "import_articles_prompt": "Please enter Wikipedia {em_start}article titles{em_end} to import, one per line, in the area below:",
   "import_petscan": "Import from a PetScan query",
-  "import_petscan_category_tip": "Tip: {tooltitle} only contains articles inside the {category} category. For better results, you can use PetScan to only retrieve articles inside that category.",
   "import_petscan_intro": "{em_start}PetScan{em_end} is a tool for querying Wikipedia and defining lists of articles. PetScan assigns IDs to queries so their results can be imported into other tools.",
   "import_petscan_prompt": "Please {link_start}create your query in PetScan{link_end} and paste its ID below:",
   "in_page": "In page %s:",
