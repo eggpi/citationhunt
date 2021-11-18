@@ -968,6 +968,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://be.wikipedia.org/wiki/ВП:СНК',
         lead_section_policy_link_title = 'ВП:СНК',
 
+        extract = 'section',
         citation_needed_templates = [
             'НК',
         ],
