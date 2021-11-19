@@ -936,7 +936,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link_title = 'WP:NV',
 
         citation_needed_templates = [
-            'nereferencirano',
+            'Navedi vir',
         ],
         hidden_category = 'Skrite_kategorije',
     ),
