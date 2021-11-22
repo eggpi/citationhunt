@@ -19,7 +19,6 @@
 	"import_article_titles": "Vnesite seznam člankov",
 	"import_articles_prompt": "Za vnos vnesite v spodnje polje {em_start}naslove člankov{em_end} v Wikipediji, in sicer po enega v vsako vrstico:",
 	"import_petscan": "Uvozi iz poizvedbe PetScan",
-	"import_petscan_category_tip": "Nasvet: Orodje {tooltitle} vsebuje samo članke v kategoriji {category}. Za boljše zadetke lahko uporabite orodje PetScan, da pridobite samo članke v tej kategoriji.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} je orodje za poizvedovanje po Wikipediji in sestavljanje seznamov člankov. Poizvedbam dodeli enolične identifikatorje, tako da je zadetke mogoče uvoziti v druga orodja.",
 	"import_petscan_prompt": "{link_start}Poizvedbo ustvarite v orodju PetScan{link_end} in tukaj prilepite enolični identifikator:",
 	"in_page": "Na strani %s:",

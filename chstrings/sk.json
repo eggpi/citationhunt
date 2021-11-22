@@ -19,7 +19,6 @@
 	"import_article_titles": "Zadajte zoznam artiklov",
 	"import_articles_prompt": "Zadajte prosím {em_start}názvy artiklov{em_end} Wikipedia pre import, jeden názov v jednom riadku do políčka nižšie:",
 	"import_petscan": "Importovať z PetScan",
-	"import_petscan_category_tip": "Tip: {tooltitle} obsahuje len artikle v rámci kategórie  {category}. Pre lepšie výsledky skúste použiť PetScan na vyhľadanie artiklov len v tejto kategórii.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} je nástroj na vytváranie dopytov vo Wikipédii a definíciu zoznamu artiklov. PetScan prideľuje ID na dopyty tak, že ich výsledky môžu byť importované do iných nástrojov.",
 	"import_petscan_prompt": "Prosím {link_start}vytvorte dopyt v PetScan{link_end}a skopírujte jeho ID nižšie:",
 	"in_page": "V článku %s:",

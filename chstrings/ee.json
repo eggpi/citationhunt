@@ -17,7 +17,6 @@
 	"import_article_titles": "Nyatiwo ƒe tanyawo",
 	"import_articles_prompt": "Taflatsɛ ŋlɔ Wikipedia {em_start}ƒe nyati ƒe tanyawo{em_end} ne nahe wo va, fli ɖeka ɖeka le afi si dze le ete:",
 	"import_petscan": "PetScan ƒe biabia",
-	"import_petscan_category_tip": "Mɔfiame: Nyati siwo le hatsotso {category} la me koe le {tooltitle} eme. Ne èdi be nudidia nade to wu la, àte ŋu azã PetSkan atsɔ adi nyati siwo le hatsotso ma ko me.",
 	"import_petscan_intro": "{em_start}PetSkan{em_end} nye dɔwɔnu si wotsɔ dia nu le Wikipedia hetsɔ tia nyati siwo adze. PetSkan naa dzeside nudidi ɖe sia ɖe ale be woate ŋu afɔ ŋuɖoɖoawo ayi dɔwɔnu buubuwo dzi.",
 	"import_petscan_prompt": "Taflatsɛ {link_start}wɔ wò nudidia le PetSkan{link_end} me eye nàda eƒe dzeside ɖe ete afi sia:",
 	"in_page": "Le axa %s:",

@@ -18,7 +18,6 @@
 	"import_article_titles": "Unesite popis članaka",
 	"import_articles_prompt": "Molimo unesite {em_start}naslove članaka{em_end} na Wikipediji kako biste ih uvezli. Unesite jedan članak po retku u polje ispod:",
 	"import_petscan": "Uvezi iz PetScan upita",
-	"import_petscan_category_tip": "Savjet: {tooltitle} sadrži samo članke unutar kategorije {category}. Za bolje rezultate, možete koristiti PetScan kako biste dohvatili samo članke u toj kategoriji.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} je alat za izradu upita prema Wikipediji i izradu popisa članaka. PetScan dodjeljuje ID oznake upitima kako bi se rezultati tih upita mogli uvoziti u druge alate.",
 	"import_petscan_prompt": "Molimo {link_start}napišite svoj PetScan upit{link_end} i zalijepite  ID upita ispod:",
 	"in_page": "U članku %s:",

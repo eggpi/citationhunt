@@ -17,7 +17,6 @@
 	"import_article_titles": "Mitte 'n'elenghe de vôsce",
 	"import_articles_prompt": "Pe piacere sckaffe le {em_start}titole de vôsce{em_end} de Uicchipèdie da 'mbortà, une pe linèe, jndr'à l'arèe aqquà sotte:",
 	"import_petscan": "'Mborte 'n'inderrogazione PetScan",
-	"import_petscan_category_tip": "Suggerimende: {tooltitle} tène sulamende vôsce a 'u 'nderne d'a categorije {category}. Pe resultate megghie, jè possibbele ausà PetScan pe recuperà sulamende le vôsce a 'u 'nderne a 'u 'nderne de quedda categorije.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} jè 'nu strumende pe 'nderrogà Uicchipèdie e definì l'elenghe de le vôsce. PetScan assegne le ID da 'nderrogà accussì 'u resultate pò essere 'mbortate da otre struminde.",
 	"import_petscan_prompt": "Pe piacere {link_start}ccreje 'a 'nderrogaziona toje jndr'à PetScan{link_end} e 'ngolle l'ID sue aqquà sotte:",
 	"in_page": "Jndr'à pàgene %s:",

@@ -21,7 +21,6 @@
 	"import_article_titles": "Gibe eine Liste von Artikeln ein",
 	"import_articles_prompt": "Bitte gib unten die zu importierenden Wikipedia-{em_start}Artikeltitel{em_end} ein, einen pro Zeile:",
 	"import_petscan": "Imporiere von einer PetScan-Abfrage",
-	"import_petscan_category_tip": "Tipp: {tooltitle} enthält nur Artikel in der Kategorie {category}. Für bessere Ergebnisse kannst du PetScan verwenden, um nur Artikel innerhalb dieser Kategorie abzurufen.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} ist ein Werkzeug zur Abfrage von Wikipedia und zum Definieren von Artikellisten. PetScan weist Abfragen Kennungen zu, damit ihre Ergebnisse in andere Werkzeuge importiert werden können.",
 	"import_petscan_prompt": "Bitte {link_start}erstelle deine Abfrage in PetScan{link_end} und füge ihre Kennung unten ein:",
 	"in_page": "In Seite %s:",

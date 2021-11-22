@@ -21,7 +21,6 @@
 	"import_article_titles": "Enmetu liston de artikoloj",
 	"import_articles_prompt": "Bonvolu enigi Vikipediajn {em_start}artikolajn titolojn{em_end} enportotajn, po unu en ĉiu linio, en la jena areo:",
 	"import_petscan": "Importi de PetScan-informpeto",
-	"import_petscan_category_tip": "Konsileto: {tooltitle} nur enhavas artikolojn en la kategorio {category}. Por pli bonaj rezultoj, vi povas uzi PetScan por preni nur artikolojn en tiu kategorio.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} estsas ilo por informpetoj pri Vikipedio kaj por difinado de listoj de artikoloj. PetScan asignas identigilojn al informpetoj, tiel ke la rezultoj povas esti enportata en aliajn ilojn.",
 	"import_petscan_prompt": "Bonvolu {link_start}krei vian informpeton per PetScan{link_end} kaj alglui ĝia identigilon ĉi-sube:",
 	"in_page": "En la paĝo %s:",

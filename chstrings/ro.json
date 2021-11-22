@@ -20,7 +20,6 @@
 	"import_article_titles": "O listă a titlurilor articolelor",
 	"import_articles_prompt": "Introduceți {em_start}titlul articolelor{em_end} pe Wikipedia pentru a importa, câte unul pe rând, în zona de mai jos:",
 	"import_petscan": "O interogare Pet Scan",
-	"import_petscan_category_tip": "Sfat: {tooltitle} conține numai articole din categoria {category}. Pentru rezultate mai bune, puteți utiliza PetScan pentru a prelua numai articole din interiorul acelei categorii.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} este un instrument pentru interogarea Wikipedia și definirea listelor de articole. PetScan atribuie ID-uri la interogări, astfel încât rezultatele lor să poată fi importate în alte instrumente.",
 	"import_petscan_prompt": "Vă rugăm să {link_start}creați interogarea dvs. în Pet Scan{link_end} și lipiți-o mai jos:",
 	"in_page": "În pagina %s:",

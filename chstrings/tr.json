@@ -27,7 +27,6 @@
 	"import_article_titles": "Bir madde listesi girin",
 	"import_articles_prompt": "Lütfen aşağıdaki alana satır başına bir tane almak üzere Vikipedi {em_start}madde başlığını{em_end} yazın:",
 	"import_petscan": "Bir PetScan sorgusundan içe aktar",
-	"import_petscan_category_tip": "İpucu: {tooltitle} yalnızca {category} kategorisinin içindeki maddeleri içerir. Daha iyi sonuçlar için, PetScan'ı yalnızca bu kategorideki maddeleri almak için kullanabilirsiniz.",
 	"import_petscan_intro": "{em_start}PetScan{em_end}, Vikipedi'yi sorgulamak ve madde listelerini tanımlamak için kullanılan bir araçtır. PetScan, sorguları kimliklere atar, böylece sonuçları diğer araçlara aktarılabilir.",
 	"import_petscan_prompt": "Lütfen {link_start}sorgunuzu PetScan'da oluşturun{link_end} ve kimliğini aşağıya yapıştırın:",
 	"in_page": "%s sayfasında:",

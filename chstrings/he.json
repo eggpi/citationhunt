@@ -24,7 +24,6 @@
 	"import_article_titles": "נא להזין רשימת ערכים",
 	"import_articles_prompt": "נא להקליד {em_start}כותרות ערכים{em_end} בוויקיפדיה לייבוא, כל ערך בשורה נפרדת, במתחם שלהלן:",
 	"import_petscan": "ייבוא מתוך שאילתת PetScan",
-	"import_petscan_category_tip": "עצה: {tooltitle} מכיל רק ערכים מהקטגוריה {category}. לשיפור התוצאות, ניתן להשתמש ב־PetScan כדי לקבל ערכים בקטגוריה הזאת בלבד.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} הוא כלי לתשאול ויקיפדיה והגדרת רשימות ערכים. PetScan מקצה מספרי זיהוי לשאילתות כדי שניתן יהיה לייבא את התוצאות שהן לכלים אחרים.",
 	"import_petscan_prompt": "נא {link_start}ליצור את השאילתה ב־PetScan{link_end} ולהדביק את המזהה שלה להלן:",
 	"in_page": "בדף %s:",

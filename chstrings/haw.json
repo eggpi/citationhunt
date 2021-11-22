@@ -17,7 +17,6 @@
 	"import_article_titles": "E kikokiko i ka hui ʻatikala",
 	"import_articles_prompt": "E ʻoluʻolu, e kikokiko pākahi i nā {em_start}inoa ʻatikala{em_end} Wikipedia i kahi lalo:",
 	"import_petscan": "Kākomo mai kekahi noinoina PetScan",
-	"import_petscan_category_tip": "Kuauhā: Aia i loko o {tooltitle} nā ʻatikala mai ka māhele {category}. Hiki iā ʻoe ke hana iā Petscan e lawelawe i nā ʻatikala mai kēlā māhele i ka ʻoi.",
 	"import_petscan_intro": "ʻO {em_start}PetScan{em_end} he hāmeʻa no ka noinoi i Wikipedia a me ka haku papakuhikuhi ʻatikala ʻana. Lawe ID ʻo PetScan i nā noinoina i hiki ke hoʻokomo ka hope noinoi i nā hāmeʻa ʻē aʻe.",
 	"import_petscan_prompt": "E ʻoluʻolu, {link_start}e haku i noinoi ma PetScan{link_end} a kau i ka ID ma lalo:",
 	"in_page": "Ma ka ʻaoʻao %s:",

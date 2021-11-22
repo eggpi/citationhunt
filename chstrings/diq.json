@@ -21,7 +21,6 @@
 	"import_article_titles": "Yew lista meqaleyi cı kerê",
 	"import_articles_prompt": "Kerem kerên, cêr de serey herg yew satıt yew tene birayışiya Wikipedia de {em_start}sereya meqaley {em_end} bınusne :",
 	"import_petscan": "Yew tedqiqê PetScani azere kerê",
-	"import_petscan_category_tip": "Şık: {tooltitle} teyna Kategoriya {category} tede dê meqaleya muhtewa kena. Deha raşt neticeyan rê, PetScan'i teyna na meqaleyanê na kategoriye gırotışi rê bıkarnê .",
 	"import_petscan_intro": "{em_start}PetScan{em_end}, Wikipedia de persayış u lista meqaleya şınastuş de karniyaye yew haceta. PetScan, persa erzeno kamiya miyan, neticey şenê çebiyê hacetanê binan.",
 	"import_petscan_prompt": "Kerem kerê {link_start}persayışê ho PetScan de vırazê {link_end} u kamiyer prone cêri rê:",
 	"in_page": "Pele de %s:",

@@ -25,7 +25,6 @@
 	"import_article_titles": "Skriv in en lista med artiklar",
 	"import_articles_prompt": "Skriv in {em_start}titlarna{em_end} på Wikipediaartiklarna som ska importeras, en per rad, i området nedan:",
 	"import_petscan": "Importera från en PetScan-fråga",
-	"import_petscan_category_tip": "Tips: {tooltitle} innehåller endast artiklar i kategorin {category}. För bättre resultat kan du använda PetScan för att endast hämta artiklar i denna kategori.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} är ett frågeverktyg för att skapa listor av Wikipediaartiklar. Frågor skapade med PetScan får ID-nummer så att resultaten kan importeras till andra verktyg.",
 	"import_petscan_prompt": "{link_start}Skapa din fråga med PetScan{link_end} och klistra in dess ID nedan:",
 	"in_page": "På sidan %s:",

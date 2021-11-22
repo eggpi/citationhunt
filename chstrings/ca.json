@@ -22,7 +22,6 @@
 	"import_article_titles": "Introduïu una llista d'articles",
 	"import_articles_prompt": "Introduïu els {em_start}títols d'article{em_end} per importar, un per línia, en l'àrea a continuació:",
 	"import_petscan": "Importa des d'una consulta de PetScan",
-	"import_petscan_category_tip": "Consell: {tooltitle} només conté articles de la categoria {category}. Per a obtenir millors resultats, podeu utilitzar PetScan per a trobar només articles d'aquesta categoria.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} és una eina per a consultar Viquipèdia i definir llistes d'articles. PetScan assigna identificadors a les consultes de tal manera que els resultats puguin ser importats a altres eines.",
 	"import_petscan_prompt": "Si us plau {link_start}creeu la vostra consulta en PetScan{link_end} i enganxeu l'identificador a sota:",
 	"in_page": "En la pàgina %s:",

@@ -6,6 +6,7 @@
 			"LNDDYL",
 			"Sanmosa",
 			"Shangkuanlc",
+			"Winston Sung",
 			"Wwycheuk"
 		]
 	},
@@ -22,13 +23,12 @@
 	"import_article_titles": "輸入條目清單",
 	"import_articles_prompt": "請在下方區域以每一行一個來輸入維基百科{em_start}條目標題{em_end}匯入：",
 	"import_petscan": "從 PetScan 查詢匯入",
-	"import_petscan_category_tip": "提示：{tooltitle}僅包含在{category}分類的條目。要獲得更佳結果，您可以使用 PetScan 來僅檢索在分類裡的條目。",
 	"import_petscan_intro": "{em_start}PetScan{em_end} 是一個用來查詢維基百科和定義條目清單的工具。PetScan 會為查詢分配 ID，因此結果可以匯入到其它工具。",
 	"import_petscan_prompt": "請{link_start}在 PetScan 建立您的查詢{link_end}，並在下方貼上該 ID：",
 	"in_page": "在「%s」頁面中：",
 	"instructions_details": "點擊%s前往維基百科來{link_start}修正片段內容{link_end}，或以%s來檢視下一筆。祝順心！",
 	"instructions_goal": "下方的維基百科段落裡沒有{link_start}可靠來源{link_end}來證明內容，您可以幫忙找找嗎？",
-	"custom_created": "您自定的{tooltitle}已創建！",
+	"custom_created": "已建立您自訂的{tooltitle}！",
 	"custom_end_copy_link": "您可以複製並分享以上連結來允許其他人使用，或是{link_start}現在就開始瀏覽{link_end}！",
 	"custom_failed": "很抱歉，您自定的{tooltitle}創建失敗或是為空！",
 	"custom_import_prompt": "您想要如何建立自定義{tooltitle}？",

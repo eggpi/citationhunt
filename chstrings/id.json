@@ -21,7 +21,6 @@
 	"import_article_titles": "Masukkan sebuah daftar artikel",
 	"import_articles_prompt": "Silakan masukkan {em_start}judul artikel{em_end} Wikipedia yang ingin diimpor, satu per baris, di dalam teks area ini:",
 	"import_petscan": "Impor dari kueri PetScan",
-	"import_petscan_category_tip": "Kiat: {tooltitle} hanya berisi artikel dalam kategori {category}. Untuk hasil terbaik, Anda dapat menggunakan PetScan untuk hanya mengambil artikel dalam kategori tersebut.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} adalah sebuah perkakas untuk mengkueri Wikipedia dan daftar tetapan untuk artikel. PetScan memberikan ID pada setiap kuerinya sehingga hasilnya dapat diimpor ke perkakas lain.",
 	"import_petscan_prompt": "Harap {link_start}buat kueri Anda dengan PetScan{link_end} lalu tempelkan ID-nya di bawah:",
 	"in_page": "Di halaman %s:",

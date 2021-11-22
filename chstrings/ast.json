@@ -18,7 +18,6 @@
 	"import_article_titles": "Escribi una llista d'artículos",
 	"import_articles_prompt": "Escribi los {em_start}títulos de los artículos{em_end} de Wikipedia que quieras importar, unu per llinia, na área de más abaxo:",
 	"import_petscan": "Importar dende una consulta de PetScan",
-	"import_petscan_category_tip": "Gabitu: {tooltitle} namái contien artículos dientro de la categoría {category}. Pa llograr meyores resultaos, puedes usar PetScan pa recuperar  sólo los artículos dientro d'esa categoría.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} ye una ferramienta para consultar Wikipedia y definir llistes d'artículos. PetScan asigna identificadores a les consultes de tal manera que les resultancies pueden importase a otres ferramientes.",
 	"import_petscan_prompt": "{link_start}Crea la consulta en PetScan{link_end} y pega l'identificador más abaxo:",
 	"in_page": "Na páxina %s:",

@@ -18,7 +18,6 @@
 	"import_article_titles": "Nhập danh sách các bài báo",
 	"import_articles_prompt": "Vui lòng nhập tiêu đề bài viết {em_start} {em_end} trên Wikipedia để nhập, mỗi tiêu đề trên mỗi dòng, vào khu vực bên dưới:",
 	"import_petscan": "Nhập từ truy vấn PetScan",
-	"import_petscan_category_tip": "Mẹo: {tooltitle} chỉ chứa các bài viết trong danh mục {category}. Để có kết quả tốt hơn, bạn có thể sử dụng PetScan để chỉ lấy các bài báo bên trong danh mục đó.",
 	"import_petscan_intro": "{em_start} PetScan {em_end} là một công cụ để truy vấn Wikipedia và xác định danh sách các bài báo. PetScan chỉ định ID cho các truy vấn để kết quả của chúng có thể được nhập vào các công cụ khác.",
 	"import_petscan_prompt": "Vui lòng {link_start} tạo truy vấn của bạn trong PetScan {link_end} và dán ID của nó bên dưới:",
 	"in_page": "Trong trang %s:",

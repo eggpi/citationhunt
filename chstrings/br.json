@@ -19,7 +19,6 @@
 	"import_article_titles": "Merkit ur roll pennadoù",
 	"import_articles_prompt": "Ebarzhit {em_start} titloù pennadoù {em_end} Wikipedia da bellgargañ, unan dre linenn, en takad amañ dindan :",
 	"import_petscan": "Enporzhiañ diwar ur reked PetScan",
-	"import_petscan_category_tip": "Tun : e {tooltitle}n'eus nemet pennadoù eus ar rummad (category). Evit kaout disoc'hoù gwelloc'h e c'hallit implijout PetScan evit degas nemet disoc'hoù eus ar rummad-se.",
 	"import_petscan_intro": "{em_start}PetScan{em_end}zo ur benveg evit goulennata Wikipedia ha dielfennañ ar rolloù pennadoù. Deverkañ a a ra PetScan anaouderioù (ID) d'ar rekedoù evit ma c'hallo o disoc'hoù bezañ enporzhiet gant binvioù all.",
 	"import_petscan_prompt": "{link_start} Krouit ho reked e  PetScan{link_end}, mar plij, ha pegit anezhañ en e ID amañ dindan :",
 	"in_page": "Er bajenn %s",

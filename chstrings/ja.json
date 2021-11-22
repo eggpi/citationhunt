@@ -19,7 +19,6 @@
 	"import_article_titles": "記事のタイトル一覧を入力",
 	"import_articles_prompt": "ウィキペディアからインポートする{em_start}記事のタイトル{em_end}を、以下の欄に1行に1件ずつ記入します。",
 	"import_petscan": "PetScanのクエリ結果を読み込む",
-	"import_petscan_category_tip": "ヒント：{tooltitle}には{category}カテゴリの記事だけ集めてあります。もっと選択の精度を上げるにはPetScanを使い、特定のカテゴリに限定して記事を抽出することができます。",
 	"import_petscan_intro": "{em_start}PetScan{em_end}はウィキペディアに検索をかけるツールで、記事の一覧の絞り込みに使います。PetScanがクエリに付ける識別IDを利用すると、他のツールに抽出結果をインポートできます。",
 	"import_petscan_prompt": "{link_start}PetScanを使ってクエリを実行し{link_end}、生成されたIDを以下の欄に入力してください。",
 	"in_page": "%s の記事にはこうあります。",

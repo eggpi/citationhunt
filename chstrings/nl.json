@@ -26,7 +26,6 @@
 	"import_article_titles": "Geef een lijst met artikels in",
 	"import_articles_prompt": "Geef een te importeren {em_start}paginatitel{em_end} van Wikipedia op in het onderstaande venster, één per regel:",
 	"import_petscan": "Importeer van een Petscanzoekopdracht",
-	"import_petscan_category_tip": "Tip: {tooltitle} bevat alleen pagina's binnen de categorie {category}. Voor betere resultaten kunt u PetScan gebruiken om alleen pagina's binnen die categorie op te halen.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} is een hulpprogramma voor het zoeken in Wikipedia en het definiëren van lijsten van pagina's. PetScan wijst een ID toe aan zoekopdrachten zodat de resultaten in andere hulpprogramma's gebruikt kunnen worden.",
 	"import_petscan_prompt": "{link_start}Maak uw zoekopdracht in PetScan{link_end} en geef hier het ID daarvan op:",
 	"in_page": "Op pagina %s:",

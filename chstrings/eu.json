@@ -23,7 +23,6 @@
 	"import_article_titles": "Sartu artikuluen zerrenda",
 	"import_articles_prompt": "Mesedez, sartu Wikipediako {em_start}artikuluen izenburuak{em_end} inportatzeko, bat lerro bakoitzean, beheko eremuan:",
 	"import_petscan": "PetScan eskaera batetik inportatu",
-	"import_petscan_category_tip": "Gomendioa: {tooltitle} {category} kategoriaren barruan dauden artikuluak baino ez ditu. Emaitza hobeak eskuratzeko, PetScan erabili dezakezu soilik kategoriaren barruko artikuluak aurkitzeko.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} Wikipedan bilaketak egin eta artikulu zerrendak eskuratzeko tresna bat da. PetScanek bilaketei IDak ematen dizkie, beste tresnek erabil ditzaten.",
 	"import_petscan_prompt": "Mesedez {link_start}egin zure eskaera PetScanen{link_end} eta IDa azpian itsatsi:",
 	"in_page": "%s orrialdean:",

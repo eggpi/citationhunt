@@ -20,7 +20,6 @@
 	"import_article_titles": "Inserisci un elenco di voci",
 	"import_articles_prompt": "Aggiungi {em_start}i titoli degli articoli di Wikipedia{em_end} per importarli, uno per riga, nell'area sottostante:",
 	"import_petscan": "Importa da una consultazione di PetScan",
-	"import_petscan_category_tip": "Consiglio: {tooltitle} contiene articoli solo all'interno della {category} categoria. Per risultati migliori, puoi usare PetScan per recuperare articoli solo all'interno di quella categoria.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} è uno strumento di ricerca Wikipedia e definisce liste di articoli. PetScan assegna ID alle ricerche così i risultati possono essere importanti in altri strumenti.",
 	"import_petscan_prompt": "{link_start}Crea la tua ricerca in PetScan{link_end} e incolla l'ID qui sotto:",
 	"in_page": "Nella voce %s:",

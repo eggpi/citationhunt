@@ -17,7 +17,6 @@
 	"import_article_titles": "Inserisi na lista de voxe",
 	"import_articles_prompt": "Xonta {em_start} i titołi dei articołi de Wikipedia{em_end} par inportarli, uno par rigo, n'te l'area che sta soto.",
 	"import_petscan": "Inporta na consultasion de PetScan",
-	"import_petscan_category_tip": "Consejo: {tooltitle} el ga voxe solo drento de ła {category} categoria. Par mejori rixultai, te połi doparar PetScan par trar fora articołi soło drento a cheła categoria.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} el xé on instrumento de riserca Wikipedia er el definise liste de articołi. PetScan el dà ID a łe riserche cusì che i rixultai i posa esare inportanti in altri instrumenti. alle ricerche così i risultati possono essere importanti in altri strumenti.",
 	"import_petscan_prompt": "{link_start}Crea ła to riserca n'tel PetScan{link_end} e taca el ID cuà soto:",
 	"in_page": "Nte ła voxe %s:",

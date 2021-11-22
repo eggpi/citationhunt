@@ -22,7 +22,6 @@
 	"import_article_titles": "Унесите списак чланака",
 	"import_articles_prompt": "Унесите {em_start}наслове чланака{em_end} са Википедије да бисте их увезли, по један у сваком реду, у доленаведеној области:",
 	"import_petscan": "Увези из упита PetScan",
-	"import_petscan_category_tip": "Савет: {tooltitle} садржи само чланке у категорији {category}. За боље резултате, можете користити PetScan да бисте дошли само до чланака унутар те категорије.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} је алатка за стварање упита на Википедији и дефинисање спискова чланака. PetScan придружује ID-ове упитима тако да њихови резултати могу да се увезу у друге алатке.",
 	"import_petscan_prompt": "{link_start}Направите упит у PetScan-у{link_end} и налепите ID  испод:",
 	"in_page": "На страници %s:",

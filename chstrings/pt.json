@@ -24,7 +24,6 @@
 	"import_article_titles": "Insira uma lista de artigos",
 	"import_articles_prompt": "Introduza na área abaixo os {em_start}títulos de artigos{em_end} da Wikipédia a importar, um por linha:",
 	"import_petscan": "Importar de uma consulta PetScan",
-	"import_petscan_category_tip": "Dica: {tooltitle} só contém artigos que estão na categoria {category}. Para melhores resultados, pode usar o PetScan para só obter artigos que estejam nessa categoria.",
 	"import_petscan_intro": "{em_start}PetScan{em_end} é uma ferramenta para consultar a Wikipédia e definir listas de artigos. O PetScan atribui identificadores às consultas, para que os respetivos resultados possam ser importados por outras ferramentas.",
 	"import_petscan_prompt": "{link_start}Crie a sua consulta no PetScan{link_end} e insira o respetivo identificador abaixo, por favor:",
 	"in_page": "Na página %s:",
