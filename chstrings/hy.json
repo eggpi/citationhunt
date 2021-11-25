@@ -1,14 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
+			"Beko",
 			"Kareyac"
 		]
 	},
+	"article_titles_hint": "Հոդվածներըը վերնագրով ներմուծելուց ստուգեք, որ վերնագրերը ճիշտ են և դուք յուրաքանչյուր տողում մեկ հոդված եք ներկայացրել։",
 	"back": "Հետ",
+	"back_to_cancel": "Կարող եք սեղմել {em_start}{back}{em_end} կամ հետարկելու համար փակել այս գրվածքը։",
 	"button_next": "Հաջորդ",
 	"button_wikilink": "Ես ունեմ",
+	"customize": "Կարգավորել",
+	"category_filter_placeholder": "Թեմա փնտրել։",
 	"edits": "Խմբագրումներ",
 	"github_link_title": "Հեյ! Իմ կոդը կա GitHub-ում!",
+	"import_article_titles": "Հոդվածների ցանկը մուտքագրել։",
 	"in_page": "%s էջում",
 	"introduction": "Օգնեք գտնել աղբյուրներ Վիքիպեդիա հոդվածների համար",
 	"js-article-count": "$1 {{PLURAL:$1|հոդված|հոդվածներ}}",
