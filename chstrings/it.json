@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Beta16",
 			"Sannita",
 			"Selven",
@@ -35,6 +36,7 @@
 	"introduction": "Aiutaci a trovare fonti affidabili per le voci di Wikipedia!",
 	"js-article-count": "$1 {{PLURAL:$1|voce|voci}}",
 	"js-custom-numbers": "Contiene frammenti da $1 {{PLURAL:$1|voce|voci}} ed è valido per $2 {{PLURAL:$2|giorno|giorni}}:",
+	"js-custom-no-articles-selected": "Seleziona alcune voci.",
 	"js-invalid-petscan-input": "Un ID numerico PetScan.",
 	"js-keyboard-shortcut": "Scorciatoia da tastiera: %s",
 	"js-leaving-custom": "Stai tornando a illimitato {tooltitle}. Sei sicuro?",
@@ -46,6 +48,7 @@
 	"page_not_found": "Pagina non trovata!",
 	"page_not_found_text": "La pagina che stavi cercando non esiste più — forse hanno già aggiunto questa nota... torna a %s per inserirne un'altra!",
 	"petscan_hint": "Quando importi ricerche PetScan, evita ricerche che prendono molto tempo a PetScan per essere valutate e assicurati di aver fornito un URL o PSID valido.",
+	"select_articles_placeholder": "Cerca una voce.",
 	"submit": "Invia",
 	"tooltitle": "Citation Hunt",
 	"try_again_hints_header": "Prova ancora e tieni a mente questi suggerimenti:",
