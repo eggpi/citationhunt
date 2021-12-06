@@ -4,7 +4,8 @@
 			"ANDROBETA",
 			"Fitoschido",
 			"MSClaudiu",
-			"Strainu"
+			"Strainu",
+			"Tanea.d"
 		]
 	},
 	"article_titles_hint": "Când importați articole după titlu, verificați dacă titlurile sunt corecte și că le-ați furnizat câte unul pe rând.",
@@ -17,7 +18,7 @@
 	"edits": "Editări",
 	"footer": "%s e realizat de voluntari, găzduit pe %s și tradus via %s.",
 	"github_link_title": "Hei! Codul meu sursă este pe GitHub!",
-	"import_article_titles": "O listă a titlurilor articolelor",
+	"import_article_titles": "Introduceți lista titlurilor articolelor",
 	"import_articles_prompt": "Introduceți {em_start}titlul articolelor{em_end} pe Wikipedia pentru a importa, câte unul pe rând, în zona de mai jos:",
 	"import_petscan": "O interogare Pet Scan",
 	"import_petscan_intro": "{em_start}PetScan{em_end} este un instrument pentru interogarea Wikipedia și definirea listelor de articole. PetScan atribuie ID-uri la interogări, astfel încât rezultatele lor să poată fi importate în alte instrumente.",
@@ -46,6 +47,7 @@
 	"page_not_found": "Pagina nu a fost găsită!",
 	"page_not_found_text": "Pagina pe care o căutați nu mai există — poate că acest citat a fost găsit deja? Reveniți la %s pentru mai multe!",
 	"petscan_hint": "Atunci când importați interogări PetScan, evitați întrebările care durează mult timp pentru PetScan pentru a evalua și asigurați-vă că adresa URL sau PSID-ul dvs. sunt valide.",
+	"select_articles_placeholder": "Caută un articol",
 	"submit": "Trimite",
 	"try_again_hints_header": "Încearcă din nou și ține minte următoarele sfaturi:",
 	"user": "Utilizator"
