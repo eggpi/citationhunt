@@ -5,8 +5,6 @@ import os
 import types
 from functools import reduce
 
-import yamwapi as mwapi
-
 # The configuration for a language is a set of key/value pairs, where the
 # values may be True/False, strings or lists/dicts of strings. It is computed
 # by inheriting from the global config, base config, and language-specific
@@ -1081,7 +1079,12 @@ def get_localized_config(lang_code = None, api = True):
 
     cfg.wikipedia = None
     if api:
-        cfg.wikipedia = mwapi.MediaWikiAPI(
+        # This module is imported pretty often during some manual operations
+        # (e.g. creating cronjobs), and yamwapi is the only third-party
+        # dependency that would require us to enter the virtualenv so... as
+        # a convenience hack, we avoid importing it at module level.
+        import yamwapi
+        cfg.wikipedia = yamwapi.MediaWikiAPI(
             'https://' + cfg.wikipedia_domain + '/w/api.php', cfg.user_agent)
         cfg.citation_needed_templates = _resolve_redirects_to_templates(
             cfg.wikipedia, cfg.citation_needed_templates)
