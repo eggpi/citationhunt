@@ -28,6 +28,9 @@ _GLOBAL_CONFIG = dict(
     # Where to put various logs
     log_dir = os.path.join(os.path.expanduser('~'), 'ch_logs'),
 
+    # The lang_tag to use for untranslated strings.
+    fallback_lang_tag = 'en',
+
     flagged_off = [],
 
     profile = True,
