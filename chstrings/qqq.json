@@ -11,7 +11,7 @@
 	"back": "{{Identical|Back}}",
 	"button_next": "Label on the button that browses to the next article.\n{{Identical|Next}}",
 	"button_wikilink": "Label on the button that links to the article so the user can add a reference.",
-	"category_filter_placeholder": "The placeholder text in the input box for filtering articles by category.",
+	"category_filter_placeholder": "The placeholder text in the input box for filtering articles by category",
 	"edits": "{{Identical|Edit}}",
 	"footer": "The text at the bottom of the page. The %s get replaced with the tool name, and links to Tools Labs and translatewiki.net, respectively.",
 	"github_link_title": "The label of a link to the source code of this tool (https://github.com/eggpi/citationhunt)",
