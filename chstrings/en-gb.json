@@ -52,7 +52,7 @@
 	"page_not_found_text": "The page you are looking for no longer exists — perhaps this citation has already been found? Go back to %s for more!",
 	"petscan_hint": "When importing PetScan queries, avoid queries that take very long for PetScan to evaluate and make sure your provided URL or PSID is valid.",
 	"select_articles": "Search for articles in {tooltitle}.",
-	"select_articles_placeholder": "Search for an article.",
+	"select_articles_placeholder": "Search for an article",
 	"select_articles_prompt": "Use the search box below to {em_start}find and add articles{em_end} to your custom {tooltitle}. You can remove an article by clicking it in the preview below.",
 	"submit": "Submit",
 	"try_again_hints_header": "Please try again and keep the following tips in mind:",
