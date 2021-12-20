@@ -48,7 +48,7 @@
 	"page_not_found": "Pagina non trovata!",
 	"page_not_found_text": "La pagina che stavi cercando non esiste più — forse hanno già aggiunto questa nota... torna a %s per inserirne un'altra!",
 	"petscan_hint": "Quando importi ricerche PetScan, evita ricerche che prendono molto tempo a PetScan per essere valutate e assicurati di aver fornito un URL o PSID valido.",
-	"select_articles_placeholder": "Cerca una voce.",
+	"select_articles_placeholder": "Cerca una voce",
 	"submit": "Invia",
 	"tooltitle": "Citation Hunt",
 	"try_again_hints_header": "Prova ancora e tieni a mente questi suggerimenti:",

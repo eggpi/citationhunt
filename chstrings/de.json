@@ -52,7 +52,7 @@
 	"page_not_found_text": "Die Seite, nach der du suchst, ist nicht mehr vorhanden. Vielleicht wurde dieses Zitat bereits gefunden. Gehe zurück zu %s für weitere Informationen!",
 	"petscan_hint": "Vermeide beim Importieren von PetScan-Abfragen solche, deren Auswertung für PetScan sehr lang dauern kann. Stelle sicher, dass deine angegebene URL oder PSID gültig ist.",
 	"select_articles": "Suche nach Artikeln in {tooltitle}",
-	"select_articles_placeholder": "Einen Artikel suchen.",
+	"select_articles_placeholder": "Einen Artikel suchen",
 	"select_articles_prompt": "Benutze das Suchfeld unten, um {em_start}Artikel zu finden{em_end} und zu deinem benutzerdefinierten {tooltitle} {em_start}hinzuzufügen.{em_end} Du kannst einen Artikel entfernen, indem du ihn in der Vorschau unten anklickst.",
 	"submit": "Absenden",
 	"tooltitle": "Citation Hunt",

@@ -34,7 +34,7 @@
 	"page_not_found": "Säit net fonnt!",
 	"page_not_found_text": "D'Säit no där Dir sicht gëtt et net méi - vläicht gouf dat Zitat scho fonnt? Gitt zréck op %s fir méi Informatiounen!",
 	"select_articles": "No Artikele sichen op {tooltitle}",
-	"select_articles_placeholder": "No engem Artikel sichen.",
+	"select_articles_placeholder": "No engem Artikel sichen",
 	"submit": "Schécken",
 	"tooltitle": "Ziate-Juegd",
 	"user": "Benotzer"

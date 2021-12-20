@@ -53,7 +53,7 @@
 	"page_not_found_text": "La pàgina que cerqueu ja no existeix —potser algú ja l'ha referenciada ? Torneu a %s per a més !",
 	"petscan_hint": "Quan importeu cerques de PetScan, eviteu les cerques que prenen molt de temps a ser avaluades per PetScan i assegureu-vos que l'URL o PSID que heu proporcionat són vàlids.",
 	"select_articles": "Cerqueu articles a {tooltitle}",
-	"select_articles_placeholder": "Cerqueu un article.",
+	"select_articles_placeholder": "Cerqueu un article",
 	"select_articles_prompt": "Utilitzeu el quadre de cerca següent per {em_start} cercar i afegir articles {em_end} al vostre {tooltitle} personalitzat. Podeu suprimir un article fent clic a la vista prèvia següent.",
 	"submit": "Envia",
 	"try_again_hints_header": "Torneu-ho a provar i tingueu en compte els consells següents:",

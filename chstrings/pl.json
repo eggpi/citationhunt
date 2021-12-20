@@ -40,7 +40,7 @@
 	"page_not_found": "Nie odnaleziono strony!",
 	"page_not_found_text": "Strona, której szukasz już nie istnieje — być może to źródło zostało już znalezione? Przejdź z powrotem do %s po więcej!",
 	"select_articles": "Szukaj artykułów w {tooltitle}",
-	"select_articles_placeholder": "Wyszukaj artykuł.",
+	"select_articles_placeholder": "Wyszukaj artykuł",
 	"submit": "Wyślij",
 	"user": "Użytkownik"
 }

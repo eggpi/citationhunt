@@ -15,7 +15,7 @@
 	"page_not_found": "ⵜⴰⵙⵏⴰ ⴰⴷ ⵓⵔ ⵜⴻⵜⵜⵢⴰⴼⴰ!",
 	"page_not_found_text": "ⵜⴰⵙⵏⴰ ⴰⴷ ⵅⴼ ⵜⵔⵣⵣⵓⴷ ⵓⵔ ⵢⴰⴷ ⵜⵍⵍⵉ — ⵡⴰⵇⵉⵍⴰ ⵜⴻⵜⵜⵢⴰⴼⴰ ⵢⴰⴷ ⵜⴱⴷⴷⵓⵔⵜ ⴰⴷ? ⴰⵖⵓⵍ ⵖⵔ %s ⵅⴼ ⵡⵓⴳⴳⴰⵔ!",
 	"select_articles": "ⵔⵣⵓ ⵖⴼ ⵉⵎⴳⵔⴰⴷⵏ ⴳ {tooltitle}",
-	"select_articles_placeholder": "ⵔⵣⵓ ⵖⴼ ⵢⴰⵏ ⵏ ⵓⵎⴳⵔⴰⴷ.",
+	"select_articles_placeholder": "ⵔⵣⵓ ⵖⴼ ⵢⴰⵏ ⵏ ⵓⵎⴳⵔⴰⴷ",
 	"submit": "ⴰⵣⵏ",
 	"user": "ⴰⵏⵙⵙⵎⵔⵙ"
 }

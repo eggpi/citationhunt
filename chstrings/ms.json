@@ -19,7 +19,7 @@
 	"js-article-count": "$1 {{PLURAL:$1|rencana}}",
 	"js-custom-no-articles-selected": "Sila pilih beberapa rencana.",
 	"page_not_found": "Laman tidak dijumpai!",
-	"select_articles_placeholder": "Cari rencana.",
+	"select_articles_placeholder": "Cari rencana",
 	"submit": "Serahkan",
 	"try_again_hints_header": "Sila cuba lagi dan cuba ingat petua berikut:",
 	"user": "Pengguna"

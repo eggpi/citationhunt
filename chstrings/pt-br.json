@@ -58,7 +58,7 @@
 	"page_not_found_text": "A página que você está procurado não existe mais — talvez esta citação já tenha sido encontrada? Volte a %s para mais!",
 	"petscan_hint": "Ao importar consultas do PetScan, evite consultas que demorem muito para que o PetScan avalie e garanta que seu URL ou PSID fornecido seja válido.",
 	"select_articles": "Pesquise artigos no {tooltitle}",
-	"select_articles_placeholder": "Procure um artigo.",
+	"select_articles_placeholder": "Procure um artigo",
 	"select_articles_prompt": "Use a caixa de pesquisa abaixo para {em_start} encontrar e adicionar artigos {em_end} ao seu {tooltitle} personalizado. Você pode remover um artigo clicando nele na visualização abaixo.",
 	"submit": "Enviar",
 	"tooltitle": "Citação Hunt",

@@ -50,7 +50,7 @@
 	"page_not_found_text": "Stran, ki jo iščete, ne obstaja več. Ali je morda vir že najden? Preverite v %s!",
 	"petscan_hint": "Pri uvozu poizvedb v orodje PetSCan se izogibajte poizvedbam, za razčlembo katerih lahko orodje Petscan potrebuje zelo veliko časa, in se prepričajte, da je navedeni URL ali PSID veljaven.",
 	"select_articles": "Poiščite članke v orodju {tooltitle}",
-	"select_articles_placeholder": "Poiščite članek.",
+	"select_articles_placeholder": "Poiščite članek",
 	"select_articles_prompt": "Za {em_start}iskanje in dodajanje člakov{em_end} v svoje orodje {tooltitle} po meri uporabite iskalnik. Članek lahko odstranite v spodnjem predogledu.",
 	"submit": "Pošlji",
 	"try_again_hints_header": "Poskusite znova in pri tem upoštevajte naslednje:",

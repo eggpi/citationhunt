@@ -58,7 +58,7 @@
 	"page_not_found_text": "Aradığınız sayfa artık mevcut değil — belki de bu alıntı zaten bulundu? Daha fazla bilgi için %s sayfasına geri dönün!",
 	"petscan_hint": "Pet Tarama sorgularını alırken, Pet Tarama'nın değerlendirilmesi uzun süren sorgulardan kaçının ve sağlanan URL veya PSID'nizin geçerli olduğundan emin olun.",
 	"select_articles": "{tooltitle} içindeki maddeleri arayın",
-	"select_articles_placeholder": "Bir madde arayın.",
+	"select_articles_placeholder": "Bir madde arayın",
 	"select_articles_prompt": "Özel {tooltitle} ürününüze {em_start}madde bulmak ve eklemek{em_end} için aşağıdaki arama kutusunu kullanın. Bir maddeyi aşağıdaki önizlemede tıklayarak kaldırabilirsiniz.",
 	"submit": "Gönder",
 	"try_again_hints_header": "Lütfen tekrar deneyin ve aşağıdaki ipuçlarını aklınızda bulundurun:",

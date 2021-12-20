@@ -55,7 +55,7 @@
 	"page_not_found_text": "A página que está a procurar não existe — talvez esta referência já tenha sido encontrada? Volte a %s para mais!",
 	"petscan_hint": "Ao importar consultas PetScan, evite consultas que o PetScan demora muito a avaliar e certifique-se de que o URL ou o PSID que forneceu é válido.",
 	"select_articles": "Procurar artigos em {tooltitle}",
-	"select_articles_placeholder": "Procurar um artigo.",
+	"select_articles_placeholder": "Procurar um artigo",
 	"select_articles_prompt": "Utilize a caixa de pesquisa abaixo para {em_start}encontrar e adicionar artigos{em_end} ao seu {tooltitle} personalziado. Pode remover um artigo clicando no mesmo na antevisão abaixo.",
 	"submit": "Enviar",
 	"try_again_hints_header": "Tente novamente, por favor, e tenha em consideração as seguintes dicas:",
