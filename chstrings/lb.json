@@ -10,7 +10,7 @@
 	"button_next": "Virun!",
 	"button_wikilink": "Ech hunn dat verstan!",
 	"customize": "Upassen",
-	"category_filter_placeholder": "No engem Thema sichen.",
+	"category_filter_placeholder": "No engem Thema sichen",
 	"edits": "Ännerungen",
 	"footer": "%s gëtt vu Fräiwëllege gemaach, vu(n) %s gehost an op %s iwwersat.",
 	"github_link_title": "Mäi Quellcode ass op GitHub!",
@@ -34,7 +34,7 @@
 	"page_not_found": "Säit net fonnt!",
 	"page_not_found_text": "D'Säit no där Dir sicht gëtt et net méi - vläicht gouf dat Zitat scho fonnt? Gitt zréck op %s fir méi Informatiounen!",
 	"select_articles": "No Artikele sichen op {tooltitle}",
-	"select_articles_placeholder": "No engem Artikel sichen.",
+	"select_articles_placeholder": "No engem Artikel sichen",
 	"submit": "Schécken",
 	"tooltitle": "Ziate-Juegd",
 	"user": "Benotzer"

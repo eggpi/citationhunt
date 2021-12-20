@@ -49,7 +49,7 @@
 	"page_not_found_text": "Stranica koju tražite više ne postoji — možda je izvor već pronađen? Vratite se na %s!",
 	"petscan_hint": "Pri uvozu PetScan upita, izbjegavajte upite dojima treba dugo da se izvrše, i budite sigurni da su URL ili ID upita ispravni.",
 	"select_articles": "Pretražite članke u {tooltitle}",
-	"select_articles_placeholder": "Pretražite članke.",
+	"select_articles_placeholder": "Pretražite članke",
 	"select_articles_prompt": "Iskoristite tražilicu ispod za {em_start}pretraživanje i dodavanje članaka{em_end} u svoj prilagođeni {tooltitle}. Članak možete ukloniti klikom na njega u pretpregledu ispod.",
 	"submit": "Potvrdi",
 	"try_again_hints_header": "Molimo pokušajte ponovno, uz slijedeće savjete na umu:",

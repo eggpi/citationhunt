@@ -15,7 +15,7 @@
 	"button_next": "다음!",
 	"button_wikilink": "찾았습니다!",
 	"customize": "사용자 지정",
-	"category_filter_placeholder": "주제를 검색합니다.",
+	"category_filter_placeholder": "주제를 검색합니다",
 	"edits": "편집",
 	"footer": "%s는 자발적인 사용자들에 의해서 만들어지고, %s에서 호스팅되며, %s를 통해 번역되었습니다.",
 	"github_link_title": "이봐요! 제 소스는 GitHub에 있어요!",
@@ -40,7 +40,7 @@
 	"page_not_found": "문서를 찾을 수 없습니다!",
 	"page_not_found_text": "찾으려는 문서가 더 이상 존재하지 않으며, 이 문구에 대한 출처가 이미 발견되었을 수도 있습니다. %s로 돌아가면 더 많은 정보를 볼 수 있습니다.",
 	"select_articles": "{tooltitle} 내 문서 검색",
-	"select_articles_placeholder": "문서를 검색합니다.",
+	"select_articles_placeholder": "문서를 검색합니다",
 	"submit": "제출",
 	"try_again_hints_header": "다시 시도한 다음 아래의 팁을 염두에 두십시오:",
 	"user": "사용자"
