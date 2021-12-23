@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Jaakkoh",
+			"MITO",
 			"Maantietäjä",
 			"Olimar",
 			"Pyscowicz"
@@ -12,7 +13,7 @@
 	"button_next": "Ehei, seuraava!",
 	"button_wikilink": "Korjaan tämän!",
 	"customize": "Mukauta",
-	"category_filter_placeholder": "Mikä saa sinut syttymään?",
+	"category_filter_placeholder": "Hae aiheesta",
 	"edits": "Muokkaukset",
 	"footer": "%s on vapaaehtoisten tekemä, isännöi %s ja\nkäännetty sivustolla %s.",
 	"github_link_title": "Hoi! Lähdekoodini on GitHubissa!",
@@ -30,6 +31,7 @@
 	"leaderboard_title": "%s Leaderboard",
 	"page_not_found": "Sivua ei löytynyt!",
 	"page_not_found_text": "Etsimäsi sivu ei ole enää olemassa — ehkä lähdeviite on jo lisätty? Mene takaisin sivulle %s löytääksesi uusia puutteita!",
+	"select_articles_placeholder": "Hae artikkelista",
 	"tooltitle": "Lähdejahti",
 	"user": "Käyttäjä"
 }

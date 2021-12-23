@@ -4,13 +4,14 @@
 			"Aftabuzzaman",
 			"Bodhisattwa",
 			"NahidSultan",
+			"Yahya",
 			"আফতাবুজ্জামান"
 		]
 	},
 	"back": "পিছন",
 	"button_next": "পরবর্তী!",
 	"button_wikilink": "যুক্ত করুন!",
-	"category_filter_placeholder": "একটি প্রসঙ্গের জন্য অনুসন্ধান করুন।",
+	"category_filter_placeholder": "একটি প্রসঙ্গের জন্য অনুসন্ধান করুন",
 	"edits": "সম্পাদনাসমূহ",
 	"footer": "%s স্বেচ্ছাসেবকদের দ্বারা তৈরি করা হয়েছে, যা %s-এ হোস্ট করা হয়েছে এবং %s-এর সহায়তায় অনূদিত হয়েছে।",
 	"github_link_title": "শুভেচ্ছা! আমার উৎস গিটহাবে রয়েছে!",
@@ -27,7 +28,7 @@
 	"leaderboard_title": "%s লিডারবোর্ড",
 	"page_not_found": "পাতা পাওয়া যায়নি!",
 	"page_not_found_text": "আপনি যে পাতাটি খুঁজছেন তা আর বিদ্যমান নেই - সম্ভবত এই উদ্ধৃতি ইতিমধ্যে পাওয়া গেছে? আরো খুঁজতে %s-এ ফিরে যান!",
-	"select_articles_placeholder": "একটি নিবন্ধ খুঁজুন।",
+	"select_articles_placeholder": "একটি নিবন্ধ খুঁজুন",
 	"submit": "জমা দিন",
 	"user": "ব্যবহারকারী"
 }

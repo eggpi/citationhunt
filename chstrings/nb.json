@@ -31,6 +31,7 @@
 	"leaderboard_title": "Toppliste for %s",
 	"page_not_found": "Siden ble ikke funnet!",
 	"page_not_found_text": "Siden du leter etter finnes ikke lenger – kanskje noen allerede har funnet en kilde? Gå tilbake til %s for mer!",
+	"select_articles_placeholder": "Søk etter en artikkel",
 	"submit": "Send inn",
 	"tooltitle": "Referansejakt",
 	"try_again_hints_header": "Forsøk igjen og husk følgende tips:",
