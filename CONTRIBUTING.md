@@ -37,10 +37,10 @@ The tests are also run by Travis-CI for pull requests.
 #### Setting up a local Citation Hunt
 
 For more technical contributions, you will likely want to set up a local
-instance of CitationHunt. Let's do that.
+instance of Citation Hunt. Let's do that.
 
 It's highly recommended that you use a
-[virtualenv](https://pypi.python.org/pypi/virtualenv) for running CitationHunt:
+[virtualenv](https://pypi.python.org/pypi/virtualenv) for running Citation Hunt:
 
 ```
 $ virtualenv ch-venv
