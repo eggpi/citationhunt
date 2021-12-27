@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Eitvys200",
+			"Hugo.arg",
 			"Nuodas",
 			"Zygimantus"
 		]
 	},
 	"button_next": "Kitas!",
 	"button_wikilink": "Supratau!",
-	"category_filter_placeholder": "Ieškoti tėmos",
+	"category_filter_placeholder": "Ieškoti temos",
 	"edits": "Keitimai",
 	"footer": "Citation Hunt yra sukurtas savanorių, talpinamas %s ir išverstas per %s.",
 	"github_link_title": "Ei! Mano šaltinis yra „GitHub“!",
@@ -24,5 +25,6 @@
 	"leaderboard_title": "%s Lyderių sąrašas",
 	"page_not_found": "Puslapis nerastas!",
 	"page_not_found_text": "Puslapio, kurio ieškote nebėra, galbūt citata jau buvo rasta? Grįžkite į %s!",
+	"select_articles_placeholder": "Ieškoti straipsnio",
 	"user": "Naudotojas"
 }

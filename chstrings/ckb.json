@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Lost Whispers",
-			"Épine"
+			"Épine",
+			"ئارام بکر"
 		]
 	},
 	"button_next": "دواتر!",
 	"button_wikilink": "ئەمەم لەژێر دەسدایە!",
-	"category_filter_placeholder": "گەڕان بەدوای بابەتێکدا",
+	"category_filter_placeholder": "بۆ بابەتێک بگەڕێ.",
 	"edits": "دەستکارییەکان",
 	"github_link_title": "سڵاو! سەرچاوەکەم لەسەر گیت ھەبە!",
 	"in_page": "لە ناو پەڕەی %s:",
