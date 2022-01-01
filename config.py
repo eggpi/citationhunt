@@ -1014,6 +1014,40 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Թաքցված_կատեգորիաներ',
     ),
+
+    sh = dict(
+        lang_name = 'Srpskohrvatski / Српскохрватски',
+        lang_dir = 'ltr',
+        database = 'shwiki_p',
+        wikipedia_domain = 'sh.wikipedia.org',
+        beginners_link = 'https://sh.wikipedia.org/wiki/Wikipedia:Navo%C4%91enje_izvora',
+        beginners_link_title = 'Wikipedia:Navođenje izvora',
+        lead_section_policy_link = 'https://sh.wikipedia.org/wiki/WP:NAVOD',
+        lead_section_policy_link_title = 'WP:NAVOD',
+
+        extract = 'section',
+        citation_needed_templates = [
+            'traži se izvor',
+        ],
+        hidden_category = 'Sakrivene_kategorije',
+    ),
+
+    bs = dict(
+        lang_name = 'Bosanski',
+        lang_dir = 'ltr',
+        database = 'bswiki_p',
+        wikipedia_domain = 'bs.wikipedia.org',
+        beginners_link = 'https://bs.wikipedia.org/wiki/Wikipedia:Navo%C4%91enje_izvora',
+        beginners_link_title = 'Wikipedia:Navođenje izvora',
+        lead_section_policy_link = 'https://bs.wikipedia.org/wiki/WP:CI',
+        lead_section_policy_link_title = 'WP:CI',
+
+        extract = 'section',
+        citation_needed_templates = [
+            'Nedostaju izvori',
+        ],
+        hidden_category = 'Skrivene_kategorije',
+    ),
 )
 
 Config = types.SimpleNamespace

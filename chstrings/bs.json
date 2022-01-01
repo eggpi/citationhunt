@@ -7,7 +7,7 @@
 		]
 	},
 	"back": "Nazad",
-	"back_to_cancel": "Možete pritisnuti {em_start}{nazad}{em_end} ili zatvoriti ovaj dijalog da poništite.",
+	"back_to_cancel": "Možete pritisnuti {em_start}{back}{em_end} ili zatvoriti ovaj dijalog da poništite.",
 	"button_next": "Sljedeći!",
 	"button_wikilink": "Ja ću!",
 	"customize": "Prilagodi",
