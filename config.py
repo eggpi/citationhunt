@@ -1025,9 +1025,9 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://sh.wikipedia.org/wiki/WP:NAVOD',
         lead_section_policy_link_title = 'WP:NAVOD',
 
-        extract = 'section',
         citation_needed_templates = [
-            'traži se izvor',
+            'Reference necessary',
+            'Nedostaje izvor',
         ],
         hidden_category = 'Sakrivene_kategorije',
     ),
