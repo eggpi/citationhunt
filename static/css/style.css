@@ -136,6 +136,7 @@ html[dir="rtl"] #quotation {
 }
 
 #lang-selector {
+    text-overflow: ellipsis;
     border: 2px solid #937E7E;
     border-radius: 2px;
 }

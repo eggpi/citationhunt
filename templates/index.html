@@ -70,7 +70,7 @@
         {% if strings.leaderboard_link_title %}
         <div class="mx-1"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html{% if current_custom %}?custom={{ current_custom }}{% endif %}">{{ strings.leaderboard_link_title }}</a></div>
         {% endif %}
-        <select id="lang-selector" class="mx-1">
+        <select id="lang-selector" class="mx-1 col-1 px-0">
           {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
           <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
           {% endfor %}
