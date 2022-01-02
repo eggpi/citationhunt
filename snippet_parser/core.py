@@ -121,7 +121,10 @@ class SnippetParser:
                 isinstance(t2, mwparserfromhell.parser.tokens.Text) and
                 t2.text.lower().strip() in self._lowercase_cn_templates)
         try:
-            return mwparserfromhell.parser.Builder().build(reduced_tokens)
+            wikicode = mwparserfromhell.parser.Builder().build(reduced_tokens)
+            if wikicode:
+                return wikicode
+            return None
         except mwparserfromhell.parser.ParserError:
             return None
 
