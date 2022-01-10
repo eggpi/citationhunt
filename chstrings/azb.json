@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Alp Er Tunqa",
+			"Bir morty",
 			"Ilğım"
 		]
 	},
 	"button_next": "سوْنراکی!",
 	"button_wikilink": "تۇتدوم!",
-	"category_filter_placeholder": "بیر مبحث اوچون آختار",
+	"category_filter_placeholder": "بیر موضوع اوچون آختار",
 	"edits": "دَییشدیرمه‌لر",
 	"footer": "%s داوطلبلر الی ایله یارانیب ،%s-ده یئر آلیب و %s ایله چئویریلیبدیر.",
 	"github_link_title": "سالام! منیم قایناغیم گیت‌هاب‌دادیر!",
