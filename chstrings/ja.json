@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"MathXplore",
 			"Omotecho",
 			"Takot",
 			"ネイ"
@@ -12,7 +13,7 @@
 	"button_next": "次！",
 	"button_wikilink": "出典、知ってる！",
 	"customize": "カスタマイズ",
-	"category_filter_placeholder": "トピックを検索。",
+	"category_filter_placeholder": "トピックを検索",
 	"edits": "編集",
 	"footer": "%s はボランティアによって製作されています。ホスティングは%s 上で、翻訳は%s で行います。",
 	"github_link_title": "そう！ このソースは GitHub にあるよ！",
@@ -50,7 +51,7 @@
 	"page_not_found_text": "お探しのページは見つかりませんでした―もしかすると誰かがもう出典を見つけたのかも？　%s に戻って次に進みましょう！",
 	"petscan_hint": "PetScan クエリをインポートする場合は、PetScan が評価するのに長時間かかるクエリは避けてください。入力した URL もしくは PSID に間違いがないか、確認してください。",
 	"select_articles": "{tooltitle}から複数の記事を検索",
-	"select_articles_placeholder": "記事1件を検索。",
+	"select_articles_placeholder": "記事を検索。",
 	"select_articles_prompt": "以下の検索ボックスを使い、指定した{tooltitle}に{em_start}検索した記事を追加{em_end}します。プレビューを表示し、不要な記事を1件、除去できます。",
 	"submit": "送信",
 	"tooltitle": "Citation Hunt",
