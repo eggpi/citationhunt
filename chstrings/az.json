@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Cekli829",
+			"Wertuose",
 			"Şeyx Şamil"
 		]
 	},
@@ -12,7 +13,7 @@
 	"github_link_title": "Hey! Mənim mənbəm GitHub-dadır!",
 	"import_article_titles": "Məqalə siyahısı daxil et",
 	"introduction": "Vikipediya məqalələri üçün mənbə tapmağa kömək et!",
-	"js-article-count": "$1 {{PLURAL:$1|məqalə|məqalələr}}",
+	"js-article-count": "$1 məqalə",
 	"js-keyboard-shortcut": "Klaviatura qısayolları: %s",
 	"js-snippet-count": "$1 fraqment",
 	"page_not_found": "Səhifə tapılmadı!",
