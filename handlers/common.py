@@ -56,7 +56,7 @@ def load_strings_for_request(lang_code, cfg, accept_language_hdr):
     header_locales = accept_language_hdr.split(',')
     for l in header_locales:
         lang_tag = l.split(';', 1)[0]  # drop weight, if any
-        lang = l.split('-', 1)[0] # en-GB -> en
+        lang = l.split('-', 1)[0]  # en-GB -> en
 
         lang_tag_matches_config = (
             lang == lang_code or

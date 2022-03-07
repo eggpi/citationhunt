@@ -159,11 +159,16 @@ def _load_strings_for_lang_tag(lang_tag):
         return json.load(json_fp)
 
 def get_localized_strings(config, lang_tag):
-    strings = _load_strings_for_lang_tag(config.fallback_lang_tag)
+    localized_strings = {}
     try:
-        strings.update(_load_strings_for_lang_tag(lang_tag))
+        localized_strings = _load_strings_for_lang_tag(lang_tag)
     except:
-        pass
+        return localized_strings
+
+    # Complete the strings with the fallback in case of incomplete
+    # translations, but only if there is a translation at all.
+    strings = _load_strings_for_lang_tag(config.fallback_lang_tag)
+    strings.update(localized_strings)
     strings = _preprocess_variables(config, strings)
     _partition_js_strings(strings)
     return strings

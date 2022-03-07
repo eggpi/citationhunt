@@ -43,6 +43,15 @@ class CHStringsTest(unittest.TestCase):
             self.assertEqual(fallback_strings['instructions_goal'],
                 strings['instructions_goal'])
 
+    def test_missing_lang_tag_has_no_fallback(self):
+        # We must only apply the fallback strings if there is an incomplete
+        # strings file (test_fallback_lang_tag exercises that behavior).
+        # If the file does not exist at all, we must return {} rather than just
+        # the fallback strings.
+        self.assertEqual(
+            chstrings.get_localized_strings(cfg, 'fake'), {})
+
+
 if __name__ == '__main__':
     for lc in config.LANG_CODES_TO_LANG_NAMES:
         cfg = config.get_localized_config(lc, api = False)
