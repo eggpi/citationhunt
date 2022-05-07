@@ -1048,6 +1048,23 @@ _LANG_CODE_TO_CONFIG = dict(
         ],
         hidden_category = 'Skrivene_kategorije',
     ),
+
+    **{  # https://stackoverflow.com/questions/54974442/escape-reserved-keywords-python
+    'as': dict(
+        lang_name = 'অসমীয়া',
+        lang_dir = 'ltr',
+        database = 'aswiki_p',
+        wikipedia_domain = 'as.wikipedia.org',
+        beginners_link = 'https://as.wikipedia.org/wiki/%E0%A7%B1%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE:%E0%A6%89%E0%A7%8E%E0%A6%B8%E0%A7%B0_%E0%A6%89%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%96',
+        beginners_link_title = 'ৱিকিপিডিয়া:উৎসৰ উল্লেখ',
+        lead_section_policy_link = 'https://as.wikipedia.org/wiki/%E0%A7%B1%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE:%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%A4%E0%A6%BE',
+        lead_section_policy_link_title = 'ৱিকিপিডিয়া:বিশ্বাসযোগ্যতা',
+
+        citation_needed_templates = [
+            '{{Citation needed}}',
+        ],
+        hidden_category = 'অদৃশ্য_শ্ৰেণীসমূহ',
+    )},
 )
 
 Config = types.SimpleNamespace
