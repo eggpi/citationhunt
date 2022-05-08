@@ -99,6 +99,17 @@ class CitationHuntTest(unittest.TestCase):
             self.assertEqual(response.status_code, 302)
             self.assertTrue(response.location.endswith('/en/favicon.ico'))
 
+    def test_accept_language_redirect_with_full_tags(self):
+        headers = {'Accept-Language': 'en-IE, pt-BR;q=0.5'}
+        response = self.app.get('/', headers = headers)
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.location.endswith('/en'))
+
+        headers = {'Accept-Language': 'pt-BR, en-IE;q=0.5'}
+        response = self.app.get('/', headers = headers)
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.location.endswith('/pt'))
+
     def test_default_en_redirect_unsupported_language(self):
         headers = {'Accept-Language': 'lv'}
         # Pretend we don't support lv

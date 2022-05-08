@@ -21,12 +21,14 @@ class HandlersCommonTest(unittest.TestCase):
             if lang_tag.lower() in allowed_lang_tags:
                 return {'ok': True}
             return {}
+        parsed_accept_language = common.parse_accept_language_header(
+            accept_language_hdr)
         with mock.patch(
             # https://stackoverflow.com/questions/14341689/
             __name__ + '.common.chstrings.get_localized_strings',
             side_effect = fake_get_localized_strings):
             lang_tag, strings = common.load_strings_for_request(
-                lang_code, cfg, accept_language_hdr)
+                lang_code, cfg, parsed_accept_language)
         # Must have eventually loaded a valid set of strings
         self.assertEqual(strings, {'ok': True})
         return lang_tag, tested_lang_tags
