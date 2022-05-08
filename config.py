@@ -1049,6 +1049,26 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Skrivene_kategorije',
     ),
 
+    azb = dict(
+        lang_name = 'ورکجه ویکی‌پدیا',
+        lang_dir = 'rtl',
+        database = 'azbwiki_p',
+        wikipedia_domain = 'azb.wikipedia.org',
+        beginners_link = 'https://azb.wikipedia.org/wiki/%D9%88%DB%8C%DA%A9%DB%8C%E2%80%8C%D9%BE%D8%AF%DB%8C%D8%A7:%DA%AF%D8%A6%DA%86%D8%B1%D9%84%DB%8C_%D9%82%D8%A7%DB%8C%D9%86%D8%A7%D9%82%D9%84%D8%A7%D8%B1',
+        beginners_link_title = 'ویکی‌پدیا:گئچرلی قایناقلار',
+        lead_section_policy_link = 'https://azb.wikipedia.org/wiki/%D9%88%DB%8C%DA%A9%DB%8C%E2%80%8C%D9%BE%D8%AF%DB%8C%D8%A7:%DB%8C%D9%88%D9%92%D8%AE%D9%84%D8%A7%D9%86%DB%8C%D9%84%D8%A7%D8%A8%DB%8C%D9%84%D8%B1%D9%84%DB%8C%DA%A9',
+        lead_section_policy_link_title = 'یکی‌پدیا:یوْخلانیلابیلرلیک',
+
+        citation_needed_templates = [
+            'قایناق‌؟',
+        ],
+        hidden_category = 'بؤلمه:گیزلی_بؤلمه‌لر',
+
+        # We get very few articles and snippets, disable the sanity check.
+        min_snippets_sanity_check = 0,
+        min_articles_sanity_check = 0,
+    ),
+
     **{  # https://stackoverflow.com/questions/54974442/escape-reserved-keywords-python
     'as': dict(
         lang_name = 'অসমীয়া',
