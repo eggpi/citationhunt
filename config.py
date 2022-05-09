@@ -829,8 +829,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'Konfirmon'
         ],
         hidden_category = 'Kaŝitaj_kategorioj',
-        # Looks like we get very few articles and snippets for eowiki, disable
-        # the sanity check.
+        # We get very few articles and snippets, disable the sanity check.
         min_snippets_sanity_check = 0,
         min_articles_sanity_check = 0,
     ),
@@ -1069,6 +1068,159 @@ _LANG_CODE_TO_CONFIG = dict(
         min_articles_sanity_check = 0,
     ),
 
+    bh = dict(
+        lang_name = 'Bihari',
+        lang_dir = 'ltr',
+        database = 'bhwiki_p',
+        wikipedia_domain = 'bh.wikipedia.org',
+        beginners_link = 'https://bh.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:Citing_sources',
+        beginners_link_title = 'विकिपीडिया:Citing_sour es',
+        lead_section_policy_link = 'https://bh.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%B8%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AA%E0%A4%A8_%E0%A4%9C%E0%A5%8B%E0%A4%97',
+        lead_section_policy_link_title = 'विकिपीडिया:सत्यापन जोग',
+
+        citation_needed_templates = [
+            'प्रमाण देईं',
+        ],
+        hidden_category = 'छिपावल_श्रेणी',
+
+        # We get very few articles and snippets, disable the sanity check.
+        min_snippets_sanity_check = 0,
+        min_articles_sanity_check = 0,
+    ),
+
+    af = dict(
+        lang_name = 'Afrikaans',
+        lang_dir = 'ltr',
+        database = 'afwiki_p',
+        wikipedia_domain = 'af.wikipedia.org',
+        beginners_link = 'https://af.wikipedia.org/wiki/Wikipedia:Betroubare_bronne',
+        beginners_link_title = 'Wikipedia:Betroubare_bronne',
+        lead_section_policy_link = 'https://af.wikipedia.org/wiki/Wikipedia:Verifieerbaarheid',
+        lead_section_policy_link_title = 'WP:VER',
+
+        citation_needed_templates = [
+            'Feit',
+        ],
+        hidden_category = 'Versteekte_kategorieë',
+    ),
+
+    ms = dict(
+        lang_name = 'Malay',
+        lang_dir = 'ltr',
+        database = 'mswiki_p',
+        wikipedia_domain = 'ms.wikipedia.org',
+        beginners_link = 'https://ms.wikipedia.org/wiki/Wikipedia:Sumber_yang_boleh_dipercayai',
+        beginners_link_title = 'Wikipedia:Sumber_yang_boleh_dipercayai',
+        lead_section_policy_link = 'https://ms.wikipedia.org/wiki/Wikipedia:Pengesahan',
+        lead_section_policy_link_title = 'Wikipedia:Pengesahan',
+
+        citation_needed_templates = [
+            'Citation needed'
+        ],
+        hidden_category = 'Kategori_tersembunyi',
+    ),
+
+    my = dict(
+        lang_name = 'Burmese',
+        lang_dir = 'ltr',
+        database = 'mywiki_p',
+        wikipedia_domain = 'my.wikipedia.org',
+        beginners_link = 'https://my.wikipedia.org/wiki/%E1%80%A1%E1%80%80%E1%80%B0%E1%80%A1%E1%80%8A%E1%80%AE:%E1%80%9C%E1%80%B0%E1%80%9E%E1%80%85%E1%80%BA%E1%80%99%E1%80%BB%E1%80%AC%E1%80%B8%E1%80%A1%E1%80%90%E1%80%BD%E1%80%80%E1%80%BA_%E1%80%80%E1%80%AD%E1%80%AF%E1%80%B8%E1%80%80%E1%80%AC%E1%80%B8%E1%80%81%E1%80%BC%E1%80%84%E1%80%BA%E1%80%B8',
+        beginners_link_title = 'အကူအညီ:လူသစ်များအတွက်_ကိုးကားခြင်း',
+        lead_section_policy_link = 'https://my.wikipedia.org/wiki/%E1%80%9D%E1%80%AE%E1%80%80%E1%80%AE%E1%80%95%E1%80%AE%E1%80%B8%E1%80%92%E1%80%AE%E1%80%B8%E1%80%9A%E1%80%AC%E1%80%B8:%E1%80%85%E1%80%AD%E1%80%85%E1%80%85%E1%80%BA%E1%80%A1%E1%80%90%E1%80%8A%E1%80%BA%E1%80%95%E1%80%BC%E1%80%AF%E1%80%81%E1%80%B6%E1%80%94%E1%80%AD%E1%80%AF%E1%80%84%E1%80%BA%E1%80%99%E1%80%BE%E1%80%AF',
+        lead_section_policy_link_title = 'ဝီကီပီးဒီးယား:စိစစ်အတည်ပြုခံနိုင်မှု',
+
+        citation_needed_templates = [
+            'Citation needed'
+        ],
+        hidden_category = 'ဝှက်ထားသော_ကဏ္ဍများ',
+    ),
+
+    pa = dict(
+        lang_name = 'Eastern Punjabi',
+        lang_dir = 'ltr',
+        database = 'pawiki_p',
+        wikipedia_domain = 'pa.wikipedia.org',
+        beginners_link = 'https://pa.wikipedia.org/wiki/%E0%A8%AE%E0%A8%A6%E0%A8%A6:%E0%A8%B9%E0%A8%B5%E0%A8%BE%E0%A8%B2%E0%A9%87_%E0%A8%9C%E0%A9%8B%E0%A9%9C%E0%A8%A8%E0%A8%BE',
+        beginners_link_title = 'ਮਦਦ:ਹਵਾਲੇ_ਜੋੜਨਾ',
+        lead_section_policy_link = 'https://pa.wikipedia.org/wiki/%E0%A8%B5%E0%A8%BF%E0%A8%95%E0%A9%80%E0%A8%AA%E0%A9%80%E0%A8%A1%E0%A9%80%E0%A8%86:%E0%A8%B0%E0%A8%B8_%E0%A8%A6%E0%A9%87_%E0%A8%AE%E0%A8%BE%E0%A8%A8%E0%A8%A3_%E0%A8%AA%E0%A9%8D%E0%A8%B0%E0%A9%80%E0%A8%95%E0%A8%BF%E0%A8%B0%E0%A8%BF%E0%A8%86',
+        lead_section_policy_link_title = 'ਵਿਕੀਪੀਡੀਆ:ਰਸ ਦੇ ਮਾਨਣ ਪ੍ਰੀਕਿਰਿਆ',
+
+        citation_needed_templates = [
+            'ਹਵਾਲਾ ਲੋੜੀਂਦਾ'
+        ],
+        hidden_category = 'ਲੁਕਵੀਆਂ_ਸ਼੍ਰੇਣੀਆਂ',
+    ),
+
+    sd = dict(
+        lang_name = 'Sindhi',
+        lang_dir = 'rtl',
+        database = 'sdwiki_p',
+        wikipedia_domain = 'sd.wikipedia.org',
+        beginners_link = 'https://sd.wikipedia.org/wiki/%D9%88%DA%AA%D9%8A%D9%BE%D9%8A%DA%8A%D9%8A%D8%A7:%D9%82%D8%A7%D8%A8%D9%84_%D8%AA%D8%B5%D8%AF%D9%8A%D9%82_%D8%AD%D9%88%D8%A7%D9%84%D8%A7',
+        beginners_link_title = 'وڪيپيڊيا:قابل تصديق حوالا',
+        lead_section_policy_link = 'https://pa.wikipedia.org/wiki/%E0%A8%B5%E0%A8%BF%E0%A8%95%E0%A9%80%E0%A8%AA%E0%A9%80%E0%A8%A1%E0%A9%80%E0%A8%86:%E0%A8%B0%E0%A8%B8_%E0%A8%A6%E0%A9%87_%E0%A8%AE%E0%A8%BE%E0%A8%A8%E0%A8%A3_%E0%A8%AA%E0%A9%8D%E0%A8%B0%E0%A9%80%E0%A8%95%E0%A8%BF%E0%A8%B0%E0%A8%BF%E0%A8%8://sd.wikipedia.org/wiki/%D9%88%DA%AA%D9%8A%D9%BE%D9%8A%DA%8A%D9%8A%D8%A7:%D8%AB%D8%A7%D8%A8%D8%AA%D9%8A',
+        lead_section_policy_link_title = 'وڪيپيڊيا:ثابتي',
+
+        citation_needed_templates = [
+            'سانچو:حوالو گهربل',
+            'حوالو گھربل',
+        ],
+        hidden_category = 'زمرو:پوشيدهه_زمرا',
+
+        # We get very few articles and snippets, disable the sanity check.
+        min_snippets_sanity_check = 0,
+        min_articles_sanity_check = 0,
+    ),
+
+    ta = dict(
+        lang_name = 'Tamil',
+        lang_dir = 'ltr',
+        database = 'tawiki_p',
+        wikipedia_domain = 'ta.wikipedia.org',
+        beginners_link = 'https://ta.wikipedia.org/wiki/%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%80%E0%AE%9F%E0%AE%BF%E0%AE%AF%E0%AE%BE:%E0%AE%A8%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%95%E0%AE%AE%E0%AE%BE%E0%AE%A9_%E0%AE%AE%E0%AF%82%E0%AE%B2%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D',
+        beginners_link_title = 'விக்கிப்பீடியா:நம்பகமான மூலங்கள்',
+        lead_section_policy_link = 'https://ta.wikipedia.org/wiki/%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%80%E0%AE%9F%E0%AE%BF%E0%AE%AF%E0%AE%BE:%E0%AE%AE%E0%AF%86%E0%AE%AF%E0%AF%8D%E0%AE%AF%E0%AE%B1%E0%AE%BF%E0%AE%A4%E0%AE%A9%E0%AF%8D%E0%AE%AE%E0%AF%88',
+        lead_section_policy_link_title = 'விக்கிப்பீடியா:மெய்யறிதன்மை',
+
+        citation_needed_templates = [
+            'Citation needed'
+        ],
+        hidden_category = 'மறைக்கப்பட்ட_பகுப்புகள்',
+    ),
+
+    tl = dict(
+        lang_name = 'Tagalog',
+        lang_dir = 'ltr',
+        database = 'tlwiki_p',
+        wikipedia_domain = 'tl.wikipedia.org',
+        beginners_link = 'https://tl.wikipedia.org/wiki/Wikipedia:Pagsisipi',
+        beginners_link_title = 'Wikipedia:Pagsisipi',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_templates = [
+            'Fact'
+        ],
+        hidden_category = 'Mga_nakatagong_kategorya',
+    ),
+
+    vi = dict(
+        lang_name = 'tiếng Việt',
+        lang_dir = 'ltr',
+        database = 'viwiki_p',
+        wikipedia_domain = 'vi.wikipedia.org',
+        beginners_link = 'https://vi.wikipedia.org/wiki/Wikipedia:Ngu%E1%BB%93n_%C4%91%C3%A1ng_tin_c%E1%BA%ADy',
+        beginners_link_title = 'Wikipedia:Nguồn đáng tin cậy',
+        lead_section_policy_link = 'https://vi.wikipedia.org/wiki/Wikipedia:Th%C3%B4ng_tin_ki%E1%BB%83m_ch%E1%BB%A9ng_%C4%91%C6%B0%E1%BB%A3c',
+        lead_section_policy_link_title = 'Wikipedia:Thông tin kiểm chứng được',
+
+        citation_needed_templates = [
+            'Cần chú thích'
+        ],
+        hidden_category = 'Thể_loại_ẩn',
+    ),
+
     **{  # https://stackoverflow.com/questions/54974442/escape-reserved-keywords-python
     'as': dict(
         lang_name = 'অসমীয়া',
@@ -1081,9 +1233,29 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link_title = 'ৱিকিপিডিয়া:বিশ্বাসযোগ্যতা',
 
         citation_needed_templates = [
-            '{{Citation needed}}',
+            'Citation needed',
         ],
         hidden_category = 'অদৃশ্য_শ্ৰেণীসমূহ',
+    ),
+
+    'or': dict(
+        lang_name = 'Odia',
+        lang_dir = 'ltr',
+        database = 'orwiki_p',
+        wikipedia_domain = 'or.wikipedia.org',
+        beginners_link = 'https://or.wikipedia.org/wiki/%E0%AC%89%E0%AC%87%E0%AC%95%E0%AC%BF%E0%AC%AA%E0%AC%BF%E0%AC%A1%E0%AC%BC%E0%AC%BF%E0%AC%86:Identifying_reliable_sources',
+        beginners_link_title = 'ଉଇକିପିଡ଼ିଆ:Identifying_reliable_sources',
+        lead_section_policy_link = 'https://or.wikipedia.org/wiki/%E0%AC%89%E0%AC%87%E0%AC%95%E0%AC%BF%E0%AC%AA%E0%AC%BF%E0%AC%A1%E0%AC%BC%E0%AC%BF%E0%AC%86:%E0%AC%AA%E0%AC%B0%E0%AC%96%E0%AC%AF%E0%AD%8B%E0%AC%97%E0%AD%8D%E0%AD%9F%E0%AC%A4%E0%AC%BE',
+        lead_section_policy_link_title = 'ଉଇକିପିଡ଼ିଆ:ପରଖଯୋଗ୍ୟତା',
+
+        citation_needed_templates = [
+            'Citation needed'
+        ],
+        hidden_category = 'Hidden_categories',
+
+        # We get very few articles and snippets, disable the sanity check.
+        min_snippets_sanity_check = 0,
+        min_articles_sanity_check = 0,
     )},
 )
 
