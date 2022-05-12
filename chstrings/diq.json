@@ -28,7 +28,7 @@
 	"instructions_goal": "Letey Wikipediyayo cêrên be {link_start}yew çımeyo bawerdar{link_end} ra raşt nêbiyo.  Şıma şenê yew çıme bıvênê?",
 	"custom_created": "{tooltitle} şımayo xısusi vıraziyayo!",
 	"custom_end_copy_link": "Merdumanê binan rê icazetê karniyayıii dayışi rê gırey cori şenê kopya kerê u pare bıkerê ya zi {link_start}enewke dest bê terenayışi bıkerê {link_end}!",
-	"custom_failed": "Qısur mewni, xısusi {tooltitle} nêvıraziya ya zi veng mende!",
+	"custom_failed": "Qısur de mewnên, {tooltitle} xısusi nêvıraziya ya zi veng mend!",
 	"custom_import_prompt": "Şıma qayılê senê {tooltitle} vırazê?",
 	"custom_intro": "Tede ra yew lista meqaleyi obcey {tooltitle} şenê xısusi bıkerê . Buno, şıma rê kılm Zeman de ariyaye meqaleyanê {tooltitle} rê çımeştışi rê u vıla kerdışi rê yew gıre dano.",
 	"custom_notice": "Amoriyaye amar de meqale ihtiwa kerden xısusi çımerzenê yew dosyay {tooltitle}. {link_start}Nêkemeyaya {tooltitle}{link_end} ravere peyser.",
