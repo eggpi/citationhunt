@@ -3,9 +3,11 @@
 		"authors": [
 			"Adam Harangozó",
 			"BanKris",
+			"Blua lago",
 			"Máté",
 			"Notramo",
 			"Pasztilla",
+			"Szaki",
 			"Tacsipacsi",
 			"Wolf Rex"
 		]
@@ -13,10 +15,12 @@
 	"back": "Vissza",
 	"button_next": "Következő!",
 	"button_wikilink": "Megvan!",
+	"customize": "Testreszabás",
 	"category_filter_placeholder": "Téma keresése",
 	"edits": "Szerkesztések",
 	"footer": "%s önkéntesek által lettek létrehozva, a %s-n vannak hosztolva, és a %s használatával lett lefordítva.",
 	"github_link_title": "Helló! A forráskódom elérhető a GitHubon!",
+	"import_article_titles": "Szócikkek listájának megadása",
 	"in_page": "A(z) %s oldalon:",
 	"instructions_details": "Kattints a(z) %s gombra, hogy eljuss a Wikipédiára és kijavíthasd a részletet vagy a(z) %s gombra egy másikért. További információkért lásd a(z) %s lapot. Sok szerencsét!",
 	"instructions_goal": "Az alábbi Wikipédia-részlet nincs alátámasztva egy {link_start}megbízható forrással{link_end}. Tudsz találni egyet?",
@@ -30,6 +34,9 @@
 	"leaderboard_title": "%s Eredményjelző",
 	"page_not_found": "A lap nem található!",
 	"page_not_found_text": "Az általad keresett oldal már nem létezik — valószínűleg már találtak hozzá forrást? Menj vissza a(z) %s oldalra többért!",
+	"select_articles_placeholder": "Szócikk keresése",
+	"submit": "Küldés",
 	"tooltitle": "Forrásvadász",
+	"try_again_hints_header": "Kérjük az alábbi tippek figyelembevételével próbáld újra:",
 	"user": "Felhasználó"
 }
