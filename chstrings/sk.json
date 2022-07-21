@@ -50,7 +50,7 @@
 	"page_not_found_text": "Stránka, ktorú hľadáte už neexistuje - možno táto citácia už bola vyhľadaná? Choďte späť na %s!",
 	"petscan_hint": "Pri importe dopytov PetScan sa vyhnite dopytom, ktoré trvajú veľmi dlho než ich PetScan vyhodnotí a uistite sa, že ste zadali platnú URL alebo PSID.",
 	"select_articles": "Hľadanie artiklov v {tooltitle}",
-	"select_articles_placeholder": "Hľadanie artikla",
+	"select_articles_placeholder": "Vyhľadať článok",
 	"select_articles_prompt": "Použite vyhľadávacie okienko nižšie na {em_start}vyhľadanie artikla{em_end} do vášho {tooltitle}. Artikel odstránite kliknutím naň v náhľade nižšie.",
 	"submit": "Odoslať",
 	"try_again_hints_header": "Prosím skúste znova a použite nasledovné rady:",

@@ -55,6 +55,5 @@
 	"select_articles_placeholder": "Search for an article",
 	"select_articles_prompt": "Use the search box below to {em_start}find and add articles{em_end} to your custom {tooltitle}. You can remove an article by clicking it in the preview below.",
 	"submit": "Submit",
-	"try_again_hints_header": "Please try again and keep the following tips in mind:",
-	"user": "User"
+	"try_again_hints_header": "Please try again and keep the following tips in mind:"
 }
