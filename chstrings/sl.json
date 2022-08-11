@@ -34,7 +34,7 @@
 	"introduction": "Pomagajte pri iskanju virov za članke Wikipedije!",
 	"js-article-count": "$1 {{PLURAL:$1|članek|članka|članki|člankov}}",
 	"js-custom-numbers": "Vsebuje odlomke iz $1 {{PLURAL:$1|članka|člankov}} in velja $2 {{PLURAL:$2|dan|dni}}:",
-	"js-custom-no-articles-selected": "Izberite nekaj člankov.",
+	"js-custom-no-articles-selected": "Prosimo, izberite nekaj člankov!",
 	"js-invalid-petscan-input": "Navedite števčni Petscan ID.",
 	"js-keyboard-shortcut": "Bližnjica na tipkovnici: %s",
 	"js-leaving-custom": "Vračate se na neomejeno različico {tooltitle}. Ali ste prepričani?",
