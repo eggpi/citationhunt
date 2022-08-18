@@ -22,6 +22,7 @@
 	"js-custom-no-articles-selected": "Ji keremam xwee hin gotaran bibijêre.",
 	"js-invalid-petscan-input": "Ji kerema xwe IDyeke PetScan-ê ya hejmarî bibijêre.",
 	"js-keyboard-shortcut": "Kurterêya klavyeyê: %s",
+	"js-snippet-count": "$1 {{PLURAL:$1|parçe}}",
 	"lead_section_hint": "Ev nivîs parçeyeke qismê serî ya gotarê ye, lewma dibe ku referansdana wê girêdayî daxwaza be. Ji bo zêdetir agahiyan ji kerema xwe li %s binêre.",
 	"leaderboard_description": "Ev bikarhêner, bikarhênerên ku jêgirtinan di {days} rojên dawî de bi riya {tooltitle} herî zêde çareser kirine ne. Pir baş e!",
 	"leaderboard_link_title": "Texteya lîderan",
