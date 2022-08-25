@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"GinawaSaHapon"
+		]
+	},
+	"article_titles_hint": "Kapag nag-iimport ng mga artikulo sa pamagat nito, paki-double check na tama ang mga pamagat at nagbigay ka ng isa kada linya.",
+	"back": "Balik",
+	"back_to_cancel": "Pwede mong pindutin ang {em_end}{back}{em_end} o isara ang dialog na ito para ikansela.",
+	"button_next": "Sunod!",
+	"button_wikilink": "Sige!",
+	"customize": "I-customize",
+	"category_filter_placeholder": "Maghanap ng paksa",
+	"edits": "Mga edit",
+	"footer": "Ginawa ng mga volunteer ang %s, na hino-host sa %s at sinalin gamit ang %s.",
+	"github_link_title": "Uy! Nasa GitHub ang source ko!",
+	"import_article_titles": "Maglagay ng listahan ng mga artikulo",
+	"import_articles_prompt": "Pakilagay ang {em_start}mga pamagat ng artikulo{em_end} sa Wikipedia na ii-import, isa kada linya, sa lugar sa baba:",
+	"import_petscan": "Mag-import mula sa PetScan query",
+	"import_petscan_intro": "Isang kagamitan ang {em_start}PetScan{em_end} para sa pag-query sa Wikipedia at pagde-define sa mga listahan ng artikulo. Nagtatakda ng mga ID ang PetScan sa mga query kaya naman pwedeng ma-import ang mga resulta nito sa ibang mga kagamitan.",
+	"import_petscan_prompt": "Mangyaring {link_start}gawin ang query mo sa PetScan{link_end} at i-paste ang ID nito sa baba:",
+	"in_page": "Sa pahinang %s:",
+	"instructions_details": "Pindutin ang %s para makapunta sa Wikipedia at {link_start}ayusin ang snippet{link_end}, o %s para makakita pa ng isa. Good luck!",
+	"instructions_goal": "Walang kaakibat na {link_start}mapagkakatiwalaang sanggunian{link_end} ang Wikipedia snippet. Makakahanap ka ba ng isa?",
+	"custom_created": "Nagawa na ang custom mong {tooltitle}!",
+	"custom_end_copy_link": "Makokopya mo na at mababahagi ang link sa taas para payagan ang ibang mga tao na magamit ito, o {link_start}magsimulang mag-browse rito na{link_end}!",
+	"custom_failed": "Pasensiya na, bigong magawa ang custom na {tooltitle} mo, o baka walang resulta!",
+	"custom_import_prompt": "Paano mo gustong gumawa ng custom na {tooltitle}?",
+	"custom_intro": "Pwede mong i-customize ang {tooltitle} sa pamamagitan ng pagbibigay sa isang listahan ng mga artikulo. Nagbibigay ito ng isang link na pwede mong maibahagi sa iba para ma-browse nila ang {tooltitle} na limitado lang sa mga artikulong binigay mo.",
+	"custom_notice": "Nagba-browse ka ng isang custom na {tooltitle} na may limitadong listahan ng mga artikulo. {link_start}Bumalik sa walang restriksyon na {tooltitle}{link_end}.",
+	"custom_please_wait": "Maghintay po, kino-compute na ang custom mong {tooltitle}. Baka magtagal ito nang ilang minuto.",
+	"introduction": "Tulungang makakita ng mga pagsipi para sa mga artikulo sa Wikipedia!",
+	"js-article-count": "$1 {{PLURAL:$1|artikulo|(na) artikulo}}",
+	"js-custom-numbers": "Naglalaman ng mga snippet mula sa $1 {{PLURAL:$1|artikulo|(na) artikulo}} at valid nang $2 {{PLURAL:$2|araw|(na) araw}}:",
+	"js-custom-no-articles-selected": "Pumili ng ilang mga artikulo.",
+	"js-invalid-petscan-input": "Maglagay ng isang numeric na PetScan ID.",
+	"js-keyboard-shortcut": "Keyboard shortcut: %s",
+	"js-leaving-custom": "Babalik ka sa walang restriksyon na {tooltitle}. Sigurado ka ba?",
+	"js-refs-added-today": "$1 {{PLURAL:$1|pagsipi|(na) pagsipi}} ang naidagdag ngayon!",
+	"js-select-articles-summary": "Pindutin para masilip ($1 {{PLURAL:$1|artikulo|(na) artikulo}} at $2 {{PLURAL:$2|snippet|(na) snippet}} ang naidagdag)"
+}
