@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Crucifunked",
-			"Fitoschido"
+			"Fitoschido",
+			"Julio Nepote"
 		]
 	},
 	"button_next": "No, siguienti!",
@@ -12,7 +13,7 @@
 	"in_page": "Ena páhina %s:",
 	"instructions_details": "Haz click en %s pa dil a Güiquipeya i correhil el fragmentu, o %s pa vel otru. Compreba %s si tienis preguntas. Güena suerti!",
 	"instructions_goal": "Esti fragmentu de Güiquipeya nu está acorpau pol nenguna {link_start}huenti confiable{link_end}. Pues atopal una?",
-	"introduction": "Ayúa a atopal citas p'artículus de Güiquipeya!",
+	"introduction": "Ayúa a atopal citas p'artícalus de Güiquipedia!",
 	"lead_section_hint": "Esti testu es parti de la seción prencipal del artículu, asin que referencialu pue sel opcional. Consulta %s pa más enhormación.",
 	"page_not_found": "Páhina no atopá.",
 	"page_not_found_text": "La páhina qu'estás buscandu ya nu esisti. Quiziá esta cita ya s'á atopau? Güelvi a %s pa más!"
