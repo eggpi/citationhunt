@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"GinawaSaHapon"
+			"GinawaSaHapon",
+			"Jojit fb"
 		]
 	},
 	"article_titles_hint": "Kapag nag-iimport ng mga artikulo sa pamagat nito, paki-double check na tama ang mga pamagat at nagbigay ka ng isa kada linya.",
@@ -11,7 +12,7 @@
 	"button_wikilink": "Sige!",
 	"customize": "I-customize",
 	"category_filter_placeholder": "Maghanap ng paksa",
-	"edits": "Mga edit",
+	"edits": "Mga binago",
 	"footer": "Ginawa ng mga volunteer ang %s, na hino-host sa %s at sinalin gamit ang %s.",
 	"github_link_title": "Uy! Nasa GitHub ang source ko!",
 	"import_article_titles": "Maglagay ng listahan ng mga artikulo",
