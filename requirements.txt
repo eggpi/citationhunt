@@ -1,6 +1,6 @@
 bleach==3.3.0
 bz2file==0.98
-certifi==2019.6.16
+certifi==2022.12.7
 chardet==3.0.4
 charset-normalizer==2.0.9
 Click==7.0
