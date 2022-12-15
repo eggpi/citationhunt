@@ -14,7 +14,7 @@
 	"category_filter_placeholder": "Maghanap ng paksa",
 	"edits": "Mga binago",
 	"footer": "Ginawa ng mga volunteer ang %s, na hino-host sa %s at sinalin gamit ang %s.",
-	"github_link_title": "Uy! Nasa GitHub ang source ko!",
+	"github_link_title": "Uy! Nasa GitHub ang source code ko!",
 	"import_article_titles": "Maglagay ng listahan ng mga artikulo",
 	"import_articles_prompt": "Pakilagay ang {em_start}mga pamagat ng artikulo{em_end} sa Wikipedia na ii-import, isa kada linya, sa lugar sa baba:",
 	"import_petscan": "Mag-import mula sa PetScan query",

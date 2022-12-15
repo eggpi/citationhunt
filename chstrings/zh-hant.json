@@ -7,7 +7,8 @@
 			"Sanmosa",
 			"Shangkuanlc",
 			"Winston Sung",
-			"Wwycheuk"
+			"Wwycheuk",
+			"捍粵者"
 		]
 	},
 	"article_titles_hint": "當透過標題來匯入條目時，請小心確認標題無誤並且是一行一個。",
@@ -48,7 +49,7 @@
 	"lead_section_hint": "此段文字位於條目的序言章節，可能不需引用來源。請查看%s獲得更多資訊。",
 	"leaderboard_description": "這些是透過 {tooltitle}，在過去 {days} 天裡做過最多次片段修正的使用者們。做得好！",
 	"leaderboard_link_title": "排行榜",
-	"leaderboard_title": "%s 排行榜",
+	"leaderboard_title": "%s排行榜",
 	"old_snippet_hint": "此段文字在維基百科上被標記沒有參考來源已經有很長一段時間。若您真的沒有辦法找到來源，就大膽地把此段文字給整個移除吧！",
 	"page_not_found": "找不到頁面！",
 	"page_not_found_text": "您找尋的頁面已不存在——或許這筆引用已由別人找到？返回 %s 尋找更多頁面！",
