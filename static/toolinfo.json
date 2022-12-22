@@ -1,9 +1,23 @@
 {
 	"name" : "citationhunt",
 	"title" : "Citation Hunt",
-	"description" : "A fun tool for quickly browsing unsourced snippets on Wikipedia..",
-	"url" : "https://tools.wmflabs.org/citationhunt/",
+	"description" : "Citation Hunt is a tool for browsing snippets of Wikipedia articles that lack citations. It is available in several languages and allows browsing snippets either randomly or by their article's categories in a quick and fun way.",
+	"url" : "https://citationhunt.toolforge.org/",
 	"keywords" : "citations, Wikipedia",
-	"author" : "Guilherme P. Gonçalves",
-	"repository" : "https://github.com/eggpi/citationhunt"
+	"author" : [
+		{
+			"name" : "Guilherme P. Gonçalves",
+			"wiki_username" : "Surlycyborg"
+		}
+	],
+	"tool_type" : "web app",
+	"license" : "MIT",
+	"repository" : "https://github.com/eggpi/citationhunt",
+	"bugtracker_url" : "https://github.com/eggpi/citationhunt/issues",
+	"user_docs_url" : [
+		{
+			"url" : "https://meta.wikimedia.org/wiki/Citation_Hunt",
+			"language" : "en"
+		}
+	]
 }
