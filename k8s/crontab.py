@@ -17,6 +17,20 @@ if _upper_dir not in sys.path:
     sys.path.append(_upper_dir)
 
 import config
+import utils
+
+# https://en.wikipedia.org/wiki/List_of_Wikipedias#Edition_details
+TOP_20_LANG_CODES_BY_ARTICLE_COUNT = {
+	'en', 'ceb', 'de', 'sv', 'fr', 'nl', 'ru', 'es', 'it', 'arz', 'pl',
+	'ja', 'zh_hant', 'zh_hans', 'vi', 'war', 'uk', 'ar', 'pt', 'fa', 'ca',
+} & config.LANG_CODES_TO_LANG_NAMES.keys()
+
+SMALL_LANG_CODES_PER_CHUNK = 10
+
+CHUNKS_OF_SMALLER_LANG_CODES = utils.ichunk(
+    (lc for lc in sorted(config.LANG_CODES_TO_LANG_NAMES.keys())
+        if lc not in TOP_20_LANG_CODES_BY_ARTICLE_COUNT),
+    SMALL_LANG_CODES_PER_CHUNK)
 
 freq = 4  # how many days between runs, for each language
 duration = 4  # how many hours between runs within a single day
@@ -61,8 +75,16 @@ spec:
 '''
 
 h = 0
-for lc in sorted(config.LANG_CODES_TO_LANG_NAMES):
+for lc in TOP_20_LANG_CODES_BY_ARTICLE_COUNT:
     print(cronjob_template.format(
         lc = lc, name = lc.replace('_', '-'),
+        h=(h % 24), dom=1 + (h // 24), freq=freq))
+    h += duration
+
+for chunk in CHUNKS_OF_SMALLER_LANG_CODES:
+    lang_codes = list(chunk)
+    job_name = '_'.join(lc.replace('_', '-') for lc in lang_codes)
+    print(cronjob_template.format(
+        lc = ' '.join(lang_codes), name = job_name,
         h=(h % 24), dom=1 + (h // 24), freq=freq))
     h += duration

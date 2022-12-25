@@ -118,20 +118,23 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Update the CitationHunt databases.')
     parser.add_argument('lang_code',
+        nargs='*',
         help='One of the language codes in ../config.py')
     args = parser.parse_args()
 
-    logname = 'citationhunt_update_' + args.lang_code
-    logger = logging.getLogger(logname)
-    utils.setup_logger_to_logfile(logger, logname + '.log')
+    for lang_code in args.lang_code:
+        if lang_code not in config.LANG_CODES_TO_LANG_NAMES:
+            logger.error('Invalid lang code {}!'.format(lang_code))
+            sys.exit(1)
 
     if not utils.running_in_tools_labs():
         logger.error('Not running in Tools Labs!')
         sys.exit(1)
 
-    if args.lang_code not in config.LANG_CODES_TO_LANG_NAMES:
-        logger.error('Invalid lang code {}!'.format(args.lang_code))
-        sys.exit(1)
+    for lang_code in args.lang_code:
+        logname = 'citationhunt_update_' + lang_code
+        logger = logging.getLogger(logname)
+        utils.setup_logger_to_logfile(logger, logname + '.log')
 
-    cfg = config.get_localized_config(args.lang_code)
-    update_db_tools_labs(logger, cfg)
+        cfg = config.get_localized_config(lang_code)
+        update_db_tools_labs(logger, cfg)
