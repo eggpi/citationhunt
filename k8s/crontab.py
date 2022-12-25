@@ -81,10 +81,9 @@ for lc in TOP_20_LANG_CODES_BY_ARTICLE_COUNT:
         h=(h % 24), dom=1 + (h // 24), freq=freq))
     h += duration
 
-for chunk in CHUNKS_OF_SMALLER_LANG_CODES:
+for i, chunk in enumerate(CHUNKS_OF_SMALLER_LANG_CODES):
     lang_codes = list(chunk)
-    job_name = '_'.join(lc.replace('_', '-') for lc in lang_codes)
     print(cronjob_template.format(
-        lc = ' '.join(lang_codes), name = job_name,
+        lc = ' '.join(lang_codes), name = 'small-{}'.format(i),
         h=(h % 24), dom=1 + (h // 24), freq=freq))
     h += duration

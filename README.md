@@ -56,6 +56,7 @@ $ webservice --backend=kubernetes python3.7 start
 Then, generate the Cron jobs for Kubernetes:
 
 ```
+$ kubectl get cronjobs | tail -n +1 | grep -E -o '^citationhunt-update-[^ ]+' | xargs kubectl delete cronjob  # delete existing jobs
 $ (cd citationhunt; k8s/crontab.py | kubectl apply -f -)
 $ kubectl get cronjobs # verify it
 ```
