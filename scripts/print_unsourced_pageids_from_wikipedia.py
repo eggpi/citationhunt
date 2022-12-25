@@ -18,12 +18,13 @@ def print_unsourced_ids_from_wikipedia():
     cursor = db.cursor()
 
     or_clause = (
-        '(' + 'OR '.join(['tl_title = %s'] * len(templates)) + ')'
+        '(' + 'OR '.join(['lt_title = %s'] * len(templates)) + ')'
     )
     # https://www.mediawiki.org/wiki/Help:Namespaces
     cursor.execute(
-        'SELECT tl_from FROM templatelinks WHERE ' +
-        'tl_from_namespace = 0 AND tl_namespace = 10 AND ' +
+        'SELECT tl_from FROM templatelinks '
+        'JOIN linktarget ON templatelinks.tl_target_id = linktarget.lt_id '
+        'WHERE tl_from_namespace = 0 AND lt_namespace = 10 AND ' +
         or_clause, templates)
     for (page_id,) in cursor:
         print(page_id)
