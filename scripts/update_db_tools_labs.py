@@ -123,18 +123,17 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     for lang_code in args.lang_code:
-        if lang_code not in config.LANG_CODES_TO_LANG_NAMES:
-            logger.error('Invalid lang code {}!'.format(lang_code))
-            sys.exit(1)
-
-    if not utils.running_in_tools_labs():
-        logger.error('Not running in Tools Labs!')
-        sys.exit(1)
-
-    for lang_code in args.lang_code:
         logname = 'citationhunt_update_' + lang_code
         logger = logging.getLogger(logname)
         utils.setup_logger_to_logfile(logger, logname + '.log')
+
+        if lang_code not in config.LANG_CODES_TO_LANG_NAMES:
+            logger.error('Invalid lang code {}!'.format(lang_code))
+            continue
+
+        if not utils.running_in_tools_labs():
+            logger.error('Not running in Tools Labs!')
+            sys.exit(1)
 
         cfg = config.get_localized_config(lang_code)
         update_db_tools_labs(logger, cfg)
