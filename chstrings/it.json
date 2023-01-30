@@ -3,6 +3,7 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Beta16",
+			"McDutchie",
 			"Sannita",
 			"Selven",
 			"Ubibi",
@@ -28,7 +29,7 @@
 	"instructions_details": "Clicca %s per andare su Wikipedia e {link_start}correggere la frase{link_end} o clicca %s per passare alla prossima frase. Buona fortuna!",
 	"instructions_goal": "La seguente frase non ha una {link_start}fonte affidabile{link_end}. Riesci a trovarne una?",
 	"custom_created": "La tua modifica {tooltitle} è stata creata!",
-	"custom_end_copy_link": "Puoi copiare e condividere il link sopra per permettere ad altre persone di usarlo {link_start}inizia a sfogliarlo{link_end}!",
+	"custom_end_copy_link": "Puoi copiare e condividere il link sopra per permettere ad altre persone di usarlo, oppure {link_start}iniziare a sfogliarlo ora{link_end}!",
 	"custom_failed": "Scusa, la tua modifica {tooltitle} non si è creata e risulta vuota!",
 	"custom_import_prompt": "Come vuoi creare un {tooltitle} personalizzato?",
 	"custom_intro": "Puoi personalizzare {tooltitle} fornendo un elenco di articoli. Questo crea un link che puoi condividere con altri affinché li esplorino {tooltitle} limitandosi agli articoli che hai fornito.",

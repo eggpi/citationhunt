@@ -7,17 +7,23 @@
 			"Zygimantus"
 		]
 	},
+	"back": "Atgal",
 	"button_next": "Kitas!",
 	"button_wikilink": "Supratau!",
+	"customize": "Pritaikyti",
 	"category_filter_placeholder": "Ieškoti temos",
 	"edits": "Keitimai",
 	"footer": "Citation Hunt yra sukurtas savanorių, talpinamas %s ir išverstas per %s.",
 	"github_link_title": "Ei! Mano šaltinis yra „GitHub“!",
+	"import_article_titles": "Įveskite straipsnių sąrašą",
+	"import_petscan": "Importuoti iš PetScan užklausos",
 	"in_page": "Puslapyje \"%s:",
 	"instructions_details": "Paspauskite %s, kad pataisytumėte Vikipedijos fragmentą arba %s, kad pamatytumėte naują. Žiūrėkite %s jei turite klausimų. Sėkmės!",
 	"instructions_goal": "Vikipedijos fragmentas žemiau nėra paremtas {link_start} patikimais šaltiniais {link_end}. Ar galite rasti patikimą šaltinį?",
 	"introduction": "Padėkite rasti citatas Vikipedijos straipsniams!",
 	"js-article-count": "$1 {{PLURAL:$1|straipsnis|straipsniai}}",
+	"js-custom-no-articles-selected": "Prašome pasirinkti keletą straipsnių.",
+	"js-invalid-petscan-input": "Prašome pateikti skaitmeninį PetScan ID.",
 	"js-keyboard-shortcut": "Spartieji klavišai: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citata|citatos}} pridėta šiandien!",
 	"lead_section_hint": "Šis tekstas yra dalis straipsnio įvado, tad nuorodos gali būti neprivalomos. Prašome peržiūrėti %s dėl daugiau informacijos.",
@@ -26,5 +32,6 @@
 	"page_not_found": "Puslapis nerastas!",
 	"page_not_found_text": "Puslapio, kurio ieškote nebėra, galbūt citata jau buvo rasta? Grįžkite į %s!",
 	"select_articles_placeholder": "Ieškoti straipsnio",
+	"submit": "Pateikti",
 	"user": "Naudotojas"
 }
