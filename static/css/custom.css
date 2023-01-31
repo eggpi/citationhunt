@@ -9,6 +9,10 @@
     border-top: 3px solid;
 }
 
+body[theme=dark] #custom-notice {
+    background-color: #5f5f54;
+}
+
 #custom-controls .o-open {
     /* Fighting bootstrap, which sets margin-bottom. */
     margin: 0;
@@ -17,6 +21,10 @@
     color: #0645AD;
     text-decoration: underline;
     cursor: pointer;
+}
+
+body[theme=dark] #custom-controls .o-open {
+    color: #6D9FF0;
 }
 
 #custom-modal-wrapper {

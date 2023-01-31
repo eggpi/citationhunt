@@ -35,6 +35,10 @@
     color: #0645AD;
 }
 
+body[theme=dark] #snippet sup {
+    color: #6D9FF0;
+}
+
 #snippet h3 {
     font-size: 16px;
 }

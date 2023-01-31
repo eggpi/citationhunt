@@ -5,7 +5,17 @@ body {
 }
 
 body * {
+    color: inherit;
     background-color: inherit;
+}
+
+body.interactive-theme-transition {
+    transition: background-color 0.2s;
+}
+
+body[theme=dark] {
+    background-color: #0E0E0E;
+    color: #f7f4f7;
 }
 
 /* Apparently Bootstrap's reboot.css set text-align: left unconditionally! */
@@ -23,6 +33,10 @@ a {
     color: #0645AD;
     /* Why would bootstrap unset this? :( */
     text-decoration: underline;
+}
+
+body[theme=dark] a {
+    color: #6D9FF0;
 }
 
 a:focus {
@@ -113,8 +127,16 @@ html[dir="rtl"] #quotation {
     border: 2px solid #1C6F2C;
 }
 
+body[theme=dark] #button-wikilink {
+    box-shadow: 1px -1px 5px #008C6E inset, 0 2px 3px #5f5f54;
+}
+
 #button-wikilink:hover, #button-wikilink:focus {
     box-shadow: 1px -1px 5px #1C6F2C inset, 0 2px 3px #BABABA;
+}
+
+body[theme=dark] #button-wikilink:hover, #button-wikilink:focus {
+    box-shadow: 1px -1px 5px #1C6F2C inset, 0 2px 3px #5f5f54;
 }
 
 #button-next {
@@ -125,8 +147,16 @@ html[dir="rtl"] #quotation {
     border: 2px solid #41499F;
 }
 
+body[theme=dark] #button-next {
+    box-shadow: -1px -1px 5px #2A62CC inset, 0 2px 3px #5f5f54;
+}
+
 #button-next:hover, #button-next:focus {
     box-shadow: -1px -1px 5px #41499F inset, 0 2px 3px #BABABA;
+}
+
+body[theme=dark] #button-next:hover, #button-next:focus {
+    box-shadow: -1px -1px 5px #41499F inset, 0 2px 3px #5f5f54;
 }
 
 #js-disabled-category-warning {
@@ -135,6 +165,7 @@ html[dir="rtl"] #quotation {
 }
 
 #lang-selector {
+    color: inherit;
     text-overflow: ellipsis;
     border: 2px solid #937E7E;
     border-radius: 2px;
@@ -167,6 +198,10 @@ html[dir="rtl"] #category-filter-spinner {
 
 .info {
     color: #5f5f54;
+}
+
+body[theme=dark] .info {
+    color: #d7d7ca;
 }
 
 #instructions p {
@@ -247,8 +282,13 @@ html[dir="rtl"] #leaderboard td {
     margin: 0 2px;
 }
 
+.snippet-notice-modal {
+    background-color: inherit;
+}
+
 .lead-hint {
     background-color: #EEF31A;
+    color: #0E0E0E;
 }
 
 .old-hint {
@@ -290,6 +330,11 @@ html[dir="rtl"] #leaderboard td {
     border-left: 2px solid #EBEBEB;
 }
 
+body[theme=dark] #hamburguer-menu {
+    background: linear-gradient(90deg, #1A1A1A 0%, #0E0E0E 100%);
+    border-left: 2px solid #0C0C0C;
+}
+
 #hamburguer-menu-trigger:checked ~ #hamburguer-menu {
     transform: none;
 }
@@ -301,4 +346,15 @@ html[dir="rtl"] #leaderboard td {
 
 #hamburguer-menu-trigger ~ #hamburguer-label::before {
     content: "☰";
+}
+
+#theme-toggle {
+    /* Make it look like a link. */
+    color: #0645AD;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+body[theme=dark] #theme-toggle {
+    color: #6D9FF0;
 }

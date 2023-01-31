@@ -7,6 +7,10 @@
     padding: 20px 20px 0 20px !important;
 }
 
+body[theme=dark] .pure-modal-wrap {
+    background-color: #1B1B1B !important;
+}
+
 .pure-modal .pure-modal-overlay .close {
     position: static;
     width: 100%;
@@ -20,6 +24,12 @@
     margin: 0;
 }
 
+body[theme=dark] .pure-modal-overlay .close {
+    border-top: 2px solid;
+    border-top-color: unset;
+    color: unset;
+}
+
 @media (min-width: 768px) {
     .snippet-notice-modal .pure-modal-wrap {
         width: 45% !important;
@@ -27,6 +37,6 @@
 }
 
 .pure-modal .pure-modal-overlay .close:hover {
-    color: #362929;
-    border-top-color: #362929;
+    color: #FCFCFC;
+    border-top-color: #FCFCFC;
 }
