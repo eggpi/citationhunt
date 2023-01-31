@@ -41,123 +41,123 @@
     <script src="static/js/fixed.js" defer></script>
     <script src="static/js/shortcuts.js" defer></script>
     <script src="static/js/custom.js" defer></script>
+    <script src="static/js/theme.js" defer></script>
   </head>
-  <body>
-    <div class="container-fluid py-2">
-      <div class="row m-0 justify-content-between">
-        <h1>{{ strings.tooltitle }}</h1>
-        <div class="col-1"></div>
-        <input id="hamburguer-menu-trigger" type="checkbox"/>
-        <label id="hamburguer-label" for="hamburguer-menu-trigger"></label>
-        <div id="hamburguer-menu" class="col col-auto col-md-3">
-          <select id="lang-selector" class="mx-1 my-1">
-            {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
-            <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
-            {% endfor %}
-          </select>
-          <div id="custom-controls" class="mx-1 my-2" hidden>
-            <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
-            <div class="pure-modal">
-              <input id="custom-modal-trigger" class="checkbox" type="checkbox">
-              <div id="custom-modal-wrapper" class="pure-modal-overlay">
-                <label for="custom-modal-trigger" class="o-close"></label>
-                <div class="pure-modal-wrap a-center">
-                    <div id="custom-card-container"></div>
-                    <div id="custom-buttons-container" class="row justify-content-center">
-                        <a id="custom-button-back" href="">{{ strings.back }}</a>
-                        <div class="col-1"></div> <!-- direction-independent spacing -->
-                        <a id="custom-button-submit" href="">{{ strings.submit }}</a>
-                    </div>
-                </div>
+  <body class="py-2 px-3">
+    <div class="row m-0 justify-content-between">
+      <h1>{{ strings.tooltitle }}</h1>
+      <div class="col-1"></div>
+      <input id="hamburguer-menu-trigger" type="checkbox"/>
+      <label id="hamburguer-label" for="hamburguer-menu-trigger"></label>
+      <div id="hamburguer-menu" class="col col-auto col-md-3">
+        <select id="lang-selector" class="mx-1 my-1">
+          {% for lang_code, lang_name in config.lang_codes_to_lang_names.items() | sort %}
+          <option data-lang-code="{{ lang_code }}" {% if config.lang_code == lang_code %} selected{% endif %}>{{ lang_name }}</option>
+          {% endfor %}
+        </select>
+        <div id="custom-controls" class="mx-1 my-2" hidden>
+          <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
+          <div class="pure-modal">
+            <input id="custom-modal-trigger" class="checkbox" type="checkbox">
+            <div id="custom-modal-wrapper" class="pure-modal-overlay">
+              <label for="custom-modal-trigger" class="o-close"></label>
+              <div class="pure-modal-wrap a-center">
+                  <div id="custom-card-container"></div>
+                  <div id="custom-buttons-container" class="row justify-content-center">
+                      <a id="custom-button-back" href="">{{ strings.back }}</a>
+                      <div class="col-1"></div> <!-- direction-independent spacing -->
+                      <a id="custom-button-submit" href="">{{ strings.submit }}</a>
+                  </div>
               </div>
             </div>
           </div>
-          {% if strings.leaderboard_link_title %}
-          <div class="mx-1 my-2"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
+        </div>
+        {% if strings.leaderboard_link_title %}
+        <div class="mx-1 my-2"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
+        {% endif %}
+        <div id="custom-controls" class="mx-1" hidden>
+          <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
+        </div>
+        <div id="theme-toggle" class="mx-1 my-2"></div>
+      </div>
+    </div>
+    <div id=instructions class="info">
+      <p>{{ strings.instructions_goal }}</p>
+      <p>{{ strings.instructions_details }}</p>
+    </div>
+    <div class="row ml-1 mr-1 mt-4">
+      <p id="in-page" class="col">{{ strings.in_page % (article_url, article_title) }}</p>
+      {% if old_snippet and strings.old_snippet_hint %}
+      <label for="old-snippet-hint-modal-trigger" class="snippet-notice old-hint"></label>
+      <div class="pure-modal snippet-notice-modal">
+        <input id="old-snippet-hint-modal-trigger" class="checkbox" type="checkbox">
+        <div class="pure-modal-overlay">
+          <label for="old-snippet-hint-modal-trigger" class="o-close"></label>
+          <div class="pure-modal-wrap a-center">
+            <p>{{ strings.old_snippet_hint }}</p>
+            <label for="old-snippet-hint-modal-trigger" class="close">&#x2714;</label>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% if not section and strings.lead_section_hint %}
+      <label for="lead-hint-modal-trigger" class="snippet-notice lead-hint">!</label>
+      <div class="pure-modal snippet-notice-modal">
+        <input id="lead-hint-modal-trigger" class="checkbox" type="checkbox">
+        <div class="pure-modal-overlay">
+          <label for="lead-hint-modal-trigger" class="o-close"></label>
+          <div class="pure-modal-wrap a-center">
+            <p>{{ strings.lead_section_hint }}</p>
+            <label for="lead-hint-modal-trigger" class="close">&#x2714;</label>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <div class="col-1"></div> <!-- Padding to make this align with the top right of the snippet. -->
+    </div>
+    <div class="row justify-content-center no-gutters">
+      <blockquote id="snippet" class="col-10">
+        <div id="quotation">"</div>
+        {{ snippet }}
+      </blockquote>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-5 col-sm-4 col-lg-2">
+          <a href="{{ config.lang_code }}/redirect?id={{ snippet_id }}&custom={{ current_custom }}&to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
+          target="_blank"><button class="button" id="button-wikilink">{{ strings.button_wikilink }}</button></a>
+      </div>
+      <div class="col-5 col-sm-4 col-lg-2">
+        <button form="form-next" type="submit" id="button-next" class="button">{{ strings.button_next }}</button>
+      </div>
+    </div>
+    <div class="row mt-4 no-gutters justify-content-center">
+      <div class="col-1"></div>  <!-- Padding the same size as the spinner to keep the form centered. -->
+      <div class="col-10 col-lg-5">
+        <form method="GET" action="" id="form-next" hidden>
+          <input type="text" id="category-input" value="{{ current_category.title }}" autocomplete="off" placeholder="{{ strings.category_filter_placeholder }}">
+          <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
+          <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
+          {% if current_custom %}
+          <input type="text" id="hidden-custom-input" name="custom" value="{{ current_custom }}" hidden>
           {% endif %}
-          <div id="custom-controls" class="mx-1" hidden>
-            <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
-          </div>
+        </form>
+        <noscript>
+          <div id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</div>
+        </noscript>
+      </div>
+      <div class="col-1">
+        <div id="category-filter-spinner" class="spinner"></div>
+      </div>
+    </div>
+    <div id="fixed-count-container" class="info mt-3" hidden></div>
+    <div class="row mt-5 justify-content-center">
+      <div class="col-10">
+        <div id="footer" class="info">
+          <a id="github-link" href="https://github.com/eggpi/citationhunt">{{ strings.github_link_title }}</a>
+          <p>{{ strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net/wiki/Translating:CitationHunt") if strings.footer else '' }}</p>
         </div>
       </div>
-      <div id=instructions class="info">
-        <p>{{ strings.instructions_goal }}</p>
-        <p>{{ strings.instructions_details }}</p>
-      </div>
-      <div class="row ml-1 mr-1 mt-4">
-        <p id="in-page" class="col">{{ strings.in_page % (article_url, article_title) }}</p>
-        {% if old_snippet and strings.old_snippet_hint %}
-        <label for="old-snippet-hint-modal-trigger" class="snippet-notice old-hint"></label>
-        <div class="pure-modal snippet-notice-modal">
-          <input id="old-snippet-hint-modal-trigger" class="checkbox" type="checkbox">
-          <div class="pure-modal-overlay">
-            <label for="old-snippet-hint-modal-trigger" class="o-close"></label>
-            <div class="pure-modal-wrap a-center">
-              <p>{{ strings.old_snippet_hint }}</p>
-              <label for="old-snippet-hint-modal-trigger" class="close">&#x2714;</label>
-            </div>
-          </div>
-        </div>
-        {% endif %}
-        {% if not section and strings.lead_section_hint %}
-        <label for="lead-hint-modal-trigger" class="snippet-notice lead-hint">!</label>
-        <div class="pure-modal snippet-notice-modal">
-          <input id="lead-hint-modal-trigger" class="checkbox" type="checkbox">
-          <div class="pure-modal-overlay">
-            <label for="lead-hint-modal-trigger" class="o-close"></label>
-            <div class="pure-modal-wrap a-center">
-              <p>{{ strings.lead_section_hint }}</p>
-              <label for="lead-hint-modal-trigger" class="close">&#x2714;</label>
-            </div>
-          </div>
-        </div>
-        {% endif %}
-        <div class="col-1"></div> <!-- Padding to make this align with the top right of the snippet. -->
-      </div>
-      <div class="row justify-content-center no-gutters">
-        <blockquote id="snippet" class="col-10">
-          <div id="quotation">"</div>
-          {{ snippet }}
-        </blockquote>
-      </div>
-      <div class="row justify-content-center mt-4">
-        <div class="col-5 col-sm-4 col-lg-2">
-            <a href="{{ config.lang_code }}/redirect?id={{ snippet_id }}&custom={{ current_custom }}&to={{ article_url_path }}{% if section %}#{{ section }}{% endif %}"
-            target="_blank"><button class="button" id="button-wikilink">{{ strings.button_wikilink }}</button></a>
-        </div>
-        <div class="col-5 col-sm-4 col-lg-2">
-          <button form="form-next" type="submit" id="button-next" class="button">{{ strings.button_next }}</button>
-        </div>
-      </div>
-      <div class="row mt-4 no-gutters justify-content-center">
-        <div class="col-1"></div>  <!-- Padding the same size as the spinner to keep the form centered. -->
-        <div class="col-10 col-lg-5">
-          <form method="GET" action="" id="form-next" hidden>
-            <input type="text" id="category-input" value="{{ current_category.title }}" autocomplete="off" placeholder="{{ strings.category_filter_placeholder }}">
-            <input type="text" id="hidden-id-input" name="id" value="{{ next_snippet_id }}" hidden>
-            <input type="text" id="hidden-category-input" name="cat" value="{{ current_category.id }}" hidden>
-            {% if current_custom %}
-            <input type="text" id="hidden-custom-input" name="custom" value="{{ current_custom }}" hidden>
-            {% endif %}
-          </form>
-          <noscript>
-            <div id="js-disabled-category-warning">Sorry, filtering by category requires Javascript!</div>
-          </noscript>
-        </div>
-        <div class="col-1">
-          <div id="category-filter-spinner" class="spinner"></div>
-        </div>
-      </div>
-      <div id="fixed-count-container" class="info mt-3" hidden></div>
-      <div class="row mt-5 justify-content-center">
-        <div class="col-10">
-          <div id="footer" class="info">
-            <a id="github-link" href="https://github.com/eggpi/citationhunt">{{ strings.github_link_title }}</a>
-            <p>{{ strings.footer | format("https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs", "https://translatewiki.net/wiki/Translating:CitationHunt") if strings.footer else '' }}</p>
-          </div>
-        </div>
-      </div>
-    </div>  <!-- main page container -->
+    </div>
     {% if current_custom and strings.custom_notice %}
     <div id="custom-notice">
         <span>{{ strings.custom_notice }}</span>

@@ -34,6 +34,8 @@
   "js-refs-added-today": "$1 {{PLURAL:$1|citation|citations}} added today!",
   "js-select-articles-summary": "Click to preview ($1 {{PLURAL:$1|article|articles}} and $2 {{PLURAL:$2|snippet|snippets}} added)",
   "js-snippet-count": "$1 {{PLURAL:$1|snippet|snippets}}",
+  "js-dark-theme": "Dark theme",
+  "js-default-theme": "Default theme",
   "lead_section_hint": "This text is part of the article's lead section, so referencing it may be optional. Please see %s for more information.",
   "leaderboard_description": "These are users that fixed the most snippets through {tooltitle} in the past {days} days. Well done!",
   "leaderboard_link_title": "Leaderboard",
