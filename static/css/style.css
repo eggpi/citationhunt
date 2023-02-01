@@ -91,6 +91,7 @@ html[dir="ltr"] #quotation {
 
 html[dir="rtl"] #quotation {
     right: -24px;
+    transform: scale(-1, 1);
 }
 
 .ch-snippet {
