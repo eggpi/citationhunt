@@ -318,21 +318,43 @@ html[dir="rtl"] #leaderboard td {
 #hamburguer-menu {
     position: fixed;
     top: 0;
-    right: 0;
     height: 100%;
     z-index: 3;  /* cover the snippet */
     font-size: 17px;
     transform-origin: 0% 0%;
-    transform: translate(100%, 0);
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
     padding-top: 50px;  /* must be greater than the height of #hamburguer-label */
     background: linear-gradient(90deg, #EAEAEA 0%, #F6F6F6 100%);
-    border-left: 2px solid #EBEBEB;
+    border-color: #EBEBEB;
+    border: 0;
+}
+
+html[dir="ltr"] #hamburguer-menu {
+    right: 0;
+    transform: translate(100%, 0);
+    border-left-width: 2px;
+}
+
+html[dir="ltr"] body[theme="dark"] #hamburguer-menu {
+    background: linear-gradient(90deg, #1A1A1A 0%, #0E0E0E 100%);
+}
+
+html[dir="rtl"] #hamburguer-menu {
+    left: 0;
+    transform: translate(-100%, 0);
+    border-right-width: 2px;
+}
+
+html[dir="rtl"] #hamburguer-menu {
+    background: linear-gradient(180deg, #EAEAEA 0%, #F6F6F6 100%);
+}
+
+html[dir="rtl"] body[theme="dark"] #hamburguer-menu {
+    background: linear-gradient(180deg, #1A1A1A 0%, #0E0E0E 100%);
 }
 
 body[theme=dark] #hamburguer-menu {
-    background: linear-gradient(90deg, #1A1A1A 0%, #0E0E0E 100%);
-    border-left: 2px solid #0C0C0C;
+    border-color: #0C0C0C;
 }
 
 #hamburguer-menu-trigger:checked ~ #hamburguer-menu {
