@@ -34,7 +34,7 @@ create the directory structure and enter the virtualenv:
 
 ```
 $ mkdir www/python/
-$ webservice --backend=kubernetes python3.7 shell
+$ webservice --backend=kubernetes python3.9 shell
 $ python3 -m venv www/python/venv/
 $ . www/python/venv/bin/activate
 ```
@@ -50,7 +50,7 @@ $ pip install -r citationhunt/requirements.txt
 and start the webservice:
 
 ```
-$ webservice --backend=kubernetes python3.7 start
+$ webservice --backend=kubernetes python3.9 start
 ```
 
 Then, generate the Cron jobs for Kubernetes:
