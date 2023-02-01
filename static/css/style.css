@@ -348,13 +348,13 @@ body[theme=dark] #hamburguer-menu {
     content: "☰";
 }
 
-#theme-toggle {
+#hamburguer-menu .menu-item {
     /* Make it look like a link. */
     color: #0645AD;
     text-decoration: underline;
     cursor: pointer;
 }
 
-body[theme=dark] #theme-toggle {
+body[theme=dark] #hamburguer-menu .menu-item {
     color: #6D9FF0;
 }

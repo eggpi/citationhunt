@@ -56,7 +56,7 @@
           {% endfor %}
         </select>
         <div id="custom-controls" class="mx-1 my-2" hidden>
-          <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
+          <label for="custom-modal-trigger" class="o-open menu-item">{{ strings.customize }}</label>
           <div class="pure-modal">
             <input id="custom-modal-trigger" class="checkbox" type="checkbox">
             <div id="custom-modal-wrapper" class="pure-modal-overlay">
@@ -75,7 +75,7 @@
         {% if strings.leaderboard_link_title %}
         <div class="mx-1 my-2"><a id="leaderboard-link" href="{{ config.lang_code }}/leaderboard.html">{{ strings.leaderboard_link_title }}</a></div>
         {% endif %}
-        <div id="custom-controls" class="mx-1" hidden>
+        <div id="custom-controls" class="mx-1 menu-item" hidden>
           <label for="custom-modal-trigger" class="o-open">{{ strings.customize }}</label>
         </div>
         <div id="theme-toggle" class="mx-1 my-2"></div>

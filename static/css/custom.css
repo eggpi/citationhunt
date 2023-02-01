@@ -16,11 +16,6 @@ body[theme=dark] #custom-notice {
 #custom-controls .o-open {
     /* Fighting bootstrap, which sets margin-bottom. */
     margin: 0;
-
-    /* Make it look like a link. */
-    color: #0645AD;
-    text-decoration: underline;
-    cursor: pointer;
 }
 
 body[theme=dark] #custom-controls .o-open {
