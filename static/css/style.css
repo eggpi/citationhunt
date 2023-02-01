@@ -347,11 +347,11 @@ html[dir="rtl"] #hamburguer-menu {
 }
 
 html[dir="rtl"] #hamburguer-menu {
-    background: linear-gradient(180deg, #EAEAEA 0%, #F6F6F6 100%);
+    background: linear-gradient(270deg, #EAEAEA 0%, #F6F6F6 100%);
 }
 
 html[dir="rtl"] body[theme="dark"] #hamburguer-menu {
-    background: linear-gradient(180deg, #1A1A1A 0%, #0E0E0E 100%);
+    background: linear-gradient(270deg, #1A1A1A 0%, #0E0E0E 100%);
 }
 
 body[theme=dark] #hamburguer-menu {
