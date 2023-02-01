@@ -43,11 +43,6 @@
     <script src="static/js/custom.js" defer></script>
   </head>
   <body>
-    {% if current_custom and strings.custom_notice %}
-    <div id="custom-notice">
-        <span>{{ strings.custom_notice }}</span>
-    </div>
-    {% endif %}
     <div class="container-fluid py-2">
       <div class="row m-0 justify-content-between">
         <h1>{{ strings.tooltitle }}</h1>
@@ -163,6 +158,11 @@
         </div>
       </div>
     </div>  <!-- main page container -->
+    {% if current_custom and strings.custom_notice %}
+    <div id="custom-notice">
+        <span>{{ strings.custom_notice }}</span>
+    </div>
+    {% endif %}
 
     <link href="https://tools-static.wmflabs.org/fontcdn/css?family=Fondamento" rel="stylesheet" type="text/css">
 
