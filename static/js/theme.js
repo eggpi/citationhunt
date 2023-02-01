@@ -28,7 +28,7 @@ function toggleTheme() {
 function initThemeToggle() {
   if ("localStorage" in window) {
     let theme = localStorage.getItem("theme");
-    if (theme) applyTheme(theme, {transition: false});
+    applyTheme(theme ? theme : "default", {transition: false});
   }
 
   let toggle = document.getElementById("theme-toggle");
