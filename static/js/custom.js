@@ -1,14 +1,5 @@
 // globals for debugging
-var wizard = null;
-
-// TODO: This is copied from category_filter.js :(
-var customSpinner = new Spinner({
-  scale: 0.5,
-  top: 0,
-  // Need this workaround for RTL
-  // (https://github.com/fgnass/spin.js/issues/57)
-  left: (document.dir === 'ltr') ? '100%' : '1%',
-});
+let wizard = null;
 
 $(function() {
   function sendCreationRequest(payload) {
@@ -22,7 +13,7 @@ $(function() {
     });
   }
 
-  var Card = {
+  let Card = {
     getId: function() {
       // Get the ID of this card.
       return null;
@@ -40,10 +31,10 @@ $(function() {
   };
 
   function LandingCard(wizard) {
-    var id = 'custom-landing-card';
+    let id = 'custom-landing-card';
     this.getId = () => id;
 
-    var $html = $('#' + id).detach();
+    let $html = $('#' + id).detach();
     $html.find('#select-articles-link').click((e) => {
       e.preventDefault();
       wizard.advanceToCard('select-articles-card');
@@ -68,9 +59,9 @@ $(function() {
   LandingCard.prototype = Card;
 
   function ImportArticlesCard(wizard) {
-    var id = 'import-article-titles-card';
+    let id = 'import-article-titles-card';
     this.getId = () => id;
-    var $html = $('#' + id).detach();
+    let $html = $('#' + id).detach();
 
     this.start = function($container) {
       $container.append($html);
@@ -82,8 +73,8 @@ $(function() {
     };
 
     this.submit = function() {
-      var rawInput = $html.find('textarea').val();
-      var payload = JSON.stringify({
+      let rawInput = $html.find('textarea').val();
+      let payload = JSON.stringify({
         page_titles: rawInput.split(/\r?\n/g).map(title => title.trim()),
       });
       return sendCreationRequest(payload);
@@ -92,9 +83,9 @@ $(function() {
   ImportArticlesCard.prototype = Card;
 
   function ImportPetScanCard(wizard) {
-    var id = 'import-petscan-card';
+    let id = 'import-petscan-card';
     this.getId = () => id;
-    var $html = $('#' + id).detach();
+    let $html = $('#' + id).detach();
 
     this.start = function($container) {
       $container.append($html);
@@ -106,8 +97,8 @@ $(function() {
     };
 
     this.submit = function() {
-      var inputElem = $html.find('input')[0];
-      var psid = extractPetScanID(inputElem.value);
+      let inputElem = $html.find('input')[0];
+      let psid = extractPetScanID(inputElem.value);
       if ('setCustomValidity' in inputElem) {
         if (psid === null) {
           inputElem.setCustomValidity(
@@ -117,18 +108,18 @@ $(function() {
         // Clear pre-existing errors.
         inputElem.setCustomValidity('');
       }
-      var payload = JSON.stringify({
+      let payload = JSON.stringify({
         psid: psid,
       });
       return sendCreationRequest(payload);
     }
 
     function extractPetScanID(input) {
-      var psid = input.trim();
-      var urlParser = document.createElement('a');
+      let psid = input.trim();
+      let urlParser = document.createElement('a');
       urlParser.href = input;
       if (urlParser.hostname === 'petscan.wmflabs.org') {
-        var searchParamsParser = new URLSearchParams(urlParser.search);
+        let searchParamsParser = new URLSearchParams(urlParser.search);
         psid = searchParamsParser.get('psid');
       }
       if (psid && psid.match(/^[0-9]+$/)) {
@@ -180,14 +171,14 @@ $(function() {
   SelectArticlesCard.prototype = Card;
 
   function ProgressCard(wizard) {
-    var self = this;
-    var id = 'progress-card';
+    let self = this;
+    let id = 'progress-card';
     this.getId = () => id;
-    var $html = $('#' + id).detach();
+    let $html = $('#' + id).detach();
 
     this.$inFlightRequest = null;
 
-    this.start = function($container, $ajax, spinner) {
+    this.start = function($container, $ajax) {
       if ($ajax === undefined) {
         // We're returning to this card from the final card, just pop ourselves
         // off the card stack.
@@ -195,7 +186,17 @@ $(function() {
         return;
       }
       $container.append($html);
-      spinner.spin($html.find('.spinner')[0]);
+      const spinnerElement = $html.find('.spinner')[0];
+      spinnerElement.innerHTML = '';
+      const spinner = new Spinner({
+        scale: 0.5,
+        top: 0,
+        // Need this workaround for RTL
+        // (https://github.com/fgnass/spin.js/issues/57)
+        left: (document.dir === 'ltr') ? '100%' : '1%',
+        color: getComputedStyle(spinnerElement).color,
+      });
+      spinner.spin(spinnerElement);
       this.$inFlightRequest = $ajax;
       this.$inFlightRequest.always(function(response) {
         // When there's an error, the first argument is the XHR object.
@@ -227,17 +228,17 @@ $(function() {
   ProgressCard.prototype = Card;
 
   function CreatedCard(wizard) {
-    var id = 'custom-card-end';
+    let id = 'custom-card-end';
     this.getId = () => id;
-    var $html = $('#' + id).detach();
+    let $html = $('#' + id).detach();
 
     this.start = function($container, response) {
       $container.append($html);
       $html.find('#custom-narticles').text(response.page_ids.length)
-      var customURL = (
+      let customURL = (
         document.location.origin + document.location.pathname +
         '?custom=' + response['id']);
-      var l = $html.find('#custom-created-link')
+      let l = $html.find('#custom-created-link')
       l.val(customURL);
       l.attr('size', customURL.length);
       l.focus();
@@ -245,7 +246,7 @@ $(function() {
 
       $html.find('#copy-link-text > a').attr('href', customURL);
 
-      var strings = wizard.getStrings();
+      let strings = wizard.getStrings();
       if (!strings.customNumbers) return;
       $container.find('#custom-numbers').text(
         $.i18n(strings.customNumbers, response['page_ids'].length,
@@ -259,9 +260,9 @@ $(function() {
   CreatedCard.prototype = Card;
 
   function FailedCard(wizard) {
-    var id = 'custom-card-failed';
+    let id = 'custom-card-failed';
     this.getId = () => id;
-    var $html = $('#' + id).detach();
+    let $html = $('#' + id).detach();
 
     this.start = function($container, response) {
       $container.append($html);
@@ -275,7 +276,7 @@ $(function() {
 
   function Wizard($container, $buttonBack, $buttonSubmit) {
     this._switchToCard = function(nextCardId, argsFromPrevious) {
-      var nextCard = this.cards.filter((c) => c.getId() == nextCardId)[0];
+      let nextCard = this.cards.filter((c) => c.getId() == nextCardId)[0];
       if (this._currentCard !== null) {
         this._currentCard.end(this.$container);
       }
@@ -300,10 +301,10 @@ $(function() {
     // back() while we're calling its start() from within back() without messing
     // up our internal state by deferring the inner back() call until the outer
     // has finished.
-    var lock = 0;
-    var r = (f) => {
-      var self = this;
-      var wrapped = function() {
+    let lock = 0;
+    let r = (f) => {
+      let self = this;
+      let wrapped = function() {
         if (lock) {
           setTimeout(() => {
             wrapped.apply(self, arguments);
@@ -332,7 +333,7 @@ $(function() {
     });
 
     this.back = r(function() {
-      var previousCard = this._cardHistory.pop();
+      let previousCard = this._cardHistory.pop();
       this._switchToCard(previousCard.getId());
       this._setUpButtons();
     })
@@ -356,9 +357,9 @@ $(function() {
     });
     $buttonSubmit.click((e) => {
       e.preventDefault();
-      var promise = this._currentCard.submit();
+      let promise = this._currentCard.submit();
       if (promise !== null) {
-        this.advanceToCard('progress-card', promise, customSpinner);
+        this.advanceToCard('progress-card', promise);
       }
     });
 

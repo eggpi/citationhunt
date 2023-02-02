@@ -1,24 +1,19 @@
-let cf = null;
-let search_bar = null;
-let categoryFilterSpinner = new Spinner({
-  scale: 0.5,
-  // Need this workaround for RTL
-  // (https://github.com/fgnass/spin.js/issues/57)
-  left: (document.dir === 'ltr') ? '50%' : '80%',
-  position: 'absolute',
-});
-categoryFilterSpinner.spinning = false;
+let cf;  // for debugging
+
+function initCategoryFilter() {
+  cf = new CategoryFilter();
+}
 
 function CategoryFilter() {
-  var self = this;
-  var lang_code = document.documentElement.dataset.chLangCode;
-  var strings = document.getElementById("js-strings").dataset;
+  let self = this;
+  let lang_code = document.documentElement.dataset.chLangCode;
+  let strings = document.getElementById("js-strings").dataset;
 
-  var cin = document.getElementById("category-input");
-  var chi = document.getElementById("hidden-category-input");
+  let cin = document.getElementById("category-input");
+  let chi = document.getElementById("hidden-category-input");
 
   function buildSearchURL(q) {
-    var url = lang_code + "/search/category?"
+    let url = lang_code + "/search/category?"
     // We trim() because that matches Awesomplete's behavior client-side.
     url += "q=" + encodeURIComponent(q.trim())
     url += "&max_results=" + MAX_RESULTS;
@@ -26,12 +21,12 @@ function CategoryFilter() {
   };
 
   function populateItemHTML(container, suggestion) {
-    var ldiv = document.createElement('div');
+    let ldiv = document.createElement('div');
     ldiv.innerHTML = container.innerHTML;
     ldiv.classList.add('label');
 
-    var pdiv = document.createElement("div");
-    var npages = suggestion.label.npages;
+    let pdiv = document.createElement("div");
+    let npages = suggestion.label.npages;
     if (strings.articleCount) {
       pdiv.innerText = $.i18n(strings.articleCount, npages);
     }
@@ -43,8 +38,8 @@ function CategoryFilter() {
   }
 
   function confirmBeforeLeavingCustom(nextCategoryId) {
-    var customhi = document.getElementById("hidden-custom-input");
-    var leaving = true;
+    let customhi = document.getElementById("hidden-custom-input");
+    let leaving = true;
     if (customhi !== null && nextCategoryId != 'all') {
       if (customhi.value) {
         leaving = window.confirm(strings.leavingCustom);
@@ -61,7 +56,7 @@ function CategoryFilter() {
   }
 
   function setHiddenCategoryAndNextId(formElem, nextCategoryId) {
-    var ihi = document.getElementById("hidden-id-input");
+    let ihi = document.getElementById("hidden-id-input");
     if (ihi !== null && chi.value !== nextCategoryId) {
       formElem.removeChild(ihi);
     }
@@ -69,9 +64,8 @@ function CategoryFilter() {
     chi.disabled = (nextCategoryId == 'all');
   }
 
-  search_bar = new SearchBar(
-    cin, categoryFilterSpinner,
-    document.getElementById('category-filter-spinner'),
+  self.searchBar = new SearchBar(
+    cin, document.getElementById('category-filter-spinner'),
     buildSearchURL, populateItemHTML);
 
   // Awesomplete allows us to have a `label` (the text that gets displayed in
@@ -84,7 +78,7 @@ function CategoryFilter() {
     return {label: {title: item.title, npages: item.npages}, value: item.id};
   }
 
-  search_bar.awesomplete.data = data;
+  self.searchBar.awesomplete.data = data;
 
   cin.addEventListener("awesomplete-close", function() {
     if (cin.value === '') {
@@ -116,6 +110,8 @@ function CategoryFilter() {
   }
 }
 
-$(function() {
-  cf = new CategoryFilter();
-});
+if (document.readyState !== "loading") {
+  initCategoryFilter();
+} else {
+  window.addEventListener("DOMContentLoaded", initCategoryFilter);
+}

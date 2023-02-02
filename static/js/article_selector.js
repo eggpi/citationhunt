@@ -1,12 +1,3 @@
-let articleSearchSpinner = new Spinner({
-  scale: 0.5,
-  // Need this workaround for RTL
-  // (https://github.com/fgnass/spin.js/issues/57)
-  left: (document.dir === 'ltr') ? '50%' : '80%',
-  position: 'absolute',
-});
-articleSearchSpinner.spinning = false;
-
 function ArticleSelector(inputElement, spinnerElement, selectionResultsOl,
                          previewElement) {
   let self = this;
@@ -43,8 +34,7 @@ function ArticleSelector(inputElement, spinnerElement, selectionResultsOl,
   }
 
   let searchBar = new SearchBar(
-    inputElement, articleSearchSpinner, spinnerElement,
-    buildSearchURL, populateItemHTML);
+    inputElement, spinnerElement, buildSearchURL, populateItemHTML);
 
   // Awesomplete allows us to have a `label` (the text that gets displayed in
   // the dropdown and matched against) and a `value` (the actual value that ends

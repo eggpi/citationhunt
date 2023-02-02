@@ -15,6 +15,18 @@ const SPINNER_START_DELAY_MS = 100;
 // while they type search terms, but this is really just a magic number.
 const SEARCH_THROTTLE_INTERVAL_MS = 800;
 
+function makeSpinner(spinnerElement) {
+  spinnerElement.innerHTML = '';
+  return new Spinner({
+    scale: 0.5,
+    // Need this workaround for RTL
+    // (https://github.com/fgnass/spin.js/issues/57)
+    left: (document.dir === 'ltr') ? '50%' : '80%',
+    position: 'absolute',
+    color: getComputedStyle(spinnerElement).color,
+  });
+}
+
 // http://stackoverflow.com/a/27078401
 // Returns a function, that, when invoked, will only be triggered at most once
 // during a given window of time. Normally, the throttled function will run
@@ -54,10 +66,11 @@ function throttle(func, wait, options) {
 };
 
 function SearchBar(
-    inputElement, spinner, spinnerElement,
+    inputElement, spinnerElement,
     buildSearchURL, populateItemHTML) {
   let self = this;
   let ie = inputElement;  // shorthand
+  let spinner = null;
 
   self._scheduleSpinnerStart = function(xhr) {
     // Whatever the final height of the input ends up being (which depends on
@@ -66,10 +79,10 @@ function SearchBar(
     spinnerElement.style.height = ie.getBoundingClientRect().height + 'px';
     spinnerElement.style.width = spinnerElement.style.height;
     return setTimeout(function() {
-      if (spinner.spinning) return;
+      if (spinner) return;
+      spinner = makeSpinner(spinnerElement);
       if (xhr.readyState !== XMLHttpRequest.DONE) {
         spinner.spin(spinnerElement);
-        spinner.spinning = true;
       }
     }, SPINNER_START_DELAY_MS);
   };
@@ -107,7 +120,7 @@ function SearchBar(
       clearTimeout(timeout);
       if (xhrCounter == counter) {
         spinner.stop();
-        spinner.spinning = false;
+        spinner = null;
       }
     });
     if (ie.value.length >= self.awesomplete.minChars) {
