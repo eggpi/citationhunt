@@ -59,7 +59,7 @@ spec:
           containers:
           - name: ch
             workingDir: /data/project/citationhunt
-            image: docker-registry.tools.wmflabs.org/toolforge-python37-sssd-base:latest
+            image: docker-registry.tools.wmflabs.org/toolforge-python39-sssd-base:latest
             args: [
               /data/project/citationhunt/www/python/venv/bin/python3,
               /data/project/citationhunt/citationhunt/scripts/update_db_tools_labs.py,
