@@ -39,6 +39,7 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|sitassion}} giontà ancheuj!",
 	"js-select-articles-summary": "Ch'a sgnaca për previsualisé ($1 {{PLURAL:$1|artìcol|artìcoj}} e $2 {{PLURAL:$2|tòch ëd còdes}} giontà)",
 	"js-snippet-count": "$1 {{PLURAL:$1|tòch ëd còdes}}",
+	"js-dark-theme": "Tema sombr",
 	"lead_section_hint": "Ës test a l'é tirà da la session ëd testa dl'artìcol, donca dé n'arferiment a cost-sì a l'é opsional.\nCh'a consulta %s për pi d'anformassion.",
 	"leaderboard_description": "Costi-sì a son j'utent ch'a l'han rangià pi che tuti ël còdes a travers {tooltitle} ant ij {days} di passà. Bin fàit!",
 	"leaderboard_link_title": "Cruscòt",

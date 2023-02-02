@@ -10,6 +10,7 @@
 			"HenriqueCrang",
 			"Iagocds",
 			"Luk3",
+			"Mello25",
 			"Rodrigo codignoli",
 			"Trigonometria87"
 		]
@@ -49,6 +50,8 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|citação adicionada|citações adicionadas}} hoje!",
 	"js-select-articles-summary": "Clique para pré-visualizar ($1 {{PLURAL:$1|artigo|artigos}} e $2 {{PLURAL:$2|trecho adicionado|trechos adicionados}} )",
 	"js-snippet-count": "$1 {{PLURAL:$1|trecho|trecos}}",
+	"js-dark-theme": "Tema escuro",
+	"js-default-theme": "Tema padrão",
 	"lead_section_hint": "Esse texto faz parte da seção principal do artigo, por isso referências podem ser opcionais. Veja %s para mais informações.",
 	"leaderboard_description": "Estes são os usuários que fizeram o maior número de contribuições em {tooltitle} nos últimos {days} dias. Ótimo trabalho!",
 	"leaderboard_link_title": "Colaboradores mais ativos",

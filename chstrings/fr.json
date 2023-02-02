@@ -46,6 +46,8 @@
 	"js-refs-added-today": "$1 citation{{PLURAL:$1||s}} ajoutée{{PLURAL:$1||s}} aujourd’hui !",
 	"js-select-articles-summary": "Cliquer pour prévisualiser ($1 article{{PLURAL:$1||s}} et $2 extrait{{PLURAL:$2||s}} ajoutés)",
 	"js-snippet-count": "$1 extrait{{PLURAL:$1||s}}",
+	"js-dark-theme": "Thème sombre",
+	"js-default-theme": "Thème par défaut",
 	"lead_section_hint": "Ce texte est extrait de l’en-tête de l’article, si bien qu’y ajouter des références peut être facultatif. Consultez %s pour plus d’informations.",
 	"leaderboard_description": "Voici les utilisateurs qui ont corrigé le plus de code dans {tooltitle} lors des {days} derniers jours. Félicitations !",
 	"leaderboard_link_title": "Palmarès",

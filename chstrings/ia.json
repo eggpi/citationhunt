@@ -40,6 +40,8 @@
 	"js-refs-added-today": "$1 citation{{PLURAL:$1||es}} addite hodie!",
 	"js-select-articles-summary": "Clicca pro previsualisar ($1 articulo{{PLURAL:$1||s}} e $2 fragmento{{PLURAL:$2||s}} addite)",
 	"js-snippet-count": "$1 fragmento{{PLURAL:$1||s}}",
+	"js-dark-theme": "Thema obscur",
+	"js-default-theme": "Thema predefinite",
 	"lead_section_hint": "Iste texto face parte del introduction del articulo, e referentiar lo pote esser optional. Vide %s pro plus information.",
 	"leaderboard_description": "Iste usatores ha corrigite le plus grande numero de fragmentos per {tooltitle} in le ultime {days} dies. Ben facite!",
 	"leaderboard_link_title": "Tabula de classamento",

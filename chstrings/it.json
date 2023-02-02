@@ -45,6 +45,8 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|nota aggiunta|note aggiunte}} oggi!",
 	"js-select-articles-summary": "Clicca per visualizzare l'anteprima ($1 {{PLURAL:$1|voce|voci}} e $2 {{PLURAL:$2|frammento|frammenti}} aggiunti)",
 	"js-snippet-count": "$1 {{PLURAL:$1|frammento|frammenti}}",
+	"js-dark-theme": "Tema scuro",
+	"js-default-theme": "Tema predefinito",
 	"lead_section_hint": "Questo testo fa parte dell'incipit della voce, quindi aggiungere note è facoltativo. Vedi %s per maggiori informazioni.",
 	"leaderboard_description": "Questi sono utenti che hanno corretto il maggior numero di frasi tramite {tooltitle} negli ultimi {days} giorni. Ben fatto!",
 	"leaderboard_link_title": "Classifica",

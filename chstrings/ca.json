@@ -4,6 +4,7 @@
 			"Fitoschido",
 			"Kippelboy",
 			"Mguix",
+			"Robertgarrigos",
 			"Ssola",
 			"Toniher",
 			"Xavier Dengra"
@@ -44,6 +45,8 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|referència afegida|referències afegides}} avui!",
 	"js-select-articles-summary": "Cliqueu per tal de previsualitzar ($1 {{PLURAL:$1|article|articles}} i $2 {{PLURAL:$2|extracte|extractes}} afegits)",
 	"js-snippet-count": "$1 {{PLURAL:$1|extracte|extractes}}",
+	"js-dark-theme": "Tema fosc",
+	"js-default-theme": "Tema predeterminat",
 	"lead_section_hint": "Aquest text forma part de la capcelera de l'article. Vegeu %s per a més informació",
 	"leaderboard_description": "Aquests són els usuaris que han arreglat la majoria de fragments utilitzant {tooltitle} en els {days} últims dies. Enhorabona, bona feina!",
 	"leaderboard_link_title": "Tauler de classificacions",
