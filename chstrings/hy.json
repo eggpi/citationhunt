@@ -19,6 +19,7 @@
 	"in_page": "%s էջում",
 	"introduction": "Օգնեք գտնել աղբյուրներ Վիքիպեդիա հոդվածների համար",
 	"js-article-count": "$1 {{PLURAL:$1|հոդված}}",
+	"js-dark-theme": "Մութ թեմա",
 	"page_not_found": "Էջը չի գտնվել!",
 	"submit": "Ուղարկել",
 	"user": "Մասնակից"

@@ -19,6 +19,7 @@
 	"introduction": "Bantu cari petikan untuk rencana Wikipedia!",
 	"js-article-count": "$1 {{PLURAL:$1|rencana}}",
 	"js-custom-no-articles-selected": "Sila pilih beberapa rencana.",
+	"js-dark-theme": "Tema gelap",
 	"page_not_found": "Laman tidak dijumpai!",
 	"select_articles_placeholder": "Cari rencana",
 	"submit": "Serahkan",

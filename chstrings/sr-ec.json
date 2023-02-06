@@ -4,6 +4,7 @@
 			"Acamicamacaraca",
 			"BadDog",
 			"Kizule",
+			"Milicevic01",
 			"Obsuser",
 			"Rancher",
 			"Zoranzoki21"
@@ -44,6 +45,8 @@
 	"js-refs-added-today": "Данас {{PLURAL:$1|1=је додата једна референца|је додата $1 референца|су додате $1 референце|је додато $1 референци}}.",
 	"js-select-articles-summary": "Кликните за претпреглед ($1 {{PLURAL:$1|чланка|чланка|чланака}} и $2 {{PLURAL:$2|исечка|исечка|исечака}} додата)",
 	"js-snippet-count": "$1 {{PLURAL:$1|исечак|исечка|исечака}}",
+	"js-dark-theme": "Тамна тема",
+	"js-default-theme": "Подразумевана тема",
 	"lead_section_hint": "Овај текст је део уводног одељка чланка, тако да навођење извора за њега није обавезно. Погледајте %s за више информација.",
 	"leaderboard_description": "Ови корисници су исправили највише исечака кроз {tooltitle} у {{PLURAL: {days}|{days} прошлом дану|{days} прошла дана|{days} прошлих дана}}.",
 	"leaderboard_link_title": "Ранг-листа",
