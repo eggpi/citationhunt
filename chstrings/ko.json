@@ -33,6 +33,8 @@
 	"js-keyboard-shortcut": "단축 키: %s",
 	"js-leaving-custom": "제한되지 않은 {tooltitle}(으)로 돌아가려고 합니다. 그렇게 하시겠습니까?",
 	"js-refs-added-today": "오늘 $1개의 {{PLURAL:$1|인용|인용}}이 추가되었습니다!",
+	"js-dark-theme": "어두운 테마",
+	"js-default-theme": "기본 테마",
 	"lead_section_hint": "이 텍스트는 문서 도입부의 한 부분이므로, 여기에 출처를 다는 것은 선택사항일 수 있습니다. 자세한 정보에 대해서는 %s를 참고해주세요.",
 	"leaderboard_description": "이 사용자들은 {tooltitle} 도구를 사용해 최근 {days}일 동안 문구를 고친 사람들입니다. 감사합니다!",
 	"leaderboard_link_title": "리더보드",
