@@ -33,5 +33,5 @@ tqdm==4.32.2
 twine==1.13.0
 urllib3==1.26.7
 webencodings==0.5.1
-Werkzeug==0.15.5
+Werkzeug==2.2.3
 yamwapi==0.3
