@@ -46,6 +46,8 @@
 	"js-refs-added-today": "今日共添加了 $1 {{PLURAL:$1|個引用}}！",
 	"js-select-articles-summary": "點擊來預覽（$1 {{PLURAL:$1|個條目}}與 $2 {{PLURAL:$2|個片段}}已添加）",
 	"js-snippet-count": "$1 {{PLURAL:$1|個片段}}",
+	"js-dark-theme": "深色主題",
+	"js-default-theme": "預設主題",
 	"lead_section_hint": "此段文字位於條目的序言章節，可能不需引用來源。請查看%s獲得更多資訊。",
 	"leaderboard_description": "這些是透過 {tooltitle}，在過去 {days} 天裡做過最多次片段修正的使用者們。做得好！",
 	"leaderboard_link_title": "排行榜",
