@@ -5,7 +5,8 @@
 			"MITO",
 			"Maantietäjä",
 			"Olimar",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Silvonen"
 		]
 	},
 	"article_titles_hint": "Kun tuot artikkelia otsikon mukaan, tarkista, että otsikot ovat oikein ja että olet antanut yhden kullekin riville.",
@@ -25,6 +26,8 @@
 	"js-article-count": "$1 {{PLURAL:$1|artikkeli|artikkelit}}",
 	"js-keyboard-shortcut": "Pikanäppäin: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|lähdeviite|lähdeviitettä}} lisätty tänään!",
+	"js-dark-theme": "Tumma teema",
+	"js-default-theme": "Oletusteema",
 	"lead_section_hint": "Teksti kuuluu artikkelin johdantoon, joten sen lähteistäminen ei ole välttämättä pakollista. Katso lisää tietoa sivulta %s.",
 	"leaderboard_description": "Nämä ovat käyttäjiä, jotka ovat korjanneet eniten kappaleita {tooltitle} avulla viimeisenä {days} päivänä. Hyvin tehty!",
 	"leaderboard_link_title": "Leaderboard",
