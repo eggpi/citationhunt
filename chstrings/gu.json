@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"CptViraj",
 			"Nizil Shah"
 		]
 	},
@@ -14,7 +15,7 @@
 	"edits": "યોગદાન",
 	"footer": "%sને સ્વયંસેવકો દ્વારા બનાવવામાં આવેલ છે, %s પર હોસ્ટ કરવામાં આવે છે અને %s દ્વારા અનુવાદિત કરવામાં આવેલ છે.",
 	"github_link_title": "કેમ છો? મારો સ્ત્રોત ગિટહબ પર છે!",
-	"import_article_titles": "લેખના શીર્ષાકોની યાદી",
+	"import_article_titles": "લેખોની યાદી દાખલ કરો",
 	"import_articles_prompt": "મહેરબાની કરીને નીચે વિકિપીડિયા {em_start}article titles{em_end} ને આયાત કરો. જુઓ કે એક લીટીમાં એક શીર્ષક જ હોય:",
 	"import_petscan": "પેટસ્કેન યાદી",
 	"custom_import_prompt": "તમે ક્યાંથી લેખો લાવવા માંગો છો?",
