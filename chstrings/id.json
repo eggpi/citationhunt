@@ -5,6 +5,7 @@
 			"Daud I.F. Argana",
 			"Hidayatsrf",
 			"Mahali syarifuddin",
+			"Veracious",
 			"William Surya Permana"
 		]
 	},
@@ -43,6 +44,8 @@
 	"js-refs-added-today": "$1 kutipan ditambahkan hari ini!",
 	"js-select-articles-summary": "Klik untuk pratinjau ($1 artikel and $2 potongan ditambahkan)",
 	"js-snippet-count": "$1 potongan",
+	"js-dark-theme": "Tema gelap",
+	"js-default-theme": "Tema bawaan",
 	"lead_section_hint": "Teks ini merupakan bagian dari bagian awal artikel ini, sehingga penambahan referensi mungkin opsional. Silakan lihat %s untuk informasi lebih lanjut.",
 	"leaderboard_description": "Pengguna inilah yang memperbaiki kebanyakan pintasan melalui {tooltitle} dalam {days} hari terakhir. Luar biasa!",
 	"leaderboard_link_title": "Papan peringkat",
