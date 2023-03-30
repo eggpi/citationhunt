@@ -5,6 +5,7 @@
 			"Brettchenweber",
 			"FF-11",
 			"FF11",
+			"Justman10000",
 			"ManuelFranz",
 			"Metalhead64",
 			"ThisCarthing"
@@ -45,6 +46,8 @@
 	"js-refs-added-today": "Es {{PLURAL:$1|wurde heute ein Zitat|wurden heute $1 Zitate}} hinzugefügt!",
 	"js-select-articles-summary": "Klicke für Vorschau ($1 Artikel und $2 {{PLURAL:$2|Snippet|Snippets}} hinzugefügt)",
 	"js-snippet-count": "$1 {{PLURAL:$1|Snippet|Snippets}}",
+	"js-dark-theme": "Dunkles Farbschema",
+	"js-default-theme": "Standard-Thema",
 	"lead_section_hint": "Dieser Text ist Teil eines Einleitungsabschnitts eines Artikels. Referenzierung ist eventuell optional. Siehe %s für weitere Informationen.",
 	"leaderboard_description": "Dies sind Benutzer, die die meisten Schnipsel mit {tooltitle} in den letzten {days} Tagen behoben haben. Gut gemacht!",
 	"leaderboard_link_title": "Bestenliste",
