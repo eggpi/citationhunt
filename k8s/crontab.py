@@ -47,7 +47,7 @@ metadata:
     # The toolforge=tool label will cause $HOME and other paths to be mounted from Toolforge
     toolforge: tool
 spec:
-  schedule: "0 {h} {dom}-31/{freq} * *"
+  schedule: "8 {h} {dom}-31/{freq} * *"
   jobTemplate:
     spec:
       activeDeadlineSeconds: 86400
