@@ -47,6 +47,8 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|referens|referenser}} lades till idag!",
 	"js-select-articles-summary": "Klicka för att förhandsvisa ($1 {{PLURAL:$1|artikel|artiklar}} och $2 {{PLURAL:$2|fragment}} tillagda)",
 	"js-snippet-count": "$1 {{PLURAL:$1|fragment}}",
+	"js-dark-theme": "Mörkt tema",
+	"js-default-theme": "Standardtema",
 	"lead_section_hint": "Denna text är en del av artikelns inledande avsnitt, så det är valfritt att lägga till referenser. Se %s för mer information.",
 	"leaderboard_description": "Dessa är användare som fixade de flesta stubbarna via {tooltitle} de senaste {days} dagarna. Bra jobbat!",
 	"leaderboard_link_title": "Topplista",
