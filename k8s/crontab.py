@@ -50,7 +50,8 @@ spec:
   schedule: "8 {h} {dom}-31/{freq} * *"
   jobTemplate:
     spec:
-      activeDeadlineSeconds: 86400
+      activeDeadlineSeconds: 86400  # 24h
+      ttlSecondsAfterFinished: 21600  # 6h
       template:
         metadata:
           labels:
