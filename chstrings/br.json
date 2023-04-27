@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adriendelucca",
 			"Dishual",
 			"Fulup",
 			"Gwenn-Ael"
@@ -41,6 +42,8 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|arroud|arroud}} bet ouzhpennet hiziv !",
 	"js-select-articles-summary": "Klikañ evit rakwelet ($1 {{PLURAL:$1|pennad}} ha $2 {{PLURAL:$2|arroudenn}} ouzhpennet)",
 	"js-snippet-count": "$1 {{PLURAL:$1|arroud}}",
+	"js-dark-theme": "Tem teñval",
+	"js-default-theme": "Tem dre ziouer",
 	"lead_section_hint": "Tennet eo an destenn-mañ eus talbenn ar pennad : diret eo ouzhpennañ daveennoù. Sellit ouzh %s evit gouzout hiroc'h.",
 	"leaderboard_description": "Setu an implijerien o deus reizhet an niver brasañ a godoù e {tooltitle} e-pad an {days} deiz diwezhañ.",
 	"leaderboard_link_title": "Renkadur",
