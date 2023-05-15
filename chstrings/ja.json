@@ -3,6 +3,7 @@
 		"authors": [
 			"MathXplore",
 			"Omotecho",
+			"Shirayuki",
 			"Takot",
 			"ネイ"
 		]
@@ -33,17 +34,17 @@
 	"custom_notice": "あなたが閲覧している{tooltitle}はカスタム化されており、表示される記事リストは制限されています。{link_start}ここをクリックすると{link_end}制限を解除した{tooltitle}が閲覧できます。",
 	"custom_please_wait": "少々お待ちください。あなたのカスタム{tooltitle}を計算中です。処理には数分かかる場合があります&#x2026;",
 	"introduction": "ウィキペディアの記事に出典をつけましょう！",
-	"js-article-count": "$1 {{PLURAL:$1|記事|記事}}",
+	"js-article-count": "$1 {{PLURAL:$1|件の記事}}",
 	"js-custom-numbers": "$1 {{PLURAL:$1|件の記事}}のスニペットが含まれ、有効期間は$2 {{PLURAL:$2|日}}です。",
 	"js-custom-no-articles-selected": "記事を複数、選択してください。",
 	"js-invalid-petscan-input": "数字で PetScan IDを入力します。",
 	"js-keyboard-shortcut": "ショートカットキー: %s",
 	"js-leaving-custom": "制限を解除した{tooltitle}に戻ろうとしています。この捜査を続けてよろしいですか？",
 	"js-refs-added-today": "今日は出典が$1か所追加されました！",
-	"js-select-articles-summary": "クリックしてプレビュー (記事$1 {{PLURAL:$1|件}} とスニペット $2 {{PLURAL:$2|件}} を追加)",
+	"js-select-articles-summary": "クリックしてプレビュー (記事 $1 {{PLURAL:$1|件}} とスニペット $2 {{PLURAL:$2|件}} を追加)",
 	"js-snippet-count": "$1 {{PLURAL:$1|件のスニペット}}",
 	"lead_section_hint": "この文は記事の導入部にあるため、出典の明示は場合により判断されます。詳しくは %s をご覧ください。",
-	"leaderboard_description": "以下は、{tooltitle}を利用して過去{days}日間に最も多くの要出典を解決したユーザーです。おめでとうございます!",
+	"leaderboard_description": "以下は、{tooltitle}を利用して過去{days}日間に最も多くの要出典を解決した利用者です。おめでとうございます!",
 	"leaderboard_link_title": "ランキング",
 	"leaderboard_title": "%sランキング",
 	"old_snippet_hint": "この文章はかなり長期にわたりウィキペディアで出典のない状態が続いています。もし典拠が見つからない場合は、思い切って文章ごと削除してください！",
