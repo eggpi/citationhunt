@@ -38,7 +38,7 @@
 	"js-invalid-petscan-input": "Navedite števčni Petscan ID.",
 	"js-keyboard-shortcut": "Bližnjica na tipkovnici: %s",
 	"js-leaving-custom": "Vračate se na neomejeno različico {tooltitle}. Ali ste prepričani?",
-	"js-refs-added-today": "Danes $1 {{PLURAL:$1|je bil dodan $1 navedek|sta bila dodana $2 navedka|so bili dodani $2 navedki|je bilo dodanih $2 navedkov}}!",
+	"js-refs-added-today": "Danes $1 {{PLURAL:$1|je bil dodan $1 citat|sta bila dodana $2 citata|so bili dodani $2 citati|je bilo dodanih $2 citatov}}!",
 	"js-select-articles-summary": "Kliknite za predogled ({{PLURAL:$1|dodan $1 članek|dodana $1 članka|dodani $1 članki|dodanih $1 člankov}} in {{PLURAL:$2|$2 odlomek|$2 odlomka|$2 odlomki|$2 odlomkov}})",
 	"js-snippet-count": "$1 {{PLURAL:$1|odlomek|odlomka|odlomki|odlomkov}}",
 	"js-dark-theme": "Temna tema",
