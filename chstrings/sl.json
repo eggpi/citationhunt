@@ -15,7 +15,7 @@
 	"category_filter_placeholder": "Poišči temo",
 	"edits": "Urejanja",
 	"footer": "Orodje %s ustvarjajo prostovoljci, gostuje v projektu %s in se prevaja v projektu %s.",
-	"github_link_title": "Hej! Moj vir je na GitHubu!",
+	"github_link_title": "Hej! Moj vir je v GitHubu!",
 	"import_article_titles": "Vnesite seznam člankov",
 	"import_articles_prompt": "Za vnos vnesite v spodnje polje {em_start}naslove člankov{em_end} v Wikipediji, in sicer po enega v vsako vrstico:",
 	"import_petscan": "Uvozi iz poizvedbe PetScan",
