@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Arthur2e5",
+			"HellojoeAoPS",
 			"Kly",
 			"LNDDYL",
 			"Sanmosa",
@@ -33,7 +34,7 @@
 	"custom_end_copy_link": "您可以複製並分享以上連結來允許其他人使用，或是{link_start}現在就開始瀏覽{link_end}！",
 	"custom_failed": "很抱歉，您自定的{tooltitle}創建失敗或是為空！",
 	"custom_import_prompt": "您想要如何建立自定義{tooltitle}？",
-	"custom_intro": "您可以透過提供條目清單來自定義{tooltitle}。這會給予您一個連結來讓您可以分享給其他人，讓他們可以瀏覽{tooltitle}時受限您所提供的條目。",
+	"custom_intro": "您可以透過提供條目清單來自定義{tooltitle}。這會給予您一個連結來讓您可以分享給其他人，讓他們可以瀏覽{tooltitle}時會被限制在您所提供的條目。",
 	"custom_notice": "您正以受限的條目清單來瀏覽自定的{tooltitle}。{link_start}返回至不受限的{tooltitle}{link_end}。",
 	"custom_please_wait": "請稍待，您自定的{tooltitle}正被計算。這可能會花上幾分鐘&#x2026;",
 	"introduction": "幫忙找找維基百科條目引用來源！",
