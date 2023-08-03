@@ -164,6 +164,23 @@ _LANG_CODE_TO_CONFIG = dict(
         # maintenance and will not show up on Citation Hunt.
         hidden_category = 'Hidden_categories',
     ),
+    
+    simple = dict(
+        lang_name = 'Simple English',
+        lang_dir = 'ltr',
+        database = 'simplewiki_p',
+        wikipedia_domain = 'simple.wikipedia.org',
+
+        beginners_link = 'https://simple.wikipedia.org/wiki/Wikipedia:Citing_sources',
+        beginners_link_title = 'Introduction to referencing / citing sources',
+
+        reliable_sources_link = 'https://simple.wikipedia.org/wiki/Wikipedia:Reliable_sources',
+
+        lead_section_policy_link = 'https://simple.wikipedia.org/wiki/Wikipedia:Lead_section',
+        lead_section_policy_link_title = 'WP:LEAD',
+
+        hidden_category = 'Hidden_categories',
+    ),
 
     ar = dict(
         lang_name = 'العربية',
