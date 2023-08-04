@@ -179,7 +179,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://simple.wikipedia.org/wiki/Wikipedia:Lead_section',
         lead_section_policy_link_title = 'WP:LEAD',
 
-        accept_language = ['en']
+        accept_language = ['en'],
         hidden_category = 'Hidden_categories',
     ),
 
