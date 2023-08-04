@@ -164,7 +164,7 @@ _LANG_CODE_TO_CONFIG = dict(
         # maintenance and will not show up on Citation Hunt.
         hidden_category = 'Hidden_categories',
     ),
-    
+
     simple = dict(
         lang_name = 'Simple English',
         lang_dir = 'ltr',
@@ -179,6 +179,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link = 'https://simple.wikipedia.org/wiki/Wikipedia:Lead_section',
         lead_section_policy_link_title = 'WP:LEAD',
 
+        accept_language = ['en']
         hidden_category = 'Hidden_categories',
     ),
 
