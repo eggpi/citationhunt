@@ -7,6 +7,7 @@
 		// CLDR plural rules generated using
 		// libs/CLDRPluralRuleParser/tools/PluralXML2JSON.html
 		'pluralRules': {
+			'ace': {},
 			'af': {
 				'one': 'n = 1'
 			},
@@ -42,6 +43,7 @@
 			'az': {
 				'one': 'n = 1'
 			},
+			'ban': {},
 			'be': {
 				'one': 'n % 10 = 1 and n % 100 != 11',
 				'few': 'n % 10 = 2..4 and n % 100 != 12..14',
@@ -53,6 +55,7 @@
 			'bez': {
 				'one': 'n = 1'
 			},
+			'bjn': {},
 			'bg': {
 				'one': 'n = 1'
 			},
@@ -77,6 +80,7 @@
 				'one': 'v = 0 and i % 10 = 1 and i % 100 != 11 or f % 10 = 1 and f % 100 != 11',
 				'few': 'v = 0 and i % 10 = 2..4 and i % 100 != 12..14 or f % 10 = 2..4 and f % 100 != 12..14'
 			},
+			'bug': {},
 			'ca': {
 				'one': 'i = 1 and v = 0'
 			},
@@ -126,6 +130,9 @@
 				'one': 'n = 1'
 			},
 			'en': {
+				'one': 'i = 1 and v = 0'
+			},
+			'simple': {
 				'one': 'i = 1 and v = 0'
 			},
 			'eo': {
@@ -178,6 +185,7 @@
 			'gl': {
 				'one': 'i = 1 and v = 0'
 			},
+			'gor': {},
 			'gsw': {
 				'one': 'n = 1'
 			},
@@ -326,6 +334,8 @@
 				'zero': 'n % 10 = 0 or n % 100 = 11..19 or v = 2 and f % 100 = 11..19',
 				'one': 'n % 10 = 1 and n % 100 != 11 or v = 2 and f % 10 = 1 and f % 100 != 11 or v != 2 and f % 10 = 1'
 			},
+			'mad': {},
+			'map-bms': {},
 			'mas': {
 				'one': 'n = 1'
 			},
@@ -335,6 +345,7 @@
 			'mgo': {
 				'one': 'n = 1'
 			},
+			'min': {},
 			'mk': {
 				'one': 'v = 0 and i % 10 = 1 or f % 10 = 1'
 			},
@@ -374,6 +385,7 @@
 			'ne': {
 				'one': 'n = 1'
 			},
+			'nia': {},
 			'nl': {
 				'one': 'i = 1 and v = 0'
 			},
@@ -514,6 +526,7 @@
 			'so': {
 				'one': 'n = 1'
 			},
+			'su': {},
 			'sq': {
 				'one': 'n = 1'
 			},
@@ -548,6 +561,7 @@
 			'teo': {
 				'one': 'n = 1'
 			},
+			'tet': {},
 			'th': {},
 			'ti': {
 				'one': 'n = 0..1'
