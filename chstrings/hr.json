@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bugoslav",
-			"Ivi104"
+			"Ivi104",
+			"Ponor"
 		]
 	},
 	"article_titles_hint": "Pri uvođenju članaka po imenu, molimo dvaput provjerite ispravnost imena. Molimo također navedite jedan članak po retku.",
@@ -14,7 +15,7 @@
 	"category_filter_placeholder": "Pretraži po temi",
 	"edits": "Uređivanja",
 	"footer": "%s su izradili volonteri, pruža ga %s, a preveden je putem %s.",
-	"github_link_title": "Bok! Moj izvorni kod dostupan je na GitHub-u",
+	"github_link_title": "Pozdrav! Moj izvorni kôd dostupan je na GitHubu",
 	"import_article_titles": "Unesite popis članaka",
 	"import_articles_prompt": "Molimo unesite {em_start}naslove članaka{em_end} na Wikipediji kako biste ih uvezli. Unesite jedan članak po retku u polje ispod:",
 	"import_petscan": "Uvezi iz PetScan upita",
