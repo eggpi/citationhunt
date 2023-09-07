@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gorana Gomirac (VMRS)"
+			"Gorana Gomirac (VMRS)",
+			"Vlad5250"
 		]
 	},
 	"article_titles_hint": "Prilikom uvođenja članaka po imenu, molimo dvaput proverite tačnost imena. Molimo takođe navedite jedan članak po redu.",
@@ -39,6 +40,8 @@
 	"js-refs-added-today": "Danas {{PLURAL:$1|je dodana $1 referenca|su dodane $1 reference|je dodano $1 referenci}}!",
 	"js-select-articles-summary": "Kliknite za pregled ($1 {{PLURAL:$1|članka|članka|članaka}} i $2 {{PLURAL:$2|isečak|isečka|isečaka}} dodato)",
 	"js-snippet-count": "$1 {{PLURAL:$1|isečak|isečka|isečaka}}",
+	"js-dark-theme": "Tamna tema",
+	"js-default-theme": "Predodređena tema",
 	"lead_section_hint": "Ovaj tekst je deo uvodnog dela članka, pa je moguće da je navođenje reference opciono. Za više informacija pogledajte %s.",
 	"leaderboard_description": "Ovo su urednici koji su dopunili najviše odlomaka pomoću {tooltitle} u zadnjih {days} dana. Čestitamo!",
 	"leaderboard_link_title": "Spisak najboljih urednika",
