@@ -53,6 +53,6 @@
 	"select_articles_placeholder": "Pretražite članke",
 	"select_articles_prompt": "Iskoristite tražilicu ispod za {em_start}pretraživanje i dodavanje članaka{em_end} u svoj prilagođeni {tooltitle}. Članak možete ukloniti klikom na njega u pretpregledu ispod.",
 	"submit": "Potvrdi",
-	"try_again_hints_header": "Molimo pokušajte ponovno, uz slijedeće savjete na umu:",
+	"try_again_hints_header": "Molimo pokušajte ponovno, imajući na umu sljedeće savjete:",
 	"user": "Suradnik"
 }
