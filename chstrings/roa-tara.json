@@ -39,6 +39,8 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|citazzione|citazziune}} mise osce!",
 	"js-select-articles-summary": "Cazze l'andeprime de ($1 {{PLURAL:$1|vôsce}} e $2 {{PLURAL:$2|stuèzze|stozzere}} aggiunde)",
 	"js-snippet-count": "$1 {{PLURAL:$1|stuèzze|stozzere}}",
+	"js-dark-theme": "Teme scure",
+	"js-default-theme": "Teme predefinite",
 	"lead_section_hint": "Stu teste face parte d'a sezione d'inizie d'a vôsce, e quinde le refereminde ce vuè le mitte. 'Ndruche %s pe cchiù 'mbormazziune.",
 	"leaderboard_description": "Chiste so utinde ca onne corrette 'u numere cchiù ierte de frase ausanne {tooltitle} jndr'à l'urteme {days} sciurne. Bella cose!",
 	"leaderboard_link_title": "Classifeche",
