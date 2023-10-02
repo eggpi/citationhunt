@@ -31,7 +31,7 @@ _GLOBAL_CONFIG = dict(
 
     flagged_off = [],
 
-    profile = True,
+    profile = False,
 
     stats_max_age_days = 90,
 
