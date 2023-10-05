@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"back": "Йуха",
+	"button_next": "РогӀера!",
+	"button_wikilink": "Хьост йу!",
+	"customize": "Нисйе",
+	"category_filter_placeholder": "Билгалйе йаззамийн тематика",
+	"edits": "Нисдарш",
+	"import_article_titles": "Йазбе йаззамийн могӀам",
+	"in_page": "«%s» йаззаман чуьра:",
+	"js-article-count": "$1 {{PLURAL:$1|йаззам}}",
+	"js-custom-no-articles-selected": "Дехар до, массийта йаззам харжа.",
+	"js-refs-added-today": "Тахана {{PLURAL:$1|тӀетоьхна}} $1 {{PLURAL:$1|хьостан тӀе хьажорг}}!",
+	"js-snippet-count": "$1 {{PLURAL:$1|фрагмент}}",
+	"js-dark-theme": "Ӏаьржа тема",
+	"js-default-theme": "Тема Ӏадйитаран кепаца",
+	"select_articles": "{tooltitle} чохь йаззам лахар",
+	"select_articles_placeholder": "Йаззам лахар",
+	"submit": "ДӀадахьийта",
+	"user": "Декъашхо"
+}
