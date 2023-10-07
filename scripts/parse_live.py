@@ -52,7 +52,7 @@ cfg = config.get_localized_config()
 WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 
-MAX_EXCEPTIONS_PER_SUBPROCESS = 5
+MAX_EXCEPTIONS_PER_SUBPROCESS = 25
 
 DATA_TRUNCATED_WARNING_RE = re.compile(
     'Data truncated for column .* at row (\d+)')

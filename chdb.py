@@ -20,18 +20,19 @@ class _RetryingConnection(object):
     Wraps a MySQLdb connection, handling retries as needed.
     '''
 
+    MAX_RETRIES = 10
+
     def __init__(self, connect, sleep = time.sleep):
         self._connect = connect
         self._sleep = sleep
         self._do_connect()
 
     def _do_connect(self):
-        max_retries = 5
-        for retry in range(max_retries):
+        for retry in range(self.MAX_RETRIES):
             try:
                 self.conn = self._connect()
             except MySQLdb.OperationalError:
-                if retry == max_retries - 1:
+                if retry == self.MAX_RETRIES - 1:
                     raise
                 else:
                     self._sleep(2 ** retry)
@@ -40,13 +41,12 @@ class _RetryingConnection(object):
         self.conn.ping(True) # set the reconnect flag
 
     def execute_with_retry(self, operations, *args, **kwds):
-        max_retries = 5
-        for retry in range(max_retries):
+        for retry in range(self.MAX_RETRIES):
             try:
                 with self.conn.cursor() as cursor:
                     return operations(cursor, *args, **kwds)
             except MySQLdb.OperationalError:
-                if retry == max_retries - 1:
+                if retry == self.MAX_RETRIES - 1:
                     raise
                 else:
                     self._sleep(2 ** retry)
