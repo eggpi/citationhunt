@@ -38,7 +38,7 @@ duration = 4  # how many hours between runs within a single day
 # https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/
 cronjob_template = '''
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: citationhunt-update-{name}
