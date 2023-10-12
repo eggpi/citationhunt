@@ -32,8 +32,12 @@ CHUNKS_OF_SMALLER_LANG_CODES = utils.ichunk(
         if lc not in TOP_20_LANG_CODES_BY_ARTICLE_COUNT),
     SMALL_LANG_CODES_PER_CHUNK)
 
-freq = 4  # how many days between runs, for each language
-duration = 4  # how many hours between runs within a single day
+# How many days between runs, for each language
+FREQUENCY = 4
+
+# How many hours between runs within a single day
+DURATION_TOP20 = 12
+DURATION_SMALLER = 4
 
 # https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/
 cronjob_template = '''
@@ -79,12 +83,12 @@ h = 0
 for lc in TOP_20_LANG_CODES_BY_ARTICLE_COUNT:
     print(cronjob_template.format(
         lc = lc, name = lc.replace('_', '-'),
-        h=(h % 24), dom=1 + (h // 24), freq=freq))
-    h += duration
+        h=(h % 24), dom=1 + (h // 24), freq=FREQUENCY))
+    h += DURATION_TOP20
 
 for i, chunk in enumerate(CHUNKS_OF_SMALLER_LANG_CODES):
     lang_codes = list(chunk)
     print(cronjob_template.format(
         lc = ', '.join(lang_codes), name = 'small-{}'.format(i),
-        h=(h % 24), dom=1 + (h // 24), freq=freq))
-    h += duration
+        h=(h % 24), dom=1 + (h // 24), freq=FREQUENCY))
+    h += DURATION_SMALLER
