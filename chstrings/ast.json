@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Xuacu"
+			"Xuacu",
+			"YoaR"
 		]
 	},
 	"article_titles_hint": "Al importar artículos per títulu, comprueba dos vegaes que los títulos son correctos y que disti unu per llinia.",
 	"back": "Anterior",
-	"back_to_cancel": "Puedes pulsiar en {em_start}{back}{em_end} o cerrar esti diálogu pa encaboxar.",
+	"back_to_cancel": "Puedes pulsiar en {em_start}{back}{em_end} o cerrar esti diálogu pa zarrar.",
 	"button_next": "¡Siguiente!",
 	"button_wikilink": "¡Tengo esta!",
 	"customize": "Personalizar",
