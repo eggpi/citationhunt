@@ -43,6 +43,8 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|hewarnameyo ewro biyo |hewarnameyê ke ewro biyê}} cı!",
 	"js-select-articles-summary": "Seba verqayti bıploğnê ($1  {{PLURAL:$1|meqale|meqaley}} u $2 {{PLURAL:$2|pasaj|pasaji}} biyê cı)",
 	"js-snippet-count": "$1 {{PLURAL:$1|pasaj|pasaji}}",
+	"js-dark-theme": "Mewzuyo tari",
+	"js-default-theme": "Mewzuyo standard",
 	"lead_section_hint": "No nuşte yew parçeyê qısmê meqaleyê erzizıniyo, coke ra referansê dey beno ke waştış gore bıbo. Seba tayêna melamati rê %s bıvênên.",
 	"leaderboard_description": "Nê karberê ke {tooltitle} rocanê peyênan de ebe {days} ra pırtleyê tewr qıci vurnay. Şıma rê helal bo!",
 	"leaderboard_link_title": "Lista lideran",
