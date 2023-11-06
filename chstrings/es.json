@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Avengium",
+			"Catttte",
 			"DarkGames26",
 			"Dgstranz",
 			"Fitoschido",
@@ -51,6 +52,8 @@
 	"js-refs-added-today": "¡$1 {{PLURAL:$1|cita añadida|citas añadidas}} hoy!",
 	"js-select-articles-summary": "clica para la vista previa de ($1 {{PLURAL:$1|artículo|artículos}} y $2 {{PLURAL:$2|fragmento|fragmentos}} añadidos)",
 	"js-snippet-count": "$1 {{PLURAL:$1|fragmento|fragmentos}}",
+	"js-dark-theme": "Tema oscuro",
+	"js-default-theme": "Tema predeterminado",
 	"lead_section_hint": "Este texto es parte de la sección principal del artículo, de modo que las referencia pueden ser opcionales. Consulta %s para más información.",
 	"leaderboard_description": "Estos son los usuarios que han arreglado a mayor número de fragmentos utilizando {tooltitle} en los {days} últimos días. ¡Felicitaciones!",
 	"leaderboard_link_title": "Tabla de posiciones",
