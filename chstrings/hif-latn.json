@@ -3,7 +3,8 @@
 		"authors": [
 			"Abdul Kadir",
 			"Girmitya",
-			"Smcnarayan"
+			"Smcnarayan",
+			"Thakurji"
 		]
 	},
 	"article_titles_hint": "Jab koi article ke uske naam pe import karnaa tab dui dafe check karnaa ki title right hai aur ek line pe ek title likha hai.\n\nWhen importing articles by title, double-check that the titles are correct and that you've provided one per line.",
@@ -25,5 +26,6 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation}} aaj jorra gais hai!",
 	"lead_section_hint": "Ii text article ke lead section ke hissa hai, tab iske reference kare ke jaruuri nai hai. Meharbaani kar ke, aur jaan kari ke khaatir %s ke dekho.",
 	"page_not_found": "Panna ke nai paawa gais hai!",
-	"page_not_found_text": "Jon panna ke aap khojtaa hae, abhi exist nai hoe hai - saait ii citation ke paae lewaa gais hai? Aur ke khaatir pichhe %s pe jaao !"
+	"page_not_found_text": "Jon panna ke aap khojtaa hae, abhi exist nai hoe hai - saait ii citation ke paae lewaa gais hai? Aur ke khaatir pichhe %s pe jaao !",
+	"user": "Sadasya"
 }
