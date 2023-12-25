@@ -1,12 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"ElangoRamanujam"
+			"ElangoRamanujam",
+			"Fahimrazick"
 		]
 	},
-	"button_next": "அடுத்து!",
-	"button_wikilink": "நான் இதைப் பெற்றேன்!",
-	"category_filter_placeholder": "ஒரு தலைப்பினைத் தேடுக",
-	"in_page": "பக்கம் %sல்:",
-	"page_not_found": "பக்கத்தைக் காணவில்லை!"
+	"back": "பின்னே",
+	"button_next": "அடுத்தது!",
+	"button_wikilink": "எனக்கு இது விளங்கியது!",
+	"customize": "தனிப்பயனாக்கு",
+	"category_filter_placeholder": "ஒரு தலைப்பைத் தேடு",
+	"edits": "தொகுப்புகள்",
+	"in_page": "%s ஆம் பக்கத்தில்:",
+	"js-dark-theme": "இருட்கருப்பொருள்",
+	"js-default-theme": "இயல்பிருப்புக் கருப்பொருள்",
+	"page_not_found": "பக்கத்தைக் காணவில்லை!",
+	"submit": "சமர்ப்பி",
+	"user": "பயனர்"
 }
