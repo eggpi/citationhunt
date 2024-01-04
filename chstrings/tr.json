@@ -49,6 +49,8 @@
 	"js-refs-added-today": "Bugün $1 alıntı eklendi!",
 	"js-select-articles-summary": "Önizlemek için tıklayın ($1 madde ve $2 pasaj eklendi)",
 	"js-snippet-count": "$1 pasaj",
+	"js-dark-theme": "Koyu tema",
+	"js-default-theme": "Varsayılan tema",
 	"lead_section_hint": "Bu metin maddenin baş bölümünün bir parçasıdır, bu nedenle kaynak vermek isteğe bağlı olabilir. Daha fazla bilgi için lütfen %s sayfasına bakın.",
 	"leaderboard_description": "Bunlar, son {days} gün içinde en çok parçacığı {tooltitle} üzerinden düzelten kullanıcılardır. Aferin!",
 	"leaderboard_link_title": "Liderlik sıralaması",
