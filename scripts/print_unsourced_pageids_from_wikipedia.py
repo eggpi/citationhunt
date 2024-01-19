@@ -18,7 +18,7 @@ def print_unsourced_ids_from_wikipedia():
     cursor = db.cursor()
 
     or_clause = (
-        '(' + 'OR '.join(['lt_title = %s'] * len(templates)) + ')'
+        '(' + ' OR '.join(['lt_title = %s'] * len(templates)) + ')'
     )
     # https://www.mediawiki.org/wiki/Help:Namespaces
     cursor.execute(

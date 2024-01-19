@@ -310,7 +310,7 @@ _LANG_CODE_TO_CONFIG = dict(
         lead_section_policy_link_title = '',
 
         citation_needed_templates = [
-            'fakt',
+            'Fakt',
         ],
         hidden_category = 'Ukryte_kategorie',
     ),
