@@ -22,10 +22,11 @@ def print_unsourced_ids_from_wikipedia():
     )
     # https://www.mediawiki.org/wiki/Help:Namespaces
     cursor.execute(
-        'SELECT tl_from FROM templatelinks '
+        'SELECT DISTINCT tl_from FROM templatelinks '
         'JOIN linktarget ON templatelinks.tl_target_id = linktarget.lt_id '
-        'WHERE tl_from_namespace = 0 AND lt_namespace = 10 AND ' +
-        or_clause, templates)
+        'LEFT JOIN page_restrictions ON pr_page = tl_from '
+        'WHERE tl_from_namespace = 0 AND lt_namespace = 10 AND '
+        '(pr_type IS NULL OR pr_type != "edit") AND ' + or_clause, templates)
     for (page_id,) in cursor:
         print(page_id)
 
