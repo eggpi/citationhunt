@@ -780,7 +780,7 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Приховані_категорії',
     ),
 
-     hi = dict(
+    hi = dict(
         lang_name = 'हिन्दी',
         lang_dir = 'ltr',
         database = 'hiwiki_p',
