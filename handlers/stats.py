@@ -38,6 +38,8 @@ def log_request(response):
     if is_spam(user_agent, referrer):
         return response
     lang_code = getattr(flask.g, '_lang_code', None)
+    if lang_code not in config.LANG_CODES_TO_LANG_NAMES:
+        lang_code = None
     id = flask.request.args.get('id')
     cat = flask.request.args.get('cat')
     inter_id = flask.request.args.get('custom')
