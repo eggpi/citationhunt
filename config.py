@@ -1239,7 +1239,7 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Thể_loại_ẩn',
     ),
 
-    # **{  # https://stackoverflow.com/questions/54974442/escape-reserved-keywords-python
+    **{  # https://stackoverflow.com/questions/54974442/escape-reserved-keywords-python
     # 'as': dict(
     #   lang_name = 'অসমীয়া',
     #   lang_dir = 'ltr',
