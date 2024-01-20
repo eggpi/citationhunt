@@ -121,8 +121,8 @@ def validate_lang_code(handler):
                 lang_code, flask.g._cfg, accept_language)
         if not flask.g._strings:
             # Shouldn't really happen, this means we have a misconfigured
-            # language that has a config entry but no locales in the translation
-            # files.
+            # language that has a config entry but no strings.
+            flask.request.path = ''
             return redirect_to_lang_code('en')
         return handler(lang_code, *args, **kwds)
     return wrapper
