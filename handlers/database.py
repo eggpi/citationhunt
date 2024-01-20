@@ -164,11 +164,12 @@ def create_intersection(lang_code, page_ids, max_pages, expiration_days):
     intersection = db.execute_with_retry_s('''
         SELECT page_id, title
         FROM articles WHERE page_id IN %s
-        ORDER BY title''', tuple(page_ids))
+        ORDER BY title
+        LIMIT %s''', tuple(page_ids), max_pages)
     if intersection is None:
         return '', []
-    page_ids = [row[0] for row in intersection][:max_pages]
-    titles = [row[1] for row in intersection][:max_pages]
+    page_ids = [row[0] for row in intersection]
+    titles = [row[1] for row in intersection]
     inter_id = mkid('|'.join(title.lower() for title in sorted(titles)))
 
     def insert_intersection(cursor):

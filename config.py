@@ -44,7 +44,7 @@ _GLOBAL_CONFIG = dict(
     petscan_depth = 10,
 
     # The maximum number of articles to import into an intersection.
-    intersection_max_size = 4096,
+    intersection_max_size = 8192,
 
     # How long before an intersection is deleted from the database.
     intersection_expiration_days = 30,

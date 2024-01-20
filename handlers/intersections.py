@@ -50,9 +50,11 @@ def intersect_with_psid(cfg, psid):
         with log_time('querying psid ' + psid):
             response = requests.get(
                 cfg.petscan_url + '?format=json&psid=' + psid +
+                    # Try to fetch enough results that, when intersected with
+                    # our database, we get cfg.intersection_max_size pages.
+                    '&output_limit=' + str(cfg.intersection_max_size * 2) +
                     # Ask PetScan to give us results in the Wiki we're serving
-                    # from, even if the original query related to a different
-                    # Wiki.
+                    # from, even if the original query refers to different Wiki.
                     '&common_wiki=other&common_wiki_other=' + wiki_name,
                 timeout = cfg.petscan_timeout_s)
             articles = response.json()['*'][0]['a']['*']

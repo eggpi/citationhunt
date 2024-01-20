@@ -406,6 +406,21 @@ class CitationHuntTest(unittest.TestCase):
         self.assertEqual(response['ttl_days'],
             config.get_global_config().intersection_expiration_days)
 
+    @mock.patch('app.handlers.intersections.requests.get')
+    @mock.patch('app.handlers.database.create_intersection')
+    def test_petscan_output_limit(self, mock_create_intersection, mock_get):
+        mock_response = mock_get()
+        mock_response.json.return_value = {
+            '*': [{'a': {'*': [{'id': i} for i in range(10)]}}]}
+        mock_create_intersection.return_value = (self.inter, list(range(5)))
+        self.app.post('/en/intersection',
+            data = json.dumps({'psid': '123456'}),
+            headers = {'Content-Type': 'application/json'})
+        petscan_args = self.get_url_args(mock_get.call_args[0][0])
+
+        cfg = config.get_global_config()
+        self.assertGreater(int(petscan_args['output_limit']), cfg.intersection_max_size)
+
     def test_template_with_no_date_is_not_old(self):
         response = self.app.get('/en?id=' + self.sid)
         html = response.get_data().decode('utf-8')
