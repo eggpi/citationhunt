@@ -46,6 +46,8 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|referência adicionada|referências adicionadas}} hoje!",
 	"js-select-articles-summary": "Clique para antever ($1 {{PLURAL:$1|artigo|artigos}} e $2 {{PLURAL:$2|trecho adicionado|trechos adicionados}})",
 	"js-snippet-count": "$1 {{PLURAL:$1|trecho|trechos}}",
+	"js-dark-theme": "Tema escuro",
+	"js-default-theme": "Tema por omissão",
 	"lead_section_hint": "Este texto faz parte da secção principal do artigo, pelo que referenciá-lo pode ser opcional. Por favor, consulte %s para mais informações.",
 	"leaderboard_description": "Estes são os utilizadores que corrigiram mais trechos usando {tooltitle} nos últimos {days} dias. Ótimo trabalho!",
 	"leaderboard_link_title": "Colaboradores mais ativos",
