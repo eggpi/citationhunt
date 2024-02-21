@@ -108,7 +108,7 @@ def _use(cursor, database, lang_code):
 # (see https://phabricator.wikimedia.org/T216213).
 
 def get_table_name(db, database, table):
-    cfg = config.get_localized_config(api = False)
+    cfg = config.get_localized_config()
     return _make_tools_labs_dbname(
         db.cursor(), database, cfg.lang_code) + '.' + table
 
@@ -120,7 +120,7 @@ def init_db(lang_code):
     return _RetryingConnection(connect_and_initialize)
 
 def init_scratch_db():
-    cfg = config.get_localized_config(api = False)
+    cfg = config.get_localized_config()
     def connect_and_initialize():
         db = _connect_to_ch_mysql()
         _use(db.cursor(), 'scratch', cfg.lang_code)
@@ -135,7 +135,7 @@ def init_stats_db():
     return _RetryingConnection(connect_and_initialize)
 
 def init_wp_replica_db(lang_code):
-    cfg = config.get_localized_config(lang_code, api = False)
+    cfg = config.get_localized_config(lang_code)
     def connect_and_initialize():
         db = _connect_to_wp_mysql(cfg)
         with db.cursor() as cursor:
@@ -244,7 +244,7 @@ def initialize_all_databases():
         cursor.execute(
             'CREATE DATABASE IF NOT EXISTS %s '
             'CHARACTER SET utf8mb4' % dbname)
-    cfg = config.get_localized_config(api = False)
+    cfg = config.get_localized_config()
     db = _RetryingConnection(_connect_to_ch_mysql)
     with db.cursor() as cursor, ignore_warnings():
         cursor.execute('DROP DATABASE IF EXISTS ' + _make_tools_labs_dbname(
@@ -260,7 +260,7 @@ def initialize_all_databases():
         _create_stats_tables(cfg, cursor)
 
 def install_scratch_db():
-    cfg = config.get_localized_config(api = False)
+    cfg = config.get_localized_config()
     with init_db(cfg.lang_code).cursor() as cursor:
         chname = _make_tools_labs_dbname(cursor, 'citationhunt', cfg.lang_code)
         scname = _make_tools_labs_dbname(cursor, 'scratch', cfg.lang_code)
