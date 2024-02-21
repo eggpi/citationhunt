@@ -64,7 +64,7 @@ def log_hello():
 @handlers.validate_lang_code
 def redirect(lang_code):
     to = urllib.parse.unquote(flask.request.args.get('to', ''))
-    cfg = config.get_localized_config(lang_code, api = False)
+    cfg = config.get_localized_config(lang_code)
     return flask.redirect(
         urllib.parse.urljoin('https://' + cfg.wikipedia_domain, to))
 
@@ -90,7 +90,7 @@ def page_not_found(e):
     if hasattr(flask.g, '_cfg'):
         cfg = flask.g._cfg
     else:
-        cfg = config.get_localized_config('en', api = False)
+        cfg = config.get_localized_config('en')
     if hasattr(flask.g, '_strings'):
         lang_tag = flask.g._lang_tag
         strings = flask.g._strings

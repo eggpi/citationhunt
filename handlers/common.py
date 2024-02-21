@@ -112,7 +112,7 @@ def validate_lang_code(handler):
         if lang_code not in config.LANG_CODES_TO_LANG_NAMES:
             return redirect_to_lang_code('en')
 
-        flask.g._cfg = config.get_localized_config(lang_code, api = False)
+        flask.g._cfg = config.get_localized_config(lang_code)
         if flask.current_app.debug and 'locale' in flask.request.args:
             flask.g._strings = chstrings.get_localized_strings(
                 flask.g._cfg, flask.request.args['locale'])

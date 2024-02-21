@@ -54,7 +54,7 @@ body[theme=dark] #custom-controls .o-open {
     padding-bottom: 10px;
 }
 
-#import-petscan-card input {
+#import-petscan-card input, #import-pagepile-card input {
     margin: 10px auto;
     display: block;
     border: 2px solid #937E7E;

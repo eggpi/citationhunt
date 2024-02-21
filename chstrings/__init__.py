@@ -98,6 +98,16 @@ def _preprocess_variables(config, strings):
             link_start = _link_start(_make_petscan_url(config)),
             link_end = '</a>'))
 
+    strings['import_pagepile_intro'] = flask.Markup(
+        strings['import_pagepile_intro'].format(
+            em_start = '<b>',
+            em_end = '</b>'))
+
+    strings['import_pagepile_prompt'] = flask.Markup(
+        strings['import_pagepile_prompt'].format(
+            link_start = _link_start(config.pagepile_url),
+            link_end = '</a>'))
+
     strings['back_to_cancel'] = flask.Markup(
         strings['back_to_cancel'].format(
             em_start = '<b>', back = strings['back'],

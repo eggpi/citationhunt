@@ -47,6 +47,10 @@ $(function() {
       e.preventDefault();
       wizard.advanceToCard('import-petscan-card');
     });
+    $html.find('#import-pagepile-link').click((e) => {
+      e.preventDefault();
+      wizard.advanceToCard('import-pagepile-card');
+    });
 
     this.start = function($container) {
       $container.append($html);
@@ -129,6 +133,54 @@ $(function() {
     };
   }
   ImportPetScanCard.prototype = Card;
+
+  function ImportPagepileCard(wizard) {
+    let id = 'import-pagepile-card';
+    this.getId = () => id;
+    let $html = $('#' + id).detach();
+
+    this.start = function($container) {
+      $container.append($html);
+      $html.find('input').focus();
+    };
+
+    this.end = function($container) {
+      $html.detach();
+    };
+
+    this.submit = function() {
+      let inputElem = $html.find('input')[0];
+      let pileid = extractPagepileID(inputElem.value);
+      if ('setCustomValidity' in inputElem) {
+        if (pileid === null) {
+          inputElem.setCustomValidity(
+            wizard.getStrings().invalidPagepileInput);
+          return null;
+        }
+        // Clear pre-existing errors.
+        inputElem.setCustomValidity('');
+      }
+      let payload = JSON.stringify({
+        pileid: pileid,
+      });
+      return sendCreationRequest(payload);
+    }
+
+    function extractPagepileID(input) {
+      let pileid = input.trim();
+      let urlParser = document.createElement('a');
+      urlParser.href = input;
+      if (urlParser.hostname === 'pagepile.wmflabs.org') {
+        let searchParamsParser = new URLSearchParams(urlParser.search);
+        pileid = searchParamsParser.get('id');
+      }
+      if (pileid && pileid.match(/^[0-9]+$/)) {
+        return pileid;
+      }
+      return null;
+    };
+  }
+  ImportPagepileCard.prototype = Card;
 
   function SelectArticlesCard(wizard) {
     let id = 'select-articles-card';
@@ -346,6 +398,7 @@ $(function() {
       SelectArticlesCard,
       ImportArticlesCard,
       ImportPetScanCard,
+      ImportPagepileCard,
       ProgressCard,
       CreatedCard,
       FailedCard,

@@ -49,6 +49,7 @@ import urllib.request, urllib.parse, urllib.error
 import pickle as pickle
 
 cfg = config.get_localized_config()
+cfg.enable_wikipedia_api()
 WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
 WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
 

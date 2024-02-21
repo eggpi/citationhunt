@@ -21,7 +21,7 @@ class CHStringsTest(unittest.TestCase):
 
     def test_fallback_lang_tag(self):
         gcfg = config.get_global_config()
-        cfg = config.get_localized_config(gcfg.fallback_lang_tag, api = False)
+        cfg = config.get_localized_config(gcfg.fallback_lang_tag)
         fallback_strings = chstrings.get_localized_strings(
             cfg, gcfg.fallback_lang_tag)
 
@@ -54,6 +54,6 @@ class CHStringsTest(unittest.TestCase):
 
 if __name__ == '__main__':
     for lc in config.LANG_CODES_TO_LANG_NAMES:
-        cfg = config.get_localized_config(lc, api = False)
+        cfg = config.get_localized_config(lc)
         CHStringsTest.add_smoke_test(cfg)
     unittest.main()

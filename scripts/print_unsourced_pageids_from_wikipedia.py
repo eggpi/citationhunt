@@ -12,6 +12,7 @@ import config
 
 def print_unsourced_ids_from_wikipedia():
     cfg = config.get_localized_config()
+    cfg.enable_wikipedia_api()
     templates = [t.replace(' ', '_') for t in cfg.citation_needed_templates]
 
     db = chdb.init_wp_replica_db(cfg.lang_code)

@@ -29,7 +29,7 @@ class ConfigTest(unittest.TestCase):
 
 if __name__ == '__main__':
     for lc in config.LANG_CODES_TO_LANG_NAMES:
-        cfg = config.get_localized_config(lc, api = False)
+        cfg = config.get_localized_config(lc)
         ConfigTest.add_validate_categories_test(cfg)
         ConfigTest.add_validate_templates_test(cfg)
         ConfigTest.add_validate_wikipedia_domain_test(cfg)

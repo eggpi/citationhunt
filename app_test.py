@@ -326,6 +326,9 @@ class CitationHuntTest(unittest.TestCase):
             {'page_titles': []},
             {'psid': []},
             {'psid': 'invalid'},
+            {'pileid': ''},
+            {'pileid': []},
+            {'pileid': 'invalid'},
         ]
         for bi in broken_inputs:
             response = json.loads(
@@ -420,6 +423,24 @@ class CitationHuntTest(unittest.TestCase):
 
         cfg = config.get_global_config()
         self.assertGreater(int(petscan_args['output_limit']), cfg.intersection_max_size)
+
+    @mock.patch('app.handlers.intersections.requests.get')
+    @mock.patch('app.handlers.intersections.intersect_with_page_titles')
+    def test_pagepile_ok(self, mock_intersect_with_page_titles, mock_get):
+        mock_response = mock_get()
+        mock_response.json.return_value = {
+            'wiki': 'enwiki',
+            'pages': ['A', 'B', 'C', 'D', 'E']
+        }
+        mock_intersect_with_page_titles.return_value = (self.inter, list(range(5)))
+        response = json.loads(
+            self.app.post('/en/intersection',
+                data = json.dumps({'pileid': '123456'}),
+                headers = {'Content-Type': 'application/json'}).data)
+        self.assertEqual(response['id'], self.inter)
+        self.assertEqual(response['page_ids'], list(range(5)))
+        self.assertEqual(response['ttl_days'],
+            config.get_global_config().intersection_expiration_days)
 
     def test_template_with_no_date_is_not_old(self):
         response = self.app.get('/en?id=' + self.sid)

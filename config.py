@@ -43,6 +43,10 @@ _GLOBAL_CONFIG = dict(
 
     petscan_depth = 10,
 
+    pagepile_url = 'https://pagepile.toolforge.org',
+
+    pagepile_timeout_s = 60,
+
     # The maximum number of articles to import into an intersection.
     intersection_max_size = 8192,
 
@@ -1277,7 +1281,38 @@ _LANG_CODE_TO_CONFIG = dict(
     )},
 )
 
-Config = types.SimpleNamespace
+def _resolve_redirects_to_templates(wikipedia, templates):
+    '''Given a set of templates, return all templates that redirect to them.'''
+    templates = set(templates)
+    params = {
+        'prop': 'redirects',
+        'titles': '|'.join(
+            # The API resolves Template: to the relevant per-language prefix
+            'Template:' + tplname for tplname in templates
+        ),
+        'rnamespace': 10,
+    }
+    for result in wikipedia.query(params):
+        for page in list(result['query']['pages'].values()):
+            for redirect in page.get('redirects', []):
+                if ':' not in redirect['title']:
+                    # Not a template?
+                    continue
+                tplname = redirect['title'].split(':', 1)[1]
+                templates.add(tplname)
+    return templates
+
+class Config(types.SimpleNamespace):
+    def enable_wikipedia_api(self):
+        # This module is imported pretty often during some manual operations
+        # (e.g. creating cronjobs), and yamwapi is the only third-party
+        # dependency that would require us to enter the virtualenv so... as
+        # a convenience hack, we avoid importing it at module level.
+        import yamwapi
+        self.wikipedia = yamwapi.MediaWikiAPI(
+            'https://' + self.wikipedia_domain + '/w/api.php', self.user_agent)
+        self.citation_needed_templates = _resolve_redirects_to_templates(
+            self.wikipedia, self.citation_needed_templates)
 
 def _inherit(base, child):
     ret = dict(base)  # shallow copy
@@ -1306,47 +1341,14 @@ assert len(
     set.union(set(), *list(LANG_CODES_TO_ACCEPT_LANGUAGE.values()))
 ) == sum(map(len, list(LANG_CODES_TO_ACCEPT_LANGUAGE.values())))
 
-def _resolve_redirects_to_templates(wikipedia, templates):
-    '''Given a set of templates, return all templates that redirect to them.'''
-    templates = set(templates)
-    params = {
-        'prop': 'redirects',
-        'titles': '|'.join(
-            # The API resolves Template: to the relevant per-language prefix
-            'Template:' + tplname for tplname in templates
-        ),
-        'rnamespace': 10,
-    }
-    for result in wikipedia.query(params):
-        for page in list(result['query']['pages'].values()):
-            for redirect in page.get('redirects', []):
-                if ':' not in redirect['title']:
-                    # Not a template?
-                    continue
-                tplname = redirect['title'].split(':', 1)[1]
-                templates.add(tplname)
-    return templates
-
 def get_global_config():
     return Config(**_GLOBAL_CONFIG)
 
-def get_localized_config(lang_code = None, api = True):
+def get_localized_config(lang_code = None):
     if lang_code is None:
         lang_code = os.getenv('CH_LANG')
     lang_config = _LANG_CODE_TO_CONFIG[lang_code]
     cfg = Config(lang_code = lang_code, **reduce(
         _inherit, [_GLOBAL_CONFIG, _BASE_LANG_CONFIG, lang_config]))
     cfg.lang_codes_to_lang_names = LANG_CODES_TO_LANG_NAMES
-
-    cfg.wikipedia = None
-    if api:
-        # This module is imported pretty often during some manual operations
-        # (e.g. creating cronjobs), and yamwapi is the only third-party
-        # dependency that would require us to enter the virtualenv so... as
-        # a convenience hack, we avoid importing it at module level.
-        import yamwapi
-        cfg.wikipedia = yamwapi.MediaWikiAPI(
-            'https://' + cfg.wikipedia_domain + '/w/api.php', cfg.user_agent)
-        cfg.citation_needed_templates = _resolve_redirects_to_templates(
-            cfg.wikipedia, cfg.citation_needed_templates)
     return cfg

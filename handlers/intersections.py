@@ -13,7 +13,7 @@ PAGE_TITLES_PER_API_REQUEST = 50
 def validate_request_json(request):
     if not isinstance(request, dict):
         raise TypeError
-    if not any(k in request for k in ['page_ids', 'page_titles', 'psid']):
+    if not any(k in request for k in ['page_ids', 'page_titles', 'psid', 'pileid']):
         raise TypeError
     for non_empty_optional_list in ['page_ids', 'page_titles']:
         if non_empty_optional_list in request:
@@ -24,8 +24,13 @@ def validate_request_json(request):
         psid = request['psid']
         if not isinstance(psid, str) or not psid.isdigit():
             raise TypeError
+    if 'pileid' in request:
+        pileid = request['pileid']
+        if not isinstance(pileid, str) or not pileid.isdigit():
+            raise TypeError
 
 def intersect_with_page_titles(cfg, page_titles):
+    cfg.enable_wikipedia_api()
     page_ids = []
     for chunk in ichunk(page_titles, PAGE_TITLES_PER_API_REQUEST):
         params = {'titles': '|'.join(chunk)}
@@ -68,6 +73,26 @@ def intersect_with_psid(cfg, psid):
         return '', []
     return intersect_with_page_ids(cfg, page_ids)
 
+def intersect_with_pileid(cfg, pileid):
+    page_titles = []
+    response = None
+    try:
+        response = requests.get(
+            cfg.pagepile_url + '/api.php?id=' + pileid +
+            '&action=get_data&format=json',
+            timeout = cfg.pagepile_timeout_s)
+        response_json = response.json()
+        wiki = response_json['wiki']
+        if wiki == cfg.database.rstrip('_p'):
+            page_titles = response_json['pages']
+    except Exception as e:
+        flask.current_app.logger.warning(
+            'Pagepile request failed: ' + repr(e) + ', ' +
+            (repr(response.text) if response is not None else '[no response]'))
+    if not page_titles:
+        return '', []
+    return intersect_with_page_titles(cfg, page_titles)
+
 @validate_lang_code
 def create_intersection(lang_code):
     cfg = flask.g._cfg
@@ -82,6 +107,8 @@ def create_intersection(lang_code):
         id, page_ids = intersect_with_page_titles(cfg, request['page_titles'])
     elif 'psid' in request:
         id, page_ids = intersect_with_psid(cfg, request['psid'])
+    elif 'pileid' in request:
+        id, page_ids = intersect_with_pileid(cfg, request['pileid'])
     return flask.jsonify(
         id = id, page_ids = page_ids,
         ttl_days = cfg.intersection_expiration_days)
