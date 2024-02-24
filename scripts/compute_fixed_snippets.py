@@ -160,6 +160,7 @@ if __name__ == '__main__':
 
         for lang_code in lang_codes:
             cfg = config.get_localized_config(lang_code)
+            cfg.enable_wikipedia_api()
             if cfg.extract == 'snippet':
                 compute_fixed_snippets(cfg)
         logger.info('all done in %d seconds.' % (time.time() - start))
