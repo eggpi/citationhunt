@@ -6,22 +6,25 @@ The scripts in this directory are used to generate the Citation Hunt database.
 
 See the [top-level README](https://github.com/eggpi/citationhunt#running-in-toolforge) for how to set up Kubernetes cron jobs to generate the database, and refer to the [Kubernetes cronjob](https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/) documentation for more general information.
 
-Below are some more handy commands for manually operating and troubleshooting those cronjobs.
+Below are some more handy commands for manually operating and troubleshooting those jobs.
 
 #### Manually launch a job
-    $ kubectl create job --from=cronjob/citationhunt-update-it citationhunt-update-it-manual
+    kubectl create job --from=cronjob/citationhunt-update-it citationhunt-update-it-manual
 
 #### Clean up the manual job
-    $ kubectl delete job citationhunt-update-it-manual
+    kubectl delete job citationhunt-update-it-manual
+
+#### Delete the compute_fixed_snippets job
+    kubectl delete deployment citationhunt.compute-fixed-snippets
 
 #### Get pods for running jobs
-    $ kubectl get pods --field-selector=status.phase=Running
+    kubectl get pods --field-selector=status.phase=Running
 
 #### Get logs from a pod
-    $ kubectl logs ${POD?}
+    kubectl logs ${POD?}
 
 #### Open a shell in a running pod
-    $ kubectl exec -it ${POD?} -- bash
+    kubectl exec -it ${POD?} -- bash
 
 ### Generating the database locally
 
@@ -39,7 +42,7 @@ Since we're dealing with English in this document, let's set the variable
 accordingly:
 
 ```
-$ export CH_LANG=en
+export CH_LANG=en
 ```
 
 First, we need to get access to (a copy of) the
@@ -60,7 +63,7 @@ latest versions these for the English Wikipedia [here](https://dumps.wikimedia.o
 From the MySQL console connected to your local database, import them:
 
 ```
-$ mysql -u root
+mysql -u root
 mysql> create database enwiki_p;
 mysql> use enwiki_p;
 mysql> source path/to/categorylinks.sql
@@ -125,14 +128,14 @@ Finally, set two environment variables:
 Now, let's create all necessary databases and tables:
 
 ```
-$ (cd ..; python -c 'import chdb; chdb.initialize_all_databases()')
+(cd ..; python -c 'import chdb; chdb.initialize_all_databases()')
 ```
 
 Next, let's generate the list of ids of pages with unsourced statements with
 `print_unsourced_pageids_from_wikipedia.py`:
 
 ```
-$ ./print_unsourced_pageids_from_wikipedia.py > unsourced
+./print_unsourced_pageids_from_wikipedia.py > unsourced
 ```
 
 This list should be passed to the `parse_live.py` script, which will query the
@@ -140,7 +143,7 @@ Wikipedia API for the actual content of the pages and identify snippets lacking
 citations:
 
 ```
-$ ./parse_live.py unsourced
+./parse_live.py unsourced
 ```
 
 This should take a couple of hours on a multi-core machine. If you're
@@ -152,7 +155,7 @@ Citation Hunt, thus filling up the `articles_categories` table in the database.
 This is done with the `assign_categories.py` script:
 
 ```
-$ ./assign_categories.py
+./assign_categories.py
 ```
 
 At the end of this step, your MySQL installation should contain a database named
@@ -162,7 +165,7 @@ database named `root__citationhunt_en`, which is where the app actually expects
 to find them:
 
 ```
-$ ./install_new_database.py
+./install_new_database.py
 ```
 
 And that's it! If everything went well, you can refer to the instructions in

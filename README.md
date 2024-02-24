@@ -33,32 +33,32 @@ After logging in to `login.tools.wmflabs.org`, run the following commands to
 create the directory structure and enter the virtualenv:
 
 ```
-$ mkdir www/python/
-$ webservice --backend=kubernetes python3.9 shell
-$ python3 -m venv www/python/venv/
-$ . www/python/venv/bin/activate
+mkdir www/python/
+webservice --backend=kubernetes python3.9 shell
+python3 -m venv www/python/venv/
+. www/python/venv/bin/activate
 ```
 
 Now, clone this repository, point uwsgi to it and install the dependencies:
 
 ```
-$ git clone https://github.com/eggpi/citationhunt.git
-$ ln -s ../../citationhunt www/python/src
-$ pip install -r citationhunt/requirements.txt
+git clone https://github.com/eggpi/citationhunt.git
+ln -s ../../citationhunt www/python/src
+pip install -r citationhunt/requirements.txt
 ```
 
 and start the webservice:
 
 ```
-$ webservice --backend=kubernetes python3.9 start
+webservice --backend=kubernetes python3.9 start
 ```
 
 Then, generate the Cron jobs for Kubernetes:
 
 ```
-$ kubectl get cronjobs | tail -n +1 | grep -E -o '^citationhunt-update-[^ ]+' | xargs kubectl delete cronjob  # delete existing jobs
-$ (cd citationhunt; k8s/crontab.py | kubectl apply -f -)
-$ kubectl get cronjobs # verify it
+kubectl get cronjobs | tail -n +1 | grep -E -o '^citationhunt-update-[^ ]+' | xargs kubectl delete cronjob  # delete existing jobs
+(cd citationhunt; k8s/crontab.py | kubectl apply -f -)
+kubectl get cronjobs # verify it
 ```
 
 See [scripts/README.md](https://github.com/eggpi/citationhunt/blob/master/scripts/README.md)
@@ -68,5 +68,5 @@ Finally, use `k8s/compute_fixed_snippets.yaml` to launch `scripts/compute_fixed_
 to detect snippets that get fixed:
 
 ```
-$ kubectl create --validate=true -f k8s/compute_fixed_snippets.yaml
+kubectl create --validate=true -f k8s/compute_fixed_snippets.yaml
 ```
