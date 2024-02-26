@@ -39,7 +39,7 @@
 	"js-article-count": "$1 {{PLURAL:$1|voce|voci}}",
 	"js-custom-numbers": "Contiene frammenti da $1 {{PLURAL:$1|voce|voci}} ed è valido per $2 {{PLURAL:$2|giorno|giorni}}:",
 	"js-custom-no-articles-selected": "Seleziona alcune voci.",
-	"js-invalid-petscan-input": "Un ID numerico PetScan.",
+	"js-invalid-petscan-input": "Inserisci un ID PetScan numerico.",
 	"js-keyboard-shortcut": "Scorciatoia da tastiera: %s",
 	"js-leaving-custom": "Stai tornando a illimitato {tooltitle}. Sei sicuro?",
 	"js-refs-added-today": "$1 {{PLURAL:$1|nota aggiunta|note aggiunte}} oggi!",

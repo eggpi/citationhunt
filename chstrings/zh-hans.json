@@ -44,7 +44,7 @@
 	"js-article-count": "$1 {{PLURAL:$1|个条目}}",
 	"js-custom-numbers": "其包含来自 $1 {{PLURAL:$1|个条目}}的内容片段，且在 $2 {{PLURAL:$2|天}}内有效：",
 	"js-custom-no-articles-selected": "请选择一些条目。",
-	"js-invalid-petscan-input": "请使用数字的PetScan ID。",
+	"js-invalid-petscan-input": "请输入PetScan ID数字。",
 	"js-keyboard-shortcut": "键盘快捷键：%s",
 	"js-leaving-custom": "您正在返回到不受限的 {tooltitle}。您确定要这样做吗？",
 	"js-refs-added-today": "今天一共添加了 $1 {{PLURAL:$1|个引用}}！",

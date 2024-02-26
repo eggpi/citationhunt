@@ -3,7 +3,8 @@
 		"authors": [
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"back": "Zeréck",
@@ -24,7 +25,7 @@
 	"introduction": "Hëlleft Zitater fir Wikipedia-Artikelen ze fannen!",
 	"js-article-count": "{{PLURAL:$1|Een Artikel|$1 Artikelen}}",
 	"js-custom-no-articles-selected": "Sicht wgl. e puer Artikelen eraus.",
-	"js-invalid-petscan-input": "Gitt wgl. eng numeresch PetScan ID un.",
+	"js-invalid-petscan-input": "Gitt wgl. eng numeresch PetScan-ID an.",
 	"js-keyboard-shortcut": "Tastatur-Ofkierzung: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|Zitat gouf|Zitater goufen}} haut derbäigesat!",
 	"js-dark-theme": "Däischtert Thema",
