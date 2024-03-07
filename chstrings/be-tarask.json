@@ -18,6 +18,7 @@
 	"github_link_title": "Вітаю! Мая крыніца знаходзіцца на GitHub!",
 	"import_article_titles": "Увядзіце сьпіс артыкулаў",
 	"import_articles_prompt": "Калі ласка, увядзіце {em_start}назвы артыкулаў{em_end} Вікіпэдыі для імпарту, адну на радок, у полі ніжэй:",
+	"import_pagepile": "Імпартаваць з Pagepile",
 	"import_petscan": "Імпарт з запыту PetScan",
 	"import_petscan_intro": "{em_start}PetScan{em_end} — інструмэнт для запытаў у Вікіпэдыю і вызначэньня сьпісаў артыкулаў. PetScan задае ідэнтыфікатары запытам, каб яго вынікі маглі быць імпартаваныя ў іншыя інструмэнты.",
 	"import_petscan_prompt": "Калі ласка, {link_start}стварыце ваш запыт у PetScan{link_end} і ўстаўце яго ідэнтыфікатар ніжэй:",
