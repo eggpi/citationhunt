@@ -3,6 +3,7 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Beta16",
+			"LametinoWiki",
 			"McDutchie",
 			"Sannita",
 			"Selven",
@@ -10,7 +11,7 @@
 			"Wiccio"
 		]
 	},
-	"article_titles_hint": "Quando si importano articoli dal titolo, controllare che il titolo sia corretto e che tu ne abbia fornito uno per riga.",
+	"article_titles_hint": "Quando si importano articoli dal titolo, controllare che il titolo sia corretto e di averne fornito uno per riga.",
 	"back": "Indietro",
 	"back_to_cancel": "Puoi premere {em_start}{back}{em_end} o chiudere questo dialogo per cancellare.",
 	"button_next": "La prossima!",
@@ -22,6 +23,9 @@
 	"github_link_title": "Ehi! Il mio codice sorgente è su GitHub!",
 	"import_article_titles": "Inserisci un elenco di voci",
 	"import_articles_prompt": "Aggiungi {em_start}i titoli degli articoli di Wikipedia{em_end} per importarli, uno per riga, nell'area sottostante:",
+	"import_pagepile": "Importa da un Pagepile",
+	"import_pagepile_intro": "{em_start}Pagepile{em_end} è uno strumento per definire elenchi di voci di Wikipedia. Pagepile assegna ID agli elenchi in modo che i loro contenuti possano essere importati in altri strumenti.",
+	"import_pagepile_prompt": "{link_start}Crea il tuo elenco in Pagepile{link_end} e incolla il suo ID di seguito:",
 	"import_petscan": "Importa da una consultazione di PetScan",
 	"import_petscan_intro": "{em_start}PetScan{em_end} è uno strumento di ricerca Wikipedia e definisce liste di articoli. PetScan assegna ID alle ricerche così i risultati possono essere importanti in altri strumenti.",
 	"import_petscan_prompt": "{link_start}Crea la tua ricerca in PetScan{link_end} e incolla l'ID qui sotto:",
@@ -39,6 +43,7 @@
 	"js-article-count": "$1 {{PLURAL:$1|voce|voci}}",
 	"js-custom-numbers": "Contiene frammenti da $1 {{PLURAL:$1|voce|voci}} ed è valido per $2 {{PLURAL:$2|giorno|giorni}}:",
 	"js-custom-no-articles-selected": "Seleziona alcune voci.",
+	"js-invalid-pagepile-input": "Inserisci un ID Pagepile numerico.",
 	"js-invalid-petscan-input": "Inserisci un ID PetScan numerico.",
 	"js-keyboard-shortcut": "Scorciatoia da tastiera: %s",
 	"js-leaving-custom": "Stai tornando a illimitato {tooltitle}. Sei sicuro?",
@@ -54,7 +59,7 @@
 	"old_snippet_hint": "Questo testo non ha riferimenti su Wikipedia da molto tempo. Se non riesci a trovare una fonte, sii audace e rimuovila!",
 	"page_not_found": "Pagina non trovata!",
 	"page_not_found_text": "La pagina che stavi cercando non esiste più — forse hanno già aggiunto questa nota... torna a %s per inserirne un'altra!",
-	"petscan_hint": "Quando importi ricerche PetScan, evita ricerche che prendono molto tempo a PetScan per essere valutate e assicurati di aver fornito un URL o PSID valido.",
+	"petscan_hint": "Quando importi ricerche PetScan, evita ricerche che richiedono molto tempo per la valutazione su PetScan e assicurati di aver fornito un URL o PSID valido.",
 	"select_articles": "Cerca voci in {tooltitle}",
 	"select_articles_placeholder": "Cerca una voce",
 	"select_articles_prompt": "Utilizza la casella di ricerca in basso per {em_start}trovare e aggiungere voci{em_end} al tuo {tooltitle} personalizzato. Puoi rimuovere una voce facendo clic su di essa nell'anteprima sottostante.",
