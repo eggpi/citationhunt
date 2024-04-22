@@ -9,7 +9,8 @@
 			"Magiczocker",
 			"ManuelFranz",
 			"Metalhead64",
-			"ThisCarthing"
+			"ThisCarthing",
+			"TomatoCake"
 		]
 	},
 	"article_titles_hint": "Überprüfe bitte beim Importieren von Artikeln nach Titel, ob die Titel korrekt sind und ob du nur einen pro Zeile angegeben hast.",
@@ -24,6 +25,9 @@
 	"github_link_title": "Hey! Meine Quelle ist auf GitHub!",
 	"import_article_titles": "Gib eine Liste von Artikeln ein",
 	"import_articles_prompt": "Bitte gib unten die zu importierenden Wikipedia-{em_start}Artikeltitel{em_end} ein, einen pro Zeile:",
+	"import_pagepile": "Aus einem Pagepile importieren",
+	"import_pagepile_intro": "{em_start}Pagepile{em_end} ist ein Tool zum Definieren von Listen mit Wikipedia-Artikeln. Pagepile weist Listen Kennungen zu, sodass deren Ergebnisse in andere Tools importiert werden können.",
+	"import_pagepile_prompt": "Bitte {link_start}erstelle deine Liste in Pagepile{link_end} und füge ihre Kennung unten ein:",
 	"import_petscan": "Importiere von einer PetScan-Abfrage",
 	"import_petscan_intro": "{em_start}PetScan{em_end} ist ein Werkzeug zur Abfrage von Wikipedia und zum Definieren von Artikellisten. PetScan weist Abfragen Kennungen zu, damit ihre Ergebnisse in andere Werkzeuge importiert werden können.",
 	"import_petscan_prompt": "Bitte {link_start}erstelle deine Abfrage in PetScan{link_end} und füge ihre Kennung unten ein:",
@@ -41,7 +45,8 @@
 	"js-article-count": "{{PLURAL:$1|Ein|$1}} Artikel",
 	"js-custom-numbers": "Es enthält Schnipsel von {{PLURAL:$1|einem Artikel|$1 Artikeln}} und ist für {{PLURAL:$2|einen Tag|$2 Tage}} gültig:",
 	"js-custom-no-articles-selected": "Bitte wähle einige Artikel aus.",
-	"js-invalid-petscan-input": "Bitte eine numerische PetScan-Kennung.",
+	"js-invalid-pagepile-input": "Bitte gib eine numerische Pagepile-Kennung ein.",
+	"js-invalid-petscan-input": "Bitte gib eine numerische PetScan-Kennung ein.",
 	"js-keyboard-shortcut": "Tastaturkürzel: %s",
 	"js-leaving-custom": "Du navigierst zurück zum unbegrenzten {tooltitle}. Bist du sicher?",
 	"js-refs-added-today": "Es {{PLURAL:$1|wurde heute ein Zitat|wurden heute $1 Zitate}} hinzugefügt!",
