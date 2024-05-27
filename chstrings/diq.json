@@ -42,7 +42,7 @@
 	"js-custom-numbers": "$1 {{PLURAL:$1|meqale|meqaley}} pasaci ihtiwa kenê ı u seba $2 {{PLURAL:$2|roce|rocan}} rê raverdiya:",
 	"js-custom-no-articles-selected": "Çend meqaley weçinê",
 	"js-invalid-pagepile-input": "Be keremê xo ra, kamiya Pagepile'ya amari bınuse.",
-	"js-invalid-petscan-input": "Be keremê xo ra, kamiya PetScan'i amari bınuse.",
+	"js-invalid-petscan-input": "Be keremê xo ra, kamiya PetScan'iya amari bınuse.",
 	"js-keyboard-shortcut": "Kılmekiya klavye: %s",
 	"js-leaving-custom": "Şımayê kenê ke raverê nêkemeyaya {tooltitle}? Şıma ho emeli?",
 	"js-refs-added-today": "$1 {{PLURAL:$1|hewarnameyo ewro biyo |hewarnameyê ke ewro biyê}} cı!",
