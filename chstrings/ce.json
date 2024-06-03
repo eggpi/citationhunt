@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Исмаил Садуев",
 			"Умар"
 		]
 	},
 	"back": "Йуха",
 	"button_next": "РогӀера!",
 	"button_wikilink": "Хьост йу!",
-	"customize": "Нисйе",
+	"customize": "Нисйан",
 	"category_filter_placeholder": "Билгалйе йаззамийн тематика",
 	"edits": "Нисдарш",
 	"import_article_titles": "Йазбе йаззамийн могӀам",
