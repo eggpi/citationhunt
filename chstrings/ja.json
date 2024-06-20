@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Apple TD",
 			"MathXplore",
 			"Omotecho",
 			"Shirayuki",
@@ -43,6 +44,8 @@
 	"js-refs-added-today": "今日は出典が$1か所追加されました！",
 	"js-select-articles-summary": "クリックしてプレビュー (記事 $1 {{PLURAL:$1|件}} とスニペット $2 {{PLURAL:$2|件}} を追加)",
 	"js-snippet-count": "$1 {{PLURAL:$1|件のスニペット}}",
+	"js-dark-theme": "ダークモード",
+	"js-default-theme": "デフォルトのテーマ",
 	"lead_section_hint": "この文は記事の導入部にあるため、出典の明示は場合により判断されます。詳しくは %s をご覧ください。",
 	"leaderboard_description": "以下は、{tooltitle}を利用して過去{days}日間に最も多くの要出典を解決した利用者です。おめでとうございます!",
 	"leaderboard_link_title": "ランキング",
