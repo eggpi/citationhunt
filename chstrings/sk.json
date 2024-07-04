@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Jaroslav.micek",
+			"Oujon",
 			"TomášPolonec",
 			"Yardom78"
 		]
@@ -18,6 +19,9 @@
 	"github_link_title": "Môj zdrojový kód je na GitHube!",
 	"import_article_titles": "Zadajte zoznam artiklov",
 	"import_articles_prompt": "Zadajte prosím {em_start}názvy artiklov{em_end} Wikipedia pre import, jeden názov v jednom riadku do políčka nižšie:",
+	"import_pagepile": "Import z súboru stránok",
+	"import_pagepile_intro": "{em_start}Pagepile{em_end} je nástroj na definovanie zoznamov článkov na Wikipédii. Súboru stránok prideláva identifikátory zoznammam, aby sa ich výsledky mohli dovážať do iných nástrojov.",
+	"import_pagepile_prompt": "Prosím {link_start}vytvorte dopyt v PetScan{link_end}a skopírujte jeho ID nižšie:",
 	"import_petscan": "Importovať z PetScan",
 	"import_petscan_intro": "{em_start}PetScan{em_end} je nástroj na vytváranie dopytov vo Wikipédii a definíciu zoznamu artiklov. PetScan prideľuje ID na dopyty tak, že ich výsledky môžu byť importované do iných nástrojov.",
 	"import_petscan_prompt": "Prosím {link_start}vytvorte dopyt v PetScan{link_end}a skopírujte jeho ID nižšie:",
@@ -35,12 +39,15 @@
 	"js-article-count": "{{PLURAL:$1|počet článkov: $1}}",
 	"js-custom-numbers": "Obsahuje úryvky z $1{{PLURAL:$1|artikla|artiklov}} a platí $2 {{PLURAL:$2|deň|dní}}:",
 	"js-custom-no-articles-selected": "Prosím, vyberte niekoľko artiklov.",
-	"js-invalid-petscan-input": "Prosím číselné ID PetScan",
+	"js-invalid-pagepile-input": "Vložte numerický ID na súbor stránok.",
+	"js-invalid-petscan-input": "Prosím zadajte číselné ID PetScan.",
 	"js-keyboard-shortcut": "Klávesová skratka: %s",
 	"js-leaving-custom": "Vraciate sa späť na neobmedzený {tooltitle}. Ste si istý?",
 	"js-refs-added-today": "Počet dnes pridaných citácií {{PLURAL:$1}}$1!",
 	"js-select-articles-summary": "Kliknite na prezretie (pridaných $1 {{PLURAL:$1|artiklu|artiklov}} a $2 {{PLURAL:$2|úryvku|úryvkov}})",
 	"js-snippet-count": "{{PLURAL:$1|úryvok|úryvkov}}$1",
+	"js-dark-theme": "Tmavá téma",
+	"js-default-theme": "Predvolená téma",
 	"lead_section_hint": "Tento text je súčasťou úvodného odseku článku, takže odkazovanie naň môže byť voliteľné. Prečítajte si %s pre viac informácií.",
 	"leaderboard_description": "Títo používatelia opravili najviac úryvkov cez {tooltitle} v posledných {days} dňoch. Výborne!",
 	"leaderboard_link_title": "Výsledková tabuľka",
