@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AS",
+			"Amire80",
 			"Avatar6",
 			"Base",
 			"DDPAT",
@@ -28,9 +29,6 @@
 	"github_link_title": "Агов! Моє джерело є на GitHub!",
 	"import_article_titles": "Вкажіть список статей",
 	"import_articles_prompt": "Будь ласка, введіть у поле нижче {em_start}назви статей{em_end} з Вікіпедії, які хочете імпортувати, по одній на рядок:",
-	"import_pagepile": "Імпорт з папки сторінки",
-	"import_pagepile_intro": "{em_start}Pagepile{em_end} – це інструмент для визначення списків статей Вікіпедії. Pagepile призначає ідентифікатори спискам, щоб їх результати можна було імпортувати в інші інструменти.",
-	"import_pagepile_prompt": "Будь ласка, {link_start}створіть запит у PetScan{link_end} і вставте його ідентифікатор нижче:",
 	"import_petscan": "Імпорт з PetScan-запиту",
 	"import_petscan_intro": "{em_start}PetScan{em_end} — інструмент для подачі запитів до Вікіпедії і визначення списків статей. Кожний запит має ідентифікатор, так що результат можна імпортувати в інші інструменти.",
 	"import_petscan_prompt": "Будь ласка, {link_start}створіть запит у PetScan{link_end} і вставте його ідентифікатор нижче:",
@@ -48,7 +46,6 @@
 	"js-article-count": "$1 {{PLURAL:$1|стаття|статті|статей}}",
 	"js-custom-numbers": "Містить фрагменти з $1 {{PLURAL:$1|статті|статей}} і дійсний $2 {{PLURAL:$2|день|дні|днів}}:",
 	"js-custom-no-articles-selected": "Будь ласка, виберіть якісь статті.",
-	"js-invalid-pagepile-input": "Введіть числовий ідентифікатор Pagepile.",
 	"js-invalid-petscan-input": "Будь ласка, введіть номерний ідентифікатор PetScan.",
 	"js-keyboard-shortcut": "Поєднання клавіш: %s",
 	"js-leaving-custom": "Ви хочете повернутися на {tooltitle} у необмеженому режимі. Ви впевнені?",
