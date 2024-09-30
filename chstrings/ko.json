@@ -3,6 +3,7 @@
 		"authors": [
 			"Jerrykim306",
 			"Revi",
+			"Suleiman the Magnificent Television",
 			"Ykhwong",
 			"관인생략",
 			"그냥기여자",
@@ -21,6 +22,7 @@
 	"github_link_title": "이봐요! 제 소스는 GitHub에 있어요!",
 	"import_article_titles": "문서 목록 목록",
 	"import_articles_prompt": "가져올 위키백과 {em_start}문서 제목{em_end}을 아래의 영역에 각 줄마다 입력해 주십시오:",
+	"import_pagepile": "페이지파일에서 수입",
 	"import_petscan": "PetScan 쿼리 기반으로 가져오기",
 	"in_page": "%s 문서에서:",
 	"instructions_details": "%s을(를) 눌러 위키백과로 가서 {link_start}문서를 고치시거나{link_end}, 다른 부분을 보려면 %s을(를) 눌러주세요. 좋은 시간 되세요!",
