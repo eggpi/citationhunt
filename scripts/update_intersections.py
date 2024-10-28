@@ -13,7 +13,7 @@ import handlers.database as database
 
 def update_intersections():
     db = chdb.init_scratch_db()
-    cfg = config.get_localized_config(api = False)
+    cfg = config.get_localized_config()
 
     db.execute_with_retry_s('DELETE FROM intersections')
     db.execute_with_retry_s('''
