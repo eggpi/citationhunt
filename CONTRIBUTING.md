@@ -69,12 +69,12 @@ $ apt-get install libxml2-dev libxslt1-dev python-dev
 
 to get the dependencies to install properly.
 
-For **OSX**, you may need to install openssl separately and ensure the MySQL
+For **MacOS**, you may need to install openssl separately and ensure the MySQL
 dependencies can link to it by [setting an environment variable](https://github.com/brianmario/mysql2/issues/795)
 while installing requirements:
 
 ```
-$ # OSX only!
+$ # MacOS only!
 $ brew install openssl
 $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib
 $ pip install -r requirements.txt
@@ -83,7 +83,14 @@ $ pip install -r requirements.txt
 You're nearly ready to run the server, but you will need a database for it to
 work. At this point, make sure you have a working local MySQL installation —
 it can be something as simple as a MySQL server listening on `localhost` that
-you can access as root. Then, please proceed to [Generating the database locally](https://github.com/eggpi/citationhunt/tree/master/scripts#generating-the-database-locally),
+you can access as root.
+
+On **MacOS**, you may need to ensure you are running a pre-9.0 version of MySQL,
+which allows password authentication, as that is the method used in Toolforge.
+See
+[this StackOverflow question](https://stackoverflow.com/questions/78938322/mysql-authentication-plugin-issues-on-macos) for more information.
+
+Then, please proceed to [Generating the database locally](https://github.com/eggpi/citationhunt/tree/master/scripts#generating-the-database-locally),
 which will allow you to try Citation Hunt locally with any language.
 
 Once the database has been generated, you're all set! Just run `app.py` and point your browser to
