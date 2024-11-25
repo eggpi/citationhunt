@@ -38,7 +38,7 @@
 	"js-article-count": "$1 artikel",
 	"js-custom-numbers": "Halaman ini memuat pintasan dari $1 artikel dan berlaku selama $2 hari:",
 	"js-custom-no-articles-selected": "Mohon pilih sebuah artikel.",
-	"js-invalid-petscan-input": "Gunakan ID PetScan numerik.",
+	"js-invalid-petscan-input": "Harap masukkan ID PetScan numerik.",
 	"js-keyboard-shortcut": "Pintasan papan tombol: %s",
 	"js-leaving-custom": "Anda bernavigasi kembali ke {tooltitle} yang tidak dibatasi. Apakah Anda yakin?",
 	"js-refs-added-today": "$1 kutipan ditambahkan hari ini!",
