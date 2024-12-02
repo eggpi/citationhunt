@@ -5,6 +5,7 @@
 			"Andibing",
 			"Chase me ladies, I'm the Cavalry",
 			"Fitoschido",
+			"Nikki",
 			"Surlycyborg"
 		]
 	},
@@ -33,7 +34,7 @@
 	"custom_end_copy_link": "You can copy and share the link above to allow other people to use it, or {link_start}start browsing it now{link_end}!",
 	"custom_failed": "Sorry, your custom {tooltitle} failed to be created or came up empty!",
 	"custom_import_prompt": "How would you like to create a custom {tooltitle}?",
-	"custom_intro": "You can customize {tooltitle} by providing a list of articles. This gives you a link that you can share with others so they browse {tooltitle} limited to the articles you provided.",
+	"custom_intro": "You can customise {tooltitle} by providing a list of articles. This gives you a link that you can share with others so they browse {tooltitle} limited to the articles you provided.",
 	"custom_notice": "You are browsing a custom {tooltitle} with a limited list of articles. {link_start}Go back to unrestricted {tooltitle}{link_end}.",
 	"custom_please_wait": "Please wait, your custom {tooltitle} is being computed. This may take a few minutes&#x2026;",
 	"introduction": "Help find citations for Wikipedia articles!",
@@ -41,7 +42,6 @@
 	"js-custom-numbers": "It contains snippets from $1 {{PLURAL:$1|article|articles}} and is valid for $2 {{PLURAL:$2|day|days}}:",
 	"js-custom-no-articles-selected": "Please select some articles!",
 	"js-invalid-pagepile-input": "Please enter a numeric Pagepile ID.",
-	"js-invalid-petscan-input": "Please enter a numeric PetScan ID.",
 	"js-keyboard-shortcut": "Keyboard shortcut: %s",
 	"js-leaving-custom": "You are navigating back to unrestricted {tooltitle}. Are you sure?",
 	"js-refs-added-today": "$1 {{PLURAL:$1|citation|citations}} added today!",
