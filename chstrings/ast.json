@@ -33,7 +33,7 @@
 	"custom_please_wait": "Espera, el to {tooltitle} personalizáu ta procesándose. Esto puede tardar dellos minutos&#x2026;",
 	"introduction": "Ayuda a alcontrar cites p'artículos de Wikipedia",
 	"js-article-count": "$1 {{PLURAL:$1|artículu|artículos}}",
-	"js-custom-numbers": "Contien fragmentos de $1 {{PLURAL:$1|artículu|artículos}} y ye válidu mientres $2 {{PLURAL:$2|día|díes}}:",
+	"js-custom-numbers": "Contién fragmentos de $1 {{PLURAL:$1|artículu|artículos}} y ye válidu mientres $2 {{PLURAL:$2|día|díes}}:",
 	"js-custom-no-articles-selected": "Seleiciona dellos artículos.",
 	"js-invalid-petscan-input": "Um númberu d'identificador de PetScan.",
 	"js-keyboard-shortcut": "Atayu de tecláu: %s",
