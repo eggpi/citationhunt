@@ -76,14 +76,15 @@ def query_pageids(wiki, pageids):
     params = {
         'pageids': '|'.join(map(str, pageids)),
         'prop': 'revisions',
-        'rvprop': 'content'
+        'rvprop': 'content',
+        'rvslots': 'main'
     }
     for response in self.wiki.query(params):
         for id, page in list(response['query']['pages'].items()):
             if 'title' not in page:
                 continue
             title = d(page['title'])
-            text = page['revisions'][0]['*']
+            text = page['revisions'][0]['slots']['main']['*']
             if not text:
                 continue
             text = d(text)

@@ -59,6 +59,7 @@ def get_page_revisions(wiki, title, start):
     params = {
         'prop': 'revisions',
         'rvprop': 'content|timestamp|ids',
+        'rvslots': 'main',
         'rvstart': datetime_naive_local_to_naive_utc(start).isoformat(),
         'rvdir': 'newer',
         'titles': title
@@ -71,7 +72,7 @@ def get_page_revisions(wiki, title, start):
                     'rev_id': r['revid'],
                     'timestamp': datetime_utc_to_naive_local(
                         dateutil.parser.parse(r['timestamp'])),
-                    'contents': r['*'],
+                    'contents': r['slots']['main']['*'],
                 })
     return revisions
 
