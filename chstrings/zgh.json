@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AguzulH",
 			"Aslmad mohamed belarhzali",
 			"Brahim-essaidi",
 			"Hakim1bal"
@@ -18,5 +19,5 @@
 	"select_articles": "ⵔⵣⵓ ⵖⴼ ⵉⵎⴳⵔⴰⴷⵏ ⴳ {tooltitle}",
 	"select_articles_placeholder": "ⵔⵣⵓ ⵖⴼ ⴽⵔⴰ ⵏ ⵓⵎⴳⵔⴰⴷ",
 	"submit": "ⴰⵣⵏ",
-	"user": "ⴰⵏⵙⵙⵎⵔⵙ"
+	"user": "ⴰⵏⵙⵎⵔⴰⵙ"
 }
