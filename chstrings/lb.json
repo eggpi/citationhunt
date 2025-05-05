@@ -20,7 +20,7 @@
 	"in_page": "Op der Säit %s:",
 	"instructions_details": "Klickt op %s fir op Wikipedia ze goen an {link_start}den Extrait ze reparéieren{link_end}, oder %s fir een Anere gewisen ze kréien. Vill Gléck!",
 	"instructions_goal": "Den Extrait aus Wikipedia hei drënner huet keng  {link_start}zouverlässeg Quell{link_end}. Kënnt Dir eng fannen?",
-	"custom_end_copy_link": "Du kannst den Link oben kopieren und teilen, um anderen Menschen zu erlauben, ihn zu verwenden oder {link_start}fänkt elo mat der Kosultatioun un{link_end}!",
+	"custom_end_copy_link": "Dir kënnt de Link uewe kopéieren an deelen, fir datt aner Leit e benotze kënnen, oder {link_start}consultéiert en elo{link_end}!",
 	"custom_import_prompt": "Wéi wëllt Dir e personaliséierten {tooltitle} uleeën?",
 	"introduction": "Hëlleft Zitater fir Wikipedia-Artikelen ze fannen!",
 	"js-article-count": "{{PLURAL:$1|Een Artikel|$1 Artikelen}}",

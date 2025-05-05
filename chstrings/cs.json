@@ -11,21 +11,27 @@
 			"Patriccck",
 			"Patrik L.",
 			"Vojtěch Dostál",
-			"Walter Klosse"
+			"Walter Klosse",
+			"WikipedistaOndra"
 		]
 	},
 	"back": "Zpět",
+	"back_to_cancel": "Můžete stisknout {em_start}{back}{em_end} nebo zavřít toto dialogové okno pro zrušení.",
 	"button_next": "Další!",
 	"button_wikilink": "Chápu!",
+	"customize": "Přizpůsobit",
 	"category_filter_placeholder": "Hledat téma",
 	"edits": "Editace",
 	"footer": "%s je vytvořen dobrovolníky, běží na %s a je přeložen pomocí %s.",
 	"github_link_title": "Můj zdrojový kód je na GitHubu!",
+	"import_article_titles": "Zadejte seznam článků",
+	"import_petscan": "Import z dotazu PetScan",
 	"in_page": "V článku %s:",
 	"instructions_details": "Stisknutím tlačítka %s můžete přejít na Wikipedii a úryvek opravit, tlačítkem %s zobrazíte jiný úryvek. Ať se daří!",
 	"instructions_goal": "Následující úryvek článku Wikipedie není podložen {link_start}věrohodným zdrojem{link_end}. Zkusíte ho dohledat?",
 	"introduction": "Pomozte najít citace pro články Wikipedie!",
 	"js-article-count": "$1 {{PLURAL:$1|článek|články|článků}}",
+	"js-custom-no-articles-selected": "Vyberte prosím některé články.",
 	"js-keyboard-shortcut": "Klávesová zkratka: %s",
 	"js-refs-added-today": "Dnes {{PLURAL:$1|byla přidána jedna citace|byly přidány $1 citace|bylo přidáno $1 citací}}!",
 	"lead_section_hint": "Tento text je součástí hlavního oddílu článku, takže použití citací v něm může být volitelné. Přečtěte si prosím %s pro více informací.",
@@ -34,5 +40,8 @@
 	"leaderboard_title": "Nejlepší výsledky %s",
 	"page_not_found": "Stránka nebyla nalezena.",
 	"page_not_found_text": "Stránka, kterou hledáte, již neexistuje — možná, že tato citace již byla dohledána? Vraťte se na stránku %s pro další návrh!",
+	"select_articles": "Hledat články v {tooltitle}",
+	"select_articles_placeholder": "Hledat článek",
+	"submit": "Odeslat",
 	"user": "Uživatel"
 }
