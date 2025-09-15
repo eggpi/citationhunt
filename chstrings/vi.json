@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bapham123",
 			"Minh Nguyen",
 			"Nguyễn Mạnh An"
 		]
@@ -17,10 +18,22 @@
 	"github_link_title": "Này, mã nguồn của tôi nằm trên GitHub!",
 	"import_article_titles": "Nhập danh sách các bài báo",
 	"import_articles_prompt": "Vui lòng nhập tiêu đề bài viết {em_start} {em_end} trên Wikipedia để nhập, mỗi tiêu đề trên mỗi dòng, vào khu vực bên dưới:",
+	"import_pagepile": "Nhập từ Pagepile",
 	"import_petscan": "Nhập từ truy vấn PetScan",
 	"import_petscan_intro": "{em_start} PetScan {em_end} là một công cụ để truy vấn Wikipedia và xác định danh sách các bài báo. PetScan chỉ định ID cho các truy vấn để kết quả của chúng có thể được nhập vào các công cụ khác.",
 	"import_petscan_prompt": "Vui lòng {link_start} tạo truy vấn của bạn trong PetScan {link_end} và dán ID của nó bên dưới:",
 	"in_page": "Trong trang %s:",
+	"custom_created": "{tooltitle} tùy chỉnh của bạn đã được tạo!",
 	"introduction": "Giúp tìm nguồn gốc cho bài Wikipedia!",
-	"page_not_found": "Không tìm thấy trang!"
+	"js-custom-no-articles-selected": "Xin hãy chọn một số bài viết.",
+	"js-keyboard-shortcut": "Phím tắt bàn phím: %s",
+	"js-dark-theme": "Giao diện tối",
+	"js-default-theme": "Giao diện mặc định",
+	"leaderboard_link_title": "Bảng xếp hạng",
+	"leaderboard_title": "Bảng xếp hạng %s",
+	"page_not_found": "Không tìm thấy trang!",
+	"select_articles_placeholder": "Tìm kiếm một bài viết",
+	"submit": "Gửi",
+	"try_again_hints_header": "Vui lòng thử lại và ghi nhớ những mẹo sau:",
+	"user": "Người dùng"
 }
