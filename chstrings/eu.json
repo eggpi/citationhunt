@@ -45,7 +45,7 @@
 	"js-leaving-custom": "Atzera egiten ari zare mugarik gabeko {tooltitle} batera. Ziur zaude?",
 	"js-refs-added-today": "{{PLURAL:$1|Aipu bat gehitu da|$1 aipu gehitu dira}} gaur!",
 	"js-select-articles-summary": "Egin klik aurreikusteko ({{PLURAL:$1|artikulu $1|$1 artikulu}} eta {{PLURAL:$2|zati $2|$2 zati}} gehitu dira)",
-	"js-snippet-count": "{{PLURAL:$1|zati $1|$1 zati}}",
+	"js-snippet-count": "{{PLURAL:$1|zati bat|$1 zati}}",
 	"js-dark-theme": "Gai iluna",
 	"js-default-theme": "Gai lehenetsia",
 	"lead_section_hint": "Testu hau artikuluaren atal nagusikoa da, beraz, erreferentzia egitea aukerazkoa da. Ikus %s informazio gehiagorako.",
