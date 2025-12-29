@@ -25,7 +25,7 @@
 	"import_articles_prompt": "Wprowadź tytuły artykułów z Wikipedii {em_start}{em_end} do zaimportowania, po jednym w każdym wierszu, w obszarze poniżej:",
 	"import_petscan": "Importowanie z kwerendy PetScan",
 	"in_page": "W artykule %s:",
-	"instructions_details": "Kliknij %s aby przejść do Wikipedii i poprawić ten fragment, lub %s aby zobaczyć inny. Zobacz %s jeżeli masz pytania. Powodzenia!",
+	"instructions_details": "Kliknij %s aby przejść do Wikipedii i {link_start}poprawić ten fragment{link_end}, lub %s aby zobaczyć inny. Powodzenia!",
 	"instructions_goal": "Poniższy fragment z Wikipedii nie jest poparty {link_start}wiarygodnym źródłem{link_end}. Czy możesz takowe znaleźć?",
 	"introduction": "Pomóż dodać przypisy do artykułów Wikipedii!",
 	"js-article-count": "$1 {{PLURAL:$1|artykuł|artykuły|artykułów}}",
