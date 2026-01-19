@@ -26,7 +26,7 @@
 	"js-article-count": "{{PLURAL:$1|Een Artikel|$1 Artikelen}}",
 	"js-custom-no-articles-selected": "Sicht wgl. e puer Artikelen eraus.",
 	"js-invalid-petscan-input": "Gitt wgl. eng numeresch PetScan-ID an.",
-	"js-keyboard-shortcut": "Tastatur-Ofkierzung: %s",
+	"js-keyboard-shortcut": "Tastekombinatioun: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|Zitat gouf|Zitater goufen}} haut derbäigesat!",
 	"js-dark-theme": "Däischtert Faarfschema",
 	"lead_section_hint": "Dësen Text ass en Deel vum Ufanksabschnitt vum Artikel, dofir ass d'Referenzéieren optional. Kuckt wgl. %s fir méi Informatiounen.",
