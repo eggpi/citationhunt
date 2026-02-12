@@ -68,6 +68,7 @@
 	"select_articles_placeholder": "Hledat článek",
 	"select_articles_prompt": "Použite vyhledávací oknu níže na {em_start}vyhledání článku{em_end} do Vašeho {tooltitle}. Článek můžete odstranit kliknutím na něj v náhledu níže.",
 	"submit": "Odeslat",
+	"tooltitle": "Citation Hunt",
 	"try_again_hints_header": "Zkuste to prosím znovu a použijte následující rady:",
 	"user": "Uživatel"
 }
