@@ -1227,6 +1227,26 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Mga_nakatagong_kategorya',
     ),
 
+     tt = dict(
+        lang_name = 'Татар',
+        lang_dir = 'ltr',
+        database = 'ttwiki_p',
+        wikipedia_domain = 'tt.wikipedia.org',
+
+        beginners_link =
+        'https://tt.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A7%D1%8B%D0%B3%D0%B0%D0%BD%D0%B0%D0%BA%D0%BB%D0%B0%D1%80%D0%BD%D1%8B_%D0%BA%D2%AF%D1%80%D1%81%D3%99%D1%82%D2%AF',
+        beginners_link_title = 'Википедия:Чыганакларны күрсәтү',
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        citation_needed_templates = [
+            'АЧ юк',
+            'АЧ юк 2',
+            'Чыганагы',
+        ],
+        hidden_category = 'Яшерен төркемнәр',
+    ),
+
     vi = dict(
         lang_name = 'tiếng Việt',
         lang_dir = 'ltr',
