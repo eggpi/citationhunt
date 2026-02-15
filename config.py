@@ -1244,6 +1244,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'АЧ юк 2',
             'Чыганагы',
         ],
+        accept_language = ['tt-cyrl'],
         hidden_category = 'Яшерен_төркемнәр',
     ),
 
