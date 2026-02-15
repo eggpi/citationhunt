@@ -1244,7 +1244,7 @@ _LANG_CODE_TO_CONFIG = dict(
             'АЧ юк 2',
             'Чыганагы',
         ],
-        hidden_category = 'Яшерен төркемнәр',
+        hidden_category = 'Яшерен_төркемнәр',
     ),
 
     vi = dict(
