@@ -21,8 +21,8 @@ import utils
 
 # https://en.wikipedia.org/wiki/List_of_Wikipedias#Edition_details
 TOP_20_LANG_CODES_BY_ARTICLE_COUNT = {
-	'en', 'ceb', 'de', 'sv', 'fr', 'nl', 'ru', 'es', 'it', 'arz', 'pl',
-	'ja', 'zh_hant', 'zh_hans', 'vi', 'war', 'uk', 'ar', 'pt', 'fa', 'ca',
+	'en', 'ceb', 'de', 'fr', 'sv', 'nl', 'es', 'ru', 'it', 'pl', 'arz',
+	'zh_hant', 'zh_hans', 'ja', 'uk', 'ar', 'vi', 'war', 'pt', 'fa', 'ce',
 } & config.LANG_CODES_TO_LANG_NAMES.keys()
 
 SMALL_LANG_CODES_PER_CHUNK = 10
