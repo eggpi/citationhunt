@@ -6,10 +6,7 @@
     <meta name="robots" content="nofollow, noodp, noindex">
     <meta name="description" content="{{ strings.tooltitle }} - {{ strings.introduction }}">
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icon/favicon-32.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='icon/favicon-192.png') }}">
-    <link rel="icon" type="image/png" sizes="512x512" href="{{ url_for('static', filename='icon/favicon-512.png') }}">
+    {% include 'favicon.html' %}
     
     <!-- Since the 404 handler can be invoked for arbitrarily broken URLs, let's
         not bother requesting style.css using its relative path, but rather just
