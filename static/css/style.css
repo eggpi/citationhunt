@@ -96,7 +96,8 @@ html[dir="rtl"] #quotation {
 
 .ch-snippet {
     padding: 5px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     max-height: inherit;
 }
 
@@ -380,4 +381,26 @@ body[theme=dark] #hamburguer-menu {
 
 body[theme=dark] #hamburguer-menu .menu-item {
     color: #6D9FF0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid dimgray;
+  transition: border 0.5s ease;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  transition: background 0.5s ease;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: dimgray;
 }
