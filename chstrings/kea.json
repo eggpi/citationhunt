@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GrogeXaKaba",
 			"Letra.berdi",
 			"Quintino Lopes Castro Tavares",
 			"Waldyrious"
@@ -14,7 +15,7 @@
 	"category_filter_placeholder": "Piskiza un asuntu",
 	"edits": "Idisons",
 	"footer": "%s e fetu pa voluntárius, ki sta na %s i traduzidu via %s.",
-	"github_link_title": "Oi! Nha kódigu-fonti sta na GitHub!",
+	"github_link_title": "Iói! Nha kódi-fonti sta na GitHub!",
 	"in_page": "Na pájina %s:",
 	"instructions_details": "Klika na %s po bai pa Wikipédia i {link_start}kuriji es parti di testu{link_end}, o na %s po odja otus. Boa sorti!",
 	"instructions_goal": "Es testu di Uikipédia pa baxu ka ten nun rafirénsa pa {link_start}fonti kunfiávi{link_end}. Bu ta kunsigi atxa algun?",
