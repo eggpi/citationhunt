@@ -7,14 +7,14 @@
 			"Waldyrious"
 		]
 	},
-	"article_titles_hint": "Kantu nu nporta artigus pa titlu, konfiri ben si tudu titlu sta kurétu, i ki bo fornise un pa kada linha.",
+	"article_titles_hint": "Kantu nu nporta artigus pa titlu, kunfiri ben si tudu titlu sta kurétu, i ki bo furnisi un pa kada linha.",
 	"back": "Volta",
 	"button_next": "Prósimu!",
 	"button_wikilink": "Txa ku mi!",
 	"customize": "Personaliza",
 	"category_filter_placeholder": "Piskiza un asuntu",
 	"edits": "Idisons",
-	"footer": "%s e fetu pa voluntárius, ki sta na %s i traduzidu via %s.",
+	"footer": "%s é fetu pa vuluntáris, ospradu na %s i traduzidu trabés di %s.",
 	"github_link_title": "Iói! Nha kódi-fonti sta na GitHub!",
 	"in_page": "Na pájina %s:",
 	"instructions_details": "Klika na %s po bai pa Wikipédia i {link_start}kuriji es parti di testu{link_end}, o na %s po odja otus. Boa sorti!",
@@ -23,12 +23,12 @@
 	"js-article-count": "$1 {{PLURAL:$1|artigu|artigus}}",
 	"js-keyboard-shortcut": "Atalhu di tekladu: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|referensia adisionadu|referensias adisionadus}} hoji!",
-	"lead_section_hint": "Es testu ta fasi parti di sekson prinsipal di artigu, purisu ki rafirénsas podi ser opusional. Odja %s pa más nfurmason.",
+	"lead_section_hint": "Es testu ta fasi parti di sekson prinsipal di artigu, purisu ki rafirénsas podi ser opusional. Udja %s pa más nfurmason.",
 	"leaderboard_description": "Kes-li é uzuáris ki kuriji más testus di {tooltitle} na últimus {days} dia. Bon trabadju!",
 	"leaderboard_link_title": "Kolaboradoris más ativus",
 	"leaderboard_title": "Tabela di klasifikason di %s",
 	"page_not_found": "Pájina ka foi atxadu!",
 	"page_not_found_text": "Es pájina ki bu sta djobi ka izisti — talbes es referencia dja foi atxadu? Volta pa %s pa más!",
 	"submit": "Invia",
-	"user": "Uzuáriu"
+	"user": "Uzuári"
 }
