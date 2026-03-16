@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kaszeba"
+			"Kaszeba",
+			"Orbitminis"
 		]
 	},
 	"button_next": "Nôslédny!",
@@ -10,7 +11,7 @@
 	"footer": "%s je nôrządza ùsôdzonym dlô wòlontariuszów, je na serwerze %s ë dolmaczoné przez %s.",
 	"github_link_title": "Hej! Mój zdrojowi kòd je na GitHubie!",
 	"in_page": "W artiklu %s:",
-	"instructions_details": "Klëkni %s abë przejsc do Wikipediii ë pòprawic nen dzél, abò %s abë òbôczëc jinny. Òbôczë %s jeżlë môsz zapëtania. Wiele szczãsca ce!",
+	"instructions_details": "Klëkni %s abë przejsc do Wikipediii ë {link_start}pòprawic nen dzél{link_end}, abò %s abë òbôczëc jinny. Òbôczë %s jeżlë môsz zapëtania. Wiele szczãsca ce!",
 	"instructions_goal": "Ùniższi dzél z Wikipediji nie je pòpiarti {link_start}wiarëgòdnym zdrojã{link_end}. Jes të w sztãdze taczé nalezc?",
 	"introduction": "Pòmòżë dodac dopisënczi do artiklów Wikipediji!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artikle|artiklów}}",
@@ -18,5 +19,9 @@
 	"js-refs-added-today": "$1 {{PLURAL:$1|cytata|cytaów}} dodónych dzysô!",
 	"lead_section_hint": "Nen dzél je z tzw. główczi tekstu, dze nôczãszczi nie je nót dowôwac dopisënczi. Wicy wëdowiédzë: %s.",
 	"page_not_found": "Felënk starnë!",
-	"page_not_found_text": "Felënk starnë za chtérną wëzérôsz — mòże nen zdrój òstôł ju nalazłi? Biéj nazôd do %s pò wicy!"
+	"page_not_found_text": "Felënk starnë za chtérną wëzérôsz — mòże nen zdrój òstôł ju nalazłi? Biéj nazôd do %s pò wicy!",
+	"select_articles_placeholder": "Wëszëkôj artikel",
+	"submit": "Sélôj",
+	"try_again_hints_header": "Spróbùjë jesz rôz, pamiãtającë ò pòsobnëch wskôzach:",
+	"user": "Brëkòwnik"
 }
