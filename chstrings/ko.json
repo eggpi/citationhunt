@@ -12,7 +12,7 @@
 			"아라"
 		]
 	},
-	"article_titles_hint": "제목을 기반으로 기사를 가져올 때 한 줄에 하나씩 정확한 제목을 썼는지 다시 확인하십시오.",
+	"article_titles_hint": "제목을 기반으로 문서를 가져올 때 한 줄에 하나씩 정확한 제목을 썼는지 다시 확인하십시오.",
 	"back": "뒤로",
 	"back_to_cancel": "취소하려면 {em_start}{back}{em_end}를 누르거나 이 대화상자를 닫으십시오.",
 	"button_next": "다음!",
