@@ -6,6 +6,7 @@
 			"Omotecho",
 			"Shirayuki",
 			"Takot",
+			"Tensama0415",
 			"ネイ"
 		]
 	},
@@ -38,7 +39,7 @@
 	"js-article-count": "$1 {{PLURAL:$1|件の記事}}",
 	"js-custom-numbers": "$1 {{PLURAL:$1|件の記事}}のスニペットが含まれ、有効期間は$2 {{PLURAL:$2|日}}です。",
 	"js-custom-no-articles-selected": "記事を複数、選択してください。",
-	"js-invalid-petscan-input": "数字で PetScan IDを入力します。",
+	"js-invalid-petscan-input": "数字で PetScan IDを入力してください。",
 	"js-keyboard-shortcut": "ショートカットキー: %s",
 	"js-leaving-custom": "制限を解除した{tooltitle}に戻ろうとしています。この捜査を続けてよろしいですか？",
 	"js-refs-added-today": "今日は出典が$1か所追加されました！",
