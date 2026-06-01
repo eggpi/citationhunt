@@ -24,7 +24,7 @@
 	"github_link_title": "이봐요! 제 소스는 GitHub에 있어요!",
 	"import_article_titles": "문서 제목 목록 입력",
 	"import_articles_prompt": "가져올 위키백과 {em_start}문서 제목{em_end}을 아래의 영역에 각 줄마다 입력해 주십시오:",
-	"import_pagepile": "페이지파일에서 수입",
+	"import_pagepile": "PagePile에서 가져오기",
 	"import_pagepile_intro": "{em_start}Pagepile{em_end}은 위키백과 문서 목록을 정의하는 도구입니다. Pagepile은 목록에 ID를 할당하여 다른 도구로 결과를 가져올 수 있도록 합니다.",
 	"import_pagepile_prompt": "{link_start}Pagepile에서 목록을 생성하고{link_end} 해당 ID를 아래에 붙여넣어 주세요:",
 	"import_petscan": "PetScan 쿼리 기반으로 가져오기",
