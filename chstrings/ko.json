@@ -46,7 +46,7 @@
 	"js-custom-no-articles-selected": "문서를 선택해 주십시오.",
 	"js-invalid-pagepile-input": "숫자로 된 Pagepile ID를 입력해 주세요.",
 	"js-invalid-petscan-input": "숫자로 된 PetScan ID를 입력해 주세요.",
-	"js-keyboard-shortcut": "단축 키: %s",
+	"js-keyboard-shortcut": "단축키: %s",
 	"js-leaving-custom": "제한되지 않은 {tooltitle}(으)로 돌아가려고 합니다. 그렇게 하시겠습니까?",
 	"js-refs-added-today": "오늘 $1개의 {{PLURAL:$1|인용|인용}}이 추가되었습니다!",
 	"js-select-articles-summary": "클릭해서 미리보기 ($1개 {{PLURAL:$1|문서}}와 $2개 {{PLURAL:$2|스니펫}} 추가됨)",
