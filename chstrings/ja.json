@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Apple TD",
+			"Dacchi Hii",
 			"MathXplore",
 			"Omotecho",
 			"Shirayuki",
@@ -10,7 +11,7 @@
 			"ネイ"
 		]
 	},
-	"article_titles_hint": "タイトルから選んで記事をインポートするときは、利用したいタイトルを正しく選んだか確認し、また1行に1件だけ入力したかどうか点検します。",
+	"article_titles_hint": "タイトルから選んで記事を取り込むときは、利用したいタイトルを正しく選んだか確認し、また1行に1件だけ入力したかどうか再度チェックします。",
 	"back": "戻る",
 	"back_to_cancel": "操作をキャンセルするには{em_start}{back}{em_end}を押すか、このダイアログを閉じます。",
 	"button_next": "次！",
@@ -22,6 +23,9 @@
 	"github_link_title": "そう！ このソースは GitHub にあるよ！",
 	"import_article_titles": "記事のタイトル一覧を入力",
 	"import_articles_prompt": "ウィキペディアからインポートする{em_start}記事のタイトル{em_end}を、以下の欄に1行に1件ずつ記入します。",
+	"import_pagepile": "Pagepileから取り込む",
+	"import_pagepile_intro": "{em_start}Pagepile{em_end}はWikipediaの記事のリストを定義するためのツールです。PagepileはリストにIDを割り当てるので結果を他のツールから取り込むことができます。",
+	"import_pagepile_prompt": "{link_start}あなたのPagepileでのリストを作成{link_end}して以下にIDをペーストしてください：",
 	"import_petscan": "PetScanのクエリ結果を読み込む",
 	"import_petscan_intro": "{em_start}PetScan{em_end}はウィキペディアに検索をかけるツールで、記事の一覧の絞り込みに使います。PetScanがクエリに付ける識別IDを利用すると、他のツールに抽出結果をインポートできます。",
 	"import_petscan_prompt": "{link_start}PetScanを使ってクエリを実行し{link_end}、生成されたIDを以下の欄に入力してください。",
@@ -39,6 +43,7 @@
 	"js-article-count": "$1 {{PLURAL:$1|件の記事}}",
 	"js-custom-numbers": "$1 {{PLURAL:$1|件の記事}}のスニペットが含まれ、有効期間は$2 {{PLURAL:$2|日}}です。",
 	"js-custom-no-articles-selected": "記事を複数、選択してください。",
+	"js-invalid-pagepile-input": "Pagepile IDを数字で入力してください。",
 	"js-invalid-petscan-input": "数字で PetScan IDを入力してください。",
 	"js-keyboard-shortcut": "ショートカットキー: %s",
 	"js-leaving-custom": "制限を解除した{tooltitle}に戻ろうとしています。この捜査を続けてよろしいですか？",
