@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"ANDROBETA",
+			"Blaséd",
 			"Fitoschido",
 			"MSClaudiu",
 			"NGC 54",
@@ -48,6 +49,7 @@
 	"js-keyboard-shortcut": "Combinație de taste: %s",
 	"js-leaving-custom": "Navigați înapoi la {tooltitle} fără restricții. Ești sigur?",
 	"js-refs-added-today": "$1 {{PLURAL:$1|sursă adăugată|surse adăugate|de surse adăugate}} astăzi!",
+	"js-select-articles-summary": "Faceți clic pentru previzualizare ($1 {{PLURAL:$1| articol|articole}} și $2 {{PLURAL:$2|fragment|fragmente}} adăugate)",
 	"js-snippet-count": "$1 {{PLURAL:$1|fragment|fragmente}}",
 	"js-dark-theme": "Tema întunecată",
 	"js-default-theme": "Tema implicită",
