@@ -63,6 +63,7 @@
 	"petscan_hint": "Atunci când importați interogări PetScan, evitați întrebările care durează mult timp pentru PetScan pentru a evalua și asigurați-vă că adresa URL sau PSID-ul dvs. sunt valide.",
 	"select_articles": "Căutați articole în {tooltitle}",
 	"select_articles_placeholder": "Caută un articol",
+	"select_articles_prompt": "Folosește caseta de căutare de mai jos pentru a {em_start}găsi și adăuga articole{em_end} la {tooltitle}-ul tău personalizat. Poți elimina un articol făcând clic pe el în previzualizarea de mai jos.",
 	"submit": "Trimite",
 	"tooltitle": "Citation Hunt",
 	"try_again_hints_header": "Încearcă din nou și ține minte următoarele sfaturi:",
