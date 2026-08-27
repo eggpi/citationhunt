@@ -5,13 +5,14 @@
 			"Halibutt",
 			"InternerowyGołąb",
 			"Mateon1",
+			"PanWor",
 			"WaldiSt",
 			"Warchlak",
 			"Wojtas",
 			"Woytecr"
 		]
 	},
-	"article_titles_hint": "Importując artykuły według tytułów, sprawdź dokładnie, czy tytuły są poprawne i czy podałeś po jednym w każdym wierszu.",
+	"article_titles_hint": "Importując artykuły według tytułów, sprawdź dokładnie, czy tytuły są poprawne i czy są podane po jednym w każdym wierszu.",
 	"back": "Wstecz",
 	"back_to_cancel": "Możesz nacisnąć {em_start}{back}{em_end} lub zamknąć to okno, aby anulować.",
 	"button_next": "Następny!",
