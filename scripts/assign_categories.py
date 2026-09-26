@@ -87,8 +87,11 @@ def load_hidden_categories(wpcursor, cfg):
     if not cfg.hidden_category:
         return set()
     wpcursor.execute('''
-        SELECT cl_from FROM categorylinks WHERE
-        cl_to = %s''', (cfg.hidden_category,))
+        SELECT cl_from
+        FROM categorylinks
+        JOIN linktarget ON cl_target_id = lt_id
+        WHERE cl_type = 'subcat'
+        AND lt_title = %s''', (cfg.hidden_category,))
     hidden_page_ids = [row[0] for row in wpcursor]
     return category_ids_to_names(wpcursor, hidden_page_ids)
 
