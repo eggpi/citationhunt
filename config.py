@@ -1264,6 +1264,27 @@ _LANG_CODE_TO_CONFIG = dict(
         hidden_category = 'Thể_loại_ẩn',
     ),
 
+    sq = dict(
+        lang_name = 'Shqip',
+        lang_dir = 'ltr',
+        database = 'sqwiki_p',
+        wikipedia_domain = 'sq.wikipedia.org',
+        beginners_link = 'https://sq.wikipedia.org/wiki/Ndihmë:Referimi',
+        beginners_link_title = 'Ndihmë:Referimi',
+
+        reliable_sources_link = 'https://sq.wikipedia.org/wiki/Wikipedia:Verifikueshmëria',
+
+        lead_section_policy_link = '',
+        lead_section_policy_link_title = '',
+
+        # Redirects to this template ('Cito', 'Cito!', 'Fakt', 'Fact', 'Cn',
+        # 'Cd', 'Citation needed') are resolved automatically.
+        citation_needed_templates = [
+            'Citim i duhur',
+        ],
+        hidden_category = 'Kategori_të_fshehura',
+    ),
+
     **{  # https://stackoverflow.com/questions/54974442/escape-reserved-keywords-python
     # 'as': dict(
     #   lang_name = 'অসমীয়া',
