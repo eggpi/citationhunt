@@ -46,6 +46,7 @@ def format_html(html):
 if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
     cfg = config.get_localized_config()
+    cfg.enable_wikipedia_api()
 
     WIKIPEDIA_BASE_URL = 'https://' + cfg.wikipedia_domain
     WIKIPEDIA_WIKI_URL = WIKIPEDIA_BASE_URL + '/wiki/'
