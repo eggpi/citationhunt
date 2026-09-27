@@ -97,10 +97,10 @@ def load_hidden_categories(wpcursor, cfg):
 
 def load_categories_for_pages(wpcursor, pageids):
     wpcursor.execute('''
-        SELECT lt_title
+        SELECT lt_title, cl_from
         FROM categorylinks
         JOIN linktarget ON cl_target_id = lt_id
-        WHERE cl_type = 'subcat'
+        WHERE cl_type = 'page'
         AND cl_from IN %s''', (tuple(pageids),))
     return ((CategoryName.from_wp_categorylinks(row[0]), row[1])
             for row in wpcursor)
