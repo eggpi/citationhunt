@@ -70,6 +70,7 @@ _BASE_LANG_CONFIG = dict(
     # Don't publish an update to the database if it has too little data
     min_snippets_sanity_check = 100,
     min_articles_sanity_check = 100,
+    min_categories_sanity_check = 10,
 
     # The elements identified by these CSS selectors are removed from the HTML
     # returned by the Wikipedia API.

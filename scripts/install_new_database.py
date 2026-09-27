@@ -21,6 +21,10 @@ def sanity_check():
         '''SELECT COUNT(*) FROM articles''')[0][0]
     assert article_count > cfg.min_articles_sanity_check
 
+    category_count = sdb.execute_with_retry_s(
+        '''SELECT COUNT(*) FROM categories''')[0][0]
+    assert category_count > cfg.min_categories_sanity_check
+
 if __name__ == '__main__':
     sanity_check()
     chdb.install_scratch_db()
