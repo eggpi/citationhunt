@@ -9,16 +9,22 @@ See the [top-level README](https://github.com/eggpi/citationhunt#running-in-tool
 Below are some more handy commands for manually operating and troubleshooting those jobs.
 
 #### Manually launch a job
-    kubectl create job --from=cronjob/citationhunt-update-it citationhunt-update-it-manual
+    kubectl create job --from=cronjob/citationhunt-update-${JOB?} citationhunt-update-${JOB?}-manual
 
 #### Clean up the manual job
-    kubectl delete job citationhunt-update-it-manual
-
-#### Delete the compute_fixed_snippets job
-    kubectl delete deployment citationhunt.compute-fixed-snippets
+    kubectl delete job citationhunt-update-${JOB?}-manual
 
 #### Get pods for running jobs
     kubectl get pods --field-selector=status.phase=Running
+
+#### Get pods for a completed job
+    kubectl get pods --selector=job-name=citationhunt-update-${JOB?}-manual
+
+#### Check the status and exit code for a pod
+    kubectl describe pod ${POD?}
+
+#### Delete the compute_fixed_snippets job
+    kubectl delete deployment citationhunt.compute-fixed-snippets
 
 #### Get logs from a pod
     kubectl logs ${POD?}
