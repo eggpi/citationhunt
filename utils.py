@@ -69,7 +69,7 @@ def setup_logger_to_logfile(logger, log_file):
     mkdir_p(log_dir)
     log_path = os.path.join(log_dir, log_file)
     handler = logging.handlers.RotatingFileHandler(
-        log_path, maxBytes = 1024 * 1024, encoding = 'utf-8')
+        log_path, maxBytes = 1024 * 1024, backupCount = 1, encoding = 'utf-8')
     _setup_log_handler(logger, handler)
 
 def setup_logger_to_stderr(logger):
