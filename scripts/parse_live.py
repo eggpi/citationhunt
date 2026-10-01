@@ -191,7 +191,7 @@ def parse_live(pageids, timeout):
     tasks = []
     batch_size = 32
     pageids_list = list(pageids)
-    for i in range(0, len(pageids), batch_size):
+    for i in range(0, len(pageids_list), batch_size):
         tasks.append(pageids_list[i:i+batch_size])
 
     result = pool.map_async(work, tasks)
@@ -241,8 +241,8 @@ if __name__ == '__main__':
     if timeout == float('inf'):
         timeout = None
     start = time.time()
-    with open(pageids_file) as pf:
-        pageids = set(map(str.strip, pf))
-    ret = parse_live(pageids, timeout)
+    pageids = (str.strip(p) for p in open(pageids_file))
+    for pageids_chunk in ichunk(pageids, 10_000):
+        ret = parse_live(pageids_chunk, timeout)
     logger.info('all done in %d seconds.' % (time.time() - start))
     sys.exit(ret)
