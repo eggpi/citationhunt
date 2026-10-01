@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Iketsi",
 			"Kaszeba",
 			"Orbitminis"
 		]
@@ -19,7 +20,7 @@
 	"in_page": "W artiklu %s:",
 	"instructions_details": "Klëkni %s abë przejsc do Wikipediii ë {link_start}pòprawic nen dzél{link_end}, abò %s abë òbôczëc jinny. Òbôczë %s jeżlë môsz zapëtania. Wiele szczãsca ce!",
 	"instructions_goal": "Ùniższi dzél z Wikipediji nie je pòpiarti {link_start}wiarëgòdnym zdrojã{link_end}. Jes të w sztãdze taczé nalezc?",
-	"introduction": "Pòmòżë dodac dopisënczi do artiklów Wikipediji!",
+	"introduction": "Pòmòżë dodac dopisënczi do artiklów Wikipedie!",
 	"js-article-count": "$1 {{PLURAL:$1|artikel|artikle|artiklów}}",
 	"js-keyboard-shortcut": "Klawiaturowô skrodzëna: %s",
 	"js-refs-added-today": "$1 {{PLURAL:$1|cytata|cytaów}} dodónych dzysô!",
