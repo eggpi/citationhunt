@@ -92,26 +92,10 @@ def query_pageids(wiki, pageids):
 
 self = types.SimpleNamespace() # Per-process state
 
-def initializer(backdir):
-    self.backdir = backdir
-
+def initializer():
     self.wiki = cfg.wikipedia
     self.parser = snippet_parser.create_snippet_parser(self.wiki, cfg)
     self.exception_count = 0
-
-    if cfg.profile:
-        self.profiler = cProfile.Profile()
-        self.profiler.enable()
-        # Undocumented :( https://stackoverflow.com/questions/24717468
-        multiprocessing.util.Finalize(None, finalizer, exitpriority=16)
-
-def finalizer():
-    self.profiler.disable()
-    profile_path = os.path.join(self.backdir, 'profile-%s' % os.getpid())
-    pstats.Stats(self.profiler).dump_stats(profile_path)
-    stats_path = os.path.join(self.backdir, 'stats-%s' % os.getpid())
-    with open(stats_path, 'wb') as stats_f:
-        pickle.dump(self.parser.stats, stats_f)
 
 def with_max_exceptions(fn):
     @functools.wraps(fn)
@@ -180,12 +164,11 @@ def work(pageids):
         db.execute_with_retry(insert, r)
 
 def parse_live(pageids, timeout):
-    backdir = tempfile.mkdtemp(prefix = 'citationhunt_parse_live_')
     pool = multiprocessing.Pool(
         # The number of processes per CPU is pretty much made up. The processes
         # are I/O bound as most of the time is spent querying the Wikipedia API.
         processes = multiprocessing.cpu_count() * 4,
-        initializer = initializer, initargs = (backdir,))
+        initializer = initializer)
 
     # Make sure we query the API 32 pageids at a time
     tasks = []
@@ -211,27 +194,6 @@ def parse_live(pageids, timeout):
     except Exception:
         logger.error('Too many exceptions, failed!')
         ret = 1
-
-    if cfg.profile:
-        profiles = list(map(pstats.Stats,
-            glob.glob(os.path.join(backdir, 'profile-*'))))
-        stats = reduce(
-            lambda stats, other: (stats.add(other), stats)[1],
-            profiles if profiles else [None])
-        if stats is not None:
-            stats.sort_stats('cumulative').print_stats(30)
-
-    parser_stats = snippet_parser.stats.merge_stats(
-        pickle.load(open(stats_file, 'rb'))
-        for stats_file in glob.glob(os.path.join(backdir, 'stats-*')))
-    lengths = parser_stats.snippet_lengths
-    logger.info('percentiles for snippet lengths:')
-    logger.info('50th: %d' % snippet_parser.stats.percentile(lengths, 50))
-    logger.info('70th: %d' % snippet_parser.stats.percentile(lengths, 70))
-    logger.info('90th: %d' % snippet_parser.stats.percentile(lengths, 90))
-    logger.info('95th: %d' % snippet_parser.stats.percentile(lengths, 95))
-
-    shutil.rmtree(backdir)
     return ret
 
 if __name__ == '__main__':
