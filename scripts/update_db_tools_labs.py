@@ -33,46 +33,6 @@ def shell(logger, cmdline):
         logger.info(l)
     return status == 0
 
-def get_db_names_to_archive(lang_code):
-    database_names = []
-    for db in [chdb.init_db(lang_code), chdb.init_stats_db()]:
-        with db.cursor() as cursor:
-            cursor.execute('SELECT DATABASE()')
-            database_names.append(cursor.fetchone()[0])
-    return database_names
-
-def delete_old_archives(logger, archive_dir, archive_duration_days):
-    try:
-        all_archives = os.listdir(archive_dir)
-    except OSError:
-        logger.info('No archives to delete!')
-        return
-
-    for a in all_archives:
-        # format: YYYYMMDD-HHMM.sql.gz
-        when = dateutil.parser.parse(a.split('.', 1)[0])
-        age = (datetime.datetime.today() - when).days
-        if age > archive_duration_days:
-            logger.info('Archive %s is %d days old, deleting' % (a, age))
-            os.remove(os.path.join(archive_dir, a))
-
-def archive_database(logger, cfg):
-    dbs_to_archive = get_db_names_to_archive(cfg.lang_code)
-    archive_dir = os.path.join(cfg.archive_dir, cfg.lang_code)
-    if cfg.archive_duration_days > 0:
-        delete_old_archives(logger, archive_dir, cfg.archive_duration_days)
-
-    utils.mkdir_p(archive_dir)
-    now = datetime.datetime.now()
-    output = os.path.join(archive_dir, now.strftime('%Y%m%d-%H%M.sql.gz'))
-
-    logger.info('Archiving the current database')
-    return shell(
-        logger,
-        'mysqldump --defaults-file="%s" --host=%s --databases %s | '
-        'gzip > %s' % (chdb.REPLICA_MY_CNF, chdb.TOOLS_LABS_CH_MYSQL_HOST,
-            ' '.join(dbs_to_archive), output))
-
 def expire_stats(cfg):
     stats_db = chdb.init_stats_db()
     with chdb.init_stats_db().cursor() as cursor, chdb.ignore_warnings():
@@ -82,10 +42,6 @@ def expire_stats(cfg):
 def _update_db_tools_labs(logger, cfg):
     os.environ['CH_LANG'] = cfg.lang_code
     chdb.initialize_all_databases()
-
-    if cfg.archive_dir and not archive_database(logger, cfg):
-        # Log, but don't assert, this is not fatal
-        logger.warning('Failed to archive database!')
 
     expire_stats(cfg)
 

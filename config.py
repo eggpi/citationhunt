@@ -17,12 +17,6 @@ from functools import reduce
 # Configuration keys that don't correspond to user-visible or snippet parsing
 # behavior. Boring stuff.
 _GLOBAL_CONFIG = dict(
-    # If running on Tools labs, keep database dumps in this directory...
-    archive_dir = os.path.join(os.path.expanduser('~'), 'ch_archives'),
-
-    # ...and delete dumps that are older than this many days
-    archive_duration_days = 90,
-
     # Where to put various logs
     log_dir = os.path.join(os.path.expanduser('~'), 'ch_logs'),
 
