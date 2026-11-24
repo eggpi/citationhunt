@@ -37,6 +37,11 @@ body[theme=dark] .pure-modal-overlay .close {
 }
 
 .pure-modal .pure-modal-overlay .close:hover {
+    color: #362929;
+    border-top-color: #362929;
+}
+
+body[theme=dark] .pure-modal .pure-modal-overlay .close:hover {
     color: #FCFCFC;
     border-top-color: #FCFCFC;
 }
