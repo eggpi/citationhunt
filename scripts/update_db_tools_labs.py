@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import os.path
 import sys
 _upper_dir = os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..'))
@@ -59,6 +60,10 @@ def _update_db_tools_labs(logger, cfg):
     run_script('assign_categories.py')
     run_script('update_intersections.py')
     run_script('install_new_database.py')
+    run_script('dump_snippets_as_json.py',
+               os.path.expanduser('~/www/static/citationhunt_' + cfg.lang_code +
+                                  '.jsonl.gz'),
+               optional = True)
 
     unsourced.close()  # deletes the file
 
